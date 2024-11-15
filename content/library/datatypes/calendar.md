@@ -278,7 +278,7 @@ calendar.setfirstweekday(calendar.SUNDAY)
 
 ​	在当前语言区域下表示周内日期的序列，其中“星期一”为 0 号日。
 
-\>>>
+
 
 ```
 >>> import calendar
@@ -290,7 +290,7 @@ calendar.setfirstweekday(calendar.SUNDAY)
 
 ​	在当前语言区域下简写表示周内日期的序列，其中“一” 为 0 号日。
 
-\>>>
+
 
 ```
 >>> import calendar
@@ -326,7 +326,7 @@ calendar.setfirstweekday(calendar.SUNDAY)
 
 ​	在当前语言区域下表示一年中月份的序列。 这遵循一月的月份序号为 1 的通常惯例，所以其长度为 13 且 `month_name[0]` 为空字符串。
 
-\>>>
+
 
 ```
 >>> import calendar
@@ -338,7 +338,7 @@ calendar.setfirstweekday(calendar.SUNDAY)
 
 ​	在当前语言区域下简写表示一年中月份的序列。 这遵循一月的月份序号为 1 的通常惯例，所以其长度为 13 且 `month_abbr[0]` 为空字符串。
 
-\>>>
+
 
 ```
 >>> import calendar

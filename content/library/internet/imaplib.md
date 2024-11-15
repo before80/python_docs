@@ -32,7 +32,7 @@ draft = false
 
 [`IMAP4`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4) 类支持 [`with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#with) 语句。 当这样使用时，IMAP4 `LOGOUT` 命令会在 `with` 语句退出时自动发出。 例如:
 
-\>>>
+
 
 ```
 >>> from imaplib import IMAP4

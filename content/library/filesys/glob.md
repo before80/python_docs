@@ -92,7 +92,7 @@ draft = false
 
 ​	例如:
 
-\>>>
+
 
 ```
 >>> import glob, re
@@ -125,7 +125,7 @@ draft = false
 
 ​	考虑一个包含以下文件的目录: `1.gif`, `2.txt`, `card.gif` 以及一个子目录 `sub` 且其中只包含一个文件 `3.txt`。 [`glob()`](https://docs.python.org/zh-cn/3.13/library/glob.html#module-glob) 将产生如下结果。 请注意路径的任何开头部件都将被保留。
 
-\>>>
+
 
 ```
 >>> import glob
@@ -143,7 +143,7 @@ draft = false
 
 ​	如果目录包含以 `.` 打头的文件，它们默认将不会被匹配。 例如，考虑一个包含 `card.gif` 和 `.card.gif` 的目录:
 
-\>>>
+
 
 ```
 >>> import glob

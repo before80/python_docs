@@ -105,7 +105,7 @@ with urllib.request.urlopen(req) as response:
 
 ​	做法如下所示：
 
-\>>>
+
 
 ```
 >>> import urllib.request
@@ -164,7 +164,7 @@ with urllib.request.urlopen(req) as response:
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> req = urllib.request.Request('http://www.pretend_server.org')
@@ -261,7 +261,7 @@ responses = {
 
 ​	当错误被引发时服务器会通过返回 HTTP 错误码 *和* 错误页面进行响应。 你可以在返回的页面上使用 [`HTTPError`](https://docs.python.org/zh-cn/3.13/library/urllib.error.html#urllib.error.HTTPError) 实例作为响应。 这意味着除了 code 属性之外，它还像 `urllib.response` 模块: 所返回对象那样具有 read, geturl 和 info 等方法:
 
-\>>>
+
 
 ```
 >>> req = urllib.request.Request('http://www.python.org/fish.html')
@@ -403,7 +403,7 @@ urllib.request.install_opener(opener)
 
 **urllib** 将自动检测并使用代理设置。 这是通过 `ProxyHandler` 实现的，当检测到代理设置时，是正常 handler 链中的一部分。通常这是一件好事，但有时也可能会无效 [[5\]](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#id12)。 一种方案是配置自己的 `ProxyHandler` ，不要定义代理。 设置的步骤与 [Basic Authentication](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#basic-authentication) handler 类似:
 
-\>>>
+
 
 ```
 >>> proxy_support = urllib.request.ProxyHandler({})

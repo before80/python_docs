@@ -28,7 +28,7 @@ draft = false
 
 ​	以下是使用 [`ftplib`](https://docs.python.org/zh-cn/3.13/library/ftplib.html#module-ftplib) 模块的会话示例:
 
-\>>>
+
 
 ```
 >>> from ftplib import FTP
@@ -75,7 +75,7 @@ drwxr-xr-x    3 1176     1176         4096 Oct 10  2012 tools
 
 [`FTP`](https://docs.python.org/zh-cn/3.13/library/ftplib.html#ftplib.FTP) 类支持 [`with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#with) 语句，例如：
 
-\>>>
+
 
 ```
 >>> from ftplib import FTP
@@ -298,7 +298,7 @@ dr-xr-xr-x   3 ftp      ftp            18 Jul 10  2008 Fedora
 
 ​	以下是使用 [`FTP_TLS`](https://docs.python.org/zh-cn/3.13/library/ftplib.html#ftplib.FTP_TLS) 类的会话示例:
 
-\>>>
+
 
 ```
 >>> ftps = FTP_TLS('ftp.pureftpd.org')

@@ -940,7 +940,7 @@ CONFIG_SITE=config.site-aarch64 ../configure \
 
 ​	有些 C 扩展是作为内置模块构建的，比如 `sys` 模块。 它们在定义了 `Py_BUILD_CORE_BUILTIN` 宏的情况下构建。 内置模块没有 `__file__` 属性：
 
-\>>>
+
 
 ```
 >>> import sys
@@ -954,7 +954,7 @@ AttributeError: module 'sys' has no attribute '__file__'
 
 ​	其他 C 扩展是作为动态库来构建的，比如 `_asyncio` 模块。 它们在定义了 `Py_BUILD_CORE_MODULE` 宏的情况下构建。 在 Linux x86-64 上的例子：
 
-\>>>
+
 
 ```
 >>> import _asyncio

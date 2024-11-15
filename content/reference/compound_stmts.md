@@ -168,7 +168,7 @@ except E as N:
 
 ​	在 `except` 子句的代码块被执行之前，异常将保存在 [`sys`](https://docs.python.org/zh-cn/3.13/library/sys.html#module-sys) 模块中，在那里它可以从 `except` 子句的语句体内部通过 [`sys.exception()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.exception) 被访问。 当离开一个异常处理器时，保存在 [`sys`](https://docs.python.org/zh-cn/3.13/library/sys.html#module-sys) 模块中的异常将被重置为在此之前的值:
 
-\>>>
+
 
 ```
 >>> print(sys.exception())
@@ -196,7 +196,7 @@ None
 
 `except*` 子句被用来处理 [`ExceptionGroup`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ExceptionGroup)。 要匹配的异常类型将按与 [`except`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#except) 中的相同的方式来解读，但在使用异常组的情况下当类型与组内的某些异常相匹配时我们可以有部分匹配。 这意味着有多个 `except*` 子句可被执行，各自处理异常组的一部分。 每个子句最多执行一次并处理所有匹配异常中的一个异常组。 组内的每个异常将至多由一个 `except*` 子句来处理，即第一个与其匹配的子句。
 
-\>>>
+
 
 ```
 >>> try:
@@ -221,7 +221,7 @@ caught <class 'ExceptionGroup'> with nested (OSError(3), OSError(4))
 
 ​	如果被引发的异常不是一个异常组并且其类型与某个 `except*` 子句相匹配，它将被捕获并由附带空消息字符串的异常组来包装。
 
-\>>>
+
 
 ```
 >>> try:
@@ -248,7 +248,7 @@ ExceptionGroup('', (BlockingIOError()))
 
 ​	如果存在 `finally`，它将指定一个‘清理’处理器。 [`try`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#try) 子句会被执行，包括任何 [`except`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#except) 和 [`else`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#else) 子句。 如果在这些子句中发生任何未处理的异常，该异常会被临时保存。 `finally` 子句将被执行。 如果存在被保存的异常，它会在 `finally` 子句的末尾被重新引发。 如果 `finally` 子句引发了另一个异常，被保存的异常会被设为新异常的上下文。 如果 `finally` 子句执行了 [`return`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#return), [`break`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#break) 或 [`continue`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#continue) 语句，则被保存的异常会被丢弃:
 
-\>>>
+
 
 ```
 >>> def f():
@@ -267,7 +267,7 @@ ExceptionGroup('', (BlockingIOError()))
 
 ​	函数的返回值是由最后被执行的 [`return`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#return) 语句来决定的。 由于 `finally` 子句总是会被执行，因此在 `finally` 子句中被执行的 `return` 语句将总是最后被执行的:
 
-\>>>
+
 
 ```
 >>> def foo():
@@ -441,7 +441,7 @@ case_block   ::=  'case' patterns [guard] ":" block
 
 ​	匹配语句示例:
 
-\>>>
+
 
 ```
 >>> flag = False

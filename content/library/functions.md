@@ -77,7 +77,7 @@ def any(iterable):
 
 ​	将一个整数转换为带前缀 "0b" 的二进制数字符串。 结果是一个合法的 Python 表达式。 如果 *x* 不是一个 Python [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 对象，则它必须定义返回一个整数的 [`__index__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__index__) 方法。 下面是一些例子:
 
-\>>>
+
 
 ```
 >>> bin(3)
@@ -88,7 +88,7 @@ def any(iterable):
 
 ​	若要控制是否显示前缀“0b”，可以采用以下两种方案：
 
-\>>>
+
 
 ```
 >>> format(14, '#b'), format(14, 'b')
@@ -234,7 +234,7 @@ class C:
 
 ​	示例：
 
-\>>>
+
 
 ```
 >>> complex('+1.23')
@@ -307,7 +307,7 @@ complexvalue ::=  floatvalue |
 
 ​	返回的列表按字母表排序。例如：
 
-\>>>
+
 
 ```
 >>> import struct
@@ -341,7 +341,7 @@ complexvalue ::=  floatvalue |
 
 ​	返回一个枚举对象。*iterable* 必须是一个序列，或 [iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterator)，或其他支持迭代的对象。 [`enumerate()`](https://docs.python.org/zh-cn/3.13/library/functions.html#enumerate) 返回的迭代器的 [`__next__()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#iterator.__next__) 方法返回一个元组，里面包含一个计数值（从 *start* 开始，默认为 0）和通过迭代 *iterable* 获得的值。
 
-\>>>
+
 
 ```
 >>> seasons = ['Spring', 'Summer', 'Fall', 'Winter']
@@ -387,7 +387,7 @@ def enumerate(iterable, start=0):
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> x = 1
@@ -467,7 +467,7 @@ def enumerate(iterable, start=0):
 
 ​	示例：
 
-\>>>
+
 
 ```
 >>> float('+1.23')
@@ -575,7 +575,7 @@ floatvalue    ::=  [sign] absfloatvalue
 
 ​	将整数转换为带前缀 "0x" 前缀的小写十六进制数字符串。 如果 *x* 不是一个 Python [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 对象，则它必须定义返回一个整数的 [`__index__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__index__) 方法。 下面是一些例子:
 
-\>>>
+
 
 ```
 >>> hex(255)
@@ -586,7 +586,7 @@ floatvalue    ::=  [sign] absfloatvalue
 
 ​	如果要将整数转换为大写或小写的十六进制字符串，并可选择有无“0x”前缀，则可以使用如下方法：
 
-\>>>
+
 
 ```
 >>> '%#x' % 255, '%x' % 255, '%X' % 255
@@ -621,7 +621,7 @@ floatvalue    ::=  [sign] absfloatvalue
 
 ​	如果存在 *prompt* 实参，则将其写入标准输出，末尾不带换行符。接下来，该函数从输入中读取一行，将其转换为字符串（除了末尾的换行符）并返回。当读取到 EOF 时，则触发 [`EOFError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#EOFError)。例如:
 
-\>>>
+
 
 ```
 >>> s = input('--> ')  
@@ -644,7 +644,7 @@ floatvalue    ::=  [sign] absfloatvalue
 
 ​	示例：
 
-\>>>
+
 
 ```
 >>> int(123.45)
@@ -808,7 +808,7 @@ with open('mydata.db', 'rb') as f:
 
 ​	将整数转换为带前缀 "0o" 的八进制数字符串。 结果是一个合法的 Python 表达式。 如果 *x* 不是一个 Python [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 对象，则它必须定义返回一个整数的 [`__index__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__index__) 方法。 例如:
 
-\>>>
+
 
 ```
 >>> oct(8)
@@ -819,7 +819,7 @@ with open('mydata.db', 'rb') as f:
 
 ​	若要将整数转换为八进制字符串，并可选择是否带有“0o”前缀，可采用如下方法：
 
-\>>>
+
 
 ```
 >>> '%#o' % 10, '%o' % 10
@@ -892,7 +892,7 @@ with open('mydata.db', 'rb') as f:
 
 ​	下面的示例使用 [`os.open()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.open) 函数的 [dir_fd](https://docs.python.org/zh-cn/3.13/library/os.html#dir-fd) 的形参，从给定的目录中用相对路径打开文件:
 
-\>>>
+
 
 ```
 >>> import os
@@ -951,7 +951,7 @@ with open('mydata.db', 'rb') as f:
 
 ​	下面的例子是 `38` 的倒数对 `97` 取余:
 
-\>>>
+
 
 ```
 >>> pow(38, -1, mod=97)
@@ -1258,7 +1258,7 @@ class C(B):
 
 ​	传入三个参数时，返回一个新的 type 对象。 这在本质上是 [`class`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#class) 语句的一种动态形式。 *name* 字符串即类名并会成为 [`__name__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#type.__name__) 属性；*bases* 元组包含基类并会成为 [`__bases__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#type.__bases__) 属性；如果为空，则会添加所有类的终极基类，即 [`object`](https://docs.python.org/zh-cn/3.13/library/functions.html#object)。 *dict* 字典包含类体的属性和方法定义；它在成为 [`__dict__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#type.__dict__) 属性之前可能会被拷贝或包装。 下面两条语句会创建同样的 `type` 对象：
 
-\>>>
+
 
 ```
 >>> class X:
@@ -1298,7 +1298,7 @@ class C(B):
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> for item in zip([1, 2, 3], ['sugar', 'spice', 'everything nice']):
@@ -1319,7 +1319,7 @@ class C(B):
 
 - 默认情况下，[`zip()`](https://docs.python.org/zh-cn/3.13/library/functions.html#zip) 在最短的迭代完成后停止。较长可迭代对象中的剩余项将被忽略，结果会裁切至最短可迭代对象的长度：
 
-  \>>>
+  
 
   ```
   >>> list(zip(range(3), ['fee', 'fi', 'fo', 'fum']))
@@ -1328,7 +1328,7 @@ class C(B):
 
 - 通常 [`zip()`](https://docs.python.org/zh-cn/3.13/library/functions.html#zip) 用于可迭代对象等长的情况下。这时建议用 `strict=True` 的选项。输出与普通的 [`zip()`](https://docs.python.org/zh-cn/3.13/library/functions.html#zip) 相同：。
 
-  \>>>
+  
 
   ```
   >>> list(zip(('a', 'b', 'c'), (1, 2, 3), strict=True))
@@ -1337,7 +1337,7 @@ class C(B):
 
   与默认行为不同，如果一个可迭代对象在其他几个之前被耗尽则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError):
 
-  \>>>
+  
 
   ```
   >>> for item in zip(range(3), ['fee', 'fi', 'fo', 'fum'], strict=True):  
@@ -1363,7 +1363,7 @@ class C(B):
 
 - [`zip()`](https://docs.python.org/zh-cn/3.13/library/functions.html#zip) 与 `*` 运算符相结合可以用来拆解一个列表:
 
-  \>>>
+  
 
   ```
   >>> x = [1, 2, 3]

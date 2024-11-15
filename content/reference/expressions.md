@@ -331,7 +331,7 @@ async def agen(): # 定义一个异步生成器函数
 
 ​	这里是一个简单的例子，演示了生成器和生成器函数的行为:
 
-\>>>
+
 
 ```
 >>> def echo(value=None):
@@ -517,7 +517,7 @@ keyword_item         ::=  identifier "=" expression
 
 ​	这样做的一个后果是虽然 `*expression` 句法可能出现于显式的关键字参数 *之后*，但它会在关键字参数（以及任何 `**expression` 参数 -- 见下文） *之前* 被处理。 因此:
 
-\>>>
+
 
 ```
 >>> def f(a, b):

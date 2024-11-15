@@ -29,7 +29,7 @@ draft = false
 
 ​	如果你想在你的电子邮件标头中包括非 ASCII 字符，比如说是在 *Subject* 或 *To* 字段中，你应当使用 [`Header`](https://docs.python.org/zh-cn/3.13/library/email.header.html#email.header.Header) 类并将 [`Message`](https://docs.python.org/zh-cn/3.13/library/email.compat32-message.html#email.message.Message) 对象中的字段赋值为 [`Header`](https://docs.python.org/zh-cn/3.13/library/email.header.html#email.header.Header) 的实例而不是使用字符串作为字段值。 请从 [`email.header`](https://docs.python.org/zh-cn/3.13/library/email.header.html#module-email.header) 模块导入 [`Header`](https://docs.python.org/zh-cn/3.13/library/email.header.html#email.header.Header) 类。 例如:
 
-\>>>
+
 
 ```
 >>> from email.message import Message
@@ -111,7 +111,7 @@ draft = false
 
 ​	以下是为示例代码:
 
-\>>>
+
 
 ```
 >>> from email.header import decode_header

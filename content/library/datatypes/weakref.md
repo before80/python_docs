@@ -95,7 +95,7 @@ obj = Dict(red=1, green=2, blue=3)   # 此对象是可弱引用的
 
 ​	请注意，当把一个与现有键具有相同值（但是标识号不相等）的键插入字典时，它会替换该值，但不会替换现有的键。由于这一点，当删除对原来的键的引用时，也将同时删除字典中的对应条目:
 
-\>>>
+
 
 ```
 >>> class T(str): pass
@@ -109,7 +109,7 @@ obj = Dict(red=1, green=2, blue=3)   # 此对象是可弱引用的
 
 ​	一种变通做法是在重新赋值之前先移除键:
 
-\>>>
+
 
 ```
 >>> class T(str): pass
@@ -150,7 +150,7 @@ obj = Dict(red=1, green=2, blue=3)   # 此对象是可弱引用的
 
 ​	一个模拟对绑定方法（即在类中定义并在实例中查找的方法）进行弱引用的自定义 [`ref`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.ref) 子类。 由于绑定方法是临时性的，标准弱引用无法保持它。 [`WeakMethod`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.WeakMethod) 包含特别代码用来重新创建绑定方法，直到对象或初始函数被销毁:
 
-\>>>
+
 
 ```
 >>> class C:
@@ -244,7 +244,7 @@ method called!
 
 ​	弱引用对象没有 [`ref.__callback__`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.ref.__callback__) 以外的方法和属性。 一个弱引用对象如果存在，就允许通过调用它来获取引用:
 
-\>>>
+
 
 ```
 >>> import weakref
@@ -260,7 +260,7 @@ True
 
 ​	如果引用已不存在，则调用引用对象将返回 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None):
 
-\>>>
+
 
 ```
 >>> del o, o2
@@ -334,7 +334,7 @@ def id2obj(oid):
 
 ​	使用 [`finalize`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.finalize) 的主要好处在于它能更简便地注册回调函数，而无须保留所返回的终结器对象。 例如
 
-\>>>
+
 
 ```
 >>> import weakref
@@ -350,7 +350,7 @@ You killed Kenny!
 
 ​	终结器也可以被直接调用。 但是终结器最多只能对回调函数发起一次调用。
 
-\>>>
+
 
 ```
 >>> def callback(x, y, z):
@@ -369,7 +369,7 @@ CALLBACK
 
 ​	你可以使用 [`detach()`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.finalize.detach) 方法来注销一个终结器。 该方法将销毁终结器并返回其被创建时传给构造器的参数。
 
-\>>>
+
 
 ```
 >>> obj = Object()
@@ -385,7 +385,7 @@ CALLBACK
 
 ​	除非你将 [`atexit`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.finalize.atexit) 属性设为 [`False`](https://docs.python.org/zh-cn/3.13/library/constants.html#False)，否则终结器在程序退出时如果仍然存活就将被调用。 例如
 
-\>>>
+
 
 ```
 >>> obj = Object()

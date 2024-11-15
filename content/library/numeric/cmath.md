@@ -26,7 +26,7 @@ draft = false
 
 ​	例如，[`cmath.sqrt()`](https://docs.python.org/zh-cn/3.13/library/cmath.html#cmath.sqrt) 函数有一个沿着负实轴的分支切割。 参数 `complex(-2.0, -0.0)` 会被当作位于切支切割的 *下方* 来处理，因而将给出一个负虚轴上的结果。
 
-\>>>
+
 
 ```
 >>> cmath.sqrt(complex(-2.0, -0.0))
@@ -35,7 +35,7 @@ draft = false
 
 ​	但是参数 `complex(-2.0, 0.0)` 则会被当作是位于支割线的上方来处理:
 
-\>>>
+
 
 ```
 >>> cmath.sqrt(complex(-2.0, 0.0))
@@ -54,7 +54,7 @@ draft = false
 
 ​	将 *x* 的相位 (或称 *x* 的 *参数*) 作为一个浮点数返回。 `phase(x)` 等价于 `math.atan2(x.imag, x.real)`。 结果将位于 [-*π*, *π*] 范围内，且此操作的支割线将位于负实轴上。 结果的符号将与 `x.imag` 的符号相同，即使 `x.imag` 的值为零:
 
-\>>>
+
 
 ```
 >>> phase(complex(-1.0, 0.0))

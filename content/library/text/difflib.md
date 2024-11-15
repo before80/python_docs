@@ -97,7 +97,7 @@ draft = false
 
 ​	上下文差异格式通常带有一个记录文件名和修改时间的标头。 这些信息的部分或全部可以使用字符串 *fromfile*, *tofile*, *fromfiledate* 和 *tofiledate* 来指定。 修改时间通常以 ISO 8601 格式表示。 如果未指定，这些字符串默认为空。
 
-\>>>
+
 
 ```
 >>> import sys
@@ -133,7 +133,7 @@ draft = false
 
 ​	候选匹配中（不超过 *n* 个）的最佳匹配将以列表形式返回，按相似度得分排序，最相似的排在最前面。
 
-\>>>
+
 
 ```
 >>> get_close_matches('appel', ['ape', 'apple', 'peach', 'puppy'])
@@ -157,7 +157,7 @@ draft = false
 
 *charjunk*: 此函数接受一个字符（长度为 1 的字符串)，如果其为垃圾字符则返回真值，否则返回假值。 默认为模块层级的函数 [`IS_CHARACTER_JUNK()`](https://docs.python.org/zh-cn/3.13/library/difflib.html#difflib.IS_CHARACTER_JUNK)，它会过滤掉空白字符（空格符或制表符；但包含换行符可不是个好主意！）。
 
-\>>>
+
 
 ```
 >>> diff = ndiff('one\ntwo\nthree\n'.splitlines(keepends=True),
@@ -182,7 +182,7 @@ draft = false
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> diff = ndiff('one\ntwo\nthree\n'.splitlines(keepends=True),
@@ -210,7 +210,7 @@ emu
 
 ​	统一的差异格式通常带有一个记录文件名和修改时间的标头。 这些信息的部分或全部可以使用字符串 *fromfile*, *tofile*, *fromfiledate* 和 *tofiledate* 来指定。 修改时间通常以 ISO 8601 格式表示。 如果未指定，这些字符串将默认为空。
 
-\>>>
+
 
 ```
 >>> s1 = ['bacon\n', 'eggs\n', 'ham\n', 'guido\n']
@@ -300,7 +300,7 @@ lambda x: x in " \t"
 
 ​	如果 *isjunk* 被省略或为 `None`，[`find_longest_match()`](https://docs.python.org/zh-cn/3.13/library/difflib.html#difflib.SequenceMatcher.find_longest_match) 将返回 `(i, j, k)` 使得 `a[i:i+k]` 等于 `b[j:j+k]`，其中 `alo <= i <= i+k <= ahi` 并且 `blo <= j <= j+k <= bhi`。 对于所有满足这些条件的 `(i', j', k')`，如果 `i == i'`, `j <= j'` 也被满足，则附加条件 `k >= k'`, `i <= i'`。 换句话说，对于所有最长匹配块，返回在 *a* 当中最先出现的一个，而对于在 *a* 当中最先出现的所有最长匹配块，则返回在 *b* 当中最先出现的一个。
 
-\>>>
+
 
 ```
 >>> s = SequenceMatcher(None, " abcd", "abcd abcd")
@@ -312,7 +312,7 @@ Match(a=0, b=4, size=5)
 
 ​	这是与之前相同的例子，但是将空格符视为垃圾。 这将防止 `' abcd'` 直接与第二个序列末尾的 `' abcd'` 相匹配。 而只可以匹配 `'abcd'`，并且是匹配第二个序列最左边的 `'abcd'`：
 
-\>>>
+
 
 ```
 >>> s = SequenceMatcher(lambda x: x==" ", " abcd", "abcd abcd")
@@ -332,7 +332,7 @@ Match(a=1, b=0, size=4)
 
 ​	最后一个三元组用于占位，其值为 `(len(a), len(b), 0)`。 它是唯一 `n == 0` 的三元组。 如果 `(i, j, n)` 和 `(i', j', n')` 是在列表中相邻的三元组，且后者不是列表中的最后一个三元组，则 `i+n < i'` 或 `j+n < j'`；换句话说，相邻的三元组总是描述非相邻的相等块。
 
-\>>>
+
 
 ```
 >>> s = SequenceMatcher(None, "abxcd", "abcd")
@@ -355,7 +355,7 @@ Match(a=1, b=0, size=4)
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> a = "qabxcd"
@@ -393,7 +393,7 @@ insert    a[6:6] --> b[5:6]       '' --> 'f'
 
 ​	注意: [`ratio()`](https://docs.python.org/zh-cn/3.13/library/difflib.html#difflib.SequenceMatcher.ratio) 调用的结果可能会取决于参数的顺序。 例如:
 
-\>>>
+
 
 ```
 >>> SequenceMatcher(None, 'tide', 'diet').ratio()
@@ -412,7 +412,7 @@ insert    a[6:6] --> b[5:6]       '' --> 'f'
 
 ​	这三个返回匹配部分点总字符数之比的三种方法可能由于不同的近似级别而给出不同的结果，但是 [`quick_ratio()`](https://docs.python.org/zh-cn/3.13/library/difflib.html#difflib.SequenceMatcher.quick_ratio) 和 [`real_quick_ratio()`](https://docs.python.org/zh-cn/3.13/library/difflib.html#difflib.SequenceMatcher.real_quick_ratio) 总是会至少与 [`ratio()`](https://docs.python.org/zh-cn/3.13/library/difflib.html#difflib.SequenceMatcher.ratio) 一样大：
 
-\>>>
+
 
 ```
 >>> s = SequenceMatcher(None, "abcd", "bcde")
@@ -430,7 +430,7 @@ insert    a[6:6] --> b[5:6]       '' --> 'f'
 
 ​	以下示例比较两个字符串，并将空格视为“垃圾”：
 
-\>>>
+
 
 ```
 >>> s = SequenceMatcher(lambda x: x == " ",
@@ -440,7 +440,7 @@ insert    a[6:6] --> b[5:6]       '' --> 'f'
 
 [`ratio()`](https://docs.python.org/zh-cn/3.13/library/difflib.html#difflib.SequenceMatcher.ratio) 返回一个 [0, 1] 范围内的浮点数，用来衡量序列的相似度。 根据经验，[`ratio()`](https://docs.python.org/zh-cn/3.13/library/difflib.html#difflib.SequenceMatcher.ratio) 值超过 0.6 就意味着两个序列非常接近匹配：
 
-\>>>
+
 
 ```
 >>> print(round(s.ratio(), 3))
@@ -449,7 +449,7 @@ insert    a[6:6] --> b[5:6]       '' --> 'f'
 
 ​	如果您只对序列的匹配的位置感兴趣，则 [`get_matching_blocks()`](https://docs.python.org/zh-cn/3.13/library/difflib.html#difflib.SequenceMatcher.get_matching_blocks) 就很方便：
 
-\>>>
+
 
 ```
 >>> for block in s.get_matching_blocks():
@@ -463,7 +463,7 @@ a[29] and b[38] match for 0 elements
 
 ​	如果你想要知道如何将第一个序列转成第二个序列，可以使用 [`get_opcodes()`](https://docs.python.org/zh-cn/3.13/library/difflib.html#difflib.SequenceMatcher.get_opcodes):
 
-\>>>
+
 
 ```
 >>> for opcode in s.get_opcodes():
@@ -510,7 +510,7 @@ insert a[8:8] b[8:17]
 
 ​	此示例比较两段文本。 首先我们设置文本为以换行符结尾的单行字符串组成的序列（这样的序列也可以通过文件型对象的 [`readlines()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.IOBase.readlines) 方法来获取）：
 
-\>>>
+
 
 ```
 >>> text1 = '''  1. Beautiful is better than ugly.
@@ -531,7 +531,7 @@ insert a[8:8] b[8:17]
 
 ​	接下来我们实例化一个 Differ 对象：
 
-\>>>
+
 
 ```
 >>> d = Differ()
@@ -541,7 +541,7 @@ insert a[8:8] b[8:17]
 
 ​	最后，我们比较两个序列：
 
-\>>>
+
 
 ```
 >>> result = list(d.compare(text1, text2))
@@ -549,7 +549,7 @@ insert a[8:8] b[8:17]
 
 `result` 是一个字符串列表，让我们将其美化打印出来：
 
-\>>>
+
 
 ```
 >>> from pprint import pprint
@@ -568,7 +568,7 @@ insert a[8:8] b[8:17]
 
 ​	作为单独的多行字符串显示出来则是这样：
 
-\>>>
+
 
 ```
 >>> import sys

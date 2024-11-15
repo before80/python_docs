@@ -131,7 +131,7 @@ with open(répertoire, "w") as f:
 
 ​	如果无法在编辑器中输入某个字符，或出于某种原因想只保留 ASCII 编码的源代码，则还可以在字符串中使用转义序列。（根据系统的不同，可能会看到真的大写 Delta 字体而不是 u 转义符。）：
 
-\>>>
+
 
 ```
 >>> "\N{GREEK CAPITAL LETTER DELTA}"  # 使用字符名称
@@ -146,7 +146,7 @@ with open(répertoire, "w") as f:
 
 ​	若无法根据编码规则对输入字符串进行编码，*errors* 参数指定了响应策略。 该参数的合法值可以是 `'strict'` (触发 [`UnicodeDecodeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#UnicodeDecodeError) 异常)、`'replace'` (用 `U+FFFD`、`REPLACEMENT CHARACTER`)、`'ignore'` (只是将字符从 Unicode 结果中去掉)，或 `'backslashreplace'` (插入一个 `\xNN` 转义序列)。 以下示例演示了这些不同的参数:
 
-\>>>
+
 
 ```
 >>> b'\x80abc'.decode("utf-8", "strict")  
@@ -166,7 +166,7 @@ UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 0:
 
 ​	利用内置函数 [`chr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#chr) 还可以创建单字符的 Unicode 字符串，该函数可接受整数参数，并返回包含对应码位的长度为 1 的 Unicode 字符串。内置函数 [`ord()`](https://docs.python.org/zh-cn/3.13/library/functions.html#ord) 是其逆操作，参数为单个字符的 Unicode 字符串，并返回码位值：
 
-\>>>
+
 
 ```
 >>> chr(57344)
@@ -183,7 +183,7 @@ UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 0:
 
 ​	以下例子演示了各种不同的结果：
 
-\>>>
+
 
 ```
 >>> u = chr(40960) + 'abcd' + chr(1972)
@@ -212,7 +212,7 @@ b'\\N{YI SYLLABLE IT}abcd\\u07b4'
 
 ​	在 Python 源代码中，可以用 `\u` 转义序列书写特定的 Unicode 码位，该序列后跟 4 个代表码位的十六进制数字。`\U` 转义序列用法类似，但要用8 个十六进制数字，而不是 4 个：
 
-\>>>
+
 
 ```
 >>> s = "a\xac\u1234\u20ac\U00008000"
@@ -279,7 +279,7 @@ print(unicodedata.numeric(u[1]))
 
 ​	一种不区分大小写比较的工具是字符串方法 [`casefold()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.casefold) ，将按照 Unicode 标准描述的算法将字符串转换为不区分大小写的形式。该算法对诸如德语字母“ß”（代码点 U+00DF）之类的字符进行了特殊处理，变为一对小写字母“ss”。
 
-\>>>
+
 
 ```
 >>> street = 'Gürzenichstraße'

@@ -130,7 +130,7 @@ def find_ge(a, x):
 
 [`bisect()`](https://docs.python.org/zh-cn/3.13/library/bisect.html#bisect.bisect) 函数对于数字表查询也是适用的。 这个例子使用 [`bisect()`](https://docs.python.org/zh-cn/3.13/library/bisect.html#bisect.bisect) 根据一组有序的数字划分点来查找考试成绩对应的字母等级: (如) 90 及以上为 'A'，80 至 89 为 'B'，依此类推:
 
-\>>>
+
 
 ```
 >>> def grade(score, breakpoints=[60, 70, 80, 90], grades='FDCBA'):
@@ -143,7 +143,7 @@ def find_ge(a, x):
 
 [`bisect()`](https://docs.python.org/zh-cn/3.13/library/bisect.html#bisect.bisect) 和 [`insort()`](https://docs.python.org/zh-cn/3.13/library/bisect.html#bisect.insort) 对于列表和元组也是适用的。 *key* 参数可以提取用于表中记录排序的字段:
 
-\>>>
+
 
 ```
 >>> from collections import namedtuple
@@ -179,7 +179,7 @@ Movie(name='The Birds', released=1963, director='Hitchcock')
 
 ​	如果键函数较为消耗资源，可以通过搜索一个预先计算的键列表来查找记录的索引以避免重复的函数调用:
 
-\>>>
+
 
 ```
 >>> data = [('red', 5), ('blue', 1), ('yellow', 8), ('black', 0)]

@@ -44,7 +44,7 @@ draft = false
 
 ​	首先 *text* 中的空格会被折叠（所有连续会替换为单个空格）。 如果结果能适合 *width*，它将被返回。 在其他情况下，将在末尾丢弃足够数量的单词以使剩余的单词加 *placeholder* 能适合 *width*:
 
-\>>>
+
 
 ```
 >>> textwrap.shorten("Hello  world!", width=12)
@@ -92,7 +92,7 @@ def test():
 
 ​	例如:
 
-\>>>
+
 
 ```
 >>> s = 'hello\n\n \nworld'
@@ -102,7 +102,7 @@ def test():
 
 ​	可选的 *predicate* 参数可用来控制哪些行要缩进。 例如，可以很容易地为空行或只有空白符的行添加 *prefix*:
 
-\>>>
+
 
 ```
 >>> print(indent(s, '+ ', lambda line: True))

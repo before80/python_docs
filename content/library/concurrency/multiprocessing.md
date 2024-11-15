@@ -382,7 +382,7 @@ if __name__ == '__main__':
 
 ​	这个包中的功能要求子进程可以导入 `__main__` 模块。虽然这在 [编程指导](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing-programming) 中有描述，但还是需要提前说明一下。这意味着一些示例在交互式解释器中不起作用，比如 [`multiprocessing.pool.Pool`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.pool.Pool) 示例。例如:
 
-\>>>
+
 
 ```
 >>> from multiprocessing import Pool
@@ -433,7 +433,7 @@ AttributeError: Can't get attribute 'f' on <module '__main__' (<class '_frozen_i
 
 ​	示例：
 
-\>>>
+
 
 ```
 >>> from multiprocessing import Process
@@ -543,7 +543,7 @@ AttributeError: Can't get attribute 'f' on <module '__main__' (<class '_frozen_i
 
 [`Process`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.Process) 一些方法的示例用法：
 
-\>>>
+
 
 ```
 >>> import multiprocessing, time, signal
@@ -934,7 +934,7 @@ set_executable(os.path.join(sys.exec_prefix, 'pythonw.exe'))
 
 ​	例如:
 
-\>>>
+
 
 ```
 >>> from multiprocessing import Pipe
@@ -1262,7 +1262,7 @@ HELLO WORLD
 
 ​	返回一个 `Server` 对象，它是管理器在后台控制的真实的服务。 `Server` 对象拥有 `serve_forever()` 方法。
 
-\>>>
+
 
 ```
 >>> from multiprocessing.managers import BaseManager
@@ -1277,7 +1277,7 @@ HELLO WORLD
 
 ​	将本地管理器对象连接到一个远程管理器进程:
 
-\>>>
+
 
 ```
 >>> from multiprocessing.managers import BaseManager
@@ -1397,7 +1397,7 @@ HELLO WORLD
 
 ​	值得一提的是，当对命名空间对象使用代理的时候，访问所有名称以 `'_'` 开头的属性都只是代理器上的属性，而不是命名空间对象的属性。
 
-\>>>
+
 
 ```
 >>> mp_context = multiprocessing.get_context('spawn')
@@ -1441,7 +1441,7 @@ if __name__ == '__main__':
 
 ​	运行下面的代码可以启动一个服务，此付包含了一个共享队列，允许远程客户端访问:
 
-\>>>
+
 
 ```
 >>> from multiprocessing.managers import BaseManager
@@ -1456,7 +1456,7 @@ if __name__ == '__main__':
 
 ​	远程客户端可以通过下面的方式访问服务:
 
-\>>>
+
 
 ```
 >>> from multiprocessing.managers import BaseManager
@@ -1470,7 +1470,7 @@ if __name__ == '__main__':
 
 ​	也可以通过下面的方式:
 
-\>>>
+
 
 ```
 >>> from multiprocessing.managers import BaseManager
@@ -1485,7 +1485,7 @@ if __name__ == '__main__':
 
 ​	本地进程也可以访问这个队列，利用上面的客户端代码通过远程方式访问:
 
-\>>>
+
 
 ```
 >>> from multiprocessing import Process, Queue
@@ -1516,7 +1516,7 @@ if __name__ == '__main__':
 
 ​	代理对象代理了指涉对象的一系列方法调用(虽然并不是指涉对象的每个方法都有必要被代理)。通过这种方式，代理的使用方法可以和它的指涉对象一样:
 
-\>>>
+
 
 ```
 >>> mp_context = multiprocessing.get_context('spawn')
@@ -1536,7 +1536,7 @@ if __name__ == '__main__':
 
 ​	被代理的对象很重要的一点是必须可以被序列化，这样才能允许他们在进程间传递。因此，指涉对象可以包含 [代理对象](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing-proxy-objects) 。这允许管理器中列表、字典或者其他 [代理对象](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing-proxy-objects) 对象之间的嵌套。
 
-\>>>
+
 
 ```
 >>> a = manager.list()
@@ -1551,7 +1551,7 @@ if __name__ == '__main__':
 
 ​	类似地，字典和列表代理也可以相互嵌套:
 
-\>>>
+
 
 ```
 >>> l_outer = manager.list([ manager.dict() for i in range(2) ])
@@ -1589,7 +1589,7 @@ lproxy[0] = d
 
 [`multiprocessing`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#module-multiprocessing) 中的代理类并没有提供任何对于代理值比较的支持。所以，我们会得到如下结果:
 
-\>>>
+
 
 ```
 >>> manager.list([1,2,3]) == [1,2,3]
@@ -1628,7 +1628,7 @@ getattr(obj, methodname)(*args, **kwds)
 
 [`_callmethod()`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.managers.BaseProxy._callmethod) 的一个使用示例:
 
-\>>>
+
 
 ```
 >>> l = manager.list(range(10))
@@ -2019,7 +2019,7 @@ if __name__ == '__main__':
 
 ​	下面是一个在交互式解释器中打开日志功能的例子:
 
-\>>>
+
 
 ```
 >>> import multiprocessing, logging

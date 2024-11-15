@@ -322,7 +322,7 @@ draft = false
 
 ​	With the exception of [`__name__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#module.__name__), it is **strongly** recommended that you rely on [`__spec__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#module.__spec__) and its attributes instead of any of the other individual attributes listed in this subsection. Note that updating an attribute on `__spec__` will not update the corresponding attribute on the module itself:
 
-\>>>
+
 
 ```
 >>> import typing
@@ -468,7 +468,7 @@ draft = false
 
 ​	Each class keeps a list of weak references to its immediate subclasses. This method returns a list of all those references still alive. The list is in definition order. Example:
 
-\>>>
+
 
 ```
 >>> class A: pass
@@ -1291,7 +1291,7 @@ def subscribe(obj, x):
 
 ​	在 Python 中，所有的类自身也是其他类的实例。 一个类所属的类被称为该类的 [metaclass](https://docs.python.org/zh-cn/3.13/glossary.html#term-metaclass)，并且大多数类都将 [`type`](https://docs.python.org/zh-cn/3.13/library/functions.html#type) 类作为它们的元类。 [`type`](https://docs.python.org/zh-cn/3.13/library/functions.html#type) 没有定义 [`__getitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getitem__)，这意味着 `list[int]`, `dict[str, float]` 和 `tuple[str, bytes]` 这样的表达式都将导致 [`__class_getitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__class_getitem__) 被调用:
 
-\>>>
+
 
 ```
 >>> # list 以 "type" 类作为其元类，与大多数类一样：
@@ -1309,7 +1309,7 @@ list[int]
 
 ​	然而，如果一个类属于定义了 [`__getitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getitem__) 的自定义元类，则抽取该类可能导致不同的行为。 这方面的一个例子可以在 [`enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#module-enum) 模块中找到:
 
-\>>>
+
 
 ```
 >>> from enum import Enum
@@ -1650,7 +1650,7 @@ a[slice(1, 2, None)] = b
 
 ​	对于自定义类来说，特殊方法的隐式发起调用仅保证在其定义于对象类型中时能正确地发挥作用，而不能定义在对象实例字典中。 该行为就是以下代码会引发异常的原因。:
 
-\>>>
+
 
 ```
 >>> class C:
@@ -1666,7 +1666,7 @@ TypeError: object of type 'C' has no len()
 
 ​	此行为背后的原理在于包括类型对象在内的所有对象都会实现的几个特殊方法如 [`__hash__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__hash__) 和 [`__repr__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__repr__)。 如果这些方法的隐式查找使用了传统的查找过程，则当它们在对类型对象自身发起调用时将会失败:
 
-\>>>
+
 
 ```
 >>> 1 .__hash__() == hash(1)
@@ -1679,7 +1679,7 @@ TypeError: descriptor '__hash__' of 'int' object needs an argument
 
 ​	以这种方式不正确地尝试发起调用一个类的未绑定方法有时被称为‘元类混淆’，可以通过在查找特殊方法时绕过实例的方式来避免:
 
-\>>>
+
 
 ```
 >>> type(1).__hash__(1) == hash(1)
@@ -1690,7 +1690,7 @@ True
 
 ​	除了出于正确性考虑而会绕过任何实例属性，隐式特殊方法查找通常还会绕过 [`__getattribute__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getattribute__) 方法，甚至包括对象的元类:
 
-\>>>
+
 
 ```
 >>> class Meta(type):

@@ -29,7 +29,7 @@ draft = false
 
 ​	你可能需要替换一个对象上的方法，用于确认此方法被系统中的其他部分调用过，并且调用时使用了正确的参数。
 
-\>>>
+
 
 ```
 >>> real = SomeClass()
@@ -50,7 +50,7 @@ draft = false
 
 ​	在如下的测试示例中，验证对于 `ProductionClass().method` 的调用会导致 `something` 的调用。
 
-\>>>
+
 
 ```
 >>> class ProductionClass:
@@ -71,7 +71,7 @@ draft = false
 
 ​	下面这个简单的 `ProductionClass` 具有一个 `closer` 方法。 如果它附带一个对象被调用那么它就会调用其中的 `close`。
 
-\>>>
+
 
 ```
 >>> class ProductionClass:
@@ -82,7 +82,7 @@ draft = false
 
 ​	所以为了测试它我们需要传入一个带有 `close` 方法的对象并检查它是否被正确地调用。
 
-\>>>
+
 
 ```
 >>> real = ProductionClass()
@@ -99,7 +99,7 @@ draft = false
 
 ​	在下面的例子中我们有一个函数 `some_function` 实例化了 `Foo` 并调用该实例中的一个方法。 对 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 的调用会将类 `Foo` 替换为一个 mock。 `Foo` 实例是调用该 mock 的结果，所以它是通过修改 [`return_value`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.return_value) 来配置的。
 
-\>>>
+
 
 ```
 >>> def some_function():
@@ -117,7 +117,7 @@ draft = false
 
 ​	给你的 mock 起个名字可能会很有用。 名字会显示在 mock 的 repr 中并在 mock 出现于测试失败消息中时可以帮助理解。 这个名字也会被传播给 mock 的属性或方法:
 
-\>>>
+
 
 ```
 >>> mock = MagicMock(name='foo')
@@ -131,7 +131,7 @@ draft = false
 
 ​	通常你会想要追踪对某个方法的多次调用。 [`mock_calls`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.mock_calls) 属性记录了所有对 mock 的子属性的调用 —— 并且还包括对它们的子属性的调用。
 
-\>>>
+
 
 ```
 >>> mock = MagicMock()
@@ -147,7 +147,7 @@ draft = false
 
 ​	你使用 [`call`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.call) 对象来构造列表以便与 `mock_calls` 进行比较:
 
-\>>>
+
 
 ```
 >>> expected = [call.method(), call.attribute.method(10, x=53)]
@@ -157,7 +157,7 @@ True
 
 ​	然而，返回 mock 的调用的形参不会被记录，这意味着不可能追踪附带了重要形参的创建上级对象的嵌套调用:
 
-\>>>
+
 
 ```
 >>> m = Mock()
@@ -171,7 +171,7 @@ True
 
 ​	在 mock 对象上设置返回值是非常容易的:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -182,7 +182,7 @@ True
 
 ​	当然你也可以对 mock 上的方法做同样的操作:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -193,7 +193,7 @@ True
 
 ​	返回值也可以在构造器中设置:
 
-\>>>
+
 
 ```
 >>> mock = Mock(return_value=3)
@@ -203,7 +203,7 @@ True
 
 ​	如果你需要在你的 mock 上设置一个属性，只需这样做:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -216,7 +216,7 @@ True
 
 ​	我们可以像这样使用 [`call`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.call) 在一个“链式调用”中构造调用集合以便随后方便地设置断言:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -237,7 +237,7 @@ True
 
 ​	一个很有用的属性是 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect)。 如果你将该属性设为一个异常类或者实例那么当 mock 被调用时该异常将会被引发。
 
-\>>>
+
 
 ```
 >>> mock = Mock(side_effect=Exception('Boom!'))
@@ -251,7 +251,7 @@ Exception: Boom!
 
 `side_effect` 也可以被设为一个函数或可迭代对象。 `side_effect` 作为可迭代对象的应用场景适用于你的 mock 将要被多次调用，并且你希望每次调用都返回不同的值的情况。 当你将 `side_effect` 设为一个可迭代对象时每次对 mock 的调用将返回可迭代对象的下一个值。
 
-\>>>
+
 
 ```
 >>> mock = MagicMock(side_effect=[4, 5, 6])
@@ -265,7 +265,7 @@ Exception: Boom!
 
 ​	对于更高级的用例，例如根据 mock 调用时附带的参数动态改变返回值，`side_effect` 可以指定一个函数。 该函数将附带与 mock 相同的参数被调用。 该函数所返回的就是调用所返回的对象:
 
-\>>>
+
 
 ```
 >>> vals = {(1, 2): 1, (2, 3): 2}
@@ -283,7 +283,7 @@ Exception: Boom!
 
 ​	从 Python 3.8 起，`AsyncMock` 和 `MagicMock` 支持通过 `__aiter__` 来模拟 [异步迭代器](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#async-iterators)。 `__aiter__` 的 [`return_value`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.return_value) 属性可以被用来设置要用于迭代的返回值。
 
-\>>>
+
 
 ```
 >>> mock = MagicMock()  # AsyncMock also works here
@@ -299,7 +299,7 @@ Exception: Boom!
 
 ​	从 Python 3.8 起，`AsyncMock` 和 `MagicMock` 支持通过 `__aenter__` 和 `__aexit__` 来模拟 [异步上下文管理器](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#async-context-managers)。 在默认情况下，`__aenter__` 和 `__aexit__` 将为返回异步函数的 `AsyncMock` 实例。
 
-\>>>
+
 
 ```
 >>> class AsyncContextManager:
@@ -324,7 +324,7 @@ Exception: Boom!
 
 [`Mock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock) 允许你使用allows you to provide an object as a specification for the mock, using the *spec* 关键字参数来提供一个对象作为 mock 的规格说明。 在 mock 上访问不存在于你的规格说明对象中的方法 / 属性将立即引发一个属性错误。 如果你修改你的规格说明的实现，，那么使用了该类的测试将立即开始失败而不需要你在这些测试中实例化该类。
 
-\>>>
+
 
 ```
 >>> mock = Mock(spec=SomeClass)
@@ -336,7 +336,7 @@ AttributeError: Mock object has no attribute 'old_method'. Did you mean: 'class_
 
 ​	使用规格说明还可以启用对 mock 的调用的更聪明的匹配操作，无论是否有将某些形参作为位置或关键字参数传入:
 
-\>>>
+
 
 ```
 >>> def f(a, b, c): pass
@@ -388,7 +388,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 `patch.object`:
 
-\>>>
+
 
 ```
 >>> original = SomeClass.attribute
@@ -409,7 +409,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 ​	如果你要给一个模块 (包括 [`builtins`](https://docs.python.org/zh-cn/3.13/library/builtins.html#module-builtins)) 打补丁则可使用 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 来代替 [`patch.object()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch.object):
 
-\>>>
+
 
 ```
 >>> mock = MagicMock(return_value=sentinel.file_handle)
@@ -422,7 +422,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 ​	如有必要模块名可以是“带点号”的，其形式如 `package.module`:
 
-\>>>
+
 
 ```
 >>> @patch('package.module.ClassName.attribute', sentinel.attribute)
@@ -435,7 +435,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 ​	一个良好的模式是实际地装饰测试方法本身:
 
-\>>>
+
 
 ```
 >>> class MyTest(unittest.TestCase):
@@ -450,7 +450,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 ​	如果你想要通过 Mock 来打补丁，你可以只附带一个参数使用 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) (或附带两个参数使用 [`patch.object()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch.object))。 这将为你创建 mock 并传递给测试函数 / 方法:
 
-\>>>
+
 
 ```
 >>> class MyTest(unittest.TestCase):
@@ -464,7 +464,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 ​	你可以使用以下模式来堆叠多个补丁装饰器:
 
-\>>>
+
 
 ```
 >>> class MyTest(unittest.TestCase):
@@ -481,7 +481,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 ​	还有一个 [`patch.dict()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch.dict) 用于在一定范围内设置字典中的值，并在测试结束时将字典恢复为其原始状态：
 
-\>>>
+
 
 ```
 >>> foo = {'key': 'value'}
@@ -496,7 +496,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 ​	在你使用 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 为你创建 mock 时，你可以使用 with 语句的 "as" 形式来获得对 mock 的引用:
 
-\>>>
+
 
 ```
 >>> class ProductionClass:
@@ -525,7 +525,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 ​	这意味着你可以通过检视 `return_value` mock 来了解从调用被模拟对象返回的对象是如何被使用的:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -538,7 +538,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 ​	因此，如果我们有这样一些代码:
 
-\>>>
+
 
 ```
 >>> class Something:
@@ -561,7 +561,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 ​	我们可以通过更好一些的方式做到这一点，即使用 [`configure_mock()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.configure_mock) 方法直接为我们设置返回值:
 
-\>>>
+
 
 ```
 >>> something = Something()
@@ -573,7 +573,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 ​	有了这些我们就能准备好给“mock 后端”打上猴子补丁并可以执行真正的调用:
 
-\>>>
+
 
 ```
 >>> something.backend = mock_backend
@@ -582,7 +582,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 ​	使用 [`mock_calls`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.mock_calls) 我们可以通过一个断言来检查链式调用。 一个链式调用就是在一行代码中连续执行多个调用，所以在 `mock_calls` 中将会有多个条目。 我们可以使用 [`call.call_list()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.call.call_list) 来为我们创建这个调用列表:
 
-\>>>
+
 
 ```
 >>> chained = call.get_endpoint('foobar').create_call('spam', 'eggs').start_call()
@@ -598,7 +598,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 ​	这里使用 [`patch 装饰器`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 来模拟被测试模块中的 `date` 类。 然后将模拟 date 类的 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect) 属性设为一个返回真实日期的 lambda 函数。 当模拟 date 类被调用时，将通过 `side_effect` 构造并返回一个真实日期。
 
-\>>>
+
 
 ```
 >>> from datetime import date
@@ -626,7 +626,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 ​	以下是一个使用 "iter" 方法模拟为生成器的示例类:
 
-\>>>
+
 
 ```
 >>> class Foo:
@@ -643,7 +643,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 ​	为了配置从迭代操作（隐含在对 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 的调用中）返回的值，我们需要配置调用 `foo.iter()` 所返回的对象。
 
-\>>>
+
 
 ```
 >>> mock_foo = MagicMock()
@@ -660,7 +660,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 ​	如果你想要为多个测试方法准备好多个补丁那么最简单的方式就是将 patch 装饰器应用到每个方法上。 这在感觉上像上不必要的重复。 对此，你可以使用 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) (包括基各种不同形式) 作为类装饰器。 这将把补丁应用于类上的所有测试方法。 测试方法是通过以 `test` 打头的名称来标识的:
 
-\>>>
+
 
 ```
 >>> @patch('mymodule.SomeClass')
@@ -683,7 +683,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 ​	另一种管理补丁的方式是使用 [补丁方法: start 和 stop](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#start-and-stop)。 它允许你将打补丁操作移至你的 `setUp` 和 `tearDown` 方法中。
 
-\>>>
+
 
 ```
 >>> class MyTest(unittest.TestCase):
@@ -702,7 +702,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 ​	如果你要使用这个技巧则你必须通过调用 `stop` 来确保补丁被“恢复”。 这可能要比你想像的更麻烦，因为如果在 setUp 中引发了异常那么 tearDown 将不会被调用。 [`unittest.TestCase.addCleanup()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.addCleanup) 可以做到更方便:
 
-\>>>
+
 
 ```
 >>> class MyTest(unittest.TestCase):
@@ -723,7 +723,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 ​	如果将 `autospec=True` 传给 patch 那么它就会用一个 *真正的* 函数对象来打补丁。 这个函数对象具有与它所替换的函数相同的签名，但会在内部将操作委托给一个 mock。 你仍然可以通过与以前完全相同的方式来自动创建你的 mock。 但是这将意味着一件事，就是如果你用它来修补一个类上的非绑定方法那么如果它是从一个实例中获取则被模拟的函数将被转为已绑定方法。 传给它的第一个参数将为 `self`，而这真是我想要的:
 
-\>>>
+
 
 ```
 >>> class Foo:
@@ -745,7 +745,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 ​	mock 有一个很好的 API 用于针对你的 mock 对象如何被使用来下断言。
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -756,7 +756,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 ​	如果你的 mock 只会被调用一次那么你可以使用 [`assert_called_once_with()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.assert_called_once_with) 方法，该方法也会断言 [`call_count`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.call_count) 的值为一。
 
-\>>>
+
 
 ```
 >>> mock.foo_bar.assert_called_once_with('baz', spam='eggs')
@@ -770,7 +770,7 @@ Calls: [call('baz', spam='eggs'), call()].
 
 `assert_called_with` 和 `assert_called_once_with` 都是有关 *最近* 调用的断言。 如果你的 mock 将被多次调用，并且你想要针对 *所有* 这些调用下断言你可以使用 [`call_args_list`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.call_args_list):
 
-\>>>
+
 
 ```
 >>> mock = Mock(return_value=None)
@@ -783,7 +783,7 @@ Calls: [call('baz', spam='eggs'), call()].
 
 ​	使用 [`call`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.call) 辅助对象可以方便地针对这些调用下断言。 你可以创建一个预期调用的列表并将其与 `call_args_list` 比较。 这看起来与 `call_args_list` 的 repr 非常相似:
 
-\>>>
+
 
 ```
 >>> expected = [call(1, 2, 3), call(4, 5, 6), call()]
@@ -809,7 +809,7 @@ def grob(val):
 
 ​	当我们想要测试 `grob` 调用 `frob` 并附带了正确的参数时将可看到发生了什么:
 
-\>>>
+
 
 ```
 >>> with patch('mymodule.frob') as mock_frob:
@@ -829,7 +829,7 @@ Called with: ((set(),), {})
 
 ​	下面是一个使用 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect) 功能的解决方案。 如果你为 mock 提供了 `side_effect` 函数那么 `side_effect` 将附带与该 mock 相同的参数被调用。 这样我们就有机会拷贝这些参数并将其保存起来用于之后执行断言。 在本例中我使用了 *另一个* mock 来保存参数以便可以使用该 mock 的方法来执行断言。 在这里辅助函数再次为我设置好了这一切。
 
-\>>>
+
 
 ```
 >>> from copy import deepcopy
@@ -862,7 +862,7 @@ call({6})
 
 ​	如果你的 mock 只会被使用一次那么有更容易的方式可以在它们被调用时检查参数。 你可以简单地在 `side_effect` 函数中执行检查。
 
-\>>>
+
 
 ```
 >>> def side_effect(arg):
@@ -878,7 +878,7 @@ AssertionError
 
 ​	一个替代方式是创建一个 [`Mock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock) 或 [`MagicMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.MagicMock) 的子类来拷贝 (使用 [`copy.deepcopy()`](https://docs.python.org/zh-cn/3.13/library/copy.html#copy.deepcopy)) 参数。 下面是一个示例实现:
 
-\>>>
+
 
 ```
 >>> from copy import deepcopy
@@ -909,7 +909,7 @@ Actual: mock(set())
 
 ​	使用 patch 作为上下文管理器很不错，但是如果你要执行多个补丁你将不断嵌套 with 语句使得代码越来越深地向右缩进:
 
-\>>>
+
 
 ```
 >>> class MyTest(unittest.TestCase):
@@ -929,7 +929,7 @@ Actual: mock(set())
 
 ​	使用 unittest `cleanup` 函数和 [补丁方法: start 和 stop](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#start-and-stop) 我们可以达成同样的效果而无须嵌套缩进。 一个简单的辅助方法 `create_patch` 会为我们执行打补丁操作并返回所创建的 mock:
 
-\>>>
+
 
 ```
 >>> class MyTest(unittest.TestCase):
@@ -964,7 +964,7 @@ Actual: mock(set())
 
 ​	在 `MagicMock` 被使用之后我们可以使用 [`call_args_list`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.call_args_list) 等属性来针对该字典是如何被使用的下断言。
 
-\>>>
+
 
 ```
 >>> my_dict = {'a': 1, 'b': 2, 'c': 3}
@@ -985,7 +985,7 @@ Actual: mock(set())
 
 `MagicMock` 的一个可用替代是使用 `Mock` 并 *仅仅* 提供你明确需要的魔术方法:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -995,7 +995,7 @@ Actual: mock(set())
 
 *第三个* 选项是使用 `MagicMock` 但传入 `dict` 作为 *spec* (或 *spec_set*) 参数以使得所创建的 `MagicMock` 只有字典魔术方法是可用的:
 
-\>>>
+
 
 ```
 >>> mock = MagicMock(spec_set=dict)
@@ -1005,7 +1005,7 @@ Actual: mock(set())
 
 ​	通过提供这些附带影响函数，`mock` 的行为将类似于普通字典但又会记录所有访问。 如果你尝试访问一个不存在的键它甚至会引发 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError)。
 
-\>>>
+
 
 ```
 >>> mock['a']
@@ -1026,7 +1026,7 @@ KeyError: 'd'
 
 ​	在它被使用之后你可以使用普通的 mock 方法和属性进行有关访问操作的断言:
 
-\>>>
+
 
 ```
 >>> mock.__getitem__.call_args_list
@@ -1041,7 +1041,7 @@ KeyError: 'd'
 
 ​	你可能出于各种原因想要子类化 [`Mock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock)。 其中一个可能的原因是为了添加辅助方法。 下面是一个笨兮兮的示例:
 
-\>>>
+
 
 ```
 >>> class MyMock(MagicMock):
@@ -1060,7 +1060,7 @@ True
 
 ​	The standard behaviour for `Mock` 实例的标准行为是属性和返回值 mock 具有与它们所访问的 mock 相同的类型。 这将确保 `Mock` 的属性均为 `Mocks` 而 `MagicMock` 的属性均为 `MagicMocks` [[2\]](https://docs.python.org/zh-cn/3.13/library/unittest.mock-examples.html#id5)。 因此如果你通过子类化来添加辅助方法那么它们也将在你的子类的实例的属性和返回值 mock 上可用。
 
-\>>>
+
 
 ```
 >>> mymock.foo
@@ -1077,7 +1077,7 @@ True
 
 `Mock` (它的所有形式) 使用一个名为 `_get_child_mock` 的方法来创建这些用于属性和返回值的“子 mock”。 你可以通过重写此方法来防止你的子类被用于属性。 其签名被设为接受任意关键字参数 (`**kwargs`) 并且它们会被传递给 mock 构造器:
 
-\>>>
+
 
 ```
 >>> class Subclass(MagicMock):
@@ -1108,7 +1108,7 @@ True
 
 ​	下面是一个模拟 'fooble' 模拟的示例。
 
-\>>>
+
 
 ```
 >>> import sys
@@ -1126,7 +1126,7 @@ True
 
 ​	这同样适用于 `from module import name` 形式:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -1140,7 +1140,7 @@ True
 
 ​	稍微多做一点工作你还可以模拟包的导入:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -1159,7 +1159,7 @@ True
 
 ​	因为 mock 会追踪 `mock_calls` 中对子 mock 的调用，并且访问 mock 的任意属性都会创建一个子 mock，所以我们可以基于父 mock 创建单独的子 mock。 随后对这些子 mock 的调用将按顺序被记录在父 mock 的 `mock_calls` 中:
 
-\>>>
+
 
 ```
 >>> manager = Mock()
@@ -1167,7 +1167,7 @@ True
 >>> mock_bar = manager.bar
 ```
 
-\>>>
+
 
 ```
 >>> mock_foo.something()
@@ -1176,7 +1176,7 @@ True
 <Mock name='mock.bar.other.thing()' id='...'>
 ```
 
-\>>>
+
 
 ```
 >>> manager.mock_calls
@@ -1185,7 +1185,7 @@ True
 
 ​	我们可以随后通过与管理器 mock 上的 `mock_calls` 属性进行比较来进行有关这些调用，包括调用顺序的断言:
 
-\>>>
+
 
 ```
 >>> expected_calls = [call.foo.something(), call.bar.other.thing()]
@@ -1195,7 +1195,7 @@ True
 
 ​	如果 `patch` 创建并准备好了你的 mock 那么你可以使用 [`attach_mock()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.attach_mock) 方法将它们附加到管理器 mock 上。 在附加之后所有调用都将被记录在管理器的 `mock_calls` 中。
 
-\>>>
+
 
 ```
 >>> manager = MagicMock()
@@ -1216,7 +1216,7 @@ call.MockClass2().bar()]
 
 ​	如果已经进行了许多调用，但是你只对它们的一个特定序列感兴趣则有一种替代方式是使用 [`assert_has_calls()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.assert_has_calls) 方法。 这需要一个调用的列表（使用 [`call`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.call) 对象来构建）。 如果该调用序列在 [`mock_calls`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.mock_calls) 中则断言将成功。
 
-\>>>
+
 
 ```
 >>> m = MagicMock()
@@ -1232,7 +1232,7 @@ call.MockClass2().bar()]
 
 ​	有时可能会对一个 mock 进行多次调用，而你只对断言其中的 *某些* 调用感兴趣。 你甚至可能对顺序也不关心。 在这种情况下你可以将 `any_order=True` 传给 `assert_has_calls`:
 
-\>>>
+
 
 ```
 >>> m = MagicMock()
@@ -1250,7 +1250,7 @@ call.MockClass2().bar()]
 
 ​	在这个示例中你可以看到为何执行对 `assert_called_with` 的‘标准’调用并不足够:
 
-\>>>
+
 
 ```
 >>> class Foo:
@@ -1269,7 +1269,7 @@ Actual: mock(<__main__.Foo object at 0x...>)
 
 ​	一个针对我们的 `Foo` 类的比较函数看上去会是这样的:
 
-\>>>
+
 
 ```
 >>> def compare(self, other):
@@ -1285,7 +1285,7 @@ Actual: mock(<__main__.Foo object at 0x...>)
 
 ​	而一个可以使用这样的比较函数进行相等性比较运算的匹配器对象看上去会是这样的:
 
-\>>>
+
 
 ```
 >>> class Matcher:
@@ -1299,7 +1299,7 @@ Actual: mock(<__main__.Foo object at 0x...>)
 
 ​	将所有这些放在一起:
 
-\>>>
+
 
 ```
 >>> match_foo = Matcher(compare, Foo(1, 2))
@@ -1308,7 +1308,7 @@ Actual: mock(<__main__.Foo object at 0x...>)
 
 `Matcher` 是用我们的比较函数和我们想要比较的 `Foo` 对象来实例化的。 在 `assert_called_with` 中将会调用 `Matcher` 的相等性方法，它会将调用 mock 时附带的对象与我们创建我们的匹配器时附带的对象进行比较。 如果它们匹配则 `assert_called_with` 通过，而如果不匹配则会引发 [`AssertionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AssertionError):
 
-\>>>
+
 
 ```
 >>> match_wrong = Matcher(compare, Foo(3, 4))

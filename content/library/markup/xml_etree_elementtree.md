@@ -88,7 +88,7 @@ root = ET.fromstring(country_data_as_string)
 
 ​	作为 [`Element`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.Element) ， `root` 具有标签和属性字典:
 
-\>>>
+
 
 ```
 >>> root.tag
@@ -99,7 +99,7 @@ root = ET.fromstring(country_data_as_string)
 
 ​	还有可以迭代的子节点：
 
-\>>>
+
 
 ```
 >>> for child in root:
@@ -112,7 +112,7 @@ country {'name': 'Panama'}
 
 ​	子级是可以嵌套的，我们可以通过索引访问特定的子级节点：
 
-\>>>
+
 
 ```
 >>> root[0][1].text
@@ -133,7 +133,7 @@ country {'name': 'Panama'}
 
 ​	针对此需求的最强大工具是 [`XMLPullParser`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.XMLPullParser)。 它不要求通过阻塞式读取来获得 XML 数据，而是通过执行 [`XMLPullParser.feed()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.XMLPullParser.feed) 调用来增量式地添加数据。 要获得已解析的 XML 元素，应调用 [`XMLPullParser.read_events()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.XMLPullParser.read_events)。 下面是一个示例:
 
-\>>>
+
 
 ```
 >>> parser = ET.XMLPullParser(['start', 'end'])
@@ -159,7 +159,7 @@ mytag text= sometext more text
 
 [`Element`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.Element) 有一些很有效的方法，可帮助递归遍历其下的所有子树（包括子级，子级的子级，等等）。例如 [`Element.iter()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.Element.iter):
 
-\>>>
+
 
 ```
 >>> for neighbor in root.iter('neighbor'):
@@ -174,7 +174,7 @@ mytag text= sometext more text
 
 [`Element.findall()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.Element.findall) 仅查找当前元素的直接子元素中带有指定标签的元素。 [`Element.find()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.Element.find) 找带有特定标签的 *第一个* 子级，然后可以用 [`Element.text`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.Element.text) 访问元素的文本内容。 [`Element.get`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.Element.get) 访问元素的属性:
 
-\>>>
+
 
 ```
 >>> for country in root.findall('country'):
@@ -197,7 +197,7 @@ Panama 68
 
 ​	假设我们要为每个国家/地区的中添加一个排名，并在排名元素中添加一个 `updated` 属性：
 
-\>>>
+
 
 ```
 >>> for rank in root.iter('rank'):
@@ -238,7 +238,7 @@ Panama 68
 
 ​	可以使用 [`Element.remove()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.Element.remove) 删除元素。假设我们要删除排名高于50的所有国家/地区:
 
-\>>>
+
 
 ```
 >>> for country in root.findall('country'):
@@ -277,7 +277,7 @@ Panama 68
 
 [`SubElement()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.SubElement) 函数还提供了一种便捷方法来为给定元素创建新的子元素:
 
-\>>>
+
 
 ```
 >>> a = ET.Element('a')
@@ -859,7 +859,7 @@ def reorder_attributes(root):
 
 ​	修改第一段中的每个链接的 "target" 属性的示例:
 
-\>>>
+
 
 ```
 >>> from xml.etree.ElementTree import ElementTree
@@ -980,7 +980,7 @@ def reorder_attributes(root):
 
 [`XMLParser.feed()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.XMLParser.feed) 会为每个打开的标记调用 *target* 的 `start(tag, attrs_dict)` 方法，为每个关闭的标记调用它的 `end(tag)` 方法，并通过 `data(data)` 方法来处理数据。 有关更多受支持的回调方法，请参阅 [`TreeBuilder`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.TreeBuilder) 类。 [`XMLParser.close()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.XMLParser.close) 会调用 *target* 的 `close()` 方法。 [`XMLParser`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.XMLParser) 不仅仅可被用来构建树结构。 下面是一个统计 XML 文件最大深度的示例:
 
-\>>>
+
 
 ```
 >>> from xml.etree.ElementTree import XMLParser

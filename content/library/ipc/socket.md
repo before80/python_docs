@@ -695,7 +695,7 @@ else:
 
 ​	下面的示例获取了 TCP 连接地址信息，假设该连接通过 80 端口连接至 `example.org` （如果系统未启用 IPv6，则结果可能会不同）:
 
-\>>>
+
 
 ```
 >>> socket.getaddrinfo("example.org", 80, proto=socket.IPPROTO_TCP)
@@ -1173,7 +1173,7 @@ def recv_fds(sock, msglen, maxfds):
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> import socket

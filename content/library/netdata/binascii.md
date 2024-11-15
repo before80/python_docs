@@ -95,7 +95,7 @@ print('crc32 = {:#010x}'.format(crc))
 
 ​	如果指定了 *sep*，它必须为单字符 str 或 bytes 对象。 它将被插入每个 *bytes_per_sep* 输入字节之后。 分隔符位置默认从输出的右端开始计数，如果你希望从左端开始计数，请提供一个负的 *bytes_per_sep* 值。
 
-\>>>
+
 
 ```
 >>> import binascii

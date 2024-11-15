@@ -186,7 +186,7 @@ draft = false
 
 ​	此模块的一个使用示例:
 
-\>>>
+
 
 ```
 >>> import base64

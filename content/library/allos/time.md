@@ -306,7 +306,7 @@ draft = false
 
 ​	下面是一个示例，一个与 [**RFC 2822**](https://datatracker.ietf.org/doc/html/rfc2822.html) Internet电子邮件标准以兼容的日期格式。 [[1\]](https://docs.python.org/zh-cn/3.13/library/time.html#id4)
 
-\>>>
+
 
 ```
 >>> from time import gmtime, strftime
@@ -326,7 +326,7 @@ draft = false
 
 ​	例如:
 
-\>>>
+
 
 ```
 >>> import time
@@ -451,7 +451,7 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 `time` 的格式与 `offset` 的格式相同，但不允许使用前导符号（ '-' 或 '+' ）。如果没有给出时间，则默认值为02:00:00。
 
-\>>>
+
 
 ```
 >>> os.environ['TZ'] = 'EST+05EDT,M4.1.0,M10.5.0'
@@ -466,7 +466,7 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 ​	在许多Unix系统（包括 *BSD ， Linux ， Solaris 和 Darwin 上），使用系统的区域信息（ *[tzfile(5)](https://manpages.debian.org/tzfile(5))* ）数据库来指定时区规则会更方便。为此，将 `TZ` 环境变量设置为所需时区数据文件的路径，相对于系统 'zoneinfo' 时区数据库的根目录，通常位于 `/usr/share/zoneinfo` 。 例如，`'US/Eastern'` 、 `'Australia/Melbourne'` 、 `'Egypt'` 或 `'Europe/Amsterdam'`。
 
-\>>>
+
 
 ```
 >>> os.environ['TZ'] = 'US/Eastern'

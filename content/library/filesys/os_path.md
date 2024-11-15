@@ -77,7 +77,7 @@ draft = false
 
 ​	此函数是逐字符比较，因此可能返回无效路径。要获取有效路径，参见 [`commonpath()`](https://docs.python.org/zh-cn/3.13/library/os.path.html#os.path.commonpath)。
 
-\>>>
+
 
 ```
 >>> os.path.commonprefix(['/usr/lib', '/usr/local/lib'])
@@ -313,7 +313,7 @@ draft = false
 
 ​	如果路径 path 包含盘符，则 drive 将包含冒号之前的所有内容包括冒号本身:
 
-\>>>
+
 
 ```
 >>> splitdrive("c:/dir")
@@ -322,7 +322,7 @@ draft = false
 
 ​	如果路径包含 UNC 路径，则 drive 将包含主机名和 share:
 
-\>>>
+
 
 ```
 >>> splitdrive("//host/computer/dir")
@@ -337,7 +337,7 @@ draft = false
 
 ​	在 POSIX 系统上，*drive* 将总是为空。 *root* 可能为空（如果 *path* 是相对路径）、单个正斜杠（如果 *path* 是绝对路径）、或两个正斜杠（由基于 [IEEE Std 1003.1-2017; 4.13 Pathname Resolution](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap04.html#tag_04_13) 的具体实现来定义。） 例如:
 
-\>>>
+
 
 ```
 >>> splitroot('/home/sam')
@@ -350,7 +350,7 @@ draft = false
 
 ​	在 Windows 上，*drive* 可能为空、以字母表示的驱动器名称、UNC share 或是设备名称。 *root* 可能为空、单个正斜杠，或单个反斜杠。 例如:
 
-\>>>
+
 
 ```
 >>> splitroot('C:/Users/Sam')
@@ -367,7 +367,7 @@ draft = false
 
 ​	如果路径 path 不包含扩展名，则 *ext* 将为 `''`:
 
-\>>>
+
 
 ```
 >>> splitext('bar')
@@ -376,7 +376,7 @@ draft = false
 
 ​	如果路径 path 包含扩展名，则 *ext* 将被设为该扩展名，包括打头的句点。 请注意在其之前的句点将被忽略:
 
-\>>>
+
 
 ```
 >>> splitext('foo.bar.exe')
@@ -387,7 +387,7 @@ draft = false
 
 ​	path 中最后一部分如果以点号开头则会被视为 root 的一部分:
 
-\>>>
+
 
 ```
 >>> splitext('.cshrc')

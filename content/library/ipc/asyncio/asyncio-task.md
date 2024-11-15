@@ -42,7 +42,7 @@ draft = false
 
 ​	通过 async/await 语法来声明 [协程](https://docs.python.org/zh-cn/3.13/glossary.html#term-coroutine) 是编写 asyncio 应用的推荐方式。 例如，以下代码段会打印 "hello"，等待 1 秒，再打印 "world":
 
-\>>>
+
 
 ```
 >>> import asyncio
@@ -59,7 +59,7 @@ world
 
 ​	注意：简单地调用一个协程并不会使其被调度执行
 
-\>>>
+
 
 ```
 >>> main()

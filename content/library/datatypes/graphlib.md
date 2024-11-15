@@ -35,7 +35,7 @@ draft = false
 
 ​	在只需要对图中的节点进行立即排序并且不涉及并行性的情况下，可以直接使用便捷方法 [`TopologicalSorter.static_order()`](https://docs.python.org/zh-cn/3.13/library/graphlib.html#graphlib.TopologicalSorter.static_order):
 
-\>>>
+
 
 ```
 >>> graph = {"D": {"B", "C"}, "C": {"A"}, "B": {"A"}}
@@ -130,7 +130,7 @@ def static_order(self):
 
 ​	所返回的特定顺序可能取决于条目被插入图中的顺序。 例如:
 
-\>>>
+
 
 ```
 >>> ts = TopologicalSorter()

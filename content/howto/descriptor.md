@@ -87,7 +87,7 @@ class A:
 
 ​	用交互式会话查看普通属性查找和描述器查找之间的区别：
 
-\>>>
+
 
 ```
 >>> a = A()                     # 创建一个类 A 的实例
@@ -127,7 +127,7 @@ class Directory:
 
 ​	交互式会话显示查找是动态的，每次都会计算不同的，经过更新的返回值:
 
-\>>>
+
 
 ```
 >>> s = Directory('songs')
@@ -179,7 +179,7 @@ class Person:
 
 ​	交互式会话展示中，对托管属性 *age* 的所有访问都被记录了下来，但常规属性 *name* 则未被记录：
 
-\>>>
+
 
 ```
 >>> mary = Person('Mary M', 30)         # The initial age update is logged
@@ -249,7 +249,7 @@ class Person:
 
 ​	交互交互式会话显示类 `Person` 调用了 `__set_name__()` 方法来记录字段的名称。在这里，我们调用 [`vars()`](https://docs.python.org/zh-cn/3.13/library/functions.html#vars) 来查找描述器而不触发它：
 
-\>>>
+
 
 ```
 >>> vars(vars(Person)['name'])
@@ -260,7 +260,7 @@ class Person:
 
 ​	现在，新类会记录对 *name* 和 *age* 二者的访问：
 
-\>>>
+
 
 ```
 >>> pete = Person('Peter P', 10)
@@ -273,7 +273,7 @@ INFO:root:Updating 'age' to 20
 
 ​	这两个 *Person* 实例仅包含私有名称:
 
-\>>>
+
 
 ```
 >>> vars(pete)
@@ -411,7 +411,7 @@ class Component:
 
 ​	描述器阻止无效实例的创建：
 
-\>>>
+
 
 ```
 >>> Component('Widget', 'metal', 5)      # Blocked: 'Widget' is not all uppercase
@@ -614,7 +614,7 @@ class Song:
 
 ​	要使用模型，首先要连接到数据库：
 
-\>>>
+
 
 ```
 >>> import sqlite3
@@ -623,7 +623,7 @@ class Song:
 
 ​	交互式会话显示了如何从数据库中检索数据及如何对其进行更新：
 
-\>>>
+
 
 ```
 >>> Movie('Star Wars').director
@@ -785,7 +785,7 @@ class D2:
 
 ​	该函数具有 [qualified name](https://docs.python.org/zh-cn/3.13/glossary.html#term-qualified-name) 属性以支持自省：
 
-\>>>
+
 
 ```
 >>> D.f.__qualname__
@@ -794,7 +794,7 @@ class D2:
 
 ​	通过类字典访问函数不会调用 `__get__()`。相反，它只返回基础函数对象：
 
-\>>>
+
 
 ```
 >>> D.__dict__['f']
@@ -803,7 +803,7 @@ class D2:
 
 ​	来自类的点运算符访问会调用 `__get__()`，直接返回底层的函数。
 
-\>>>
+
 
 ```
 >>> D.f
@@ -812,7 +812,7 @@ class D2:
 
 ​	有趣的行为发生在从实例进行点访问期间。点运算符查找调用 `__get__()`，返回绑定的方法对象：
 
-\>>>
+
 
 ```
 >>> d = D()
@@ -822,7 +822,7 @@ class D2:
 
 ​	绑定方法在内部存储了底层函数和绑定的实例：
 
-\>>>
+
 
 ```
 >>> d.f.__func__
@@ -865,7 +865,7 @@ class E:
         return x * 10
 ```
 
-\>>>
+
 
 ```
 >>> E.f(3)
@@ -906,7 +906,7 @@ class F:
         return cls.__name__, x
 ```
 
-\>>>
+
 
 ```
 >>> F.f(3)
@@ -930,7 +930,7 @@ class Dict(dict):
 
 ​	现在可以这样构造一个新的唯一键字典：
 
-\>>>
+
 
 ```
 >>> d = Dict.fromkeys('abracadabra')
@@ -971,7 +971,7 @@ class Vehicle:
     __slots__ = ('id_number', 'make', 'model')
 ```
 
-\>>>
+
 
 ```
 >>> auto = Vehicle()
@@ -1001,7 +1001,7 @@ class Immutable:
         return self._name
 ```
 
-\>>>
+
 
 ```
 >>> mark = Immutable('Botany', 'Mark Watney')
@@ -1035,7 +1035,7 @@ class CP:
                        for n in reversed(range(100_000)))
 ```
 
-\>>>
+
 
 ```
 >>> CP().pi
@@ -1147,7 +1147,7 @@ class H(Object, metaclass=Type):
 
 ​	这时，metaclass 已经为 *x* 和 *y* 加载了成员对象：
 
-\>>>
+
 
 ```
 >>> from pprint import pp
@@ -1162,7 +1162,7 @@ class H(Object, metaclass=Type):
 
 ​	当实例被创建时，它们将拥有一个用于存放属性的 `slot_values` 列表：
 
-\>>>
+
 
 ```
 >>> h = H(10, 20)
@@ -1175,7 +1175,7 @@ class H(Object, metaclass=Type):
 
 ​	错误拼写或未赋值的属性将引发一个异常：
 
-\>>>
+
 
 ```
 >>> h.xz

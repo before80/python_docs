@@ -413,7 +413,7 @@ fred.config(fg="red", bg="blue")
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> print(fred.config())

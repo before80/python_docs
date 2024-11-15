@@ -329,7 +329,7 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 
 ​	返回 *e* 的 *x*，减去 1。 这里 *e* 是以自然对数作为基数。 对于小浮点数 *x*，在 `exp(x) - 1` 中的减法运算可能导致 [明显的精度损失](https://en.wikipedia.org/wiki/Loss_of_significance); [`expm1()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.expm1) 函数提供了一种以完整精度计算此数量的办法:
 
-\>>>
+
 
 ```
 >>> from math import exp, expm1
@@ -529,7 +529,7 @@ def phi(x):
 
 ​	一个浮点数值 "Not a Number" (NaN)。 相当于 `float('nan')` 的输出。 根据 [IEEE-754 标准](https://en.wikipedia.org/wiki/IEEE_754) 要求，`math.nan` 和 `float('nan')` 不会被视为等于任何其他数值，包括其本身。 要检查一个数字是否为 NaN，请使用 [`isnan()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.isnan) 函数来测试 NaN 而不能使用 `is` 或 `==`。 例如:
 
-\>>>
+
 
 ```
 >>> import math

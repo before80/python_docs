@@ -200,7 +200,7 @@ draft = false
 
 ​	为了简化和标准化错误处理，编解码器可以通过接受 *errors* 字符串参数来实现不同的错误处理方案:
 
-\>>>
+
 
 ```
 >>> 'German ß, ♬'.encode(encoding='ascii', errors='backslashreplace')

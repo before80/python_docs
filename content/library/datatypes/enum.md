@@ -37,7 +37,7 @@ draft = false
 
 ​	枚举是通过使用 [`class`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#class) 语法或是通过使用函数调用语法来创建的:
 
-\>>>
+
 
 ```
 >>> from enum import Enum
@@ -202,7 +202,7 @@ draft = false
 
 ​	如果成员属于``cls`` 则返回``True``
 
-\>>>
+
 
 ```
 >>> some_var = Color.RED
@@ -218,7 +218,7 @@ True
 
 ​	返回 `['__class__', '__doc__', '__members__', '__module__']` 和 *cls* 中的成员名称
 
-\>>>
+
 
 ```
 >>> dir(Color)
@@ -229,7 +229,7 @@ True
 
 ​	返回 *cls* 中匹配 *name* 的 Enum 成员，或者引发 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError):
 
-\>>>
+
 
 ```
 >>> Color['BLUE']
@@ -240,7 +240,7 @@ True
 
 ​	按定义顺序返回 *cls* 中的每个成员:
 
-\>>>
+
 
 ```
 >>> list(Color)
@@ -251,7 +251,7 @@ True
 
 ​	返回 *cls* 中成员的数量:
 
-\>>>
+
 
 ```
 >>> len(Color)
@@ -266,7 +266,7 @@ True
 
 ​	按定义的逆序返回 *cls* 中的每个成员:
 
-\>>>
+
 
 ```
 >>> list(reversed(Color))
@@ -291,7 +291,7 @@ True
 
 ​	用于定义 `Enum` 成员的名称:
 
-\>>>
+
 
 ```
 >>> Color.BLUE.name
@@ -302,7 +302,7 @@ True
 
 ​	赋给 `Enum` 成员的值:
 
-\>>>
+
 
 ```
 >>> Color.RED.value
@@ -343,7 +343,7 @@ True
 
 ​	返回 `['__class__', '__doc__', '__module__', 'name', 'value']` 以及在 *self.__class__* 上定义的任何公有方法:
 
-\>>>
+
 
 ```
 >>> from datetime import date
@@ -383,7 +383,7 @@ True
 
 ​	一个用来确定由 [`auto`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.auto) 所返回的下一个值的 *静态方法*:
 
-\>>>
+
 
 ```
 >>> from enum import auto
@@ -402,7 +402,7 @@ True
 
 ​	在默认情况下，将不做任何事。 如果在成员赋值时给出了多个值，这些值将成为传给 `__init__` 的单独参数；例如
 
-\>>>
+
 
 ```
 >>> from enum import Enum
@@ -420,7 +420,7 @@ True
 
 ​	一个用来查找不存在于 *cls* 中的值的 *类方法*。 在默认情况下它将不做任何事，但可以被重写以实现自定义的搜索行为:
 
-\>>>
+
 
 ```
 >>> from enum import StrEnum
@@ -445,7 +445,7 @@ True
 
 ​	在默认情况下，将不会存在。 如果指定，则或是在枚举类定义中或是在混入类定义中 (比如 `int`)，在成员赋值时给出的所有值都将被传递；例如
 
-\>>>
+
 
 ```
 >>> from enum import Enum
@@ -465,7 +465,7 @@ True
 
 ​	返回用于 *repr()* 调用的字符串。 在默认情况下，将返回 *Enum* 名称、成员名称和值，但也可以被重写:
 
-\>>>
+
 
 ```
 >>> class OtherStyle(Enum):
@@ -484,7 +484,7 @@ True
 
 ​	返回用于 *str()* 调用的字符串。 在默认情况下，返回 *Enum* 名称和成员名称，但也可以被重写:
 
-\>>>
+
 
 ```
 >>> class OtherStyle(Enum):
@@ -502,7 +502,7 @@ True
 
 ​	返回用于 *format()* 和 *f-string* 调用的字符串。 在默认情况下，将返回 [`__str__()`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum.__str__) 的返回值，但也可以被重写:
 
-\>>>
+
 
 ```
 >>> class OtherStyle(Enum):
@@ -528,7 +528,7 @@ True
 
 *IntEnum* 和 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 是一样的，但其成员还属于整数并可被用在任何可以使用整数的地方。 如果对一个 *IntEnum* 成员执行整数运算，结果值将失去其枚举状态。
 
-\>>>
+
 
 ```
 >>> from enum import IntEnum
@@ -587,7 +587,7 @@ True
 
 ​	如果 value 是 self 之中则返回 *True*:
 
-\>>>
+
 
 ```
 >>> from enum import Flag, auto
@@ -612,7 +612,7 @@ False
 
 ​	返回所有包含的非别名成员:
 
-\>>>
+
 
 ```
 >>> list(Color.RED)
@@ -627,7 +627,7 @@ False
 
 ​	返回旗标中成员的数量:
 
-\>>>
+
 
 ```
 >>> len(Color.GREEN)
@@ -642,7 +642,7 @@ False
 
 ​	如果旗标中有成员则返回 *True*，否则返回 *False*:
 
-\>>>
+
 
 ```
 >>> bool(Color.GREEN)
@@ -658,7 +658,7 @@ False
 
 ​	返回当前旗标与另一个旗标执行二进制或运算的结果:
 
-\>>>
+
 
 ```
 >>> Color.RED | Color.GREEN
@@ -669,7 +669,7 @@ False
 
 ​	返回当前旗标与另一个旗标执行二进制与运算的结果:
 
-\>>>
+
 
 ```
 >>> purple & white
@@ -682,7 +682,7 @@ False
 
 ​	返回当前旗标与另一个旗标执行二进制异或运算的结果:
 
-\>>>
+
 
 ```
 >>> purple ^ white
@@ -695,7 +695,7 @@ False
 
 ​	返回 *type(self)* 中所有不在 *self* 中的旗标:
 
-\>>>
+
 
 ```
 >>> ~white
@@ -718,7 +718,7 @@ False
 
 *在 3.11 版本发生变更:* 零值旗标的 *repr()* 已被修改。 现在将是:
 
-\>>>
+
 
 ```
 >>> Color(0) 
@@ -729,7 +729,7 @@ False
 
 `IntFlag` 与 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 相同，但其成员还属于整数类型并能被用于任何可以使用整数的地方。
 
-\>>>
+
 
 ```
 >>> from enum import IntFlag, auto
@@ -746,7 +746,7 @@ False
 
 ​	如果对一个 *IntFlag* 成员执行任何整数运算，结果将不再是一个 *IntFlag*:
 
-\>>>
+
 
 ```
 >>> Color.RED + 2
@@ -760,7 +760,7 @@ False
 
 ​	未命名的零值旗标 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr) 已被修改。 现在将是：
 
-\>>>
+
 
 ```
 >>> Color(0)
@@ -796,7 +796,7 @@ False
 
 ​	确保每个值只有一个名称:
 
-\>>>
+
 
 ```
 >>> from enum import Enum, verify, UNIQUE
@@ -815,7 +815,7 @@ ValueError: aliases found in <enum 'Color'>: CRIMSON -> RED
 
 ​	确保在最低值成员和最高值成员之间没有缺失的值:
 
-\>>>
+
 
 ```
 >>> from enum import Enum, verify, CONTINUOUS
@@ -833,7 +833,7 @@ ValueError: invalid enum 'Color': missing values 3, 4
 
 ​	确保任何旗标分组/掩码只包含已命名的旗标 -- 在值是明确指定而不是由 [`auto()`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.auto) 生成时将很有用处:
 
-\>>>
+
 
 ```
 >>> from enum import Flag, verify, NAMED_FLAGS
@@ -865,7 +865,7 @@ ValueError: invalid Flag 'Color': aliases WHITE and NEON are missing combined va
 
 ​	超出范围的值将导致引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。 这是 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 的默认设置:
 
-\>>>
+
 
 ```
 >>> from enum import Flag, STRICT, auto
@@ -886,7 +886,7 @@ ValueError: <flag 'StrictFlag'> invalid value 20
 
 ​	超出范围的值将导致无效的值被移除，保留有效的 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 值:
 
-\>>>
+
 
 ```
 >>> from enum import Flag, CONFORM, auto
@@ -903,7 +903,7 @@ ValueError: <flag 'StrictFlag'> invalid value 20
 
 ​	超出范围的值将失去其 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 成员资格并转换为 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int)。
 
-\>>>
+
 
 ```
 >>> from enum import Flag, EJECT, auto
@@ -920,7 +920,7 @@ ValueError: <flag 'StrictFlag'> invalid value 20
 
 ​	超出范围的值将被保留，[`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 成员资格也将被保留。 这是 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 的默认设置:
 
-\>>>
+
 
 ```
 >>> from enum import Flag, KEEP, auto
@@ -1019,7 +1019,7 @@ ValueError: <flag 'StrictFlag'> invalid value 20
 
 ​	一个专用于枚举的 [`class`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#class) 装饰器。 它将搜索一个枚举的 [`__members__`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.EnumType.__members__)，收集它所找到的任何别名；如果找到了任何别名则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 并附带详情:
 
-\>>>
+
 
 ```
 >>> from enum import Enum, unique
@@ -1078,7 +1078,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 >
 > ​	如果你不需要/希望有这些限制，你可以通过自行混入 `int` 或 `str` 类型来创建你自己的基类:
 >
-> \>>>
+> 
 >
 > ```
 > >>> from enum import Enum
@@ -1088,7 +1088,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 >
 > ​	或者你也可以在你的枚举中重新赋值适当的 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 等:
 >
-> \>>>
+> 
 >
 > ```
 > >>> from enum import Enum, IntEnum

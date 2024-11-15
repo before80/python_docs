@@ -46,7 +46,7 @@ draft = false
 
 ​	用法示例:
 
-\>>>
+
 
 ```
 >>> import sysconfig

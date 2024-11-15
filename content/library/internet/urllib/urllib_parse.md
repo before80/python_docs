@@ -37,7 +37,7 @@ draft = false
 
 ​	将一个 URL 解析为六个部分，返回一个包含 6 项的 [named tuple](https://docs.python.org/zh-cn/3.13/glossary.html#term-named-tuple)。 这对应于 URL 的主要结构: `scheme://netloc/path;parameters?query#fragment`。 每个元组项均为字符串，可能为空字符串。 这些部分不会再被拆分为更小的部分（例如，netloc 将为单个字符串），并且 % 转义不会被扩展。 上面显示的分隔符不会出现在结果中，只有 *path* 部分的开头斜杠例外，它如果存在则会被保留。 例如:
 
-\>>>
+
 
 ```
 >>> from urllib.parse import urlparse
@@ -64,7 +64,7 @@ ParseResult(scheme='http', netloc='docs.python.org:80',
 
 ​	根据 [**RFC 1808**](https://datatracker.ietf.org/doc/html/rfc1808.html) 中的语法规范，urlparse 仅在 netloc 前面正确地附带了 '//' 的情况下才会识别它。 否则输入会被当作是一个相对 URL 因而以路径的组成部分开头。
 
-\>>>
+
 
 ```
 >>> from urllib.parse import urlparse
@@ -106,7 +106,7 @@ ParseResult(scheme='', netloc='', path='help/Python.html', params='',
 
 ​	与所有具名元组的情况一样，该子类还有一些特别有用的附加方法和属性。 其中一个方法是 `_replace()`。 `_replace()` 方法将返回一个新的 ParseResult 对象来将指定字段替换为新的值。
 
-\>>>
+
 
 ```
 >>> from urllib.parse import urlparse
@@ -233,7 +233,7 @@ ParseResult(scheme='http', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',
 
 ​	通过合并一个 "基准 URL" (*base*) 和另一个 URL (*url*) 来构造一个完整 ("absolute") URL。 在非正式情况下，这将使用基准 URL 的各部分，特别是地址协议、网络位置和 (一部分) 路径来提供相对 URL 中缺失的部分。 例如:
 
-\>>>
+
 
 ```
 >>> from urllib.parse import urljoin
@@ -249,7 +249,7 @@ ParseResult(scheme='http', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',
 
 ​	如果 *url* 为绝对 URL (即以 `//` 或 `scheme://` 打头)，则 *url* 的主机名和/或协议将出现在结果中。 例如:
 
-\>>>
+
 
 ```
 >>> urljoin('http://www.cwi.nl/%7Eguido/Python.html',
@@ -324,7 +324,7 @@ ParseResult(scheme='http', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',
 
 ​	如果是通过原始的解析方法传回则此方法的结果会保持不变:
 
-\>>>
+
 
 ```
 >>> from urllib.parse import urlsplit

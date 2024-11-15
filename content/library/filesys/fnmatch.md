@@ -64,7 +64,7 @@ for file in os.listdir('.'):
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> import fnmatch, re

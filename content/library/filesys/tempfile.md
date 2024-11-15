@@ -211,7 +211,7 @@ draft = false
 
 ​	以下是 [`tempfile`](https://docs.python.org/zh-cn/3.13/library/tempfile.html#module-tempfile) 模块典型用法的一些示例:
 
-\>>>
+
 
 ```
 >>> import tempfile
@@ -273,7 +273,7 @@ b'Hello world!'
 
 ​	使用此功能可能会在程序中引入安全漏洞。当你开始使用本方法返回的文件执行任何操作时，可能有人已经捷足先登了。[`mktemp()`](https://docs.python.org/zh-cn/3.13/library/tempfile.html#tempfile.mktemp) 的功能可以很轻松地用 [`NamedTemporaryFile()`](https://docs.python.org/zh-cn/3.13/library/tempfile.html#tempfile.NamedTemporaryFile) 代替，当然需要传递 `delete=False` 参数:
 
-\>>>
+
 
 ```
 >>> f = NamedTemporaryFile(delete=False)

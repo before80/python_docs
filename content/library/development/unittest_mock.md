@@ -34,7 +34,7 @@ draft = false
 
 ​	当您访问对象时， [`Mock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock) 和 [`MagicMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.MagicMock) 将创建所有属性和方法，并保存他们在使用时的细节。你可以通过配置，指定返回值或者限制可访问属性，然后断言他们如何被调用：
 
-\>>>
+
 
 ```
 >>> from unittest.mock import MagicMock
@@ -47,7 +47,7 @@ draft = false
 
 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect) 允许你执行附带影响，包括在 mock 被调用时引发一个异常：
 
-\>>>
+
 
 ```
 >>> from unittest.mock import Mock
@@ -58,7 +58,7 @@ Traceback (most recent call last):
 KeyError: 'foo'
 ```
 
-\>>>
+
 
 ```
 >>> values = {'a': 1, 'b': 2, 'c': 3}
@@ -77,7 +77,7 @@ KeyError: 'foo'
 
 ​	使用 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 装饰去/上下文管理器，可以更方便地测试一个模块下的类或对象。你指定的对象会在测试过程中替换成 mock （或者其他对象），测试结束后恢复。
 
-\>>>
+
 
 ```
 >>> from unittest.mock import patch
@@ -104,7 +104,7 @@ KeyError: 'foo'
 
 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 也可以 with 语句中使用上下文管理。
 
-\>>>
+
 
 ```
 >>> with patch.object(ProductionClass, 'method', return_value=None) as mock_method:
@@ -116,7 +116,7 @@ KeyError: 'foo'
 
 ​	还有一个 [`patch.dict()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch.dict) 用于在一定范围内设置字典中的值，并在测试结束时将字典恢复为其原始状态：
 
-\>>>
+
 
 ```
 >>> foo = {'key': 'value'}
@@ -129,7 +129,7 @@ KeyError: 'foo'
 
 ​	Mock支持 Python [魔术方法](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#magic-methods) 。使用模式方法最简单的方式是使用 [`MagicMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.MagicMock) class. 。它可以做如下事情：
 
-\>>>
+
 
 ```
 >>> mock = MagicMock()
@@ -143,7 +143,7 @@ KeyError: 'foo'
 
 ​	下面是一个使用了普通 Mock 类的魔术方法的例子
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -156,7 +156,7 @@ KeyError: 'foo'
 
 ​	这么做是为了因确保不当地使用 mock 导致与生产代码相同的失败：
 
-\>>>
+
 
 ```
 >>> from unittest.mock import create_autospec
@@ -219,7 +219,7 @@ TypeError: missing a required argument: 'b'
 
 ​	断言 mock 已被调用至少一次。
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -234,7 +234,7 @@ TypeError: missing a required argument: 'b'
 
 ​	断言 mock 已被调用恰好一次。
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -256,7 +256,7 @@ Calls: [call(), call()].
 
 ​	此方法是断言上次调用已以特定方式进行的一种便捷方法：
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -269,7 +269,7 @@ Calls: [call(), call()].
 
 ​	断言 mock 已被调用恰好一次，并且向该调用传入了指定的参数。
 
-\>>>
+
 
 ```
 >>> mock = Mock(return_value=None)
@@ -289,7 +289,7 @@ Calls: [call('foo', bar='baz'), call('other', bar='values')].
 
 ​	如果 mock *曾经* 被调用过则断言通过，不同于 [`assert_called_with()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.assert_called_with) 和 [`assert_called_once_with()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.assert_called_once_with) 那样只有在调用是最近的一次时才会通过，而对于 [`assert_called_once_with()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.assert_called_once_with) 则它还必须是唯一的一次调用。
 
-\>>>
+
 
 ```
 >>> mock = Mock(return_value=None)
@@ -306,7 +306,7 @@ Calls: [call('foo', bar='baz'), call('other', bar='values')].
 
 ​	如果 *any_order* 为真值则调用可以是任意顺序的，但它们都必须在 [`mock_calls`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.mock_calls) 中出现。
 
-\>>>
+
 
 ```
 >>> mock = Mock(return_value=None)
@@ -324,7 +324,7 @@ Calls: [call('foo', bar='baz'), call('other', bar='values')].
 
 ​	断言 mock 从未被调用过。
 
-\>>>
+
 
 ```
 >>> m = Mock()
@@ -343,7 +343,7 @@ Calls: [call()].
 
 ​	reset_mock 方法将在 mock 对象上重围所有的调用属性:
 
-\>>>
+
 
 ```
 >>> mock = Mock(return_value=None)
@@ -381,7 +381,7 @@ False
 
 ​	属性加返回值和附带影响可以使用标准点号标记在子 mock 上设置并在方法调用中解包一个字典:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -397,7 +397,7 @@ KeyError
 
 ​	同样的操作可在对 mock 的构造器调用中达成:
 
-\>>>
+
 
 ```
 >>> attrs = {'method.return_value': 3, 'other.side_effect': KeyError}
@@ -430,7 +430,7 @@ KeyError
 
 ​	一个表示 mock 对象是否已被调用的布尔值:
 
-\>>>
+
 
 ```
 >>> mock = Mock(return_value=None)
@@ -445,7 +445,7 @@ True
 
 ​	一个告诉你 mock 对象已被调用多少次的整数值:
 
-\>>>
+
 
 ```
 >>> mock = Mock(return_value=None)
@@ -461,7 +461,7 @@ True
 
 ​	设置这个来配置通过调用该 mock 所返回的值:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -472,7 +472,7 @@ True
 
 ​	默认的返回值是一个 mock 对象并且你可以通过正常方式来配置它:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -484,7 +484,7 @@ True
 
 [`return_value`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.return_value) 也可以在构造器中设置:
 
-\>>>
+
 
 ```
 >>> mock = Mock(return_value=3)
@@ -504,7 +504,7 @@ True
 
 ​	一个引发异常（来测试 API 的异常处理）的 mock 的示例:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -517,7 +517,7 @@ Exception: Boom!
 
 ​	使用 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect) 来返回包含多个值的序列:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -528,7 +528,7 @@ Exception: Boom!
 
 ​	使用一个可调用对象:
 
-\>>>
+
 
 ```
 >>> mock = Mock(return_value=3)
@@ -542,7 +542,7 @@ Exception: Boom!
 
 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect) 可以在构造器中设置。 下面是在 mock 被调用时增加一个该属性值并返回它的例子:
 
-\>>>
+
 
 ```
 >>> side_effect = lambda value: value + 1
@@ -555,7 +555,7 @@ Exception: Boom!
 
 ​	将 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect) 设为 `None` 可以清除它:
 
-\>>>
+
 
 ```
 >>> m = Mock(side_effect=KeyError, return_value=3)
@@ -572,7 +572,7 @@ KeyError
 
 ​	这可以是 `None` (如果 mock 没有被调用)，或是 mock 最近一次被调用时附带的参数。 这将采用元组的形式：第一个成员也可以通过 `args` 特征属性来访问，它是 mock 被调用时所附带的任何位置参数 (或为空元组)，而第二个成员也可以通过 `kwargs` 特征属性来访问，它则是任何关键字参数 (或为空字典)。
 
-\>>>
+
 
 ```
 >>> mock = Mock(return_value=None)
@@ -609,7 +609,7 @@ call(3, 4, 5, key='fish', next='w00t!')
 
 ​	这是一个已排序的对 mock 对象的所有调用的列表（因此该列表的长度就是它已被调用的次数）。 在执行任何调用之前它将是一个空列表。 [`call`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.call) 对象可以被用来方便地构造调用列表以与 [`call_args_list`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.call_args_list) 相比较。
 
-\>>>
+
 
 ```
 >>> mock = Mock(return_value=None)
@@ -629,7 +629,7 @@ True
 
 ​	除了会追踪对其自身的调用，mock 还会追踪对方法和属性，以及 *它们的* 方法和属性的访问:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -647,7 +647,7 @@ True
 
 [`mock_calls`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.mock_calls) 会记录 *所有* 对 mock 对象、它的方法、魔术方法的调用 *以及* 返回值的 mock。
 
-\>>>
+
 
 ```
 >>> mock = MagicMock()
@@ -674,7 +674,7 @@ True
 
 [`mock_calls`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.mock_calls) 的记录方式意味着在进行嵌套调用时，之前调用的形参不会被记录因而这样的比较将总是相等:
 
-\>>>
+
 
 ```
 >>> mock = MagicMock()
@@ -690,7 +690,7 @@ True
 
 ​	Normally the `__class__` attribute of an object will return its type. For a mock object with a `spec`, `__class__` returns the spec class instead. This allows mock objects to pass [`isinstance()`](https://docs.python.org/zh-cn/3.13/library/functions.html#isinstance) tests for the object they are replacing / masquerading as:
 
-\>>>
+
 
 ```
 >>> mock = Mock(spec=3)
@@ -700,7 +700,7 @@ True
 
 `__class__` is assignable to, this allows a mock to pass an [`isinstance()`](https://docs.python.org/zh-cn/3.13/library/functions.html#isinstance) check without forcing you to use a spec:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -715,7 +715,7 @@ True
 
 ​	Mock objects that use a class or an instance as a `spec` or `spec_set` are able to pass [`isinstance()`](https://docs.python.org/zh-cn/3.13/library/functions.html#isinstance) tests:
 
-\>>>
+
 
 ```
 >>> mock = Mock(spec=SomeClass)
@@ -730,7 +730,7 @@ True
 
 ​	mock 操作类和 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 装饰器都接受任意关键字参数用于配置。 对于 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 装饰器来说关键字参数会被传给所创建 mock 的构造器。 这些关键字被用于配置 mock 的属性:
 
-\>>>
+
 
 ```
 >>> m = MagicMock(attribute=3, other='fish')
@@ -742,7 +742,7 @@ True
 
 ​	子 mock 的返回值和附带效果也可使用带点号的标记通过相同的方式来设置。 由于你无法直接在调用中使用带点号的名称因此你需要创建一个字典并使用 `**` 来解包它:
 
-\>>>
+
 
 ```
 >>> attrs = {'method.return_value': 3, 'other.side_effect': KeyError}
@@ -759,7 +759,7 @@ KeyError
 
 ​	使用 *spec* (或 *spec_set*) 创建的可调用 mock 将在匹配调用与 mock 时内省规格说明对象的签名。 因此，它可以匹配实际调用的参数而不必关心它们是按位置还是按名称传入的:
 
-\>>>
+
 
 ```
 >>> def f(a, b, c): pass
@@ -781,7 +781,7 @@ KeyError
 
 ​	当从一个对象提取 [`PropertyMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.PropertyMock) 实例时将不附带任何参数地调用该 mock。 如果设置它则调用该 mock 时将附带被设置的值。
 
-\>>>
+
 
 ```
 >>> class Foo:
@@ -805,7 +805,7 @@ mockity-mock
 
 ​	由于 mock 属性的存储方式你无法直接将 [`PropertyMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.PropertyMock) 附加到一个 mock 对象。 但是你可以将它附加到 mock 类型对象:
 
-\>>>
+
 
 ```
 >>> m = MagicMock()
@@ -822,7 +822,7 @@ mockity-mock
 
 ​	如果由 [`PropertyMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.PropertyMock) 引发了 [`AttributeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AttributeError)，它将被解读为缺少描述器并将在父 mock 上调用 [`__getattr__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getattr__):
 
-\>>>
+
 
 ```
 >>> m = MagicMock()
@@ -838,7 +838,7 @@ mockity-mock
 
 [`MagicMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.MagicMock) 的异步版本。 [`AsyncMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.AsyncMock) 对象的行为方式将使该对象被识别为异步函数，其调用的结果将为可等待对象。
 
-\>>>
+
 
 ```
 >>> mock = AsyncMock()
@@ -857,7 +857,7 @@ True
 
 ​	将 [`Mock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock) 或 [`MagicMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.MagicMock) 的 *spec* 设为异步函数将导致在调用后返回一个协程对象。
 
-\>>>
+
 
 ```
 >>> async def async_func(): pass
@@ -871,7 +871,7 @@ True
 
 ​	将 [`Mock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock), [`MagicMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.MagicMock) 或 [`AsyncMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.AsyncMock) 的 *spec* 设为带有异步和同步函数的类将自动删除其中的同步函数并将它们设为 [`MagicMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.MagicMock) (如果上级 mock 是 [`AsyncMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.AsyncMock) 或 [`MagicMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.MagicMock)) 或者 [`Mock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock) (如果上级 mock 是 [`Mock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock))。 所有异步函数都将为 [`AsyncMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.AsyncMock)。
 
-\>>>
+
 
 ```
 >>> class ExampleClass:
@@ -898,7 +898,7 @@ True
 
 ​	断言 mock 已被等待至少一次。 请注意这是从被调用的对象中分离出来的，必须要使用 `await` 关键字:
 
-\>>>
+
 
 ```
 >>> mock = AsyncMock()
@@ -920,7 +920,7 @@ AssertionError: Expected mock to have been awaited.
 
 ​	断言 mock 已被等待恰好一次。
 
-\>>>
+
 
 ```
 >>> mock = AsyncMock()
@@ -940,7 +940,7 @@ AssertionError: Expected mock to have been awaited once. Awaited 2 times.
 
 ​	断言上一次等待传入了指定的参数。
 
-\>>>
+
 
 ```
 >>> mock = AsyncMock()
@@ -961,7 +961,7 @@ Actual: mock('foo', bar='bar')
 
 ​	断言 mock 已被等待恰好一次并且附带了指定的参数。
 
-\>>>
+
 
 ```
 >>> mock = AsyncMock()
@@ -981,7 +981,7 @@ AssertionError: Expected mock to have been awaited once. Awaited 2 times.
 
 ​	断言 mock 已附带了指定的参数被等待。
 
-\>>>
+
 
 ```
 >>> mock = AsyncMock()
@@ -1005,7 +1005,7 @@ AssertionError: mock('other') await not found
 
 ​	如果 *any_order* 为真值则等待可以是任意顺序的，但它们都必须在 [`await_args_list`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.AsyncMock.await_args_list) 中出现。
 
-\>>>
+
 
 ```
 >>> mock = AsyncMock()
@@ -1028,7 +1028,7 @@ Actual: []
 
 ​	断言 mock 从未被等待过。
 
-\>>>
+
 
 ```
 >>> mock = AsyncMock()
@@ -1043,7 +1043,7 @@ Actual: []
 
 ​	一个追踪 mock 对象已被等待多少次的整数值。
 
-\>>>
+
 
 ```
 >>> mock = AsyncMock()
@@ -1062,7 +1062,7 @@ Actual: []
 
 ​	这可能为 `None` (如果 mock 从未被等待)，或为该 mock 上一次被等待所附带的参数。 其功能与 [`Mock.call_args`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.call_args) 相同。
 
-\>>>
+
 
 ```
 >>> mock = AsyncMock()
@@ -1082,7 +1082,7 @@ call('bar')
 
 ​	这是由对 mock 对象按顺序执行的所有等待组成的列表（因此该列表的长度即它被等待的次数）。 在有任何等待被执行之前它将为一个空列表。
 
-\>>>
+
 
 ```
 >>> mock = AsyncMock()
@@ -1113,7 +1113,7 @@ call('bar')
 
 ​	如果在创建 mock 时传入了 timeout 值或者如果向该函数传入了 timeout 参数，那么当调用未在时限内执行完毕则会引发 [`AssertionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AssertionError)。
 
-\>>>
+
 
 ```
 >>> mock = ThreadingMock()
@@ -1129,7 +1129,7 @@ call('bar')
 
 ​	如果在创建该 mock 时传入了 timeout 值则当调用未在时限内执行完成则会引发 [`AssertionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AssertionError)。
 
-\>>>
+
 
 ```
 >>> mock = ThreadingMock()
@@ -1155,7 +1155,7 @@ call('bar')
 
 ​	让一个 mock 在被调用时引发异常的最简单方式是将 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect) 设为一个异常类或实例:
 
-\>>>
+
 
 ```
 >>> m = MagicMock(side_effect=IndexError)
@@ -1176,7 +1176,7 @@ KeyError: 'Bang!'
 
 ​	If [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect) is a function then whatever that function returns is what calls to the mock return. The `side_effect` function is called with the same arguments as the mock. This allows you to vary the return value of the call dynamically, based on the input:
 
-\>>>
+
 
 ```
 >>> def side_effect(value):
@@ -1193,7 +1193,7 @@ KeyError: 'Bang!'
 
 ​	If you want the mock to still return the default return value (a new mock), or any set return value, then there are two ways of doing this. Either return [`return_value`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.return_value) from inside [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect), or return [`DEFAULT`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.DEFAULT):
 
-\>>>
+
 
 ```
 >>> m = MagicMock()
@@ -1214,7 +1214,7 @@ KeyError: 'Bang!'
 
 ​	To remove a [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect), and return to the default behaviour, set the `side_effect` to `None`:
 
-\>>>
+
 
 ```
 >>> m = MagicMock(return_value=6)
@@ -1231,7 +1231,7 @@ KeyError: 'Bang!'
 
 ​	The [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect) can also be any iterable object. Repeated calls to the mock will return values from the iterable (until the iterable is exhausted and a [`StopIteration`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#StopIteration) is raised):
 
-\>>>
+
 
 ```
 >>> m = MagicMock(side_effect=[1, 2, 3])
@@ -1249,7 +1249,7 @@ StopIteration
 
 ​	如果该可迭代对象有任何成员属于异常则它们将被引发而不是被返回:
 
-\>>>
+
 
 ```
 >>> iterable = (33, ValueError, 66)
@@ -1274,7 +1274,7 @@ ValueError
 
 ​	你可以通过删除属性来“屏蔽”它们。 属性一旦被删除，访问它将引发 [`AttributeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AttributeError)。
 
-\>>>
+
 
 ```
 >>> mock = MagicMock()
@@ -1294,7 +1294,7 @@ AttributeError: f
 
 ​	由于 "name" 是 [`Mock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock) 构造器的参数之一，如果你想让你的 mock 对象具有 "name" 属性你不可以在创建时传入该参数。 有两个替代方式。 一个选项是使用 [`configure_mock()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.configure_mock):
 
-\>>>
+
 
 ```
 >>> mock = MagicMock()
@@ -1305,7 +1305,7 @@ AttributeError: f
 
 ​	一个更简单的选项是在 mock 创建之后简单地设置 "name" 属性:
 
-\>>>
+
 
 ```
 >>> mock = MagicMock()
@@ -1316,7 +1316,7 @@ AttributeError: f
 
 ​	当你附加一个 mock 作为另一个 mock 的属性（或作为返回值）时它会成为该 mock 的 "子对象"。 对子对象的调用会被记录在父对象的 [`method_calls`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.method_calls) 和 [`mock_calls`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.mock_calls) 属性中。 这适用于配置子 mock 然后将它们附加到父对象，或是将 mock 附加到将记录所有对子对象的调用的父对象上并允许你创建有关 mock 之间的调用顺序的断言:
 
-\>>>
+
 
 ```
 >>> parent = MagicMock()
@@ -1332,7 +1332,7 @@ AttributeError: f
 
 ​	这里有一个例外情况是如果 mock 设置了名称。 这允许你在出于某些理由不希望其发生时避免 "父对象" 的影响。
 
-\>>>
+
 
 ```
 >>> mock = MagicMock()
@@ -1346,7 +1346,7 @@ AttributeError: f
 
 ​	通过 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 创建的 mock 会被自动赋予名称。 要将具有名称的 mock 附加到父对象上你应当使用 [`attach_mock()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.attach_mock) 方法:
 
-\>>>
+
 
 ```
 >>> thing1 = object()
@@ -1413,7 +1413,7 @@ AttributeError: f
 
 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 作为函数装饰器，为你创建 mock 并将其传入被装饰的函数:
 
-\>>>
+
 
 ```
 >>> @patch('__main__.SomeClass')
@@ -1430,7 +1430,7 @@ True
 
 ​	To configure return values on methods of *instances* on the patched class you must do this on the [`return_value`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.return_value). For example:
 
-\>>>
+
 
 ```
 >>> class Class:
@@ -1447,7 +1447,7 @@ True
 
 ​	如果你使用 *spec* 或 *spec_set* 并且 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 替换的是 *class*，那么所创建的 mock 的返回值将具有同样的 spec。
 
-\>>>
+
 
 ```
 >>> Original = Class
@@ -1460,7 +1460,7 @@ True
 
 *new_callable* 参数适用于当你想要使用其他类来替代所创建的 mock 默认的 [`MagicMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.MagicMock) 的场合。 例如，如果你想要使用 [`NonCallableMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.NonCallableMock):
 
-\>>>
+
 
 ```
 >>> thing = object()
@@ -1475,7 +1475,7 @@ TypeError: 'NonCallableMock' object is not callable
 
 ​	另一个使用场景是用 [`io.StringIO`](https://docs.python.org/zh-cn/3.13/library/io.html#io.StringIO) 实例来替换某个对象:
 
-\>>>
+
 
 ```
 >>> from io import StringIO
@@ -1492,7 +1492,7 @@ TypeError: 'NonCallableMock' object is not callable
 
 ​	当 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 为你创建 mock 时，通常你需要做的第一件事就是配置该 mock。 某些配置可以在对 patch 的调用中完成。 你在调用时传入的任何关键字参数都将被用来在所创建的 mock 上设置属性:
 
-\>>>
+
 
 ```
 >>> patcher = patch('__main__.thing', first='one', second='two')
@@ -1505,7 +1505,7 @@ TypeError: 'NonCallableMock' object is not callable
 
 ​	除了所创建的 mock 的属性上的属性，例如 [`return_value`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.return_value) 和 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect)，还可以配置子 mock 的属性。 将这些属性直接作为关键字参数传入在语义上是无效的，但是仍然能够使用 `**` 将以这些属性为键的字典扩展至一个 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 调用中
 
-\>>>
+
 
 ```
 >>> config = {'method.return_value': 3, 'other.side_effect': KeyError}
@@ -1521,7 +1521,7 @@ KeyError
 
 ​	在默认情况下，尝试给某个模块中并不存在的函数（或者某个类中的方法或属性）打补丁将会失败并引发 [`AttributeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AttributeError):
 
-\>>>
+
 
 ```
 >>> @patch('sys.non_existing_attribute', 42)
@@ -1536,7 +1536,7 @@ AttributeError: <module 'sys' (built-in)> does not have the attribute 'non_exist
 
 ​	但在对 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 的调用中添加 `create=True` 将使之前示例的效果符合预期:
 
-\>>>
+
 
 ```
 >>> @patch('sys.non_existing_attribute', 42, create=True)
@@ -1562,7 +1562,7 @@ AttributeError: <module 'sys' (built-in)> does not have the attribute 'non_exist
 
 ​	将附带两个参数的形式调用时你将省略替换对象，还会为你创建一个 mock 并作为附加参数传入被装饰的函数:
 
-\>>>
+
 
 ```
 >>> @patch.object(SomeClass, 'class_method')
@@ -1595,7 +1595,7 @@ AttributeError: <module 'sys' (built-in)> does not have the attribute 'non_exist
 
 [`patch.dict()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch.dict) 可被用作上下文管理器、装饰器或类装饰器:
 
-\>>>
+
 
 ```
 >>> foo = {}
@@ -1609,7 +1609,7 @@ AttributeError: <module 'sys' (built-in)> does not have the attribute 'non_exist
 
 ​	当被用作类装饰器时 [`patch.dict()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch.dict) 将认可 `patch.TEST_PREFIX` (默认值为 `'test'`) 作为选择所在包装方法的标准:
 
-\>>>
+
 
 ```
 >>> import os
@@ -1625,7 +1625,7 @@ AttributeError: <module 'sys' (built-in)> does not have the attribute 'non_exist
 
 [`patch.dict()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch.dict) 可被用来向一个字典添加成员，或者简单地让测试修改一个字典，并确保当测试结束时恢复该字典。
 
-\>>>
+
 
 ```
 >>> foo = {}
@@ -1639,7 +1639,7 @@ AttributeError: <module 'sys' (built-in)> does not have the attribute 'non_exist
 >>> assert patched_foo == {}
 ```
 
-\>>>
+
 
 ```
 >>> import os
@@ -1652,7 +1652,7 @@ newvalue
 
 ​	可以在 [`patch.dict()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch.dict) 调用中使用关键字来设置字典的值:
 
-\>>>
+
 
 ```
 >>> mymodule = MagicMock()
@@ -1666,7 +1666,7 @@ newvalue
 
 [`patch.dict()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch.dict) 可被用于实际上不是字典的字典类对象。 它们至少必须支持条目获取、设置、删除以及迭代或成员检测两者之一。 这对应于魔术方法 [`__getitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getitem__), [`__setitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__setitem__), [`__delitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__delitem__) 以及 [`__iter__()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#container.__iter__) 或 [`__contains__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__contains__) 两者之一。
 
-\>>>
+
 
 ```
 >>> class Container:
@@ -1710,7 +1710,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 ​	如果你希望 [`patch.multiple()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch.multiple) 为你创建 mock，那么你可以使用 [`DEFAULT`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.DEFAULT) 作为值。 如果你使用 [`patch.multiple()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch.multiple) 作为装饰器则所创建的 mock 会作为关键字参数传入被装饰的函数。
 
-\>>>
+
 
 ```
 >>> thing = object()
@@ -1726,7 +1726,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 [`patch.multiple()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch.multiple) 可以与其他 `patch` 装饰器嵌套使用，但要将作为关键字传入的参数要放在 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 所创建的标准参数 *之后*:
 
-\>>>
+
 
 ```
 >>> @patch('sys.exit')
@@ -1741,7 +1741,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 ​	如果 [`patch.multiple()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch.multiple) 被用作上下文管理器，则上下文管理器的返回值将是一个以所创建的 mock 的名称为键的字典:
 
-\>>>
+
 
 ```
 >>> with patch.multiple('__main__', thing=DEFAULT, other=DEFAULT) as values:
@@ -1762,7 +1762,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 ​	如果你使用 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 来创建自己的 mock 那么将可通过调用 `patcher.start` 来返回它。
 
-\>>>
+
 
 ```
 >>> patcher = patch('package.module.ClassName')
@@ -1778,7 +1778,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 ​	A typical use case for this might be for doing multiple patches in the `setUp` method of a [`TestCase`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase):
 
-\>>>
+
 
 ```
 >>> class MyTest(unittest.TestCase):
@@ -1805,7 +1805,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 ​	如果你要使用这个技巧则你必须通过调用 `stop` 来确保补丁被“恢复”。 这可能要比你想像的更麻烦，因为如果在 `setUp` 中引发了异常那么 `tearDown` 将不会被调用。 [`unittest.TestCase.addCleanup()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.addCleanup) 可以简化此操作:
 
-\>>>
+
 
 ```
 >>> class MyTest(unittest.TestCase):
@@ -1833,7 +1833,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 ​	你可以为一个模块中的任何内置函数打补丁。 以以示例是为内置函数 [`ord()`](https://docs.python.org/zh-cn/3.13/library/functions.html#ord) 打补丁:
 
-\>>>
+
 
 ```
 >>> @patch('__main__.ord')
@@ -1853,7 +1853,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 ​	你可能会想要为你的测试使用不同的前缀。 你可以通过设置 `patch.TEST_PREFIX` 来告知打补丁方不同的前缀:
 
-\>>>
+
 
 ```
 >>> patch.TEST_PREFIX = 'foo'
@@ -1881,7 +1881,7 @@ not three
 
 ​	你可以使用以下模式来堆叠多个补丁装饰器:
 
-\>>>
+
 
 ```
 >>> @patch.object(SomeClass, 'class_method')
@@ -1949,7 +1949,7 @@ b.py
 
 ​	你可以通过在某个函数或 mock 实例中设置魔术方法来模拟它们。 如果你是使用函数则它 *必须* 接受 `self` 作为第一个参数 [[3\]](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#id10)。
 
-\>>>
+
 
 ```
 >>> def __str__(self):
@@ -1961,7 +1961,7 @@ b.py
 'fooble'
 ```
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -1971,7 +1971,7 @@ b.py
 'fooble'
 ```
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -1982,7 +1982,7 @@ b.py
 
 ​	一个这样的应用场景是在 [`with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#with) 语句中模拟作为上下文管理器的对象:
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -2048,7 +2048,7 @@ b.py
 
 ​	魔术方法是通过 [`MagicMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.MagicMock) 对象来设置的，因此你可以用通常的方式来配置它们并使用它们:
 
-\>>>
+
 
 ```
 >>> mock = MagicMock()
@@ -2083,7 +2083,7 @@ b.py
 
 ​	例如:
 
-\>>>
+
 
 ```
 >>> mock = MagicMock()
@@ -2099,7 +2099,7 @@ False
 
 ​	两个相等性方法 `__eq__()` 和 `__ne__()` 是特殊的。 它们会基于标识号进行默认的相等性比较，使用 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect) 属性，除非你修改它们的返回值以返回其他内容:
 
-\>>>
+
 
 ```
 >>> MagicMock() == 3
@@ -2114,7 +2114,7 @@ True
 
 `MagicMock.__iter__()` 的返回值可以是任意可迭代对象而不要求必须是迭代器:
 
-\>>>
+
 
 ```
 >>> mock = MagicMock()
@@ -2127,7 +2127,7 @@ True
 
 ​	如果返回值 *是* 迭代器，则对其执行一次迭代就会将它耗尽因而后续执行的迭代将会输出空列表:
 
-\>>>
+
 
 ```
 >>> mock.__iter__.return_value = iter(['a', 'b', 'c'])
@@ -2173,7 +2173,7 @@ True
 
 ​	在这个示例中我们为 `method` 打上便捷补丁以返回 `sentinel.some_object`:
 
-\>>>
+
 
 ```
 >>> real = ProductionClass()
@@ -2197,7 +2197,7 @@ sentinel.some_object
 
 [`call()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.call) 是一个可创建更简单断言的辅助对象，用于同 [`call_args`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.call_args), [`call_args_list`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.call_args_list), [`mock_calls`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.mock_calls) 和 [`method_calls`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.method_calls) 进行比较。 [`call()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.call) 也可配合 [`assert_has_calls()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.assert_has_calls) 使用。
 
-\>>>
+
 
 ```
 >>> m = MagicMock(return_value=None)
@@ -2215,7 +2215,7 @@ True
 
 [`call_list()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.call.call_list) 可以根据同一个链式调用构造包含多个调用的序列:
 
-\>>>
+
 
 ```
 >>> m = MagicMock()
@@ -2237,7 +2237,7 @@ True
 
 ​	你可以使用它们作为“元组”的特性来为更复杂的内省和断言功能获取单个参数。 位置参数是一个元组（如无位置参数则为空元组）而关键字参数是一个字典:
 
-\>>>
+
 
 ```
 >>> m = MagicMock(return_value=None)
@@ -2253,7 +2253,7 @@ True
 True
 ```
 
-\>>>
+
 
 ```
 >>> m = MagicMock()
@@ -2297,7 +2297,7 @@ True
 
 ​	为了忽略某些参数你可以传入与 *任意对象* 相等的对象。 这样再调用 [`assert_called_with()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.assert_called_with) 和 [`assert_called_once_with()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.assert_called_once_with) 时无论传入什么参数都将执行成功。
 
-\>>>
+
 
 ```
 >>> mock = Mock(return_value=None)
@@ -2307,7 +2307,7 @@ True
 
 [`ANY`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.ANY) 也可被用在与 [`mock_calls`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.mock_calls) 这样的调用列表相比较的场合:
 
-\>>>
+
 
 ```
 >>> m = MagicMock(return_value=None)
@@ -2336,7 +2336,7 @@ class TestStringMethods(unittest.TestCase):
 
 ​	当启用过滤时，`dir(some_mock)` 将只显示有用的属性并将包括正常情况下不会被显示的任何动态创建的属性。 如果 mock 是使用 *spec* (当然也可以是 *autospec*) 创建的则原有的所有属性都将被显示，即使它们还未被访问过:
 
-\>>>
+
 
 ```
 >>> dir(Mock())
@@ -2360,7 +2360,7 @@ class TestStringMethods(unittest.TestCase):
 
 ​	许多不太有用的（是 [`Mock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock) 的而不是被模拟对象的私有成员）开头带有下划线和双下划线的属性已从在 [`Mock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock) 上对 [`dir()`](https://docs.python.org/zh-cn/3.13/library/functions.html#dir) 的调用的结果中被过滤。 如果你不喜欢此行为你可以通过设置模块级开关 [`FILTER_DIR`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.FILTER_DIR) 来将其关闭:
 
-\>>>
+
 
 ```
 >>> from unittest import mock
@@ -2405,7 +2405,7 @@ with open('/some/path', 'w') as f:
 
 ​	通过 [`MagicMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.MagicMock) 来模拟上下文管理器是十分常见且十分麻烦的因此需要使用一个辅助函数。
 
-\>>>
+
 
 ```
 >>> m = mock_open()
@@ -2425,7 +2425,7 @@ with open('/some/path', 'w') as f:
 
 ​	以及针对读取文件:
 
-\>>>
+
 
 ```
 >>> with patch('__main__.open', mock_open(read_data='bibble')) as m:
@@ -2452,7 +2452,7 @@ with open('/some/path', 'w') as f:
 
 [`unittest.mock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#module-unittest.mock) already provides a feature to help with this, called speccing. If you use a class or instance as the `spec` for a mock then you can only access attributes on the mock that exist on the real class:
 
-\>>>
+
 
 ```
 >>> from urllib import request
@@ -2465,7 +2465,7 @@ AttributeError: Mock object has no attribute 'assret_called_with'
 
 ​	这个 spec 仅会应用于 mock 本身，因此对于 mock 中的任意方法我们仍然面临相同的问题:
 
-\>>>
+
 
 ```
 >>> mock.has_data()
@@ -2477,7 +2477,7 @@ AttributeError: Mock object has no attribute 'assret_called_with'
 
 ​	以下是一个实际应用的示例:
 
-\>>>
+
 
 ```
 >>> from urllib import request
@@ -2491,7 +2491,7 @@ True
 
 ​	You can see that `request.Request` has a spec. `request.Request` takes two arguments in the constructor (one of which is *self*). Here's what happens if we try to call it incorrectly:
 
-\>>>
+
 
 ```
 >>> req = request.Request()
@@ -2502,7 +2502,7 @@ TypeError: <lambda>() takes at least 2 arguments (1 given)
 
 ​	该 spec 也将应用于被实例化的类（即附带i.e. the return value of spec 的 mock 的返回值）:
 
-\>>>
+
 
 ```
 >>> req = request.Request('foo')
@@ -2512,7 +2512,7 @@ TypeError: <lambda>() takes at least 2 arguments (1 given)
 
 `Request` objects are not callable, so the return value of instantiating our mocked out `request.Request` is a non-callable mock. With the spec in place any typos in our asserts will raise the correct error:
 
-\>>>
+
 
 ```
 >>> req.add_header('spam', 'eggs')
@@ -2528,7 +2528,7 @@ AttributeError: Mock object has no attribute 'assret_called_with'
 
 ​	除了通过 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 来使用 *autospec* 还有一个 [`create_autospec()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.create_autospec) 可以直接创建带有自动 spec 的 mock:
 
-\>>>
+
 
 ```
 >>> from urllib import request
@@ -2541,7 +2541,7 @@ AttributeError: Mock object has no attribute 'assret_called_with'
 
 ​	一个更严重的问题在于实例属性通常是在 [`__init__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__init__) 方法中被创建而在类中完全不存在。 *autospec* 无法获取动态创建的属性而使得 api 被限制于可见的属性。
 
-\>>>
+
 
 ```
 >>> class Something:
@@ -2559,7 +2559,7 @@ AttributeError: Mock object has no attribute 'a'
 
 ​	要解决这个问题有几种不同的方式。 最容易但多少有些烦扰的方式是简单地在 mock 创建完成后再设置所需的属性。 Just because *autospec* 只是不允许你获取不存在于 spec 上的属性但并不会阻止你设置它们:
 
-\>>>
+
 
 ```
 >>> with patch('__main__.Something', autospec=True):
@@ -2570,7 +2570,7 @@ AttributeError: Mock object has no attribute 'a'
 
 *spec* 和 *autospec* 都有更严格的版本 *确实能* 阻止你设置不存在的属性。 这在你希望确保你的代码只能 *设置* 有效的属性时也很有用，但显然它会阻止下面这个特定的应用场景:
 
-\>>>
+
 
 ```
 >>> with patch('__main__.Something', autospec=True, spec_set=True):
@@ -2591,7 +2591,7 @@ class Something:
 
 ​	这带来了另一个问题。 为今后将变为不同类型对象的那些成员提供默认值 `None` 是比较常见的做法。 `None` 作为 spec 是没有用处的，因为它会使你无法访问 *any* 任何属性或方法。 由于 `None` 作为 spec 将 *永远不会* 有任何用处，并且有可能要指定某个通常为其他类型的成员，因此 autospec 不会为被设为 `None` 的成员使用 spec。 它们将为普通的 mock (嗯 —— 应为 MagicMocks):
 
-\>>>
+
 
 ```
 >>> class Something:
@@ -2604,7 +2604,7 @@ class Something:
 
 ​	如果你不喜欢修改你的生产类来添加默认值那么还有其他的选项。 其中之一是简单地使用一个实例而非类作为 spec。 另一选项则是创建一个生产类的子类并向该子类添加默认值而不影响到生产类。 这两个选项都需要你使用一个替代对象作为 spec。 值得庆幸的是 [`patch()`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.patch) 支持这样做 —— 你可以简单地传入替代对象作为 *autospec* 参数:
 
-\>>>
+
 
 ```
 >>> class Something:
@@ -2632,7 +2632,7 @@ class Something:
 
 ​	如果一个带有名称或 spec 的 mock 实例被分配给一个属性则将不会在封包链中处理它。 这可以防止人们对 mock 对象的固定部分执行封包。
 
-\>>>
+
 
 ```
 >>> mock = Mock()
@@ -2656,7 +2656,7 @@ class Something:
 
 ​	如果三个均已设置，模拟对象将返回来自 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect) 的值，完全忽略 [`return_value`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.return_value) 和被包装的对象。 如果设置任意两个，则具有更高优先级的那个将返回值。 无论设置的顺序是哪个在前，优先级顺序将保持不变。
 
-\>>>
+
 
 ```
 >>> from unittest.mock import Mock
@@ -2674,7 +2674,7 @@ class Something:
 
 ​	由于 `None` 是 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect) 的默认值，如果你将其值重新赋为 `None`，则优先级顺序将在 [`return_value`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.return_value) 和被包装的对象之间进行检查，并忽略 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect)。
 
-\>>>
+
 
 ```
 >>> order_mock.get_value.side_effect = None
@@ -2684,7 +2684,7 @@ class Something:
 
 ​	如果 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect) 所返回的值为 [`DEFAULT`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.DEFAULT)，它将被忽略并且优先级顺序将移至后继者来获取要返回的值。
 
-\>>>
+
 
 ```
 >>> from unittest.mock import DEFAULT
@@ -2695,7 +2695,7 @@ class Something:
 
 ​	当 [`Mock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock) 包装一个对象时，[`return_value`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.return_value) 的默认值将为 [`DEFAULT`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.DEFAULT)。
 
-\>>>
+
 
 ```
 >>> order_mock = Mock(spec=Order, wraps=Order)
@@ -2709,7 +2709,7 @@ sentinel.DEFAULT
 
 ​	由于真正调用的是被包装的对象，创建该模拟对象的实例将返回真正的该类实例。 被包装的对象所需要的任何位置参数都必须被传入。
 
-\>>>
+
 
 ```
 >>> order_mock_instance = order_mock()
@@ -2719,7 +2719,7 @@ True
 'third'
 ```
 
-\>>>
+
 
 ```
 >>> order_mock.get_value.return_value = DEFAULT
@@ -2727,7 +2727,7 @@ True
 'third'
 ```
 
-\>>>
+
 
 ```
 >>> order_mock.get_value.return_value = "second"
@@ -2737,7 +2737,7 @@ True
 
 ​	但是如果你将其赋值为 `None`，由于它是一个显式赋值所以不会被忽略。 因此，优先级顺序将不会移至被包装的对象。
 
-\>>>
+
 
 ```
 >>> order_mock.get_value.return_value = None
@@ -2747,7 +2747,7 @@ True
 
 ​	即使你在初始化模拟对象时立即立即全部设置这三者，优先级顺序仍会保持原样：
 
-\>>>
+
 
 ```
 >>> order_mock = Mock(spec=Order, wraps=Order,
@@ -2767,7 +2767,7 @@ True
 
 ​	如果 [`side_effect`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.Mock.side_effect) 已耗尽，优先级顺序将不会导致从后续者获取值。 而是会引发 `StopIteration` 异常。
 
-\>>>
+
 
 ```
 >>> order_mock = Mock(spec=Order, wraps=Order)
@@ -2776,7 +2776,7 @@ True
 >>> order_mock.get_value.return_value = "second"
 ```
 
-\>>>
+
 
 ```
 >>> order_mock.get_value()
@@ -2785,7 +2785,7 @@ True
 'another side effect value'
 ```
 
-\>>>
+
 
 ```
 >>> order_mock.get_value()

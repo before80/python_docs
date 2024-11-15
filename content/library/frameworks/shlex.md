@@ -32,7 +32,7 @@ draft = false
 
 ​	将列表 *split_command* 中的词法单元（token）串联起来，返回一个字符串。本函数是 [`split()`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.split) 的逆运算。
 
-\>>>
+
 
 ```
 >>> from shlex import join
@@ -60,7 +60,7 @@ echo -n 'Multiple words'
 
 ​	以下用法是不安全的：
 
-\>>>
+
 
 ```
 >>> filename = 'somefile; rm -rf ~'
@@ -71,7 +71,7 @@ ls -l somefile; rm -rf ~
 
 ​	用 [`quote()`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.quote) 可以堵住这种安全漏洞：
 
-\>>>
+
 
 ```
 >>> from shlex import quote
@@ -85,7 +85,7 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 ​	这种包装方式兼容于 UNIX shell 和 [`split()`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.split) 。
 
-\>>>
+
 
 ```
 >>> from shlex import split
@@ -254,7 +254,7 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 [`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#module-shlex) 类提供了与常见 Unix shell（如 `bash`、 `dash` 和 `sh`）的解析兼容性。为了充分利用这种兼容性，请在构造函数中设定 `punctuation_chars` 参数。该参数默认为 `False`，维持 3.6 以下版本的行为。如果设为 `True`，则会改变对 `();<>|&` 字符的解析方式：这些字符都将视为单个的词法单元返回。虽然不算是完整的 shell 解析程序（考虑到 shell 的多样性，超出了标准库的范围），但确实能比其他方式更容易进行命令行的处理。以下代码段演示了两者的差异：
 
-\>>>
+
 
 ```
 >>> import shlex
@@ -274,7 +274,7 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 ​	punctuation_chars 参数可以不传入 `True` ，而是传入包含特定字符的字符串，用于确定由哪些字符构成标点符号。例如：
 
-\>>>
+
 
 ```
 >>> import shlex
@@ -289,7 +289,7 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 ​	如果指定了 `punctuation_chars`，则 [`wordchars`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.wordchars) 属性的参数会是 `~-./*?=`。因为这些字符可以出现在文件名（包括通配符）和命令行参数中（如 `--color=auto`）。因此：
 
-\>>>
+
 
 ```
 >>> import shlex

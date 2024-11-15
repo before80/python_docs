@@ -30,7 +30,7 @@ draft = false
 
 - 与基于硬件的二进制浮点不同，十进制模块具有用户可更改的精度（默认为28位），可以与给定问题所需的一样大：
 
-  \>>>
+  
 
   ```
   >>> from decimal import *
@@ -66,7 +66,7 @@ draft = false
 
 ​	通常使用 decimal 的方式是先导入该模块，通过 [`getcontext()`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.getcontext) 查看当前上下文，并在必要时为精度、舍入或启用的陷阱设置新值:
 
-\>>>
+
 
 ```
 >>> from decimal import *
@@ -80,7 +80,7 @@ Context(prec=28, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999,
 
 ​	Decimal 实例可以基于整数、字符串、浮点数或元组来构建。 基于整数或浮点数进行构建将执行该整数或浮点数值的精确转换。 Decimal 数字包括特殊值如代表“非数字”的 `NaN`，正的和负的 `Infinity` 以及 `-0`:
 
-\>>>
+
 
 ```
 >>> getcontext().prec = 28
@@ -104,7 +104,7 @@ Decimal('-Infinity')
 
 ​	如果 [`FloatOperation`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.FloatOperation) 信号被捕获，构造函数中的小数和浮点数的意外混合或排序比较会引发异常
 
-\>>>
+
 
 ```
 >>> c = getcontext()
@@ -125,7 +125,7 @@ True
 
 ​	新 Decimal 的重要性仅由输入的位数决定。 上下文精度和舍入仅在算术运算期间发挥作用。
 
-\>>>
+
 
 ```
 >>> getcontext().prec = 6
@@ -142,7 +142,7 @@ Decimal('5.85988')
 
 ​	如果超出了 C 版本的内部限制，则构造一个 decimal 将引发 [`InvalidOperation`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.InvalidOperation)
 
-\>>>
+
 
 ```
 >>> Decimal("1e9999999999999999999")
@@ -155,7 +155,7 @@ decimal.InvalidOperation: [<class 'decimal.InvalidOperation'>]
 
 ​	Decimal 能很好地与 Python 的其余部分交互。 以下是一个小小的 decimal 浮点数飞行马戏团：
 
-\>>>
+
 
 ```
 >>> data = list(map(Decimal, '1.34 1.87 3.45 2.35 1.00 0.03 9.25'.split()))
@@ -187,7 +187,7 @@ Decimal('0.77')
 
 ​	Decimal 也可以使用一些数学函数：
 
-\>>>
+
 
 ```
 >>> getcontext().prec = 28
@@ -203,7 +203,7 @@ Decimal('1')
 
 [`quantize()`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal.quantize) 方法将舍入为固定的指数。 此方法对于将结果舍入到固定位置的货币应用程序来说很有用处:
 
-\>>>
+
 
 ```
 >>> Decimal('7.325').quantize(Decimal('.01'), rounding=ROUND_DOWN)
@@ -218,7 +218,7 @@ Decimal('8')
 
 ​	根据标准，[`decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#module-decimal) 模块提供了两个现成的标准上下文 [`BasicContext`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.BasicContext) 和 [`ExtendedContext`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.ExtendedContext) 。 前者对调试特别有用，因为许多陷阱都已启用：
 
-\>>>
+
 
 ```
 >>> myothercontext = Context(prec=60, rounding=ROUND_HALF_DOWN)
@@ -245,7 +245,7 @@ DivisionByZero: x / 0
 
 ​	上下文还具有用于监视计算期间遇到的异常情况的信号旗标。 这些旗标将保持设置直到被显式地清除，因此最好是通过使用 [`clear_flags()`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Context.clear_flags) 方法来清除每组受监控的计算之前的旗标。
 
-\>>>
+
 
 ```
 >>> setcontext(ExtendedContext)
@@ -261,7 +261,7 @@ Context(prec=9, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999,
 
 ​	单个陷阱是使用上下文的 `traps` 属性中的字典来设置的:
 
-\>>>
+
 
 ```
 >>> setcontext(ExtendedContext)
@@ -322,7 +322,7 @@ numeric-string ::=  [sign] numeric-value | [sign] nan
 
 ​	算术对十进制对象和算术对整数和浮点数有一些小的差别。 当余数运算符 `%` 应用于Decimal对象时，结果的符号是 *被除数* 的符号，而不是除数的符号:
 
-\>>>
+
 
 ```
 >>> (-7) % 4
@@ -333,7 +333,7 @@ Decimal('-3')
 
 ​	整数除法运算符 `//` 的行为类似，返回真商的整数部分（截断为零）而不是它的向下取整，以便保留通常的标识 `x == (x // y) * y + x % y`:
 
-\>>>
+
 
 ```
 >>> -7 // 4
@@ -358,7 +358,7 @@ Decimal('-1')
 
 ​	返回一对 `(n, d)` 整数，表示给定的 [`Decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal) 实例作为分数、最简形式项并带有正分母:
 
-\>>>
+
 
 ```
 >>> Decimal('-3.14').as_integer_ratio()
@@ -396,7 +396,7 @@ a > b            ==> Decimal('1')
 
 ​	使用它们的抽象表示而不是它们的数值来比较两个操作数。 类似于 [`compare()`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal.compare) 方法，但结果给出了一个总排序 [`Decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal) 实例。 两个 [`Decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal) 实例具有相同的数值但不同的表示形式在此排序中比较不相等：
 
-\>>>
+
 
 ```
 >>> Decimal('12.0').compare_total(Decimal('12'))
@@ -429,7 +429,7 @@ Decimal('-1')
 
 ​	返回第一个操作数的副本，其符号设置为与第二个操作数的符号相同。 例如：
 
-\>>>
+
 
 ```
 >>> Decimal('2.3').copy_sign(Decimal('-1.5'))
@@ -442,7 +442,7 @@ Decimal('-2.3')
 
 ​	返回给定数字的（自然）指数函数 `e**x` 的值。结果使用 [`ROUND_HALF_EVEN`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.ROUND_HALF_EVEN) 舍入模式正确舍入。
 
-\>>>
+
 
 ```
 >>> Decimal(1).exp()
@@ -463,7 +463,7 @@ Decimal('2.561702493119680037517373933E+139')
 
 ​	从 Python 3.2 开始，[`Decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal) 实例也可以直接从 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) 构造。
 
-\>>>
+
 
 ```
 >>> Decimal.from_float(0.1)
@@ -482,7 +482,7 @@ Decimal('-Infinity')
 
 ​	混合乘法加法。 返回 self*other+third ，中间乘积 self*other 没有舍入。
 
-\>>>
+
 
 ```
 >>> Decimal(2).fma(3, 5)
@@ -616,7 +616,7 @@ Decimal('11')
 
 ​	返回的值等于舍入后的第一个运算数并且具有第二个操作数的指数。
 
-\>>>
+
 
 ```
 >>> Decimal('1.41421356').quantize(Decimal('1.000'))
@@ -641,7 +641,7 @@ Decimal('1.414')
 
 ​	如果结果为零则其符号将为 *self* 的符号。
 
-\>>>
+
 
 ```
 >>> Decimal(18).remainder_near(Decimal(10))
@@ -710,7 +710,7 @@ Decimal('-5')
 
 ​	例如:
 
-\>>>
+
 
 ```
 >>> from decimal import Decimal, getcontext, ROUND_DOWN
@@ -822,7 +822,7 @@ s = +s
 
 *clamp* 字段为 `0` (默认值) 或 `1`。 如果设为 `1`，则 [`Decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal) 实例的指数 `e` 的表示范围在此上下文中将严格限制在 `Emin - prec + 1 <= e <= Emax - prec + 1` 范围内。 如果 *clamp* 为 `0` 则将适用较弱的条件：调整后的 [`Decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal) 实例指数最大值为 `Emax`。 当 *clamp* 为 `1` 时，一个较大的普通数值将在可能的情况下减小其指数并为其系数添加相应数量的零，以便符合指数值限制；这可以保留数字值但会丢失有效末尾零的信息。 例如:
 
-\>>>
+
 
 ```
 >>> Context(prec=6, Emax=999, clamp=1).create_decimal('1.23e999')
@@ -857,7 +857,7 @@ Decimal('1.23000E+999')
 
 ​	此方法很有用处，因为常量往往被给予高于应用所需的精度。 另一个好处在于立即执行舍入可以消除超出当前精度的数位所导致的意外效果。 在下面的示例中，使用未舍入的输入意味着在总和中添加零会改变结果：
 
-\>>>
+
 
 ```
 >>> getcontext().prec = 3
@@ -873,7 +873,7 @@ Decimal('4.44')
 
 ​	基于浮点数 *f* 创建一个新的 Decimal 实例，但会使用 *self* 作为上下文来执行舍入。 与 [`Decimal.from_float()`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal.from_float) 类方法不同，上下文的精度、舍入方法、旗标和陷阱会应用到转换中。
 
-\>>>
+
 
 ```
 >>> context = Context(prec=5, rounding=ROUND_DOWN)
@@ -1316,7 +1316,7 @@ exceptions.ArithmeticError(exceptions.Exception)
 
 ​	舍入错误的影响可能因接近相互抵销的加减运算被放大从而导致丢失有效位。 Knuth 提供了两个指导性示例，其中出现了精度不足的浮点算术舍入，导致加法的交换律和分配律被打破：
 
-\>>>
+
 
 ```
 # 来自 Seminumerical Algorithms, Section 4.2.2 的示例。
@@ -1338,7 +1338,7 @@ Decimal('0.0060000')
 
 [`decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#module-decimal) 模块则可以通过充分地扩展精度来避免有效位的丢失：
 
-\>>>
+
 
 ```
 >>> getcontext().prec = 20
@@ -1373,7 +1373,7 @@ Decimal('0.0060000')
 
 ​	在这两个不相同但却相等的有符号零之外，还存在几种零的不同表示形式，它们的精度不同但值也都相等。 这需要一些时间来逐渐适应。 对于习惯了标准浮点表示形式的眼睛来说，以下运算返回等于零的值并不是显而易见的：
 
-\>>>
+
 
 ```
 >>> 1 / Decimal('Infinity')
@@ -1568,7 +1568,7 @@ def sin(x):
 
 ​	A. 有些用户会将构造器简写为一个字母：
 
-\>>>
+
 
 ```
 >>> D = decimal.Decimal
@@ -1580,13 +1580,13 @@ Decimal('4.68')
 
 ​	A. 用 [`quantize()`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal.quantize) 方法舍入到固定数目的十进制位。 如果设置了 [`Inexact`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Inexact) 陷阱，它也适用于验证有效性:
 
-\>>>
+
 
 ```
 >>> TWOPLACES = Decimal(10) ** -2       # same as Decimal('0.01')
 ```
 
-\>>>
+
 
 ```
 >>> # Round to two places
@@ -1594,7 +1594,7 @@ Decimal('4.68')
 Decimal('3.21')
 ```
 
-\>>>
+
 
 ```
 >>> # Validate that a number does not exceed two places
@@ -1602,7 +1602,7 @@ Decimal('3.21')
 Decimal('3.21')
 ```
 
-\>>>
+
 
 ```
 >>> Decimal('3.214').quantize(TWOPLACES, context=Context(traps=[Inexact]))
@@ -1615,7 +1615,7 @@ Inexact: None
 
 ​	A. 某些运算如与整数相加、相减和相乘将会自动保留固定的小数位数。 其他运算，如相除和非整数相乘则会改变小数位数，需要再加上 [`quantize()`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal.quantize) 处理步骤:
 
-\>>>
+
 
 ```
 >>> a = Decimal('102.72')           # Initial fixed-point values
@@ -1634,7 +1634,7 @@ Decimal('0.03')
 
 ​	在开发定点数应用时，更方便的做法是定义处理 [`quantize()`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal.quantize) 步骤的函数:
 
-\>>>
+
 
 ```
 >>> def mul(x, y, fp=TWOPLACES):
@@ -1644,7 +1644,7 @@ Decimal('0.03')
 ...     return (x / y).quantize(fp)
 ```
 
-\>>>
+
 
 ```
 >>> mul(a, b)                       # Automatically preserve fixed-point
@@ -1657,7 +1657,7 @@ Decimal('0.03')
 
 ​	A. [`normalize()`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal.normalize) 方法可将所有相等的值映射为单一表示形式:
 
-\>>>
+
 
 ```
 >>> values = map(Decimal, '200 200.000 2E2 .02E+4'.split())
@@ -1669,7 +1669,7 @@ Decimal('0.03')
 
 ​	A. 是在计算 *之后* 发生的。 decimal 设计规范认为数字应当被视为是精确的并且是不依赖于当前上下文而创建的。 它们甚至可以具有比当前上下文更高的精确度。 计算过程将使用精确的输入然后再对计算的 *结果* 应用舍入（或其他的上下文操作）:
 
-\>>>
+
 
 ```
 >>> getcontext().prec = 5
@@ -1690,14 +1690,14 @@ Decimal('3.1416')
 
 ​	如果一个应用不必关心追踪有效位，则可以很容易地移除指数和末尾的零，丢弃有效位但让值保持不变：
 
-\>>>
+
 
 ```
 >>> def remove_exponent(d):
 ...     return d.quantize(Decimal(1)) if d == d.to_integral() else d.normalize()
 ```
 
-\>>>
+
 
 ```
 >>> remove_exponent(Decimal('5E+3'))
@@ -1708,7 +1708,7 @@ Decimal('5000')
 
 ​	A. 是的，任何二进制浮点数都可以精确地表示为 Decimal 值，但完全精确的转换可能需要比平常感觉更高的精度：
 
-\>>>
+
 
 ```
 >>> Decimal(math.pi)
@@ -1723,7 +1723,7 @@ Decimal('3.141592653589793115997963468544185161590576171875')
 
 ​	A. 是的。 原则上所有值都会被视为精确值，在这些值上进行的算术运算也是如此。 只有结果会被舍入。 对于输入来说其好处是“所输入即所得”。 而其缺点则是如果你忘记了输入没有被舍入，结果看起来可能会很奇怪：
 
-\>>>
+
 
 ```
 >>> getcontext().prec = 3
@@ -1735,7 +1735,7 @@ Decimal('5.20')
 
 ​	解决办法是提高精度或使用单目加法运算对输入执行强制舍入：
 
-\>>>
+
 
 ```
 >>> getcontext().prec = 3
@@ -1745,7 +1745,7 @@ Decimal('1.23')
 
 ​	此外，还可以使用 [`Context.create_decimal()`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Context.create_decimal) 方法在创建输入时执行舍入：
 
-\>>>
+
 
 ```
 >>> Context(prec=5, rounding=ROUND_DOWN).create_decimal('1.2345678')
@@ -1760,7 +1760,7 @@ Decimal('1.2345')
 
 ​	进行大数字算术的最便捷方式同样是使用 `prec` 的最大值 [[2\]](https://docs.python.org/zh-cn/3.13/library/decimal.html#id5):
 
-\>>>
+
 
 ```
 >>> setcontext(Context(prec=MAX_PREC, Emax=MAX_EMAX, Emin=MIN_EMIN))
@@ -1771,7 +1771,7 @@ Decimal('90462569716653277674664832038037428010367175520031690655826237506182132
 
 ​	对于不精确的结果，在 64 位平台上 [`MAX_PREC`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.MAX_PREC) 的值太大了，可用的内存将会不足:
 
-\>>>
+
 
 ```
 >>> Decimal(1) / 3
@@ -1782,7 +1782,7 @@ MemoryError
 
 ​	在具有超量分配的系统上 (如 Linux)，一种更复杂的方式是根据可用的 RAM 大小来调整 `prec`。 假设你有 8GB 的 RAM 并期望同时有 10 个操作数，每个最多使用 500MB:
 
-\>>>
+
 
 ```
 >>> import sys

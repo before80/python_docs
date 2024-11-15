@@ -40,7 +40,7 @@ draft = false
 
 ​	这是一些 Windows 下的例子。 请注意 `msvcrt` 是包含大部分 C 函数的 MS 标准 C 库，并会使用 `cdecl` 调用惯例:
 
-\>>>
+
 
 ```
 >>> from ctypes import *
@@ -62,7 +62,7 @@ draft = false
 
 ​	在 Linux 中，要求指定文件名 *包括* 扩展名来加载库，因此不能使用属性访问的方式来加载库。 你应当使用 dll 加载器的 [`LoadLibrary()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.LibraryLoader.LoadLibrary) 方法，或是应当通过调用构造器创建 CDLL 的实例来加载库:
 
-\>>>
+
 
 ```
 >>> cdll.LoadLibrary("libc.so.6")  
@@ -79,7 +79,7 @@ draft = false
 
 ​	通过操作dll对象的属性来操作这些函数。
 
-\>>>
+
 
 ```
 >>> libc.printf
@@ -108,7 +108,7 @@ HMODULE GetModuleHandleW(LPCWSTR lpModuleName);
 
 ​	有时候，dlls的导出的函数名不符合 Python 的标识符规范，比如 `"??2@YAPAXI@Z"`。此时，你必须使用 [`getattr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#getattr) 方法来获得该函数。
 
-\>>>
+
 
 ```
 >>> getattr(cdll.msvcrt, "??2@YAPAXI@Z")  
@@ -118,7 +118,7 @@ HMODULE GetModuleHandleW(LPCWSTR lpModuleName);
 
 ​	Windows 下，有些 dll 导出的函数没有函数名，而是通过其顺序号调用。对此类函数，你也可以通过 dll 对象的数值索引来操作这些函数。
 
-\>>>
+
 
 ```
 >>> cdll.kernel32[1]  
@@ -138,7 +138,7 @@ AttributeError: function ordinal 0 not found
 
 ​	你可以像任何其它 Python 可调用对象一样调用这些函数。 这个例子使用了 `rand()` 函数，它不接收任何参数并返回一个伪随机整数:
 
-\>>>
+
 
 ```
 >>> print(libc.rand())  
@@ -147,7 +147,7 @@ AttributeError: function ordinal 0 not found
 
 ​	在 Windows 上，你可以调用 `GetModuleHandleA()` 函数，它返回一个 win32 模块句柄 (将 `None` 作为唯一参数传入以使用 `NULL` 指针来调用它):
 
-\>>>
+
 
 ```
 >>> print(hex(windll.kernel32.GetModuleHandleA(None)))  
@@ -157,7 +157,7 @@ AttributeError: function ordinal 0 not found
 
 ​	如果你用 `cdecl` 调用方式调用 `stdcall` 约定的函数，则会甩出一个异常 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。反之亦然。
 
-\>>>
+
 
 ```
 >>> cdll.kernel32.GetModuleHandleA(None)  
@@ -177,7 +177,7 @@ ValueError: Procedure probably called with too many arguments (4 bytes in excess
 
 ​	在 Windows 中，[`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 使用 win32 结构化异常处理来防止由于在调用函数时使用非法参数导致的程序崩溃。
 
-\>>>
+
 
 ```
 >>> windll.kernel32.GetModuleHandleA(32)  
@@ -228,7 +228,7 @@ OSError: exception: access violation reading 0x00000020
 
 ​	所有这些类型都可以通过使用正确类型和值的可选初始值调用它们来创建:
 
-\>>>
+
 
 ```
 >>> c_int()
@@ -242,7 +242,7 @@ c_ushort(65533)
 
 ​	由于这些类型是可变的，它们的值也可以在以后更改:
 
-\>>>
+
 
 ```
 >>> i = c_int(42)
@@ -258,7 +258,7 @@ c_long(42)
 
 ​	当给指针类型的对象 [`c_char_p`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_char_p), [`c_wchar_p`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_wchar_p) 和 [`c_void_p`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_void_p) 等赋值时，将改变它们所指向的 *内存地址*，而 *不是* 它们所指向的内存区域的 *内容* (这是理所当然的，因为 Python 的 bytes 对象是不可变的):
 
-\>>>
+
 
 ```
 >>> s = "Hello, World"
@@ -279,7 +279,7 @@ Hello, World
 
 ​	但你要注意不能将它们传递给会改变指针所指内存的函数。如果你需要可改变的内存块，ctypes 提供了 [`create_string_buffer()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.create_string_buffer) 函数，它提供多种方式创建这种内存块。当前的内存块内容可以通过 `raw` 属性存取，如果你希望将它作为NUL结束的字符串，请使用 `value` 属性:
 
-\>>>
+
 
 ```
 >>> from ctypes import *
@@ -308,7 +308,7 @@ b'Hello'
 
 ​	注意 printf 将打印到真正标准输出设备，而*不是* [`sys.stdout`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.stdout)，因此这些实例只能在控制台提示符下工作，而不能在 *IDLE* 或 *PythonWin* 中运行。
 
-\>>>
+
 
 ```
 >>> printf = libc.printf
@@ -330,7 +330,7 @@ ctypes.ArgumentError: argument 2: TypeError: Don't know how to convert parameter
 
 ​	正如前面所提到过的，除了整数、字符串以及字节串之外，所有的 Python 类型都必须使用它们对应的 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 类型包装，才能够被正确地转换为所需的C语言类型。
 
-\>>>
+
 
 ```
 >>> printf(b"An int %d, a double %f\n", 1234, c_double(3.14))
@@ -359,7 +359,7 @@ libc.printf.argtypes = [ctypes.c_char_p]
 
 ​	您也可以通过自定义 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 参数转换方式来允许将你自己的类实例作为函数参数。 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 会寻找 `_as_parameter_` 属性并使用它作为函数参数。 属性必须是整数、字符串、字节串、[`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 实例或者带有 `_as_parameter_` 属性的对象:
 
-\>>>
+
 
 ```
 >>> class Bottles:
@@ -383,7 +383,7 @@ libc.printf.argtypes = [ctypes.c_char_p]
 
 [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes) must be a sequence of C data types (the `printf()` function is probably not a good example here, because it takes a variable number and different types of parameters depending on the format string, on the other hand this is quite handy to experiment with this feature):
 
-\>>>
+
 
 ```
 >>> printf.argtypes = [c_char_p, c_char_p, c_int, c_double]
@@ -395,7 +395,7 @@ String 'Hi', Int 10, Double 2.200000
 
 ​	指定数据类型可以防止不合理的参数传递（就像 C 函数的原型），并且会自动尝试将参数转换为需要的类型:
 
-\>>>
+
 
 ```
 >>> printf(b"%d %d %d", 1, 2, 3)
@@ -418,7 +418,7 @@ X 2 3.000000
 
 `time()` 的 C 原型是 `time_t time(time_t *)`。 由于 `time_t` 的类型可能不同于默认返回类型 int，你应当指定 `restype` 属性:
 
-\>>>
+
 
 ```
 >>> libc.time.restype = c_time_t
@@ -426,7 +426,7 @@ X 2 3.000000
 
 ​	The argument types can be specified using [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes):
 
-\>>>
+
 
 ```
 >>> libc.time.argtypes = (POINTER(c_time_t),)
@@ -434,7 +434,7 @@ X 2 3.000000
 
 ​	调用该函数时如果要将 `NULL` 指针作为第一个参数，请使用 `None`:
 
-\>>>
+
 
 ```
 >>> print(libc.time(None))  
@@ -443,7 +443,7 @@ X 2 3.000000
 
 ​	下面是一个更高级的示例，它使用了 `strchr()` 函数，该函数接收一个字符串指针和一个字符，并返回一个字符串指针:
 
-\>>>
+
 
 ```
 >>> strchr = libc.strchr
@@ -459,7 +459,7 @@ None
 
 ​	If you want to avoid the [`ord("x")`](https://docs.python.org/zh-cn/3.13/library/functions.html#ord) calls above, you can set the [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes) attribute, and the second argument will be converted from a single character Python bytes object into a C char:
 
-\>>>
+
 
 ```
 >>> strchr.restype = c_char_p
@@ -478,7 +478,7 @@ b'def'
 
 ​	You can also use a callable Python object (a function or a class for example) as the [`restype`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.restype) attribute, if the foreign function returns an integer. The callable will be called with the *integer* the C function returns, and the result of this call will be used as the result of your function call. This is useful to check for error return values and automatically raise an exception:
 
-\>>>
+
 
 ```
 >>> GetModuleHandle = windll.kernel32.GetModuleHandleA  
@@ -511,7 +511,7 @@ OSError: [Errno 126] The specified module could not be found.
 
 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 暴露了 [`byref()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.byref) 函数用于通过引用传递参数，使用 [`pointer()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.pointer) 函数也能达到同样的效果，只不过 [`pointer()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.pointer) 需要更多步骤，因为它要先构造一个真实指针对象。所以在 Python 代码本身不需要使用这个指针对象的情况下，使用 [`byref()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.byref) 效率更高。
 
-\>>>
+
 
 ```
 >>> i = c_int()
@@ -537,7 +537,7 @@ OSError: [Errno 126] The specified module could not be found.
 
 ​	这是一个简单的 POINT 结构体，它包含名称为 *x* 和 *y* 的两个变量，还展示了如何通过构造函数初始化结构体。
 
-\>>>
+
 
 ```
 >>> from ctypes import *
@@ -562,7 +562,7 @@ TypeError: too many initializers
 
 ​	这是以一个 RECT 结构体，他包含了两个 POINT ，分别叫 *upperleft* 和 *lowerright*:
 
-\>>>
+
 
 ```
 >>> class RECT(Structure):
@@ -579,7 +579,7 @@ TypeError: too many initializers
 
 ​	嵌套结构体可以通过几种方式构造初始化:
 
-\>>>
+
 
 ```
 >>> r = RECT(POINT(1, 2), POINT(3, 4))
@@ -588,7 +588,7 @@ TypeError: too many initializers
 
 ​	可以通过 *类* 获取字段 [descriptor](https://docs.python.org/zh-cn/3.13/glossary.html#term-descriptor) ，它能提供很多有用的调试信息。
 
-\>>>
+
 
 ```
 >>> print(POINT.x)
@@ -616,7 +616,7 @@ TypeError: too many initializers
 
 ​	可以创建包含位字段的结构体和联合。 位字段只适用于整数字段，位宽度是由 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_) 元组中的第三项来指定的:
 
-\>>>
+
 
 ```
 >>> class Int(Structure):
@@ -644,7 +644,7 @@ TenPointsArrayType = POINT * 10
 
 ​	下面是一个构造的数据案例，结构体中包含了4个 POINT 和一些其他东西。
 
-\>>>
+
 
 ```
 >>> from ctypes import *
@@ -673,7 +673,7 @@ for pt in arr:
 
 ​	也能通过指定正确类型的数据来初始化:
 
-\>>>
+
 
 ```
 >>> from ctypes import *
@@ -693,7 +693,7 @@ for pt in arr:
 
 ​	可以将 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 类型数据传入 [`pointer()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.pointer) 函数创建指针:
 
-\>>>
+
 
 ```
 >>> from ctypes import *
@@ -704,7 +704,7 @@ for pt in arr:
 
 ​	指针实例拥有 [`contents`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._Pointer.contents) 属性，它返回指针指向的真实对象，如上面的 `i` 对象:
 
-\>>>
+
 
 ```
 >>> pi.contents
@@ -714,7 +714,7 @@ c_long(42)
 
 ​	注意 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 并没有 OOR （返回原始对象）, 每次访问这个属性时都会构造返回一个新的相同对象:
 
-\>>>
+
 
 ```
 >>> pi.contents is i
@@ -726,7 +726,7 @@ False
 
 ​	将这个指针的 contents 属性赋值为另一个 [`c_int`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_int) 实例将会导致该指针指向该实例的内存地址:
 
-\>>>
+
 
 ```
 >>> i = c_int(99)
@@ -738,7 +738,7 @@ c_long(99)
 
 ​	指针对象也可以通过整数下标进行访问:
 
-\>>>
+
 
 ```
 >>> pi[0]
@@ -748,7 +748,7 @@ c_long(99)
 
 ​	通过整数下标赋值可以改变指针所指向的真实内容:
 
-\>>>
+
 
 ```
 >>> print(i)
@@ -763,7 +763,7 @@ c_long(22)
 
 ​	内部细节, [`pointer()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.pointer) 函数不只是创建了一个指针实例，它首先创建了一个指针 *类型* 。这是通过调用 [`POINTER()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.POINTER) 函数实现的，它接收 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 类型为参数，返回一个新的类型:
 
-\>>>
+
 
 ```
 >>> PI = POINTER(c_int)
@@ -780,7 +780,7 @@ TypeError: expected c_long instead of int
 
 ​	无参调用指针类型可以创建一个 `NULL` 指针。 `NULL` 指针的布尔值是 `False`
 
-\>>>
+
 
 ```
 >>> null_ptr = POINTER(c_int)()
@@ -791,7 +791,7 @@ False
 
 ​	解引用指针的时候， [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 会帮你检测是否指针为 `NULL` (但是解引用无效的 非 `NULL` 指针仍会导致 Python 崩溃):
 
-\>>>
+
 
 ```
 >>> null_ptr[0]
@@ -813,7 +813,7 @@ ValueError: NULL pointer access
 
 ​	Usually, ctypes does strict type checking. This means, if you have `POINTER(c_int)` in the [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes) list of a function or as the type of a member field in a structure definition, only instances of exactly the same type are accepted. There are some exceptions to this rule, where ctypes accepts other objects. For example, you can pass compatible array instances instead of pointer types. So, for `POINTER(c_int)`, ctypes accepts an array of c_int:
 
-\>>>
+
 
 ```
 >>> class Bar(Structure):
@@ -835,7 +835,7 @@ ValueError: NULL pointer access
 
 ​	可以给指针内容赋值为 None 将其设置为 `Null`
 
-\>>>
+
 
 ```
 >>> bar.values = None
@@ -844,7 +844,7 @@ ValueError: NULL pointer access
 
 ​	有时候你拥有一个不兼容的类型。 在 C 中，你可以将一个类型强制转换为另一个。 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 中的 a [`cast()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.cast) 函数提供了相同的功能。 上面的结构体 `Bar` 的 `value` 字段接收 `POINTER(c_int)` 指针或者 [`c_int`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_int) 数组，但是不能接受其他类型的实例:
 
-\>>>
+
 
 ```
 >>> bar.values = (c_byte * 4)()
@@ -858,7 +858,7 @@ TypeError: incompatible types, c_byte_Array_4 instance instead of LP_c_long inst
 
 [`cast()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.cast) 函数可以将一个指针实例强制转换为另一种 ctypes 类型。 [`cast()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.cast) 接收两个参数，一个 ctypes 指针对象或者可以被转换为指针的其他类型对象，和一个 ctypes 指针类型。 返回第二个类型的一个实例，该返回实例和第一个参数指向同一片内存空间:
 
-\>>>
+
 
 ```
 >>> a = (c_byte * 4)()
@@ -869,7 +869,7 @@ TypeError: incompatible types, c_byte_Array_4 instance instead of LP_c_long inst
 
 ​	所以 [`cast()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.cast) 可以用来给结构体 `Bar` 的 `values` 字段赋值:
 
-\>>>
+
 
 ```
 >>> bar = Bar()
@@ -896,7 +896,7 @@ struct cell {
 
 ​	直接翻译成 ctypes 的代码如下，但是这行不通:
 
-\>>>
+
 
 ```
 >>> class cell(Structure):
@@ -912,7 +912,7 @@ NameError: name 'cell' is not defined
 
 ​	因为新的 `class cell` 在 class 语句本身中是不可用的。 在 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 中，我们可以定义 `cell` 类再在 class 语句之后设置 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_) 属性:
 
-\>>>
+
 
 ```
 >>> from ctypes import *
@@ -926,7 +926,7 @@ NameError: name 'cell' is not defined
 
 ​	让我们试试。我们定义两个 `cell` 实例，让它们互相指向对方，然后通过指针链式访问几次:
 
-\>>>
+
 
 ```
 >>> c1 = cell()
@@ -958,7 +958,7 @@ foo bar foo bar foo bar foo bar
 
 ​	这里展示一个使用标准 C 库的 `qsort()` 函数例子，使用它在一个回调函数的协助下对条目进行排序。 `qsort()` 将被用来给一个整数的数组排序:
 
-\>>>
+
 
 ```
 >>> IntArray5 = c_int * 5
@@ -972,7 +972,7 @@ foo bar foo bar foo bar foo bar
 
 ​	所以，我们的回调函数要接收两个整数指针，返回一个整数。首先我们创建回调函数的 `类型`
 
-\>>>
+
 
 ```
 >>> CMPFUNC = CFUNCTYPE(c_int, POINTER(c_int), POINTER(c_int))
@@ -981,7 +981,7 @@ foo bar foo bar foo bar foo bar
 
 ​	首先，这是一个简单的回调，它会显示传入的值:
 
-\>>>
+
 
 ```
 >>> def py_cmp_func(a, b):
@@ -994,7 +994,7 @@ foo bar foo bar foo bar foo bar
 
 ​	结果:
 
-\>>>
+
 
 ```
 >>> qsort(ia, len(ia), sizeof(c_int), cmp_func)  
@@ -1008,7 +1008,7 @@ py_cmp_func 1 7
 
 ​	现在我们可以比较两个元素并返回有用的结果了:
 
-\>>>
+
 
 ```
 >>> def py_cmp_func(a, b):
@@ -1027,7 +1027,7 @@ py_cmp_func 5 7
 
 ​	我们可以轻易地验证，现在数组是有序的了:
 
-\>>>
+
 
 ```
 >>> for i in ia: print(i, end=" ")
@@ -1038,7 +1038,7 @@ py_cmp_func 5 7
 
 ​	这些工厂函数可以当作装饰器工厂，所以可以这样写:
 
-\>>>
+
 
 ```
 >>> @CFUNCTYPE(c_int, POINTER(c_int), POINTER(c_int))
@@ -1071,7 +1071,7 @@ py_cmp_func 5 7
 
 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 可以通过类型的 [`in_dll()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CData.in_dll) 类方法访问这样的值。 *pythonapi* 是一个用于访问 Python C api 预定义符号:
 
-\>>>
+
 
 ```
 >>> version = ctypes.c_int.in_dll(ctypes.pythonapi, "Py_Version")
@@ -1087,7 +1087,7 @@ py_cmp_func 5 7
 
 ​	这足以证明修改这个指针是很有用的。为了让实例大小不至于太长，这里只展示如何使用 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 读取这个表:
 
-\>>>
+
 
 ```
 >>> from ctypes import *
@@ -1104,7 +1104,7 @@ py_cmp_func 5 7
 
 ​	我们定义了 [`_frozen`](https://docs.python.org/zh-cn/3.13/c-api/import.html#c._frozen) 数据类型，所以我们可以获取表的指针:
 
-\>>>
+
 
 ```
 >>> FrozenTable = POINTER(struct_frozen)
@@ -1114,7 +1114,7 @@ py_cmp_func 5 7
 
 ​	由于 `table` 是指向 `struct_frozen` 数组的 `指针` ，我们可以遍历它，只不过需要自己判断循环是否结束，因为指针本身并不包含长度。它早晚会因为访问到野指针或者什么的把自己搞崩溃，所以我们最好在遇到 `NULL` 后就让它退出循环:
 
-\>>>
+
 
 ```
 >>> for item in table:
@@ -1138,7 +1138,7 @@ zipimport 12345
 
 ​	比如下面的例子:
 
-\>>>
+
 
 ```
 >>> from ctypes import *
@@ -1162,7 +1162,7 @@ zipimport 12345
 
 ​	嗯。我们预想应该打印 `3 4 1 2` 。但是为什么呢? 这是 `rc.a, rc.b = rc.b, rc.a` 这行代码展开后的步骤:
 
-\>>>
+
 
 ```
 >>> temp0, temp1 = rc.b, rc.a
@@ -1177,7 +1177,7 @@ zipimport 12345
 
 ​	下面是另一个可能和预期有偏差的例子:
 
-\>>>
+
 
 ```
 >>> s = c_char_p()
@@ -1205,7 +1205,7 @@ False
 
 ​	The [`resize()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.resize) function can be used to resize the memory buffer of an existing ctypes object. The function takes the object as first argument, and the requested size in bytes as the second argument. The memory block cannot be made smaller than the natural memory block specified by the objects type, a [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) is raised if this is tried:
 
-\>>>
+
 
 ```
 >>> short_array = (c_short * 4)()
@@ -1225,7 +1225,7 @@ ValueError: minimum size is 8
 
 ​	这非常好，但是要怎么访问数组中额外的元素呢？因为数组类型已经定义包含4个元素，导致我们访问新增元素时会产生以下错误:
 
-\>>>
+
 
 ```
 >>> short_array[:]
@@ -1265,7 +1265,7 @@ IndexError: invalid index
 
 ​	这是一些例子:
 
-\>>>
+
 
 ```
 >>> from ctypes.util import find_library
@@ -1280,7 +1280,7 @@ IndexError: invalid index
 
 ​	在 macOS 和 Android 上，[`find_library()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.util.find_library) 使用系统的标准命名方案和路径来定位库，并在成功时返回完整的路径名:
 
-\>>>
+
 
 ```
 >>> from ctypes.util import find_library
@@ -1371,7 +1371,7 @@ IndexError: invalid index
 
 ​	这些类的实例没有共用方法。动态链接库的导出函数可以通过属性或者索引的方式访问。注意，通过属性的方式访问会缓存这个函数，因而每次访问它时返回的都是同一个对象。另一方面，通过索引访问，每次都会返回一个新的对象:
 
-\>>>
+
 
 ```
 >>> from ctypes import CDLL
@@ -1442,7 +1442,7 @@ False
 
 ​	They are instances of a private local class `_FuncPtr` (not exposed in `ctypes`) which inherits from the private [`_CFuncPtr`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr) class:
 
-\>>>
+
 
 ```
 >>> import ctypes
@@ -1572,7 +1572,7 @@ MessageBoxW(
 
 ​	这是使用 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 的包装:
 
-\>>>
+
 
 ```
 >>> from ctypes import c_int, WINFUNCTYPE, windll
@@ -1584,7 +1584,7 @@ MessageBoxW(
 
 ​	现在 `MessageBox` 外部函数可以通过以下方式来调用:
 
-\>>>
+
 
 ```
 >>> MessageBox()
@@ -1603,7 +1603,7 @@ GetWindowRect(
 
 ​	这是使用 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 的包装:
 
-\>>>
+
 
 ```
 >>> from ctypes import POINTER, WINFUNCTYPE, windll, WinError
@@ -1618,7 +1618,7 @@ GetWindowRect(
 
 ​	Output parameters can be combined with the [`errcheck`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.errcheck) protocol to do further output processing and error checking. The win32 `GetWindowRect` api function returns a `BOOL` to signal success or failure, so this function could do the error checking, and raises an exception when the api call failed:
 
-\>>>
+
 
 ```
 >>> def errcheck(result, func, args):
@@ -1632,7 +1632,7 @@ GetWindowRect(
 
 ​	If the [`errcheck`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.errcheck) function returns the argument tuple it receives unchanged, [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) continues the normal processing it does on the output parameters. If you want to return a tuple of window coordinates instead of a `RECT` instance, you can retrieve the fields in the function and return them instead, the normal processing will no longer take place:
 
-\>>>
+
 
 ```
 >>> def errcheck(result, func, args):

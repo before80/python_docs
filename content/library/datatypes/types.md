@@ -232,7 +232,7 @@ assert get_original_bases(int) == (object,)
 
 `t_origin` 应当是一个非形参化的泛型类，例如 `list`, `tuple` 或 `dict`。 `t_args` 应当是一个形参化 `t_origin` 的 [`tuple`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#tuple) (长度可以为 1):
 
-\>>>
+
 
 ```
 >>> from types import GenericAlias

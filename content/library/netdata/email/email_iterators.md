@@ -41,7 +41,7 @@ draft = false
 
 ​	打印消息对象结构的内容类型的缩进表示形式。 例如:
 
-\>>>
+
 
 ```
 >>> msg = email.message_from_file(somefile)

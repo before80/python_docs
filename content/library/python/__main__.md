@@ -30,7 +30,7 @@ draft = false
 
 ​	当一个 Python 模块或包被导入时，`__name__` 被设为模块的名称——通常为 Python 文件本身的名称去掉 `.py` 后缀：
 
-\>>>
+
 
 ```
 >>> import configparser
@@ -40,7 +40,7 @@ draft = false
 
 ​	如果文件是包的一部分，则 `__name__` 还将包括父包的路径：
 
-\>>>
+
 
 ```
 >>> from concurrent.futures import process
@@ -58,7 +58,7 @@ draft = false
 
 - 交互提示符的作用域：
 
-  \>>>
+  
 
   ```
   >>> __name__
@@ -208,7 +208,7 @@ print(f'Found student: {search_students(student_name)}')
 
 ​	如果使用，一个 `if __name__ == '__main__'` 区块仍然会像预期的那样对包内的 `__main__.py` 文件起作用，因为如果导入，它的 `__name__` 属性将包括包的路径:
 
-\>>>
+
 
 ```
 >>> import asyncio.__main__
@@ -293,7 +293,7 @@ Dinsdale found in file /path/to/start.py
 
 ​	Python REPL 是另一个 "顶层环境 "的例子，所以在 REPL 中定义的任何东西都成为 `__main__` 范围的一部分:
 
-\>>>
+
 
 ```
 >>> import namely

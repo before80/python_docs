@@ -57,7 +57,7 @@ asyncio.run(main())
 
 ​	你可以在 [REPL](https://docs.python.org/zh-cn/3.13/glossary.html#term-REPL) 中尝试使用 `asyncio` 并发上下文：
 
-\>>>
+
 
 ```
 $ python -m asyncio

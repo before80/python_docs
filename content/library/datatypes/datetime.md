@@ -179,7 +179,7 @@ object
 
 ​	下面的例子演示了如何对 *days*, *seconds* 和 *microseconds* 以外的任意参数执行“合并”操作并标准化为以上三个结果属性:
 
-\>>>
+
 
 ```
 >>> from datetime import timedelta
@@ -203,7 +203,7 @@ datetime.timedelta(days=64, seconds=29156, microseconds=10)
 
 ​	请注意对负数值进行标准化的结果可能会令人感到惊讶。 例如:
 
-\>>>
+
 
 ```
 >>> from datetime import timedelta
@@ -244,7 +244,7 @@ datetime.timedelta(days=64, seconds=29156, microseconds=10)
 
 ​	It is a somewhat common bug for code to unintentionally use this attribute when it is actually intended to get a [`total_seconds()`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.timedelta.total_seconds) value instead:
 
-\>>>
+
 
 ```
 >>> from datetime import timedelta
@@ -291,7 +291,7 @@ datetime.timedelta(days=64, seconds=29156, microseconds=10)
 
 5. [`timedelta`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.timedelta) 对象的字符串表示形式类似于其内部表示形式被规范化。对于负时间增量，这会导致一些不寻常的结果。例如:
 
-   \>>>
+   
 
    ```
    >>> timedelta(hours=-5)
@@ -324,7 +324,7 @@ datetime.timedelta(days=64, seconds=29156, microseconds=10)
 
 ​	一个标准化的附加示例:
 
-\>>>
+
 
 ```
 >>> # Components of another_year add up to exactly 365 days
@@ -340,7 +340,7 @@ True
 
 [`timedelta`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.timedelta) 算术运算的示例:
 
-\>>>
+
 
 ```
 >>> from datetime import timedelta
@@ -408,7 +408,7 @@ datetime.timedelta(days=3285)
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> from datetime import date
@@ -496,7 +496,7 @@ datetime.date(2021, 1, 4)
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> from datetime import date
@@ -543,7 +543,7 @@ time.struct_time((d.year, d.month, d.day, 0, 0, 0, d.weekday(), yday, -1))
 
 ​	例如，2004 年的第一天是星期四，因此 ISO 2004 年的第一个星期开始于 2003 年 12 月 29 日星期一，结束于 2004 年 1 月 4 日星期日:
 
-\>>>
+
 
 ```
 >>> from datetime import date
@@ -559,7 +559,7 @@ datetime.IsoCalendarDate(year=2004, week=1, weekday=7)
 
 ​	返回一个以 ISO 8601 格式 `YYYY-MM-DD` 来表示日期的字符串:
 
-\>>>
+
 
 ```
 >>> from datetime import date
@@ -575,7 +575,7 @@ datetime.IsoCalendarDate(year=2004, week=1, weekday=7)
 
 ​	返回一个表示日期的字符串:
 
-\>>>
+
 
 ```
 >>> from datetime import date
@@ -603,7 +603,7 @@ time.ctime(time.mktime(d.timetuple()))
 
 ​	计算距离特定事件天数的例子:
 
-\>>>
+
 
 ```
 >>> import time
@@ -626,7 +626,7 @@ datetime.date(2008, 6, 24)
 
 ​	使用 [`date`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.date) 的更多例子：
 
-\>>>
+
 
 ```
 >>> from datetime import date
@@ -811,7 +811,7 @@ datetime(1970, 1, 1, tzinfo=timezone.utc) + timedelta(seconds=timestamp)
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> from datetime import datetime
@@ -860,7 +860,7 @@ datetime(*(time.strptime(date_string, format)[0:6]))
 
 *在 3.13 版本发生变更:* 现在如果 *format* 指定了月份日期但没有年份则会发出 [`DeprecationWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#DeprecationWarning)。 这是为了避免在代码中当格式缺少年份仅能解析月份和日期时将使用非闰年的默认年份而导致四年轮回的闰年程序错误。 这样的 *format* 值在 Python 3.15 将可能引发错误。 绕过此问题的办法是始终在你的 *format* 中包括年份。 如果是解析不带年份的 *date_string* 值，则在解析之前显式地添加一个属于闰年的年份：
 
-\>>>
+
 
 ```
 >>> from datetime import datetime
@@ -1118,7 +1118,7 @@ timestamp = (dt - datetime(1970, 1, 1)) / timedelta(seconds=1)
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> from datetime import datetime, timezone
@@ -1130,7 +1130,7 @@ timestamp = (dt - datetime(1970, 1, 1)) / timedelta(seconds=1)
 
 ​	可选参数 *sep* (默认为 `'T'`) 为单个分隔字符，会被放在结果的日期和时间两部分之间。 例如:
 
-\>>>
+
 
 ```
 >>> from datetime import tzinfo, timedelta, datetime
@@ -1162,7 +1162,7 @@ timestamp = (dt - datetime(1970, 1, 1)) / timedelta(seconds=1)
 
 ​	对于无效的 *timespec* 参数将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError):
 
-\>>>
+
 
 ```
 >>> from datetime import datetime
@@ -1183,7 +1183,7 @@ timestamp = (dt - datetime(1970, 1, 1)) / timedelta(seconds=1)
 
 ​	返回一个表示日期和时间的字符串:
 
-\>>>
+
 
 ```
 >>> from datetime import datetime
@@ -1213,7 +1213,7 @@ time.ctime(time.mktime(d.timetuple()))
 
 ​	使用 [`datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime) 对象的例子：
 
-\>>>
+
 
 ```
 >>> from datetime import datetime, date, time, timezone
@@ -1315,7 +1315,7 @@ class KabulTz(tzinfo):
 
 ​	上述 `KabulTz` 的用法:
 
-\>>>
+
 
 ```
 >>> tz1 = KabulTz()
@@ -1425,7 +1425,7 @@ True
 
 ​	示例：
 
-\>>>
+
 
 ```
 >>> from datetime import time
@@ -1489,7 +1489,7 @@ datetime.time(4, 23, 1, tzinfo=datetime.timezone.utc)
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> from datetime import time
@@ -1536,7 +1536,7 @@ datetime.time(4, 23, 1, tzinfo=datetime.timezone.utc)
 
 ​	使用 [`time`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.time) 对象的例子:
 
-\>>>
+
 
 ```
 >>> from datetime import time, tzinfo, timedelta
@@ -1871,7 +1871,7 @@ start  22:MM 23:MM  0:MM  1:MM  3:MM  4:MM
 
 ​	当 DST 开始时（即 "start" 行），本地时钟从 1:59 跳到 3:00。 形式为 2:MM 的时间值在那一天是没有意义的，因此在 DST 开始那一天 `astimezone(Eastern)` 不会输出包含 `hour == 2` 的结果。 例如，在 2016 年春季时钟向前调整时，我们得到:
 
-\>>>
+
 
 ```
 >>> from datetime import datetime, timezone
@@ -1890,7 +1890,7 @@ start  22:MM 23:MM  0:MM  1:MM  3:MM  4:MM
 
 ​	当 DST 结束时（见 "end" 行），会有更糟糕的潜在问题：本地时间值中有一个小时是不可能没有歧义的：夏令时的最后一小时。 即以北美东部时间表示当天夏令时结束时的形式为 5:MM UTC 的时间。 本地时钟从 1:59（夏令时）再次跳回到 1:00（标准时）。 形式为 1:MM 的本地时间就是有歧义的。 此时 [`astimezone()`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime.astimezone) 是通过将两个相邻的 UTC 小时映射到两个相同的本地小时来模仿本地时钟的行为。 在这个北美东部时间的示例中，形式为 5:MM 和 6:MM 的 UTC 时间在转换为北美东部时间时都将被映射到 1:MM，但前一个时间会将 [`fold`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime.fold) 属性设为 0 而后一个时间会将其设为 1。 例如，在 2016 年秋季时钟往回调整时，我们得到:
 
-\>>>
+
 
 ```
 >>> u0 = datetime(2016, 11, 6, 4, tzinfo=timezone.utc)
@@ -1994,7 +1994,7 @@ start  22:MM 23:MM  0:MM  1:MM  3:MM  4:MM
 
 ​	这些方法接受可被用于解析和格式化日期的格式代码:
 
-\>>>
+
 
 ```
 >>> datetime.strptime('31/01/22 23:59:59.999999',
@@ -2123,7 +2123,7 @@ datetime(*(time.strptime(date_string, format)[0:6]))
 
 10. 当使用 [`strptime()`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime.strptime) 解析月份和日期时，始终在格式字符串中包括年份。 如果你需要解析的值缺少年份，则添加一个显式的占位用闰年。 否则当你的代码遇到一个闰日时将引发异常因为解析器所使用的默认年份不是一个闰年。 用户会每隔四年碰到这个程序错误...
 
-    \>>>
+    
 
     ```
     >>> month_day = "02/29"

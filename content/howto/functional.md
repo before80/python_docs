@@ -94,7 +94,7 @@ draft = false
 
 ​	你可以手动试验迭代器的接口。
 
-\>>>
+
 
 ```
 >>> L = [1, 2, 3]
@@ -126,7 +126,7 @@ for i in obj:
 
 ​	可以用 [`list()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 或 [`tuple()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#tuple) 这样的构造函数把迭代器具体化成列表或元组:
 
-\>>>
+
 
 ```
 >>> L = [1, 2, 3]
@@ -138,7 +138,7 @@ for i in obj:
 
 ​	序列的解压操作也支持迭代器：如果你知道一个迭代器能够返回 N 个元素，你可以把他们解压到有 N 个元素的元组:
 
-\>>>
+
 
 ```
 >>> L = [1, 2, 3]
@@ -158,7 +158,7 @@ for i in obj:
 
 ​	对字典调用 [`iter()`](https://docs.python.org/zh-cn/3.13/library/functions.html#iter) 会返回一个遍历字典的键的迭代器:
 
-\>>>
+
 
 ```
 >>> m = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
@@ -185,7 +185,7 @@ Dec 12
 
 [`dict()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 构造函数可以接受一个迭代器，然后返回一个有限的 `(key, value)` 元组的数据流:
 
-\>>>
+
 
 ```
 >>> L = [('Italy', 'Rome'), ('France', 'Paris'), ('US', 'Washington DC')]
@@ -203,7 +203,7 @@ for line in file:
 
 ​	集合可以从可遍历的对象获取内容，也可以让你遍历集合的元素:
 
-\>>>
+
 
 ```
 >>> S = {2, 3, 5, 7, 11, 13}
@@ -223,7 +223,7 @@ for line in file:
 
 ​	列表推导式和生成器表达式 (简写: "listcomp" 和 "genexp") 让这些操作更加简明，这个形式借鉴自函数式编程语言 Haskell (https://www.haskell.org/)。 你可以用以下代码去掉一个字符串流中的所有空白符:
 
-\>>>
+
 
 ```
 >>> line_list = ['  line 1\n', 'line 2  \n', ' \n', '']
@@ -237,7 +237,7 @@ for line in file:
 
 ​	你可以加上条件语句 `"if"` 来选取特定的元素:
 
-\>>>
+
 
 ```
 >>> stripped_list = [line.strip() for line in line_list
@@ -292,7 +292,7 @@ for expr1 in sequence1:
 
 ​	这说明，如果有多个 `for...in` 语句而没有 `if` 语句，输出结果的长度就是所有序列长度的乘积。如果你的两个列表长度为3，那么输出的列表长度就是9:
 
-\>>>
+
 
 ```
 >>> seq1 = 'abc'
@@ -320,7 +320,7 @@ for expr1 in sequence1:
 
 ​	这里有简单的生成器函数示例:
 
-\>>>
+
 
 ```
 >>> def generate_ints(N):
@@ -334,7 +334,7 @@ for expr1 in sequence1:
 
 ​	这里有一个 `generate_ints()` 生成器的示例:
 
-\>>>
+
 
 ```
 >>> gen = generate_ints(3)
@@ -408,7 +408,7 @@ def counter(maximum):
 
 ​	这是改变计数器的一个示例
 
-\>>>
+
 
 ```
 >>> it = counter(10)  
@@ -451,14 +451,14 @@ StopIteration
 
 `f(iterA[0], iterB[0]), f(iterA[1], iterB[1]), f(iterA[2], iterB[2]), ...`.
 
-\>>>
+
 
 ```
 >>> def upper(s):
 ...     return s.upper()
 ```
 
-\>>>
+
 
 ```
 >>> list(map(upper, ['sentence', 'fragment']))
@@ -471,14 +471,14 @@ StopIteration
 
 [`filter(predicate, iter)`](https://docs.python.org/zh-cn/3.13/library/functions.html#filter) 返回一个遍历序列中满足指定条件的元素的迭代器，和列表推导式的功能相似。 **predicate** （谓词）是一个在特定条件下返回真值的函数；要使用函数 [`filter()`](https://docs.python.org/zh-cn/3.13/library/functions.html#filter)，谓词函数必须只能接受一个参数。
 
-\>>>
+
 
 ```
 >>> def is_even(x):
 ...     return (x % 2) == 0
 ```
 
-\>>>
+
 
 ```
 >>> list(filter(is_even, range(10)))
@@ -487,7 +487,7 @@ StopIteration
 
 ​	这也可以写成列表推导式:
 
-\>>>
+
 
 ```
 >>> list(x for x in range(10) if is_even(x))
@@ -496,7 +496,7 @@ StopIteration
 
 [`enumerate(iter, start=0)`](https://docs.python.org/zh-cn/3.13/library/functions.html#enumerate) 计数可迭代对象中的元素，然后返回包含每个计数（从 **start** 开始）和元素两个值的元组。:
 
-\>>>
+
 
 ```
 >>> for item in enumerate(['subject', 'verb', 'object']):
@@ -517,7 +517,7 @@ for i, line in enumerate(f):
 
 [`sorted(iterable, key=None, reverse=False)`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 会将 iterable 中的元素收集到一个列表中，然后排序并返回结果。其中 *key* 和 *reverse* 参数会传递给所创建列表的 [`sort()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list.sort) 方法。:
 
-\>>>
+
 
 ```
 >>> import random
@@ -535,7 +535,7 @@ for i, line in enumerate(f):
 
 ​	内置函数 [`any(iter)`](https://docs.python.org/zh-cn/3.13/library/functions.html#any) 和 [`all(iter)`](https://docs.python.org/zh-cn/3.13/library/functions.html#all) 会查看一个可迭代对象内容的逻辑值。[`any()`](https://docs.python.org/zh-cn/3.13/library/functions.html#any) 在可迭代对象中任意一个元素为真时返回 `True`，而 [`all()`](https://docs.python.org/zh-cn/3.13/library/functions.html#all) 在所有元素为真时返回 `True`:
 
-\>>>
+
 
 ```
 >>> any([0, 1, 0])
@@ -808,7 +808,7 @@ server_log('Unable to open socket')
 
 [`functools.reduce(func, iter, [initial_value\])`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.reduce) 持续地在可迭代对象的所有元素上执行操作，因此它不能够用在无限的可迭代对象上。*func* 必须是一个接受两个元素并返回一个值的函数。[`functools.reduce()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.reduce) 接受迭代器返回的前两个元素 A 和 B 并计算 `func(A, B)` 。然后它会请求第三个元素，C，计算 `func(func(A, B), C)`，然后把这个结果再和第四个元素组合并返回，如此继续下去直到消耗整个可迭代对象。如果输入的可迭代对象完全不返回任何值，[`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError) 异常就会抛出。如果提供了初值(initial value)，它会被用作起始值，也就是先计算 `func(initial_value, A)` 。:
 
-\>>>
+
 
 ```
 >>> import operator, functools
@@ -826,7 +826,7 @@ TypeError: reduce() of empty sequence with no initial value
 
 ​	如果你在 [`functools.reduce()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.reduce) 中使用 [`operator.add()`](https://docs.python.org/zh-cn/3.13/library/operator.html#operator.add)，你就会把可迭代对象中的所有元素加起来.这种情况非常常见, 所以 Python 有一个特殊的内置函数 [`sum()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sum):
 
-\>>>
+
 
 ```
 >>> import functools, operator

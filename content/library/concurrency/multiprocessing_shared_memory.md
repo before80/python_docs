@@ -63,7 +63,7 @@ draft = false
 
 ​	以下示例展示了 [`SharedMemory`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.shared_memory.html#multiprocessing.shared_memory.SharedMemory) 底层的用法:
 
-\>>>
+
 
 ```
 >>> from multiprocessing import shared_memory
@@ -90,7 +90,7 @@ b'howdy'
 
 ​	下面的例子展示了 [`SharedMemory`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.shared_memory.html#multiprocessing.shared_memory.SharedMemory) 类配合 [NumPy 数组](https://numpy.org/) 的实际应用，从两个独立的 Python shell 访问相同的 `numpy.ndarray`:
 
-\>>>
+
 
 ```
 >>> # 在第一个 Python 交互式 shell 中
@@ -157,7 +157,7 @@ array([  1,   1,   2,   3,   5, 888])
 
 ​	下面的例子展示了 [`SharedMemoryManager`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.shared_memory.html#multiprocessing.managers.SharedMemoryManager) 的基本机制：
 
-\>>>
+
 
 ```
 >>> from multiprocessing.managers import SharedMemoryManager
@@ -175,7 +175,7 @@ ShareableList(['a', 'l', 'p', 'h', 'a'], name='psm_6572_12221')
 
 ​	下面的例子展示了使用 [`SharedMemoryManager`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.shared_memory.html#multiprocessing.managers.SharedMemoryManager) 对象的一种更方便的方式，通过 [`with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#with) 语句来确保所有共享内存块在它们不再被需要时得到释放：
 
-\>>>
+
 
 ```
 >>> with SharedMemoryManager() as smm:
@@ -217,7 +217,7 @@ ShareableList(['a', 'l', 'p', 'h', 'a'], name='psm_6572_12221')
 
 ​	对于某些应用来说在右侧截去尾部空值会造成问题，要绕过此问题可以在存储这样的值时总是无条件地在其末尾附加一个额外的非 0 字节并在获取时无条件地移除它:
 
-\>>>
+
 
 ```
 >>> from multiprocessing import shared_memory
@@ -253,7 +253,7 @@ b'\x03\x02\x01\x00\x00\x00'
 
 ​	下面的例子演示了 [`ShareableList`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.shared_memory.html#multiprocessing.shared_memory.ShareableList) 实例的基本用法:
 
-\>>>
+
 
 ```
 >>> from multiprocessing import shared_memory
@@ -289,7 +289,7 @@ ValueError: exceeds available storage for existing str
 
 ​	下面的例子演示了一个、两个或多个进程如何通过提供下层的共享内存块名称来访问同一个 [`ShareableList`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.shared_memory.html#multiprocessing.shared_memory.ShareableList):
 
-\>>>
+
 
 ```
 >>> b = shared_memory.ShareableList(range(5))         # In a first process
@@ -306,7 +306,7 @@ ShareableList([0, 1, 2, 3, 4], name='...')
 
 ​	下面的例子显示 [`ShareableList`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.shared_memory.html#multiprocessing.shared_memory.ShareableList) (以及下层的 [`SharedMemory`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.shared_memory.html#multiprocessing.shared_memory.SharedMemory)) 对象可以在必要时被封存和解封。 请注意，它将仍然为同一个共享对象。 出现这种情况是因为被反序列化的对象具有相同的唯一名称并会使用这个相同的名称附加到现有的对象上（如果对象仍然存活）：
 
-\>>>
+
 
 ```
 >>> import pickle
@@ -316,7 +316,7 @@ ShareableList([0, 1, 2, 3, 4], name='...')
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-\>>>
+
 
 ```
 >>> deserialized_sl = pickle.loads(pickle.dumps(sl))
@@ -324,7 +324,7 @@ ShareableList([0, 1, 2, 3, 4], name='...')
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-\>>>
+
 
 ```
 >>> sl[0] = -1
@@ -335,7 +335,7 @@ ShareableList([0, 1, 2, 3, 4], name='...')
 [-1, -2, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-\>>>
+
 
 ```
 >>> sl.shm.close()

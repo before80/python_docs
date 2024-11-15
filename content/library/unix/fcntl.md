@@ -66,7 +66,7 @@ draft = false
 
 ​	举个例子：
 
-\>>>
+
 
 ```
 >>> import array, fcntl, struct, termios, os

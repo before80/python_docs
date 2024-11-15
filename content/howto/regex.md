@@ -134,7 +134,7 @@ draft = false
 
 ​	正则表达式被编译成模式对象，模式对象具有各种操作的方法，例如搜索模式匹配或执行字符串替换。:
 
-\>>>
+
 
 ```
 >>> import re
@@ -145,7 +145,7 @@ re.compile('ab*')
 
 [`re.compile()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.compile) 也接受一个可选的 *flags* 参数，用于启用各种特殊功能和语法变体。 我们稍后将介绍可用的设置，但现在只需一个例子
 
-\>>>
+
 
 ```
 >>> p = re.compile('ab*', re.IGNORECASE)
@@ -198,7 +198,7 @@ re.compile('ab*')
 
 ​	本 HOWTO 使用标准 Python 解释器作为示例。 首先，运行 Python 解释器，导入 [`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 模块，然后编译一个正则
 
-\>>>
+
 
 ```
 >>> import re
@@ -209,7 +209,7 @@ re.compile('[a-z]+')
 
 ​	现在，你可以尝试匹配正则 `[a-z]+` 的各种字符串。 空字符串根本不匹配，因为 `+` 表示“一次或多次重复”。 [`match()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.match) 在这种情况下应返回 `None`，这将导致解释器不打印输出。 你可以显式打印 `match()` 的结果，使其清晰。:
 
-\>>>
+
 
 ```
 >>> p.match("")
@@ -219,7 +219,7 @@ None
 
 ​	现在，让我们尝试一下它应该匹配的字符串，例如 `tempo`。在这个例子中 [`match()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.match) 将返回一个 [匹配对象](https://docs.python.org/zh-cn/3.13/library/re.html#match-objects)，因此你应该将结果储存到一个变量中以供稍后使用。
 
-\>>>
+
 
 ```
 >>> m = p.match('tempo')
@@ -238,7 +238,7 @@ None
 
 ​	尝试这些方法很快就会清楚它们的含义:
 
-\>>>
+
 
 ```
 >>> m.group()
@@ -251,7 +251,7 @@ None
 
 [`group()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.group) 返回正则匹配的子字符串。 [`start()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.start) 和 [`end()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.end) 返回匹配的起始和结束索引。 [`span()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.span) 在单个元组中返回开始和结束索引。 由于 [`match()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.match) 方法只检查正则是否在字符串的开头匹配，所以 `start()` 将始终为零。 但是，模式的 [`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.search) 方法会扫描字符串，因此在这种情况下匹配可能不会从零开始。:
 
-\>>>
+
 
 ```
 >>> print(p.match('::: message'))
@@ -277,7 +277,7 @@ else:
 
 ​	两种模式方法返回模式的所有匹配项。 [`findall()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.findall) 返回匹配字符串的列表:
 
-\>>>
+
 
 ```
 >>> p = re.compile(r'\d+')
@@ -289,7 +289,7 @@ else:
 
 [`findall()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.findall) 必须先创建整个列表才能返回结果。 [`finditer()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.finditer) 方法将一个 [匹配对象](https://docs.python.org/zh-cn/3.13/library/re.html#match-objects) 的序列返回为一个 [iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterator)
 
-\>>>
+
 
 ```
 >>> iterator = p.finditer('12 drummers drumming, 11 ... 10 ...')
@@ -307,7 +307,7 @@ else:
 
 ​	你不必创建模式对象并调用其方法；[`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 模块还提供了顶级函数 [`match()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.match)，[`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.search)，[`findall()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.findall)，[`sub()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.sub) 等等。 这些函数采用与相应模式方法相同的参数，并将正则字符串作为第一个参数添加，并仍然返回 `None` 或 [匹配对象](https://docs.python.org/zh-cn/3.13/library/re.html#match-objects) 实例。:
 
-\>>>
+
 
 ```
 >>> print(re.match(r'From\s+', 'Fromage amk'))
@@ -423,7 +423,7 @@ charref = re.compile("&#(0[0-7]+"
 
 ​	例如，如果你希望仅在行的开头匹配单词 `From`，则要使用的正则 `^From`。:
 
-\>>>
+
 
 ```
 >>> print(re.search('^From', 'From Here to Eternity'))  
@@ -438,7 +438,7 @@ None
 
 ​	匹配行的末尾，定义为字符串的结尾，或者后跟换行符的任何位置。:
 
-\>>>
+
 
 ```
 >>> print(re.search('}$', '{block}'))  
@@ -465,7 +465,7 @@ None
 
 ​	以下示例仅当它是一个完整的单词时匹配 `class`；当它包含在另一个单词中时将不会匹配。
 
-\>>>
+
 
 ```
 >>> p = re.compile(r'\bclass\b')
@@ -479,7 +479,7 @@ None
 
 ​	使用这个特殊序列时，你应该记住两个细微之处。 首先，这是 Python 的字符串文字和正则表达式序列之间最严重的冲突。 在 Python 的字符串文字中，`\b` 是退格字符，ASCII 值为8。 如果你没有使用原始字符串，那么 Python 会将 `\b` 转换为退格，你的正则不会按照你的预期匹配。 以下示例与我们之前的正则看起来相同，但省略了正则字符串前面的 `'r'`。:
 
-\>>>
+
 
 ```
 >>> p = re.compile('\bclass\b')
@@ -510,7 +510,7 @@ To: editor@example.com
 
 ​	分组是用 `'('`, `')'` 元字符来标记的。 `'('` 和 `')'` 与它们在数学表达式中的含义基本一致；它们会将所包含的表达式合为一组，并且你可以使用限定符例如 `*`, `+`, `?`, 或 `{m,n}` 来重复一个分组的内容。 举例来说，`(ab)*` 将匹配 `ab` 的零次或多次重复。
 
-\>>>
+
 
 ```
 >>> p = re.compile('(ab)*')
@@ -520,7 +520,7 @@ To: editor@example.com
 
 ​	用 `'('`，`')'` 表示的组也捕获它们匹配的文本的起始和结束索引；这可以通过将参数传递给 [`group()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.group)、[`start()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.start)、[`end()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.end) 以及 [`span()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.span)。 组从 0 开始编号。组 0 始终存在；它表示整个正则，所以 [匹配对象](https://docs.python.org/zh-cn/3.13/library/re.html#match-objects) 方法都将组 0 作为默认参数。 稍后我们将看到如何表达不捕获它们匹配的文本范围的组。:
 
-\>>>
+
 
 ```
 >>> p = re.compile('(a)b')
@@ -533,7 +533,7 @@ To: editor@example.com
 
 ​	子组从左到右编号，从 1 向上编号。 组可以嵌套；要确定编号，只需计算从左到右的左括号字符。:
 
-\>>>
+
 
 ```
 >>> p = re.compile('(a(b)c)d')
@@ -548,7 +548,7 @@ To: editor@example.com
 
 [`group()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.group) 可以一次传递多个组号，在这种情况下，它将返回一个包含这些组的相应值的元组。:
 
-\>>>
+
 
 ```
 >>> m.group(2,1,2)
@@ -557,7 +557,7 @@ To: editor@example.com
 
 [`groups()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.groups) 方法返回一个元组，其中包含所有子组的字符串，从1到最后一个子组。:
 
-\>>>
+
 
 ```
 >>> m.groups()
@@ -568,7 +568,7 @@ To: editor@example.com
 
 ​	例如，以下正则检测字符串中重复的单词。:
 
-\>>>
+
 
 ```
 >>> p = re.compile(r'\b(\w+)\s+\1\b')
@@ -592,7 +592,7 @@ To: editor@example.com
 
 ​	有时你会想要使用组来表示正则表达式的一部分，但是对检索组的内容不感兴趣。 你可以通过使用非捕获组来显式表达这个事实: `(?:...)`，你可以用任何其他正则表达式替换 `...`。:
 
-\>>>
+
 
 ```
 >>> m = re.match("([abc])+", "abc")
@@ -609,7 +609,7 @@ To: editor@example.com
 
 ​	命名组的语法是Python特定的扩展之一: `(?P<name>...)`。 *name* 显然是该组的名称。 命名组的行为与捕获组完全相同，并且还将名称与组关联。 处理捕获组的 [匹配对象](https://docs.python.org/zh-cn/3.13/library/re.html#match-objects) 方法都接受按编号引用组的整数或包含所需组名的字符串。 命名组仍然是给定的数字，因此你可以通过两种方式检索有关组的信息:
 
-\>>>
+
 
 ```
 >>> p = re.compile(r'(?P<word>\b\w+\b)')
@@ -622,7 +622,7 @@ To: editor@example.com
 
 ​	此外，你可以通过 [`groupdict()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.groupdict) 将命名分组提取为一个字典:
 
-\>>>
+
 
 ```
 >>> m = re.match(r'(?P<first>\w+) (?P<last>\w+)', 'Jane Doe')
@@ -645,7 +645,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 ​	表达式中的后向引用语法，例如 `(...)\1`，指的是组的编号。 当然有一种变体使用组名而不是数字。 这是另一个 Python 扩展: `(?P=name)` 表示在当前点再次匹配名为 *name* 的组的内容。 用于查找重复单词的正则表达式，`\b(\w+)\s+\1\b` 也可以写为 `\b(?P<word>\w+)\s+(?P=word)\b`:
 
-\>>>
+
 
 ```
 >>> p = re.compile(r'\b(?P<word>\w+)\s+(?P=word)\b')
@@ -723,7 +723,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 ​	你可以通过传递 *maxsplit* 的值来限制分割的数量。 当 *maxsplit* 非零时，将最多进行 *maxsplit* 次拆分，并且字符串的其余部分将作为列表的最后一个元素返回。 在以下示例中，分隔符是任何非字母数字字符序列。:
 
-\>>>
+
 
 ```
 >>> p = re.compile(r'\W+')
@@ -735,7 +735,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 ​	有时你不仅对分隔符之间的文本感兴趣，而且还需要知道分隔符是什么。 如果在正则中使用捕获括号，则它们的值也将作为列表的一部分返回。 比较以下调用:
 
-\>>>
+
 
 ```
 >>> p = re.compile(r'\W+')
@@ -748,7 +748,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 ​	模块级函数 [`re.split()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.split) 添加要正则作为第一个参数，但在其他方面是相同的。:
 
-\>>>
+
 
 ```
 >>> re.split(r'[\W]+', 'Words, words, words.')
@@ -771,7 +771,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 ​	这是一个使用 [`sub()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.sub) 方法的简单示例。 它用 `colour` 这个词取代颜色名称:
 
-\>>>
+
 
 ```
 >>> p = re.compile('(blue|white|red)')
@@ -783,7 +783,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 [`subn()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.subn) 方法完成相同的工作，但返回一个包含新字符串值和已执行的替换次数的 2 元组:
 
-\>>>
+
 
 ```
 >>> p = re.compile('(blue|white|red)')
@@ -795,7 +795,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 ​	仅当空匹配与前一个空匹配不相邻时，才会替换空匹配。:
 
-\>>>
+
 
 ```
 >>> p = re.compile('x*')
@@ -807,7 +807,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 ​	这个例子匹配单词 `section` 后跟一个用 `{`，`}` 括起来的字符串，并将 `section` 改为 `subsection`
 
-\>>>
+
 
 ```
 >>> p = re.compile('section{ ( [^}]* ) }', re.VERBOSE)
@@ -817,7 +817,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 ​	还有一种语法用于引用由 `(?P<name>...)` 语法定义的命名组。 `\g<name>` 将使用名为 `name` 的组匹配的子字符串，`\g<number>` 使用相应的组号。 因此 `\g<2>` 等同于 `\2`，但在诸如 `\g<2>0` 之类的替换字符串中并不模糊。 (`\20` 将被解释为对组 20 的引用，而不是对组 2 的引用，后跟字面字符 `'0'`。) 以下替换都是等效的，但使用所有三种变体替换字符串。:
 
-\>>>
+
 
 ```
 >>> p = re.compile('section{ (?P<name> [^}]* ) }', re.VERBOSE)
@@ -833,7 +833,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 ​	在以下示例中，替换函数将小数转换为十六进制:
 
-\>>>
+
 
 ```
 >>> def hexrepl(match):
@@ -866,7 +866,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 ​	The [`match()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.match) function only checks if the RE matches at the beginning of the string while [`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.search) will scan forward through the string for a match. It's important to keep this distinction in mind. Remember, `match()` will only report a successful match which will start at 0; if the match wouldn't start at zero, `match()` will *not* report it.
 
-\>>>
+
 
 ```
 >>> print(re.match('super', 'superstition').span())
@@ -877,7 +877,7 @@ None
 
 ​	另一方面， [`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.search) 将向前扫描字符串，报告它找到的第一个匹配项。:
 
-\>>>
+
 
 ```
 >>> print(re.search('super', 'superstition').span())
@@ -894,7 +894,7 @@ None
 
 ​	当重复一个正则表达式时，就像在 `a*` 中一样，最终的动作就是消耗尽可能多的模式。 当你尝试匹配一对对称分隔符，例如 HTML 标记周围的尖括号时，这个事实经常会让你感到困惑。因为 `.*` 的贪婪性质， 用于匹配单个 HTML 标记的简单模式不起作用。
 
-\>>>
+
 
 ```
 >>> s = '<html><head><title>Title</title>'
@@ -910,7 +910,7 @@ None
 
 ​	在这种情况下，解决方案是使用非贪婪限定符 `*?`, `+?`, `??` 或 `{m,n}?`，它们会匹配尽可能 *少的* 文本。 在上面的例子中，`'>'` 会在第一个 `'<'` 匹配后被立即尝试，而当匹配失败时，引擎将每次前进一个字符，并在每一步重试 `'>'`。 这将产生正确的结果:
 
-\>>>
+
 
 ```
 >>> print(re.match('<.*?>', s).group())

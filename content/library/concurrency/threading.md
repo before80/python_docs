@@ -262,7 +262,7 @@ mydata.x = 1
 
 ​	示例：
 
-\>>>
+
 
 ```
 >>> from threading import Thread

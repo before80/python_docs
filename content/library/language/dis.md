@@ -43,7 +43,7 @@ def myfunc(alist):
 
 ​	可以使用以下命令显示 `myfunc()` 的反汇编：
 
-\>>>
+
 
 ```
 >>> dis.dis(myfunc)
@@ -131,7 +131,7 @@ python -m dis [-h] [-C] [-O] [infile]
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> bytecode = dis.Bytecode(myfunc)

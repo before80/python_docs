@@ -623,7 +623,7 @@ except SomeException:
 
 [`subgroup()`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseExceptionGroup.subgroup) 和 [`split()`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseExceptionGroup.split) 会从原始异常组拷贝 [`__traceback__`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseException.__traceback__), [`__cause__`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseException.__cause__), [`__context__`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseException.__context__) 和 [`__notes__`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseException.__notes__) 字段到 [`derive()`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseExceptionGroup.derive) 所返回的异常组，这样这些字段就不需要被 [`derive()`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseExceptionGroup.derive) 更新。
 
-\>>>
+
 
 ```
 >>> class MyGroup(ExceptionGroup):

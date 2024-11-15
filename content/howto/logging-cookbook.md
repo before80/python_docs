@@ -1368,7 +1368,7 @@ logging_rotatingfile_example.out.5
 
 ​	日志（从 3.2 开始）为这两种格式化方式提供了更多支持。[`Formatter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Formatter) 类可以添加一个额外的可选关键字参数 `style`。它的默认值是 `'%'`，其他的值 `'{'` 和 `'$'` 也支持，对应了其他两种格式化样式。其保持了向后兼容（如您所愿），但通过显示指定样式参数，你可以指定格式化字符串的方式是使用 [`str.format()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.format) 或 [`string.Template`](https://docs.python.org/zh-cn/3.13/library/string.html#string.Template)。 这里是一个控制台会话的示例，展示了这些方式：
 
-\>>>
+
 
 ```
 >>> import logging
@@ -1396,7 +1396,7 @@ logging_rotatingfile_example.out.5
 
 ​	请注意最终输出到日志的消息格式完全独立于单条日志消息的构造方式。 它仍然可以使用 %-formatting，如下所示:
 
-\>>>
+
 
 ```
 >>> logger.error('This is an%s %s %s', 'other,', 'ERROR,', 'message')
@@ -1432,7 +1432,7 @@ class DollarMessage:
 
 ​	Python 并没有上述两个类，当然复制粘贴到自己的代码中也很容易。用法可如下所示（假定在名为 `wherever` 的模块中声明）：
 
-\>>>
+
 
 ```
 >>> from wherever import BraceMessage as __
@@ -2349,7 +2349,7 @@ class DollarMessage:
 
 ​	下面给出示例。 首先用 [`str.format()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.format) 进行格式化：
 
-\>>>
+
 
 ```
 >>> __ = BraceMessage
@@ -2366,7 +2366,7 @@ Message with coordinates: (0.50, 0.50)
 
 ​	然后，用 [`string.Template`](https://docs.python.org/zh-cn/3.13/library/string.html#string.Template) 格式化：
 
-\>>>
+
 
 ```
 >>> __ = DollarMessage
@@ -3415,7 +3415,7 @@ sys.stderr = LoggerWriter(logger, logging.WARNING)
 
 ​	你应当在根据需要配置日志记录 *之后* 再这样做。 在上面的例子中，[`basicConfig()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.basicConfig) 调用执行了此操作（在 `sys.stderr` 被一个 `LoggerWriter` 实例覆盖 *之前* 使用它的值）。 然后，你将得到这样的结果:
 
-\>>>
+
 
 ```
 >>> print('Foo')

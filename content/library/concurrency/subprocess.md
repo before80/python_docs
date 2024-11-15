@@ -61,7 +61,7 @@ os.spawn*
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> subprocess.run(["ls", "-l"])  # 不捕获输出
@@ -259,7 +259,7 @@ Popen(["/usr/bin/git", "commit", "-m", "Fixes a bug."])
 
 ​	将 shell 命令拆分为参数序列的方式可能并不很直观，特别是在复杂的情况下。 [`shlex.split()`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.split) 可以演示如何确定 *args* 适当的拆分形式:
 
-\>>>
+
 
 ```
 >>> import shlex, subprocess
@@ -822,7 +822,7 @@ run(..., check=True, stdout=PIPE).stdout
 
 ​	要在结果中同时捕获标准错误，请使用 `stderr=subprocess.STDOUT`:
 
-\>>>
+
 
 ```
 >>> subprocess.check_output(
@@ -1042,7 +1042,7 @@ p = Popen(["mycmd", "myarg"], bufsize=bufsize,
 
 ​	末尾的一个换行符会从输出中被去除。 命令的退出码可被解读为子进程的返回码。 例如:
 
-\>>>
+
 
 ```
 >>> subprocess.getstatusoutput('ls /bin/ls')
@@ -1069,7 +1069,7 @@ p = Popen(["mycmd", "myarg"], bufsize=bufsize,
 
 ​	类似于 [`getstatusoutput()`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.getstatusoutput)，但退出码会被忽略并且返回值为包含命令输出的字符串。 例如:
 
-\>>>
+
 
 ```
 >>> subprocess.getoutput('ls /bin/ls')

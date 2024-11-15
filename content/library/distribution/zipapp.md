@@ -130,7 +130,7 @@ $ python myapp.pyz
 
 ​	同样还可用 [`create_archive()`](https://docs.python.org/zh-cn/3.13/library/zipapp.html#zipapp.create_archive) 函数完成：
 
-\>>>
+
 
 ```
 >>> import zipapp
@@ -147,7 +147,7 @@ $ ./myapp.pyz
 
 ​	若要替换已有打包文件中的释伴行，请用 [`create_archive()`](https://docs.python.org/zh-cn/3.13/library/zipapp.html#zipapp.create_archive) 函数另建一个修改好的打包文件：
 
-\>>>
+
 
 ```
 >>> import zipapp
@@ -156,7 +156,7 @@ $ ./myapp.pyz
 
 ​	若要原地更新打包文件，可用 [`BytesIO`](https://docs.python.org/zh-cn/3.13/library/io.html#io.BytesIO) 对象在内存中进行替换，然后再覆盖源文件。 请注意原地覆盖文件存在发生错误时丢失原始文件的风险。 这段代码没有考虑发生错误的情况，但生产性代码应该要考虑。 另外，此方法将仅在内存能容纳打包文件时才适用:
 
-\>>>
+
 
 ```
 >>> import zipapp

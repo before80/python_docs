@@ -58,7 +58,7 @@ draft = false
 
 ​	要获取字节串 `b"Nobody inspects the spammish repetition"` 的摘要:
 
-\>>>
+
 
 ```
 >>> import hashlib
@@ -73,7 +73,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 ​	更简要的写法：
 
-\>>>
+
 
 ```
 >>> hashlib.sha256(b"Nobody inspects the spammish repetition").hexdigest()
@@ -88,7 +88,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 ​	使用 [`new()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.new) 并附带一个算法名称:
 
-\>>>
+
 
 ```
 >>> h = hashlib.new('sha256')
@@ -191,7 +191,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 ​	用法示例:
 
-\>>>
+
 
 ```
 >>> h = hashlib.shake_256(b'Nobody inspects the spammish repetition')
@@ -213,7 +213,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> import io, hashlib, hmac
@@ -224,7 +224,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 '...'
 ```
 
-\>>>
+
 
 ```
 >>> buf = io.BytesIO(b"somedata")
@@ -232,7 +232,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 >>> digest = hashlib.file_digest(buf, lambda: mac1)
 ```
 
-\>>>
+
 
 ```
 >>> digest is mac1
@@ -258,7 +258,7 @@ True
 
 *dklen* 是以字节数表示的派生密钥长度。 如果 *dklen* 为 `None` 则会使用哈希算法 *hash_name* 的摘要长度，例如对 SHA-512 来说是 64。
 
-\>>>
+
 
 ```
 >>> from hashlib import pbkdf2_hmac
@@ -374,7 +374,7 @@ True
 
 ​	要计算某个数据的哈希值，你应该首先通过调用适当的构造器函数 ([`blake2b()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.blake2b) 或 [`blake2s()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.blake2s)) 来构造一个哈希对象，然后通过在该对象上调用 [`update()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.update) 来更新目标数据，最后再通过调用 [`digest()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.digest) (或针对十六进制编码字符串的 [`hexdigest()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.hexdigest)) 来获取该对象的摘要。
 
-\>>>
+
 
 ```
 >>> from hashlib import blake2b
@@ -386,7 +386,7 @@ True
 
 ​	作为快捷方式，你可以直接以位置参数的形式向构造器传入第一个数据块来直接更新:
 
-\>>>
+
 
 ```
 >>> from hashlib import blake2b
@@ -396,7 +396,7 @@ True
 
 ​	你可以多次调用 [`hash.update()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.update) 至你所想要的任意次数以迭代地更新哈希值:
 
-\>>>
+
 
 ```
 >>> from hashlib import blake2b
@@ -413,7 +413,7 @@ True
 
 ​	BLAKE2 具有可配置的摘要大小，对于 BLAKE2b 最多 64 字节，对于 BLAKE2s 最多 32 字节。 例如，要使用 BLAKE2b 来替代 SHA-1 而不改变输出大小，我们可以让 BLAKE2b 产生 20 个字节的摘要:
 
-\>>>
+
 
 ```
 >>> from hashlib import blake2b
@@ -429,7 +429,7 @@ True
 
 ​	不同摘要大小的哈希对象具有完全不同的输出（较短哈希值 *并非* 较长哈希值的前缀）；即使输出长度相同，BLAKE2b 和 BLAKE2s 也会产生不同的输出:
 
-\>>>
+
 
 ```
 >>> from hashlib import blake2b, blake2s
@@ -449,7 +449,7 @@ True
 
 ​	这个例子演示了如何使用密钥 `b'pseudorandom key'` 来为 `b'message data'` 获取一个（十六进制编码的）128 位验证代码:
 
-\>>>
+
 
 ```
 >>> from hashlib import blake2b
@@ -461,7 +461,7 @@ True
 
 ​	作为实际的例子，一个 Web 应用可为发送给用户的 cookies 进行对称签名，并在之后对其进行验证以确保它们没有被篡改:
 
-\>>>
+
 
 ```
 >>> from hashlib import blake2b
@@ -493,7 +493,7 @@ False
 
 ​	即使存在原生的密钥哈希模式，BLAKE2 也同样可在 [`hmac`](https://docs.python.org/zh-cn/3.13/library/hmac.html#module-hmac) 模块的 HMAC 构造过程中使用:
 
-\>>>
+
 
 ```
 >>> import hmac, hashlib
@@ -519,7 +519,7 @@ False
 
 ​	使用 BLAKE2 或任何其他通用加密哈希函数，例如 SHA-256 进行 *加盐哈希* (或纯哈希) 并不适用于对密码的哈希。 请参阅 [BLAKE2 FAQ](https://www.blake2.net/#qa) 了解更多信息。
 
-\>>>
+
 
 ```
 >>> import os
@@ -548,7 +548,7 @@ True
 
 ​	BLAKE2 可通过向 *person* 参数传入字节串来进行个性化:
 
-\>>>
+
 
 ```
 >>> from hashlib import blake2b
@@ -566,7 +566,7 @@ True
 
 ​	个性化配合密钥模式也可被用来从单个密钥派生出多个不同密钥。
 
-\>>>
+
 
 ```
 >>> from hashlib import blake2s
@@ -592,7 +592,7 @@ G9GtHFE1YluXY1zWPlYk1e/nWfu0WSEb0KRcjhDeP/o=
 
 ​	这个例子使用 64 字节内部摘要，返回 32 字节最终摘要:
 
-\>>>
+
 
 ```
 >>> from hashlib import blake2b

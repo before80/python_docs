@@ -40,7 +40,7 @@ draft = false
 
 ​	通常称为“主机地址”的地址是使用IP寻址时最基本的单元。 创建地址的最简单方法是使用 [`ipaddress.ip_address()`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.ip_address) 工厂函数，该函数根据传入的值自动确定是创建 IPv4 还是 IPv6 地址：
 
-\>>>
+
 
 ```
 >>> ipaddress.ip_address('192.0.2.1')
@@ -51,7 +51,7 @@ IPv6Address('2001:db8::1')
 
 ​	地址也可以直接从整数创建，适配32位的值并假定为IPv4地址:
 
-\>>>
+
 
 ```
 >>> ipaddress.ip_address(3221225985)
@@ -62,7 +62,7 @@ IPv6Address('2001:db8::1')
 
 ​	要强制使用IPv4或IPv6地址，可以直接调用相关的类。 这对于强制为小整数创建IPv6地址特别有用:
 
-\>>>
+
 
 ```
 >>> ipaddress.ip_address(1)
@@ -79,7 +79,7 @@ IPv6Address('::1')
 
 ​	对于地址，提供了一个自动确定正确IP版本的工厂函数:
 
-\>>>
+
 
 ```
 >>> ipaddress.ip_network('192.0.2.0/24')
@@ -92,7 +92,7 @@ IPv6Network('2001:db8::/96')
 
 ​	默认情况下，尝试创建一个设置了主机位的网络对象将导致 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 被引发。 要请求将附加位强制为零，可以将标志 `strict=False` 传递给构造函数:
 
-\>>>
+
 
 ```
 >>> ipaddress.ip_network('192.0.2.1/24')
@@ -105,7 +105,7 @@ IPv4Network('192.0.2.0/24')
 
 ​	虽然字符串形式提供了更大的灵活性，但网络也可以用整数定义，就像主机地址一样。 在这种情况下，网络被认为只包含由整数标识的单个地址，因此网络前缀包括整个网络地址:
 
-\>>>
+
 
 ```
 >>> ipaddress.ip_network(3221225984)
@@ -120,7 +120,7 @@ IPv6Network('2001:db8::/128')
 
 ​	如上所述，如果您需要描述特定网络上的地址，则地址和网络类都不够。 像 `192.0.2.1/24` 这样的表示法通常被网络工程师和为防火墙和路由器编写工具的人用作“ `192.0.2.0/24` 网络上的主机 `192.0.2.1` ”的简写。因此，[`ipaddress`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#module-ipaddress) 提供了一组将地址与特定网络相关联的混合类。用于创建的接口与用于定义网络对象的接口相同，除了地址部分不限于是网络地址。
 
-\>>>
+
 
 ```
 >>> ipaddress.ip_interface('192.0.2.1/24')
@@ -137,7 +137,7 @@ IPv6Interface('2001:db8::1/96')
 
 ​	提取 IP 版本:
 
-\>>>
+
 
 ```
 >>> addr4 = ipaddress.ip_address('192.0.2.1')
@@ -150,7 +150,7 @@ IPv6Interface('2001:db8::1/96')
 
 ​	从接口获取网络:
 
-\>>>
+
 
 ```
 >>> host4 = ipaddress.ip_interface('192.0.2.1/24')
@@ -163,7 +163,7 @@ IPv6Network('2001:db8::/96')
 
 ​	找出网络中有多少独立地址:
 
-\>>>
+
 
 ```
 >>> net4 = ipaddress.ip_network('192.0.2.0/24')
@@ -176,7 +176,7 @@ IPv6Network('2001:db8::/96')
 
 ​	迭代网络上的“可用”地址:
 
-\>>>
+
 
 ```
 >>> net4 = ipaddress.ip_network('192.0.2.0/24')
@@ -194,7 +194,7 @@ IPv6Network('2001:db8::/96')
 
 ​	获取网络掩码（即对应于网络前缀的设置位）或主机掩码（不属于网络掩码的任何位）：
 
-\>>>
+
 
 ```
 >>> net4 = ipaddress.ip_network('192.0.2.0/24')
@@ -211,7 +211,7 @@ IPv6Address('::ffff:ffff')
 
 ​	展开或压缩地址:
 
-\>>>
+
 
 ```
 >>> addr6.exploded
@@ -230,7 +230,7 @@ IPv6Address('::ffff:ffff')
 
 ​	将网络视为列表有时很有用。 这意味着它可以像这样索引它们:
 
-\>>>
+
 
 ```
 >>> net4[1]
@@ -252,7 +252,7 @@ if address in network:
 
 ​	根据网络前缀有效地完成包含性测试:
 
-\>>>
+
 
 ```
 >>> addr4 = ipaddress.ip_address('192.0.2.1')
@@ -266,7 +266,7 @@ False
 
 [`ipaddress`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#module-ipaddress) 有意义地提供了一些简单、希望直观的比较对象的方法:
 
-\>>>
+
 
 ```
 >>> ipaddress.ip_address('192.0.2.1') < ipaddress.ip_address('192.0.2.2')
@@ -279,7 +279,7 @@ True
 
 ​	其他使用IP地址的模块（例如 [`socket`](https://docs.python.org/zh-cn/3.13/library/socket.html#module-socket) ）通常不会直接接受来自该模块的对象。 相反，它们必须被强制转换为另一个模块可接受的整数或字符串:
 
-\>>>
+
 
 ```
 >>> addr4 = ipaddress.ip_address('192.0.2.1')
@@ -297,7 +297,7 @@ True
 
 ​	直接使用类构造函数时，错误消息更加详细。 例如:
 
-\>>>
+
 
 ```
 >>> ipaddress.ip_address("192.168.0.256")

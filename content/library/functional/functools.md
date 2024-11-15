@@ -248,7 +248,7 @@ def partial(func, /, *args, **keywords):
 
 [`partial()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.partial) 会被“冻结了”一部分函数参数和/或关键字的部分函数应用所使用，从而得到一个具有简化签名的新对象。 例如，[`partial()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.partial) 可用来创建一个行为类似于 [`int()`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 函数的可调用对象，其中 *base* 参数默认为二：
 
-\>>>
+
 
 ```
 >>> from functools import partial
@@ -270,7 +270,7 @@ def partial(func, /, *args, **keywords):
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> class Cell:
@@ -322,7 +322,7 @@ def reduce(function, iterable, initial=initial_missing, /):
 
 ​	要定义一个泛型函数，用装饰器 `@singledispatch` 来装饰它。当使用 `@singledispatch` 定义一个函数时，请注意调度发生在第一个参数的类型上:
 
-\>>>
+
 
 ```
 >>> from functools import singledispatch
@@ -335,7 +335,7 @@ def reduce(function, iterable, initial=initial_missing, /):
 
 ​	要将重载的实现添加到函数中，请使用泛型函数的 `register()` 属性，它可以被用作装饰器。 对于带有类型标注的函数，该装饰器将自动推断第一个参数的类型:
 
-\>>>
+
 
 ```
 >>> @fun.register
@@ -354,7 +354,7 @@ def reduce(function, iterable, initial=initial_missing, /):
 
 ​	还可以使用 [`types.UnionType`](https://docs.python.org/zh-cn/3.13/library/types.html#types.UnionType) 和 [`typing.Union`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.Union):
 
-\>>>
+
 
 ```
 >>> @fun.register
@@ -375,7 +375,7 @@ def reduce(function, iterable, initial=initial_missing, /):
 
 ​	对于不使用类型标注的代码，可以将适当的类型参数显式地传给装饰器本身:
 
-\>>>
+
 
 ```
 >>> @fun.register(complex)
@@ -388,7 +388,7 @@ def reduce(function, iterable, initial=initial_missing, /):
 
 ​	For code that dispatches on a collections type (e.g., `list`), but wants to typehint the items of the collection (e.g., `list[int]`), the dispatch type should be passed explicitly to the decorator itself with the typehint going into the function definition:
 
-\>>>
+
 
 ```
 >>> @fun.register(list)
@@ -407,7 +407,7 @@ def reduce(function, iterable, initial=initial_missing, /):
 
 ​	要启用注册 [lambda](https://docs.python.org/zh-cn/3.13/glossary.html#term-lambda) 和现有的函数，也可以使用 `register()` 属性的函数形式:
 
-\>>>
+
 
 ```
 >>> def nothing(arg, verbose=False):
@@ -418,7 +418,7 @@ def reduce(function, iterable, initial=initial_missing, /):
 
 `register()` 属性会返回未被装饰的函数。 这将启用装饰器栈、[`封存`](https://docs.python.org/zh-cn/3.13/library/pickle.html#module-pickle)，并为每个变量单独创建单元测试:
 
-\>>>
+
 
 ```
 >>> @fun.register(float)
@@ -434,7 +434,7 @@ False
 
 ​	在调用时，泛型函数会根据第一个参数的类型进行分派:
 
-\>>>
+
 
 ```
 >>> fun("Hello, world.")
@@ -459,7 +459,7 @@ Nothing.
 
 ​	如果一个实现被注册到 [abstract base class](https://docs.python.org/zh-cn/3.13/glossary.html#term-abstract-base-class)，则基类的虚拟子类将被发送到该实现:
 
-\>>>
+
 
 ```
 >>> from collections.abc import Mapping
@@ -476,7 +476,7 @@ a => b
 
 ​	要检查泛型函数将为给定的类型选择哪个实现，请使用 `dispatch()` 属性:
 
-\>>>
+
 
 ```
 >>> fun.dispatch(float)
@@ -487,7 +487,7 @@ a => b
 
 ​	要访问所有已注册实现，请使用只读的 `registry` 属性:
 
-\>>>
+
 
 ```
 >>> fun.registry.keys()
@@ -571,7 +571,7 @@ class Negator:
 
 ​	这是一个便捷函数，用于在定义包装器函数时发起调用 [`update_wrapper()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.update_wrapper) 作为函数装饰器。 它等价于 `partial(update_wrapper, wrapped=wrapped, assigned=assigned, updated=updated)`。 例如:
 
-\>>>
+
 
 ```
 >>> from functools import wraps

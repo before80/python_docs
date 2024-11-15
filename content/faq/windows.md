@@ -57,7 +57,7 @@ C:\Users\YourName> py
 
 ​	然后你应当看见类似类似这样的东西：
 
-\>>>
+
 
 ```
 Python 3.6.4 (v3.6.4:d48eceb, Dec 19 2017, 06:04:45) [MSC v.1900 32 bit (Intel)] on win32
@@ -67,7 +67,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ​	解释器已经以“交互模式”打开。这意味着你可以交互输入Python语句或表达式，并在等待时执行或评估它们。这是Python最强大的功能之一。输入几个表达式并看看结果：
 
-\>>>
+
 
 ```
 >>> print("Hello")

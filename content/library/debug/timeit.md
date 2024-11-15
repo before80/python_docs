@@ -35,7 +35,7 @@ $ python -m timeit "'-'.join(map(str, range(100)))"
 
 ​	这可以通过 [Python 接口](https://docs.python.org/zh-cn/3.13/library/timeit.html#python-interface) 实现
 
-\>>>
+
 
 ```
 >>> import timeit
@@ -49,7 +49,7 @@ $ python -m timeit "'-'.join(map(str, range(100)))"
 
 ​	从 [Python 接口](https://docs.python.org/zh-cn/3.13/library/timeit.html#python-interface) 还可以传出一个可调用对象:
 
-\>>>
+
 
 ```
 >>> timeit.timeit(lambda: "-".join(map(str, range(100))), number=10000)
@@ -223,7 +223,7 @@ $ python -m timeit -s "text = 'sample string'; char = 'g'" "text.find(char)"
 
 ​	在输出信息中，共有三个字段。 首先是 loop count，它告诉你每个计时循环重复运行了多少次语句体。 然后是 repetition count ('best of 5')，它告诉你计时循环重复了多少次，最后是语句体在计时循环重复中最好的平均耗时。 即最快一次重复的耗时除以循环计数。
 
-\>>>
+
 
 ```
 >>> import timeit
@@ -235,7 +235,7 @@ $ python -m timeit -s "text = 'sample string'; char = 'g'" "text.find(char)"
 
 ​	使用 [`Timer`](https://docs.python.org/zh-cn/3.13/library/timeit.html#timeit.Timer) 类及其方法可以完成同样的操作:
 
-\>>>
+
 
 ```
 >>> import timeit
@@ -260,7 +260,7 @@ $ python -m timeit "if hasattr(int, '__bool__'): pass"
 100000 loops, best of 5: 2.23 usec per loop
 ```
 
-\>>>
+
 
 ```
 >>> import timeit

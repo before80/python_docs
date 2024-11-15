@@ -795,7 +795,7 @@ object
 
 ​	一个针对命名空间包的 [`importlib.abc.InspectLoader`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.InspectLoader) 具体实现。 这是一个私有类的别名，仅为在命名空间包上内省 `__loader__` 属性而被设为公有:
 
-\>>>
+
 
 ```
 >>> from importlib.machinery import NamespaceLoader
@@ -1087,7 +1087,7 @@ json = import_from_path(module_name, file_path)
 
 ​	以下例子展示了如何实现延迟导入：
 
-\>>>
+
 
 ```
 >>> import importlib.util

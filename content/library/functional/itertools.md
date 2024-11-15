@@ -106,7 +106,7 @@ def accumulate(iterable, function=operator.add, *, initial=None):
 
 ​	To compute a running minimum, set *function* to [`min()`](https://docs.python.org/zh-cn/3.13/library/functions.html#min). For a running maximum, set *function* to [`max()`](https://docs.python.org/zh-cn/3.13/library/functions.html#max). Or for a running product, set *function* to [`operator.mul()`](https://docs.python.org/zh-cn/3.13/library/operator.html#operator.mul). To build an [amortization table](https://www.ramseysolutions.com/real-estate/amortization-schedule), accumulate the interest and apply payments:
 
-\>>>
+
 
 ```
 >>> data = [3, 4, 6, 2, 1, 9, 0, 7, 5, 8]
@@ -137,7 +137,7 @@ def accumulate(iterable, function=operator.add, *, initial=None):
 
 ​	循环处理输入可迭代对象并将数据积累为长度至多为 *n* 的元组。 输入将被惰性地消耗，能填满一个批次即可。 结果将在批次填满或输入可迭代对象被耗尽时产生:
 
-\>>>
+
 
 ```
 >>> flattened_data = ['roses', 'red', 'violets', 'blue', 'sugar', 'sweet']
@@ -550,7 +550,7 @@ def repeat(object, times=None):
 
 *repeat* 的一个常见用途是向 *map* 或 *zip* 提供一个常量值的流:
 
-\>>>
+
 
 ```
 >>> list(map(pow, range(10), repeat(2)))
@@ -637,7 +637,7 @@ def lookahead(tee_iterator):
      return next(forked_iterator)
 ```
 
-\>>>
+
 
 ```
 >>> iterator = iter('abcdef')

@@ -438,7 +438,7 @@ IndexError: tuple index out of range
 
 ​	下面的例子演示了打印和格式化栈的不同方式:
 
-\>>>
+
 
 ```
 >>> import traceback
@@ -467,7 +467,7 @@ IndexError: tuple index out of range
 
 ​	最后这个例子演示了最后几个格式化函数:
 
-\>>>
+
 
 ```
 >>> import traceback
@@ -484,7 +484,7 @@ IndexError: tuple index out of range
 
 ​	With the helper class, we have more options:
 
-\>>>
+
 
 ```
 >>> import sys

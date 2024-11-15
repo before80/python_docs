@@ -50,7 +50,7 @@ $ source example/bin/activate
 
 ​	你可以通过运行以下代码得到 `wheel` 的版本字符串：
 
-\>>>
+
 
 ```
 (example) $ python
@@ -63,7 +63,7 @@ $ source example/bin/activate
 
 ​	你可以获得 [分发的元数据](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#metadata)：
 
-\>>>
+
 
 ```
 >>> list(metadata('wheel'))  
@@ -104,7 +104,7 @@ $ source example/bin/activate
 
 ​	查询所有的入口点：
 
-\>>>
+
 
 ```
 >>> eps = entry_points()  
@@ -112,7 +112,7 @@ $ source example/bin/activate
 
 `entry_points()` 函数返回一个 `EntryPoints` 对象，即由带 `names` 和 `groups` 属性的所有 `EntryPoint` 对象组成的多项集以方便使用:
 
-\>>>
+
 
 ```
 >>> sorted(eps.groups)  
@@ -121,7 +121,7 @@ $ source example/bin/activate
 
 `EntryPoints` 具有 `select()` 方法用于选择匹配指定特征属性的入口点。 如选择 `console_scripts` 组中的入口点:
 
-\>>>
+
 
 ```
 >>> scripts = eps.select(group='console_scripts')  
@@ -129,7 +129,7 @@ $ source example/bin/activate
 
 ​	效果相同，因为 `entry_points()` 会传递关键字参数来选择:
 
-\>>>
+
 
 ```
 >>> scripts = entry_points(group='console_scripts')  
@@ -137,7 +137,7 @@ $ source example/bin/activate
 
 ​	选出命名为 “wheel” 的特定脚本（可以在 wheel 项目中找到）：
 
-\>>>
+
 
 ```
 >>> 'wheel' in scripts.names  
@@ -147,7 +147,7 @@ True
 
 ​	等价地，在选择过程中查询对应的入口点：
 
-\>>>
+
 
 ```
 >>> (wheel,) = entry_points(group='console_scripts', name='wheel')  
@@ -156,7 +156,7 @@ True
 
 ​	检查解析得到的入口点：
 
-\>>>
+
 
 ```
 >>> wheel  
@@ -196,7 +196,7 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 ​	每个 [分发包](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package) 都包括一些元数据，你可以使用 `metadata()` 函数来获取:
 
-\>>>
+
 
 ```
 >>> wheel_metadata = metadata('wheel')  
@@ -204,7 +204,7 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 ​	The keys of the returned data structure name the metadata keywords, and the values are returned unparsed from the distribution metadata:
 
-\>>>
+
 
 ```
 >>> wheel_metadata['Requires-Python']  
@@ -213,7 +213,7 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 [`PackageMetadata`](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#importlib.metadata.PackageMetadata) also presents a `json` attribute that returns all the metadata in a JSON-compatible form per [**PEP 566**](https://peps.python.org/pep-0566/):
 
-\>>>
+
 
 ```
 >>> wheel_metadata.json['requires_python']
@@ -238,7 +238,7 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 `version()` 函数是获取字符串形式的 [分发包](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package) 版本号的最快速方式:
 
-\>>>
+
 
 ```
 >>> version('wheel')  
@@ -263,7 +263,7 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 ​	The `files()` function takes a [Distribution Package](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package) name and returns all of the files installed by this distribution. Each file is reported as a [`PackagePath`](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#importlib.metadata.PackagePath) instance. For example:
 
-\>>>
+
 
 ```
 >>> util = [p for p in files('wheel') if 'util.py' in str(p)][0]  
@@ -279,7 +279,7 @@ PackagePath('wheel/util.py')
 
 ​	当你获得了文件对象，你可以读取其内容：
 
-\>>>
+
 
 ```
 >>> print(util.read_text())  
@@ -294,7 +294,7 @@ def as_bytes(s):
 
 ​	You can also use the `locate()` method to get the absolute path to the file:
 
-\>>>
+
 
 ```
 >>> util.locate()  
@@ -315,7 +315,7 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 ​	To get the full set of requirements for a [Distribution Package](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package), use the `requires()` function:
 
-\>>>
+
 
 ```
 >>> requires('wheel')  
@@ -334,7 +334,7 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 ​	解析每个提供可导入的最高层级 Python 模块或 [导入包](https://packaging.python.org/en/latest/glossary/#term-Import-Package) 对应的 [分发包](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package) 名称（对于命名空间包可能有多个名称）的快捷方法:
 
-\>>>
+
 
 ```
 >>> packages_distributions()
@@ -363,7 +363,7 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 ​	While the module level API described above is the most common and convenient usage, you can get all of that information from the `Distribution` class. `Distribution` is an abstract object that represents the metadata for a Python [Distribution Package](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package). You can get the concreate `Distribution` subclass instance for an installed distribution package by calling the [`distribution()`](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#importlib.metadata.distribution) function:
 
-\>>>
+
 
 ```
 >>> from importlib.metadata import distribution  
@@ -374,7 +374,7 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 ​	Thus, an alternative way to get the version number is through the `Distribution` instance:
 
-\>>>
+
 
 ```
 >>> dist.version  
@@ -383,7 +383,7 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 ​	There are all kinds of additional metadata available on `Distribution` instances:
 
-\>>>
+
 
 ```
 >>> dist.metadata['Requires-Python']  
@@ -394,7 +394,7 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 ​	对于可编辑包，`origin` 属性可能表示 [**PEP 610**](https://peps.python.org/pep-0610/) 元数据：
 
-\>>>
+
 
 ```
 >>> dist.origin.url

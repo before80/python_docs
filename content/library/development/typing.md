@@ -619,7 +619,7 @@ Response = Iterable[S] | int
 
 ​	用户定义的参数表达式的泛型也受到支持，可以采用 `[**P]` 形式的参数规格变量来表示。该行为与上面描述的类型变量一致，因为参数规格变量被 typing 模块视为专门的类型变量。这方面的一个例外是，类型的列表可用于替代 [`ParamSpec`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.ParamSpec)：
 
-\>>>
+
 
 ```
 >>> class Z[T, **P]: ...  # T 为 TypeVar；P 为 ParamSpec
@@ -641,7 +641,7 @@ class Z(Generic[P]):
 
 [`TypeVar`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeVar) 与 [`ParamSpec`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.ParamSpec) 的另一个区别在于只有单个参数规格变量的泛型会接受形如 `X[[Type1, Type2, ...]]` 的参数列表，同时为了美观，也接受 `X[Type1, Type2, ...]` 这样的形式。 在内部，后者被转换为前者，所以下面的内容是等价的：
 
-\>>>
+
 
 ```
 >>> class X[**P]: ...
@@ -1293,7 +1293,7 @@ T2 = Annotated[T1, ValueRange(-20, 3)]
 
 - 默认情况下， [`get_type_hints()`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.get_type_hints) 会去除注解中的元数据。传入 `include_extras=True` 可以保留元数据：
 
-  \>>>
+  
 
   ```
   >>> from typing import Annotated, get_type_hints
@@ -1307,7 +1307,7 @@ T2 = Annotated[T1, ValueRange(-20, 3)]
 
 - 在运行时，与特定 `Annotated` 类型相关联的元数据可通过 `__metadata__` 属性来获取：
 
-  \>>>
+  
 
   ```
   >>> from typing import Annotated
@@ -1320,7 +1320,7 @@ T2 = Annotated[T1, ValueRange(-20, 3)]
 
 - 在运行时 ，如果要检索由 `Annotated` 封装的原始类型，请使用 `__origin__` 属性：
 
-  \>>>
+  
 
   ```
   >>> from typing import Annotated, get_origin
@@ -1331,7 +1331,7 @@ T2 = Annotated[T1, ValueRange(-20, 3)]
 
   请注意使用 [`get_origin()`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.get_origin) 将返回 `Annotated` 本身：
 
-  \>>>
+  
 
   ```
   >>> get_origin(Password)
@@ -1884,7 +1884,7 @@ def add_two(x: float, y: float) -> float:
 
 ​	在这些对象中的任何一个上调用 [`get_origin()`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.get_origin) 将返回原始的 `ParamSpec`:
 
-\>>>
+
 
 ```
 >>> from typing import ParamSpec, get_origin
@@ -1903,7 +1903,7 @@ True
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> type Alias = int
@@ -1917,7 +1917,7 @@ True
 
 ​	类型别名的名称：
 
-\>>>
+
 
 ```
 >>> type Alias = int
@@ -1929,7 +1929,7 @@ True
 
 ​	类型别名定义所在的模块名称:
 
-\>>>
+
 
 ```
 >>> type Alias = int
@@ -1941,7 +1941,7 @@ True
 
 ​	类型别名的类型形参，或者如果别名不属于泛型则为一个空元组:
 
-\>>>
+
 
 ```
 >>> type ListOrSet[T] = list[T] | set[T]
@@ -1956,7 +1956,7 @@ True
 
 ​	类型别名的值。 它将被 [惰性求值](https://docs.python.org/zh-cn/3.13/reference/executionmodel.html#lazy-evaluation)，因此别名定义中使用的名称将直到 `__value__` 属性被访问时才会被解析:
 
-\>>>
+
 
 ```
 >>> type Mutually = Recursive
@@ -2306,7 +2306,7 @@ class Group(TypedDict, Generic[T]):
 
 `Point2D.__total__` 给出了 `total` 参数的值。 例如：
 
-\>>>
+
 
 ```
 >>> from typing import TypedDict
@@ -2335,7 +2335,7 @@ True
 
 ​	为了向下兼容 Python 3.10 及更老的版本，还可以使用继承机制在同一个 `TypedDict` 中同时声明必要和非必要的键。 这是通过声明一个具有 `total` 参数值的 `TypedDict` 然后在另一个 `TypedDict` 中继承它并使用不同的 `total` 值来实现的：
 
-\>>>
+
 
 ```
 >>> class Point2D(TypedDict, total=False):
@@ -2805,7 +2805,7 @@ assert get_args(Union[int, str]) == (int, str)
 
 ​	返回 [`Protocol`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.Protocol) 中定义的成员构成的集合。
 
-\>>>
+
 
 ```
 >>> from typing import Protocol, get_protocol_members
@@ -2876,7 +2876,7 @@ assert not is_typeddict(TypedDict)
 
 ​	一个用于指示类型形参没有默认值的哨兵对象。例如：
 
-\>>>
+
 
 ```
 >>> T = TypeVar("T")

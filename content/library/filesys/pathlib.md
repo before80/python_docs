@@ -47,7 +47,7 @@ draft = false
 
 ​	导入主类:
 
-\>>>
+
 
 ```
 >>> from pathlib import Path
@@ -55,7 +55,7 @@ draft = false
 
 ​	列出子目录:
 
-\>>>
+
 
 ```
 >>> p = Path('.')
@@ -66,7 +66,7 @@ draft = false
 
 ​	列出当前目录树下的所有 Python 源代码文件:
 
-\>>>
+
 
 ```
 >>> list(p.glob('**/*.py'))
@@ -77,7 +77,7 @@ draft = false
 
 ​	在目录树中移动:
 
-\>>>
+
 
 ```
 >>> p = Path('/etc')
@@ -90,7 +90,7 @@ PosixPath('/etc/rc.d/init.d/halt')
 
 ​	查询路径的属性:
 
-\>>>
+
 
 ```
 >>> q.exists()
@@ -101,7 +101,7 @@ False
 
 ​	打开一个文件:
 
-\>>>
+
 
 ```
 >>> with q.open() as f: f.readline()
@@ -127,7 +127,7 @@ False
 
 ​	一个通用的类，代表当前系统的路径风格（实例化为 [`PurePosixPath`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PurePosixPath) 或者 [`PureWindowsPath`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PureWindowsPath)）:
 
-\>>>
+
 
 ```
 >>> PurePath('setup.py')      # 在 Unix 机器上运行
@@ -136,7 +136,7 @@ PurePosixPath('setup.py')
 
 *pathsegments* 的每个元素既可以是代表一个路径段的字符串，也可以是实现了 [`os.PathLike`](https://docs.python.org/zh-cn/3.13/library/os.html#os.PathLike) 接口的对象，其中 [`__fspath__()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.PathLike.__fspath__) 方法返回一个字符串，例如另一个路径对象:
 
-\>>>
+
 
 ```
 >>> PurePath('foo', 'some/path', 'bar')
@@ -147,7 +147,7 @@ PurePosixPath('foo/bar')
 
 ​	当 *pathsegments* 为空的时候，假定为当前目录:
 
-\>>>
+
 
 ```
 >>> PurePath()
@@ -156,7 +156,7 @@ PurePosixPath('.')
 
 ​	如果某个段为绝对路径，则其前面的所有段都会被忽略 (类似 [`os.path.join()`](https://docs.python.org/zh-cn/3.13/library/os.path.html#os.path.join)):
 
-\>>>
+
 
 ```
 >>> PurePath('/etc', '/usr', 'lib64')
@@ -167,7 +167,7 @@ PureWindowsPath('d:bar')
 
 ​	在 Windows 上，当遇到带根符号的路径段 (如 `r'\foo'`) 时驱动器将不会被重置:
 
-\>>>
+
 
 ```
 >>> PureWindowsPath('c:/Windows', '/Program Files')
@@ -176,7 +176,7 @@ PureWindowsPath('c:/Program Files')
 
 ​	假斜杠和单个点号会被消除，但双点号 (`'..'`) 和打头的双斜杠 (`'//'`) 不会，因为这会出于各种原因改变路径的实际含义 (例如符号链接、UNC 路径等):
 
-\>>>
+
 
 ```
 >>> PurePath('foo//bar')
@@ -199,7 +199,7 @@ PurePosixPath('foo/../bar')
 
 ​	一个 [`PurePath`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PurePath) 的子类，路径风格不同于 Windows 文件系统:
 
-\>>>
+
 
 ```
 >>> PurePosixPath('/etc/hosts')
@@ -212,7 +212,7 @@ PurePosixPath('/etc/hosts')
 
 [`PurePath`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PurePath) 的一个子类，此路径风格代表 Windows 文件系统路径，包括 [UNC paths](https://en.wikipedia.org/wiki/Path_(computing)#UNC):
 
-\>>>
+
 
 ```
 >>> PureWindowsPath('c:/', 'Users', 'Ximénez')
@@ -229,7 +229,7 @@ PureWindowsPath('//server/share/file')
 
 ​	路径是不可变并且 [hashable](https://docs.python.org/zh-cn/3.13/glossary.html#term-hashable)。 相同风格的路径可以排序和比较。 这此特性会尊重对应风格的大小写转换语义。:
 
-\>>>
+
 
 ```
 >>> PurePosixPath('foo') == PurePosixPath('FOO')
@@ -244,7 +244,7 @@ True
 
 ​	不同风格的路径比较得到不等的结果并且无法被排序:
 
-\>>>
+
 
 ```
 >>> PureWindowsPath('foo') == PurePosixPath('foo')
@@ -259,7 +259,7 @@ TypeError: '<' not supported between instances of 'PureWindowsPath' and 'PurePos
 
 ​	斜杠操作符可以帮助创建子路径，如 [`os.path.join()`](https://docs.python.org/zh-cn/3.13/library/os.path.html#os.path.join)。 如果参数为一个绝对路径，则之前的路径会被忽略。 在 Windows 上，当参数为一个带根符号的相对路径 (如 `r'\foo'`) 时驱动器将不会被重置:
 
-\>>>
+
 
 ```
 >>> p = PurePath('/etc')
@@ -278,7 +278,7 @@ PureWindowsPath('c:/Program Files')
 
 ​	文件对象可用于任何接受 [`os.PathLike`](https://docs.python.org/zh-cn/3.13/library/os.html#os.PathLike) 接口实现的地方。
 
-\>>>
+
 
 ```
 >>> import os
@@ -289,7 +289,7 @@ PureWindowsPath('c:/Program Files')
 
 ​	路径的字符串表示法为它自己原始的文件系统路径（以原生形式，例如在 Windows 下使用反斜杠）。你可以传递给任何需要字符串形式路径的函数。
 
-\>>>
+
 
 ```
 >>> p = PurePath('/etc')
@@ -302,7 +302,7 @@ PureWindowsPath('c:/Program Files')
 
 ​	类似地，在路径上调用 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 将原始文件系统路径作为字节对象给出，就像被 [`os.fsencode()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.fsencode) 编码一样:
 
-\>>>
+
 
 ```
 >>> bytes(p)
@@ -323,7 +323,7 @@ b'/etc'
 
 ​	一个元组，可以访问路径的多个组件:
 
-\>>>
+
 
 ```
 >>> p = PurePath('/usr/bin/python3')
@@ -351,7 +351,7 @@ b'/etc'
 
 ​	一个表示驱动器盘符或命名的字符串，如果存在:
 
-\>>>
+
 
 ```
 >>> PureWindowsPath('c:/Program Files/').drive
@@ -364,7 +364,7 @@ b'/etc'
 
 ​	UNC 分享也被认作驱动器:
 
-\>>>
+
 
 ```
 >>> PureWindowsPath('//host/share/foo.txt').drive
@@ -375,7 +375,7 @@ b'/etc'
 
 ​	一个表示（本地或全局）根的字符串，如果存在:
 
-\>>>
+
 
 ```
 >>> PureWindowsPath('c:/Program Files/').root
@@ -388,7 +388,7 @@ b'/etc'
 
 ​	UNC 分享一样拥有根:
 
-\>>>
+
 
 ```
 >>> PureWindowsPath('//host/share').root
@@ -397,7 +397,7 @@ b'/etc'
 
 ​	如果路径以超过两个连续斜框打头，[`PurePosixPath`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PurePosixPath) 会合并它们:
 
-\>>>
+
 
 ```
 >>> PurePosixPath('//etc').root
@@ -420,7 +420,7 @@ b'/etc'
 
 ​	驱动器和根的联合:
 
-\>>>
+
 
 ```
 >>> PureWindowsPath('c:/Program Files/').anchor
@@ -437,7 +437,7 @@ b'/etc'
 
 ​	提供访问此路径的逻辑祖先的不可变序列:
 
-\>>>
+
 
 ```
 >>> p = PureWindowsPath('c:/foo/bar/setup.py')
@@ -455,7 +455,7 @@ PureWindowsPath('c:/')
 
 ​	此路径的逻辑父路径:
 
-\>>>
+
 
 ```
 >>> p = PurePosixPath('/a/b/c/d')
@@ -465,7 +465,7 @@ PurePosixPath('/a/b/c')
 
 ​	你不能超过一个 anchor 或空路径:
 
-\>>>
+
 
 ```
 >>> p = PurePosixPath('/')
@@ -482,7 +482,7 @@ PurePosixPath('.')
 
 ​	这是一个单纯的词法操作，因此有以下行为:
 
-\>>>
+
 
 ```
 >>> p = PurePosixPath('foo/..')
@@ -496,7 +496,7 @@ PurePosixPath('foo')
 
 ​	一个表示最后路径组件的字符串，排除了驱动器与根目录，如果存在的话:
 
-\>>>
+
 
 ```
 >>> PurePosixPath('my/library/setup.py').name
@@ -505,7 +505,7 @@ PurePosixPath('foo')
 
 ​	UNC 驱动器名不被考虑:
 
-\>>>
+
 
 ```
 >>> PureWindowsPath('//some/share/setup.py').name
@@ -518,7 +518,7 @@ PurePosixPath('foo')
 
 ​	最后一个路径组件中以点分割的后一部分（如果有）
 
-\>>>
+
 
 ```
 >>> PurePosixPath('my/library/setup.py').suffix
@@ -535,7 +535,7 @@ PurePosixPath('foo')
 
 ​	由路径后缀组成的列表，经常被称作文件扩展名:
 
-\>>>
+
 
 ```
 >>> PurePosixPath('my/library.tar.gar').suffixes
@@ -550,7 +550,7 @@ PurePosixPath('foo')
 
 ​	最后一个路径组件，除去后缀:
 
-\>>>
+
 
 ```
 >>> PurePosixPath('my/library.tar.gz').stem
@@ -565,7 +565,7 @@ PurePosixPath('foo')
 
 ​	返回使用正斜杠（`/`）的路径字符串:
 
-\>>>
+
 
 ```
 >>> p = PureWindowsPath('c:\\windows')
@@ -579,7 +579,7 @@ PurePosixPath('foo')
 
 ​	返回此路径是否为绝对路径。如果路径同时拥有驱动器符与根路径（如果风格允许）则将被认作绝对路径。
 
-\>>>
+
 
 ```
 >>> PurePosixPath('/a/b').is_absolute()
@@ -601,7 +601,7 @@ True
 
 ​	返回此路径是否相对于 *other* 的路径。
 
-\>>>
+
 
 ```
 >>> p = PurePath('/etc/passwd')
@@ -613,7 +613,7 @@ False
 
 ​	此方法是基于字符串的；它不会访问文件系统也不会对 "`..`" 部分进行特殊处理。 以下代码是等价的：
 
-\>>>
+
 
 ```
 >>> u = PurePath('/usr')
@@ -637,7 +637,7 @@ False
 
 ​	调用此方法等同于依次将路径与给定的每个 *pathsegments* 组合到一起:
 
-\>>>
+
 
 ```
 >>> PurePosixPath('/etc').joinpath('passwd')
@@ -654,7 +654,7 @@ PureWindowsPath('c:/Program Files')
 
 ​	将此路径与所提供的 glob 样式匹配。如果匹配成功，则返回``True``，否则返回``False``。例如:
 
-\>>>
+
 
 ```
 >>> PurePath('a/b.py').full_match('a/*.py')
@@ -675,7 +675,7 @@ True
 
 ​	与其他方法一样，是否大小写敏感遵循平台的默认规则:
 
-\>>>
+
 
 ```
 >>> PurePosixPath('b.py').full_match('*.PY')
@@ -694,7 +694,7 @@ True
 
 ​	此方法与 [`full_match()`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PurePath.full_match) 类似，但不允许空模式 (将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError))，也不支持递归通配符 "`**`" (将视为非递归的 "`*`")，并且如果提供了一个相对格式，则将从右开始匹配:
 
-\>>>
+
 
 ```
 >>> PurePath('a/b.py').match('*.py')
@@ -713,7 +713,7 @@ False
 
 ​	计算此路径相对于 *other* 所表示路径的版本。 如果不可计算，则引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError):
 
-\>>>
+
 
 ```
 >>> p = PurePosixPath('/etc/passwd')
@@ -731,7 +731,7 @@ ValueError: '/etc/passwd' is not in the subpath of '/usr' OR one path is relativ
 
 ​	当 *walk_up* 为（默认的）假值时，路径必须以 *other* 开始。 当参数为真值时，可能会添加 `..` 条目以形成相对路径。 在所有其他情况下，例如路径引用了不同的驱动器，则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。:
 
-\>>>
+
 
 ```
 >>> p.relative_to('/usr', walk_up=True)
@@ -758,7 +758,7 @@ ValueError: '/etc/passwd' is not on the same drive as 'foo' OR one path is relat
 
 ​	返回一个新的路径并修改 [`name`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PurePath.name)。如果原本路径没有 name，ValueError 被抛出:
 
-\>>>
+
 
 ```
 >>> p = PureWindowsPath('c:/Downloads/pathlib.tar.gz')
@@ -777,7 +777,7 @@ ValueError: PureWindowsPath('c:/') has an empty name
 
 ​	返回一个带有修改后 [`stem`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PurePath.stem) 的新路径。 如果原路径没有名称，则会引发 ValueError:
 
-\>>>
+
 
 ```
 >>> p = PureWindowsPath('c:/Downloads/draft.txt')
@@ -803,7 +803,7 @@ ValueError: PureWindowsPath('c:/') has an empty name
 
 ​	返回一个新的路径并修改 [`suffix`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PurePath.suffix)。如果原本的路径没有后缀，新的 *suffix* 则被追加以代替。如果 *suffix* 是空字符串，则原本的后缀被移除:
 
-\>>>
+
 
 ```
 >>> p = PureWindowsPath('c:/Downloads/pathlib.tar.gz')
@@ -849,7 +849,7 @@ print(hosts.session_id)  # 42
 
 ​	一个 [`PurePath`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PurePath) 的子类，此类以当前系统的路径风格表示路径（实例化为 [`PosixPath`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PosixPath) 或 [`WindowsPath`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.WindowsPath)）:
 
-\>>>
+
 
 ```
 >>> Path('setup.py')
@@ -862,7 +862,7 @@ PosixPath('setup.py')
 
 ​	一个 [`Path`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.Path) 和 [`PurePosixPath`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PurePosixPath) 的子类，此类表示一个非 Windows 文件系统的具体路径:
 
-\>>>
+
 
 ```
 >>> PosixPath('/etc/hosts')
@@ -877,7 +877,7 @@ PosixPath('/etc/hosts')
 
 [`Path`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.Path) 和 [`PureWindowsPath`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PureWindowsPath) 的子类，从类表示一个 Windows 文件系统的具体路径:
 
-\>>>
+
 
 ```
 >>> WindowsPath('c:/', 'Users', 'Ximénez')
@@ -890,7 +890,7 @@ WindowsPath('c:/Users/Ximénez')
 
 ​	你只能实例化与当前系统风格相同的类（允许系统调用作用于不兼容的路径风格可能在应用程序中导致缺陷或失败）:
 
-\>>>
+
 
 ```
 >>> import os
@@ -924,7 +924,7 @@ UnsupportedOperation: cannot instantiate 'WindowsPath' on your system
 
 ​	通过解析一个 '文件' URI 来返回新的路径对象。 例如:
 
-\>>>
+
 
 ```
 >>> p = Path.from_uri('file:///etc/hosts')
@@ -933,7 +933,7 @@ PosixPath('/etc/hosts')
 
 ​	在 Windows 上，可以基于 URI 来解析 DOS 设备和 UNC 路径:
 
-\>>>
+
 
 ```
 >>> p = Path.from_uri('file:///c:/windows')
@@ -944,7 +944,7 @@ WindowsPath('//server/share')
 
 ​	某些变化形式也是受支持的:
 
-\>>>
+
 
 ```
 >>> p = Path.from_uri('file:////server/share')
@@ -965,7 +965,7 @@ WindowsPath('c:/windows')
 
 ​	将路径表示为 'file' URI。 如果路径不是绝对路径则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-\>>>
+
 
 ```
 >>> p = PosixPath('/etc/passwd')
@@ -984,7 +984,7 @@ WindowsPath('c:/windows')
 
 ​	返回一个表示用户家目录的新路径对象（与带 `~` 构造的 [`os.path.expanduser()`](https://docs.python.org/zh-cn/3.13/library/os.path.html#os.path.expanduser) 所返回的相同）。 如果无法解析家目录，则会引发 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError)。
 
-\>>>
+
 
 ```
 >>> Path.home()
@@ -997,7 +997,7 @@ PosixPath('/home/antoine')
 
 ​	返回带有扩展 `~` 和 `~user` 构造的新路径，与 [`os.path.expanduser()`](https://docs.python.org/zh-cn/3.13/library/os.path.html#os.path.expanduser) 所返回的相同。 如果无法解析家目录，则会引发 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError)。
 
-\>>>
+
 
 ```
 >>> p = PosixPath('~/films/Monty Python')
@@ -1011,7 +1011,7 @@ PosixPath('/home/eric/films/Monty Python')
 
 ​	返回一个新的表示当前目录的路径对象（和 [`os.getcwd()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.getcwd) 返回的相同）:
 
-\>>>
+
 
 ```
 >>> Path.cwd()
@@ -1022,7 +1022,7 @@ PosixPath('/home/antoine/pathlib')
 
 ​	改为绝对路径，不会执行正规化或解析符号链接。 返回一个新的路径对象:
 
-\>>>
+
 
 ```
 >>> p = Path('tests')
@@ -1036,7 +1036,7 @@ PosixPath('/home/antoine/pathlib/tests')
 
 ​	将路径绝对化，解析任何符号链接。返回新的路径对象:
 
-\>>>
+
 
 ```
 >>> p = Path()
@@ -1048,7 +1048,7 @@ PosixPath('/home/antoine/pathlib')
 
 ​	"`..`" 组件也将被消除（只有这一种方法这么做）:
 
-\>>>
+
 
 ```
 >>> p = Path('docs/../setup.py')
@@ -1066,7 +1066,7 @@ PosixPath('/home/antoine/pathlib/setup.py')
 
 ​	返回符号链接所指向的路径（即 [`os.readlink()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.readlink) 的返回值）:
 
-\>>>
+
 
 ```
 >>> p = Path('mylink')
@@ -1089,7 +1089,7 @@ PosixPath('setup.py')
 
 ​	此方法通常会跟随符号链接；要对 symlink 使用 stat 请添加参数 `follow_symlinks=False`，或者使用 [`lstat()`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.Path.lstat)。
 
-\>>>
+
 
 ```
 >>> p = Path('setup.py')
@@ -1111,7 +1111,7 @@ PosixPath('setup.py')
 
 ​	此方法通常会跟随符号链接；要检查符号链接是否存在，请添加参数 `follow_symlinks=False`。
 
-\>>>
+
 
 ```
 >>> Path('.').exists()
@@ -1196,7 +1196,7 @@ False
 
 ​	如果两者都以同一原因无法访问，则抛出 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError)。
 
-\>>>
+
 
 ```
 >>> p = Path('spam')
@@ -1215,7 +1215,7 @@ True
 
 ​	打开路径指向的文件，就像内置的 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open) 函数所做的一样:
 
-\>>>
+
 
 ```
 >>> p = Path('setup.py')
@@ -1229,7 +1229,7 @@ True
 
 ​	以字符串形式返回路径指向的文件的解码后文本内容。
 
-\>>>
+
 
 ```
 >>> p = Path('my_text_file')
@@ -1249,7 +1249,7 @@ True
 
 ​	以字节对象的形式返回路径指向的文件的二进制内容:
 
-\>>>
+
 
 ```
 >>> p = Path('my_binary_file')
@@ -1265,7 +1265,7 @@ b'Binary file contents'
 
 ​	将文件以文本模式打开，写入 *data* 并关闭:
 
-\>>>
+
 
 ```
 >>> p = Path('my_text_file')
@@ -1285,7 +1285,7 @@ b'Binary file contents'
 
 ​	将文件以二进制模式打开，写入 *data* 并关闭:
 
-\>>>
+
 
 ```
 >>> p = Path('my_binary_file')
@@ -1305,7 +1305,7 @@ b'Binary file contents'
 
 ​	当路径指向一个目录时，产生该路径下的对象的路径:
 
-\>>>
+
 
 ```
 >>> p = Path('docs')
@@ -1328,7 +1328,7 @@ PosixPath('docs/Makefile')
 
 ​	解析相对于此路径的通配符 *pattern*，产生所有匹配的文件:
 
-\>>>
+
 
 ```
 >>> sorted(Path('.').glob('*.py'))
@@ -1479,7 +1479,7 @@ for root, dirs, files in top.walk(top_down=False):
 
 ​	在 Windows，符号链接可以代表文件或者目录，并且不会动态适应目标。 如果目标存在，则将创建相匹配的符号链接类型。 在其他情况下，如果 *target_is_directory* 为真值则符号链接将创建为目录类型否则将创建为文件符号链接。 在非 Windows 平台上，*target_is_directory* 将被忽略。
 
-\>>>
+
 
 ```
 >>> p = Path('mylink')
@@ -1520,7 +1520,7 @@ PosixPath('/home/antoine/pathlib/setup.py')
 
 ​	将此文件或目录重命名为给定的 *target*，并返回一个新的指向 *target* 的 `Path` 实例。 在 Unix 上，如果 *target* 存在且为一个文件，那么如果用户具有相应权限则它将静默地替换。 在 Windows 上，如果 *target* 存在，则会引发 [`FileExistsError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#FileExistsError)。 *target* 可以是一个字符串或者另一个路径对象:
 
-\>>>
+
 
 ```
 >>> p = Path('foo')
@@ -1589,7 +1589,7 @@ PosixPath('bar')
 
 ​	此方法通常会跟随符号链接。 某些 Unix 变种支持改变 symlink 本身的权限；在这些平台上你可以添加参数 `follow_symlinks=False`，或者使用 [`lchmod()`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.Path.lchmod)。
 
-\>>>
+
 
 ```
 >>> p = Path('setup.py')

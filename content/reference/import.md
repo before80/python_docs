@@ -224,7 +224,7 @@ from .foo import Foo
 
 ​	那么执行如下代码将把 `foo` 和 `Foo` 的名称绑定添加到 `spam` 模块中:
 
-\>>>
+
 
 ```
 >>> import spam

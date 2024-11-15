@@ -40,7 +40,7 @@ draft = false
 
 [`ZoneInfo`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.ZoneInfo) 是 [`datetime.tzinfo`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.tzinfo) 抽象基类的具体实现，其目标是通过构造器、 [`datetime.replace`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime.replace) 方法或 [`datetime.astimezone`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime.astimezone) 来与 `tzinfo` 建立关联:
 
-\>>>
+
 
 ```
 >>> from zoneinfo import ZoneInfo
@@ -56,7 +56,7 @@ draft = false
 
 ​	以此方式构造的日期时间对象可兼容日期时间运算并可在无需进一步干预的情况下处理夏令时转换:
 
-\>>>
+
 
 ```
 >>> dt_add = dt + timedelta(days=1)
@@ -70,7 +70,7 @@ draft = false
 
 ​	这些时区还支持在 [**PEP 495**](https://peps.python.org/pep-0495/) 中引入的 [`fold`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime.fold)。 在可能导致时间歧义的时差转换中（例如夏令时到标准时的转换），当 `fold=0` 时会使用转换 *之前* 的时差，而当 `fold=1` 时则使用转换 *之后* 的时差，例如:
 
-\>>>
+
 
 ```
 >>> dt = datetime(2020, 11, 1, 1, tzinfo=ZoneInfo("America/Los_Angeles"))
@@ -83,7 +83,7 @@ draft = false
 
 ​	当执行来自另一时区的转换时，fold 将被设置为正确的值:
 
-\>>>
+
 
 ```
 >>> from datetime import timezone
@@ -209,7 +209,7 @@ assert a is b
 
 ​	当在 [`ZoneInfo`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.ZoneInfo) 对象上调用 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 时返回的字符串表示默认会使用 [`ZoneInfo.key`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.ZoneInfo.key) 属性（参见该属性文档中的用法注释）:
 
-\>>>
+
 
 ```
 >>> zone = ZoneInfo("Pacific/Kwajalein")
@@ -233,7 +233,7 @@ assert a is b
 
 1. `ZoneInfo(key)`: 当使用主构造器构造时，会基于键序列化一个 `ZoneInfo` 对象，而当反序列化时，反序列化过程会使用主构造器，因此预期它们与其他对同一时区的引用会是同一对象。 例如，如果 `europe_berlin_pkl` 是一个包含基于 `ZoneInfo("Europe/Berlin")` 构建的封存数据的字符串，你可以预期出现以下的行为:
 
-   \>>>
+   
 
    ```
    >>> a = ZoneInfo("Europe/Berlin")
@@ -244,7 +244,7 @@ assert a is b
 
 2. `ZoneInfo.no_cache(key)`: 当通过绕过缓存的构造器构造时，`ZoneInfo` 对象也会基于键序列化，但当反序列化时，反序列化过程会使用绕过缓存的构造器。 如果 `europe_berlin_pkl_nc` 是一个包含基于 `ZoneInfo.no_cache("Europe/Berlin")` 构造的封存数据的字符串，你可以预期出现以下的行为:
 
-   \>>>
+   
 
    ```
    >>> a = ZoneInfo("Europe/Berlin")

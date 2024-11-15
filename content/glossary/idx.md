@@ -335,7 +335,7 @@ def sum_two_numbers(a: int, b: int) -> int:
 
 [future 语句](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#future), `from __future__ import <feature>` 指示编译器使用将在未来的 Python 发布版中成为标准的语法和语义来编译当前模块。 [`__future__`](https://docs.python.org/zh-cn/3.13/library/__future__.html#module-__future__) 模块文档记录了可能 的 *feature* 取值。 通过导入此模块并对其变量求值，你可以看到每项新特性在何时被首次加入到该语言中以及它将（或已）在何时成为默认:
 
-\>>>
+
 
 ```
 >>> import __future__
@@ -363,7 +363,7 @@ _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)
 
 ​	返回一个 [iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterator) 的 [expression](https://docs.python.org/zh-cn/3.13/glossary.html#term-expression)。 它看起来很像普通表达式后带有定义了一个循环变量、范围的 `for` 子句，以及一个可选的 `if` 子句。 以下复合表达式会为外层函数生成一系列值:
 
-\>>>
+
 
 ```
 >>> sum(i*i for i in range(10))         # 平方值 0, 1, 4, ... 81 之和
@@ -564,7 +564,7 @@ _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)
 
 ​	有些内置类型属于具名元组，包括 [`time.localtime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.localtime) 和 [`os.stat()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.stat) 的返回值。 另一个例子是 [`sys.float_info`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.float_info):
 
-\>>>
+
 
 ```
 >>> sys.float_info[1]                   # 索引访问
@@ -717,7 +717,7 @@ for piece in food:
 
 ​	一个以点号分隔的名称，显示从模块的全局作用域到该模块中定义的某个类、函数或方法的“路径”，相关定义见 [**PEP 3155**](https://peps.python.org/pep-3155/)。对于最高层级的函数和类，限定名称与对象名称一致:
 
-\>>>
+
 
 ```
 >>> class C:
@@ -735,7 +735,7 @@ for piece in food:
 
 ​	当被用于引用模块时，*完整限定名称* 意为标示该模块的以点号分隔的整个路径，其中包含其所有的父包，例如 `email.mime.text`:
 
-\>>>
+
 
 ```
 >>> import email.mime.text

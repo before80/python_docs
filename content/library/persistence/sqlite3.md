@@ -70,7 +70,7 @@ cur.execute("CREATE TABLE movie(title, year, score)")
 
 ​	我们可以通过查询 SQLite 内置的 `sqlite_matser` 表以验证新表是否已经创建，本例中，此时该表应该已经包括了一条 `movie` 的表定义（更多内容请参考 [The Schema Table](https://www.sqlite.org/schematab.html) ）。下面的代码将通过调用函数 [`cur.excute(...)`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Cursor.execute) 执行查询，把结果赋给 `res` ，而后调用 [`res.fetchone()`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Cursor.fetchone) 获取结果行：
 
-\>>>
+
 
 ```
 >>> res = cur.execute("SELECT name FROM sqlite_master")
@@ -80,7 +80,7 @@ cur.execute("CREATE TABLE movie(title, year, score)")
 
 ​	我们可以看到表已被创建，因为查询结果返回了一个包含表名的 [`tuple`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#tuple)。 如果我们在 `sqlite_master` 中查询一个不存在的表 `spam`，则 `res.fetchone()` 将返回 `None`:
 
-\>>>
+
 
 ```
 >>> res = cur.execute("SELECT name FROM sqlite_master WHERE name='spam'")
@@ -106,7 +106,7 @@ con.commit()
 
 ​	我们可以通过执行一个 `SELECT` 查询以验证数据是否被正确地插入表中。下面的代码中，我们使用我们已经很熟悉的函数 [`cur.execute(...)`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Cursor.execute) 将查询结果赋给 `res` ，而后调用 [`res.fetchall()`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Cursor.fetchall) 返回所有的结果行：
 
-\>>>
+
 
 ```
 >>> res = cur.execute("SELECT score FROM movie")
@@ -132,7 +132,7 @@ con.commit()  # 记得在执行 INSERT 之后提交事务。
 
 ​	同样的，我们可以通过执行 `SELECT` 查询验证新的数据行是否已经插入表中，这一次我们将迭代查询的结果：
 
-\>>>
+
 
 ```
 >>> for row in cur.execute("SELECT year, title FROM movie ORDER BY year"):
@@ -148,7 +148,7 @@ con.commit()  # 记得在执行 INSERT 之后提交事务。
 
 ​	最后，让我们先通过调用 [`con.close()`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Connection.close) 关闭现存的与数据库的连接，而后打开一个新的连接、创建一个新的游标、执行一个新的查询以验证我们是否将数据库写入到了本地磁盘上：
 
-\>>>
+
 
 ```
 >>> con.close()
@@ -221,7 +221,7 @@ The highest scoring Monty Python movie is 'Monty Python and the Holy Grail', rel
 
 ​	例如:
 
-\>>>
+
 
 ```
 >>> sqlite3.complete_statement("SELECT foo FROM bar;")
@@ -482,7 +482,7 @@ CREATE TABLE test(
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> import hashlib
@@ -827,7 +827,7 @@ src.close()
 
 ​	示例，查询 [`Connection`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Connection) `con` 上一条 SQL 语句的最大长度（默认值为 1000000000）:
 
-\>>>
+
 
 ```
 >>> con.getlimit(sqlite3.SQLITE_LIMIT_SQL_LENGTH)
@@ -855,7 +855,7 @@ src.close()
 
 ​	示例，将 [`Connection`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Connection) `con` 上附加的数据库数量限制为 1（默认限制为 10）:
 
-\>>>
+
 
 ```
 >>> con.setlimit(sqlite3.SQLITE_LIMIT_ATTACHED, 1)
@@ -1125,7 +1125,7 @@ cur.executescript("""
 
 ​	提供属于该游标的 SQLite [`Connection`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Connection) 的只读属性。 通过调用 [`con.cursor()`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Connection.cursor) 创建的 [`Cursor`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Cursor) 对象将具有一个指向 *con* 的 [`connection`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Cursor.connection) 属性:
 
-\>>>
+
 
 ```
 >>> con = sqlite3.connect(":memory:")
@@ -1389,7 +1389,7 @@ python -m sqlite3 [-h] [-v] [filename] [sql]
 
 ​	SQL 操作通常会需要使用来自 Python 变量的值。 不过，请谨慎使用 Python 的字符串操作来拼装查询，因为这样易受 [SQL injection attacks](https://en.wikipedia.org/wiki/SQL_injection)。 例如，攻击者可以简单地添加结束单引号并注入 `OR TRUE` 来选择所有的行:
 
-\>>>
+
 
 ```
 >>> # Never do this -- insecure!
@@ -1668,7 +1668,7 @@ con.close()
 
 - 以只读模式打开一个数据库:
 
-\>>>
+
 
 ```
 >>> con = sqlite3.connect("file:tutorial.db?mode=ro", uri=True)
@@ -1680,7 +1680,7 @@ OperationalError: attempt to write a readonly database
 
 - 如果一个数据库尚不存在则不会隐式地新建数据库；如果无法新建数据库则将引发 [`OperationalError`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.OperationalError):
 
-\>>>
+
 
 ```
 >>> con = sqlite3.connect("file:nosuchdb.db?mode=rw", uri=True)
@@ -1716,7 +1716,7 @@ con2.close()
 
 `Row` 提供了针对列的序列方式和大小写不敏感的名称方式访问，具有优于 `tuple` 的最小化内存开销和性能影响。 要使用 `Row` 作为行工厂对象，请将其赋值给 `row_factory` 属性:
 
-\>>>
+
 
 ```
 >>> con = sqlite3.connect(":memory:")
@@ -1725,7 +1725,7 @@ con2.close()
 
 ​	现在查询将返回 `Row` 对象:
 
-\>>>
+
 
 ```
 >>> res = con.execute("SELECT 'Earth' AS name, 6378 AS radius")
@@ -1757,7 +1757,7 @@ def dict_factory(cursor, row):
 
 ​	使用它，现在查询将返回 `dict` 而不是 `tuple`:
 
-\>>>
+
 
 ```
 >>> con = sqlite3.connect(":memory:")
@@ -1781,7 +1781,7 @@ def namedtuple_factory(cursor, row):
 
 `namedtuple_factory()` 可以像下面这样使用:
 
-\>>>
+
 
 ```
 >>> con = sqlite3.connect(":memory:")

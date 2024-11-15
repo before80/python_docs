@@ -187,7 +187,7 @@ for k, v in rawdata.items():
 
 ​	以下例子演示了 [`http.cookies`](https://docs.python.org/zh-cn/3.13/library/http.cookies.html#module-http.cookies) 模块的用法。
 
-\>>>
+
 
 ```
 >>> from http import cookies

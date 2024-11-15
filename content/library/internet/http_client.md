@@ -46,7 +46,7 @@ draft = false
 
 ​	举个例子，以下调用都是创建连接到同一主机和端口的服务器的实例：
 
-\>>>
+
 
 ```
 >>> h1 = http.client.HTTPConnection('www.python.org')
@@ -199,7 +199,7 @@ draft = false
 
 ​	例如，要对 `https://docs.python.org/3/` 执行一个 `GET` 请求:
 
-\>>>
+
 
 ```
 >>> import http.client
@@ -251,7 +251,7 @@ draft = false
 
 ​	例如，要通过一个运行于本机 8080 端口的 HTTPS 代理服务器隧道，我们应当向 [`HTTPSConnection`](https://docs.python.org/zh-cn/3.13/library/http.client.html#http.client.HTTPSConnection) 构造器传入代理的地址，并将我们最终想要访问的主机地址传给 [`set_tunnel()`](https://docs.python.org/zh-cn/3.13/library/http.client.html#http.client.HTTPConnection.set_tunnel) 方法:
 
-\>>>
+
 
 ```
 >>> import http.client
@@ -396,7 +396,7 @@ draft = false
 
 ​	下面是使用 `GET` 方法的会话示例：
 
-\>>>
+
 
 ```
 >>> import http.client
@@ -425,7 +425,7 @@ b'<!doctype html>\n<!--[if"...
 
 ​	以下是使用 `HEAD` 方法的会话示例。 请注意，`HEAD` 方法从不返回任何数据。
 
-\>>>
+
 
 ```
 >>> import http.client
@@ -443,7 +443,7 @@ True
 
 ​	下面是一个使用 `POST` 方法的会话示例:
 
-\>>>
+
 
 ```
 >>> import http.client, urllib.parse
@@ -463,7 +463,7 @@ b'Redirecting to <a href="https://bugs.python.org/issue12524">https://bugs.pytho
 
 ​	客户端 HTTP `PUT` 请求与 `POST` 请求非常相似。 区别仅在于服务器端 HTTP 服务器将允许通过 `PUT` 请求创建资源。 应该注意自定义的 HTTP 方法也可以在 [`urllib.request.Request`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#urllib.request.Request) 中通过设置适当的方法属性来进行处理。 下面是一个使用 `PUT` 方法的会话示例:
 
-\>>>
+
 
 ```
 >>> # 在这里创建一个 HTTP 请求

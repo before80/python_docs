@@ -46,7 +46,7 @@ draft = false
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> import linecache

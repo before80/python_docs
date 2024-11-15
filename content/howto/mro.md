@@ -57,7 +57,7 @@ draft = false
 
 ​	在此我举一个例子来说明这种情况。 考虑以下层级结构
 
-\>>>
+
 
 ```
 >>> O = object
@@ -152,7 +152,7 @@ L[C(B)] = C + merge(L[B],B) = C + L[B]
 
 ​	第一个例子。 考虑以下层级结构：
 
-\>>>
+
 
 ```
 >>> O = object
@@ -236,7 +236,7 @@ L[A] = A + merge(BDEO,CDFO,BC)
 
 ​	我把计算第二个例子的线性化作为一个练习留给读者完成：
 
-\>>>
+
 
 ```
 >>> O = object
@@ -278,7 +278,7 @@ L[A] = A + merge(BDEO,CDFO,BC)
 
 ​	懒惰的程序员可以直接获取 Python 2.2 的 MRO，因为在这种情况下它会与 Python 2.3 的线程化恰好一致。 只需发起调用类 A 的 [`mro()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#type.mro) 方法就够了：
 
-\>>>
+
 
 ```
 >>> A.mro()  
@@ -313,7 +313,7 @@ L[C] = C + merge(AXYO, BYXO, AB)
 
 ​	从局部优先顺序开始会更简单。 请看下面的例子：
 
-\>>>
+
 
 ```
 >>> F=type('Food',(),{'remember2buy':'spam'})
@@ -337,7 +337,7 @@ L[C] = C + merge(AXYO, BYXO, AB)
 
 ​	我们看到类 G 继承自 F 和 E，其中 F *先于* E：因此我们预期属性 *G.remember2buy* 会被 *F.rembermer2buy* 而不是被 *E.remember2buy* 继承：然而 Python 2.2 给出的结果是
 
-\>>>
+
 
 ```
 >>> G.remember2buy  
@@ -352,7 +352,7 @@ L[G,P22]= G E F object   # F 在 E *之后*
 
 ​	有人可能会说在 Python 2.2 的线性化中 F 在 E 之后的原因是 F 的特化程度低于 E，因为 F 是 E 的超类；然而打破局部优先排序是相当反直觉且容易导致错误的。 这一点因为它与旧式类不同而尤其明显：
 
-\>>>
+
 
 ```
 >>> class F: remember2buy='spam'
@@ -389,7 +389,7 @@ merge(FO,EFO,FE)
 
 ​	与此相关的一点，我要指出 Python 2.3 的算法足够聪明，它能识别明显的错误，比如父类列表中重复的类：
 
-\>>>
+
 
 ```
 >>> class A(object): pass
@@ -437,7 +437,7 @@ L[D] = D A B C
 
 ​	Python 2.2 的 MRO 使打破单调性变得困难，但并非不可能。 下面是最初由 Samuele Pedroni 提供的例子，显示 Python 2.2 的 MRO 是非单调的：
 
-\>>>
+
 
 ```
 >>> class A(object): pass

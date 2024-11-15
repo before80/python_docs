@@ -51,7 +51,7 @@ draft = false
 
 ​	在开发扩展模块时要记住的关键点是多个模块对象可以从单个共享库来创建。 例如:
 
-\>>>
+
 
 ```
 >>> import sys
@@ -71,7 +71,7 @@ False
 
 ​	请注意隔离的模块会创造一些令人惊讶的边界情况。 最明显的一点，每个模块对象通常都不会与其他类似模块共享它的类和异常。 继续 [上面的例子](https://docs.python.org/zh-cn/3.13/howto/isolating-extensions.html#isolated-module-objects)，请注意 `old_binascii.Error` 和 `binascii.Error` 是单独的对象。 在下面的代码中，异常 *不会* 被捕获:
 
-\>>>
+
 
 ```
 >>> old_binascii.Error == binascii.Error

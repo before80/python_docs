@@ -186,7 +186,7 @@ draft = false
 
 ​	Expands environment variable placeholders `%NAME%` in strings like [`REG_EXPAND_SZ`](https://docs.python.org/zh-cn/3.13/library/winreg.html#winreg.REG_EXPAND_SZ):
 
-\>>>
+
 
 ```
 >>> ExpandEnvironmentStrings('%windir%')

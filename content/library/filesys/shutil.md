@@ -258,7 +258,7 @@ draft = false
 
 ​	在 Windows 上，还会使用 `PATHEXT` 环境变量来处理可能尚未包括某个扩展的命令。 举例来说，如果你调用 `shutil.which("python")`，[`which()`](https://docs.python.org/zh-cn/3.13/library/shutil.html#shutil.which) 将搜索 `PATHEXT` 以获知应当在 *path* 的目录中查找 `python.exe`。 例如，在 Windows 上:
 
-\>>>
+
 
 ```
 >>> shutil.which("python")
@@ -480,7 +480,7 @@ shutil.rmtree(directory, onexc=remove_readonly)
 
 ​	在这个示例中，我们创建了一个 gzip 压缩的 tar 归档文件，其中包含用户的 `.ssh` 目录下的所有文件:
 
-\>>>
+
 
 ```
 >>> from shutil import make_archive
@@ -523,7 +523,7 @@ tmp
 
 ​	在最终的归档中，应当会包括 `please_add.txt`，但不应当包括 `do_not_add.txt`。 因此我们使用以下代码:
 
-\>>>
+
 
 ```
 >>> from shutil import make_archive

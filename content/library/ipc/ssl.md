@@ -259,7 +259,7 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	以下为示例代码:
 
-\>>>
+
 
 ```
 >>> import ssl
@@ -314,7 +314,7 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> ssl.enum_certificates("CA")
@@ -692,7 +692,7 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	解释器所加载的 OpenSSL 库的版本字符串:
 
-\>>>
+
 
 ```
 >>> ssl.OPENSSL_VERSION
@@ -705,7 +705,7 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	代表 OpenSSL 库的版本信息的五个整数所组成的元组:
 
-\>>>
+
 
 ```
 >>> ssl.OPENSSL_VERSION_INFO
@@ -718,7 +718,7 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	OpenSSL 库的原始版本号，以单个整数表示:
 
-\>>>
+
 
 ```
 >>> ssl.OPENSSL_VERSION_NUMBER
@@ -1092,7 +1092,7 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	具有一个 CA 证书和一个其他证书的上下文示例:
 
-\>>>
+
 
 ```
 >>> context.cert_store_stats()
@@ -1153,7 +1153,7 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> ctx = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
@@ -1323,7 +1323,7 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	Get statistics about the SSL sessions created or managed by this context. A dictionary is returned which maps the names of each [piece of information](https://docs.openssl.org/1.1.1/man3/SSL_CTX_sess_number/) to their numeric values. For example, here is the total number of hits and misses in the session cache since the context was created:
 
-\>>>
+
 
 ```
 >>> stats = context.session_stats()
@@ -1386,7 +1386,7 @@ ssl_sock.connect(('www.verisign.com', 443))
 
 *在 3.6 版本发生变更:* [`SSLContext.options`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.options) 返回 [`Options`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.Options) 旗标:
 
-\>>>
+
 
 ```
 >>> ssl.create_default_context().options  
@@ -1431,7 +1431,7 @@ ssl_sock.connect(('www.verisign.com', 443))
 
 *在 3.6 版本发生变更:* [`SSLContext.verify_flags`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.verify_flags) 返回 [`VerifyFlags`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.VerifyFlags) 旗标:
 
-\>>>
+
 
 ```
 >>> ssl.create_default_context().verify_flags  
@@ -1444,7 +1444,7 @@ ssl_sock.connect(('www.verisign.com', 443))
 
 *在 3.6 版本发生变更:* [`SSLContext.verify_mode`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.verify_mode) 返回 [`VerifyMode`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.VerifyMode) 枚举:
 
-\>>>
+
 
 ```
 >>> ssl.create_default_context().verify_mode  
@@ -1638,7 +1638,7 @@ else:
 
 ​	这个例子创建了一个 SSL 上下文并使用客户端套接字的推荐安全设置，包括自动证书验证:
 
-\>>>
+
 
 ```
 >>> context = ssl.create_default_context()
@@ -1646,7 +1646,7 @@ else:
 
 ​	如果你喜欢自行调整安全设置，你可能需要从头创建一个上下文（但是请请注意避免不正确的设置）:
 
-\>>>
+
 
 ```
 >>> context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
@@ -1659,7 +1659,7 @@ else:
 
 ​	当你使用此上下文去连接服务器时，[`CERT_REQUIRED`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.CERT_REQUIRED) 和 [`check_hostname`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.check_hostname) 会验证服务器证书；它将确认服务器证书使用了某个 CA 证书进行签名，检查签名是否正确，并验证其他属性例如主机名的有效性和身份真实性:
 
-\>>>
+
 
 ```
 >>> conn = context.wrap_socket(socket.socket(socket.AF_INET),
@@ -1669,7 +1669,7 @@ else:
 
 ​	你可以随后获取该证书:
 
-\>>>
+
 
 ```
 >>> cert = conn.getpeercert()
@@ -1677,7 +1677,7 @@ else:
 
 ​	可视化检查显示证书能够证明目标服务 (即 HTTPS 主机 `www.python.org`) 的身份:
 
-\>>>
+
 
 ```
 >>> pprint.pprint(cert)
@@ -1723,7 +1723,7 @@ else:
 
 ​	现在 SSL 通道已建立并已验证了证书，你可以继续与服务器对话了:
 
-\>>>
+
 
 ```
 >>> conn.sendall(b"HEAD / HTTP/1.0\r\nHost: linuxfr.org\r\n\r\n")
@@ -1944,7 +1944,7 @@ def deal_with_client(connstream):
 
 ​	例如，以下演示了你应当如何使用 [`smtplib.SMTP`](https://docs.python.org/zh-cn/3.13/library/smtplib.html#smtplib.SMTP) 类来创建指向一个 SMTP 服务器的受信任且安全的连接:
 
-\>>>
+
 
 ```
 >>> import ssl, smtplib
@@ -1972,7 +1972,7 @@ def deal_with_client(connstream):
 
 ​	SSL 版本 2 和 3 被认为是不安全的因而使用它们会有风险。 如果你想要客户端和服务器之间有最大的兼容性，推荐使用 [`PROTOCOL_TLS_CLIENT`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.PROTOCOL_TLS_CLIENT) 或 [`PROTOCOL_TLS_SERVER`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.PROTOCOL_TLS_SERVER) 作为协议版本。 SSLv2 和 SSLv3 默认会被禁用。
 
-\>>>
+
 
 ```
 >>> client_context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)

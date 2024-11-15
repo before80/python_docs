@@ -239,7 +239,7 @@ python-3.9.0.exe /layout [可选的目标目录]
 
 ​	你可以使用 [`os.path.realpath()`](https://docs.python.org/zh-cn/3.13/library/os.path.html#os.path.realpath) 找到任何现有文件的真实路径:
 
-\>>>
+
 
 ```
 >>> import os

@@ -949,7 +949,7 @@ self.assertEqual(cm.output, ['INFO:foo:first message',
 
 ​	根据方法名分别测试 *first* 是否 >, >=, < 或 <= *second*。 如果不是，则测试失败:
 
-\>>>
+
 
 ```
 >>> self.assertGreaterEqual(3, 4)
@@ -1591,7 +1591,7 @@ if __name__ == '__main__':
 
 `main` 支持通过传入 `exit=False` 参数以便在交互式解释器中使用。 这将在标准输出中显示结果而不调用 [`sys.exit()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.exit):
 
-\>>>
+
 
 ```
 >>> from unittest import main

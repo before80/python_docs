@@ -30,7 +30,7 @@ draft = false
 
 ​	对基本的 Python 对象层次结构进行编码：
 
-\>>>
+
 
 ```
 >>> import json
@@ -53,7 +53,7 @@ draft = false
 
 ​	紧凑编码：
 
-\>>>
+
 
 ```
 >>> import json
@@ -63,7 +63,7 @@ draft = false
 
 ​	美化输出：
 
-\>>>
+
 
 ```
 >>> import json
@@ -76,7 +76,7 @@ draft = false
 
 ​	对 JSON 对象解码的特殊化:
 
-\>>>
+
 
 ```
 >>> import json
@@ -91,7 +91,7 @@ draft = false
 
 ​	JSON解码：
 
-\>>>
+
 
 ```
 >>> import json
@@ -107,7 +107,7 @@ draft = false
 
 ​	特殊 JSON 对象解码：
 
-\>>>
+
 
 ```
 >>> import json
@@ -126,7 +126,7 @@ Decimal('1.1')
 
 ​	扩展 [`JSONEncoder`](https://docs.python.org/zh-cn/3.13/library/json.html#json.JSONEncoder)：
 
-\>>>
+
 
 ```
 >>> import json
@@ -373,7 +373,7 @@ def default(self, o):
 
 ​	返回 Python *o* 数据结构的 JSON 字符串表达方式。例如:
 
-\>>>
+
 
 ```
 >>> json.JSONEncoder().encode({"foo": ["bar", "baz"]})
@@ -444,7 +444,7 @@ for chunk in json.JSONEncoder().iterencode(bigobject):
 
 ​	RFC 不允许 infinite 或者 NaN 数值的表达方式。尽管这样，默认情况下，此模块接受并且输出 `Infinity` ， `-Infinity`，和 `NaN` 好像它们是有效的JSON数字字面值
 
-\>>>
+
 
 ```
 >>> # 这些调用均不会引发异常，但结果都不是合法的 JSON
@@ -465,7 +465,7 @@ nan
 
 ​	RFC 具体说明了 在 JSON对象里的名字应该是唯一的，但没有规定如何处理JSON对象中的重复名称。默认下，此模块不引发异常；作为替代，对于给定名它将忽略除姓-值对之外的所有对:
 
-\>>>
+
 
 ```
 >>> weird_json = '{"x": 1, "x": 2, "x": 3}'

@@ -58,7 +58,7 @@ draft = false
 
 ​	返回含 *nbytes* 个字节的随机字节字符串。如果未提供 *nbytes*，或*nbytes* 为 `None`，则使用合理的默认值。
 
-\>>>
+
 
 ```
 >>> token_bytes(16)  
@@ -69,7 +69,7 @@ b'\xebr\x17D*t\xae\xd4\xe3S\xb6\xe2\xebP1\x8b'
 
 ​	返回十六进制随机文本字符串。字符串有 *nbytes* 个随机字节，每个字节转换为两个十六进制数码。未提供 *nbytes* 或为 `None` 时，则使用合理的默认值。
 
-\>>>
+
 
 ```
 >>> token_hex(16)  
@@ -80,7 +80,7 @@ b'\xebr\x17D*t\xae\xd4\xe3S\xb6\xe2\xebP1\x8b'
 
 ​	返回安全的 URL 随机文本字符串，包含 *nbytes* 个随机字节。文本用 Base64 编码，平均来说，每个字节对应 1.3 个结果字符。未提供 *nbytes* 或为 `None` 时，则使用合理的默认值。
 
-\>>>
+
 
 ```
 >>> token_urlsafe(16)  

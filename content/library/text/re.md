@@ -220,7 +220,7 @@ draft = false
 
 ​	如果 `...` 的匹配内容出现在当前位置的左侧，则匹配。这叫做 *肯定型后视断言* （positive lookbehind assertion）。 `(?<=abc)def` 将会在 `'abcdef'` 中找到一个匹配，因为后视会回退3个字符并检查内部表达式是否匹配。内部表达式（匹配的内容）必须是固定长度的，意思就是 `abc` 或 `a|b` 是允许的，但是 `a*` 和 `a{3,4}` 不可以。注意，以肯定型后视断言开头的正则表达式，匹配项一般不会位于搜索字符串的开头。很可能你应该使用 [`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.search) 函数，而不是 [`match()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.match) 函数：
 
-\>>>
+
 
 ```
 >>> import re
@@ -231,7 +231,7 @@ draft = false
 
 ​	这个例子搜索一个跟随在连字符后的单词：
 
-\>>>
+
 
 ```
 >>> m = re.search(r'(?<=-)\w+', 'spam-egg')
@@ -538,7 +538,7 @@ result = re.match(pattern, string)
 
 ​	用 *pattern* 分开 *string* 。 如果在 *pattern* 中捕获到括号，那么所有的组里的文字也会包含在列表里。如果 *maxsplit* 非零， 最多进行 *maxsplit* 次分隔， 剩下的字符全部返回到列表的最后一个元素。
 
-\>>>
+
 
 ```
 >>> re.split(r'\W+', 'Words, words, words.')
@@ -553,7 +553,7 @@ result = re.match(pattern, string)
 
 ​	如果分隔符里有捕获组合，并且匹配到字符串的开始，那么结果将会以一个空字符串开始。对于结尾也是一样
 
-\>>>
+
 
 ```
 >>> re.split(r'(\W+)', '...words, words...')
@@ -564,7 +564,7 @@ result = re.match(pattern, string)
 
 ​	样式的空匹配仅在与前一个空匹配不相邻时才会拆分字符串。
 
-\>>>
+
 
 ```
 >>> re.split(r'\b', 'Words, words, words.')
@@ -589,7 +589,7 @@ result = re.match(pattern, string)
 
 ​	返回结果取决于模式中捕获组的数量。如果没有组，返回与整个模式匹配的字符串列表。如果有且仅有一个组，返回与该组匹配的字符串列表。如果有多个组，返回与这些组匹配的字符串元组列表。非捕获组不影响结果。
 
-\>>>
+
 
 ```
 >>> re.findall(r'\bf[a-z]*', 'which foot or hand fell fastest')
@@ -614,7 +614,7 @@ result = re.match(pattern, string)
 
 ​	返回通过使用 *repl* 替换在 *string* 最左边非重叠出现的 *pattern* 而获得的字符串。 如果样式没有找到，则不加改变地返回 *string*。 *repl* 可以是字符串或函数；如为字符串，则其中任何反斜杠转义序列都会被处理。 也就是说，`\n` 会被转换为一个换行符，`\r` 会被转换为一个回车符，依此类推。 未知的 ASCII 字符转义序列保留在未来使用，会被当作错误来处理。 其他未知转义序列例如 `\&` 会保持原样。 向后引用像是 `\6` 会用样式中第 6 组所匹配到的子字符串来替换。 例如:
 
-\>>>
+
 
 ```
 >>> re.sub(r'def\s+([a-zA-Z_][a-zA-Z_0-9]*)\s*\(\s*\):',
@@ -625,7 +625,7 @@ result = re.match(pattern, string)
 
 ​	如果 *repl* 是一个函数，则它会针对每次 *pattern* 的非重叠出现的情况被调用。 该函数接受单个 [`Match`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match) 参数，并返回替换字符串。 例如:
 
-\>>>
+
 
 ```
 >>> def dashrepl(matchobj):
@@ -668,7 +668,7 @@ result = re.match(pattern, string)
 
 ​	转义 *pattern* 中的特殊字符。如果你想对任意可能包含正则表达式元字符的文本字符串进行匹配，它就是有用的。比如
 
-\>>>
+
 
 ```
 >>> print(re.escape('https://www.python.org'))
@@ -685,7 +685,7 @@ https://www\.python\.org
 
 ​	这个函数不能被用于 [`sub()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.sub) 和 [`subn()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.subn) 的替换字符串，只有反斜杠应该被转义。 例如:
 
-\>>>
+
 
 ```
 >>> digits_re = r'\d+'
@@ -750,7 +750,7 @@ https://www\.python\.org
 
 ​	可选参数 *endpos* 限定了字符串搜索的结束；它假定字符串长度到 *endpos* ， 所以只有从 `pos` 到 `endpos - 1` 的字符会被匹配。如果 *endpos* 小于 *pos*，就不会有匹配产生；另外，如果 *rx* 是一个编译后的正则对象， `rx.search(string, 0, 50)` 等价于 `rx.search(string[:50], 0)`。
 
-\>>>
+
 
 ```
 >>> pattern = re.compile("d")
@@ -765,7 +765,7 @@ https://www\.python\.org
 
 ​	可选参数 *pos* 和 *endpos* 与 [`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.search) 含义相同。
 
-\>>>
+
 
 ```
 >>> pattern = re.compile("o")
@@ -782,7 +782,7 @@ https://www\.python\.org
 
 ​	可选参数 *pos* 和 *endpos* 与 [`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.search) 含义相同。
 
-\>>>
+
 
 ```
 >>> pattern = re.compile("o[gh]")
@@ -860,7 +860,7 @@ if match:
 
 ​	返回一个或者多个匹配的子组。如果只有一个参数，结果就是一个字符串，如果有多个参数，结果就是一个元组（每个参数对应一个项），如果没有参数，组1默认到0（整个匹配都被返回）。 如果一个组N 参数值为 0，相应的返回值就是整个匹配字符串；如果它是一个范围 [1..99]，结果就是相应的括号组字符串。如果一个组号是负数，或者大于样式中定义的组数，就引发一个 [`IndexError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#IndexError) 异常。如果一个组包含在样式的一部分，并被匹配多次，就返回最后一个匹配。:
 
-\>>>
+
 
 ```
 >>> m = re.match(r"(\w+) (\w+)", "Isaac Newton, physicist")
@@ -878,7 +878,7 @@ if match:
 
 ​	一个相对复杂的例子
 
-\>>>
+
 
 ```
 >>> m = re.match(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Malcolm Reynolds")
@@ -890,7 +890,7 @@ if match:
 
 ​	命名组合同样可以通过索引值引用
 
-\>>>
+
 
 ```
 >>> m.group(1)
@@ -901,7 +901,7 @@ if match:
 
 ​	如果一个组匹配成功多次，就只返回最后一个匹配
 
-\>>>
+
 
 ```
 >>> m = re.match(r"(..)+", "a1b2c3")  # Matches 3 times.
@@ -913,7 +913,7 @@ if match:
 
 ​	这个等价于 `m.group(g)`。这允许更方便的引用一个匹配
 
-\>>>
+
 
 ```
 >>> m = re.match(r"(\w+) (\w+)", "Isaac Newton, physicist")
@@ -927,7 +927,7 @@ if match:
 
 ​	命名分组也是受支持的:
 
-\>>>
+
 
 ```
 >>> m = re.match(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Isaac Newton")
@@ -945,7 +945,7 @@ if match:
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> m = re.match(r"(\d+)\.(\d+)", "24.1632")
@@ -955,7 +955,7 @@ if match:
 
 ​	如果我们使小数点可选，那么不是所有的组都会参与到匹配当中。这些组合默认会返回一个 `None` ，除非指定了 *default* 参数。
 
-\>>>
+
 
 ```
 >>> m = re.match(r"(\d+)\.?(\d+)?", "24")
@@ -969,7 +969,7 @@ if match:
 
 ​	返回一个字典，包含了所有的 *命名* 子组。key就是组名。 *default* 参数用于不参与匹配的组合；默认为 `None`。 例如
 
-\>>>
+
 
 ```
 >>> m = re.match(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Malcolm Reynolds")
@@ -991,7 +991,7 @@ m.string[m.start(g):m.end(g)]
 
 ​	这个例子会从email地址中移除掉 *remove_this*
 
-\>>>
+
 
 ```
 >>> email = "tony@tiremove_thisger.net"
@@ -1049,7 +1049,7 @@ def displaymatch(match):
 
 ​	要看给定的字符串是否有效，我们可以按照以下步骤
 
-\>>>
+
 
 ```
 >>> valid = re.compile(r"^[a2-9tjqk]{5}$")
@@ -1063,7 +1063,7 @@ def displaymatch(match):
 
 ​	最后一手牌，`"727ak"` ，包含了一个对子，或者两张同样数值的牌。要用正则表达式匹配它，应该使用向后引用如下
 
-\>>>
+
 
 ```
 >>> pair = re.compile(r".*(.).*\1")
@@ -1076,7 +1076,7 @@ def displaymatch(match):
 
 ​	要找出对子由什么牌组成，开发者可以按照下面的方式来使用匹配对象的 [`group()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.group) 方法:
 
-\>>>
+
 
 ```
 >>> pair = re.compile(r".*(.).*\1")
@@ -1140,7 +1140,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> re.match("c", "abcdef")    # 不匹配
@@ -1153,7 +1153,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 ​	在 [`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.search) 中，可以用 `'^'` 作为开始来限制匹配到字符串的首位
 
-\>>>
+
 
 ```
 >>> re.match("c", "abcdef")    # No match
@@ -1164,7 +1164,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 ​	注意 [`MULTILINE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.MULTILINE) 多行模式中函数 [`match()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.match) 只匹配字符串的开始，但使用 [`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.search) 和以 `'^'` 开始的正则表达式会匹配每行的开始
 
-\>>>
+
 
 ```
 >>> re.match("X", "A\nB\nX", re.MULTILINE)  # No match
@@ -1178,7 +1178,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 ​	首先，这里是输入。 它通常来自一个文件，这里我们使用三重引号字符串语法
 
-\>>>
+
 
 ```
 >>> text = """Ross McFluff: 834.345.1254 155 Elm Street
@@ -1192,7 +1192,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 ​	条目用一个或者多个换行符分开。现在我们将字符串转换为一个列表，每个非空行都有一个条目:
 
-\>>>
+
 
 ```
 >>> entries = re.split("\n+", text)
@@ -1205,7 +1205,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 ​	最终，将每个条目分割为一个由名字、姓氏、电话号码和地址组成的列表。我们为 [`split()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.split) 使用了 `maxsplit` 形参，因为地址中包含有被我们作为分割模式的空格符:
 
-\>>>
+
 
 ```
 >>> [re.split(":? ", entry, maxsplit=3) for entry in entries]
@@ -1217,7 +1217,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 `:?` 样式匹配姓后面的冒号，因此它不出现在结果列表中。如果 `maxsplit` 设置为 `4` ，我们还可以从地址中获取到房间号:
 
-\>>>
+
 
 ```
 >>> [re.split(":? ", entry, maxsplit=4) for entry in entries]
@@ -1231,7 +1231,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 [`sub()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.sub) 替换字符串中出现的样式的每一个实例。这个例子证明了使用 [`sub()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.sub) 来整理文字，或者随机化每个字符的位置，除了首位和末尾字符
 
-\>>>
+
 
 ```
 >>> def repl(m):
@@ -1250,7 +1250,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 [`findall()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.findall) 匹配样式 *所有* 的出现，不仅是像 [`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.search) 中的第一个匹配。比如，如果一个作者希望找到文字中的所有副词，他可能会按照以下方法用 [`findall()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.findall)
 
-\>>>
+
 
 ```
 >>> text = "He was carefully disguised but captured quickly by police."
@@ -1262,7 +1262,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 ​	如果想要获得比匹配文本更多的关于模式的所有匹配信息，则 [`finditer()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.finditer) 会很有用处因为它提供了 [`Match`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match) 对象而不是字符串。 继续前面的例子，如果某位作者想要查找某段文本中的所有副词 *以及它们的位置*，可以按以下方式使用 [`finditer()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.finditer):
 
-\>>>
+
 
 ```
 >>> text = "He was carefully disguised but captured quickly by police."
@@ -1276,7 +1276,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 ​	原始字符串记法 (`r"text"`) 保持正则表达式正常。否则，每个正则式里的反斜杠(`'\'`) 都必须前缀一个反斜杠来转义。比如，下面两行代码功能就是完全一致的
 
-\>>>
+
 
 ```
 >>> re.match(r"\W(.)\1\W", " ff ")
@@ -1287,7 +1287,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 ​	当需要匹配一个字符反斜杠，它必须在正则表达式中转义。在原始字符串记法，就是 `r"\\"`。否则就必须用 `"\\\\"`，来表示同样的意思
 
-\>>>
+
 
 ```
 >>> re.match(r"\\", r"\\")

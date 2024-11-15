@@ -485,7 +485,7 @@ t.screen.bgcolor("orange")
 
 ​	海龟前进 *distance* 指定的距离，方向为海龟的朝向。
 
-\>>>
+
 
 ```
 >>> turtle.position()
@@ -510,7 +510,7 @@ t.screen.bgcolor("orange")
 
 ​	海龟后退 *distance* 指定的距离，方向与海龟的朝向相反。不改变海龟的朝向。
 
-\>>>
+
 
 ```
 >>> turtle.position()
@@ -530,7 +530,7 @@ t.screen.bgcolor("orange")
 
 ​	海龟右转 *angle* 个单位。(单位默认为角度，但可通过 [`degrees()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.degrees) 和 [`radians()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.radians) 函数改变设置。) 角度的正负由海龟模式确定，参见 [`mode()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.mode)。
 
-\>>>
+
 
 ```
 >>> turtle.heading()
@@ -550,7 +550,7 @@ t.screen.bgcolor("orange")
 
 ​	海龟左转 *angle* 个单位。(单位默认为角度，但可通过 [`degrees()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.degrees) 和 [`radians()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.radians) 函数改变设置。) 角度的正负由海龟模式确定，参见 [`mode()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.mode)。
 
-\>>>
+
 
 ```
 >>> turtle.heading()
@@ -575,7 +575,7 @@ t.screen.bgcolor("orange")
 
 ​	海龟移动到一个绝对坐标。如果画笔已落下将会画线。不改变海龟的朝向。
 
-\>>>
+
 
 ```
 >>> tp = turtle.pos()
@@ -602,7 +602,7 @@ t.screen.bgcolor("orange")
 
 ​	将海龟移到某个绝对位置。 不同于 goto(x, y)，这将不会画一条线段。 海龟的方向不变。 如果当前正在填充，离开后原位置上的多边形将被填充，在移位后将再次开始填充。 这可以通过 fill_gap=True 来禁用，此设置将使在移位期间海龟的移动轨迹线像在 goto(x, y) 中一样被当作填充边缘。
 
-\>>>
+
 
 ```
 >>> tp = turtle.pos()
@@ -629,7 +629,7 @@ t.screen.bgcolor("orange")
 
 ​	设置海龟的横坐标为 *x*，纵坐标保持不变。
 
-\>>>
+
 
 ```
 >>> turtle.position()
@@ -647,7 +647,7 @@ t.screen.bgcolor("orange")
 
 ​	设置海龟的纵坐标为 *y*，横坐标保持不变。
 
-\>>>
+
 
 ```
 >>> turtle.position()
@@ -674,7 +674,7 @@ t.screen.bgcolor("orange")
 | 180 - 西 | 180 - 南  |
 | 270 - 南 | 270 - 西  |
 
-\>>>
+
 
 ```
 >>> turtle.setheading(90)
@@ -686,7 +686,7 @@ t.screen.bgcolor("orange")
 
 ​	海龟移至初始坐标 (0,0)，并设置朝向为初始方向 (由海龟模式确定，参见 [`mode()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.mode))。
 
-\>>>
+
 
 ```
 >>> turtle.heading()
@@ -712,7 +712,7 @@ t.screen.bgcolor("orange")
 
 ​	圆实际是以其内切正多边形来近似表示的，其边的数量由 *steps* 指定。如果未指定边数则会自动确定。此方法也可用来绘制正多边形。
 
-\>>>
+
 
 ```
 >>> turtle.home()
@@ -741,7 +741,7 @@ t.screen.bgcolor("orange")
 
 ​	绘制一个直径为 *size*，颜色为 *color* 的圆点。如果 *size* 未指定，则直径取 pensize+4 和 2*pensize 中的较大值。
 
-\>>>
+
 
 ```
 >>> turtle.home()
@@ -757,7 +757,7 @@ t.screen.bgcolor("orange")
 
 ​	在海龟当前位置印制一个海龟形状。返回该印章的 stamp_id，印章可以通过调用 `clearstamp(stamp_id)` 来删除。
 
-\>>>
+
 
 ```
 >>> turtle.color("blue")
@@ -773,7 +773,7 @@ t.screen.bgcolor("orange")
 
 ​	删除 *stampid* 指定的印章。
 
-\>>>
+
 
 ```
 >>> turtle.position()
@@ -796,7 +796,7 @@ t.screen.bgcolor("orange")
 
 ​	删除全部或前/后 *n* 个海龟印章。如果 *n* 为 `None` 则删除全部印章，如果 *n* > 0 则删除前 *n* 个印章，否则如果 *n* < 0 则删除后 *n* 个印章。
 
-\>>>
+
 
 ```
 >>> for i in range(8):
@@ -811,7 +811,7 @@ t.screen.bgcolor("orange")
 
 ​	撤消 (或连续撤消) 最近的一个 (或多个) 海龟动作。可撤消的次数由撤消缓冲区的大小决定。
 
-\>>>
+
 
 ```
 >>> for i in range(4):
@@ -841,7 +841,7 @@ t.screen.bgcolor("orange")
 
 ​	注意: *speed* = 0 表示 *没有* 动画效果。forward/back 将使海龟向前/向后跳跃，同样的 left/right 将使海龟立即改变朝向。
 
-\>>>
+
 
 ```
 >>> turtle.speed()
@@ -862,7 +862,7 @@ t.screen.bgcolor("orange")
 
 ​	返回海龟当前的坐标 (x,y) (为 [`Vec2D`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Vec2D) 矢量类对象)。
 
-\>>>
+
 
 ```
 >>> turtle.pos()
@@ -878,7 +878,7 @@ t.screen.bgcolor("orange")
 
 ​	返回从海龟位置到由 (x,y)、矢量或另一海龟所确定位置的连线的夹角。 此数值依赖于海龟的初始朝向，这又取决于 "standard"/"world" 或 "logo" 模式设置。
 
-\>>>
+
 
 ```
 >>> turtle.goto(10, 10)
@@ -890,7 +890,7 @@ t.screen.bgcolor("orange")
 
 ​	返回海龟的 x 坐标。
 
-\>>>
+
 
 ```
 >>> turtle.home()
@@ -906,7 +906,7 @@ t.screen.bgcolor("orange")
 
 ​	返回海龟的 y 坐标。
 
-\>>>
+
 
 ```
 >>> turtle.home()
@@ -922,7 +922,7 @@ t.screen.bgcolor("orange")
 
 ​	返回海龟当前的朝向 (数值依赖于海龟模式参见 [`mode()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.mode))。
 
-\>>>
+
 
 ```
 >>> turtle.home()
@@ -940,7 +940,7 @@ t.screen.bgcolor("orange")
 
 ​	返回从海龟位置到由 (x,y)，适量或另一海龟对应位置的单位距离。
 
-\>>>
+
 
 ```
 >>> turtle.home()
@@ -964,7 +964,7 @@ t.screen.bgcolor("orange")
 
 ​	设置角度的度量单位，即设置一个圆周为多少 "度"。默认值为 360 度。
 
-\>>>
+
 
 ```
 >>> turtle.home()
@@ -986,7 +986,7 @@ grade 或 gradian，等于直角的 1/100。）
 
 ​	设置角度的度量单位为弧度。其值等于 `degrees(2*math.pi)`。
 
-\>>>
+
 
 ```
 >>> turtle.home()
@@ -1028,7 +1028,7 @@ grade 或 gradian，等于直角的 1/100。）
 
 ​	设置线条的粗细为 *width* 或返回该值。如果 resizemode 设为 "auto" 并且 turtleshape 为多边形，该多边形也以同样组细的线条绘制。如未指定参数，则返回当前的 pensize。
 
-\>>>
+
 
 ```
 >>> turtle.pensize()
@@ -1058,7 +1058,7 @@ grade 或 gradian，等于直角的 1/100。）
 
 ​	此字典可作为后续调用 [`pen()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.pen) 时的参数，以恢复之前的画笔状态。另外还可将这些属性作为关键词参数提交。使用此方式可以用一条语句设置画笔的多个属性。
 
-\>>>
+
 
 ```
 >>> turtle.pen(fillcolor="black", pencolor="red", pensize=10)
@@ -1081,7 +1081,7 @@ grade 或 gradian，等于直角的 1/100。）
 
 ​	如果画笔落下返回 `True`，如果画笔抬起返回 `False`。
 
-\>>>
+
 
 ```
 >>> turtle.penup()
@@ -1118,7 +1118,7 @@ True
 
 ​	如果 turtleshape 为多边形，该多边形轮廓也以新设置的画笔颜色绘制。
 
-\>>>
+
 
 ```
 >>> colormode()
@@ -1164,7 +1164,7 @@ True
 
 ​	如果 turtleshape 为多边形，该多边形内部也以新设置的填充颜色填充。
 
-\>>>
+
 
 ```
 >>> turtle.fillcolor("violet")
@@ -1200,7 +1200,7 @@ True
 
 ​	如果 turtleshape 为多边形，该多边形轮廓与填充也使用新设置的颜色。
 
-\>>>
+
 
 ```
 >>> turtle.color("red", "green")
@@ -1219,7 +1219,7 @@ True
 
 ​	返回填充状态 (填充为 `True`，否则为 `False`)。
 
-\>>>
+
 
 ```
 >>> turtle.begin_fill()
@@ -1239,7 +1239,7 @@ True
 
 ​	自相交多边形或多个形状间的重叠区域是否填充取决于操作系统的图形引擎、重叠的类型以及重叠的层数。 例如上面的 Turtle 多芒星可能会全部填充为黄色，也可能会有一些白色区域。
 
-\>>>
+
 
 ```
 >>> turtle.color("black", "red")
@@ -1254,7 +1254,7 @@ True
 
 ​	从屏幕中删除海龟的绘图，海龟回到原点并设置所有变量为默认值。
 
-\>>>
+
 
 ```
 >>> turtle.goto(0,-22)
@@ -1285,7 +1285,7 @@ True
 
 ​	基于 *align* ("left", "center" 或 "right") 并使用给定的字体将文本 —— *arg* 的字符串表示形式 —— 写到当前海龟位置。 如果 *move* 为真值，画笔会移至文本的右下角。 默认情况下 *move* 为 `False`。
 
-\>>>
+
 
 ```
 >>> turtle.write("Home = ", True, align="center")
@@ -1302,7 +1302,7 @@ True
 
 ​	使海龟不可见。当你绘制复杂图形时这是个好主意，因为隐藏海龟可显著加快绘制速度。
 
-\>>>
+
 
 ```
 >>> turtle.hideturtle()
@@ -1314,7 +1314,7 @@ True
 
 ​	使海龟可见。
 
-\>>>
+
 
 ```
 >>> turtle.showturtle()
@@ -1324,7 +1324,7 @@ True
 
 ​	如果海龟显示返回 `True`，如果海龟隐藏返回 `False`。
 
-\>>>
+
 
 ```
 >>> turtle.hideturtle()
@@ -1345,7 +1345,7 @@ True
 
 ​	设置海龟形状为 *name* 指定的形状名，如未指定形状名则返回当前的形状名。*name* 指定的形状名应存在于 TurtleScreen 的 shape 字典中。多边形的形状初始时有以下几种: "arrow", "turtle", "circle", "square", "triangle", "classic"。要了解如何处理形状请参看 Screen 方法 [`register_shape()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.register_shape)。
 
-\>>>
+
 
 ```
 >>> turtle.shape()
@@ -1369,7 +1369,7 @@ True
 
 `resizemode("user")` 会由 [`shapesize()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.shapesize) 带参数使用时被调用。
 
-\>>>
+
 
 ```
 >>> turtle.resizemode()
@@ -1391,7 +1391,7 @@ True
 
 ​	返回或设置画笔的属性 x/y 拉伸因子和/或轮廓。 设置大小调整模式为 "user"。 当且仅当大小调整模式为 "user" 时，海龟会基于其拉伸因子调整外观: *stretch_wid* 为垂直于其朝向的宽度拉伸因子，*stretch_len* 为平行于其朝向的长度拉伸因子，*outline* 决定形状轮廓线的宽度。
 
-\>>>
+
 
 ```
 >>> turtle.shapesize()
@@ -1413,7 +1413,7 @@ True
 
 ​	设置或返回当前的剪切因子。根据 share 指定的剪切因子即剪切角度的切线来剪切海龟形状。*不* 改变海龟的朝向 (移动方向)。如未指定 shear 参数: 返回当前的剪切因子即剪切角度的切线，与海龟朝向平行的线条将被剪切。
 
-\>>>
+
 
 ```
 >>> turtle.shape("circle")
@@ -1431,7 +1431,7 @@ True
 
 ​	海龟形状自其当前的倾角转动 *angle* 指定的角度，但 *不* 改变海龟的朝向 (移动方向)。
 
-\>>>
+
 
 ```
 >>> turtle.reset()
@@ -1451,7 +1451,7 @@ True
 
 ​	设置或返回当前的倾角。如果指定 angle 则旋转海龟形状使其指向 angle 指定的方向，忽略其当前的倾角。*不* 改变海龟的朝向 (移动方向)。如果未指定 angle: 返回当前的倾角，即海龟形状的方向和海龟朝向 (移动方向) 之间的夹角。
 
-\>>>
+
 
 ```
 >>> turtle.reset()
@@ -1475,7 +1475,7 @@ True
 
 ​	如未指定任何矩阵元素，则返回以 4 元素元组表示的变形矩阵。 否则就根据设置指定元素的矩阵来改变海龟形状，矩阵第一排的值为 t11, t12 而第二排的值为 t21, t22。 行列式 t11 * t22 - t12 * t21 必须不为零，否则会引发错误。 根据指定矩阵修改拉伸因子 stretchfactor, 剪切因子 shearfactor 和倾角 tiltangle。
 
-\>>>
+
 
 ```
 >>> turtle = Turtle()
@@ -1490,7 +1490,7 @@ True
 
 ​	返回以坐标值对元组表示的当前形状多边形。这可以用于定义一个新形状或一个复合形状的多个组成部分。
 
-\>>>
+
 
 ```
 >>> turtle.shape("square")
@@ -1511,7 +1511,7 @@ True
 
 ​	将 *fun* 指定的函数绑定到鼠标点击此海龟事件。如果 *fun* 值为 `None`，则移除现有的绑定。以下为使用匿名海龟即过程式的示例:
 
-\>>>
+
 
 ```
 >>> def turn(x, y):
@@ -1531,7 +1531,7 @@ True
 
 ​	将 *fun* 指定的函数绑定到在此海龟上释放鼠标按键事件。如果 *fun* 值为 `None`，则移除现有的绑定。
 
-\>>>
+
 
 ```
 >>> class MyTurtle(Turtle):
@@ -1557,7 +1557,7 @@ True
 
 ​	注: 在海龟上移动鼠标事件之前应先发生在此海龟上点击鼠标事件。
 
-\>>>
+
 
 ```
 >>> turtle.ondrag(turtle.goto)
@@ -1579,7 +1579,7 @@ True
 
 ​	返回最新记录的多边形。
 
-\>>>
+
 
 ```
 >>> turtle.home()
@@ -1598,7 +1598,7 @@ True
 
 ​	创建并返回海龟的克隆体，具有相同的位置、朝向和海龟属性。
 
-\>>>
+
 
 ```
 >>> mick = Turtle()
@@ -1611,7 +1611,7 @@ True
 
 ​	返回海龟对象自身。唯一合理的用法: 作为一个函数来返回 "匿名海龟":
 
-\>>>
+
 
 ```
 >>> pet = getturtle()
@@ -1624,7 +1624,7 @@ True
 
 ​	返回作为海龟绘图场所的 [`TurtleScreen`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.TurtleScreen) 类对象。该对象将可调用 TurtleScreen 方法。
 
-\>>>
+
 
 ```
 >>> ts = turtle.getscreen()
@@ -1641,7 +1641,7 @@ True
 
 ​	设置或禁用撤销缓冲区。 如果 *size* 为整数，则开辟一个给定大小的空撤销缓冲区。 *size* 给出了可以通过 [`undo()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.undo) 方法/函数撤销海龟动作的最大次数。 如果 *size* 为 `None`，则禁用撤销缓冲区。
 
-\>>>
+
 
 ```
 >>> turtle.setundobuffer(42)
@@ -1651,7 +1651,7 @@ True
 
 ​	返回撤销缓冲区里的条目数。
 
-\>>>
+
 
 ```
 >>> while undobufferentries():
@@ -1670,7 +1670,7 @@ True
 
    例如:
 
-   \>>>
+   
 
    ```
    >>> s = Shape("compound")
@@ -1682,7 +1682,7 @@ True
 
 3. 接下来将 Shape 对象添加到 Screen 对象的形状列表并使用它:
 
-   \>>>
+   
 
    ```
    >>> register_shape("myshape", s)
@@ -1709,7 +1709,7 @@ True
 
 ​	设置或返回 TurtleScreen 的背景颜色。
 
-\>>>
+
 
 ```
 >>> screen.bgcolor("orange")
@@ -1728,7 +1728,7 @@ True
 
 ​	设置背景图片或返回当前背景图片名称。如果 *picname* 为一个文件名，则将相应图片设为背景。如果 *picname* 为 `"nopic"`，则删除当前背景图片。如果 *picname* 为 `None`，则返回当前背景图片文件名。:
 
-\>>>
+
 
 ```
 >>> screen.bgpic()
@@ -1772,7 +1772,7 @@ True
 
 ​	如未指定任何参数，则返回当前的 (canvaswidth, canvasheight)。否则改变作为海龟绘图场所的画布大小。不改变绘图窗口。要观察画布的隐藏区域，可以使用滚动条。通过此方法可以令之前绘制于画布之外的图形变为可见。
 
-\>>>
+
 
 ```
 >>> screen.screensize()
@@ -1797,7 +1797,7 @@ True
 
 **注意**: 在用户自定义坐标系中，角度可能显得扭曲。
 
-\>>>
+
 
 ```
 >>> screen.reset()
@@ -1821,7 +1821,7 @@ True
 
 ​	可选参数:
 
-\>>>
+
 
 ```
 >>> screen.delay()
@@ -1840,7 +1840,7 @@ True
 
 ​	启用/禁用海龟动画并设置刷新图形的延迟时间。如果指定 *n* 值，则只有每第 n 次屏幕刷新会实际执行。(可被用来加速复杂图形的绘制。) 如果调用时不带参数，则返回当前保存的 n 值。第二个参数设置延迟值 (参见 [`delay()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.delay))。
 
-\>>>
+
 
 ```
 >>> screen.tracer(8, 25)
@@ -1874,7 +1874,7 @@ True
 
 ​	绑定 *fun* 指定的函数到按键释放事件。如果 *fun* 值为 `None`，则移除事件绑定。注: 为了能够注册按键事件，TurtleScreen 必须得到焦点。(参见 method [`listen()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.listen) 方法。)
 
-\>>>
+
 
 ```
 >>> def f():
@@ -1894,7 +1894,7 @@ True
 
 ​	绑定 *fun* 指定的函数到指定键的按下事件。如未指定键则绑定到任意键的按下事件。注: 为了能够注册按键事件，必须得到焦点。(参见 [`listen()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.listen) 方法。)
 
-\>>>
+
 
 ```
 >>> def f():
@@ -1918,7 +1918,7 @@ True
 
 ​	以下示例使用一个 TurtleScreen 实例 `screen` 和一个 Turtle 实例 `turtle`:
 
-\>>>
+
 
 ```
 >>> screen.onclick(turtle.goto) # 后续对 TurtleScreen 的点击
@@ -1941,7 +1941,7 @@ True
 
 ​	安装一个计时器，在 *t* 毫秒后调用 *fun* 函数。
 
-\>>>
+
 
 ```
 >>> running = True
@@ -1960,7 +1960,7 @@ True
 
 ​	开始事件循环 - 调用 Tkinter 的 mainloop 函数。必须作为一个海龟绘图程序的结束语句。如果一个脚本是在以 -n 模式 (无子进程) 启动的 IDLE 中运行时 *不可* 使用 - 用于实现海龟绘图的交互功能。:
 
-\>>>
+
 
 ```
 >>> screen.mainloop()
@@ -1977,7 +1977,7 @@ True
 
 ​	弹出一个对话框窗口用来输入一个字符串。形参 title 为对话框窗口的标题，prompt 为一条文本，通常用来提示要输入什么信息。返回输入的字符串。如果对话框被取消则返回 `None`。:
 
-\>>>
+
 
 ```
 >>> screen.textinput("NIM", "Name of first player:")
@@ -1995,7 +1995,7 @@ True
 
 ​	弹出一个用于输入数值的对话框窗口。 title 是对话框窗口的标题，prompt 是通常用来描述要输入的数字信息的文本。 default: 默认值, minval: 可输入的最小值, maxval: 可输入的最大值。 如果给出 minval .. maxval 则输入的数值必须在此范围以内。 如未给出，则将发出提示并且让话框保持打开以便修正。 返回输入的数值。 如果对话框被取消，则返回 `None`。
 
-\>>>
+
 
 ```
 >>> screen.numinput("Poker", "Your stakes:", 1000, minval=10, maxval=10000)
@@ -2018,7 +2018,7 @@ True
 | "standard" | 朝右 (东)    | 逆时针   |
 | "logo"     | 朝上 (北)    | 顺时针   |
 
-\>>>
+
 
 ```
 >>> mode("logo")   # 将海龟重置为朝向北方
@@ -2034,7 +2034,7 @@ True
 
 ​	返回 colormode 或将其设为 1.0 或 255。 后续表示三原色的 *r*, *g*, *b* 值必须在 0..*cmode* 范围之内。
 
-\>>>
+
 
 ```
 >>> screen.colormode(1)
@@ -2054,7 +2054,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 ​	返回此 TurtleScreen 的 Canvas 对象。供了解 Tkinter 的 Canvas 对象内部机理的人士使用。
 
-\>>>
+
 
 ```
 >>> cv = screen.getcanvas()
@@ -2066,7 +2066,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 ​	返回所有当前可用海龟形状的列表。
 
-\>>>
+
 
 ```
 >>> screen.getshapes()
@@ -2081,7 +2081,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 1. *name* 为一个 gif 文件的文件名， *shape* 为 `None`: 安装相应的图像形状。:
 
-   \>>>
+   
 
    ```
    >>> screen.register_shape("turtle.gif")
@@ -2095,7 +2095,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 2. *name* 为指定的字符串，*shape* 为由坐标值对构成的元组: 安装相应的多边形形状。
 
-   \>>>
+   
 
    ```
    >>> screen.register_shape("triangle", ((5,-3), (0,5), (-5,-3)))
@@ -2109,7 +2109,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 ​	返回屏幕上的海龟列表。
 
-\>>>
+
 
 ```
 >>> for turtle in screen.turtles():
@@ -2120,7 +2120,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 ​	返回海龟窗口的高度。:
 
-\>>>
+
 
 ```
 >>> screen.window_height()
@@ -2131,7 +2131,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 ​	返回海龟窗口的宽度。:
 
-\>>>
+
 
 ```
 >>> screen.window_width()
@@ -2163,7 +2163,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 - **startx** -- 如为正值，表示初始位置距离屏幕左边缘多少像素，负值表示距离右边缘，`None` 表示窗口水平居中
 - **starty** -- 如为正值，表示初始位置距离屏幕上边缘多少像素，负值表示距离下边缘，`None` 表示窗口垂直居中
 
-\>>>
+
 
 ```
 >>> screen.setup (width=200, height=200, startx=0, starty=0)
@@ -2180,7 +2180,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 ​	设置海龟窗口标题为 *titlestring* 指定的文本。
 
-\>>>
+
 
 ```
 >>> screen.title("Welcome to the turtle zoo!")
@@ -2246,7 +2246,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> poly = ((0,0),(10,-5),(0,10),(-10,-5))
@@ -2296,7 +2296,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 - 对文法或函数调用 [`help()`](https://docs.python.org/zh-cn/3.13/library/functions.html#help) 将显示其文档字符串:
 
-  \>>>
+  
 
   ```
   >>> help(Screen.bgcolor)
@@ -2331,7 +2331,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 - 方法对应函数的文档字符串的形式会有一些修改:
 
-  \>>>
+  
 
   ```
   >>> help(bgcolor)

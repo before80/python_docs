@@ -266,7 +266,7 @@ __test__ = {
 
 ​	在大多数情况下，对交互式控制台会话的复制和粘贴功能工作得很好，但是 doctest 并不试图对任何特定的 Python shell 进行精确的模拟。
 
-\>>>
+
 
 ```
 >>> # comments are ignored
@@ -298,7 +298,7 @@ NO!!!
 
 - 如果你在交互式会话中通过反斜线续行，或出于任何其他原因使用反斜线，你应该使用原始文件串，它将完全保留你输入的反斜线:
 
-  \>>>
+  
 
   ```
   >>> def f(x):
@@ -310,7 +310,7 @@ NO!!!
 
   否则，反斜杠将被解释为字符串的一部分。例如，上面的 `\n` 会被解释为一个换行符。 另外，你可以在doctest版本中把每个反斜杠加倍（而不使用原始字符串）:
 
-  \>>>
+  
 
   ```
   >>> def f(x):
@@ -322,7 +322,7 @@ NO!!!
 
 - 起始列并不重要:
 
-  \>>>
+  
 
   ```
   >>> assert "Easy!"
@@ -349,7 +349,7 @@ NO!!!
 
 ​	简单实例:
 
-\>>>
+
 
 ```
 >>> [1, 2, 3].remove(42)
@@ -371,7 +371,7 @@ Traceback (innermost last):
 
 ​	回溯堆栈的后面是最有用的部分：包含异常类型和细节的一行（几行）。 这通常是回溯的最后一行，但如果异常有多行细节，则可以延伸到多行:
 
-\>>>
+
 
 ```
 >>> raise ValueError('multi\n    line\ndetail')
@@ -386,7 +386,7 @@ detail
 
 ​	最佳实践是省略回溯栈，除非它为这个例子增加了重要的文档价值。 因此，最后一个例子可能更好，因为:
 
-\>>>
+
 
 ```
 >>> raise ValueError('multi\n    line\ndetail')
@@ -408,7 +408,7 @@ detail
 
 - 对于某些异常，Python 会使用 `^` 标记和波浪号来显示错误位置:
 
-  \>>>
+  
 
   ```
   >>> 1 + None
@@ -420,7 +420,7 @@ detail
 
   由于显示错误位置的行在异常类型和细节之前，它们不被doctest检查。 例如，下面的测试会通过，尽管它把 `^` 标记放在了错误的位置:
 
-  \>>>
+  
 
   ```
   >>> 1 + None
@@ -462,7 +462,7 @@ detail
 
 ​	举例来说，一个预期 `ValueError: 42` 的用例在实际引发的异常为 `ValueError: 3*14` 将会通过，但是如果是引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError) 则将会失败。 它也将忽略任何包括在异常类前面的完整限定名称，该名称在所使用的不同 Python 版本和代码/库中可能会不同。 因此，以下三种形式对于指定的旗标均有效:
 
-\>>>
+
 
 ```
 >>> raise Exception('message')
@@ -552,7 +552,7 @@ directive_option_name ::=  "DONT_ACCEPT_BLANKLINE" | "NORMALIZE_WHITESPACE" | ..
 
 ​	例如，这个测试将会通过:
 
-\>>>
+
 
 ```
 >>> print(list(range(20)))  # doctest: +NORMALIZE_WHITESPACE
@@ -562,7 +562,7 @@ directive_option_name ::=  "DONT_ACCEPT_BLANKLINE" | "NORMALIZE_WHITESPACE" | ..
 
 ​	如果没有这个指令则它将失败，因为实际的输出在只有个位数的列表元素前没有两个空格，也因为实际的输出是单行的。 这个测试也会通过，并且也需要一个指令来完成:
 
-\>>>
+
 
 ```
 >>> print(list(range(20)))  # doctest: +ELLIPSIS
@@ -571,7 +571,7 @@ directive_option_name ::=  "DONT_ACCEPT_BLANKLINE" | "NORMALIZE_WHITESPACE" | ..
 
 ​	在单个物理行中可以使用多条指令，以逗号分隔:
 
-\>>>
+
 
 ```
 >>> print(list(range(20)))  # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
@@ -580,7 +580,7 @@ directive_option_name ::=  "DONT_ACCEPT_BLANKLINE" | "NORMALIZE_WHITESPACE" | ..
 
 ​	如果在单个用例中使用了多条指令注释，则它们会被合并:
 
-\>>>
+
 
 ```
 >>> print(list(range(20)))  # doctest: +ELLIPSIS
@@ -590,7 +590,7 @@ directive_option_name ::=  "DONT_ACCEPT_BLANKLINE" | "NORMALIZE_WHITESPACE" | ..
 
 ​	正如前面的例子所示，你可以在你的用例中添加只包含指令的行 `...`。 当一个用例太长以至于不能方便地放到同一行时这将会很有用:
 
-\>>>
+
 
 ```
 >>> print(list(range(5)) + list(range(10, 20)) + list(range(30, 40)))
@@ -606,7 +606,7 @@ directive_option_name ::=  "DONT_ACCEPT_BLANKLINE" | "NORMALIZE_WHITESPACE" | ..
 
 [`doctest`](https://docs.python.org/zh-cn/3.13/library/doctest.html#module-doctest) 是严格地要求在预期输出中完全匹配。 如果哪怕只有一个字符不匹配，测试就会失败。 这可能会让你吃惊几次，在你确切地了解到 Python 对输出的保证和不保证之前。 例如，当打印一个集合时，Python 不保证元素以任何特定的顺序被打印出来，所以像:
 
-\>>>
+
 
 ```
 >>> foo()
@@ -615,7 +615,7 @@ directive_option_name ::=  "DONT_ACCEPT_BLANKLINE" | "NORMALIZE_WHITESPACE" | ..
 
 ​	是不可靠的！一个变通方法是用:
 
-\>>>
+
 
 ```
 >>> foo() == {"spam", "eggs"}
@@ -624,7 +624,7 @@ True
 
 ​	来取代。另一个是使用
 
-\>>>
+
 
 ```
 >>> d = sorted(foo())
@@ -636,7 +636,7 @@ True
 
 ​	另一个不好的做法是打印嵌入了对象地址的值，例如
 
-\>>>
+
 
 ```
 >>> id(1.0)  # certain to fail some of the time  
@@ -648,7 +648,7 @@ True
 
 [`ELLIPSIS`](https://docs.python.org/zh-cn/3.13/library/doctest.html#doctest.ELLIPSIS) 指令为之前的例子提供了一个不错的方案:
 
-\>>>
+
 
 ```
 >>> C()  # doctest: +ELLIPSIS
@@ -657,7 +657,7 @@ True
 
 ​	浮点数在不同的平台上也会有小的输出变化，因为Python在浮点数的格式化上依赖于平台的C库，而C库在这个问题上的质量差异很大。:
 
-\>>>
+
 
 ```
 >>> 1./7  # risky
@@ -670,7 +670,7 @@ True
 
 ​	形式 `I/2.**J` 的数字在所有的平台上都是安全的，我经常设计一些测试的用例来产生该形式的数:
 
-\>>>
+
 
 ```
 >>> 3./4  # utterly safe
@@ -1139,7 +1139,7 @@ def load_tests(loader, tests, ignore):
 
   那么一个交互式Python会话可能是这样的:
 
-  \>>>
+  
 
   ```
   >>> import a, doctest

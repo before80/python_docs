@@ -224,7 +224,7 @@ assert isawaitable(gen_coro())
 
 ​	如果对象是一个 [asynchronous generator](https://docs.python.org/zh-cn/3.13/glossary.html#term-asynchronous-generator) 函数则返回 `True`，例如：
 
-\>>>
+
 
 ```
 >>> async def agen():
@@ -362,7 +362,7 @@ True
 
 ​	返回一个给定 *callable* 的 [`Signature`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.Signature) 对象：
 
-\>>>
+
 
 ```
 >>> from inspect import signature
@@ -439,7 +439,7 @@ True
 
 ​	根据发起调用 [`replace()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.Signature.replace) 的实例新建一个 [`Signature`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.Signature) 实例。 可以通过传入不同的 *parameters* 和/或 *return_annotation* 来覆盖基类签名的相应特征属性。 要从拷贝的 `Signature` 中移除 `return_annotation`，可以传入 [`Signature.empty`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.Signature.empty)。
 
-\>>>
+
 
 ```
 >>> def test(a, b):
@@ -520,7 +520,7 @@ assert isinstance(sig, MySignature)
 
 ​	示例：打印全部没有默认值的仅限关键字参数：
 
-\>>>
+
 
 ```
 >>> def foo(a, b, *, c, d=10):
@@ -542,7 +542,7 @@ Parameter: c
 
 ​	示例：打印全部参数的描述：
 
-\>>>
+
 
 ```
 >>> def foo(a, b, *, c, d=10):
@@ -561,7 +561,7 @@ keyword-only
 
 ​	根据发起调用 replace 的实例新建一个 [`Parameter`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.Parameter) 实例。 要覆盖一个 `Parameter` 属性，可以传入相应的参数。 要从一个 `Parameter` 中移除默认值或/和标注，可以传入 [`Parameter.empty`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.Parameter.empty)。
 
-\>>>
+
 
 ```
 >>> from inspect import Parameter
@@ -618,7 +618,7 @@ keyword-only
 
 ​	对于变长关键字参数（`**kwargs`）默认值是一个空字典。
 
-\>>>
+
 
 ```
 >>> def foo(a, b='ham', *args): pass
@@ -701,7 +701,7 @@ FullArgSpec(args, varargs, varkw, defaults, kwonlyargs, kwonlydefaults, annotati
 
 ​	将 *args* 和 *kwds* 绑定到 Python 函数或方法 *func* 的参数名称，就像将它们作为调用时传入的参数一样。 对于绑定方法，还会将第一个参数 (通常命名为 `self`) 绑定到关联的实例。 将返回一个字典，该字典会将参数名称（包括 `*` 和 `**` 参数的名称，如果有的话）绑定到 *args* 和 *kwds* 中的值。 对于不正确地发起调用 *func* 的情况，即 `func(*args, **kwds)` 因函数签名不兼容而引发异常的时候，将引发一个相同类型的异常并附带相同或相似的消息。 例如：
 
-\>>>
+
 
 ```
 >>> from inspect import getcallargs

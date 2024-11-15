@@ -146,7 +146,7 @@ draft = false
 
 ​	下面是一个简单的例子，使用 `subdirs` 属性递归搜索两个目录以显示公共差异文件：
 
-\>>>
+
 
 ```
 >>> from filecmp import dircmp

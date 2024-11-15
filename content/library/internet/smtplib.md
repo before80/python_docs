@@ -32,7 +32,7 @@ draft = false
 
 [`SMTP`](https://docs.python.org/zh-cn/3.13/library/smtplib.html#smtplib.SMTP) 类支持 [`with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#with) 语句。当这样使用时，`with` 语句一退出就会自动发出 SMTP `QUIT` 命令。例如:
 
-\>>>
+
 
 ```
 >>> from smtplib import SMTP

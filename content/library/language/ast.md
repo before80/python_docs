@@ -205,7 +205,7 @@ module Python
 
 ​	每次个实体类上的 `_field_types` 属性都是一个将字段名（与在 [`_fields`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST._fields) 中列出的相同）) 映射到其类型的字典。
 
-\>>>
+
 
 ```
 >>> ast.TypeVar._field_types
@@ -268,7 +268,7 @@ node = ast.UnaryOp(ast.USub(), ast.Constant(5, lineno=0, col_offset=0),
 
 `type_ignores` 是由该模块的类型忽略注释组成的 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list)；请参阅 [`ast.parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 了解详情。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('x = 1'), indent=4))
@@ -286,7 +286,7 @@ Module(
 
 `body` 为单独节点，是某一个 [表达式类型](https://docs.python.org/zh-cn/3.13/library/ast.html#ast-expressions)。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('123', mode='eval'), indent=4))
@@ -300,7 +300,7 @@ Expression(
 
 `body` 是由 [语句节点](https://docs.python.org/zh-cn/3.13/library/ast.html#ast-statements) 组成的 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list)。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('x = 1; y = 2', mode='single'), indent=4))
@@ -332,7 +332,7 @@ def sum_two_number(a, b):
 
 `returns` 是单独的 [表达式节点](https://docs.python.org/zh-cn/3.13/library/ast.html#ast-expressions)。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('(int, str) -> List[int]', mode='func_type'), indent=4))
@@ -354,7 +354,7 @@ FunctionType(
 
 ​	一个常量。 `Constant` 字面值的 `value` 属性即为其代表的 Python 对象。它可以代表简单的数字，字符串或者 `None` 对象，但是也可以代表所有元素都是常量的不可变容器（例如元组或冻结集合）。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('123', mode='eval'), indent=4))
@@ -378,7 +378,7 @@ Expression(
 
 ​	一个 f-字符串，由一系列 [`FormattedValue`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.FormattedValue) 和 [`Constant`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Constant) 节点组成。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('f"sin({a}) is {sin(a):.3}"', mode='eval'), indent=4))
@@ -407,7 +407,7 @@ Expression(
 
 ​	一个列表或元组。 `elts` 保存一个代表元素的节点的列表。 `ctx` 在容器为赋值的目标时 (如 `(x,y)=something`) 是 [`Store`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Store)，否则是 [`Load`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Load)。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('[1, 2, 3]', mode='eval'), indent=4))
@@ -432,7 +432,7 @@ Expression(
 
 ​	一个集合。 `elts` 保存一个代表集合的元组的节点的列表。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('{1, 2, 3}', mode='eval'), indent=4))
@@ -450,7 +450,7 @@ Expression(
 
 ​	当使用字典字面值进行字典解包操作时要扩展的表达式放入 `values` 列表，并将 `None` 放入 `keys` 的对应位置。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('{"a":1, **d}', mode='eval'), indent=4))
@@ -478,7 +478,7 @@ Expression(
 
 ​	变量引用可被用来载入一个变量的值，为其赋一个新值，或是将其删除。 变量引用会给出一个上下文来区分这几种情况。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('a'), indent=4))
@@ -507,7 +507,7 @@ Module(
 
 ​	一个 `*var` 变量引用。 `value` 保存变量，通常为一个 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name) 节点。 此类型必须在构建 [`Call`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Call) 节点并传入 `*args` 时被使用。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('a, *b = it'), indent=4))
@@ -533,7 +533,7 @@ Module(
 
 ​	当一个表达式，例如函数调用，本身作为一个语句出现并且其返回值未被使用或存储时，它会被包装在此容器中。 `value` 保存本节中的其他节点之一，一个 [`Constant`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Constant), [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name), [`Lambda`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Lambda), [`Yield`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Yield) 或者 [`YieldFrom`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.YieldFrom) 节点。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('-a'), indent=4))
@@ -559,7 +559,7 @@ Module(
 
 ​	单目运算符对应的形符。 [`Not`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Not) 是 `not` 关键字，[`Invert`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Invert) 是 `~` 运算符。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('not x', mode='eval'), indent=4))
@@ -573,7 +573,7 @@ Expression(
 
 ​	一个双目运算（如相加或相减）。 `op` 是运算符，而 `left` 和 `right` 是任意表达式节点。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('x + y', mode='eval'), indent=4))
@@ -618,7 +618,7 @@ Expression(
 
 ​	这不包括 `not`，它属于 [`UnaryOp`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.UnaryOp)。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('x or y', mode='eval'), indent=4))
@@ -640,7 +640,7 @@ Expression(
 
 ​	两个或更多值之间的比较运算。 `left` 是参加比较的第一个值，`ops` 是由运算符组成的列表，而 `comparators` 是由参加比较的第一个元素之后的值组成的列表。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('1 <= a < 10', mode='eval'), indent=4))
@@ -686,7 +686,7 @@ Expression(
 
 `args` 和 `keywords` 参数是可选的并且默认为空列表。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('func(a, b=c, *d, **e)', mode='eval'), indent=4))
@@ -714,7 +714,7 @@ Expression(
 
 ​	一个表达式例如 `a if b else c`。 每个字段保存一个单独节点，因而在下面的示例中，三个节点均为 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name) 节点。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('a if b else c', mode='eval'), indent=4))
@@ -729,7 +729,7 @@ Expression(
 
 ​	属性访问，例如 `d.keys`。 `value` 是一个节点，通常为 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name)。 `attr` 是一个给出属性名称的纯字符串，而 `ctx` 根据属性操作的方式可以为 [`Load`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Load), [`Store`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Store) 或 [`Del`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Del)。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('snake.colour', mode='eval'), indent=4))
@@ -744,7 +744,7 @@ Expression(
 
 ​	一个带名称的表达式。 此 AST 节点是由赋值表达式运算符（或称海象运算符）产生的。 与第一个参数可以有多个节点的 [`Assign`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Assign) 节点不同，在此情况下 `target` 和 `value` 都必须为单独节点。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('(x := 4)', mode='eval'), indent=4))
@@ -762,7 +762,7 @@ Expression(
 
 ​	抽取操作，如 `l[1]`。 `value` 是被抽取的对象（通常为序列或映射）。 `slice` 是索引号、切片或键。 它可以是一个包含 [`Slice`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Slice) 的 [`Tuple`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Tuple)。 `ctx` 根据抽取所执行的操作可以为 [`Load`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Load), [`Store`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Store) 或 [`Del`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Del)。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('l[1:2, 3]', mode='eval'), indent=4))
@@ -783,7 +783,7 @@ Expression(
 
 ​	常规切片 (形式如 `lower:upper` 或 `lower:upper:step`)。 只能在 [`Subscript`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Subscript) 的 *slice* 字段内部出现，可以是直接切片对象或是作为 [`Tuple`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Tuple) 的元素。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('l[1:2]', mode='eval'), indent=4))
@@ -810,7 +810,7 @@ Expression(
 
 `generators` 是一个由 [`comprehension`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.comprehension) 节点组成的列表。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(
@@ -861,7 +861,7 @@ Expression(
 
 `is_async` 表明推导式是异步的 (使用 `async for` 而不是 `for`)。 它的值是一个整数 (0 或 1)。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('[ord(c) for line in file for c in line]', mode='eval'),
@@ -935,7 +935,7 @@ Expression(
 
 `type_comment` 是带有以注释表示的类型标注的可选的字符串。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('a = b = 1'), indent=4)) # Multiple assignment
@@ -966,7 +966,7 @@ Module(
 
 `simple` is always either 0 (indicating a "complex" target) or 1 (indicating a "simple" target). A "simple" target consists solely of a [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name) node that does not appear between parentheses; all other targets are considered complex. Only simple targets appear in the `__annotations__` dictionary of modules and classes.
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('c: int'), indent=4))
@@ -1015,7 +1015,7 @@ Module(
 
 `target` 属性不可以是 [`Tuple`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Tuple) 或 [`List`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.List) 类，这与 [`Assign`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Assign) 的目标不同。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('x += 2'), indent=4))
@@ -1031,7 +1031,7 @@ Module(
 
 ​	一条 `raise` 语句。 `exc` 是要引发的异常，对于一个单独的 `raise` 通常为 [`Call`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Call) 或 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name)，或者为 `None`。 `cause` 是针对 `raise x from y` 中 `y` 的可选部分。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('raise x from y'), indent=4))
@@ -1046,7 +1046,7 @@ Module(
 
 ​	一条断言。 `test` 保存条件，例如为一个 [`Compare`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Compare) 节点。 `msg` 保存失败消息。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('assert x,y'), indent=4))
@@ -1061,7 +1061,7 @@ Module(
 
 ​	代表一条 `del` 语句。 `targets` 是一个由节点组成的列表，例如 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name), [`Attribute`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Attribute) 或 [`Subscript`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Subscript) 节点。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('del x,y,z'), indent=4))
@@ -1078,7 +1078,7 @@ Module(
 
 ​	一条 `pass` 语句。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('pass'), indent=4))
@@ -1091,7 +1091,7 @@ Module(
 
 ​	通过 [`type`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#type) 语句创建的 [类型别名](https://docs.python.org/zh-cn/3.13/library/typing.html#type-aliases)。 `name` 是别名的名称，`type_params` 是 [类型形参](https://docs.python.org/zh-cn/3.13/library/ast.html#ast-type-params) 的列表，而 `value` 是类型别名的值。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('type Alias = int'), indent=4))
@@ -1112,7 +1112,7 @@ Module(
 
 ​	一条导入语句。 `names` 是一个由 [`alias`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.alias) 节点组成的列表。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('import x,y,z'), indent=4))
@@ -1129,7 +1129,7 @@ Module(
 
 ​	代表 `from x import y`。 `module` 是一个 'from' 名称的原始字符串，不带任何前导点号，或者为 `None` 表示 `from . import foo` 这样的语句。 `level` 是一个保存相对导入层级的整数（0 表示绝对导入）。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('from y import x,y,z'), indent=4))
@@ -1148,7 +1148,7 @@ Module(
 
 ​	两个形参均为名称的原始字符串。 如果要使用常规名称则 `asname` 可以为 `None`。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('from ..foo.bar import a as b, c'), indent=4))
@@ -1176,7 +1176,7 @@ Module(
 
 `elif` 子句在 AST 中没有特别的表示形式，而是作为上文介绍的 `orelse` 部分之内的一个额外 [`If`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.If) 节点出现。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""
@@ -1213,7 +1213,7 @@ Module(
 
 `type_comment` 是带有以注释表示的类型标注的可选的字符串。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""
@@ -1264,7 +1264,7 @@ Module(
 
 `break` 和 `continue` 语句。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""\
@@ -1298,7 +1298,7 @@ Module(
 
 `try` 代码块。 所有属性都是要执行的节点列表，除了 `handlers`，它是一个 [`ExceptHandler`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.ExceptHandler) 节点列表。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""
@@ -1343,7 +1343,7 @@ Module(
 
 `try` 代码块后带有 `except*` 子句。 包含的属性与 [`Try`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Try) 的相同但 [`ExceptHandler`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.ExceptHandler) 节点在 `handlers` 中会被解读为 `except*` 而不是 `except` 代码块。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""
@@ -1372,7 +1372,7 @@ Module(
 
 ​	一个单独的 `except` 子句。 `type` 是它将匹配的异常，通常为一个 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name) 节点（或 `None` 表示捕获全部的 `except:` 子句）。 `name` 是一个用于存放异常的别名的原始字符串，或者如果子句没有 `as foo` 则为 `None`。 `body` 为一个节点列表。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""\
@@ -1409,7 +1409,7 @@ Module(
 
 ​	一个 `with` 代码块中单独的上下文管理器。 `context_expr` 为上下文管理器，通常为一个 [`Call`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Call) 节点。 `optional_vars` 为一个针对 `as foo` 部分的 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name), [`Tuple`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Tuple) 或 [`List`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.List)，或者如果未使用别名则为 `None`。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""\
@@ -1451,7 +1451,7 @@ Module(
 
 `body` 包含一个当模式匹配并且对 guard 表达式求值的结果为真时要执行的节点列表。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""
@@ -1493,7 +1493,7 @@ Module(
 
 ​	一个按相等性进行比较的匹配字面值或值模式。 `value` 为一个表达式节点。 允许的值节点被限制为 match 语句文档中所描述的节点。 如果匹配目标等于 value 的求值结果则模式匹配成功。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""
@@ -1520,7 +1520,7 @@ Module(
 
 ​	一个按标识号进行比较的匹配字面值模式。 `value` 为用于比较的单例对象: `None`, `True` 或 `False`。 如果匹配目标为给定的常量则该模式匹配成功。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""
@@ -1546,7 +1546,7 @@ Module(
 
 ​	一个匹配序列模式。 `patterns` 包含当目标为一个序列时要与目标元素进行匹配的模式。 如果某一子模式为 `MatchStar` 节点则将匹配一个变长度序列，否则将匹配一个固定长度序列。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""
@@ -1577,7 +1577,7 @@ Module(
 
 ​	匹配一个可变长度匹配序列模式中的剩余部分序列。 如果 `name` 不为 `None`，则当整个序列模式匹配成功时将把一个包含剩余序列元素的列表绑定到该名称。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""
@@ -1620,7 +1620,7 @@ Module(
 
 ​	如果目标为一个映射、所有被求值的表达式都存在于该映射中，并且对应于每个键的值都与对应的子模式相匹配则此模式匹配成功。 如果 `rest` 不为 `None`，则当整个映射模式匹配成功时会将一个包含剩余映射元素的字典绑定到该名称。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""
@@ -1663,7 +1663,7 @@ Module(
 
 ​	注意：类可能会定义一个返回自身的特征属性以便能将一个模式节点与被匹配的实例相匹配。 某些内置类型也是以这种方式来匹配的，与 match 语句文档中所描述的一致。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""
@@ -1716,7 +1716,7 @@ Module(
 
 `name` 属性包含当模式匹配成功时将要绑定的名称。 如果 `name` 为 `None`，则 `pattern` 也必须为 `None` 并且该节点代表的是通配符模式。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""
@@ -1753,7 +1753,7 @@ Module(
 
 ​	一个匹配 "or-模式"。 or-模式会依次将其每个子模式与目标相匹配，直到有一个匹配成功。 此时该 or-模式将被视为匹配成功。 如果没有一个子模式匹配成功则该 or-模式匹配失败。 `patterns` 属性包含一个由将与目标相匹配的匹配模式节点组成的列表。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""
@@ -1790,7 +1790,7 @@ Module(
 
 ​	A [`typing.TypeVar`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeVar). `name` is the name of the type variable. `bound` is the bound or constraints, if any. If `bound` is a [`Tuple`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Tuple), it represents constraints; otherwise it represents the bound. `default_value` is the default value; if the `TypeVar` has no default, this attribute will be set to `None`.
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("type Alias[T: int = bool] = list[T]"), indent=4))
@@ -1817,7 +1817,7 @@ Module(
 
 ​	A [`typing.ParamSpec`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.ParamSpec). `name` is the name of the parameter specification. `default_value` is the default value; if the `ParamSpec` has no default, this attribute will be set to `None`.
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("type Alias[**P = (int, str)] = Callable[P, int]"), indent=4))
@@ -1851,7 +1851,7 @@ Module(
 
 ​	A [`typing.TypeVarTuple`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeVarTuple). `name` is the name of the type variable tuple. `default_value` is the default value; if the `TypeVarTuple` has no default, this attribute will be set to `None`.
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("type Alias[*Ts = ()] = tuple[*Ts]"), indent=4))
@@ -1901,7 +1901,7 @@ Module(
 
 `lambda` 是可在表达式内部使用的最小化函数定义。 不同于 [`FunctionDef`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.FunctionDef)，`body` 是保存一个单独节点。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('lambda x,y: ...'), indent=4))
@@ -1933,7 +1933,7 @@ Module(
 
 `type_comment` 是一个可选的将注释用作类型标注的字符串。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""\
@@ -1976,7 +1976,7 @@ Module(
 
 ​	一条 `return` 语句。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('return 4'), indent=4))
@@ -1992,7 +1992,7 @@ Module(
 
 ​	一个 `yield` 或 `yield from` 表达式。 因为这些属性表达式，所以如果发回的值未被使用则必须将它们包装在 [`Expr`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Expr) 节点中。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('yield x'), indent=4))
@@ -2016,7 +2016,7 @@ Module(
 
 `global` 和 `nonlocal` 语句。 `names` 为一个由原始字符串组成的列表。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse('global x,y,z'), indent=4))
@@ -2049,7 +2049,7 @@ Module(
 - `decorator_list` 是一个节点的列表，与 [`FunctionDef`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.FunctionDef) 中的一致。
 - `type_params` 是一个 [类型形参](https://docs.python.org/zh-cn/3.13/library/ast.html#ast-type-params) 的列表。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""\
@@ -2090,7 +2090,7 @@ Module(
 
 ​	一个 `await` 表达式。 `value` 是它所等待的值。 仅在 [`AsyncFunctionDef`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AsyncFunctionDef) 的函数体内可用。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""\
@@ -2305,7 +2305,7 @@ node = YourTransformer().visit(node)
 
 *在 3.13 版本发生变更:* 增加了 *show_empty* 选项。
 
-\>>>
+
 
 ```
 >>> print(ast.dump(ast.parse("""\

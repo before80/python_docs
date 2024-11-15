@@ -44,7 +44,7 @@ draft = false
 
 ​	一个简短的用法示例:
 
-\>>>
+
 
 ```
 >>> import csv
@@ -111,7 +111,7 @@ with open('eggs.csv', 'w', newline='') as csvfile:
 
 ​	一个简短的用法示例:
 
-\>>>
+
 
 ```
 >>> import csv

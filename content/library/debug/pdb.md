@@ -83,7 +83,7 @@ python -m pdb myscript.py
 
 ​	在调试器控制下执行一条语句的典型用法如下:
 
-\>>>
+
 
 ```
 >>> import pdb
@@ -98,7 +98,7 @@ python -m pdb myscript.py
 
 ​	检查已崩溃程序的典型用法是:
 
-\>>>
+
 
 ```
 >>> import pdb

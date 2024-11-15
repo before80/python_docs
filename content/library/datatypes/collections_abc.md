@@ -34,7 +34,7 @@ class C(Sequence):                      # 直接继承
     def count(self, value): ...         # 可选覆盖一个混入方法
 ```
 
-\>>>
+
 
 ```
 >>> issubclass(C, Sequence)
@@ -56,7 +56,7 @@ class D:                                 # 无继承
 Sequence.register(D)                     # 注册而非继承
 ```
 
-\>>>
+
 
 ```
 >>> issubclass(D, Sequence)
@@ -75,7 +75,7 @@ class E:
     def __next__(self): ...
 ```
 
-\>>>
+
 
 ```
 >>> issubclass(E, Iterable)

@@ -57,7 +57,7 @@ aRepr.maxlevel = 3
 
 ​	用于为 [`__repr__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__repr__) 方法检查同一线程内部递归调用的装饰器。 如果执行了递归调用，则返回 *fillvalue*，在其他情况下，将执行正常的 `__repr__()` 调用。 例如：
 
-\>>>
+
 
 ```
 >>> from reprlib import recursive_repr
@@ -123,7 +123,7 @@ aRepr.maxlevel = 3
 
 ​	如果该属性被设为 `None` (默认值)，输出将被格式化为不带换行或缩进，像标准的 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr) 一样。 例如:
 
-\>>>
+
 
 ```
 >>> example = [
@@ -136,7 +136,7 @@ aRepr.maxlevel = 3
 
 ​	如果 [`indent`](https://docs.python.org/zh-cn/3.13/library/reprlib.html#reprlib.Repr.indent) 被设为一个字符串，每个递归层级将放在单独行中，并用该字符串来缩进:
 
-\>>>
+
 
 ```
 >>> aRepr.indent = '-->'
@@ -158,7 +158,7 @@ aRepr.maxlevel = 3
 
 ​	将 [`indent`](https://docs.python.org/zh-cn/3.13/library/reprlib.html#reprlib.Repr.indent) 设为一个正整数时其行为与设为相应数量的空格是相同的:
 
-\>>>
+
 
 ```
 >>> aRepr.indent = 4

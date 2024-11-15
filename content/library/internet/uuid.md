@@ -220,7 +220,7 @@ python -m uuid [-h] [-u {uuid1,uuid3,uuid4,uuid5}] [-n NAMESPACE] [-N NAME]
 
 ​	下面是一些 [`uuid`](https://docs.python.org/zh-cn/3.13/library/uuid.html#module-uuid) 模块的典型使用例子:
 
-\>>>
+
 
 ```
 >>> import uuid

@@ -40,7 +40,7 @@ draft = false
 
 ​	其中的可选项 `sign` 可能为 '+' 或 '-' 且 `numerator` 和 `denominator` (如果存在) 是十进制数码的字符串 (可以如代码中的整数字面值一样使用下划线来分隔数码)。 此外，[`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) 构造器所接受的任何代表一个有限值的字符串也都为 [`Fraction`](https://docs.python.org/zh-cn/3.13/library/fractions.html#fractions.Fraction) 构造器所接受。 不论哪 种形式的输入字符串也都可以带有开头和/或末尾空格符。 这里是一些示例:
 
-\>>>
+
 
 ```
 >>> from fractions import Fraction
@@ -129,7 +129,7 @@ Fraction(11, 10)
 
 ​	找到并返回一个 [`Fraction`](https://docs.python.org/zh-cn/3.13/library/fractions.html#fractions.Fraction) 使得其值最接近 `self` 并且分母不大于 max_denominator。 此方法适用于找出给定浮点数的有理数近似值：
 
-\>>>
+
 
 ```
 >>> from fractions import Fraction
@@ -139,7 +139,7 @@ Fraction(355, 113)
 
 ​	或是用来恢复被表示为一个浮点数的有理数：
 
-\>>>
+
 
 ```
 >>> from math import pi, cos
@@ -155,7 +155,7 @@ Fraction(11, 10)
 
 ​	返回最大的 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) `<= self`。 此方法也可通过 [`math.floor()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.floor) 函数来使用：
 
-\>>>
+
 
 ```
 >>> from math import floor
@@ -183,7 +183,7 @@ Fraction(11, 10)
 
 ​	这是一些例子:
 
-\>>>
+
 
 ```
 >>> from fractions import Fraction

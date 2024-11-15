@@ -157,7 +157,7 @@ draft = false
 
 ​	这里是一个展示了你如何在Python交互式命令行中使用 [`message_from_bytes()`](https://docs.python.org/zh-cn/3.13/library/email.parser.html#email.message_from_bytes) 的例子：
 
-\>>>
+
 
 ```
 >>> import email

@@ -61,7 +61,7 @@ draft = false
 
 ​	一个仅使用 Unix 风格选项的例子:
 
-\>>>
+
 
 ```
 >>> import getopt
@@ -77,7 +77,7 @@ draft = false
 
 ​	使用长选项名也同样容易:
 
-\>>>
+
 
 ```
 >>> s = '--condition=foo --testing --output-file abc.def -x a1 a2'

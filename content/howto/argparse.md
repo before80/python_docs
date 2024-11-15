@@ -600,7 +600,7 @@ Running 'prog.py'
 
 ​	当在确定一个参数是位置参数还是从属于另一个参数存在歧义时，可以使用 `--` 来告诉 [`parse_args()`](https://docs.python.org/zh-cn/3.13/library/argparse.html#argparse.ArgumentParser.parse_args) 在它之后的参数是位置参数:
 
-\>>>
+
 
 ```
 >>> parser = argparse.ArgumentParser(prog='PROG')

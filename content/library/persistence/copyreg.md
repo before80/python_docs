@@ -36,7 +36,7 @@ draft = false
 
 ​	以下示例将会显示如何注册一个封存函数，以及如何来使用它：
 
-\>>>
+
 
 ```
 >>> import copyreg, copy, pickle

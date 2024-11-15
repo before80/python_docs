@@ -154,7 +154,7 @@ draft = false
 
 - 现在当向一个函数传入不正确的关键字参数时错误消息会尝试提示正确的关键字参数。
 
-  \>>>
+  
 
   ```
   >>> "Better error messages!".split(max_split=1)
@@ -252,7 +252,7 @@ draft = false
 
 - 编译器现在将从文档字符串的每一行去除共有的前导空格。 这会减少 [字节码缓存](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytecode) 的大小（例如 `.pyc` 文件），例如在 SQLAlchemy 2.0 的 `sqlalchemy.orm.session` 中文件大小将减少约 5%。 这项改变将影响各种使用了文档字符串的工具，如 [`doctest`](https://docs.python.org/zh-cn/3.13/library/doctest.html#module-doctest)。
 
-  \>>>
+  
 
   ```
   >>> def spam():

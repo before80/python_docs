@@ -26,7 +26,7 @@ draft = false
 
 ​	普通的升序排序非常容易：只需调用 [`sorted()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 函数。它返回新有序列表：
 
-\>>>
+
 
 ```
 >>> sorted([5, 2, 3, 1, 4])
@@ -35,7 +35,7 @@ draft = false
 
 ​	亦可用 [`list.sort()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list.sort) 方法。它原地修改原列表（并返回 `None` 以避免混淆）。往往不如 [`sorted()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 方便——但若不需原列表，用它会略高效些。
 
-\>>>
+
 
 ```
 >>> a = [5, 2, 3, 1, 4]
@@ -46,7 +46,7 @@ draft = false
 
 ​	另一个区别是 [`list.sort()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list.sort) 方法只为列表定义，而 [`sorted()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 函数接受任何可迭代对象。
 
-\>>>
+
 
 ```
 >>> sorted({1: 'D', 2: 'B', 3: 'B', 4: 'E', 5: 'A'})
@@ -59,7 +59,7 @@ draft = false
 
 ​	例如，这是个不区分大小写的字符串比较：
 
-\>>>
+
 
 ```
 >>> sorted("This is a test string from Andrew".split(), key=str.casefold)
@@ -70,7 +70,7 @@ draft = false
 
 ​	常见的模式是用对象的某一些索引作为键对复杂对象排序。例如：
 
-\>>>
+
 
 ```
 >>> student_tuples = [
@@ -84,7 +84,7 @@ draft = false
 
 ​	同样的方法对于有具名属性的对象也适用。例如：
 
-\>>>
+
 
 ```
 >>> class Student:
@@ -112,7 +112,7 @@ draft = false
 
 ​	用了那些函数之后，前面的示例变得更简单，运行起来也更快：
 
-\>>>
+
 
 ```
 >>> from operator import itemgetter, attrgetter
@@ -126,7 +126,7 @@ draft = false
 
 ​	运算符模块的函数可以用来作多级排序。例如，按 *grade* 排序，然后按 *age* 排序：
 
-\>>>
+
 
 ```
 >>> sorted(student_tuples, key=itemgetter(1,2))
@@ -138,7 +138,7 @@ draft = false
 
 ​	另一个有助于创建键函数的工具位于 [`functools`](https://docs.python.org/zh-cn/3.13/library/functools.html#module-functools) 模块。[`partial()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.partial) 函数可以降低多元函数的 [元数](https://en.wikipedia.org/wiki/Arity) 使之适合做键函数。
 
-\>>>
+
 
 ```
 >>> from functools import partial
@@ -157,7 +157,7 @@ draft = false
 
 [`list.sort()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list.sort) 和 [`sorted()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 接受布尔形参 *reverse* 用于标记降序排序。例如，将学生数据按 *age* 倒序排序：
 
-\>>>
+
 
 ```
 >>> sorted(student_tuples, key=itemgetter(2), reverse=True)
@@ -171,7 +171,7 @@ draft = false
 
 ​	排序保证 [稳定](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability)：等键记录保持原始顺序。
 
-\>>>
+
 
 ```
 >>> data = [('red', 1), ('blue', 1), ('red', 2), ('blue', 2)]
@@ -183,7 +183,7 @@ draft = false
 
 ​	这个了不起的特性使得借助一系列排序步骤构建出复杂排序成为可能。例如，要按 *grade* 降序后 *age* 升序排序学生数据，只需先用 *age* 排序再用 *grade* 排序即可：
 
-\>>>
+
 
 ```
 >>> s = sorted(student_objects, key=attrgetter('age'))     # 现在根据主要键（成绩）降序排序
@@ -193,7 +193,7 @@ draft = false
 
 ​	可抽象为包装函数，依据接收的一些字段序的元组对接收的列表做多趟排序。
 
-\>>>
+
 
 ```
 >>> def multisort(xs, specs):
@@ -217,7 +217,7 @@ draft = false
 
 ​	例如，用 DSU 方法按 *grade* 排序学生数据：
 
-\>>>
+
 
 ```
 >>> decorated = [(student.grade, i, student) for i, student in enumerate(student_objects)]
@@ -257,7 +257,7 @@ sorted(words, key=cmp_to_key(strcoll))  # 基于地区的排序规则
 
 - *reverse* 参数仍然保持排序稳定性（因此具有相等键的记录保留原始顺序）。 有趣的是，通过使用内置的 [`reversed()`](https://docs.python.org/zh-cn/3.13/library/functions.html#reversed) 函数两次，可以在没有参数的情况下模拟该效果：
 
-  \>>>
+  
 
   ```
   >>> data = [('red', 1), ('blue', 1), ('red', 2), ('blue', 2)]
@@ -270,7 +270,7 @@ sorted(words, key=cmp_to_key(strcoll))  # 基于地区的排序规则
 
 - 排序例程在两个对象之间进行比较时使用 `<`。 因此，通过定义一个 [`__lt__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__lt__) 方法，就可以轻松地为类添加标准排序顺序:
 
-  \>>>
+  
 
   ```
   >>> Student.__lt__ = lambda self, other: self.age < other.age
@@ -282,7 +282,7 @@ sorted(words, key=cmp_to_key(strcoll))  # 基于地区的排序规则
 
 - 键函数不需要直接依赖于被排序的对象。键函数还可以访问外部资源。例如，如果学生成绩存储在字典中，则可以使用它们对单独的学生姓名列表进行排序：
 
-  \>>>
+  
 
   ```
   >>> students = ['dave', 'john', 'jane']

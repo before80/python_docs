@@ -35,7 +35,7 @@ draft = false
 
 ​	用法：
 
-\>>>
+
 
 ```
 >>> from http import HTTPStatus
@@ -150,7 +150,7 @@ True
 
 > ​	用法：
 >
-> \>>>
+> 
 >
 > ```
 > >>> from http import HTTPStatus
@@ -168,7 +168,7 @@ True
 
 ​	用法：
 
-\>>>
+
 
 ```
 >>> from http import HTTPMethod

@@ -390,7 +390,7 @@ locale.setlocale(locale.LC_ALL, '')
 
 ​	示例：
 
-\>>>
+
 
 ```
 >>> import locale

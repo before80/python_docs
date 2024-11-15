@@ -177,7 +177,7 @@ draft = false
 
 ​	返回以二进制表示一个整数所需要的位数，不包括符号位和前面的零:
 
-\>>>
+
 
 ```
 >>> n = -37
@@ -204,7 +204,7 @@ def bit_length(self):
 
 ​	返回整数的绝对值的二进制表示中 1 的个数。也被称为 population count。示例:
 
-\>>>
+
 
 ```
 >>> n = 19
@@ -229,7 +229,7 @@ def bit_count(self):
 
 ​	返回表示一个整数的字节数组。
 
-\>>>
+
 
 ```
 >>> (1024).to_bytes(2, byteorder='big')
@@ -251,7 +251,7 @@ b'\xe8\x03'
 
 ​	默认值可用于方便地将整数转为一个单字节对象:
 
-\>>>
+
 
 ```
 >>> (65).to_bytes()
@@ -282,7 +282,7 @@ def to_bytes(n, length=1, byteorder='big', signed=False):
 
 ​	返回由给定字节数组所表示的整数。
 
-\>>>
+
 
 ```
 >>> int.from_bytes(b'\x00\x10', byteorder='big')
@@ -349,7 +349,7 @@ def from_bytes(bytes, byteorder='big', signed=False):
 
 ​	如果 float 实例可用有限位整数表示则返回 `True`，否则返回 `False`:
 
-\>>>
+
 
 ```
 >>> (-2.0).is_integer()
@@ -380,7 +380,7 @@ False
 
 ​	请注意 exponent 是十进制数而非十六进制数，它给出要与系数相乘的 2 的幂次。 例如，十六进制数字符串 `0x3.a7p10` 表示浮点数 `(3 + 10./16 + 7./16**2) * 2.0**10` 即 `3740.0`:
 
-\>>>
+
 
 ```
 >>> float.fromhex('0x3.a7p10')
@@ -389,7 +389,7 @@ False
 
 ​	对 `3740.0` 应用反向转换会得到另一个代表相同数值的十六进制数字符串:
 
-\>>>
+
 
 ```
 >>> float.hex(3740.0)
@@ -548,7 +548,7 @@ def hash_complex(z):
 
 1. 虽然 `in` 和 `not in` 操作在通常情况下仅被用于简单的成员检测，某些专门化序列 (例如 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str), [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 和 [`bytearray`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytearray)) 也使用它们进行子序列检测:
 
-   \>>>
+   
 
    ```
    >>> "gg" in "eggs"
@@ -557,7 +557,7 @@ def hash_complex(z):
 
 2. 小于 `0` 的 *n* 值会被当作 `0` 来处理 (生成一个与 *s* 同类型的空序列)。 请注意序列 *s* 中的项并不会被拷贝；它们会被多次引用。 这一点经常会令 Python 编程新手感到困扰；例如:
 
-   \>>>
+   
 
    ```
    >>> lists = [[]] * 3
@@ -570,7 +570,7 @@ def hash_complex(z):
 
    具体的原因在于 `[[]]` 是一个包含了一个空列表的单元素列表，所以 `[[]] * 3` 结果中的三个元素都是对这一个空列表的引用。 修改 `lists` 中的任何一个元素实际上都是对这一个空列表的修改。 你可以用以下方式创建以不同列表为元素的列表:
 
-   \>>>
+   
 
    ```
    >>> lists = [[] for i in range(3)]
@@ -737,7 +737,7 @@ def hash_complex(z):
 
 ​	一些 range 对象的例子:
 
-\>>>
+
 
 ```
 >>> list(range(10))
@@ -774,7 +774,7 @@ def hash_complex(z):
 
 ​	range 对象实现了 [`collections.abc.Sequence`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Sequence) ABC，提供如包含检测、元素索引查找、切片等特性，并支持负索引 (参见 [序列类型 --- list, tuple, range](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#typesseq)):
 
-\>>>
+
 
 ```
 >>> r = range(0, 20, 2)
@@ -842,7 +842,7 @@ range(0, 10, 2)
 
 ​	将一个 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 对象传入 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 而不给出 *encoding* 或 *errors* 参数的操作属于第一种情况， 将返回非正式的字符串表示（另请参阅 Python 的 [`-b`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-b) 命令行选项）。 例如:
 
-\>>>
+
 
 ```
 >>> str(b'Zoot!')
@@ -909,7 +909,7 @@ range(0, 10, 2)
 
 ​	返回字符串的副本，其中所有的制表符会由一个或多个空格替换，具体取决于当前列位置和给定的制表符宽度。 每 *tabsize* 个字符设为一个制表位（默认值 8 时设定的制表位在列 0, 8, 16 依次类推）。 要展开字符串，当前列将被设为零并逐一检查字符串中的每个字符。 如果字符为制表符 (`\t`)，则会在结果中插入一个或多个空格符，直到当前列等于下一个制表位。 （制表符本身不会被复制。） 如果字符为换行符 (`\n`) 或回车符 (`\r`)，它会被复制并将当前列重设为零。 任何其他字符会被不加修改地复制并将当前列加一，不论该字符在被打印时会如何显示。
 
-\>>>
+
 
 ```
 >>> '01\t012\t0123\t01234'.expandtabs()
@@ -928,7 +928,7 @@ range(0, 10, 2)
 
 [`find()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.find) 方法应该只在你需要知道 *sub* 所在位置时使用。 要检查 *sub* 是否为子字符串，请使用 [`in`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#in) 操作符:
 
-\>>>
+
 
 ```
 >>> 'Py' in 'Python'
@@ -939,7 +939,7 @@ True
 
 ​	执行字符串格式化操作。 调用此方法的字符串可以包含字符串字面值或者以花括号 `{}` 括起来的替换域。 每个替换域可以包含一个位置参数的数字索引，或者一个关键字参数的名称。 返回的字符串副本中每个替换域都会被替换为对应参数的字符串值。
 
-\>>>
+
 
 ```
 >>> "The sum of 1 + 2 is {0}".format(1+2)
@@ -960,7 +960,7 @@ True
 
 ​	类似于 `str.format(**mapping)`，不同之处在于 `mapping` 会被直接使用而不是复制到一个 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict)。 适宜使用此方法的一个例子是当 `mapping` 为 dict 的子类的情况：
 
-\>>>
+
 
 ```
 >>> class Default(dict):
@@ -1007,7 +1007,7 @@ True
 
 ​	示例：
 
-\>>>
+
 
 ```
 >>> from keyword import iskeyword
@@ -1044,7 +1044,7 @@ True
 
 ​	如果字符串中至少有一个区分大小写的字符 [[4\]](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#id15) 且此类字符均为大写则返回 `True` ，否则返回 `False` 。
 
-\>>>
+
 
 ```
 >>> 'BANANA'.isupper()
@@ -1075,7 +1075,7 @@ False
 
 ​	返回原字符串的副本，移除其中的前导字符。 *chars* 参数为指定要移除字符的字符串。 如果省略或为 `None`，则 *chars* 参数默认移除空白符。 实际上 *chars* 参数并非指定单个前缀；而是会移除参数值的所有组合:
 
-\>>>
+
 
 ```
 >>> '   spacious   '.lstrip()
@@ -1086,7 +1086,7 @@ False
 
 ​	参见 [`str.removeprefix()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.removeprefix) ，该方法将删除单个前缀字符串，而不是全部给定集合中的字符。 例如:
 
-\>>>
+
 
 ```
 >>> 'Arthur: three!'.lstrip('Arthur: ')
@@ -1111,7 +1111,7 @@ False
 
 ​	如果字符串以 *prefix* 字符串开头，返回 `string[len(prefix):]`。 否则，返回原始字符串的副本：
 
-\>>>
+
 
 ```
 >>> 'TestHook'.removeprefix('Test')
@@ -1126,7 +1126,7 @@ False
 
 ​	如果字符串以 *suffix* 字符串结尾，并且 *suffix* 非空，返回 `string[:-len(suffix)]`。 否则，返回原始字符串的副本:
 
-\>>>
+
 
 ```
 >>> 'MiscTests'.removesuffix('Tests')
@@ -1167,7 +1167,7 @@ False
 
 ​	返回原字符串的副本，移除其中的末尾字符。 *chars* 参数为指定要移除字符的字符串。 如果省略或为 `None`，则 *chars* 参数默认移除空白符。 实际上 *chars* 参数并非指定单个后缀；而是会移除参数值的所有组合:
 
-\>>>
+
 
 ```
 >>> '   spacious   '.rstrip()
@@ -1178,7 +1178,7 @@ False
 
 ​	要删除单个后缀字符串，而不是全部给定集合中的字符，请参见 [`str.removesuffix()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.removesuffix) 方法。 例如:
 
-\>>>
+
 
 ```
 >>> 'Monty Python'.rstrip(' Python')
@@ -1195,7 +1195,7 @@ False
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> '1,2,3'.split(',')
@@ -1212,7 +1212,7 @@ False
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> '1 2 3'.split()
@@ -1247,7 +1247,7 @@ False
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> 'ab c\n\nde fg\rkl\r\n'.splitlines()
@@ -1258,7 +1258,7 @@ False
 
 ​	不同于 [`split()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.split)，当给出了分隔字符串 *sep* 时，对于空字符串此方法将返回一个空列表，而末尾的换行不会令结果中增加额外的行:
 
-\>>>
+
 
 ```
 >>> "".splitlines()
@@ -1269,7 +1269,7 @@ False
 
 ​	作为比较，`split('\n')` 的结果为:
 
-\>>>
+
 
 ```
 >>> ''.split('\n')
@@ -1286,7 +1286,7 @@ False
 
 ​	返回原字符串的副本，移除其中的前导和末尾字符。 *chars* 参数为指定要移除字符的字符串。 如果省略或为 `None`，则 *chars* 参数默认移除空白符。 实际上 *chars* 参数并非指定单个前缀或后缀；而是会移除参数值的所有组合:
 
-\>>>
+
 
 ```
 >>> '   spacious   '.strip()
@@ -1297,7 +1297,7 @@ False
 
 ​	最外侧的前导和末尾 *chars* 参数值将从字符串中移除。 开头端的字符的移除将在遇到一个未包含于 *chars* 所指定字符集的字符时停止。 类似的操作也将在结尾端发生。 例如:
 
-\>>>
+
 
 ```
 >>> comment_string = '#....... Section 3.2.1 Issue #32 .......'
@@ -1315,7 +1315,7 @@ False
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> 'Hello world'.title()
@@ -1324,7 +1324,7 @@ False
 
 ​	该算法使用一种简单的与语言无关的定义，将连续的字母组合视为单词。 该定义在多数情况下都很有效，但它也意味着代表缩写形式与所有格的撇号也会成为单词边界，这可能导致不希望的结果:
 
-\>>>
+
 
 ```
 >>> "they're bill's friends from the UK".title()
@@ -1335,7 +1335,7 @@ False
 
 ​	作为替代，可以使用正则表达式来构造针对撇号的变通处理:
 
-\>>>
+
 
 ```
 >>> import re
@@ -1368,7 +1368,7 @@ False
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> "42".zfill(5)
@@ -1389,7 +1389,7 @@ False
 
 ​	字符串具有一种特殊的内置操作即 `%` (求模) 运算符。 这也被称为字符串的 *格式化* 或 *插值* 运算符。 对于给定的 `format % values` (其中 *format* 是一个字符串)，在 *format* 中的 `%` 转换标记符将被替换为零个或多个 *values* 中的元素。 其效果类似于在 C 语言中使用 `sprintf()` 函数。 例如：
 
-\>>>
+
 
 ```
 >>> print('%s has %d quote types.' % ('Python', 2))
@@ -1410,7 +1410,7 @@ Python has 2 quote types.
 
 ​	当右边的参数为一个字典（或其他映射类型）时，字符串中的格式 *必须* 包含加圆括号的映射键，对应 `'%'` 字符之后字典中的每一项。 映射键将从映射中选取要格式化的值。 例如：
 
-\>>>
+
 
 ```
 >>> print('%(language)s has %(number)03d quote types.' %
@@ -1518,7 +1518,7 @@ Python has 002 quote types.
 
 ​	此 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 类方法返回一个解码给定字符串的 bytes 对象。 字符串必须由表示每个字节的两个十六进制数码构成，其中的 ASCII 空白符会被忽略。
 
-\>>>
+
 
 ```
 >>> bytes.fromhex('2Ef0 F1f2  ')
@@ -1533,7 +1533,7 @@ b'.\xf0\xf1\xf2'
 
 ​	返回一个字符串对象，该对象包含实例中每个字节的两个十六进制数字。
 
-\>>>
+
 
 ```
 >>> b'\xf0\xf1\xf2'.hex()
@@ -1542,7 +1542,7 @@ b'.\xf0\xf1\xf2'
 
 ​	如果你希望令十六进制数字符串更易读，你可以指定单个字符分隔符作为 *sep* 形参包含于输出中。 默认情况下，该分隔符会放在每个字节之间。 第二个可选的 *bytes_per_sep* 形参控制间距。 正值会从右开始计算分隔符的位置，负值则是从左开始。
 
-\>>>
+
 
 ```
 >>> value = b'\xf0\xf1\xf2'
@@ -1587,7 +1587,7 @@ b'.\xf0\xf1\xf2'
 
 [`bytearray`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytearray) 类方法返回一个解码给定字符串的 bytearray 对象。 字符串必须由表示每个字节的两个十六进制数码构成，其中的 ASCII 空白符会被忽略。
 
-\>>>
+
 
 ```
 >>> bytearray.fromhex('2Ef0 F1f2  ')
@@ -1602,7 +1602,7 @@ bytearray(b'.\xf0\xf1\xf2')
 
 ​	返回一个字符串对象，该对象包含实例中每个字节的两个十六进制数字。
 
-\>>>
+
 
 ```
 >>> bytearray(b'\xf0\xf1\xf2').hex()
@@ -1669,7 +1669,7 @@ b = a.replace(b"a", b"f")
 
 ​	如果二进制数据以 *prefix* 字符串开头，返回 `bytes[len(prefix):]`。 否则，返回原始二进制数据的副本：
 
-\>>>
+
 
 ```
 >>> b'TestHook'.removeprefix(b'Test')
@@ -1694,7 +1694,7 @@ b'BaseTestCase'
 
 ​	如果二进制数据以 *suffix* 字符串结尾，并且 *suffix* 非空，返回 `bytes[:-len(suffix)]`。 否则，返回原始二进制数据的副本:
 
-\>>>
+
 
 ```
 >>> b'MiscTests'.removesuffix(b'Tests')
@@ -1757,7 +1757,7 @@ b'TmpDirMixin'
 
 [`find()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes.find) 方法应该只在你需要知道 *sub* 所在位置时使用。 要检查 *sub* 是否为子串，请使用 [`in`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#in) 操作符:
 
-\>>>
+
 
 ```
 >>> b'Py' in b'Python'
@@ -1858,7 +1858,7 @@ True
 
 ​	对于仅需移除字符的转换，请将 *table* 参数设为 `None`:
 
-\>>>
+
 
 ```
 >>> b'read this short text'.translate(None, b'aeiou')
@@ -1899,7 +1899,7 @@ b'rd ths shrt txt'
 
 ​	返回原序列的副本，移除指定的前导字节。 *chars* 参数为指定要移除字节值集合的二进制序列 —— 这个名称表明此方法通常是用于 ASCII 字符。 如果省略或为 `None`，则 *chars* 参数默认移除 ASCII 空白符。 *chars* 参数并非指定单个前缀；而是会移除参数值的所有组合:
 
-\>>>
+
 
 ```
 >>> b'   spacious   '.lstrip()
@@ -1910,7 +1910,7 @@ b'example.com'
 
 ​	要移除的二进制序列可以是任意 [bytes-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object) 。 要删除单个前缀字符串，而不是全部给定集合中的字符，请参见 [`str.removeprefix()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.removeprefix) 方法。 例如:
 
-\>>>
+
 
 ```
 >>> b'Arthur: three!'.lstrip(b'Arthur: ')
@@ -1949,7 +1949,7 @@ b'three!'
 
 ​	返回原序列的副本，移除指定的末尾字节。 *chars* 参数为指定要移除字节值集合的二进制序列 —— 这个名称表明此方法通常是用于 ASCII 字符。 如果省略或为 `None`，则 *chars* 参数默认移除 ASCII 空白符。 *chars* 参数并非指定单个后缀；而是会移除参数值的所有组合:
 
-\>>>
+
 
 ```
 >>> b'   spacious   '.rstrip()
@@ -1960,7 +1960,7 @@ b'mississ'
 
 ​	要移除的二进制序列可以是任意 [bytes-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object) 。 要删除单个后缀字符串，而不是全部给定集合中的字符，请参见 [`str.removesuffix()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.removesuffix) 方法。 例如:
 
-\>>>
+
 
 ```
 >>> b'Monty Python'.rstrip(b' Python')
@@ -1985,7 +1985,7 @@ b'Monty'
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> b'1,2,3'.split(b',')
@@ -2002,7 +2002,7 @@ b'Monty'
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> b'1 2 3'.split()
@@ -2019,7 +2019,7 @@ b'Monty'
 
 ​	返回原序列的副本，移除指定的开头和末尾字节。 *chars* 参数为指定要移除字节值集合的二进制序列 —— 这个名称表明此方法通常是用于 ASCII 字符。 如果省略或为 `None`，则 *chars* 参数默认移除 ASCII 空白符。 *chars* 参数并非指定单个前缀或后缀；而是会移除参数值的所有组合:
 
-\>>>
+
 
 ```
 >>> b'   spacious   '.strip()
@@ -2056,7 +2056,7 @@ b'example'
 
 ​	返回序列的副本，其中所有的 ASCII 制表符会由一个或多个 ASCII 空格替换，具体取决于当前列位置和给定的制表符宽度。 每 *tabsize* 个字节设为一个制表位（默认值 8 时设定的制表位在列 0, 8, 16 依次类推）。 要展开序列，当前列位置将被设为零并逐一检查序列中的每个字节。 如果字节为 ASCII 制表符 (`b'\t'`)，则并在结果中插入一个或多个空格符，直到当前列等于下一个制表位。 （制表符本身不会被复制。） 如果当前字节为 ASCII 换行符 (`b'\n'`) 或回车符 (`b'\r'`)，它会被复制并将当前列重设为零。 任何其他字节会被不加修改地复制并将当前列加一，不论该字节值在被打印时会如何显示:
 
-\>>>
+
 
 ```
 >>> b'01\t012\t0123\t01234'.expandtabs()
@@ -2079,7 +2079,7 @@ b'01  012 0123    01234'
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> b'ABCabc1'.isalnum()
@@ -2096,7 +2096,7 @@ False
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> b'ABCabc'.isalpha()
@@ -2121,7 +2121,7 @@ False
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> b'1234'.isdigit()
@@ -2138,7 +2138,7 @@ False
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> b'hello world'.islower()
@@ -2163,7 +2163,7 @@ False
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> b'Hello World'.istitle()
@@ -2180,7 +2180,7 @@ False
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> b'HELLO WORLD'.isupper()
@@ -2199,7 +2199,7 @@ False
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> b'Hello World'.lower()
@@ -2222,7 +2222,7 @@ b'hello world'
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> b'ab c\n\nde fg\rkl\r\n'.splitlines()
@@ -2233,7 +2233,7 @@ b'hello world'
 
 ​	不同于 [`split()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes.split)，当给出了分隔符 *sep* 时，对于空字符串此方法将返回一个空列表，而末尾的换行不会令结果中增加额外的行:
 
-\>>>
+
 
 ```
 >>> b"".split(b'\n'), b"Two lines\n".split(b'\n')
@@ -2250,7 +2250,7 @@ b'hello world'
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> b'Hello World'.swapcase()
@@ -2275,7 +2275,7 @@ b'hELLO wORLD'
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> b'Hello world'.title()
@@ -2286,7 +2286,7 @@ b'Hello World'
 
 ​	该算法使用一种简单的与语言无关的定义，将连续的字母组合视为单词。 该定义在多数情况下都很有效，但它也意味着代表缩写形式与所有格的撇号也会成为单词边界，这可能导致不希望的结果:
 
-\>>>
+
 
 ```
 >>> b"they're bill's friends from the UK".title()
@@ -2295,7 +2295,7 @@ b"They'Re Bill'S Friends From The Uk"
 
 ​	可以使用正则表达式来构建针对撇号的特别处理:
 
-\>>>
+
 
 ```
 >>> import re
@@ -2323,7 +2323,7 @@ b"They're Bill's Friends."
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> b'Hello World'.upper()
@@ -2346,7 +2346,7 @@ b'HELLO WORLD'
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> b"42".zfill(5)
@@ -2387,7 +2387,7 @@ b'-0042'
 
 ​	当右边的参数为一个字典（或其他映射类型）时，字节串对象中的格式 *必须* 包含加圆括号的映射键，对应 `'%'` 字符之后字典中的每一项。 映射键将从映射中选取要格式化的值。 例如：
 
-\>>>
+
 
 ```
 >>> print(b'%(language)s has %(number)03d quote types.' %
@@ -2488,7 +2488,7 @@ b'Python has 002 quote types.'
 
 [`memoryview`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#memoryview) 支持通过切片和索引访问其元素。 一维切片的结果将是一个子视图:
 
-\>>>
+
 
 ```
 >>> v = memoryview(b'abcefg')
@@ -2506,7 +2506,7 @@ b'bce'
 
 ​	这里是一个使用非字节格式的例子:
 
-\>>>
+
 
 ```
 >>> import array
@@ -2522,7 +2522,7 @@ b'bce'
 
 ​	如果下层对象是可写的，则内存视图支持一维切片赋值。 改变大小则不被允许:
 
-\>>>
+
 
 ```
 >>> data = bytearray(b'abcefg')
@@ -2546,7 +2546,7 @@ bytearray(b'z1spam')
 
 ​	格式符为 'B', 'b' 或 'c' 的 [hashable](https://docs.python.org/zh-cn/3.13/glossary.html#term-hashable) (只读) 类型的一维内存视图也是可哈希对象。 哈希被定义为 `hash(m) == hash(m.tobytes())`:
 
-\>>>
+
 
 ```
 >>> v = memoryview(b'abcefg')
@@ -2572,7 +2572,7 @@ True
 
 ​	对于 [`tolist()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#memoryview.tolist) 当前所支持的 [`struct`](https://docs.python.org/zh-cn/3.13/library/struct.html#module-struct) 格式字符串子集，如果 `v.tolist() == w.tolist()` 则 `v` 和 `w` 相等:
 
-\>>>
+
 
 ```
 >>> import array
@@ -2594,7 +2594,7 @@ True
 
 ​	如果两边的格式字符串都不被 [`struct`](https://docs.python.org/zh-cn/3.13/library/struct.html#module-struct) 模块所支持，则两对象比较结果总是不相等（即使格式字符串和缓冲区内容相同）:
 
-\>>>
+
 
 ```
 >>> from ctypes import BigEndianStructure, c_long
@@ -2618,7 +2618,7 @@ False
 
 ​	将缓冲区中的数据作为字节串返回。 这相当于在内存视图上调用 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 构造器。
 
-\>>>
+
 
 ```
 >>> m = memoryview(b"abc")
@@ -2636,7 +2636,7 @@ b'abc'
 
 ​	返回一个字符串对象，其中分别以两个十六进制数码表示缓冲区里的每个字节。
 
-\>>>
+
 
 ```
 >>> m = memoryview(b"abc")
@@ -2652,7 +2652,7 @@ b'abc'
 
 ​	将缓冲区内的数据以一个元素列表的形式返回。
 
-\>>>
+
 
 ```
 >>> memoryview(b'abc').tolist()
@@ -2670,7 +2670,7 @@ b'abc'
 
 ​	返回 memoryview 对象的只读版本。 原始的 memoryview 对象不会被改变。
 
-\>>>
+
 
 ```
 >>> m = memoryview(bytearray(b'abc'))
@@ -2694,7 +2694,7 @@ TypeError: cannot modify read-only memory
 
 ​	After this method has been called, any further operation on the view raises a [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) (except [`release()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#memoryview.release) itself which can be called multiple times):
 
-\>>>
+
 
 ```
 >>> m = memoryview(b'abc')
@@ -2707,7 +2707,7 @@ ValueError: operation forbidden on released memoryview object
 
 ​	使用 `with` 语句，可以通过上下文管理协议达到类似的效果:
 
-\>>>
+
 
 ```
 >>> with memoryview(b'abc') as m:
@@ -2730,7 +2730,7 @@ ValueError: operation forbidden on released memoryview object
 
 ​	将 1D/long 转换为 1D/unsigned bytes:
 
-\>>>
+
 
 ```
 >>> import array
@@ -2757,7 +2757,7 @@ ValueError: operation forbidden on released memoryview object
 
 ​	将 1D/unsigned bytes 转换为 1D/char:
 
-\>>>
+
 
 ```
 >>> b = bytearray(b'zyz')
@@ -2774,7 +2774,7 @@ bytearray(b'ayz')
 
 ​	将 1D/bytes 转换为 3D/ints 再转换为 1D/signed char:
 
-\>>>
+
 
 ```
 >>> import struct
@@ -2804,7 +2804,7 @@ bytearray(b'ayz')
 
 ​	将 1D/unsigned long 转换为 2D/unsigned long:
 
-\>>>
+
 
 ```
 >>> buf = struct.pack("L"*6, *list(range(6)))
@@ -2828,7 +2828,7 @@ bytearray(b'ayz')
 
 ​	内存视图的下层对象:
 
-\>>>
+
 
 ```
 >>> b  = bytearray(b'xyz')
@@ -2843,7 +2843,7 @@ True
 
 `nbytes == product(shape) * itemsize == len(m.tobytes())`。 这是数组在连续表示时将会占用的空间总字节数。 它不一定等于 `len(m)`:
 
-\>>>
+
 
 ```
 >>> import array
@@ -2864,7 +2864,7 @@ True
 
 ​	多维数组:
 
-\>>>
+
 
 ```
 >>> import struct
@@ -2895,7 +2895,7 @@ True
 
 ​	memoryview 中每个元素以字节表示的大小:
 
-\>>>
+
 
 ```
 >>> import array, struct
@@ -3130,7 +3130,7 @@ True
 
 ​	作为演示，以下示例返回的字典均等于 `{"one": 1, "two": 2, "three": 3}`:
 
-\>>>
+
 
 ```
 >>> a = dict(one=1, two=2, three=3)
@@ -3161,7 +3161,7 @@ True
 
 ​	如果字典的子类定义了方法 `__missing__()` 并且 *key* 不存在，则 `d[key]` 操作将调用该方法并附带键 *key* 作为参数。 `d[key]` 随后将返回或引发 `__missing__(key)` 调用所返回或引发的任何对象或异常。 没有其他操作或方法会发起调用 `__missing__()`。 如果未定义 `__missing__()`，则会引发 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError)。 `__missing__()` 必须是一个方法；它不能是一个实例变量:
 
-\>>>
+
 
 ```
 >>> class Counter(dict):
@@ -3258,7 +3258,7 @@ True
 
 ​	两个 `dict.values()` 视图之间的相等性比较将总是返回 `False`。 这在 `dict.values()` 与其自身比较时也同样适用:
 
-\>>>
+
 
 ```
 >>> d = {'a': 1}
@@ -3282,7 +3282,7 @@ False
 
 ​	字典会保留插入时的顺序。 请注意对键的更新不会影响顺序。 删除并再次添加的键将被插入到末尾。
 
-\>>>
+
 
 ```
 >>> d = {"one": 1, "two": 2, "three": 3, "four": 4}
@@ -3305,7 +3305,7 @@ False
 
 ​	字典和字典视图都是可逆的。
 
-\>>>
+
 
 ```
 >>> d = {"one": 1, "two": 2, "three": 3, "four": 4}
@@ -3369,7 +3369,7 @@ False
 
 ​	一个使用字典视图的示例:
 
-\>>>
+
 
 ```
 >>> dishes = {'eggs': 2, 'sausage': 1, 'bacon': 1, 'spam': 500}
@@ -3484,7 +3484,7 @@ def send_post_request(url: str, body: dict[str, int]) -> None:
 
 ​	内置函数 [`isinstance()`](https://docs.python.org/zh-cn/3.13/library/functions.html#isinstance) 和 [`issubclass()`](https://docs.python.org/zh-cn/3.13/library/functions.html#issubclass) 不接受第二个参数为 `GenericAlias` 类型：
 
-\>>>
+
 
 ```
 >>> isinstance([1, 2], list[str])
@@ -3495,7 +3495,7 @@ TypeError: isinstance() argument 2 cannot be a parameterized generic
 
 ​	Python 运行时不会强制执行 [类型标注](https://docs.python.org/zh-cn/3.13/glossary.html#term-annotation)。 这种行为扩展到了泛型及其类型形参。 当由 `GenericAlias` 创建容器对象时，并不会检查容器中为元素指定的类型。 例如，以下代码虽然不被鼓励，但运行时并不会报错:
 
-\>>>
+
 
 ```
 >>> t = list[str]
@@ -3505,7 +3505,7 @@ TypeError: isinstance() argument 2 cannot be a parameterized generic
 
 ​	不仅如此，在创建对象的过程中，应用了参数后的泛型还会抹除类型参数：
 
-\>>>
+
 
 ```
 >>> t = list[str]
@@ -3519,7 +3519,7 @@ TypeError: isinstance() argument 2 cannot be a parameterized generic
 
 ​	在泛型上调用 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr) 或 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 会显示应用参数之后的类型：
 
-\>>>
+
 
 ```
 >>> repr(list[int])
@@ -3531,7 +3531,7 @@ TypeError: isinstance() argument 2 cannot be a parameterized generic
 
 ​	调用泛型容器的 [`__getitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getitem__) 方法将引发异常以防出现 `dict[str][str]` 之类的错误:
 
-\>>>
+
 
 ```
 >>> dict[str][str]
@@ -3542,7 +3542,7 @@ TypeError: dict[str] is not a generic class
 
 ​	不过，当使用了 [类型变量](https://docs.python.org/zh-cn/3.13/library/typing.html#generics) 时这种表达式是无效的。 索引必须有与 `GenericAlias` 对象的 [`__args__`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#genericalias.__args__) 中的类型变量条目数量相当的元素。
 
-\>>>
+
 
 ```
 >>> from typing import TypeVar
@@ -3618,7 +3618,7 @@ dict[str, int]
 
 ​	本属性指向未应用参数之前的泛型类：
 
-\>>>
+
 
 ```
 >>> list[int].__origin__
@@ -3629,7 +3629,7 @@ dict[str, int]
 
 ​	该属性是传给泛型类的原始 [`__class_getitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__class_getitem__) 的泛型所组成的 [`tuple`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#tuple) (长度可能为 1):
 
-\>>>
+
 
 ```
 >>> dict[str, list[int]].__args__
@@ -3640,7 +3640,7 @@ dict[str, int]
 
 ​	该属性是延迟计算出来的一个元组（可能为空），包含了 `__args__` 中的类型变量。
 
-\>>>
+
 
 ```
 >>> from typing import TypeVar
@@ -3739,7 +3739,7 @@ def square(number: int | float) -> int | float:
 
 [`isinstance()`](https://docs.python.org/zh-cn/3.13/library/functions.html#isinstance) 和 [`issubclass()`](https://docs.python.org/zh-cn/3.13/library/functions.html#issubclass) 也支持 union 对象：
 
-\>>>
+
 
 ```
 >>> isinstance("", int | str)
@@ -3748,7 +3748,7 @@ True
 
 ​	但是联合对象中的 [参数化泛型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias) 将无法被检测:
 
-\>>>
+
 
 ```
 >>> isinstance(1, int | list[int])  # short-circuit evaluation
@@ -3761,7 +3761,7 @@ TypeError: isinstance() argument 2 cannot be a parameterized generic
 
 ​	union 对象构成的用户类型可以经由 [`types.UnionType`](https://docs.python.org/zh-cn/3.13/library/types.html#types.UnionType) 访问，并可用于 [`isinstance()`](https://docs.python.org/zh-cn/3.13/library/functions.html#isinstance) 检查。 而不能由类型直接实例化为对象：
 
-\>>>
+
 
 ```
 >>> import types
@@ -3779,7 +3779,7 @@ TypeError: cannot create 'types.UnionType' instances
 
 ​	为了支持 `X | Y` 语法，类型对象加入了 `__or__()` 方法。 如果一个元类实现了 `__or__()`，Union 可以重载它：
 
-\>>>
+
 
 ```
 >>> class M(type):
@@ -3845,7 +3845,7 @@ int | C
 
 ​	与 [函数对象](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#user-defined-funcs) 类似，绑定方法对象也支持获取任意属性。 但是，由于方法属性实际上保存于下层的函数对象中 ([`method.__func__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#method.__func__))，因此不允许设置绑定方法的方法属性。 尝试设置方法的属性将会导致引发 [`AttributeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AttributeError)。 想要设置方法属性，你必须在下层的函数对象中显式地设置它。
 
-\>>>
+
 
 ```
 >>> class C:
@@ -3958,7 +3958,7 @@ AttributeError: 'method' object has no attribute 'whoami'
 
 ​	当一个操作会超出限制时，将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError):
 
-\>>>
+
 
 ```
 >>> import sys
@@ -3984,7 +3984,7 @@ ValueError: Exceeds the limit (4300 digits) for integer string conversion; use s
 
 ​	验证:
 
-\>>>
+
 
 ```
 >>> import sys
@@ -4050,7 +4050,7 @@ ValueError: Exceeds the limit (4300 digits) for integer string conversion; use s
 
 ​	示例：
 
-\>>>
+
 
 ```
 >>> import sys

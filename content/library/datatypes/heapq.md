@@ -86,7 +86,7 @@ draft = false
 
 [堆排序](https://en.wikipedia.org/wiki/Heapsort) 可以通过将所有值推入堆中然后每次弹出一个最小值项来实现。
 
-\>>>
+
 
 ```
 >>> def heapsort(iterable):
@@ -103,7 +103,7 @@ draft = false
 
 ​	堆元素可以为元组。这有利于以下做法——在被跟踪的主记录旁边添一个额外的值（例如任务的优先级）用于互相比较：
 
-\>>>
+
 
 ```
 >>> h = []

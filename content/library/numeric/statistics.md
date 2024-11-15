@@ -28,7 +28,7 @@ draft = false
 
 ​	某些数据集合类型使用 `NaN` (not a number) 值来代表缺失的数据。 由于 NaN 具有特殊的比较语义，它们会在数据排序或计数等统计函数中产生怪异或未定义的行为。 受影响的函数有 `median()`, `median_low()`, `median_high()`, `median_grouped()`, `mode()`, `multimode()` 和 `quantiles()`。 `NaN` 值应当在调用这些函数之前被去除:
 
-\>>>
+
 
 ```
 >>> from statistics import median
@@ -104,7 +104,7 @@ draft = false
 
 ​	一些用法示例：
 
-\>>>
+
 
 ```
 >>> mean([1, 2, 3, 4, 4])
@@ -135,7 +135,7 @@ Decimal('0.5625')
 
 ​	此函数的运行速度比 [`mean()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.mean) 函数快并且它总是返回一个 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float)。 *data* 可以为序列或可迭代对象。 如果输入数据集为空，则会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
 
-\>>>
+
 
 ```
 >>> fmean([3.5, 4.0, 5.25])
@@ -144,7 +144,7 @@ Decimal('0.5625')
 
 ​	支持可选的权重参数。 例如，某位教授在为课程打分时可设置权重为测验 20%, 作业 20%, 期中考试 30%, 期末考试 30%:
 
-\>>>
+
 
 ```
 >>> grades = [85, 92, 83, 91]
@@ -169,7 +169,7 @@ Decimal('0.5625')
 
 ​	无需做出特殊努力即可获得准确的结果。（但是，将来或许会修改。）
 
-\>>>
+
 
 ```
 >>> round(geometric_mean([54, 24, 36]), 1)
@@ -188,7 +188,7 @@ Decimal('0.5625')
 
 ​	假设一辆车在 40 km/hr 的速度下行驶了 10 km ，然后又以 60 km/hr 的速度行驶了 10 km 。车辆的平均速率是多少？
 
-\>>>
+
 
 ```
 >>> harmonic_mean([40, 60])
@@ -197,7 +197,7 @@ Decimal('0.5625')
 
 ​	假设一辆汽车以速度 40 公里/小时行驶了 5 公里，当道路变得畅通后，提速到 60 公里/小时行驶了行程中剩余的 30 km。 请问其平均速度是多少？
 
-\>>>
+
 
 ```
 >>> harmonic_mean([40, 60], weights=[5, 30])
@@ -232,7 +232,7 @@ Decimal('0.5625')
 
 ​	在 [Wikipedia 提供的示例](https://en.wikipedia.org/wiki/Kernel_density_estimation#Example) 中我们可以使用 [`kde()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.kde) 来生成并绘制从小样本中估算出的概率密度函数：
 
-\>>>
+
 
 ```
 >>> sample = [-2.1, -1.3, -0.4, 1.9, 5.1, 6.2]
@@ -257,7 +257,7 @@ Decimal('0.5625')
 
 ​	继续 [`kde()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.kde) 的例子，我们可以使用 [`kde_random()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.kde_random) 从一个估计概率密度函数生成新的随机选择：
 
-\>>>
+
 
 ```
 >>> data = [-2.1, -1.3, -0.4, 1.9, 5.1, 6.2]
@@ -275,7 +275,7 @@ Decimal('0.5625')
 
 ​	中位数是衡量中间位置的可靠方式，并且较少受到极端值的影响。 当数据点的总数为奇数时，将返回中间数据点：
 
-\>>>
+
 
 ```
 >>> median([1, 3, 5])
@@ -284,7 +284,7 @@ Decimal('0.5625')
 
 ​	当数据点的总数为偶数时，中位数将通过对两个中间值求平均进行插值得出：
 
-\>>>
+
 
 ```
 >>> median([1, 3, 5, 7])
@@ -301,7 +301,7 @@ Decimal('0.5625')
 
 ​	低中位数一定是数据集的成员。 当数据点总数为奇数时，将返回中间值。 当其为偶数时，将返回两个中间值中较小的那个。
 
-\>>>
+
 
 ```
 >>> median_low([1, 3, 5])
@@ -318,7 +318,7 @@ Decimal('0.5625')
 
 ​	高中位数一定是数据集的成员。 当数据点总数为奇数时，将返回中间值。 当其为偶数时，将返回两个中间值中较大的那个。
 
-\>>>
+
 
 ```
 >>> median_high([1, 3, 5])
@@ -339,7 +339,7 @@ Decimal('0.5625')
 
 ​	例如，人口信息可能被归纳为按 10 年划分的连续年龄分组，每个分组由各区间的 5 年中点来表示：
 
-\>>>
+
 
 ```
 >>> from collections import Counter
@@ -357,7 +357,7 @@ Decimal('0.5625')
 
 ​	常规的 [`median()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.median) 函数会假定三十至四十岁年龄组中的每个人都正好是 35 岁。 一个更站得住脚的假设则是该年龄组的 484 名成员均匀分布在 30 岁到 40 岁之间。 为此，我们会使用 [`median_grouped()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.median_grouped):
 
-\>>>
+
 
 ```
 >>> data = list(demographics.elements())
@@ -379,7 +379,7 @@ Decimal('0.5625')
 
 `mode` 将假定是离散数据并返回一个单一的值。 这是通常的学校教学中标准的处理方式：
 
-\>>>
+
 
 ```
 >>> mode([1, 1, 2, 3, 3, 3, 3, 4])
@@ -388,7 +388,7 @@ Decimal('0.5625')
 
 ​	此众数的独特之处在于它是这个包中唯一还可应用于标称（非数字）数据的统计信息：
 
-\>>>
+
 
 ```
 >>> mode(["red", "blue", "blue", "red", "green", "red", "red"])
@@ -403,7 +403,7 @@ Decimal('0.5625')
 
 ​	返回最频繁出现的值的列表，并按它们在 *data* 中首次出现的位置排序。 如果存在多个众数则将返回一个以上的众数，或者如果 *data* 为空则将返回空列表：
 
-\>>>
+
 
 ```
 >>> multimode('aabbbbccddddeeffffgg')
@@ -418,7 +418,7 @@ Decimal('0.5625')
 
 ​	返回总体标准差（总体方差的平方根）。 请参阅 [`pvariance()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.pvariance) 了解参数和其他细节。
 
-\>>>
+
 
 ```
 >>> pstdev([1.5, 2.5, 2.5, 2.75, 3.25, 4.75])
@@ -437,7 +437,7 @@ Decimal('0.5625')
 
 ​	示例：
 
-\>>>
+
 
 ```
 >>> data = [0.0, 0.25, 0.25, 1.25, 1.5, 1.75, 2.75, 3.25]
@@ -447,7 +447,7 @@ Decimal('0.5625')
 
 ​	如果你已经计算过数据的平均值，你可以将其作为可选的第二个参数 *mu* 传入以避免重复计算：
 
-\>>>
+
 
 ```
 >>> mu = mean(data)
@@ -457,7 +457,7 @@ Decimal('0.5625')
 
 ​	同样也支持使用 Decimal 和 Fraction 值：
 
-\>>>
+
 
 ```
 >>> from decimal import Decimal as D
@@ -481,7 +481,7 @@ Fraction(13, 72)
 
 ​	返回样本标准差（样本方差的平方根）。 请参阅 [`variance()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.variance) 了解参数和其他细节。
 
-\>>>
+
 
 ```
 >>> stdev([1.5, 2.5, 2.5, 2.75, 3.25, 4.75])
@@ -500,7 +500,7 @@ Fraction(13, 72)
 
 ​	示例：
 
-\>>>
+
 
 ```
 >>> data = [2.75, 1.75, 1.25, 0.25, 0.5, 1.25, 3.5]
@@ -510,7 +510,7 @@ Fraction(13, 72)
 
 ​	如果你已经计算过数据的平均值，你可以将其作为可选的第二个参数 *xbar* 传入以避免重复计算：
 
-\>>>
+
 
 ```
 >>> m = mean(data)
@@ -522,7 +522,7 @@ Fraction(13, 72)
 
 ​	同样也支持使用 Decimal 和 Fraction 值：
 
-\>>>
+
 
 ```
 >>> from decimal import Decimal as D
@@ -558,7 +558,7 @@ Fraction(67, 108)
 
 ​	将 *method* 设为 "inclusive" 可用于描述总体数据或已明确知道包含有总体数据中最极端值的样本。 *data* 中的最小值会被作为第 0 个百分位而最大值会被作为第 100 个百分位。 总体数据里处于 *m* 个已排序数据点中 *第 i 个* 以下的部分会以 `(i - 1) / (m - 1)` 来计算。 给定 11 个样本值，该方法会对它们进行排序并赋予以下百分位: 0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%。
 
-\>>>
+
 
 ```
 # Decile cut points for empirically sampled data
@@ -583,7 +583,7 @@ Fraction(67, 108)
 
 ​	示例：
 
-\>>>
+
 
 ```
 >>> x = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -611,7 +611,7 @@ Fraction(67, 108)
 
 ​	使用 [开普勒行星运动定律](https://en.wikipedia.org/wiki/Kepler's_laws_of_planetary_motion) 的示例:
 
-\>>>
+
 
 ```
 >>> # Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and  Neptune
@@ -651,7 +651,7 @@ Fraction(67, 108)
 
 ​	例如，我们可以使用 [Monty Python 系列电影的发布日期](https://en.wikipedia.org/wiki/Monty_Python#Films) 在假定出品方保持现有步调的情况下预测到 2019 年时产出的 Monty Python 电影的累计数量。
 
-\>>>
+
 
 ```
 >>> year = [1971, 1975, 1979, 1982, 1983]
@@ -667,7 +667,7 @@ Fraction(67, 108)
 
 ​	继续 [`correlation()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.correlation) 的例子，我们来看看基于大行星的模型是否能很好地预测矮行星的轨道距离：
 
-\>>>
+
 
 ```
 >>> model = linear_regression(period_squared, dist_cubed, proportional=True)
@@ -777,7 +777,7 @@ Fraction(67, 108)
 
 [`NormalDist`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.NormalDist) 的实例支持加上、减去、乘以或除以一个常量。 这些运算被用于转换和缩放。 例如：
 
-\>>>
+
 
 ```
 >>> temperature_february = NormalDist(5, 2.5)             # Celsius
@@ -789,7 +789,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 ​	由于正态分布是由独立变量的累加效应产生的，因此允许表示为 [`NormalDist`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.NormalDist) 实例的 [两组独立正态分布的随机变量相加和相减](https://en.wikipedia.org/wiki/Sum_of_normally_distributed_random_variables)。 例如：
 
-\>>>
+
 
 ```
 >>> birth_weights = NormalDist.from_samples([2.5, 3.1, 2.1, 2.4, 2.7, 3.5])
@@ -811,7 +811,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 ​	举例来说，如果 [SAT 考试的历史数据](https://nces.ed.gov/programs/digest/d17/tables/dt17_226.40.asp) 显示分数呈平均值为 1060 且标准差为 195 的正态分布，则可以确定考试分数处于 1100 和 1200 之间的学生的百分比舍入到最接近的整数应为：
 
-\>>>
+
 
 ```
 >>> sat = NormalDist(1060, 195)
@@ -822,7 +822,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 ​	求 SAT 分数的 [四分位](https://en.wikipedia.org/wiki/Quartile) 和 [十分位](https://en.wikipedia.org/wiki/Decile)：
 
-\>>>
+
 
 ```
 >>> list(map(round, sat.quantiles()))
@@ -835,7 +835,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 ​	为了估算一个不易获得解析解的模型分布，[`NormalDist`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.NormalDist) 可以生成用于 [蒙特卡洛模拟](https://en.wikipedia.org/wiki/Monte_Carlo_method) 的输入样本：
 
-\>>>
+
 
 ```
 >>> def model(x, y, z):
@@ -855,7 +855,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 ​	例如，一次开源会议有 750 名与会者和两个可分别容纳 500 人的会议厅。 会上有一场关于 Python 的演讲和一场关于 Ruby 的演讲。 在往届会议中，65% 的与会者更愿意去听关于 Python 的演讲。 假定人群的偏好没有发生改变，那么 Python 演讲的会议厅不超出其容量上限的可能性是多少？
 
-\>>>
+
 
 ```
 >>> n = 750             # Sample size
@@ -888,7 +888,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 ​	我们得到了由八个人的测量值组成的训练数据集。 假定这些测量值是正态分布的，因此我们用 [`NormalDist`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.NormalDist) 来总结数据：
 
-\>>>
+
 
 ```
 >>> height_male = NormalDist.from_samples([6, 5.92, 5.58, 5.92])
@@ -901,7 +901,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 ​	接下来，我们遇到一个特征测量值已知但性别未知的新人：
 
-\>>>
+
 
 ```
 >>> ht = 6.0        # height
@@ -911,7 +911,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 ​	从是男是女各 50% 的 [先验概率](https://en.wikipedia.org/wiki/Prior_probability) 出发，我们通过将该先验概率乘以给定性别的特征度量值的可能性累积值来计算后验概率：
 
-\>>>
+
 
 ```
 >>> prior_male = 0.5
@@ -925,7 +925,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 ​	最终预测值应为最大后验概率值。 这种算法被称为 [maximum a posteriori](https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation) 或 MAP：
 
-\>>>
+
 
 ```
 >>> 'male' if posterior_male > posterior_female else 'female'

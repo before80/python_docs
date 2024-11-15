@@ -159,7 +159,7 @@ draft = false
 
 ​	以下代码：
 
-\>>>
+
 
 ```
 >>> x = 10
@@ -172,7 +172,7 @@ draft = false
 
 ​	正常工作，但是以下代码
 
-\>>>
+
 
 ```
 >>> x = 10
@@ -183,7 +183,7 @@ draft = false
 
 ​	在 `UnboundLocalError` 中的结果:
 
-\>>>
+
 
 ```
 >>> foo()
@@ -196,7 +196,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 ​	在上面的示例中，可以将外部作用域的变量声明为全局变量以便访问：
 
-\>>>
+
 
 ```
 >>> x = 10
@@ -211,7 +211,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 ​	与类和实例变量貌似但不一样，其实以上是在修改外部作用域的变量值，为了提示这一点，这里需要显式声明一下。
 
-\>>>
+
 
 ```
 >>> print(x)
@@ -220,7 +220,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 ​	你可以使用 [`nonlocal`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#nonlocal) 关键字在嵌套作用域中执行类似的操作：
 
-\>>>
+
 
 ```
 >>> def foo():
@@ -247,7 +247,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 ​	假设用 for 循环来定义几个取值各异的 lambda（即便是普通函数也一样）：
 
-\>>>
+
 
 ```
 >>> squares = []
@@ -257,7 +257,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 ​	以上会得到一个包含5个 lambda 函数的列表，这些函数将计算 `x**2`。大家或许期望，调用这些函数会分别返回 `0` 、`1` 、 `4` 、 `9` 和 `16`。然而，真的试过就会发现，他们都会返回 `16` ：
 
-\>>>
+
 
 ```
 >>> squares[2]()
@@ -268,7 +268,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 ​	这是因为 `x` 不是 lambda 函数的内部变量，而是定义于外部作用域中的，并且 `x` 是在调用 lambda 时访问的——而不是在定义时访问。循环结束时 `x` 的值是 `4` ，所以此时所有的函数都将返回 `4**2` ，即 `16` 。通过改变 `x` 的值并查看 lambda 的结果变化，也可以验证这一点。
 
-\>>>
+
 
 ```
 >>> x = 8
@@ -278,7 +278,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 ​	为了避免发生上述情况，需要将值保存在 lambda 局部变量，以使其不依赖于全局 `x` 的值：
 
-\>>>
+
 
 ```
 >>> squares = []
@@ -288,7 +288,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 ​	以上 `n=x` 创建了一个新的 lambda 本地变量 `n`，并在定义 lambda 时计算其值，使其与循环当前时点的 `x` 值相同。这意味着 `n` 的值在第 1 个 lambda 中为 `0` ，在第 2 个 lambda 中为 `1` ，在第 3 个中为 `2`，依此类推。因此现在每个 lambda 都会返回正确结果：
 
-\>>>
+
 
 ```
 >>> squares[2]()
@@ -431,7 +431,7 @@ func(42, bar=314, extra=somevar)
 
 ​	如果代码编写如下：
 
-\>>>
+
 
 ```
 >>> x = []
@@ -454,7 +454,7 @@ func(42, bar=314, extra=somevar)
 
 ​	如果把赋给 `x` 的对象换成一个不可变对象：
 
-\>>>
+
 
 ```
 >>> x = 5  # 整数是不可变对象
@@ -485,7 +485,7 @@ func(42, bar=314, extra=somevar)
 
 1. 返回一个元组：
 
-   \>>>
+   
 
    ```
    >>> def func1(a, b):
@@ -504,7 +504,7 @@ func(42, bar=314, extra=somevar)
 
 3. 传递一个可变（即可原地修改的） 对象：
 
-   \>>>
+   
 
    ```
    >>> def func2(a):
@@ -519,7 +519,7 @@ func(42, bar=314, extra=somevar)
 
 4. 传入一个接收可变对象的字典:
 
-   \>>>
+   
 
    ```
    >>> def func3(args):
@@ -534,7 +534,7 @@ func(42, bar=314, extra=somevar)
 
 5. 或者把值用类实例封装起来：
 
-   \>>>
+   
 
    ```
    >>> class Namespace:
@@ -642,7 +642,7 @@ new_l = l[:]
 
 ​	一般而言这是无法实现的，因为对象并不存在真正的名称。赋值本质上是把某个名称绑定到某个值上；`def` 和 `class` 语句同样如此，只是值换成了某个可调用对象。比如以下代码：
 
-\>>>
+
 
 ```
 >>> class A:
@@ -671,7 +671,7 @@ new_l = l[:]
 
 ​	逗号不是 Python 的运算符。 请看以下例子：
 
-\>>>
+
 
 ```
 >>> "a" in "b", "a"
@@ -749,7 +749,7 @@ i=i,Sx=Sx,F=lambda xc,yc,x,y,k,f=lambda xc,yc,x,y,k,f:(k<=0)or (x*x+y*y
 
 ​	函数参数列表中的斜杠表示在它之前的形参都是仅限位置形参。 仅限位置形参没有可供外部使用的名称。 在调用接受仅限位置形参的函数时，参数将只根据其位置被映射到形参上。 例如，[`divmod()`](https://docs.python.org/zh-cn/3.13/library/functions.html#divmod) 就是一个接受仅限位置形参的函数。 它的文档说明是这样的:
 
-\>>>
+
 
 ```
 >>> help(divmod)
@@ -761,7 +761,7 @@ divmod(x, y, /)
 
 ​	形参列表尾部的斜杠说明，两个形参都是仅限位置形参。因此，用关键字参数调用 [`divmod()`](https://docs.python.org/zh-cn/3.13/library/functions.html#divmod) 将会引发错误：
 
-\>>>
+
 
 ```
 >>> divmod(x=3, y=4)
@@ -776,7 +776,7 @@ TypeError: divmod() takes no keyword arguments
 
 ​	要给出八进制数，需在八进制数值前面加上一个零和一个小写或大写字母 "o" 作为前缀。例如，要将变量 "a" 设为八进制的 "10" （十进制的 8），写法如下：
 
-\>>>
+
 
 ```
 >>> a = 0o10
@@ -786,7 +786,7 @@ TypeError: divmod() takes no keyword arguments
 
 ​	十六进制数也很简单。只要在十六进制数前面加上一个零和一个小写或大写的字母 "x"。十六进制数中的字母可以为大写或小写。比如在 Python 解释器中输入：
 
-\>>>
+
 
 ```
 >>> a = 0xa5
@@ -813,7 +813,7 @@ i == (i // j) * j + (i % j)
 
 ​	尝试以正式方式查找一个 `int` 字面值属性会发生 [`SyntaxError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxError) 因为句点会被当作是小数点:
 
-\>>>
+
 
 ```
 >>> 1.__class__
@@ -825,7 +825,7 @@ SyntaxError: invalid decimal literal
 
 ​	解决办法是用空格或括号将字词与句号分开。
 
-\>>>
+
 
 ```
 >>> 1 .__class__
@@ -852,7 +852,7 @@ SyntaxError: invalid decimal literal
 
 ​	无法修改，因为字符串是不可变对象。 在大多数情况下，只要将各个部分组合起来构造出一个新字符串即可。如果需要一个能原地修改 Unicode 数据的对象，可以试试 [`io.StringIO`](https://docs.python.org/zh-cn/3.13/library/io.html#io.StringIO) 对象或 [`array`](https://docs.python.org/zh-cn/3.13/library/array.html#module-array) 模块：
 
-\>>>
+
 
 ```
 >>> import io
@@ -935,7 +935,7 @@ array('w', 'yello, world')
 
 ​	可以使用 `S.rstrip("\r\n")` 从字符串 `S` 的末尾删除所有的换行符，而不删除其他尾随空格。如果字符串 `S` 表示多行，且末尾有几个空行，则将删除所有空行的换行符：
 
-\>>>
+
 
 ```
 >>> lines = ("line 1 \r\n"
@@ -965,7 +965,7 @@ array('w', 'yello, world')
 
 ​	以奇数个反斜杠结尾的原始字符串将会转义用于标记字符串的引号:
 
-\>>>
+
 
 ```
 >>> r'C:\this\will\not\work\'
@@ -977,7 +977,7 @@ SyntaxError: unterminated string literal (detected at line 1)
 
 ​	有几种绕过此问题的办法。 其中之一是使用常规字符串以及双反斜杠:
 
-\>>>
+
 
 ```
 >>> 'C:\\this\\will\\work\\'
@@ -986,7 +986,7 @@ SyntaxError: unterminated string literal (detected at line 1)
 
 ​	另一种办法是将一个包含被转义反斜杠的常规字符串拼接到原始字符串上:
 
-\>>>
+
 
 ```
 >>> r'C:\this\will\work' '\\'
@@ -995,7 +995,7 @@ SyntaxError: unterminated string literal (detected at line 1)
 
 ​	在 Windows 上还可以使用 [`os.path.join()`](https://docs.python.org/zh-cn/3.13/library/os.path.html#os.path.join) 来添加反斜杠:
 
-\>>>
+
 
 ```
 >>> os.path.join(r'C:\this\will\work', '')
@@ -1004,7 +1004,7 @@ SyntaxError: unterminated string literal (detected at line 1)
 
 ​	请注意虽然在确定原始字符串的结束位置时反斜杠会对引号进行“转义“，但在解析原始字符串的值时并不会发生转义。 也就是说，反斜杠会被保留在原始字符串的值中:
 
-\>>>
+
 
 ```
 >>> r'backslash\'preserved'
@@ -1157,7 +1157,7 @@ lisp_list = ("like",  ("this",  ("example", None) ) )
 
 ​	多维数组或许会用以下方式建立：
 
-\>>>
+
 
 ```
 >>> A = [[None] * 2] * 3
@@ -1165,7 +1165,7 @@ lisp_list = ("like",  ("this",  ("example", None) ) )
 
 ​	打印出来貌似没错：
 
-\>>>
+
 
 ```
 >>> A
@@ -1174,7 +1174,7 @@ lisp_list = ("like",  ("this",  ("example", None) ) )
 
 ​	但如果给某一项赋值，结果会同时在多个位置体现出来：
 
-\>>>
+
 
 ```
 >>> A[0][0] = 5
@@ -1231,7 +1231,7 @@ for obj in mylist:
 
 ​	如果你写成这样:
 
-\>>>
+
 
 ```
 >>> a_tuple = (1, 2)
@@ -1245,7 +1245,7 @@ TypeError: 'tuple' object does not support item assignment
 
 ​	其实在幕后，上述增强赋值语句的执行过程大致如下：
 
-\>>>
+
 
 ```
 >>> result = a_tuple[0] + 1
@@ -1259,7 +1259,7 @@ TypeError: 'tuple' object does not support item assignment
 
 ​	如果写成以下这样：
 
-\>>>
+
 
 ```
 >>> a_tuple = (['foo'], 'bar')
@@ -1271,7 +1271,7 @@ TypeError: 'tuple' object does not support item assignment
 
 ​	这时触发异常会令人略感惊讶，更让人吃惊的是虽有报错，但加法操作却生效了：
 
-\>>>
+
 
 ```
 >>> a_tuple[0]
@@ -1280,7 +1280,7 @@ TypeError: 'tuple' object does not support item assignment
 
 ​	要明白为什么会这样，你需要知道 (a) 如果一个对象实现了 [`__iadd__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__iadd__) 魔术方法，那么它就会在执行 `+=` 增强赋值时被调用，并且其返回值将在赋值语句中被使用；(b) 对于列表而言，`__iadd__()` 等价于在列表上调用 `extend()` 并返回该列表。 所以对于列表我们可以这样说，`+=` 就是 `list.extend()` 的“快捷方式”:
 
-\>>>
+
 
 ```
 >>> a_list = []
@@ -1291,7 +1291,7 @@ TypeError: 'tuple' object does not support item assignment
 
 ​	这相当于：
 
-\>>>
+
 
 ```
 >>> result = a_list.__iadd__([1])
@@ -1302,7 +1302,7 @@ TypeError: 'tuple' object does not support item assignment
 
 ​	因此，在此元组示例中，发生的事情等同于：
 
-\>>>
+
 
 ```
 >>> result = a_tuple[0].__iadd__(['item'])
@@ -1327,7 +1327,7 @@ Isorted.sort(key=lambda s: int(s[10:15]))
 
 ​	将它们合并到元组的迭代器中，对结果列表进行排序，然后选择所需的元素。
 
-\>>>
+
 
 ```
 >>> list1 = ["what", "I'm", "sorting", "by"]
@@ -1383,7 +1383,7 @@ class C(P):
 Mapping.register(P)
 ```
 
-\>>>
+
 
 ```
 >>> c = C()
@@ -1625,7 +1625,7 @@ four = 4 * A()._A__one()
 
 [`id()`](https://docs.python.org/zh-cn/3.13/library/functions.html#id) 返回一个整数，该整数在对象的生命周期内保证是唯一的。 因为在 CPython 中，这是对象的内存地址，所以经常发生在从内存中删除对象之后，下一个新创建的对象被分配在内存中的相同位置。 这个例子说明了这一点：
 
-\>>>
+
 
 ```
 >>> id(1000) 
@@ -1636,7 +1636,7 @@ four = 4 * A()._A__one()
 
 ​	这两个 id 属于不同的整数对象，之前先创建了对象，执行 `id()` 调用后又立即被删除了。若要确保检测 id 时的对象仍处于活动状态，请再创建一个对该对象的引用：
 
-\>>>
+
 
 ```
 >>> a = 1000; b = 2000
@@ -1662,7 +1662,7 @@ four = 4 * A()._A__one()
 
 ​	其他大多数情况下，都不建议使用身份相等性测试，而应采用相等性测试。尤其是不应将身份相等性测试用于检测常量值，例如 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 和 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str)，因为他们并不一定是单例对象：
 
-\>>>
+
 
 ```
 >>> a = 1000
@@ -1680,7 +1680,7 @@ False
 
 ​	同样地，可变容器的新实例，对象身份一定不同：
 
-\>>>
+
 
 ```
 >>> a = []
@@ -1751,7 +1751,7 @@ class TitleStr(str):
 
 ​	这些类可以这样使用:
 
-\>>>
+
 
 ```
 >>> FirstOfMonthDate(2012, 2, 14)
@@ -1846,7 +1846,7 @@ class Weather:
 
 [`py_compile`](https://docs.python.org/zh-cn/3.13/library/py_compile.html#module-py_compile) 模块能够手动编译任意模块。 一种做法是交互式地使用该模块中的 `compile()` 函数:
 
-\>>>
+
 
 ```
 >>> import py_compile
@@ -1949,7 +1949,7 @@ from modname import some_objects
 
 ​	仍将继续使用前一版的导入对象。如果模块包含了类的定义，并 *不会* 用新的类定义更新现有的类实例。这样可能会导致以下矛盾的行为：
 
-\>>>
+
 
 ```
 >>> import importlib
@@ -1963,7 +1963,7 @@ False
 
 ​	只要把类对象的 id 打印出来，问题的性质就会一目了然：
 
-\>>>
+
 
 ```
 >>> hex(id(c.__class__))

@@ -41,7 +41,7 @@ draft = false
 
 ​	例如，以下代码可以被用来从一个 Unix 系统的磁盘文件中读取电子邮件消息并将其传递给系统的 `sendmail` 程序:
 
-\>>>
+
 
 ```
 >>> from email import message_from_binary_file
@@ -62,7 +62,7 @@ draft = false
 
 ​	某些 email 包的方法接受一个 *policy* 关键字参数，允许为该方法覆盖原有策略。 例如，以下代码使用了来自之前示例的 *msg* 对象的 [`as_bytes()`](https://docs.python.org/zh-cn/3.13/library/email.compat32-message.html#email.message.Message.as_bytes) 方法并使用其运行所在平台的本机行分隔符将消息写入一个文件:
 
-\>>>
+
 
 ```
 >>> import os
@@ -73,7 +73,7 @@ draft = false
 
 ​	Policy 对象也可使用加法运算符进行组合来产生一个新策略对象，其设置是被加总对象的非默认值的组合:
 
-\>>>
+
 
 ```
 >>> compat_SMTP = policy.compat32.clone(linesep='\r\n')
@@ -83,7 +83,7 @@ draft = false
 
 ​	此运算不满足交换律；也就是说对象的添加顺序很重要。 见以下演示:
 
-\>>>
+
 
 ```
 >>> policy100 = policy.compat32.clone(max_line_length=100)

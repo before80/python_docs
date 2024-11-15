@@ -61,7 +61,7 @@ ForwardX11 = no
 
 ​	INI 文件的结构描述见 [以下章节](https://docs.python.org/zh-cn/3.13/library/configparser.html#supported-ini-file-structure)。 总的来说，这种文件由多个节组成，每个节包含多个带有值的键。 [`configparser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#module-configparser) 类可以读取和写入这种文件。 让我们先通过程序方式来创建上述的配置文件。
 
-\>>>
+
 
 ```
 >>> import configparser
@@ -85,7 +85,7 @@ ForwardX11 = no
 
 ​	现在我们已经创建并保存了一个配置文件，让我们再将它读取出来并探究其中包含的数据。
 
-\>>>
+
 
 ```
 >>> config = configparser.ConfigParser()
@@ -128,7 +128,7 @@ forwardx11
 ServerAliveInterval = -1
 ```
 
-\>>>
+
 
 ```
 >>> config_override = configparser.ConfigParser()
@@ -149,7 +149,7 @@ ServerAliveInterval = -1
 
 ​	配置解析器并不会猜测配置文件中值的类型，而总是将它们在内部存储为字符串。 这意味着如果你需要其他数据类型，你应当自己来转换:
 
-\>>>
+
 
 ```
 >>> int(topsecret['Port'])
@@ -160,7 +160,7 @@ ServerAliveInterval = -1
 
 ​	由于这种任务十分常用，配置解析器提供了一系列便捷的获取方法来处理整数、浮点数和布尔值。 最后一个类型的处理最为有趣，因为简单地将值传给 `bool()` 是没有用的，`bool('False')` 仍然会是 `True`。 为解决这个问题配置解析器还提供了 [`getboolean()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getboolean)。 这个方法对大小写不敏感并可识别 `'yes'`/`'no'`, `'on'`/`'off'`, `'true'`/`'false'` 和 `'1'`/`'0'` [[1\]](https://docs.python.org/zh-cn/3.13/library/configparser.html#id16) 等布尔值。 例如:
 
-\>>>
+
 
 ```
 >>> topsecret.getboolean('ForwardX11')
@@ -177,7 +177,7 @@ True
 
 ​	与字典类似，你可以使用某一节的 [`get()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.get) 方法来提供回退值：
 
-\>>>
+
 
 ```
 >>> topsecret.get('Port')
@@ -191,7 +191,7 @@ True
 
 ​	请注意默认值会优先于回退值。 例如，在我们的示例中 `'CompressionLevel'` 键仅在 `'DEFAULT'` 小节中被指定。 如果我们尝试从 `'topsecret.server.example'` 小节获取它，我们将总是会得到默认值，即使我们指定了一个回退值:
 
-\>>>
+
 
 ```
 >>> topsecret.get('CompressionLevel', '3')
@@ -200,7 +200,7 @@ True
 
 ​	还需要注意的一点是解析器层级的 [`get()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.get) 方法提供了自定义的更复杂接口，它被继续维护用于向下兼容。 当使用此方法时，可以通过 `fallback` 仅限关键字参数提供一个回退值：
 
-\>>>
+
 
 ```
 >>> config.get('forge.example', 'monster',
@@ -210,7 +210,7 @@ True
 
 ​	同样的 `fallback` 参数也可在 [`getint()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getint), [`getfloat()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getfloat) 和 [`getboolean()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getboolean) 方法中使用，例如:
 
-\>>>
+
 
 ```
 >>> 'BatchMode' in topsecret
@@ -284,7 +284,7 @@ empty string value here =
 
 ​	第一（或唯一）小节的名称可以省略并且其值可通过 [`UNNAMED_SECTION`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.UNNAMED_SECTION) 属性来获取。
 
-\>>>
+
 
 ```
 >>> config = """
@@ -413,7 +413,7 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 
   请注意：存在其他方式只用一次操作来添加键值对的集合。 当你在这些操作中使用一个常规字典时，键将按顺序进行排列。 例如:
 
-  \>>>
+  
 
   ```
   >>> parser = configparser.ConfigParser()
@@ -437,7 +437,7 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 
   已知某些配置文件会包括不带值的设置，但其在其他方面均符合 [`configparser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#module-configparser) 所支持的语法。 构造器的 *allow_no_value* 形参可用于指明应当接受这样的值:
 
-  \>>>
+  
 
   ```
   >>> import configparser
@@ -485,7 +485,7 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 
   请注意配置解析器不支持对注释前缀的转义，因此使用 *inline_comment_prefixes* 可能妨碍用户将被用作注释前缀的字符指定为可选值。 当有疑问时，请避免设置 *inline_comment_prefixes*。 在许多情况下，在多行值的一行开头存储注释前缀字符的唯一方式是进行前缀插值，例如:
 
-  \>>>
+  
 
   ```
   >>> from configparser import ConfigParser, ExtendedInterpolation
@@ -568,7 +568,7 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 
 ​	默认情况下当使用 [`getboolean()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getboolean) 时，配置解析器会将下列值视为 `True`: `'1'`, `'yes'`, `'true'`, `'on'` 而将下列值视为 `False`: `'0'`, `'no'`, `'false'`, `'off'`。 你可以通过指定一个自定义的字符串键及其对应的布尔值字典来覆盖此行为。 例如:
 
-\>>>
+
 
 ```
 >>> custom = configparser.ConfigParser()
@@ -588,7 +588,7 @@ False
 
 ​	这个方法会转换每次 read, get, 或 set 操作的选项名称。 默认会将名称转换为小写形式。 这也意味着当一个配置文件被写入时，所有键都将为小写形式。 如果此行为不合适则要重写此方法。 例如:
 
-\>>>
+
 
 ```
 >>> config = """
@@ -623,7 +623,7 @@ False
 
 ​	一个已编译正则表达式会被用来解析节标头。 默认将 `[section]` 匹配到名称 `"section"`。 空格会被视为节名称的一部分，因此 `[ larch ]` 将被读取为一个名称为 `" larch "` 的节。 如果此行为不合适则要覆盖此属性。 例如:
 
-\>>>
+
 
 ```
 >>> import re
@@ -779,7 +779,7 @@ print(config.get('Section1', 'foo'))     # -> "Life is hard!"
 ServerAliveInterval = -1
 ```
 
-\>>>
+
 
 ```
 >>> config_override = configparser.ConfigParser()

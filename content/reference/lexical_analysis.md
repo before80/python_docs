@@ -349,7 +349,7 @@ bytesescapeseq ::=  "\" <any ASCII character>
 
 1. 可以在行尾添加一个反斜杠来忽略换行符:
 
-   \>>>
+   
 
    ```
    >>> 'This string will not include \
@@ -446,7 +446,7 @@ literal_char      ::=  <any code point except "{", "}" or NULL>
 
 ​	格式字符串字面值示例如下：
 
-\>>>
+
 
 ```
 >>> name = "Fred"
@@ -481,7 +481,7 @@ literal_char      ::=  <any code point except "{", "}" or NULL>
 
 ​	允许在替换字段中重用外层 f-字符串的引号类型:
 
-\>>>
+
 
 ```
 >>> a = dict(x=2)
@@ -493,7 +493,7 @@ literal_char      ::=  <any code point except "{", "}" or NULL>
 
 ​	替换字段中也允许使用反斜杠并会以与在其他场景下相同的方式求值:
 
-\>>>
+
 
 ```
 >>> a = ["a", "b", "c"]
@@ -508,7 +508,7 @@ c
 
 ​	即便未包含表达式，格式字符串字面值也不能用作文档字符串。
 
-\>>>
+
 
 ```
 >>> def foo():

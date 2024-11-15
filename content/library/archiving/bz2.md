@@ -236,7 +236,7 @@ draft = false
 
 ​	使用 [`compress()`](https://docs.python.org/zh-cn/3.13/library/bz2.html#bz2.compress) 和 [`decompress()`](https://docs.python.org/zh-cn/3.13/library/bz2.html#bz2.decompress) 来显示往复式的压缩：
 
-\>>>
+
 
 ```
 >>> import bz2
@@ -258,7 +258,7 @@ True
 
 ​	使用 [`BZ2Compressor`](https://docs.python.org/zh-cn/3.13/library/bz2.html#bz2.BZ2Compressor) 进行增量压缩：
 
-\>>>
+
 
 ```
 >>> import bz2
@@ -282,7 +282,7 @@ True
 
 ​	用二进制模式写入和读取 bzip2 压缩文件：
 
-\>>>
+
 
 ```
 >>> import bz2

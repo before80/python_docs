@@ -18,7 +18,7 @@ draft = false
 
 ​	它们最适用于当某个变量可选的值有限时。例如，从一周中选取一天：
 
-\>>>
+
 
 ```
 >>> from enum import Enum
@@ -34,7 +34,7 @@ draft = false
 
 ​	或是 RGB 三原色：
 
-\>>>
+
 
 ```
 >>> from enum import Enum
@@ -56,7 +56,7 @@ draft = false
 
 ​	根据枚举的性质，某个成员的值可能不一定用得上，但无论如何都能用那个值构造对应的成员：
 
-\>>>
+
 
 ```
 >>> Weekday(3)
@@ -65,7 +65,7 @@ draft = false
 
 ​	如你所见，成员的 `repr()` 会显示枚举名称、成员名称和值。 成员的 `str()` 只会显示枚举名称和成员名称:
 
-\>>>
+
 
 ```
 >>> print(Weekday.THURSDAY)
@@ -74,7 +74,7 @@ Weekday.THURSDAY
 
 ​	枚举成员的 *类型* 就是其所属的枚举:
 
-\>>>
+
 
 ```
 >>> type(Weekday.MONDAY)
@@ -85,7 +85,7 @@ True
 
 ​	枚举成员带有一个属性，里面只是他们的 `name`:
 
-\>>>
+
 
 ```
 >>> print(Weekday.TUESDAY.name)
@@ -94,7 +94,7 @@ TUESDAY
 
 ​	类似的，枚举成员还有一个属性 `value`:
 
-\>>>
+
 
 ```
 >>> Weekday.WEDNESDAY.value
@@ -111,7 +111,7 @@ def from_date(cls, date):
 
 ​	目前，完整的 `Weekday` 枚举应如下所示:
 
-\>>>
+
 
 ```
 >>> class Weekday(Enum):
@@ -130,7 +130,7 @@ def from_date(cls, date):
 
 ​	现在可以知道今天是星期几了:
 
-\>>>
+
 
 ```
 >>> from datetime import date
@@ -142,7 +142,7 @@ def from_date(cls, date):
 
 ​	如果变量只需要存一天，这个 `Weekday` 枚举是不错，但如果需要好几天呢？比如要写个函数来描绘一周内的家务，并且不想用 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list)，则可以使用不同类型的 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum):
 
-\>>>
+
 
 ```
 >>> from enum import Flag
@@ -160,7 +160,7 @@ def from_date(cls, date):
 
 ​	就像最开始的 `Weekday` 枚举一样，可以只用一种类型:
 
-\>>>
+
 
 ```
 >>> first_week_day = Weekday.MONDAY
@@ -170,7 +170,7 @@ def from_date(cls, date):
 
 ​	但 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 也允许将几个成员并入一个变量:
 
-\>>>
+
 
 ```
 >>> weekend = Weekday.SATURDAY | Weekday.SUNDAY
@@ -180,7 +180,7 @@ def from_date(cls, date):
 
 ​	甚至可以在一个 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 变量上进行迭代:
 
-\>>>
+
 
 ```
 >>> for day in weekend:
@@ -191,7 +191,7 @@ Weekday.SUNDAY
 
 ​	好吧，让我们来安排家务吧:
 
-\>>>
+
 
 ```
 >>> chores_for_ethan = {
@@ -203,7 +203,7 @@ Weekday.SUNDAY
 
 ​	一个显示某天家务的函数:
 
-\>>>
+
 
 ```
 >>> def show_chores(chores, day):
@@ -217,7 +217,7 @@ answer SO questions
 
 ​	对于成员的实际取值无关紧要的情况，你可以省事地使用 [`auto()`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.auto) 来设置值:
 
-\>>>
+
 
 ```
 >>> from enum import auto
@@ -238,7 +238,7 @@ answer SO questions
 
 ​	有时，要在程序中访问枚举成员（如，开发时不知道颜色的确切值，`Color.RED` 不适用的情况）。`Enum` 支持如下访问方式:
 
-\>>>
+
 
 ```
 >>> Color(1)
@@ -249,7 +249,7 @@ answer SO questions
 
 ​	若要用 *名称* 访问枚举成员时，可使用枚举项:
 
-\>>>
+
 
 ```
 >>> Color['RED']
@@ -260,7 +260,7 @@ answer SO questions
 
 ​	若有了枚举成员，需要获取 `name` 或 `value`:
 
-\>>>
+
 
 ```
 >>> member = Color.RED
@@ -274,7 +274,7 @@ answer SO questions
 
 ​	两个枚举成员的名称不能相同:
 
-\>>>
+
 
 ```
 >>> class Shape(Enum):
@@ -288,7 +288,7 @@ TypeError: 'SQUARE' already defined as 2
 
 ​	然而，一个枚举成员可以关联多个其他名称。如果两个枚举项 `A` 和 `B` 具有相同值（并且首先定义的是 `A` ），则 `B` 是成员 `A` 的别名。对 `A` 按值检索将会返回成员 `A`。按名称检索 `B` 也会返回成员 `A`:
 
-\>>>
+
 
 ```
 >>> class Shape(Enum):
@@ -315,7 +315,7 @@ TypeError: 'SQUARE' already defined as 2
 
 ​	默认情况下，枚举允许多个名称作为同一个值的别名。若不想如此，可以使用 [`unique()`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.unique) 装饰器:
 
-\>>>
+
 
 ```
 >>> from enum import Enum, unique
@@ -335,7 +335,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 
 ​	如果具体的枚举值无所谓是什么，可以使用 [`auto`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.auto):
 
-\>>>
+
 
 ```
 >>> from enum import Enum, auto
@@ -350,7 +350,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 
 ​	枚举值将交由 `_generate_next_value_()` 选取，该函数可以被重写:
 
-\>>>
+
 
 ```
 >>> class AutoName(Enum):
@@ -378,7 +378,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 
 ​	对枚举成员的迭代遍历不会列出别名:
 
-\>>>
+
 
 ```
 >>> list(Shape)
@@ -391,7 +391,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 
 ​	特殊属性 `__members__` 是一个名称与成员间的只读有序映射。包含了枚举中定义的所有名称，包括别名:
 
-\>>>
+
 
 ```
 >>> for name, member in Shape.__members__.items():
@@ -405,7 +405,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 
 `__members__` 属性可用于获取枚举成员的详细信息。比如查找所有别名:
 
-\>>>
+
 
 ```
 >>> [name for name, member in Shape.__members__.items() if member.name != name]
@@ -422,7 +422,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 
 ​	枚举成员是按 ID 进行比较的:
 
-\>>>
+
 
 ```
 >>> Color.RED is Color.RED
@@ -435,7 +435,7 @@ True
 
 ​	枚举值之间无法进行有序的比较。枚举的成员不是整数（另请参阅下文 [IntEnum](https://docs.python.org/zh-cn/3.13/howto/enum.html#intenum)）:
 
-\>>>
+
 
 ```
 >>> Color.RED < Color.BLUE
@@ -446,7 +446,7 @@ TypeError: '<' not supported between instances of 'Color' and 'Color'
 
 ​	相等性比较的定义如下:
 
-\>>>
+
 
 ```
 >>> Color.BLUE == Color.RED
@@ -459,7 +459,7 @@ True
 
 ​	与非枚举值的比较将总是不等的（同样 [`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 有意设计为其他的做法，参见下文）:
 
-\>>>
+
 
 ```
 >>> Color.BLUE == 2
@@ -478,7 +478,7 @@ False
 
 ​	枚举是 Python 的类，可带有普通方法和特殊方法。假设有如下枚举:
 
-\>>>
+
 
 ```
 >>> class Mood(Enum):
@@ -501,7 +501,7 @@ False
 
 ​	那么:
 
-\>>>
+
 
 ```
 >>> Mood.favorite_mood()
@@ -533,7 +533,7 @@ class EnumName([mix-in, ...,] [data-type,] base-enum):
 
 ​	仅当未定义任何成员时，枚举类才允许被子类化。因此不得有以下写法:
 
-\>>>
+
 
 ```
 >>> class MoreColor(Color):
@@ -546,7 +546,7 @@ TypeError: <enum 'MoreColor'> cannot extend <enum 'Color'>
 
 ​	但以下代码是可以的:
 
-\>>>
+
 
 ```
 >>> class Foo(Enum):
@@ -567,7 +567,7 @@ TypeError: <enum 'MoreColor'> cannot extend <enum 'Color'>
 
 ​	当从 [`dataclass`](https://docs.python.org/zh-cn/3.13/library/dataclasses.html#dataclasses.dataclass) 继承时，[`__repr__()`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum.__repr__) 将忽略被继承类的名称。 例如:
 
-\>>>
+
 
 ```
 >>> from dataclasses import dataclass, field
@@ -595,7 +595,7 @@ TypeError: <enum 'MoreColor'> cannot extend <enum 'Color'>
 
 ​	向 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 及其子类添加 [`dataclass()`](https://docs.python.org/zh-cn/3.13/library/dataclasses.html#dataclasses.dataclass) 装饰器是不受支持的。 它不会引发任何错误，但会在运行时产生非常怪异的结果，例如不同的成员彼此相等:
 
-\>>>
+
 
 ```
 >>> @dataclass               # 不要这样做：没有任何意义
@@ -613,7 +613,7 @@ True
 
 ​	枚举类型可以被打包和解包:
 
-\>>>
+
 
 ```
 >>> from test.test_enum import Fruit
@@ -632,7 +632,7 @@ True
 
 ​	通过在枚举类中定义 `__reduce_ex__()` 来修改枚举成员的封存/解封方式是可能的。 默认的方法是基于值的，但具有复杂值的枚举也许会想要基于名称的:
 
-\>>>
+
 
 ```
 >>> import enum
@@ -650,7 +650,7 @@ True
 
 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 类可调用并提供了以下函数式 API：
 
-\>>>
+
 
 ```
 >>> Animal = Enum('Animal', 'ANT BEE CAT DOG')
@@ -666,7 +666,7 @@ True
 
 ​	第二个参数是枚举成员名称的 *来源*。可以是个用空格分隔的名称字符串、名称序列、表示键/值对的二元组的序列，或者名称到值的映射（如字典）。 最后两种可以为枚举赋任意值；其他类型则会自动赋成由 1 开始递增的整数值（利用 `start` 形参可指定为其他起始值）。返回值是一个派生自 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 的新类。换句话说，上述对 `Animal` 的赋值等价于:
 
-\>>>
+
 
 ```
 >>> class Animal(Enum):
@@ -681,7 +681,7 @@ True
 
 ​	对使用函数式 API 创建的枚举进行封存，可能会很棘手，因为要使用栈帧的实现细节来尝试找出枚举是在哪个模块中创建的（例如当你使用了另一个模块中的实用函数时它就可能失败，在 IronPython 或 Jython 上也可能无效）。解决办法是像下面这样显式地指定模块名称：
 
-\>>>
+
 
 ```
 >>> Animal = Enum('Animal', 'ANT BEE CAT DOG', module=__name__)
@@ -695,7 +695,7 @@ True
 
 ​	The new pickle protocol 4 also, in some circumstances, relies on [`__qualname__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#type.__qualname__) being set to the location where pickle will be able to find the class. For example, if the class was made available in class SomeData in the global scope:
 
-\>>>
+
 
 ```
 >>> Animal = Enum('Animal', 'ANT BEE CAT DOG', qualname='SomeData.Animal')
@@ -757,7 +757,7 @@ Enum(
 
 ​	所提供的第一个变种 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 同时也是 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 的一个子类。 [`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 的成员可与整数进行比较；通过扩展，不同类型的整数枚举也可以相互进行比较:
 
-\>>>
+
 
 ```
 >>> from enum import IntEnum
@@ -779,7 +779,7 @@ True
 
 ​	不过，它们仍然不可与标准 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 枚举进行比较:
 
-\>>>
+
 
 ```
 >>> class Shape(IntEnum):
@@ -796,7 +796,7 @@ False
 
 [`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 值在其他方面的行为都如你预期的一样类似于整数:
 
-\>>>
+
 
 ```
 >>> int(Shape.CIRCLE)
@@ -831,7 +831,7 @@ False
 
 ​	示例 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 类:
 
-\>>>
+
 
 ```
 >>> from enum import IntFlag
@@ -851,7 +851,7 @@ True
 
 ​	对于组合同样可以进行命名:
 
-\>>>
+
 
 ```
 >>> class Perm(IntFlag):
@@ -878,7 +878,7 @@ True
 
 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 和 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 的另一个重要区别在于如果没有设置任何旗标（值为 0），则其布尔值为 [`False`](https://docs.python.org/zh-cn/3.13/library/constants.html#False):
 
-\>>>
+
 
 ```
 >>> Perm.R & Perm.X
@@ -889,7 +889,7 @@ False
 
 ​	因为 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员也是 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 的子类，他们可以相互组合（但可能会失去 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员资格:
 
-\>>>
+
 
 ```
 >>> Perm.X | 4
@@ -905,7 +905,7 @@ False
 
 ​	否运算符 `~`，始终会返回一个 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员的正值:
 
-\>>>
+
 
 ```
 >>> (~Perm.X).value == (Perm.R|Perm.W).value == 6
@@ -914,7 +914,7 @@ True
 
 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员也可被迭代遍历:
 
-\>>>
+
 
 ```
 >>> list(RW)
@@ -931,7 +931,7 @@ True
 
 ​	与 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 类似，如果 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 成员的某种组合导致没有设置任何旗标，则其布尔值为 [`False`](https://docs.python.org/zh-cn/3.13/library/constants.html#False):
 
-\>>>
+
 
 ```
 >>> from enum import Flag, auto
@@ -948,7 +948,7 @@ False
 
 ​	单个旗标的值应当为二的乘方 (1, 2, 4, 8, ...)，而旗标的组合则无此限制:
 
-\>>>
+
 
 ```
 >>> class Color(Flag):
@@ -963,7 +963,7 @@ False
 
 ​	对 "no flags set" 条件指定一个名称并不会改变其布尔值:
 
-\>>>
+
 
 ```
 >>> class Color(Flag):
@@ -980,7 +980,7 @@ False
 
 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 成员也可被迭代遍历:
 
-\>>>
+
 
 ```
 >>> purple = Color.RED | Color.BLUE
@@ -1031,7 +1031,7 @@ class IntEnum(int, ReprEnum):   # or Enum instead of ReprEnum
 
 ​	举例来说，如果你要向构造器传入多个条目，但只希望将其中一个作为值:
 
-\>>>
+
 
 ```
 >>> class Coordinate(bytes, Enum):
@@ -1105,7 +1105,7 @@ Coordinate.VY
 
 ​	用来帮助 Python 2 / Python 3 代码保持同步提供 `_order_` 属性。 它将与枚举的实际顺序进行对照检查，如果两者不匹配则会引发错误:
 
-\>>>
+
 
 ```
 >>> class Color(Enum):
@@ -1143,7 +1143,7 @@ TypeError: member order does not match _order_:
 
 ​	当使用 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 来子类化其他数据类型，如 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 或 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 时，所有在 `=` 之后的值都会被传递给该数据类型的构造器。 例如:
 
-\>>>
+
 
 ```
 >>> class MyEnum(IntEnum):      # help(int) -> int(x, base=10) -> integer
@@ -1168,7 +1168,7 @@ def __bool__(self):
 
 ​	如果你给你的枚举子类提供了额外的方法，如下面的 [Planet](https://docs.python.org/zh-cn/3.13/howto/enum.html#planet) 类那样，这些方法将显示在成员的，而不是类的 [`dir()`](https://docs.python.org/zh-cn/3.13/library/functions.html#dir) 中:
 
-\>>>
+
 
 ```
 >>> dir(Planet)                         
@@ -1181,7 +1181,7 @@ def __bool__(self):
 
 ​	遍历 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 成员的组合将只返回由一个比特组成的成员:
 
-\>>>
+
 
 ```
 >>> class Color(Flag):
@@ -1202,7 +1202,7 @@ def __bool__(self):
 
 ​	使用以下代码段作为我们的例子:
 
-\>>>
+
 
 ```
 >>> class Color(IntFlag):
@@ -1223,7 +1223,7 @@ def __bool__(self):
 
 - 迭代过程中只返回典型的标志:
 
-  \>>>
+  
 
   ```
   >>> list(Color.WHITE)
@@ -1232,7 +1232,7 @@ def __bool__(self):
 
 - 取负一个标志或标志集会返回一个新的标志/标志集和其对应的正整数值:
 
-  \>>>
+  
 
   ```
   >>> Color.BLUE
@@ -1244,7 +1244,7 @@ def __bool__(self):
 
 - 伪标志的名称是由其成员的名称构建的:
 
-  \>>>
+  
 
   ```
   >>> (Color.RED | Color.GREEN).name
@@ -1261,7 +1261,7 @@ def __bool__(self):
 
 - 多位标志，又称别名，可以从操作中返回:
 
-  \>>>
+  
 
   ```
   >>> Color.RED | Color.BLUE
@@ -1276,7 +1276,7 @@ def __bool__(self):
 
 - 成员 / 包含检测：零值旗标总是会被视为包含:
 
-  \>>>
+  
 
   ```
   >>> Color.BLACK in Color.WHITE
@@ -1285,7 +1285,7 @@ def __bool__(self):
 
   在其他情况下，仅当一个旗标的所有比特位都包含于另一个旗标中才会返回 True:
 
-  \>>>
+  
 
   ```
   >>> Color.PURPLE in Color.WHITE
@@ -1329,7 +1329,7 @@ def __bool__(self):
 
 ​	旗标成员可以如 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 类一样被迭代，并且只有规范的成员会被返回。 例如:
 
-\>>>
+
 
 ```
 >>> list(Color)
@@ -1340,7 +1340,7 @@ def __bool__(self):
 
 ​	对一个旗标成员取反将返回对应的正值，而不是负值 --- 例如:
 
-\>>>
+
 
 ```
 >>> ~Color.RED
@@ -1349,7 +1349,7 @@ def __bool__(self):
 
 ​	旗标成员具有与它们所包含的二的乘方值的数量相对应的长度。 例如:
 
-\>>>
+
 
 ```
 >>> len(Color.PURPLE)
@@ -1377,7 +1377,7 @@ def __bool__(self):
 
 ​	使用 [`auto`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.auto) 的形式如下:
 
-\>>>
+
 
 ```
 >>> class Color(Enum):
@@ -1393,7 +1393,7 @@ def __bool__(self):
 
 ​	使用 [`object`](https://docs.python.org/zh-cn/3.13/library/functions.html#object) 的形式如下:
 
-\>>>
+
 
 ```
 >>> class Color(Enum):
@@ -1407,7 +1407,7 @@ def __bool__(self):
 
 ​	这也是一个可以说明为什么你会需要编写自己的 `__repr__()` 的好例子:
 
-\>>>
+
 
 ```
 >>> class Color(Enum):
@@ -1425,7 +1425,7 @@ def __bool__(self):
 
 ​	使用字符串作为值的形式如下:
 
-\>>>
+
 
 ```
 >>> class Color(Enum):
@@ -1441,7 +1441,7 @@ def __bool__(self):
 
 ​	使用自动编号 `__new__()` 的形式如下:
 
-\>>>
+
 
 ```
 >>> class AutoNumber(Enum):
@@ -1462,7 +1462,7 @@ def __bool__(self):
 
 ​	要实现更通用的 `AutoNumber`，请添加 `*args` 到签名中:
 
-\>>>
+
 
 ```
 >>> class AutoNumber(Enum):
@@ -1476,7 +1476,7 @@ def __bool__(self):
 
 ​	这样当你从 `AutoNumber` 继承时你将可以编写你自己的 `__init__` 来处理任何附加参数:
 
-\>>>
+
 
 ```
 >>> class Swatch(AutoNumber):
@@ -1514,7 +1514,7 @@ obj = int.__new__(cls, value)
 
 ​	一个有序枚举，它不是基于 [`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum)，因此保持了正常的 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 不变特性（例如不可与其他枚举进行比较）:
 
-\>>>
+
 
 ```
 >>> class OrderedEnum(Enum):
@@ -1550,7 +1550,7 @@ True
 
 ​	如果发现重复的成员名称则会引发一个错误而不是创建一个别名:
 
-\>>>
+
 
 ```
 >>> class DuplicateFreeEnum(Enum):
@@ -1584,7 +1584,7 @@ ValueError: aliases not allowed in DuplicateFreeEnum:  'GRENE' --> 'GREEN'
 
 ​	支持每个成员有多个值:
 
-\>>>
+
 
 ```
 >>> class MultiValueEnum(Enum):
@@ -1609,7 +1609,7 @@ ValueError: aliases not allowed in DuplicateFreeEnum:  'GRENE' --> 'GREEN'
 
 ​	如果定义了 `__new__()` 或 `__init__()`，则枚举成员的值将被传给这些方法:
 
-\>>>
+
 
 ```
 >>> class Planet(Enum):
@@ -1642,7 +1642,7 @@ ValueError: aliases not allowed in DuplicateFreeEnum:  'GRENE' --> 'GREEN'
 
 ​	一个演示如何使用 `_ignore_` 属性的例子:
 
-\>>>
+
 
 ```
 >>> from datetime import timedelta

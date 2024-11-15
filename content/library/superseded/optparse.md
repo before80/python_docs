@@ -965,7 +965,7 @@ options.filename = "foo"
 
   `append` 动作会在选项的当前值上调用 `append` 方法。 这意味着任何被指定的默认值必须具有 `append` 方法。 这还意味着如果默认值非空，则其中的默认元素将存在于选项的已解析值中，而任何来自命令行的值将被添加到这些默认值之后:
 
-  \>>>
+  
 
   ```
   >>> parser.add_option("--files", action="append", default=['~/.mypkg/defaults'])

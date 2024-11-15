@@ -302,7 +302,7 @@ def itemgetter(*items):
 
 ​	条目可以是操作数的 [`__getitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getitem__) 方法所接受的任何类型。 字典接受任意 [hashable](https://docs.python.org/zh-cn/3.13/glossary.html#term-hashable) 值。 列表、元组和字符串接受索引或切片对象：
 
-\>>>
+
 
 ```
 >>> itemgetter(1)('ABCDEFG')
@@ -318,7 +318,7 @@ def itemgetter(*items):
 
 ​	使用 [`itemgetter()`](https://docs.python.org/zh-cn/3.13/library/operator.html#operator.itemgetter) 从元组的记录中提取特定字段的例子：
 
-\>>>
+
 
 ```
 >>> inventory = [('apple', 3), ('banana', 2), ('pear', 5), ('orange', 1)]
@@ -397,7 +397,7 @@ def methodcaller(name, /, *args, **kwargs):
 
 ​	对于不可变的目标例如字符串、数字和元组，更新的值会被计算，但不会被再被赋值给输入变量：
 
-\>>>
+
 
 ```
 >>> a = 'hello'
@@ -409,7 +409,7 @@ def methodcaller(name, /, *args, **kwargs):
 
 ​	对于可变的目标例如列表和字典，原地方法将执行更新，因此不需要后续赋值操作：
 
-\>>>
+
 
 ```
 >>> s = ['h', 'e', 'l', 'l', 'o']

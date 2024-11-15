@@ -109,7 +109,7 @@ else {
 
 ​	做到这一点的最简单方式是使用 [`io.StringIO`](https://docs.python.org/zh-cn/3.13/library/io.html#io.StringIO) 类：
 
-\>>>
+
 
 ```
 >>> import io, sys
@@ -123,7 +123,7 @@ hello world!
 
 ​	实现同样效果的自定义对象看起来是这样的：
 
-\>>>
+
 
 ```
 >>> import io, sys

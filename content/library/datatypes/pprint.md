@@ -47,7 +47,7 @@ draft = false
 - **sort_dicts** ([*bool*](https://docs.python.org/zh-cn/3.13/library/functions.html#bool)) -- 如为 `True`，则在格式化字典时将基于键进行排序，否则将按插入顺序显示它们（默认）。
 - **underscore_numbers** ([*bool*](https://docs.python.org/zh-cn/3.13/library/functions.html#bool)) -- 如为 `True`，则在格式化整数时将使用 `_` 字符作为千位分隔符，否则将不显示下划线（默认）。
 
-\>>>
+
 
 ```
 >>> import pprint
@@ -76,7 +76,7 @@ draft = false
 
 ​	确定 *object* 的格式化表示是否“可读”，或是否可被用来通过 [`eval()`](https://docs.python.org/zh-cn/3.13/library/functions.html#eval) 重新构建对象的值。 此函数对于递归对象总是返回 `False`。
 
-\>>>
+
 
 ```
 >>> pprint.isreadable(stuff)
@@ -91,7 +91,7 @@ False
 
 ​	返回 *object* 的字符串表示，并为某些通用数据结构提供防递归保护，包括 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict), [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 和 [`tuple`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#tuple) 或其未重载 `__repr__` 的子类的实例。 如果该对象表示形式公开了一个递归条目，该递归引用会被表示为 `<Recursion on typename with id=number>`。 否则该表示形式将不会被格式化。
 
-\>>>
+
 
 ```
 >>> pprint.saferepr(stuff)
@@ -108,7 +108,7 @@ False
 
 ​	参数的含义与 [`pp()`](https://docs.python.org/zh-cn/3.13/library/pprint.html#pprint.pp) 的相同。 注意它们的顺序有所不同，并且 *sort_dicts* 默认为 `True`。
 
-\>>>
+
 
 ```
 >>> import pprint
@@ -175,7 +175,7 @@ False
 
 ​	为了演示To demonstrate several uses of the [`pp()`](https://docs.python.org/zh-cn/3.13/library/pprint.html#pprint.pp) 函数及其形参的几种用法，让我们从 [PyPI](https://pypi.org/) 获取关于某个项目的信息:
 
-\>>>
+
 
 ```
 >>> import json
@@ -187,7 +187,7 @@ False
 
 ​	在其基本形式中，[`pp()`](https://docs.python.org/zh-cn/3.13/library/pprint.html#pprint.pp) 会显示整个对象:
 
-\>>>
+
 
 ```
 >>> pprint.pp(project_info)
@@ -247,7 +247,7 @@ False
 
 ​	结果可以被限制到特定的 *depth* (更深层的内容将使用省略号):
 
-\>>>
+
 
 ```
 >>> pprint.pp(project_info, depth=1)
@@ -296,7 +296,7 @@ False
 
 ​	此外，还可以设置建议的最大字符 *width*。 如果一个对象无法被拆分，则将超出指定宽度:
 
-\>>>
+
 
 ```
 >>> pprint.pp(project_info, depth=1, width=60)

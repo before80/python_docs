@@ -69,7 +69,7 @@ draft = false
 
 ​	下面的例子演示了 [`RobotFileParser`](https://docs.python.org/zh-cn/3.13/library/urllib.robotparser.html#urllib.robotparser.RobotFileParser) 类的基本用法:
 
-\>>>
+
 
 ```
 >>> import urllib.robotparser

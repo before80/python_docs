@@ -2110,7 +2110,7 @@ with os.scandir(path) as it:
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> import os

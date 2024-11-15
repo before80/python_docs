@@ -104,7 +104,7 @@ draft = false
 
 ​	此模块一个使用示例:
 
-\>>>
+
 
 ```
 >>> import mimetypes

@@ -719,7 +719,7 @@ draft = false
 
 ​	以下示例将读取 python.org 主页并显示前 300 个字节的内容：
 
-\>>>
+
 
 ```
 >>> import urllib.request
@@ -739,7 +739,7 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">\n\n<head>\n
 
 ​	python.org 网站已在 meta 标签中指明，采用的是 *utf-8* 编码，因此这里将用同样的格式对字节串进行解码。
 
-\>>>
+
 
 ```
 >>> with urllib.request.urlopen('http://www.python.org/') as f:
@@ -751,7 +751,7 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">\n\n<head>\n
 
 ​	不用 [context manager](https://docs.python.org/zh-cn/3.13/glossary.html#term-context-manager) 方法也能获得同样的结果：
 
-\>>>
+
 
 ```
 >>> import urllib.request
@@ -763,7 +763,7 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">\n\n<head>\n
 
 ​	以下示例将会把数据流发送给某 CGI 的 stdin，并读取返回数据。请注意，该示例只能工作于 Python 装有 SSL 支持的环境。
 
-\>>>
+
 
 ```
 >>> import urllib.request
@@ -852,7 +852,7 @@ opener.open('http://www.example.com/')
 
 ​	以下会话示例用 `GET` 方法读取包含参数的 URL。
 
-\>>>
+
 
 ```
 >>> import urllib.request
@@ -866,7 +866,7 @@ opener.open('http://www.example.com/')
 
 ​	以下示例换用 `POST` 方法。请注意 urlencode 输出结果先被编码为字节串 data，再送入 urlopen。
 
-\>>>
+
 
 ```
 >>> import urllib.request
@@ -880,7 +880,7 @@ opener.open('http://www.example.com/')
 
 ​	以下示例显式指定了 HTTP 代理，以覆盖环境变量中的设置：
 
-\>>>
+
 
 ```
 >>> import urllib.request
@@ -893,7 +893,7 @@ opener.open('http://www.example.com/')
 
 ​	以下示例根本不用代理，也覆盖了环境变量中的设置：
 
-\>>>
+
 
 ```
 >>> import urllib.request
@@ -915,7 +915,7 @@ opener.open('http://www.example.com/')
 
 ​	以下例子演示了大部分常用场景：
 
-\>>>
+
 
 ```
 >>> import urllib.request

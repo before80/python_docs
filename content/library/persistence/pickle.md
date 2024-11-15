@@ -593,7 +593,7 @@ class TextReader:
 
 ​	使用方法如下所示：
 
-\>>>
+
 
 ```
 >>> reader = TextReader("hello.txt")
@@ -746,7 +746,7 @@ print(b is new_b)  # True: no copy was made
 
 ​	默认情况下，解封将会导入在 pickle 数据中找到的任何类或函数。 对于许多应用来说，此行为是不可接受的，因为它会允许解封器导入并发起调用任意代码。 只须考虑当这个手工构建的 pickle 数据流被加载时会做什么:
 
-\>>>
+
 
 ```
 >>> import pickle
@@ -791,7 +791,7 @@ def restricted_loads(s):
 
 ​	我们这个解封器完成其功能的一个示例用法:
 
-\>>>
+
 
 ```
 >>> restricted_loads(pickle.dumps([1, 2, range(15)]))

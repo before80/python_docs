@@ -127,7 +127,7 @@ print(A.Alias.__value__)  # <type 'A.Nested'>
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> type Alias = 1/0

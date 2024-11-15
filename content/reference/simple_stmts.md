@@ -318,7 +318,7 @@ raise Exception("foo occurred").with_traceback(tracebackobj)
 
 `from` 子句用于异常串连：如果给出该子句，则第二个 *表达式* 必须为另一个异常类或实例。 如果第二个表达式是一个异常实例，它将作为 [`__cause__`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseException.__cause__) 属性（为一个可写属性）被关联到所引发的异常。 如果该表达式是一个异常类，这个类将被实例化且所生成的异常实例将作为 `__cause__` 属性被关联到所引发的异常。 如果所引发的异常未被处理，则两个异常都将被打印：
 
-\>>>
+
 
 ```
 >>> try:
@@ -342,7 +342,7 @@ RuntimeError: Something bad happened
 
 ​	当已经有一个异常在处理时如果有新的异常被引发则类似的机制会隐式地起作用。 异常可以通过使用 [`except`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#except) 或 [`finally`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#finally) 子句或者 [`with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#with) 语句来处理。 之前的异常将被关联至新异常的 [`__context__`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseException.__context__) 属性：
 
-\>>>
+
 
 ```
 >>> try:
@@ -366,7 +366,7 @@ RuntimeError: Something bad happened
 
 ​	异常串连可通过在 `from` 子句中指定 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None) 来显式地加以抑制：
 
-\>>>
+
 
 ```
 >>> try:

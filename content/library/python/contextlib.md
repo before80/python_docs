@@ -60,7 +60,7 @@ def managed_resource(*args, **kwds):
 
 ​	随后可以这样使用此函数:
 
-\>>>
+
 
 ```
 >>> with managed_resource(timeout=3600) as resource:
@@ -357,7 +357,7 @@ class mycontext(ContextDecorator):
 
 ​	随后可以这样使用该类:
 
-\>>>
+
 
 ```
 >>> @mycontext()
@@ -438,7 +438,7 @@ class mycontext(AsyncContextDecorator):
 
 ​	随后可以这样使用该类:
 
-\>>>
+
 
 ```
 >>> @mycontext()
@@ -779,7 +779,7 @@ def activity():
 
 ​	使用 [`contextmanager()`](https://docs.python.org/zh-cn/3.13/library/contextlib.html#contextlib.contextmanager) 创建的上下文管理器也是单次使用的上下文管理器，并会在试图第二次使用它们时报告下层生成器无法执行产生操作:
 
-\>>>
+
 
 ```
 >>> from contextlib import contextmanager
@@ -811,7 +811,7 @@ RuntimeError: generator didn't yield
 
 [`threading.RLock`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.RLock) 是一个可重入上下文管理器的例子，[`suppress()`](https://docs.python.org/zh-cn/3.13/library/contextlib.html#contextlib.suppress), [`redirect_stdout()`](https://docs.python.org/zh-cn/3.13/library/contextlib.html#contextlib.redirect_stdout) 和 [`chdir()`](https://docs.python.org/zh-cn/3.13/library/contextlib.html#contextlib.chdir) 也是。 下面是一个非常简单的使用重入的示例:
 
-\>>>
+
 
 ```
 >>> from contextlib import redirect_stdout
@@ -844,7 +844,7 @@ This is also written to the stream
 
 ​	另一个可重用，但不可重入的上下文管理器的例子是 [`ExitStack`](https://docs.python.org/zh-cn/3.13/library/contextlib.html#contextlib.ExitStack)，因为它在离开任何 with 语句时会发起调用 *所有* 当前已注册的回调，不论回调是在哪里添加的:
 
-\>>>
+
 
 ```
 >>> from contextlib import ExitStack
@@ -878,7 +878,7 @@ Leaving outer context
 
 ​	使用单独的 [`ExitStack`](https://docs.python.org/zh-cn/3.13/library/contextlib.html#contextlib.ExitStack) 实例而不是重复使用一个实例可以避免此问题:
 
-\>>>
+
 
 ```
 >>> from contextlib import ExitStack

@@ -205,7 +205,7 @@ parser = MyHTMLParser()
 
 ​	解析一个文档类型声明:
 
-\>>>
+
 
 ```
 >>> parser.feed('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" '
@@ -215,7 +215,7 @@ Decl     : DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR
 
 ​	解析一个具有一些属性和标题的元素:
 
-\>>>
+
 
 ```
 >>> parser.feed('<img src="python-logo.png" alt="The Python logo">')
@@ -231,7 +231,7 @@ End tag  : h1
 
 `script` 和 `style` 元素中的内容原样返回，无需进一步解析:
 
-\>>>
+
 
 ```
 >>> parser.feed('<style type="text/css">#python { color: green }</style>')
@@ -250,7 +250,7 @@ End tag  : script
 
 ​	解析注释:
 
-\>>>
+
 
 ```
 >>> parser.feed('<!-- a comment -->'
@@ -261,7 +261,7 @@ Comment  : [if IE 9]>IE-specific content<![endif]
 
 ​	解析命名或数字形式的字符引用，并把他们转换到正确的字符（注意：这 3 种转义都是 `'>'` ）:
 
-\>>>
+
 
 ```
 >>> parser.feed('&gt;&#62;&#x3E;')
@@ -272,7 +272,7 @@ Num ent  : >
 
 ​	填充不完整的块给 [`feed()`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser.feed) 执行，[`handle_data()`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser.handle_data) 可能会多次调用（除非 *convert_charrefs* 被设置为 `True` ）:
 
-\>>>
+
 
 ```
 >>> for chunk in ['<sp', 'an>buff', 'ered ', 'text</s', 'pan>']:
@@ -287,7 +287,7 @@ End tag  : span
 
 ​	解析无效的 HTML (例如：未引用的属性）也能正常运行:
 
-\>>>
+
 
 ```
 >>> parser.feed('<p><a class=link href=#main>tag soup</p ></a>')

@@ -34,7 +34,7 @@ draft = false
 
 ​	返回一个 [`IPv4Address`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv4Address) 或 [`IPv6Address`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv6Address) 对象，取决于作为参数传递的 IP 地址。可以提供IPv4或IPv6地址，小于 `2**32` 的整数默认被认为是 IPv4。如果 *address* 不是有效的 IPv4 或 IPv6 地址，则会抛出 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-\>>>
+
 
 ```
 >>> ipaddress.ip_address('192.168.0.1')
@@ -47,7 +47,7 @@ IPv6Address('2001:db8::')
 
 ​	返回一个 [`IPv4Network`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv4Network) 或 [`IPv6Network`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv6Network) 对象，具体取决于作为参数传入的 IP 地址。 *address* 是表示 IP 网址的字符串或整数。 可以提供 IPv4 或 IPv6 网址；小于 `2**32` 的整数默认被视为 IPv4。 *strict* 会被传给 [`IPv4Network`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv4Network) 或 [`IPv6Network`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv6Network) 构造器。 如果 *address* 不表示有效的 IPv4 或 IPv6 网址，或者网络设置了 host 比特位，则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-\>>>
+
 
 ```
 >>> ipaddress.ip_network('192.168.0.0/28')
@@ -76,7 +76,7 @@ IPv4Network('192.168.0.0/28')
 2. 一个32位可容纳的整数。
 3. 一个长度为 4 的封装在 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 对象中的整数(高位优先)。
 
-\>>>
+
 
 ```
 >>> ipaddress.IPv4Address('192.168.0.1')
@@ -117,7 +117,7 @@ IPv4Address('192.168.0.1')
 
 ​	IP地址的反向DNS PTR记录的名称，例如:
 
-\>>>
+
 
 ```
 >>> ipaddress.ip_address("127.0.0.1").reverse_pointer
@@ -197,7 +197,7 @@ address.is_global == address.ipv4_mapped.is_global
 
 ​	返回一个IP地址的字符串表示，由一个明确的格式字符串控制。*fmt* 可以是以下之一: `'s'`，默认选项，相当于 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str)，`'b'` 用于零填充的二进制字符串，`'X'` 或者 `'x'` 用于大写或小写的十六进制表示，或者 `'n'` 相当于 `'b'` 用于 IPv4 地址和 `'x'` 用于 IPv6 地址。 对于二进制和十六进制表示法，可以使用形式指定器 `'#'` 和分组选项 `'_'`。 `__format__` 被 `format`、 `str.format` 和 f 字符串使用。
 
-\>>>
+
 
 ```
 >>> format(ipaddress.IPv4Address('192.168.0.1'))
@@ -228,7 +228,7 @@ address.is_global == address.ipv4_mapped.is_global
 
 3. 一个打包在长度为 16 字节的大端序 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 对象中的整数。
 
-\>>>
+
 
 ```
 >>> ipaddress.IPv6Address('2001:db8::1000')
@@ -303,7 +303,7 @@ IPv6Address('ff02::5678%1')
 
 ​	与网络模块互操作像套接字模块, 地址必须转换为字符串或整数. 这是使用 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 和 [`int()`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 内置函数:
 
-\>>>
+
 
 ```
 >>> str(ipaddress.IPv4Address('192.168.0.1'))
@@ -326,7 +326,7 @@ IPv6Address('ff02::5678%1')
 
 ​	地址对象可以用通常的一组比较运算符进行比较。具有不同范围区域ID的相同IPv6地址是不平等的。一些例子:
 
-\>>>
+
 
 ```
 >>> IPv4Address('127.0.0.2') > IPv4Address('127.0.0.1')
@@ -345,7 +345,7 @@ True
 
 ​	整数可以被添加到地址对象或从地址对象中减去。 一些例子:
 
-\>>>
+
 
 ```
 >>> IPv4Address('127.0.0.2') + 3
@@ -458,7 +458,7 @@ ipaddress.AddressValueError: 4294967296 (>= 2**32) is not permitted as an IPv4 a
 
 ​	返回一个网络中可用主机的迭代器。 可用的主机是属于该网络的所有IP地址，除了网络地址本身和网络广播地址。 对于掩码长度为31的网络，网络地址和网络广播地址也包括在结果中。掩码为32的网络将返回一个包含单一主机地址的列表。
 
-\>>>
+
 
 ```
 >>> list(ip_network('192.0.2.0/29').hosts())  
@@ -479,7 +479,7 @@ ipaddress.AddressValueError: 4294967296 (>= 2**32) is not permitted as an IPv4 a
 
 ​	计算从这个网络中移除给定的 *network* 后产生的网络定义。 返回一个网络对象的迭代器。 如果 *network* 不完全包含在这个网络中则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-\>>>
+
 
 ```
 >>> n1 = ip_network('192.0.2.0/28')
@@ -493,7 +493,7 @@ ipaddress.AddressValueError: 4294967296 (>= 2**32) is not permitted as an IPv4 a
 
 ​	根据参数值，加入的子网构成当前的网络定义。 *prefixlen_diff* 是我们的前缀长度应该增加的数量。 *new_prefix* 是所需的子网的新前缀；它必须大于我们的前缀。 必须设置 *prefixlen_diff* 和 *new_prefix* 中的一个，且只有一个。 返回一个网络对象的迭代器。
 
-\>>>
+
 
 ```
 >>> list(ip_network('192.0.2.0/24').subnets())
@@ -517,7 +517,7 @@ ValueError: new prefix must be longer
 
 ​	包含这个网络定义的超级网，取决于参数值。 *prefixlen_diff* 是我们的前缀长度应该减少的数量。 *new_prefix* 是超级网的新前缀；它必须比我们的前缀小。 必须设置 *prefixlen_diff* 和 *new_prefix* 中的一个，而且只有一个。 返回一个单一的网络对象。
 
-\>>>
+
 
 ```
 >>> ip_network('192.0.2.0/24').supernet()
@@ -532,7 +532,7 @@ IPv4Network('192.0.0.0/20')
 
 ​	如果这个网络是*other*的子网，则返回 `True`。
 
-\>>>
+
 
 ```
 >>> a = ip_network('192.168.1.0/24')
@@ -547,7 +547,7 @@ True
 
 ​	如果这个网络是*other*的超网，则返回 `True`。
 
-\>>>
+
 
 ```
 >>> a = ip_network('192.168.1.0/24')
@@ -562,7 +562,7 @@ True
 
 ​	将这个网络与*ohter*网络进行比较。 在这个比较中，只考虑网络地址；不考虑主机位。 返回是 `-1` 、 `0``或``1`。
 
-\>>>
+
 
 ```
 >>> ip_network('192.0.2.1/32').compare_networks(ip_network('192.0.2.2/32'))
@@ -669,7 +669,7 @@ True
 
 ​	网络对象可以被迭代，以列出属于该网络的所有地址。 对于迭代，*所有* 主机都会被返回，包括不可用的主机（对于可用的主机，使用 [`hosts()`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv4Network.hosts) 方法）。 一个例子:
 
-\>>>
+
 
 ```
 >>> for addr in IPv4Network('192.0.2.0/28'):
@@ -697,7 +697,7 @@ IPv4Address('192.0.2.15')
 
 ​	网络对象可以作为地址的容器。 一些例子:
 
-\>>>
+
 
 ```
 >>> IPv4Network('192.0.2.0/28')[0]
@@ -724,7 +724,7 @@ False
 
 ​	地址（[`IPv4Address`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv4Address)）没有网络信息。
 
-\>>>
+
 
 ```
 >>> interface = IPv4Interface('192.0.2.5/24')
@@ -736,7 +736,7 @@ IPv4Address('192.0.2.5')
 
 ​	该接口所属的网络（[`IPv4Network`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv4Network)）。
 
-\>>>
+
 
 ```
 >>> interface = IPv4Interface('192.0.2.5/24')
@@ -748,7 +748,7 @@ IPv4Network('192.0.2.0/24')
 
 ​	用前缀符号表示的接口与掩码的字符串。
 
-\>>>
+
 
 ```
 >>> interface = IPv4Interface('192.0.2.5/24')
@@ -760,7 +760,7 @@ IPv4Network('192.0.2.0/24')
 
 ​	带有网络的接口的网络掩码字符串表示。
 
-\>>>
+
 
 ```
 >>> interface = IPv4Interface('192.0.2.5/24')
@@ -772,7 +772,7 @@ IPv4Network('192.0.2.0/24')
 
 ​	带有网络的接口的主机掩码字符串表示。
 
-\>>>
+
 
 ```
 >>> interface = IPv4Interface('192.0.2.5/24')
@@ -818,7 +818,7 @@ IPv4Network('192.0.2.0/24')
 
 ​	以网络（大端序）顺序将一个地址表示为 4 个打包的字节。*address* 是一个 IPv4 IP 地址的整数表示。 如果整数是负数或太大而不满足 IPv4 IP 地址要求，会触发一个 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-\>>>
+
 
 ```
 >>> ipaddress.ip_address(3221225985)
@@ -835,7 +835,7 @@ b'\xc0\x00\x02\x01'
 
 ​	给出第一个和最后一个 IP 地址，返回总结的网络范围的迭代器。 *first* 是范围内的第一个 [`IPv4Address`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv4Address) 或 [`IPv6Address`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv6Address)，*last* 是范围内的最后一个 [`IPv4Address`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv4Address) 或 [`IPv6Address`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv6Address)。 如果 *first* 或 *last* 不是IP地址或不是同一版本则会引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。 如果 *last* 不大于 *first*，或者 *first* 的地址版本不是 4 或 6 则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-\>>>
+
 
 ```
 >>> [ipaddr for ipaddr in ipaddress.summarize_address_range(
@@ -848,7 +848,7 @@ b'\xc0\x00\x02\x01'
 
 ​	返回一个已展开的 [`IPv4Network`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv4Network) 或 [`IPv6Network`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv6Network) 对象的迭代器。 *addresses* 是一个 [`IPv4Network`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv4Network) 或 [`IPv6Network`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv6Network) 对象的 [iterable](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterable)。 如果 *addresses* 包含混合版本的对象则会引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
 
-\>>>
+
 
 ```
 >>> [ipaddr for ipaddr in

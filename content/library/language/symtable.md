@@ -156,7 +156,7 @@ draft = false
 
 ​	例如:
 
-\>>>
+
 
 ```
 >>> import symtable
@@ -240,7 +240,7 @@ draft = false
 
 ​	例如：
 
-\>>>
+
 
 ```
 >>> table = symtable.symtable("def some_func(): pass", "string", "exec")

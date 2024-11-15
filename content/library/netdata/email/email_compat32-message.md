@@ -347,7 +347,7 @@ param = email.utils.collapse_rfc2231_value(rawparam)
 
 ​	以下例子会打印出一封具有多部分结构之信息的每个部分的 MIME 类型。
 
-\>>>
+
 
 ```
 >>> for part in msg.walk():
@@ -363,7 +363,7 @@ text/plain
 
 `walk` 会遍历所有 [`is_multipart()`](https://docs.python.org/zh-cn/3.13/library/email.compat32-message.html#email.message.Message.is_multipart) 方法返回 `True` 的部分之子部分，哪怕 `msg.get_content_maintype() == 'multipart'` 返回的是 `False` 。使用 `_structure` 除错帮助函数可以帮助我们在下面这个例子当中看清楚这一点：
 
-\>>>
+
 
 ```
 >>> for part in msg.walk():

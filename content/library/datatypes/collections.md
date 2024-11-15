@@ -69,7 +69,7 @@ draft = false
 
 ​	注意，[`ChainMap`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.ChainMap) 的迭代顺序是通过从后往前扫描所有映射来确定的:
 
-\>>>
+
 
 ```
 >>> baseline = {'music': 'bach', 'art': 'rembrandt'}
@@ -80,7 +80,7 @@ draft = false
 
 ​	使得顺序与从最后一个映射开始调用一系列 [`dict.update()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict.update) 得到的字典的迭代顺序相同：
 
-\>>>
+
 
 ```
 >>> combined = baseline.copy()
@@ -179,7 +179,7 @@ DeepChainMap({'zebra': 'black', 'snake': 'red'}, {}, {'lion': 'orange'})
 
 ​	一个计数器工具，为的是可以方便快速地计账。例如：
 
-\>>>
+
 
 ```
 >>> # Tally occurrences of words in a list
@@ -204,7 +204,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 
 ​	它可以通过计数一个 *iterable* 中的元素来初始化，或用其它 *mapping* (包括 counter) 初始化：
 
-\>>>
+
 
 ```
 >>> c = Counter()                           # a new, empty counter
@@ -215,7 +215,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 
 ​	Counter 对象的接口类似于字典，不同的是，如果查询的键不在 Counter 中，它会返回一个 0 而不是引发一个 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError)：
 
-\>>>
+
 
 ```
 >>> c = Counter(['eggs', 'ham'])
@@ -225,7 +225,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 
 ​	设置一个计数为0不会从计数器中移去一个元素。使用 `del` 来删除它:
 
-\>>>
+
 
 ```
 >>> c['sausage'] = 0                        # counter entry with a zero count
@@ -242,7 +242,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 
 ​	返回一个迭代器，其中每个元素将重复出现计数值所指定次。 元素会按首次出现的顺序返回。 如果一个元素的计数值小于一，[`elements()`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter.elements) 将会忽略它。
 
-\>>>
+
 
 ```
 >>> c = Counter(a=4, b=2, c=0, d=-2)
@@ -254,7 +254,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 
 ​	返回一个列表，其中包含 *n* 个最常见的元素及出现次数，按常见程度由高到低排序。 如果 *n* 被省略或为 `None`，[`most_common()`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter.most_common) 将返回计数器中的 *所有* 元素。 计数值相等的元素按首次出现的顺序排序：
 
-\>>>
+
 
 ```
 >>> Counter('abracadabra').most_common(3)
@@ -265,7 +265,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 
 ​	减去一个 *可迭代对象* 或 *映射对象* (或 counter) 中的元素。类似于 [`dict.update()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict.update) 但是是减去而非替换。输入和输出都可以是 0 或负数。
 
-\>>>
+
 
 ```
 >>> c = Counter(a=4, b=2, c=0, d=-2)
@@ -281,7 +281,7 @@ Counter({'a': 3, 'b': 0, 'c': -3, 'd': -6})
 
 ​	计算总计数值。
 
-\>>>
+
 
 ```
 >>> c = Counter(a=10, b=5, c=0)
@@ -323,7 +323,7 @@ c.most_common()[:-n-1:-1]       # n least common elements
 
 ​	提供了几种数学运算用来合并 [`Counter`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter) 对象，产生多集（所有计数值均大于零的 counter）。加减运算通过增加或减少两者间对应元素的计数来合并 counter。交并运算返回对应计数的最小值和最大值。相等和包含运算比较对应的计数。每个运算的参数都可以含有有符号的计数，但输出将排除计数小于等于零的元素。
 
-\>>>
+
 
 ```
 >>> c = Counter(a=3, b=1)
@@ -344,7 +344,7 @@ False
 
 ​	单目加和减（一元操作符）意思是从空计数器加或者减去。
 
-\>>>
+
 
 ```
 >>> c = Counter(a=2, b=-4)
@@ -482,7 +482,7 @@ Counter({'b': 4})
 
 ​	示例:
 
-\>>>
+
 
 ```
 >>> from collections import deque
@@ -627,7 +627,7 @@ def delete_nth(d, n):
 
 ​	使用 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 作为 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory)，很轻松地将（键-值对组成的）序列转换为（键-列表组成的）字典：
 
-\>>>
+
 
 ```
 >>> s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]
@@ -641,7 +641,7 @@ def delete_nth(d, n):
 
 ​	当每个键第一次遇见时，它还没有在字典里面，所以自动创建该条目，即调用 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 方法，返回一个空的 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list)。 `list.append()` 操作添加值到这个新的列表里。当再次存取该键时，就正常操作，`list.append()` 添加另一个值到列表中。这个计数比它的等价方法 [`dict.setdefault()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict.setdefault) 要快速和简单：
 
-\>>>
+
 
 ```
 >>> d = {}
@@ -654,7 +654,7 @@ def delete_nth(d, n):
 
 ​	设置 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 为 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int)，使 [`defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) 用于计数（类似其他语言中的 bag 或 multiset）：
 
-\>>>
+
 
 ```
 >>> s = 'mississippi'
@@ -670,7 +670,7 @@ def delete_nth(d, n):
 
 ​	函数 [`int()`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 总是返回 0，这是常数函数的特殊情况。一个更快和灵活的方法是使用 lambda 函数，可以提供任何常量值（不只是0）：
 
-\>>>
+
 
 ```
 >>> def constant_factory(value):
@@ -684,7 +684,7 @@ def delete_nth(d, n):
 
 ​	设置 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 为 [`set`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#set) 使 [`defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) 用于构建 set 集合：
 
-\>>>
+
 
 ```
 >>> s = [('red', 1), ('blue', 2), ('red', 3), ('blue', 4), ('red', 1), ('blue', 4)]
@@ -728,7 +728,7 @@ def delete_nth(d, n):
 
 *在 3.7 版本发生变更:* 添加了 *defaults* 参数和 `_field_defaults` 属性。
 
-\>>>
+
 
 ```
 >>> # Basic example
@@ -768,7 +768,7 @@ for emp in map(EmployeeRecord._make, cursor.fetchall()):
 
 ​	类方法从存在的序列或迭代实例创建一个新实例。
 
-\>>>
+
 
 ```
 >>> t = [11, 22]
@@ -780,7 +780,7 @@ Point(x=11, y=22)
 
 ​	返回一个新的 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) ，它将字段名称映射到它们对应的值：
 
-\>>>
+
 
 ```
 >>> p = Point(x=11, y=22)
@@ -796,7 +796,7 @@ Point(x=11, y=22)
 
 ​	返回一个新的命名元组实例，并将指定域替换为新的值
 
-\>>>
+
 
 ```
 >>> p = Point(x=11, y=22)
@@ -815,7 +815,7 @@ Point(x=33, y=22)
 
 ​	字符串元组列出了字段名。用于提醒和从现有元组创建一个新的命名元组类型。
 
-\>>>
+
 
 ```
 >>> p._fields            # view the field names
@@ -831,7 +831,7 @@ Pixel(x=11, y=22, red=128, green=255, blue=0)
 
 ​	字典将字段名称映射到默认值。
 
-\>>>
+
 
 ```
 >>> Account = namedtuple('Account', ['type', 'balance'], defaults=[0])
@@ -843,7 +843,7 @@ Account(type='premium', balance=0)
 
 ​	要获取这个名字域的值，使用 [`getattr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#getattr) 函数 :
 
-\>>>
+
 
 ```
 >>> getattr(p, 'x')
@@ -852,7 +852,7 @@ Account(type='premium', balance=0)
 
 ​	转换一个字典到命名元组，使用 ** 两星操作符 (所述如 [解包实参列表](https://docs.python.org/zh-cn/3.13/tutorial/controlflow.html#tut-unpacking-arguments)):
 
-\>>>
+
 
 ```
 >>> d = {'x': 11, 'y': 22}
@@ -862,7 +862,7 @@ Point(x=11, y=22)
 
 ​	因为一个命名元组是一个正常的Python类，它可以很容易的通过子类更改功能。这里是如何添加一个计算域和定宽输出打印格式:
 
-\>>>
+
 
 ```
 >>> class Point(namedtuple('Point', ['x', 'y'])):
@@ -883,7 +883,7 @@ Point: x=14.000  y= 0.714  hypot=14.018
 
 ​	子类化对于添加和存储新的名字域是无效的。应当通过 [`_fields`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.somenamedtuple._fields) 创建一个新的命名元组来实现它:
 
-\>>>
+
 
 ```
 >>> Point3D = namedtuple('Point3D', Point._fields + ('z',))
@@ -891,7 +891,7 @@ Point: x=14.000  y= 0.714  hypot=14.018
 
 ​	文档字符串可以自定义，通过直接赋值给 `__doc__` 属性:
 
-\>>>
+
 
 ```
 >>> Book = namedtuple('Book', ['id', 'title', 'authors'])
@@ -962,7 +962,7 @@ Point: x=14.000  y= 0.714  hypot=14.018
 
 ​	将一个现有的 *key* 移到序字典的任一端。 如果 *last* 为真值（默认）则将条目移到右端，或者如果 *last* 为假值则将条目移到开头。 如果 *key* 不存在则会引发 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError):
 
-\>>>
+
 
 ```
 >>> d = OrderedDict.fromkeys('abcde')

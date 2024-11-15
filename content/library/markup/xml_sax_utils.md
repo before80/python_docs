@@ -42,7 +42,7 @@ draft = false
 
 ​	类似于 [`escape()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.utils.html#xml.sax.saxutils.escape)，但还会对 *data* 进行处理以将其用作属性值。 返回值是 *data* 加上任何额外要求的替换的带引号版本。[`quoteattr()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.utils.html#xml.sax.saxutils.quoteattr) 将基于 *data* 的内容选择一个引号字符，以尽量避免在字符串中编码任何引号字符。 如果单双引号字符在 *data* 中都存在，则双引号字符将被编码并且 *data* 将使用双引号来标记。 结果字符串可被直接用作属性值:
 
-\>>>
+
 
 ```
 >>> print("<element attr=%s>" % quoteattr("ab ' cd \" ef"))

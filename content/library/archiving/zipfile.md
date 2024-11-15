@@ -407,7 +407,7 @@ with ZipFile('spam.zip') as myzip:
 
 ​	返回一个新的 Path 对象，其中合并了每个 *other* 参数。 以下代码是等价的:
 
-\>>>
+
 
 ```
 >>> Path(...).joinpath('child').joinpath('grandchild')
@@ -447,7 +447,7 @@ with ZipFile('spam.zip') as myzip:
 
 ​	如果给定 *filterfunc*，则它必须是一个接受单个字符串参数的函数。 在将其添加到归档之前它将被传入每个路径（包括每个单独的完整路径）。 如果 *filterfunc* 返回假值，则路径将不会被添加，而如果它是一个目录则其内容将被忽略。 例如，如果我们的测试文件全都位于 `test` 目录或以字符串 `test_` 打头，则我们可以使用一个 *filterfunc* 来排除它们:
 
-\>>>
+
 
 ```
 >>> zf = PyZipFile('myprog.zip')
