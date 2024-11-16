@@ -9,7 +9,7 @@ draft = false
 
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html)
 >
 > 收录该文档的时间：`2024-11-15T12:09:25+08:00`
 
@@ -20,27 +20,27 @@ draft = false
 ------
 
 > Added in version 3.6:
-> [[1\]](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#id2)
+> [[1\]]({{< ref "/library/netdata/email/email_headerregistry#id2" >}})
 
-​	标头是由 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 的自定义子类来表示的。 用于表示给定标头的特定类则由创建标头时生效的 [`policy`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#module-email.policy) 的 [`header_factory`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#email.policy.EmailPolicy.header_factory) 确定。 这一节记录了 email 包为处理兼容 [**RFC 5322**](https://datatracker.ietf.org/doc/html/rfc5322.html) 的电子邮件消息所实现的特定 `header_factory`，它不仅为各种标头类型提供了自定义的标头对象，还为应用程序提供了添加其自定义标头类型的扩展机制。
+​	标头是由 [`str`]({{< ref "/library/stdtypes#str" >}}) 的自定义子类来表示的。 用于表示给定标头的特定类则由创建标头时生效的 [`policy`]({{< ref "/library/netdata/email/email_policy#module-email.policy" >}}) 的 [`header_factory`]({{< ref "/library/netdata/email/email_policy#email.policy.EmailPolicy.header_factory" >}}) 确定。 这一节记录了 email 包为处理兼容 [**RFC 5322**](https://datatracker.ietf.org/doc/html/rfc5322.html) 的电子邮件消息所实现的特定 `header_factory`，它不仅为各种标头类型提供了自定义的标头对象，还为应用程序提供了添加其自定义标头类型的扩展机制。
 
-​	当使用派生自 [`EmailPolicy`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#email.policy.EmailPolicy) 的任何策略对象时，所有标头都通过 [`HeaderRegistry`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.HeaderRegistry) 产生并且以 [`BaseHeader`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.BaseHeader) 作为其最后一个基类。 每个标头类都有一个由该标头类型确定的附加基类。 例如，许多标头都以 [`UnstructuredHeader`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.UnstructuredHeader) 类作为其另一个基类。 一个标头专用的第二个类是由标头名称使用存储在 [`HeaderRegistry`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.HeaderRegistry) 中的查找表来确定的。 所有这些都针对典型应用程序进行透明的管理，但也为修改默认行为提供了接口，以便由更复杂的应用使用。
+​	当使用派生自 [`EmailPolicy`]({{< ref "/library/netdata/email/email_policy#email.policy.EmailPolicy" >}}) 的任何策略对象时，所有标头都通过 [`HeaderRegistry`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.HeaderRegistry" >}}) 产生并且以 [`BaseHeader`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.BaseHeader" >}}) 作为其最后一个基类。 每个标头类都有一个由该标头类型确定的附加基类。 例如，许多标头都以 [`UnstructuredHeader`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.UnstructuredHeader" >}}) 类作为其另一个基类。 一个标头专用的第二个类是由标头名称使用存储在 [`HeaderRegistry`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.HeaderRegistry" >}}) 中的查找表来确定的。 所有这些都针对典型应用程序进行透明的管理，但也为修改默认行为提供了接口，以便由更复杂的应用使用。
 
-​	以下各节首先记录了标头基类及其属性，然后是用于修改 [`HeaderRegistry`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.HeaderRegistry) 行为的 API，最后是用于表示从结构化标头解析的数据的支持类。
+​	以下各节首先记录了标头基类及其属性，然后是用于修改 [`HeaderRegistry`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.HeaderRegistry" >}}) 行为的 API，最后是用于表示从结构化标头解析的数据的支持类。
 
 ## *class* email.headerregistry.**BaseHeader**(*name*, *value*)
 
-*name* 和 *value* 会从 [`header_factory`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#email.policy.EmailPolicy.header_factory) 调用传递给 `BaseHeader`。 任何标头对象的字符串值都是完成解码为 unicode 的 *value*。
+*name* 和 *value* 会从 [`header_factory`]({{< ref "/library/netdata/email/email_policy#email.policy.EmailPolicy.header_factory" >}}) 调用传递给 `BaseHeader`。 任何标头对象的字符串值都是完成解码为 unicode 的 *value*。
 
 ​	这个基类定义了下列只读属性:
 
 ## **name**
 
-​	标头的名称（字段在 ':' 之前的部分）。 这就是 *name* 的 [`header_factory`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#email.policy.EmailPolicy.header_factory) 调用所传递的值；也就是说会保持大小写形式。
+​	标头的名称（字段在 ':' 之前的部分）。 这就是 *name* 的 [`header_factory`]({{< ref "/library/netdata/email/email_policy#email.policy.EmailPolicy.header_factory" >}}) 调用所传递的值；也就是说会保持大小写形式。
 
 ## **defects**
 
-​	一个包含 [`HeaderDefect`](https://docs.python.org/zh-cn/3.13/library/email.errors.html#email.errors.HeaderDefect) 实例的元组，这些实例报告了在解析期间发现的任何 RFC 合规性问题。 email 包会尝试尽可能地检测合规性问题。 请参阅 [`errors`](https://docs.python.org/zh-cn/3.13/library/email.errors.html#module-email.errors) 模块了解可能被报告的缺陷类型的相关讨论。
+​	一个包含 [`HeaderDefect`]({{< ref "/library/netdata/email/email_errors#email.errors.HeaderDefect" >}}) 实例的元组，这些实例报告了在解析期间发现的任何 RFC 合规性问题。 email 包会尝试尽可能地检测合规性问题。 请参阅 [`errors`]({{< ref "/library/netdata/email/email_errors#module-email.errors" >}}) 模块了解可能被报告的缺陷类型的相关讨论。
 
 ## **max_count**
 
@@ -50,9 +50,9 @@ draft = false
 
 ## **fold**(***, *policy*)
 
-​	返回一个字符串，其中包含用来根据 *policy* 正确地折叠标头的 [`linesep`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#email.policy.Policy.linesep) 字符。 [`cte_type`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#email.policy.Policy.cte_type) 为 `8bit` 时将被作为 `7bit` 来处理，因为标头不能包含任意二进制数据。 如果 [`utf8`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#email.policy.EmailPolicy.utf8) 为 `False`，则非 ASCII 数据将根据 [**RFC 2047**](https://datatracker.ietf.org/doc/html/rfc2047.html) 来编码。
+​	返回一个字符串，其中包含用来根据 *policy* 正确地折叠标头的 [`linesep`]({{< ref "/library/netdata/email/email_policy#email.policy.Policy.linesep" >}}) 字符。 [`cte_type`]({{< ref "/library/netdata/email/email_policy#email.policy.Policy.cte_type" >}}) 为 `8bit` 时将被作为 `7bit` 来处理，因为标头不能包含任意二进制数据。 如果 [`utf8`]({{< ref "/library/netdata/email/email_policy#email.policy.EmailPolicy.utf8" >}}) 为 `False`，则非 ASCII 数据将根据 [**RFC 2047**](https://datatracker.ietf.org/doc/html/rfc2047.html) 来编码。
 
-`BaseHeader` 本身不能被用于创建标头对象。 它定义了一个与每个专用标头相配合的协议以便生成标头对象。 具体来说，`BaseHeader` 要求专用类提供一个名为 `parse` 的 [`classmethod()`](https://docs.python.org/zh-cn/3.13/library/functions.html#classmethod)。 此方法的调用形式如下:
+`BaseHeader` 本身不能被用于创建标头对象。 它定义了一个与每个专用标头相配合的协议以便生成标头对象。 具体来说，`BaseHeader` 要求专用类提供一个名为 `parse` 的 [`classmethod()`]({{< ref "/library/functions#classmethod" >}})。 此方法的调用形式如下:
 
 ```
 parse(string, kwds)
@@ -86,7 +86,7 @@ def init(self, /, *args, **kw):
 
 ## **datetime**
 
-​	如果标头值能被识别为某一种有效的日期形式，此属性将包含一个代表该日期的 [`datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime) 实例。 如果输入日期的时区被指定为 `-0000` (表示它是 UTC 但不包含源时区的相关信息)，则 [`datetime`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.DateHeader.datetime) 将为简单型 [`datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime)。 如果找到了特定的时区时差值 (包括 `+0000`)，则 [`datetime`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.DateHeader.datetime) 将包含一个使用 [`datetime.timezone`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.timezone) 来记录时区时差的感知型 `datetime`。
+​	如果标头值能被识别为某一种有效的日期形式，此属性将包含一个代表该日期的 [`datetime`]({{< ref "/library/datatypes/datetime#datetime.datetime" >}}) 实例。 如果输入日期的时区被指定为 `-0000` (表示它是 UTC 但不包含源时区的相关信息)，则 [`datetime`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.DateHeader.datetime" >}}) 将为简单型 [`datetime`]({{< ref "/library/datatypes/datetime#datetime.datetime" >}})。 如果找到了特定的时区时差值 (包括 `+0000`)，则 [`datetime`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.DateHeader.datetime" >}}) 将包含一个使用 [`datetime.timezone`]({{< ref "/library/datatypes/datetime#datetime.timezone" >}}) 来记录时区时差的感知型 `datetime`。
 
 ​	标头的 `decoded` 值是由按照 [**RFC 5322**](https://datatracker.ietf.org/doc/html/rfc5322.html) 对 `datetime` 进行格式化来确定的；也就是说，它会被设为:
 
@@ -94,13 +94,13 @@ def init(self, /, *args, **kw):
 email.utils.format_datetime(self.datetime)
 ```
 
-​	当创建 `DateHeader` 时，*value* 可以为 [`datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime) 实例。 例如这意味着以下代码是有效的并能实现人们预期的行为:
+​	当创建 `DateHeader` 时，*value* 可以为 [`datetime`]({{< ref "/library/datatypes/datetime#datetime.datetime" >}}) 实例。 例如这意味着以下代码是有效的并能实现人们预期的行为:
 
 ```
 msg['Date'] = datetime(2011, 7, 15, 21)
 ```
 
-​	因为这是个简单型 `datetime` 它将被解读为 UTC 时间戳，并且结果值的时区将为 `-0000`。 使用来自 [`utils`](https://docs.python.org/zh-cn/3.13/library/email.utils.html#module-email.utils) 模块的 [`localtime()`](https://docs.python.org/zh-cn/3.13/library/email.utils.html#email.utils.localtime) 函数会更有用:
+​	因为这是个简单型 `datetime` 它将被解读为 UTC 时间戳，并且结果值的时区将为 `-0000`。 使用来自 [`utils`]({{< ref "/library/netdata/email/email_utils#module-email.utils" >}}) 模块的 [`localtime()`]({{< ref "/library/netdata/email/email_utils#email.utils.localtime" >}}) 函数会更有用:
 
 ```
 msg['Date'] = utils.localtime()
@@ -116,25 +116,25 @@ msg['Date'] = utils.localtime()
 
 ## **groups**
 
-​	编码了在标头值中找到的地址和分组的 [`Group`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.Group) 对象的元组。 非分组成员的地址在此列表中表示为 [`display_name`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.Group.display_name) 为 `None` 的单地址 `Groups`。
+​	编码了在标头值中找到的地址和分组的 [`Group`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.Group" >}}) 对象的元组。 非分组成员的地址在此列表中表示为 [`display_name`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.Group.display_name" >}}) 为 `None` 的单地址 `Groups`。
 
 ## **addresses**
 
-​	编码了来自标头值的所有单独地址的 [`Address`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.Address) 对象的元组。 如果标头值包含任何分组，则来自分组的单个地址将包含在该分组出现在值中的点上列出（也就是说，地址列表会被“展平”为一维列表）。
+​	编码了来自标头值的所有单独地址的 [`Address`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.Address" >}}) 对象的元组。 如果标头值包含任何分组，则来自分组的单个地址将包含在该分组出现在值中的点上列出（也就是说，地址列表会被“展平”为一维列表）。
 
-​	标头的 `decoded` 值将把所有已编码字解码为 unicode。 [`idna`](https://docs.python.org/zh-cn/3.13/library/codecs.html#module-encodings.idna) 编码的域名也会被解码为 unicode。 `decoded` 值是通过对 `groups` 属性的元素的 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 值使用 `', '` 进行 [合并](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#meth-str-join) 来设置的。
+​	标头的 `decoded` 值将把所有已编码字解码为 unicode。 [`idna`]({{< ref "/library/binary/codecs#module-encodings.idna" >}}) 编码的域名也会被解码为 unicode。 `decoded` 值是通过对 `groups` 属性的元素的 [`str`]({{< ref "/library/stdtypes#str" >}}) 值使用 `', '` 进行 [合并]({{< ref "/library/stdtypes#meth-str-join" >}}) 来设置的。
 
-​	可以使用 [`Address`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.Address) 与 [`Group`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.Group) 对象的任意组合的列表来设置一个地址标头的值。 `display_name` 为 `None` 的 `Group` 对象将被解读为单独地址，这允许一个地址列表可以附带通过使用从源标头的 `groups` 属性获取的列表而保留原分组。
+​	可以使用 [`Address`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.Address" >}}) 与 [`Group`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.Group" >}}) 对象的任意组合的列表来设置一个地址标头的值。 `display_name` 为 `None` 的 `Group` 对象将被解读为单独地址，这允许一个地址列表可以附带通过使用从源标头的 `groups` 属性获取的列表而保留原分组。
 
 ## *class* email.headerregistry.**SingleAddressHeader**
 
-[`AddressHeader`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.AddressHeader) 的子类，添加了一个额外的属性:
+[`AddressHeader`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.AddressHeader" >}}) 的子类，添加了一个额外的属性:
 
 ## **address**
 
-​	由标头值编码的单个地址。 如果标头值实际上包含一个以上的地址（这在默认 [`policy`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#module-email.policy) 下将违反 RFC），则访问此属性将导致 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	由标头值编码的单个地址。 如果标头值实际上包含一个以上的地址（这在默认 [`policy`]({{< ref "/library/netdata/email/email_policy#module-email.policy" >}}) 下将违反 RFC），则访问此属性将导致 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
-​	上述类中许多还具有一个 `Unique` 变体 (例如 `UniqueUnstructuredHeader`)。 其唯一差别是在 `Unique` 变体中 [`max_count`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.BaseHeader.max_count) 被设为 1。
+​	上述类中许多还具有一个 `Unique` 变体 (例如 `UniqueUnstructuredHeader`)。 其唯一差别是在 `Unique` 变体中 [`max_count`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.BaseHeader.max_count" >}}) 被设为 1。
 
 ## *class* email.headerregistry.**MIMEVersionHeader**
 
@@ -162,7 +162,7 @@ msg['Date'] = utils.localtime()
 
 ## *class* email.headerregistry.**ContentTypeHeader**
 
-​	处理 *Content-Type* 标头的 [`ParameterizedMIMEHeader`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.ParameterizedMIMEHeader) 类。
+​	处理 *Content-Type* 标头的 [`ParameterizedMIMEHeader`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.ParameterizedMIMEHeader" >}}) 类。
 
 ## **content_type**
 
@@ -174,7 +174,7 @@ msg['Date'] = utils.localtime()
 
 ## *class* email.headerregistry.**ContentDispositionHeader**
 
-​	处理 *Content-Disposition* 标头的 [`ParameterizedMIMEHeader`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.ParameterizedMIMEHeader) 类。
+​	处理 *Content-Disposition* 标头的 [`ParameterizedMIMEHeader`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.ParameterizedMIMEHeader" >}}) 类。
 
 ## **content_disposition**
 
@@ -190,7 +190,7 @@ msg['Date'] = utils.localtime()
 
 ## *class* email.headerregistry.**HeaderRegistry**(*base_class=BaseHeader*, *default_class=UnstructuredHeader*, *use_default_map=True*)
 
-​	这是由 [`EmailPolicy`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#email.policy.EmailPolicy) 在默认情况下使用的工厂函数。 `HeaderRegistry` 会使用 *base_class* 和从它所保存的注册表中获取的专用类来构建用于动态地创建标头实例的类。 当给定的标头名称未在注册表中出现时，则会使用由 *default_class* 所指定的类作为专用类。 当 *use_default_map* 为 `True` (默认值) 时，则会在初始化期间把从标头名称到类的标准映射拷贝到注册表中。 *base_class* 始终会是所生成的类的 [`__bases__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#type.__bases__) 列表中的最后一个类。
+​	这是由 [`EmailPolicy`]({{< ref "/library/netdata/email/email_policy#email.policy.EmailPolicy" >}}) 在默认情况下使用的工厂函数。 `HeaderRegistry` 会使用 *base_class* 和从它所保存的注册表中获取的专用类来构建用于动态地创建标头实例的类。 当给定的标头名称未在注册表中出现时，则会使用由 *default_class* 所指定的类作为专用类。 当 *use_default_map* 为 `True` (默认值) 时，则会在初始化期间把从标头名称到类的标准映射拷贝到注册表中。 *base_class* 始终会是所生成的类的 [`__bases__`]({{< ref "/reference/datamodel#type.__bases__" >}}) 列表中的最后一个类。
 
 ​	默认的映射有:
 
@@ -280,11 +280,11 @@ msg['Date'] = utils.localtime()
 
 *name* 是要映射的标头名称。 它将在注册表中被转换为小写形式。 *cls* 是要与 *base_class* 一起被用来创建用于实例化与 *name* 相匹配的标头的类的专用类。
 
-## **__getitem__**(*name*)
+## `__getitem__`(*name*)
 
 ​	构造并返回一个类来处理 *name* 标头的创建。
 
-## **__call__**(*name*, *value*)
+## `__call__`(*name*, *value*)
 
 ​	从注册表获得与 *name* 相关联的专用标头 (如果 *name* 未在注册表中出现则使用 *default_class*) 并将其与 *base_class* 相组合以产生类，调用被构造类的构造器，传入相同的参数列表，并最终返回由此创建的类实例。
 
@@ -324,7 +324,7 @@ username@domain
 
 ​	地址的 `username@domain` 部分，经过正确引用处理以作为纯地址使用（上面显示的第二种形式）。 此属性不可变。
 
-## **__str__**()
+## `__str__`()
 
 ​	对象的 `str` 值是根据 [**RFC 5322**](https://datatracker.ietf.org/doc/html/rfc5322.html) 规则进行引用处理的地址，但不带任何非 ASCII 字符的 Content Transfer Encoding。
 
@@ -346,14 +346,13 @@ display_name: [address-list];
 
 ## **addresses**
 
-​	一个可能为空的表示组中地址的包含 [`Address`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#email.headerregistry.Address) 对象的元组。
+​	一个可能为空的表示组中地址的包含 [`Address`]({{< ref "/library/netdata/email/email_headerregistry#email.headerregistry.Address" >}}) 对象的元组。
 
-## **__str__**()
+## `__str__`()
 
 `Group` 的 `str` 值会根据 [**RFC 5322**](https://datatracker.ietf.org/doc/html/rfc5322.html) 进行格式化，但不带任何非 ASCII 字符的 Content Transfer Encoding。 如果 `display_name` 为空值且只有一个单独 `Address` 在 `addresses` 列表中，则 `str` 值将与该单独 `Address` 的 `str` 相同。
 
-​	备注
+​备注
+[[1]({{< ref "/library/netdata/email/email_headerregistry#id1" >}})]
 
-[[1](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#id1)]
-
-​	最初在 3.3 中作为 [暂定模块](https://docs.python.org/zh-cn/3.13/glossary.html#term-provisional-package) 添加
+​	最初在 3.3 中作为 [暂定模块]({{< ref "/glossary/idx#term-provisional-package" >}}) 添加

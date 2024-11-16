@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/using/windows.html](https://docs.python.org/zh-cn/3.13/using/windows.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/using/windows.html](https://docs.python.org/zh-cn/3.13/using/windows.html)
 >
 > 收录该文档的时间：`2024-11-14T22:13:29+08:00`
 
@@ -22,13 +22,13 @@ draft = false
 
 ​	Windows提供了许多不同的安装程序，每个安装程序都有一定的优点和缺点。
 
-[完整安装程序](https://docs.python.org/zh-cn/3.13/using/windows.html#windows-full) 内含所有组件，对于使用Python 进行任何类型项目的开发人员而言，它是最佳选择。
+[完整安装程序]({{< ref "/using/windows#windows-full" >}}) 内含所有组件，对于使用Python 进行任何类型项目的开发人员而言，它是最佳选择。
 
-[Microsoft Store包](https://docs.python.org/zh-cn/3.13/using/windows.html#windows-store) 是一个适用于运行脚本和包，并使用 IDLE 或其他开发环境的简易 Python 安装版。 它需要 Windows 10 或更新的系统，但可以安全地安装而不会破坏其他程序。 它还提供了许多便捷命令用来启动 Python 及其工具。
+[Microsoft Store包]({{< ref "/using/windows#windows-store" >}}) 是一个适用于运行脚本和包，并使用 IDLE 或其他开发环境的简易 Python 安装版。 它需要 Windows 10 或更新的系统，但可以安全地安装而不会破坏其他程序。 它还提供了许多便捷命令用来启动 Python 及其工具。
 
-[nuget.org 安装包](https://docs.python.org/zh-cn/3.13/using/windows.html#windows-nuget) 是用于持续集成系统的轻量级安装。它可用于构建Python包或运行脚本，但不可更新且没有用户界面工具。
+[nuget.org 安装包]({{< ref "/using/windows#windows-nuget" >}}) 是用于持续集成系统的轻量级安装。它可用于构建Python包或运行脚本，但不可更新且没有用户界面工具。
 
-[可嵌入的包](https://docs.python.org/zh-cn/3.13/using/windows.html#windows-embeddable) 是Python的最小安装包，适合嵌入到更大的应用程序中。
+[可嵌入的包]({{< ref "/using/windows#windows-embeddable" >}}) 是Python的最小安装包，适合嵌入到更大的应用程序中。
 
 
 
@@ -36,7 +36,7 @@ draft = false
 
 ### 4.1.1. 安装步骤
 
-​	四个 Python 3.13 安装程序可供下载 - 32位和64位版本的各有两个。 *web installer* （网络安装包）是一个小的初始化工具，它将在安装过程中，根据需要自动下载所需的组件。 *offline installer* （离线安装包）内含默认安装所需的组件，可选择功能仍需要Internet连接下载。请参阅 [免下载安装](https://docs.python.org/zh-cn/3.13/using/windows.html#install-layout-option) 以了解在安装过程中避免下载的其他方法。
+​	四个 Python 3.13 安装程序可供下载 - 32位和64位版本的各有两个。 *web installer* （网络安装包）是一个小的初始化工具，它将在安装过程中，根据需要自动下载所需的组件。 *offline installer* （离线安装包）内含默认安装所需的组件，可选择功能仍需要Internet连接下载。请参阅 [免下载安装]({{< ref "/using/windows#install-layout-option" >}}) 以了解在安装过程中避免下载的其他方法。
 
 ​	启动安装程序后，可以选择以下两个选项之一：
 
@@ -44,9 +44,9 @@ draft = false
 
 ​	如果选择“Install Now（立即安装）”：
 
-- 您 *不* 需要成为管理员（除非需要对C运行库进行系统更新，或者为所有用户安装 [适用于Windows的Python启动器](https://docs.python.org/zh-cn/3.13/using/windows.html#launcher) ）
+- 您 *不* 需要成为管理员（除非需要对C运行库进行系统更新，或者为所有用户安装 [适用于Windows的Python启动器]({{< ref "/using/windows#launcher" >}}) ）
 - Python将安装到您的用户目录中
-- [适用于Windows的Python启动器](https://docs.python.org/zh-cn/3.13/using/windows.html#launcher) 将根据第一页底部的选项安装
+- [适用于Windows的Python启动器]({{< ref "/using/windows#launcher" >}}) 将根据第一页底部的选项安装
 - 将安装标准库，测试套件，启动器和pip
 - 如果选择将安装目录将添加到 `PATH`
 - 快捷方式仅对当前用户可见
@@ -57,7 +57,7 @@ draft = false
 
 - 您可能需要提供管理凭据或批准
 - Python 将安装到Program Files目录中
-- [适用于Windows的Python启动器](https://docs.python.org/zh-cn/3.13/using/windows.html#launcher) 将安装到Windows目录中
+- [适用于Windows的Python启动器]({{< ref "/using/windows#launcher" >}}) 将安装到Windows目录中
 - 安装期间可以选择可选功能
 - 标准库可以预编译为字节码
 - 如果选中，安装目录将添加到系统 `PATH`
@@ -71,11 +71,11 @@ draft = false
 
 ​	在最新版本的 Windows 中，此限制可被扩展到大约 32,000 个字符。 但需要让管理员激活“启用 Win32 长路径”组策略，或在注册表键 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem` 中设置 `LongPathsEnabled` 为 `1`。
 
-​	这允许 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open) 函数，[`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os) 模块和大多数其他路径功能接受并返回长度超过 260 个字符的路径。
+​	这允许 [`open()`]({{< ref "/library/functions#open" >}}) 函数，[`os`]({{< ref "/library/allos/os#module-os" >}}) 模块和大多数其他路径功能接受并返回长度超过 260 个字符的路径。
 
 ​	更改上述选项后，无需进一步配置。
 
-*在 3.6 版本发生变更:* Python中启用了对长路径的支持。
+> 在 3.6 版本发生变更: Python中启用了对长路径的支持。
 
 
 
@@ -112,7 +112,7 @@ draft = false
 | Include_debug             | 安装调试二进制文件                                           | 0                                                            |
 | Include_dev               | 安装开发者头文件和库文件。 省略这一步可能导致安装不可用。    | 1                                                            |
 | Include_exe               | 安装 `python.exe` 以及相关文件。忽略此项可能会导致安装不可用。 | 1                                                            |
-| Include_launcher          | 安装 [适用于Windows的Python启动器](https://docs.python.org/zh-cn/3.13/using/windows.html#launcher) . | 1                                                            |
+| Include_launcher          | 安装 [适用于Windows的Python启动器]({{< ref "/using/windows#launcher" >}}) . | 1                                                            |
 | InstallLauncherAllUsers   | 为所有用户安装启动器。还需要 `Include_launcher` 被设定为1    | 1                                                            |
 | Include_lib               | 安装标准库和扩展模块。 省略这一步可能导致安装不可用。        | 1                                                            |
 | Include_pip               | 安装捆绑的pip和setuptools                                    | 1                                                            |
@@ -173,7 +173,7 @@ python-3.9.0.exe /layout [可选的目标目录]
 
 ​	“修复” 将使用当前设置验证应安装的所有文件，并替换已删除或修改的任何文件
 
-​	“卸载” 将完全删除Python，但 [适用于Windows的Python启动器](https://docs.python.org/zh-cn/3.13/using/windows.html#launcher) 除外，它在“程序和功能”中有自己的条目。
+​	“卸载” 将完全删除Python，但 [适用于Windows的Python启动器]({{< ref "/using/windows#launcher" >}}) 除外，它在“程序和功能”中有自己的条目。
 
 
 
@@ -182,11 +182,11 @@ python-3.9.0.exe /layout [可选的目标目录]
 > Added in version 3.13:
 > （试验性功能）
 
-​	备注
-
- 
-
-​	本节中描述的所有内容都是试验性的，它们预计会在未来的发布版中发生改变。
+> 备注
+>
+>
+> ​	本节中描述的所有内容都是试验性的，它们预计会在未来的发布版中发生改变。
+>
 
 ​	要安装启用了自由线程的预编译版二进制文件 (参见 [**PEP 703**](https://peps.python.org/pep-0703/))，你应当选择 "Customize installation"。 在第二个选项页中包括了 "Download free-threaded binaries" 复选框。
 
@@ -194,11 +194,11 @@ python-3.9.0.exe /layout [可选的目标目录]
 
 ​	选择此选项将下载并将额外的二进制文件安装到与 Python 主安装版本相同的目录下。 主可执行文件的名称为 `python3.13t.exe`，而其他二进制文件将带有 `t` 前缀或完整的 ABI 前缀。 Python 源文件和捆绑的第三方依赖将与主安装版本共享。
 
-​	自由线程版将被注册为具有 `3.13t` 标签的常规 Python 安装版（并会按相应系统平台的惯例附带 `-32` 或 `-arm64` 后缀）。 这使得各种工具能够找到它，并使得 [适用于Windows的Python启动器](https://docs.python.org/zh-cn/3.13/using/windows.html#launcher) 能够支持 `py.exe -3.13t`。 请注意 launcher 会将 `py.exe -3` (或 `python3` shebang 行) 解读为“最新的 3.x 安装版”，这将使得自由线程版二进制文件优先于常规版，而 `py.exe -3.13` 则会使用常规版。 如果你要使用简短风格的选项，那么目前你应该选择不安装自由线程版二进制文件。
+​	自由线程版将被注册为具有 `3.13t` 标签的常规 Python 安装版（并会按相应系统平台的惯例附带 `-32` 或 `-arm64` 后缀）。 这使得各种工具能够找到它，并使得 [适用于Windows的Python启动器]({{< ref "/using/windows#launcher" >}}) 能够支持 `py.exe -3.13t`。 请注意 launcher 会将 `py.exe -3` (或 `python3` shebang 行) 解读为“最新的 3.x 安装版”，这将使得自由线程版二进制文件优先于常规版，而 `py.exe -3.13` 则会使用常规版。 如果你要使用简短风格的选项，那么目前你应该选择不安装自由线程版二进制文件。
 
-​	要在命令行中指定安装选项，请使用 `Include_freethreaded=1`。 请参阅 [免下载安装](https://docs.python.org/zh-cn/3.13/using/windows.html#install-layout-option) 获取有关预先下载额外二进制文件供离线安装的指导。 包括调试符号和二进制文件的选项也同样适用于自由线程构建版。
+​	要在命令行中指定安装选项，请使用 `Include_freethreaded=1`。 请参阅 [免下载安装]({{< ref "/using/windows#install-layout-option" >}}) 获取有关预先下载额外二进制文件供离线安装的指导。 包括调试符号和二进制文件的选项也同样适用于自由线程构建版。
 
-​	自由线程版二进制文件也可 [在 nuget.org](https://docs.python.org/zh-cn/3.13/using/windows.html#windows-nuget) 获取。
+​	自由线程版二进制文件也可 [在 nuget.org]({{< ref "/using/windows#windows-nuget" >}}) 获取。
 
 
 
@@ -239,7 +239,7 @@ python-3.9.0.exe /layout [可选的目标目录]
 
 ​	当读取文件时，Windows 将返回来自私有文件夹的文件，或者如果文件不存在，则返回来自知名 Windows 目录的文件。 例如读取 `C:\Windows\System32` 将返回 `C:\Windows\System32` 的内容加上 `C:\Program Files\WindowsApps\package_name\VFS\SystemX86` 的内容。
 
-​	你可以使用 [`os.path.realpath()`](https://docs.python.org/zh-cn/3.13/library/os.path.html#os.path.realpath) 找到任何现有文件的真实路径:
+​	你可以使用 [`os.path.realpath()`]({{< ref "/library/filesys/os_path#os.path.realpath" >}}) 找到任何现有文件的真实路径:
 
 
 
@@ -299,11 +299,11 @@ Python 3.5.2
 > Added in version 3.13:
 > （试验性功能）
 
-​	备注
-
- 
-
-​	本节中描述的所有内容都是试验性的，它们预计会在未来的发布版中发生改变。
+> 备注
+>
+>
+> ​	本节中描述的所有内容都是试验性的，它们预计会在未来的发布版中发生改变。
+>
 
 ​	包含自由线程版二进制文件的包名称 [python-freethreaded](https://www.nuget.org/packages/python-freethreaded) 对应 64 位版本，[pythonx86-freethreaded](https://www.nuget.org/packages/pythonx86-freethreaded) 对应 32 位版本，[pythonarm64-freethreaded](https://www.nuget.org/packages/pythonarm64-freethreaded) 对应 ARM64 版本。 这些包同时包含 `python3.13t.exe` 和 `python.exe` 入口点，两者均在自由线程模式下运行。
 
@@ -318,9 +318,8 @@ Python 3.5.2
 
 ​	在解压缩后，嵌入的分发包（几乎）与用户的系统完全隔离，包括环境变量、系统注册表设置和已安装的软件包。 标准库作为预先编译和优化的 `.pyc` 文件被包括在一个 ZIP 文件中，并提供了 `python3.dll`, `python37.dll`, `python.exe` 和 `pythonw.exe`。 其中将不包括 Tcl/tk（包括所有依赖它的包，如 Idle 等）、pip 和 Python 文档。
 
-​	备注
+备注
 
- 
 
 ​	The embedded distribution does not include the [Microsoft C Runtime](https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist#visual-studio-2015-2017-2019-and-2022) and it is the responsibility of the application installer to provide this. The runtime may have already been installed on a user's system previously or automatically via Windows Update, and can be detected by finding `ucrtbase.dll` in the system directory.
 
@@ -370,7 +369,7 @@ Python 3.5.2
 
 ## 4.6. 配置Python
 
-​	要从命令提示符方便地运行Python，您可以考虑在Windows中更改一些默认环境变量。虽然安装程序提供了为您配置PATH和PATHEXT变量的选项，但这仅适用于单版本、全局安装。如果您经常使用多个版本的Python，请考虑使用 [适用于Windows的Python启动器](https://docs.python.org/zh-cn/3.13/using/windows.html#launcher) 。
+​	要从命令提示符方便地运行Python，您可以考虑在Windows中更改一些默认环境变量。虽然安装程序提供了为您配置PATH和PATHEXT变量的选项，但这仅适用于单版本、全局安装。如果您经常使用多个版本的Python，请考虑使用 [适用于Windows的Python启动器]({{< ref "/using/windows#launcher" >}}) 。
 
 
 
@@ -392,27 +391,26 @@ C:\>python
 
 ​	要永久修改默认环境变量，请单击“开始”并搜索“编辑环境变量”，或打开系统属性的 高级系统设置 ，然后单击 环境变量 按钮。在此对话框中，您可以添加或修改用户和系统变量。要更改系统变量，您需要对计算机进行无限制访问（即管理员权限）。
 
-​	备注
+备注
 
- 
 
 ​	Windows会将用户变量串联在系统变量 *之后* ，这可能会在修改 `PATH` 时导致意外结果。
 
-[`PYTHONPATH`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONPATH) 变量被 Python 的所有版本使用，因此除非它列出的路径只包含与所有已安装的 Python 版本兼容的代码，否则不要永久配置此变量。
+[`PYTHONPATH`]({{< ref "/using/cmdline#envvar-PYTHONPATH" >}}) 变量被 Python 的所有版本使用，因此除非它列出的路径只包含与所有已安装的 Python 版本兼容的代码，否则不要永久配置此变量。
 
-​	参见
-
-https://learn.microsoft.com/windows/win32/procthread/environment-variables
-
-​	Windows 中的环境变量概述
-
-https://learn.microsoft.com/windows-server/administration/windows-commands/set_1
-
-​	用于临时修改环境变量的 `set` 命令
-
-https://learn.microsoft.com/windows-server/administration/windows-commands/setx
-
-​	用于永久修改环境变量的 `setx` 命令
+> 参见
+> https://learn.microsoft.com/windows/win32/procthread/environment-variables
+>
+> ​	Windows 中的环境变量概述
+>
+> https://learn.microsoft.com/windows-server/administration/windows-commands/set_1
+>
+> ​	用于临时修改环境变量的 `set` 命令
+>
+> https://learn.microsoft.com/windows-server/administration/windows-commands/setx
+>
+> ​	用于永久修改环境变量的 `setx` 命令
+>
 
 
 
@@ -422,9 +420,9 @@ https://learn.microsoft.com/windows-server/administration/windows-commands/setx
 
 ​	除了使用自动创建的Python解释器的开始菜单项之外，您可能还想在命令提示符下启动Python。安装程序有一个选项可以为您设置。
 
-​	在安装程序的第一页上，可以选择标记为“将Python添加到环境变量”的选项，以使安装程序将安装位置添加到 `PATH` 。还添加了 `Scripts\` 文件夹的位置。这允许你输入 **python** 来运行解释器，并且 **pip** 用于包安装程序。因此，您还可以使用命令行选项执行脚本，请参阅 [命令行](https://docs.python.org/zh-cn/3.13/using/cmdline.html#using-on-cmdline) 文档。
+​	在安装程序的第一页上，可以选择标记为“将Python添加到环境变量”的选项，以使安装程序将安装位置添加到 `PATH` 。还添加了 `Scripts\` 文件夹的位置。这允许你输入 **python** 来运行解释器，并且 **pip** 用于包安装程序。因此，您还可以使用命令行选项执行脚本，请参阅 [命令行]({{< ref "/using/cmdline#using-on-cmdline" >}}) 文档。
 
-​	如果在安装时未启用此选项，则始终可以重新运行安装程序，选择“修改”并启用它。或者，您可以使用 [附录：设置环境变量](https://docs.python.org/zh-cn/3.13/using/windows.html#setting-envvars) 的方法手动修改 `PATH` 。您需要将Python安装目录添加到 `PATH` 环境变量中，该内容与其他条目用分号分隔。示例变量可能如下所示（假设前两个条目已经存在）:
+​	如果在安装时未启用此选项，则始终可以重新运行安装程序，选择“修改”并启用它。或者，您可以使用 [附录：设置环境变量]({{< ref "/using/windows#setting-envvars" >}}) 的方法手动修改 `PATH` 。您需要将Python安装目录添加到 `PATH` 环境变量中，该内容与其他条目用分号分隔。示例变量可能如下所示（假设前两个条目已经存在）:
 
 ```
 C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Python 3.9
@@ -437,24 +435,24 @@ C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Python 3.9
 > Added in version 3.7.
 >
 
-​	Windows 仍然使用传统编码格式作为系统的编码格式 (ANSI 代码页)。 Python 使用它作为文本文件默认的编码格式 (即 [`locale.getencoding()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.getencoding))。
+​	Windows 仍然使用传统编码格式作为系统的编码格式 (ANSI 代码页)。 Python 使用它作为文本文件默认的编码格式 (即 [`locale.getencoding()`]({{< ref "/library/i18n/locale#locale.getencoding" >}}))。
 
 ​	这可能会造成问题，因为因特网和大多数 Unix 系统包括 WSL (Windows Subsystem for Linux) 广泛使用 UTF-8。
 
-​	你可以使用 [Python UTF-8 模式](https://docs.python.org/zh-cn/3.13/library/os.html#utf8-mode) 将默认的文本编码格式改为 UTF-8。 要启用 [Python UTF-8 模式](https://docs.python.org/zh-cn/3.13/library/os.html#utf8-mode) 可以通过 `-X utf8` 命令行选项，或者 `PYTHONUTF8=1` 环境变量。 请参阅 [`PYTHONUTF8`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONUTF8) 了解如何启用 UTF-8 模式，并参阅 [附录：设置环境变量](https://docs.python.org/zh-cn/3.13/using/windows.html#setting-envvars) 了解如何修改环境变量。
+​	你可以使用 [Python UTF-8 模式]({{< ref "/library/allos/os#utf8-mode" >}}) 将默认的文本编码格式改为 UTF-8。 要启用 [Python UTF-8 模式]({{< ref "/library/allos/os#utf8-mode" >}}) 可以通过 `-X utf8` 命令行选项，或者 `PYTHONUTF8=1` 环境变量。 请参阅 [`PYTHONUTF8`]({{< ref "/using/cmdline#envvar-PYTHONUTF8" >}}) 了解如何启用 UTF-8 模式，并参阅 [附录：设置环境变量]({{< ref "/using/windows#setting-envvars" >}}) 了解如何修改环境变量。
 
-​	当 [Python UTF-8 模式](https://docs.python.org/zh-cn/3.13/library/os.html#utf8-mode) 启用时，你仍然可以通过 "mbcs" 编解码器使用系统编码格式（ANSI 代码页）。
+​	当 [Python UTF-8 模式]({{< ref "/library/allos/os#utf8-mode" >}}) 启用时，你仍然可以通过 "mbcs" 编解码器使用系统编码格式（ANSI 代码页）。
 
 ​	请注意添加 `PYTHONUTF8=1` 到默认环境变量将会影响你的系统中的所有 Python 3.7+ 应用。 如果你有任何 Python 3.7+ 应用仍然依赖于传统的系统编码格式，则推荐设置临时环境变量或使用 `-X utf8` 命令行选项。
 
-​	备注
-
- 
-
-​	即使在不启用 UTF-8 模式时，Windows 版的 Python 也会在以下情况中默认使用 UTF-8：
-
-- 控制台 I/O 包括标准 I/O (详情见 [**PEP 528**](https://peps.python.org/pep-0528/))。
-- [文件系统编码格式](https://docs.python.org/zh-cn/3.13/glossary.html#term-filesystem-encoding-and-error-handler) (参见 [**PEP 529**](https://peps.python.org/pep-0529/) 了解详情)。
+> 备注
+>
+>
+> ​	即使在不启用 UTF-8 模式时，Windows 版的 Python 也会在以下情况中默认使用 UTF-8：
+>
+> - 控制台 I/O 包括标准 I/O (详情见 [**PEP 528**](https://peps.python.org/pep-0528/))。
+> - [文件系统编码格式]({{< ref "/glossary/idx#term-filesystem-encoding-and-error-handler" >}}) (参见 [**PEP 529**](https://peps.python.org/pep-0529/) 了解详情)。
+>
 
 
 
@@ -534,7 +532,7 @@ py -V:PythonCore/3
 > Added in version 3.5.
 >
 
-​	如果启动程序运行时没有明确的Python版本，并且虚拟环境（使用标准库创建 [`venv`](https://docs.python.org/zh-cn/3.13/library/venv.html#module-venv) 模块或外部 `virtualenv` 工具）处于活动状态，则启动程序将运行虚拟环境的解释器而不是全局的。要运行全局解释器，请停用虚拟环境，或显式指定全局Python版本。
+​	如果启动程序运行时没有明确的Python版本，并且虚拟环境（使用标准库创建 [`venv`]({{< ref "/library/distribution/venv#module-venv" >}}) 模块或外部 `virtualenv` 工具）处于活动状态，则启动程序将运行虚拟环境的解释器而不是全局的。要运行全局解释器，请停用虚拟环境，或显式指定全局Python版本。
 
 #### 4.8.1.3. 从脚本
 
@@ -592,13 +590,13 @@ py hello.py
 > Added in version 3.7:
 > 从 python 启动器 3.7 开始，可以通过 "-64" 后缀调用 64 位版本。 此外还可以指定一个主版本号加架构而不带次版本号 (即 `/usr/bin/python3-64`)。
 
-*在 3.11 版本发生变更:* “-64”后缀已被弃用，现在会被视为“任何不被确定为 i386/32 位的架构”。 要请求一个特定的环境，请使用新的 `-V:*TAG*` 参数并附带完整的标签。
+> 在 3.11 版本发生变更: “-64”后缀已被弃用，现在会被视为“任何不被确定为 i386/32 位的架构”。 要请求一个特定的环境，请使用新的 `-V:*TAG*` 参数并附带完整的标签。
 
-*在 3.13 版本发生变更:* 引用了 `python` 的虚拟命令现在会优先使用激活的虚拟环境再去搜索 `PATH`。 这是为了处理 shebang 指定了 `/usr/bin/env python3` 但激活的环境中没有 `python3.exe` 的情况。
+> 在 3.13 版本发生变更: 引用了 `python` 的虚拟命令现在会优先使用激活的虚拟环境再去搜索 `PATH`。 这是为了处理 shebang 指定了 `/usr/bin/env python3` 但激活的环境中没有 `python3.exe` 的情况。
 
 ​	shebang 行的 `/usr/bin/env` 形式具有一个额外的特别属性。 在查找已安装的 Python 解释器时，此形式将在可执行程序目录 `PATH` 中搜索与作为第一个参数传入的名称相匹配的 Python 可执行程序。 这对应于 Unix 中 `PATH` 执行搜索的 `env` 程序的行为。 如果无法找到与 `env` 命令之后的第一个参数相匹配的可执行程序，但该参数是以 `python` 开头的，它将按针对其他虚拟命令的描述来处理。 可以设置环境变量 `PYLAUNCHER_NO_SEARCH_PATH` (为任意值) 来跳过对 `PATH` 的搜索。
 
-​	无法匹配这些模式中任何一个的井号叹号行将在启动器的 [.INI 文件](https://docs.python.org/zh-cn/3.13/using/windows.html#launcher-ini) 的 `[commands]` 一节中查找。 这可被用来以对你的系统来说有意义的方式处理某些命令。 命名的名称必须是一个单独的参数（在井号叹号行的可执行程序中不可有空格），而被替代的值则是该可执行程序的完整路径（在 .INI 中指定的附加参数将作为文件名的一部分被引用）。
+​	无法匹配这些模式中任何一个的井号叹号行将在启动器的 [.INI 文件]({{< ref "/using/windows#launcher-ini" >}}) 的 `[commands]` 一节中查找。 这可被用来以对你的系统来说有意义的方式处理某些命令。 命名的名称必须是一个单独的参数（在井号叹号行的可执行程序中不可有空格），而被替代的值则是该可执行程序的完整路径（在 .INI 中指定的附加参数将作为文件名的一部分被引用）。
 
 ```
 [commands]
@@ -700,19 +698,19 @@ python3=3.7
 
 ## 4.9. 查找模块
 
-​	这些注释以详细的 Windows 注释对 [sys.path 模块搜索路径的初始化](https://docs.python.org/zh-cn/3.13/library/sys_path_init.html#sys-path-init) 中的描述进行了补充。
+​	这些注释以详细的 Windows 注释对 [sys.path 模块搜索路径的初始化]({{< ref "/library/modules/sys_path_init#sys-path-init" >}}) 中的描述进行了补充。
 
-​	当找不到 `._pth` 文件时， [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 是如何在Windows上填充的：
+​	当找不到 `._pth` 文件时， [`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) 是如何在Windows上填充的：
 
 - 在开始时，添加一个空条目，该条目对应于当前目录。
-- 如果环境变量 [`PYTHONPATH`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONPATH) 存在，如 [环境变量](https://docs.python.org/zh-cn/3.13/using/cmdline.html#using-on-envvars) 中所述，则接下来添加其条目。请注意，在Windows上，此变量中的路径必须用分号分隔，以区别于驱动器标识符中使用的冒号（ `C:\` 等）。
-- 额外的 "应用程序路径" 可以作为子键被同时添加到注册表 `HKEY_CURRENT_USER` 和 `HKEY_LOCAL_MACHINE` 分支下的 `\SOFTWARE\Python\PythonCore{version}\PythonPath` 中。 以分号分隔的路径字符串作为默认值的子键将导致每个路径都被添加到 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 中。 （请注意所有已知的安装程序都只使用 HKLM，因此 HKCU 通常为空。）
-- 如果设置了环境变量 [`PYTHONHOME`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONHOME) ，则将其假定为 “Python 主目录” 。否则，主Python可执行文件的路径用于定位 “landmark 文件” （ `Lib\os.py` 或 `pythonXY.zip` ）以推断 ”Python 主目录“ 。如果找到了Python主目录，则基于该文件夹将相关的子目录添加到 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) （`Lib` , `plat-win` 等）。否则，核心Python路径是从存储在注册表中的PythonPath构造的。
-- 如果找不到Python Home，也没有指定 [`PYTHONPATH`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONPATH) 环境变量，并且找不到注册表项，则使用具有相对条目的默认路径（例如 `.\Lib; .\plat-win` 等等）。
+- 如果环境变量 [`PYTHONPATH`]({{< ref "/using/cmdline#envvar-PYTHONPATH" >}}) 存在，如 [环境变量]({{< ref "/using/cmdline#using-on-envvars" >}}) 中所述，则接下来添加其条目。请注意，在Windows上，此变量中的路径必须用分号分隔，以区别于驱动器标识符中使用的冒号（ `C:\` 等）。
+- 额外的 "应用程序路径" 可以作为子键被同时添加到注册表 `HKEY_CURRENT_USER` 和 `HKEY_LOCAL_MACHINE` 分支下的 `\SOFTWARE\Python\PythonCore{version}\PythonPath` 中。 以分号分隔的路径字符串作为默认值的子键将导致每个路径都被添加到 [`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) 中。 （请注意所有已知的安装程序都只使用 HKLM，因此 HKCU 通常为空。）
+- 如果设置了环境变量 [`PYTHONHOME`]({{< ref "/using/cmdline#envvar-PYTHONHOME" >}}) ，则将其假定为 “Python 主目录” 。否则，主Python可执行文件的路径用于定位 “landmark 文件” （ `Lib\os.py` 或 `pythonXY.zip` ）以推断 ”Python 主目录“ 。如果找到了Python主目录，则基于该文件夹将相关的子目录添加到 [`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) （`Lib` , `plat-win` 等）。否则，核心Python路径是从存储在注册表中的PythonPath构造的。
+- 如果找不到Python Home，也没有指定 [`PYTHONPATH`]({{< ref "/using/cmdline#envvar-PYTHONPATH" >}}) 环境变量，并且找不到注册表项，则使用具有相对条目的默认路径（例如 `.\Lib; .\plat-win` 等等）。
 
 ​	如果在主可执行文件旁边或在可执行文件上一级的目录中找到 `pyvenv.cfg` 文件，则以下变体适用：
 
-- 如果 `home` 是一个绝对路径，并且 [`PYTHONHOME`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONHOME) 未设置，则在推断起始位置时使用此路径而不是主可执行文件的路径。
+- 如果 `home` 是一个绝对路径，并且 [`PYTHONHOME`]({{< ref "/using/cmdline#envvar-PYTHONHOME" >}}) 未设置，则在推断起始位置时使用此路径而不是主可执行文件的路径。
 
 ​	这一切的最终结果是：
 
@@ -722,24 +720,24 @@ python3=3.7
 
 ​	对于那些想要将Python捆绑到其应用程序或发行版中的人，以下建议将防止与其他安装冲突：
 
-- 在您的可执行文件中包含一个 `._pth` 文件，其中包含目录。这将忽略注册表和环境变量中列出的路径，并忽略 [`site`](https://docs.python.org/zh-cn/3.13/library/site.html#module-site) ，除非列出 `import site` 。
-- 如果你在自己的可执行文件中加载 `python3.dll` 或 `python37.dll`，请在 [`Py_InitializeFromConfig()`](https://docs.python.org/zh-cn/3.13/c-api/init.html#c.Py_InitializeFromConfig) 之前显式地设置 [`PyConfig.module_search_paths`](https://docs.python.org/zh-cn/3.13/c-api/init_config.html#c.PyConfig.module_search_paths)。
-- 清除 和/或 覆盖 [`PYTHONPATH`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONPATH) 并在启动来自应用程序的 `python.exe` 之前设置 [`PYTHONHOME`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONHOME) 。
+- 在您的可执行文件中包含一个 `._pth` 文件，其中包含目录。这将忽略注册表和环境变量中列出的路径，并忽略 [`site`]({{< ref "/library/python/site#module-site" >}}) ，除非列出 `import site` 。
+- 如果你在自己的可执行文件中加载 `python3.dll` 或 `python37.dll`，请在 [`Py_InitializeFromConfig()`]({{< ref "/c_api/init#c.Py_InitializeFromConfig" >}}) 之前显式地设置 [`PyConfig.module_search_paths`]({{< ref "/c_api/init_config#c.PyConfig.module_search_paths" >}})。
+- 清除 和/或 覆盖 [`PYTHONPATH`]({{< ref "/using/cmdline#envvar-PYTHONPATH" >}}) 并在启动来自应用程序的 `python.exe` 之前设置 [`PYTHONHOME`]({{< ref "/using/cmdline#envvar-PYTHONHOME" >}}) 。
 - 如果您不能使用前面的建议（例如，您是一个允许人们直接运行 `python.exe` 的分发版），请确保安装目录中存在 landmark 文件 (`Lib\os.py`)。 （请注意，在 ZIP 文件中不会检测到该文件，但会检测到正确命名的 ZIP 文件。）
 
 ​	这些将确保系统范围安装中的文件不会优先于与应用程序捆绑在一起的标准库的副本。否则，用户可能会在使用您的应用程序时遇到问题请注意，第一个建议是最好的，因为其他建议可能仍然容易受到注册表和用户站点包中的非标准路径的影响。
 
-*在 3.6 版本发生变更:* 添加 `._pth` 文件支持并从 `pyvenv.cfg` 中移除了 `applocal` 选项。
+> 在 3.6 版本发生变更: 添加 `._pth` 文件支持并从 `pyvenv.cfg` 中移除了 `applocal` 选项。
 
-*在 3.6 版本发生变更:* 当与可执行文件直接相邻时将添加 `python*XX*.zip` 作为潜在的标志物。
+> 在 3.6 版本发生变更: 当与可执行文件直接相邻时将添加 `python*XX*.zip` 作为潜在的标志物。
 
-*自 3.6 版本弃用:* 在 `Modules` (不是 `PythonPath`) 下的注册表中指定的模块可以通过 [`importlib.machinery.WindowsRegistryFinder`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.WindowsRegistryFinder) 导入。 在 Windows 上此查找器在 3.6.0 及更早版本中被启用，但在将来可能需要显式地添加到 [`sys.meta_path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.meta_path)。
+> 自 3.6 版本弃用: 在 `Modules` (不是 `PythonPath`) 下的注册表中指定的模块可以通过 [`importlib.machinery.WindowsRegistryFinder`]({{< ref "/library/modules/importlib#importlib.machinery.WindowsRegistryFinder" >}}) 导入。 在 Windows 上此查找器在 3.6.0 及更早版本中被启用，但在将来可能需要显式地添加到 [`sys.meta_path`]({{< ref "/library/python/sys#sys.meta_path" >}})。
 
 ## 4.10. 附加模块
 
 ​	尽管Python的目标是在所有平台中都可移植，但是Windows有一些独特的特性。在标准库和外部都有一些模块和代码片段在使用这些特性。
 
-​	特定于Windows的标准模块记录在 [Windows系统相关模块](https://docs.python.org/zh-cn/3.13/library/windows.html#mswin-specific-services) 中。
+​	特定于Windows的标准模块记录在 [Windows系统相关模块]({{< ref "/library/windows#mswin-specific-services" >}}) 中。
 
 ### 4.10.1. PyWin32
 
@@ -753,15 +751,15 @@ python3=3.7
 
 [PythonWin](https://web.archive.org/web/20060524042422/https://www.python.org/windows/pythonwin/) 是PyWin32附带的一个示例MFC应用程序。它是一个内置调试器的可嵌入IDE。
 
-​	参见
-
-[Win32 How Do I...?](https://timgolden.me.uk/python/win32_how_do_i.html)
-
-​	Tim Golden 著
-
-[Python and COM](https://www.boddie.org.uk/python/COM.html)
-
-​	David 和 Paul Boddie 著
+> 参见
+> [Win32 How Do I...?](https://timgolden.me.uk/python/win32_how_do_i.html)
+>
+> ​	Tim Golden 著
+>
+> [Python and COM](https://www.boddie.org.uk/python/COM.html)
+>
+> ​	David 和 Paul Boddie 著
+>
 
 ### 4.10.2. cx_Freeze
 
@@ -775,7 +773,7 @@ python3=3.7
 
 ​	检查 `PCbuild/readme.txt` 以获取有关构建过程的一般信息。
 
-​	有关扩展模块，请参阅 [在 Windows 上构建 C 和 C++ 扩展](https://docs.python.org/zh-cn/3.13/extending/windows.html#building-on-windows) 。
+​	有关扩展模块，请参阅 [在 Windows 上构建 C 和 C++ 扩展]({{< ref "/extending/windows#building-on-windows" >}}) 。
 
 ## 4.12. 其他平台
 

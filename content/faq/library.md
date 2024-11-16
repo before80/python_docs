@@ -8,59 +8,59 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/faq/library.html](https://docs.python.org/zh-cn/3.13/faq/library.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/faq/library.html](https://docs.python.org/zh-cn/3.13/faq/library.html)
 >
 > 收录该文档的时间：`2024-11-14T22:34:43+08:00`
 
-# [代码库和插件 FAQ](https://docs.python.org/zh-cn/3.13/faq/library.html#id2)
+# [代码库和插件 FAQ]({{< ref "/faq/library#id2" >}})
 
 ​	目录
 
-- [代码库和插件 FAQ](https://docs.python.org/zh-cn/3.13/faq/library.html#library-and-extension-faq)
-  - [通用的代码库问题](https://docs.python.org/zh-cn/3.13/faq/library.html#general-library-questions)
-    - [如何找到可以用来做 X 任务的模块或应用？](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-i-find-a-module-or-application-to-perform-task-x)
-    - [math.py（socket.py，regex.py 等）的源文件在哪？](https://docs.python.org/zh-cn/3.13/faq/library.html#where-is-the-math-py-socket-py-regex-py-etc-source-file)
-    - [在 Unix 中怎样让 Python 脚本可执行？](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-i-make-a-python-script-executable-on-unix)
-    - [Python 中有 curses/termcap 包吗？](https://docs.python.org/zh-cn/3.13/faq/library.html#is-there-a-curses-termcap-package-for-python)
-    - [Python 中存在类似 C 的 onexit() 函数的东西吗？](https://docs.python.org/zh-cn/3.13/faq/library.html#is-there-an-equivalent-to-c-s-onexit-in-python)
-    - [为什么我的信号处理函数不能工作？](https://docs.python.org/zh-cn/3.13/faq/library.html#why-don-t-my-signal-handlers-work)
-  - [通用任务](https://docs.python.org/zh-cn/3.13/faq/library.html#common-tasks)
-    - [怎样测试 Python 程序或组件？](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-i-test-a-python-program-or-component)
-    - [怎样用 docstring 创建文档？](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-i-create-documentation-from-doc-strings)
-    - [怎样一次只获取一个按键？](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-i-get-a-single-keypress-at-a-time)
-  - [线程相关](https://docs.python.org/zh-cn/3.13/faq/library.html#threads)
-    - [程序中怎样使用线程？](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-i-program-using-threads)
-    - [我的线程都没有运行，为什么？](https://docs.python.org/zh-cn/3.13/faq/library.html#none-of-my-threads-seem-to-run-why)
-    - [如何将任务分配给多个工作线程？](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-i-parcel-out-work-among-a-bunch-of-worker-threads)
-    - [怎样修改全局变量是线程安全的？](https://docs.python.org/zh-cn/3.13/faq/library.html#what-kinds-of-global-value-mutation-are-thread-safe)
-    - [不能删除全局解释器锁吗？](https://docs.python.org/zh-cn/3.13/faq/library.html#can-t-we-get-rid-of-the-global-interpreter-lock)
-  - [输入与输出](https://docs.python.org/zh-cn/3.13/faq/library.html#input-and-output)
-    - [怎样删除文件？（以及其他文件相关的问题……）](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-i-delete-a-file-and-other-file-questions)
-    - [怎样复制文件？](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-i-copy-a-file)
-    - [怎样读取（或写入）二进制数据？](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-i-read-or-write-binary-data)
-    - [似乎 os.popen() 创建的管道不能使用 os.read()，这是为什么？](https://docs.python.org/zh-cn/3.13/faq/library.html#i-can-t-seem-to-use-os-read-on-a-pipe-created-with-os-popen-why)
-    - [怎样访问（RS232）串口？](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-i-access-the-serial-rs232-port)
-    - [为什么关闭 sys.stdout（stdin，stderr）并不会真正关掉它？](https://docs.python.org/zh-cn/3.13/faq/library.html#why-doesn-t-closing-sys-stdout-stdin-stderr-really-close-it)
-  - [网络 / Internet 编程](https://docs.python.org/zh-cn/3.13/faq/library.html#network-internet-programming)
-    - [Python 中的 WWW 工具是什么？](https://docs.python.org/zh-cn/3.13/faq/library.html#what-www-tools-are-there-for-python)
-    - [生成 HTML 需要使用什么模块？](https://docs.python.org/zh-cn/3.13/faq/library.html#what-module-should-i-use-to-help-with-generating-html)
-    - [怎样使用 Python 脚本发送邮件？](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-i-send-mail-from-a-python-script)
-    - [socket 的 connect() 方法怎样避免阻塞？](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-i-avoid-blocking-in-the-connect-method-of-a-socket)
-  - [数据库](https://docs.python.org/zh-cn/3.13/faq/library.html#databases)
-    - [Python 中有数据库包的接口吗？](https://docs.python.org/zh-cn/3.13/faq/library.html#are-there-any-interfaces-to-database-packages-in-python)
-    - [在 Python 中如何实现持久化对象？](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-you-implement-persistent-objects-in-python)
-  - [数学和数字](https://docs.python.org/zh-cn/3.13/faq/library.html#mathematics-and-numerics)
-    - [Python 中怎样生成随机数？](https://docs.python.org/zh-cn/3.13/faq/library.html#how-do-i-generate-random-numbers-in-python)
+- [代码库和插件 FAQ]({{< ref "/faq/library#library-and-extension-faq" >}})
+  - [通用的代码库问题]({{< ref "/faq/library#general-library-questions" >}})
+    - [如何找到可以用来做 X 任务的模块或应用？]({{< ref "/faq/library#how-do-i-find-a-module-or-application-to-perform-task-x" >}})
+    - [math.py（socket.py，regex.py 等）的源文件在哪？]({{< ref "/faq/library#where-is-the-math-py-socket-py-regex-py-etc-source-file" >}})
+    - [在 Unix 中怎样让 Python 脚本可执行？]({{< ref "/faq/library#how-do-i-make-a-python-script-executable-on-unix" >}})
+    - [Python 中有 curses/termcap 包吗？]({{< ref "/faq/library#is-there-a-curses-termcap-package-for-python" >}})
+    - [Python 中存在类似 C 的 onexit() 函数的东西吗？]({{< ref "/faq/library#is-there-an-equivalent-to-c-s-onexit-in-python" >}})
+    - [为什么我的信号处理函数不能工作？]({{< ref "/faq/library#why-don-t-my-signal-handlers-work" >}})
+  - [通用任务]({{< ref "/faq/library#common-tasks" >}})
+    - [怎样测试 Python 程序或组件？]({{< ref "/faq/library#how-do-i-test-a-python-program-or-component" >}})
+    - [怎样用 docstring 创建文档？]({{< ref "/faq/library#how-do-i-create-documentation-from-doc-strings" >}})
+    - [怎样一次只获取一个按键？]({{< ref "/faq/library#how-do-i-get-a-single-keypress-at-a-time" >}})
+  - [线程相关]({{< ref "/faq/library#threads" >}})
+    - [程序中怎样使用线程？]({{< ref "/faq/library#how-do-i-program-using-threads" >}})
+    - [我的线程都没有运行，为什么？]({{< ref "/faq/library#none-of-my-threads-seem-to-run-why" >}})
+    - [如何将任务分配给多个工作线程？]({{< ref "/faq/library#how-do-i-parcel-out-work-among-a-bunch-of-worker-threads" >}})
+    - [怎样修改全局变量是线程安全的？]({{< ref "/faq/library#what-kinds-of-global-value-mutation-are-thread-safe" >}})
+    - [不能删除全局解释器锁吗？]({{< ref "/faq/library#can-t-we-get-rid-of-the-global-interpreter-lock" >}})
+  - [输入与输出]({{< ref "/faq/library#input-and-output" >}})
+    - [怎样删除文件？（以及其他文件相关的问题……）]({{< ref "/faq/library#how-do-i-delete-a-file-and-other-file-questions" >}})
+    - [怎样复制文件？]({{< ref "/faq/library#how-do-i-copy-a-file" >}})
+    - [怎样读取（或写入）二进制数据？]({{< ref "/faq/library#how-do-i-read-or-write-binary-data" >}})
+    - [似乎 os.popen() 创建的管道不能使用 os.read()，这是为什么？]({{< ref "/faq/library#i-can-t-seem-to-use-os-read-on-a-pipe-created-with-os-popen-why" >}})
+    - [怎样访问（RS232）串口？]({{< ref "/faq/library#how-do-i-access-the-serial-rs232-port" >}})
+    - [为什么关闭 sys.stdout（stdin，stderr）并不会真正关掉它？]({{< ref "/faq/library#why-doesn-t-closing-sys-stdout-stdin-stderr-really-close-it" >}})
+  - [网络 / Internet 编程]({{< ref "/faq/library#network-internet-programming" >}})
+    - [Python 中的 WWW 工具是什么？]({{< ref "/faq/library#what-www-tools-are-there-for-python" >}})
+    - [生成 HTML 需要使用什么模块？]({{< ref "/faq/library#what-module-should-i-use-to-help-with-generating-html" >}})
+    - [怎样使用 Python 脚本发送邮件？]({{< ref "/faq/library#how-do-i-send-mail-from-a-python-script" >}})
+    - [socket 的 connect() 方法怎样避免阻塞？]({{< ref "/faq/library#how-do-i-avoid-blocking-in-the-connect-method-of-a-socket" >}})
+  - [数据库]({{< ref "/faq/library#databases" >}})
+    - [Python 中有数据库包的接口吗？]({{< ref "/faq/library#are-there-any-interfaces-to-database-packages-in-python" >}})
+    - [在 Python 中如何实现持久化对象？]({{< ref "/faq/library#how-do-you-implement-persistent-objects-in-python" >}})
+  - [数学和数字]({{< ref "/faq/library#mathematics-and-numerics" >}})
+    - [Python 中怎样生成随机数？]({{< ref "/faq/library#how-do-i-generate-random-numbers-in-python" >}})
 
-## [通用的代码库问题](https://docs.python.org/zh-cn/3.13/faq/library.html#id3)
+## [通用的代码库问题]({{< ref "/faq/library#id3" >}})
 
-### [如何找到可以用来做 X 任务的模块或应用？](https://docs.python.org/zh-cn/3.13/faq/library.html#id4)
+### [如何找到可以用来做 X 任务的模块或应用？]({{< ref "/faq/library#id4" >}})
 
 ​	在 [标准库参考]({{< ref "/library#library-index" >}}) 中查找是否有适合的标准库模块。（如果你已经了解标准库的内容，可以跳过这一步）
 
 ​	对于第三方软件包，请搜索 [Python Package Index](https://pypi.org/) 或者是尝试 [Google](https://www.google.com/) 或其他网络搜索引擎。 搜索 "Python" 加上一两个你感兴趣的关键词通常就会找到一些有用的信息。
 
-### [math.py（socket.py，regex.py 等）的源文件在哪？](https://docs.python.org/zh-cn/3.13/faq/library.html#id5)
+### [math.py（socket.py，regex.py 等）的源文件在哪？]({{< ref "/faq/library#id5" >}})
 
 ​	如果找不到模块的源文件，可能它是一个内建的模块，或是使用 C，C++ 或其他编译型语言实现的动态加载模块。这种情况下可能是没有源码文件的，类似 `mathmodule.c` 这样的文件会存放在 C 代码目录中（但不在 Python 目录中）。
 
@@ -77,7 +77,7 @@ draft = false
    print(sys.builtin_module_names)
    ```
 
-### [在 Unix 中怎样让 Python 脚本可执行？](https://docs.python.org/zh-cn/3.13/faq/library.html#id6)
+### [在 Unix 中怎样让 Python 脚本可执行？]({{< ref "/faq/library#id6" >}})
 
 ​	你需要做两件事：文件必须是可执行的，并且第一行需要以 `#!` 开头，后面跟上 Python 解释器的路径。
 
@@ -114,17 +114,17 @@ exec python $0 ${1+"$@"}
 __doc__ = """...Whatever..."""
 ```
 
-### [Python 中有 curses/termcap 包吗？](https://docs.python.org/zh-cn/3.13/faq/library.html#id7)
+### [Python 中有 curses/termcap 包吗？]({{< ref "/faq/library#id7" >}})
 
 ​	对于类 Unix 系统：标准 Python 源码发行版会在 [Modules](https://github.com/python/cpython/tree/3.13/Modules) 子目录中附带 curses 模块，但默认并不会编译。（注意：在 Windows 平台下不可用 —— Windows 中没有 curses 模块。）
 
-[`curses`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses) 模块支持基本的 curses 特性，同时也支持 ncurses 和 SYSV curses 中的很多额外功能，比如颜色、不同的字符集支持、填充和鼠标支持。这意味着这个模块不兼容只有 BSD curses 模块的操作系统，但是目前仍在维护的系统应该都不会存在这种情况。
+[`curses`]({{< ref "/library/allos/curses#module-curses" >}}) 模块支持基本的 curses 特性，同时也支持 ncurses 和 SYSV curses 中的很多额外功能，比如颜色、不同的字符集支持、填充和鼠标支持。这意味着这个模块不兼容只有 BSD curses 模块的操作系统，但是目前仍在维护的系统应该都不会存在这种情况。
 
-### [Python 中存在类似 C 的 onexit() 函数的东西吗？](https://docs.python.org/zh-cn/3.13/faq/library.html#id8)
+### [Python 中存在类似 C 的 onexit() 函数的东西吗？]({{< ref "/faq/library#id8" >}})
 
-[`atexit`](https://docs.python.org/zh-cn/3.13/library/atexit.html#module-atexit) 模块提供了一个与 C 的 `onexit()` 类似的注册函数。
+[`atexit`]({{< ref "/library/python/atexit#module-atexit" >}}) 模块提供了一个与 C 的 `onexit()` 类似的注册函数。
 
-### [为什么我的信号处理函数不能工作？](https://docs.python.org/zh-cn/3.13/faq/library.html#id9)
+### [为什么我的信号处理函数不能工作？]({{< ref "/faq/library#id9" >}})
 
 ​	最常见的问题是信号处理函数没有正确定义参数列表。它会被这样调用：
 
@@ -139,13 +139,13 @@ def handler(signum, frame):
     ...
 ```
 
-## [通用任务](https://docs.python.org/zh-cn/3.13/faq/library.html#id10)
+## [通用任务]({{< ref "/faq/library#id10" >}})
 
-### [怎样测试 Python 程序或组件？](https://docs.python.org/zh-cn/3.13/faq/library.html#id11)
+### [怎样测试 Python 程序或组件？]({{< ref "/faq/library#id11" >}})
 
-​	Python 带有两个测试框架。[`doctest`](https://docs.python.org/zh-cn/3.13/library/doctest.html#module-doctest) 模块从模块的 docstring 中寻找示例并执行，对比输出是否与 docstring 中给出的是否一致。
+​	Python 带有两个测试框架。[`doctest`]({{< ref "/library/development/doctest#module-doctest" >}}) 模块从模块的 docstring 中寻找示例并执行，对比输出是否与 docstring 中给出的是否一致。
 
-[`unittest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#module-unittest) 模块是一个模仿 Java 和 Smalltalk 测试框架的更棒的测试框架。
+[`unittest`]({{< ref "/library/development/unittest#module-unittest" >}}) 模块是一个模仿 Java 和 Smalltalk 测试框架的更棒的测试框架。
 
 ​	为了使测试更容易，你应该在程序中使用良好的模块化设计。程序中的绝大多数功能都应该用函数或类方法封装 —— 有时这样做会有额外惊喜，程序会运行得更快（因为局部变量比全局变量访问要快）。除此之外，程序应该避免依赖可变的局部变量，这会使得测试困难许多。
 
@@ -169,21 +169,21 @@ if __name__ == "__main__":
 
 ​	通过使用 Python 实现的“假”接口，即使是需要与复杂的外部接口交互的程序也可以在外部接口不可用时进行测试。
 
-### [怎样用 docstring 创建文档？](https://docs.python.org/zh-cn/3.13/faq/library.html#id12)
+### [怎样用 docstring 创建文档？]({{< ref "/faq/library#id12" >}})
 
-[`pydoc`](https://docs.python.org/zh-cn/3.13/library/pydoc.html#module-pydoc) 模块可以用你的 Python 源代码中的文档字符串来创建 HTML。 纯粹通过文档字符串来创建 API 文档的一种替代方案是 [epydoc](https://epydoc.sourceforge.net/)。 [Sphinx](https://www.sphinx-doc.org/) 也可以包括文档字符串的内容。
+[`pydoc`]({{< ref "/library/development/pydoc#module-pydoc" >}}) 模块可以用你的 Python 源代码中的文档字符串来创建 HTML。 纯粹通过文档字符串来创建 API 文档的一种替代方案是 [epydoc](https://epydoc.sourceforge.net/)。 [Sphinx](https://www.sphinx-doc.org/) 也可以包括文档字符串的内容。
 
-### [怎样一次只获取一个按键？](https://docs.python.org/zh-cn/3.13/faq/library.html#id13)
+### [怎样一次只获取一个按键？]({{< ref "/faq/library#id13" >}})
 
 ​	在类 Unix 系统中有多种方案。最直接的方法是使用 curses，但是 curses 模块太大了，难以学习。
 
-## [线程相关](https://docs.python.org/zh-cn/3.13/faq/library.html#id14)
+## [线程相关]({{< ref "/faq/library#id14" >}})
 
-### [程序中怎样使用线程？](https://docs.python.org/zh-cn/3.13/faq/library.html#id15)
+### [程序中怎样使用线程？]({{< ref "/faq/library#id15" >}})
 
-​	一定要使用 [`threading`](https://docs.python.org/zh-cn/3.13/library/threading.html#module-threading) 模块，不要使用 [`_thread`](https://docs.python.org/zh-cn/3.13/library/_thread.html#module-_thread) 模块。[`threading`](https://docs.python.org/zh-cn/3.13/library/threading.html#module-threading) 模块对 [`_thread`](https://docs.python.org/zh-cn/3.13/library/_thread.html#module-_thread) 模块提供的底层线程原语做了更易用的抽象。
+​	一定要使用 [`threading`]({{< ref "/library/concurrency/threading#module-threading" >}}) 模块，不要使用 [`_thread`]({{< ref "/library/concurrency/_thread#module-_thread" >}}) 模块。[`threading`]({{< ref "/library/concurrency/threading#module-threading" >}}) 模块对 [`_thread`]({{< ref "/library/concurrency/_thread#module-_thread" >}}) 模块提供的底层线程原语做了更易用的抽象。
 
-### [我的线程都没有运行，为什么？](https://docs.python.org/zh-cn/3.13/faq/library.html#id16)
+### [我的线程都没有运行，为什么？]({{< ref "/faq/library#id16" >}})
 
 ​	一旦主线程退出，所有的子线程都会被杀掉。你的主线程运行得太快了，子线程还没来得及工作。
 
@@ -220,13 +220,13 @@ for i in range(10):
 time.sleep(10)
 ```
 
-​	比起用 [`time.sleep()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.sleep) 猜一个合适的等待时间，使用信号量机制会更好些。有一个办法是使用 [`queue`](https://docs.python.org/zh-cn/3.13/library/queue.html#module-queue) 模块创建一个 queue 对象，让每一个线程在运行结束时 append 一个令牌到 queue 对象中，主线程中从 queue 对象中读取与线程数量一致的令牌数量即可。
+​	比起用 [`time.sleep()`]({{< ref "/library/allos/time#time.sleep" >}}) 猜一个合适的等待时间，使用信号量机制会更好些。有一个办法是使用 [`queue`]({{< ref "/library/concurrency/queue#module-queue" >}}) 模块创建一个 queue 对象，让每一个线程在运行结束时 append 一个令牌到 queue 对象中，主线程中从 queue 对象中读取与线程数量一致的令牌数量即可。
 
-### [如何将任务分配给多个工作线程？](https://docs.python.org/zh-cn/3.13/faq/library.html#id17)
+### [如何将任务分配给多个工作线程？]({{< ref "/faq/library#id17" >}})
 
-​	最简单的方式是使用 [`concurrent.futures`](https://docs.python.org/zh-cn/3.13/library/concurrent.futures.html#module-concurrent.futures) 模块，特别是其中的 [`ThreadPoolExecutor`](https://docs.python.org/zh-cn/3.13/library/concurrent.futures.html#concurrent.futures.ThreadPoolExecutor) 类。
+​	最简单的方式是使用 [`concurrent.futures`]({{< ref "/library/concurrency/future/concurrent_futures#module-concurrent.futures" >}}) 模块，特别是其中的 [`ThreadPoolExecutor`]({{< ref "/library/concurrency/future/concurrent_futures#concurrent.futures.ThreadPoolExecutor" >}}) 类。
 
-​	或者，如果你想更好地控制分发算法，你也可以自己写逻辑实现。使用 [`queue`](https://docs.python.org/zh-cn/3.13/library/queue.html#module-queue) 模块来创建任务列表队列。[`Queue`](https://docs.python.org/zh-cn/3.13/library/queue.html#queue.Queue) 类维护一个了一个存有对象的列表，提供了 `.put(obj)` 方法添加元素，并且可以用 `.get()` 方法获取元素。这个类会使用必要的加锁操作，以此确保每个任务只会执行一次。
+​	或者，如果你想更好地控制分发算法，你也可以自己写逻辑实现。使用 [`queue`]({{< ref "/library/concurrency/queue#module-queue" >}}) 模块来创建任务列表队列。[`Queue`]({{< ref "/library/concurrency/queue#queue.Queue" >}}) 类维护一个了一个存有对象的列表，提供了 `.put(obj)` 方法添加元素，并且可以用 `.get()` 方法获取元素。这个类会使用必要的加锁操作，以此确保每个任务只会执行一次。
 
 ​	这是一个简单的例子：
 
@@ -286,11 +286,11 @@ Worker <Thread(worker 1, started 130283832797456)> running with argument 5
 ...
 ```
 
-​	查看模块的文档以获取更多信息；[`Queue`](https://docs.python.org/zh-cn/3.13/library/queue.html#queue.Queue) 类提供了多种接口。
+​	查看模块的文档以获取更多信息；[`Queue`]({{< ref "/library/concurrency/queue#queue.Queue" >}}) 类提供了多种接口。
 
-### [怎样修改全局变量是线程安全的？](https://docs.python.org/zh-cn/3.13/faq/library.html#id18)
+### [怎样修改全局变量是线程安全的？]({{< ref "/faq/library#id18" >}})
 
-​	Python VM 内部会使用 [global interpreter lock](https://docs.python.org/zh-cn/3.13/glossary.html#term-global-interpreter-lock) （GIL）来确保同一时间只有一个线程运行。通常 Python 只会在字节码指令之间切换线程；切换的频率可以通过设置 [`sys.setswitchinterval()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.setswitchinterval) 指定。从 Python 程序的角度来看，每一条字节码指令以及每一条指令对应的 C 代码实现都是原子的。
+​	Python VM 内部会使用 [global interpreter lock]({{< ref "/glossary/idx#term-global-interpreter-lock" >}}) （GIL）来确保同一时间只有一个线程运行。通常 Python 只会在字节码指令之间切换线程；切换的频率可以通过设置 [`sys.setswitchinterval()`]({{< ref "/library/python/sys#sys.setswitchinterval" >}}) 指定。从 Python 程序的角度来看，每一条字节码指令以及每一条指令对应的 C 代码实现都是原子的。
 
 ​	理论上说，具体的结果要看具体的 PVM 字节码实现对指令的解释。而实际上，对内建类型（int，list，dict 等）的共享变量的“类原子”操作都是原子的。
 
@@ -319,43 +319,43 @@ L[i] = L[j]
 D[x] = D[x] + 1
 ```
 
-​	替换其他对象的操作可能会在其他对象的引用计数变为零时发起调用这些对象的 [`__del__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__del__) 方法，这可能会产生一些影响。 对字典和列表进行大量更新尤其如此。 如有疑问，请使用互斥锁！
+​	替换其他对象的操作可能会在其他对象的引用计数变为零时发起调用这些对象的 [`__del__()`]({{< ref "/reference/datamodel#object.__del__" >}}) 方法，这可能会产生一些影响。 对字典和列表进行大量更新尤其如此。 如有疑问，请使用互斥锁！
 
-### [不能删除全局解释器锁吗？](https://docs.python.org/zh-cn/3.13/faq/library.html#id19)
+### [不能删除全局解释器锁吗？]({{< ref "/faq/library#id19" >}})
 
-[global interpreter lock](https://docs.python.org/zh-cn/3.13/glossary.html#term-global-interpreter-lock) （GIL）通常被视为 Python 在高端多核服务器上开发时的阻力，因为（几乎）所有 Python 代码只有在获取到 GIL 时才能运行，所以多线程的 Python 程序只能有效地使用一个 CPU。
+[global interpreter lock]({{< ref "/glossary/idx#term-global-interpreter-lock" >}}) （GIL）通常被视为 Python 在高端多核服务器上开发时的阻力，因为（几乎）所有 Python 代码只有在获取到 GIL 时才能运行，所以多线程的 Python 程序只能有效地使用一个 CPU。
 
 ​	在 [**PEP 703**](https://peps.python.org/pep-0703/) 通过后目前已着手从 Python 的 CPython 实现中移除 GIL。 最初它将它将作为构建解释器时的可选编译器旗标来实现，因此将会存在有 GIL 和没有 GIL 的构建版本。 从长远来看，目标是在移除 GIL 对性能的影响被完全了解之后确定唯一的构建版本。 Python 3.13 大概是第一个包含此项工作的发布版，尽管在这个发布版中该功能可能尚不完整。
 
 ​	当前移除 GIL 的工作是基于 Sam Gross 的 [移除了 GIL 的 Python 3.9 分叉](https://github.com/colesbury/nogil)。 更早的时候，在 Python 1.5 时期，Greg Stein 实际上实现了一个完整的补丁集（“自由线程”补丁），移除了 GIL 并用更细粒度的锁来代替。 Adam Olsen 也在他的 [python-safethread](https://code.google.com/archive/p/python-safethread) 项目里做了类似的实验。 不幸的是，由于为移除 GIL 而使用了大量细粒度的锁这两个早期实验在单线程中的性能都有明显的下降（至少慢 30%）。 Python 3.9 分叉是在移除 GIL 的同时保持可接受的性能影响的首次尝试。
 
-​	当前 Python 发布版存在 GIL 并不意味着你无法在多CPU 机器上很好地使用 Python！ 你仅需发挥创造性将任务在多个 *进程* 而不是多个 *threads* 线程之间进行分配。 新的 [`concurrent.futures`](https://docs.python.org/zh-cn/3.13/library/concurrent.futures.html#module-concurrent.futures) 模块中的 [`ProcessPoolExecutor`](https://docs.python.org/zh-cn/3.13/library/concurrent.futures.html#concurrent.futures.ProcessPoolExecutor) 类提供了完成此项工作的简单方式；如果你想要对任务分发有更强的控制那么 [`multiprocessing`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#module-multiprocessing) 模块提供了更低层级的 API。
+​	当前 Python 发布版存在 GIL 并不意味着你无法在多CPU 机器上很好地使用 Python！ 你仅需发挥创造性将任务在多个 *进程* 而不是多个 *threads* 线程之间进行分配。 新的 [`concurrent.futures`]({{< ref "/library/concurrency/future/concurrent_futures#module-concurrent.futures" >}}) 模块中的 [`ProcessPoolExecutor`]({{< ref "/library/concurrency/future/concurrent_futures#concurrent.futures.ProcessPoolExecutor" >}}) 类提供了完成此项工作的简单方式；如果你想要对任务分发有更强的控制那么 [`multiprocessing`]({{< ref "/library/concurrency/multiprocessing#module-multiprocessing" >}}) 模块提供了更低层级的 API。
 
-​	恰当地使用 C 拓展也很有用；使用 C 拓展处理耗时较久的任务时，拓展可以在线程执行 C 代码时释放 GIL，让其他线程执行。[`zlib`](https://docs.python.org/zh-cn/3.13/library/zlib.html#module-zlib) 和 [`hashlib`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#module-hashlib) 等标准库模块已经这样做了。
+​	恰当地使用 C 拓展也很有用；使用 C 拓展处理耗时较久的任务时，拓展可以在线程执行 C 代码时释放 GIL，让其他线程执行。[`zlib`]({{< ref "/library/archiving/zlib#module-zlib" >}}) 和 [`hashlib`]({{< ref "/library/crypto/hashlib#module-hashlib" >}}) 等标准库模块已经这样做了。
 
 ​	减小 GIL 的影响的一种替代方式是让 GIL 成为每解释器状态锁而不是真正的全局状态锁。 此特性 [在 Python 3.12 中首次实现](https://docs.python.org/zh-cn/3.13/whatsnew/3.12.html#whatsnew312-pep684) 并在 C API 中可用。 预期会在 Python 3.13 中提供它的 Python 接口。 目前它的主要限制在于第 3 方扩展模块，因此这些模块的编写必须考虑到多解释器的情况才能够被使用，这样大量较旧的扩展模块将不再可用。
 
-## [输入与输出](https://docs.python.org/zh-cn/3.13/faq/library.html#id20)
+## [输入与输出]({{< ref "/faq/library#id20" >}})
 
-### [怎样删除文件？（以及其他文件相关的问题……）](https://docs.python.org/zh-cn/3.13/faq/library.html#id21)
+### [怎样删除文件？（以及其他文件相关的问题……）]({{< ref "/faq/library#id21" >}})
 
-​	使用 `os.remove(filename)` 或 `os.unlink(filename)`。查看 [`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os) 模块以获取更多文档。这两个函数是一样的，[`unlink()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.unlink) 是这个函数在 Unix 系统调用中的名字。
+​	使用 `os.remove(filename)` 或 `os.unlink(filename)`。查看 [`os`]({{< ref "/library/allos/os#module-os" >}}) 模块以获取更多文档。这两个函数是一样的，[`unlink()`]({{< ref "/library/allos/os#os.unlink" >}}) 是这个函数在 Unix 系统调用中的名字。
 
-​	如果要删除目录，应该使用 [`os.rmdir()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.rmdir)；使用 [`os.mkdir()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.mkdir) 创建目录。`os.makedirs(path)` 会创建 `path` 中任何不存在的目录。`os.removedirs(path)` 则会删除其中的目录，只要它们都是空的；如果你想删除整个目录以及其中的内容，可以使用 [`shutil.rmtree()`](https://docs.python.org/zh-cn/3.13/library/shutil.html#shutil.rmtree)。
+​	如果要删除目录，应该使用 [`os.rmdir()`]({{< ref "/library/allos/os#os.rmdir" >}})；使用 [`os.mkdir()`]({{< ref "/library/allos/os#os.mkdir" >}}) 创建目录。`os.makedirs(path)` 会创建 `path` 中任何不存在的目录。`os.removedirs(path)` 则会删除其中的目录，只要它们都是空的；如果你想删除整个目录以及其中的内容，可以使用 [`shutil.rmtree()`]({{< ref "/library/filesys/shutil#shutil.rmtree" >}})。
 
 ​	重命名文件可以使用 `os.rename(old_path, new_path)`。
 
-​	如果需要截断文件，使用 `f = open(filename, "rb+")` 打开文件，然后使用 `f.truncate(offset)`；offset 默认是当前的搜索位置。也可以对使用 [`os.open()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.open) 打开的文件使用 `os.ftruncate(fd, offset)`，其中 *fd* 是文件描述符（一个小的整型数）。
+​	如果需要截断文件，使用 `f = open(filename, "rb+")` 打开文件，然后使用 `f.truncate(offset)`；offset 默认是当前的搜索位置。也可以对使用 [`os.open()`]({{< ref "/library/allos/os#os.open" >}}) 打开的文件使用 `os.ftruncate(fd, offset)`，其中 *fd* 是文件描述符（一个小的整型数）。
 
-[`shutil`](https://docs.python.org/zh-cn/3.13/library/shutil.html#module-shutil) 模块也包含了一些处理文件的函数，包括 [`copyfile()`](https://docs.python.org/zh-cn/3.13/library/shutil.html#shutil.copyfile)，[`copytree()`](https://docs.python.org/zh-cn/3.13/library/shutil.html#shutil.copytree) 和 [`rmtree()`](https://docs.python.org/zh-cn/3.13/library/shutil.html#shutil.rmtree)。
+[`shutil`]({{< ref "/library/filesys/shutil#module-shutil" >}}) 模块也包含了一些处理文件的函数，包括 [`copyfile()`]({{< ref "/library/filesys/shutil#shutil.copyfile" >}})，[`copytree()`]({{< ref "/library/filesys/shutil#shutil.copytree" >}}) 和 [`rmtree()`]({{< ref "/library/filesys/shutil#shutil.rmtree" >}})。
 
-### [怎样复制文件？](https://docs.python.org/zh-cn/3.13/faq/library.html#id22)
+### [怎样复制文件？]({{< ref "/faq/library#id22" >}})
 
-[`shutil`](https://docs.python.org/zh-cn/3.13/library/shutil.html#module-shutil) 模块包含一个 [`copyfile()`](https://docs.python.org/zh-cn/3.13/library/shutil.html#shutil.copyfile) 函数。注意，在 Windows NTFS 卷上，它不复制 [替代数据流](https://en.wikipedia.org/wiki/NTFS#Alternate_data_stream_(ADS)) ，也不复制 macOS HFS+ 卷上的 [资源分叉](https://en.wikipedia.org/wiki/Resource_fork) ，尽管这两者现在很少使用。它也不复制文件权限和元数据，尽管使用 [`shutil.copy2()`](https://docs.python.org/zh-cn/3.13/library/shutil.html#shutil.copy2) 可以保留大部分（但不是全部）的内容。
+[`shutil`]({{< ref "/library/filesys/shutil#module-shutil" >}}) 模块包含一个 [`copyfile()`]({{< ref "/library/filesys/shutil#shutil.copyfile" >}}) 函数。注意，在 Windows NTFS 卷上，它不复制 [替代数据流](https://en.wikipedia.org/wiki/NTFS#Alternate_data_stream_(ADS)) ，也不复制 macOS HFS+ 卷上的 [资源分叉](https://en.wikipedia.org/wiki/Resource_fork) ，尽管这两者现在很少使用。它也不复制文件权限和元数据，尽管使用 [`shutil.copy2()`]({{< ref "/library/filesys/shutil#shutil.copy2" >}}) 可以保留大部分（但不是全部）的内容。
 
-### [怎样读取（或写入）二进制数据？](https://docs.python.org/zh-cn/3.13/faq/library.html#id23)
+### [怎样读取（或写入）二进制数据？]({{< ref "/faq/library#id23" >}})
 
-​	要读写复杂的二进制数据格式，最好使用 [`struct`](https://docs.python.org/zh-cn/3.13/library/struct.html#module-struct) 模块。该模块可以读取包含二进制数据（通常是数字）的字符串并转换为 Python 对象，反之亦然。
+​	要读写复杂的二进制数据格式，最好使用 [`struct`]({{< ref "/library/binary/struct#module-struct" >}}) 模块。该模块可以读取包含二进制数据（通常是数字）的字符串并转换为 Python 对象，反之亦然。
 
 ​	举例来说，下面的代码会从文件中以大端序格式读取一个 2 字节的整型和一个 4 字节的整型：
 
@@ -369,19 +369,18 @@ with open(filename, "rb") as f:
 
 ​	格式字符串中的 ‘>’ 强制以大端序读取数据；字母 ‘h’ 从字符串中读取一个“短整型”（2 字节），字母 ‘l’ 读取一个“长整型”（4 字节）。
 
-​	对于更常规的数据（例如整型或浮点类型的列表），你也可以使用 [`array`](https://docs.python.org/zh-cn/3.13/library/array.html#module-array) 模块。
+​	对于更常规的数据（例如整型或浮点类型的列表），你也可以使用 [`array`]({{< ref "/library/datatypes/array#module-array" >}}) 模块。
 
-​	备注
-
+​备注
  
 
-​	要读写二进制数据的话，需要强制以二进制模式打开文件（这里为 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open) 函数传入 `"rb"`）。如果（默认）传入 `"r"` 的话，文件会以文本模式打开，`f.read()` 会返回 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 对象，而不是 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 对象。
+​	要读写二进制数据的话，需要强制以二进制模式打开文件（这里为 [`open()`]({{< ref "/library/functions#open" >}}) 函数传入 `"rb"`）。如果（默认）传入 `"r"` 的话，文件会以文本模式打开，`f.read()` 会返回 [`str`]({{< ref "/library/stdtypes#str" >}}) 对象，而不是 [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 对象。
 
-### [似乎 os.popen() 创建的管道不能使用 os.read()，这是为什么？](https://docs.python.org/zh-cn/3.13/faq/library.html#id24)
+### [似乎 os.popen() 创建的管道不能使用 os.read()，这是为什么？]({{< ref "/faq/library#id24" >}})
 
-[`os.read()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.read) 是一个底层函数，它接收的是文件描述符 —— 用小整型数表示的打开的文件。[`os.popen()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.popen) 创建的是一个高级文件对象，和内建的 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open) 方法返回的类型一样。因此，如果要从 [`os.popen()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.popen) 创建的管道 *p* 中读取 *n* 个字节的话，你应该使用 `p.read(n)`。
+[`os.read()`]({{< ref "/library/allos/os#os.read" >}}) 是一个底层函数，它接收的是文件描述符 —— 用小整型数表示的打开的文件。[`os.popen()`]({{< ref "/library/allos/os#os.popen" >}}) 创建的是一个高级文件对象，和内建的 [`open()`]({{< ref "/library/functions#open" >}}) 方法返回的类型一样。因此，如果要从 [`os.popen()`]({{< ref "/library/allos/os#os.popen" >}}) 创建的管道 *p* 中读取 *n* 个字节的话，你应该使用 `p.read(n)`。
 
-### [怎样访问（RS232）串口？](https://docs.python.org/zh-cn/3.13/faq/library.html#id25)
+### [怎样访问（RS232）串口？]({{< ref "/faq/library#id25" >}})
 
 ​	对于 Win32, OSX, Linux, BSD, Jython, IronPython:
 
@@ -391,15 +390,15 @@ with open(filename, "rb") as f:
 
 > https://groups.google.com/groups?selm=34A04430.CF9@ohioee.com
 
-### [为什么关闭 sys.stdout（stdin，stderr）并不会真正关掉它？](https://docs.python.org/zh-cn/3.13/faq/library.html#id26)
+### [为什么关闭 sys.stdout（stdin，stderr）并不会真正关掉它？]({{< ref "/faq/library#id26" >}})
 
-​	Python [文件对象](https://docs.python.org/zh-cn/3.13/glossary.html#term-file-object) 是一个对底层 C 文件描述符的高层抽象。
+​	Python [文件对象]({{< ref "/glossary/idx#term-file-object" >}}) 是一个对底层 C 文件描述符的高层抽象。
 
-​	对于在 Python 中通过内建的 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open) 函数创建的多数文件对象来说，`f.close()` 从 Python 的角度将其标记为已关闭，并且会关闭底层的 C 文件描述符。在 `f` 被垃圾回收的时候，析构函数中也会自动处理。
+​	对于在 Python 中通过内建的 [`open()`]({{< ref "/library/functions#open" >}}) 函数创建的多数文件对象来说，`f.close()` 从 Python 的角度将其标记为已关闭，并且会关闭底层的 C 文件描述符。在 `f` 被垃圾回收的时候，析构函数中也会自动处理。
 
 ​	但由于 stdin，stdout 和 stderr 在 C 中的特殊地位，在 Python 中也会对它们做特殊处理。运行 `sys.stdout.close()` 会将 Python 的文件对象标记为已关闭，但是 *不会* 关闭与之关联的文件描述符。
 
-​	要关闭这三者的 C 文件描述符的话，首先你应该确认确实需要关闭它（比如，这可能会影响到处理 I/O 的拓展）。如果确实需要这么做的话，使用 [`os.close()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.close)：
+​	要关闭这三者的 C 文件描述符的话，首先你应该确认确实需要关闭它（比如，这可能会影响到处理 I/O 的拓展）。如果确实需要这么做的话，使用 [`os.close()`]({{< ref "/library/allos/os#os.close" >}})：
 
 ```
 os.close(stdin.fileno())
@@ -409,21 +408,21 @@ os.close(stderr.fileno())
 
 ​	或者也可以使用常量 0，1，2 代替。
 
-## [网络 / Internet 编程](https://docs.python.org/zh-cn/3.13/faq/library.html#id27)
+## [网络 / Internet 编程]({{< ref "/faq/library#id27" >}})
 
-### [Python 中的 WWW 工具是什么？](https://docs.python.org/zh-cn/3.13/faq/library.html#id28)
+### [Python 中的 WWW 工具是什么？]({{< ref "/faq/library#id28" >}})
 
-​	参阅代码库参考手册中 [互联网协议和支持](https://docs.python.org/zh-cn/3.13/library/internet.html#internet) 和 [互联网数据处理](https://docs.python.org/zh-cn/3.13/library/netdata.html#netdata) 这两章的内容。Python 有大量模块来帮助你构建服务端和客户端 web 系统。
+​	参阅代码库参考手册中 [互联网协议和支持]({{< ref "/library/internet#internet" >}}) 和 [互联网数据处理]({{< ref "/library/netdata#netdata" >}}) 这两章的内容。Python 有大量模块来帮助你构建服务端和客户端 web 系统。
 
 ​	Paul Boddie 维护了一份可用框架的概览，见 https://wiki.python.org/moin/WebProgramming 。
 
-### [生成 HTML 需要使用什么模块？](https://docs.python.org/zh-cn/3.13/faq/library.html#id29)
+### [生成 HTML 需要使用什么模块？]({{< ref "/faq/library#id29" >}})
 
 ​	你可以在 [Web 编程 wiki 页面](https://wiki.python.org/moin/WebProgramming) 找到许多有用的链接。
 
-### [怎样使用 Python 脚本发送邮件？](https://docs.python.org/zh-cn/3.13/faq/library.html#id30)
+### [怎样使用 Python 脚本发送邮件？]({{< ref "/faq/library#id30" >}})
 
-​	使用 [`smtplib`](https://docs.python.org/zh-cn/3.13/library/smtplib.html#module-smtplib) 标准库模块。
+​	使用 [`smtplib`]({{< ref "/library/internet/smtplib#module-smtplib" >}}) 标准库模块。
 
 ​	下面是一个很简单的交互式发送邮件的代码。这个方法适用于任何支持 SMTP 协议的主机。
 
@@ -463,39 +462,38 @@ if sts != 0:
     print("Sendmail exit status", sts)
 ```
 
-### [socket 的 connect() 方法怎样避免阻塞？](https://docs.python.org/zh-cn/3.13/faq/library.html#id31)
+### [socket 的 connect() 方法怎样避免阻塞？]({{< ref "/faq/library#id31" >}})
 
-​	通常会用 [`select`](https://docs.python.org/zh-cn/3.13/library/select.html#module-select) 模块处理 socket 异步 I/O。
+​	通常会用 [`select`]({{< ref "/library/ipc/select#module-select" >}}) 模块处理 socket 异步 I/O。
 
-​	要防止 TCP 连接发生阻塞，你可以将 socket 设为非阻塞模式。 这样当你执行 [`connect()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.connect) 时，你将要么立即完成连接（不大可能）要么得到一个包含错误编号如 `.errno` 的异常。 `errno.EINPROGRESS` 表示连接正在进行中，但尚未完成。 不同的操作系统将返回不同的值，所以你需要检查一下你的系统会返回什么值。
+​	要防止 TCP 连接发生阻塞，你可以将 socket 设为非阻塞模式。 这样当你执行 [`connect()`]({{< ref "/library/ipc/socket#socket.socket.connect" >}}) 时，你将要么立即完成连接（不大可能）要么得到一个包含错误编号如 `.errno` 的异常。 `errno.EINPROGRESS` 表示连接正在进行中，但尚未完成。 不同的操作系统将返回不同的值，所以你需要检查一下你的系统会返回什么值。
 
-​	你可以使用 [`connect_ex()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.connect_ex) 方法来避免创建异常。 它将只返回 errno 值。 要进行轮询，你可以稍后再次调用 [`connect_ex()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.connect_ex) -- `0` 或 `errno.EISCONN` 表示已经连接 -- 或者你也可以将此 socket 传给 [`select.select()`](https://docs.python.org/zh-cn/3.13/library/select.html#select.select) 来检查它只否可写。
+​	你可以使用 [`connect_ex()`]({{< ref "/library/ipc/socket#socket.socket.connect_ex" >}}) 方法来避免创建异常。 它将只返回 errno 值。 要进行轮询，你可以稍后再次调用 [`connect_ex()`]({{< ref "/library/ipc/socket#socket.socket.connect_ex" >}}) -- `0` 或 `errno.EISCONN` 表示已经连接 -- 或者你也可以将此 socket 传给 [`select.select()`]({{< ref "/library/ipc/select#select.select" >}}) 来检查它只否可写。
 
-​	备注
-
+​备注
  
 
-[`asyncio`](https://docs.python.org/zh-cn/3.13/library/asyncio.html#module-asyncio) 模块提供了通用的单线程并发异步库，它可被用来编写非阻塞的网络代码。 第三方的 [Twisted](https://twisted.org/) 库是一个热门且功能丰富的替代选择。
+[`asyncio`]({{< ref "/library/ipc/asyncio#module-asyncio" >}}) 模块提供了通用的单线程并发异步库，它可被用来编写非阻塞的网络代码。 第三方的 [Twisted](https://twisted.org/) 库是一个热门且功能丰富的替代选择。
 
-## [数据库](https://docs.python.org/zh-cn/3.13/faq/library.html#id32)
+## [数据库]({{< ref "/faq/library#id32" >}})
 
-### [Python 中有数据库包的接口吗？](https://docs.python.org/zh-cn/3.13/faq/library.html#id33)
+### [Python 中有数据库包的接口吗？]({{< ref "/faq/library#id33" >}})
 
 ​	有的。
 
-​	标准 Python 还包含了基于磁盘的哈希接口例如 [`DBM`](https://docs.python.org/zh-cn/3.13/library/dbm.html#module-dbm.ndbm) 和 [`GDBM`](https://docs.python.org/zh-cn/3.13/library/dbm.html#module-dbm.gnu) 。除此之外还有 [`sqlite3`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#module-sqlite3) 模块，该模块提供了一个轻量级的基于磁盘的关系型数据库。
+​	标准 Python 还包含了基于磁盘的哈希接口例如 [`DBM`]({{< ref "/library/persistence/dbm#module-dbm.ndbm" >}}) 和 [`GDBM`]({{< ref "/library/persistence/dbm#module-dbm.gnu" >}}) 。除此之外还有 [`sqlite3`]({{< ref "/library/persistence/sqlite3#module-sqlite3" >}}) 模块，该模块提供了一个轻量级的基于磁盘的关系型数据库。
 
 ​	大多数关系型数据库都已经支持。查看 [数据库编程 wiki 页面](https://wiki.python.org/moin/DatabaseProgramming) 获取更多信息。
 
-### [在 Python 中如何实现持久化对象？](https://docs.python.org/zh-cn/3.13/faq/library.html#id34)
+### [在 Python 中如何实现持久化对象？]({{< ref "/faq/library#id34" >}})
 
-[`pickle`](https://docs.python.org/zh-cn/3.13/library/pickle.html#module-pickle) 库模块以一种非常通用的方式解决了这个问题（虽然你依然不能用它保存打开的文件、套接字或窗口之类的东西），此外 [`shelve`](https://docs.python.org/zh-cn/3.13/library/shelve.html#module-shelve) 库模块可使用 pickle 和 (g)dbm 来创建包含任意 Python 对象的持久化映射。
+[`pickle`]({{< ref "/library/persistence/pickle#module-pickle" >}}) 库模块以一种非常通用的方式解决了这个问题（虽然你依然不能用它保存打开的文件、套接字或窗口之类的东西），此外 [`shelve`]({{< ref "/library/persistence/shelve#module-shelve" >}}) 库模块可使用 pickle 和 (g)dbm 来创建包含任意 Python 对象的持久化映射。
 
-## [数学和数字](https://docs.python.org/zh-cn/3.13/faq/library.html#id35)
+## [数学和数字]({{< ref "/faq/library#id35" >}})
 
-### [Python 中怎样生成随机数？](https://docs.python.org/zh-cn/3.13/faq/library.html#id36)
+### [Python 中怎样生成随机数？]({{< ref "/faq/library#id36" >}})
 
-[`random`](https://docs.python.org/zh-cn/3.13/library/random.html#module-random) 标准库模块实现了随机数生成器，使用起来非常简单：
+[`random`]({{< ref "/library/numeric/random#module-random" >}}) 标准库模块实现了随机数生成器，使用起来非常简单：
 
 ```
 import random

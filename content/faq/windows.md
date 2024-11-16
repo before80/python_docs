@@ -8,28 +8,28 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/faq/windows.html](https://docs.python.org/zh-cn/3.13/faq/windows.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/faq/windows.html](https://docs.python.org/zh-cn/3.13/faq/windows.html)
 >
 > 收录该文档的时间：`2024-11-14T22:34:43+08:00`
 
-# [Python在Windows上的常见问题](https://docs.python.org/zh-cn/3.13/faq/windows.html#id2)
+# [Python在Windows上的常见问题]({{< ref "/faq/windows#id2" >}})
 
 ​	目录
 
-- [Python在Windows上的常见问题](https://docs.python.org/zh-cn/3.13/faq/windows.html#python-on-windows-faq)
-  - [我怎样在Windows下运行一个Python程序？](https://docs.python.org/zh-cn/3.13/faq/windows.html#how-do-i-run-a-python-program-under-windows)
-  - [我怎么让 Python 脚本可执行？](https://docs.python.org/zh-cn/3.13/faq/windows.html#how-do-i-make-python-scripts-executable)
-  - [为什么有时候 Python 程序会启动缓慢？](https://docs.python.org/zh-cn/3.13/faq/windows.html#why-does-python-sometimes-take-so-long-to-start)
-  - [我怎样使用 Python 脚本制作可执行文件？](https://docs.python.org/zh-cn/3.13/faq/windows.html#how-do-i-make-an-executable-from-a-python-script)
-  - [`*.pyd` 文件和 DLL 文件相同吗？](https://docs.python.org/zh-cn/3.13/faq/windows.html#is-a-pyd-file-the-same-as-a-dll)
-  - [我怎样将 Python 嵌入一个 Windows 程序？](https://docs.python.org/zh-cn/3.13/faq/windows.html#how-can-i-embed-python-into-a-windows-application)
-  - [如何让编辑器不要在我的 Python 源代码中插入 tab ？](https://docs.python.org/zh-cn/3.13/faq/windows.html#how-do-i-keep-editors-from-inserting-tabs-into-my-python-source)
-  - [如何在不阻塞的情况下检查按键？](https://docs.python.org/zh-cn/3.13/faq/windows.html#how-do-i-check-for-a-keypress-without-blocking)
-  - [我该如何解决缺失 api-ms-win-crt-runtime-l1-1-0.dll 错误？](https://docs.python.org/zh-cn/3.13/faq/windows.html#how-do-i-solve-the-missing-api-ms-win-crt-runtime-l1-1-0-dll-error)
+- [Python在Windows上的常见问题]({{< ref "/faq/windows#python-on-windows-faq" >}})
+  - [我怎样在Windows下运行一个Python程序？]({{< ref "/faq/windows#how-do-i-run-a-python-program-under-windows" >}})
+  - [我怎么让 Python 脚本可执行？]({{< ref "/faq/windows#how-do-i-make-python-scripts-executable" >}})
+  - [为什么有时候 Python 程序会启动缓慢？]({{< ref "/faq/windows#why-does-python-sometimes-take-so-long-to-start" >}})
+  - [我怎样使用 Python 脚本制作可执行文件？]({{< ref "/faq/windows#how-do-i-make-an-executable-from-a-python-script" >}})
+  - [`*.pyd` 文件和 DLL 文件相同吗？]({{< ref "/faq/windows#is-a-pyd-file-the-same-as-a-dll" >}})
+  - [我怎样将 Python 嵌入一个 Windows 程序？]({{< ref "/faq/windows#how-can-i-embed-python-into-a-windows-application" >}})
+  - [如何让编辑器不要在我的 Python 源代码中插入 tab ？]({{< ref "/faq/windows#how-do-i-keep-editors-from-inserting-tabs-into-my-python-source" >}})
+  - [如何在不阻塞的情况下检查按键？]({{< ref "/faq/windows#how-do-i-check-for-a-keypress-without-blocking" >}})
+  - [我该如何解决缺失 api-ms-win-crt-runtime-l1-1-0.dll 错误？]({{< ref "/faq/windows#how-do-i-solve-the-missing-api-ms-win-crt-runtime-l1-1-0-dll-error" >}})
 
 
 
-## [我怎样在Windows下运行一个Python程序？](https://docs.python.org/zh-cn/3.13/faq/windows.html#id3)
+## [我怎样在Windows下运行一个Python程序？]({{< ref "/faq/windows#id3" >}})
 
 ​	这不一定是一个简单的问题。如果你已经熟悉在Windows的命令行中运行程序的方法，一切都显而易见；不然的话，你也许需要额外获得些许指导。
 
@@ -76,9 +76,9 @@ Hello
 'HelloHelloHello'
 ```
 
-​	许多人把交互模式当作方便和高度可编程的计算器。 想结束交互式Python会话时，调用 [`exit()`](https://docs.python.org/zh-cn/3.13/library/constants.html#exit) 函数，或者按住 Ctrl 键时输入 Z ，之后按 Enter 键返回Windows命令提示符。
+​	许多人把交互模式当作方便和高度可编程的计算器。 想结束交互式Python会话时，调用 [`exit()`]({{< ref "/library/constants#exit" >}}) 函数，或者按住 Ctrl 键时输入 Z ，之后按 Enter 键返回Windows命令提示符。
 
-​	你可能发现在开始菜单有这样一个条目 开始 ‣ 所有程序 ‣ Python 3.x ‣ Python (命令行)， 运行它后会出现一个有着 `>>>` 提示的新窗口。 在此之后，如果调用 [`exit()`](https://docs.python.org/zh-cn/3.13/library/constants.html#exit) 函数或按 Ctrl-Z 组合键后窗口将会消失。 Windows 会在这个窗口中运行一个“python”命令，并且在你终止解释器的时候关闭它。
+​	你可能发现在开始菜单有这样一个条目 开始 ‣ 所有程序 ‣ Python 3.x ‣ Python (命令行)， 运行它后会出现一个有着 `>>>` 提示的新窗口。 在此之后，如果调用 [`exit()`]({{< ref "/library/constants#exit" >}}) 函数或按 Ctrl-Z 组合键后窗口将会消失。 Windows 会在这个窗口中运行一个“python”命令，并且在你终止解释器的时候关闭它。
 
 ​	现在我们知道 `py` 命令已经被识别，可以输入 Python 脚本了。 你需要提供 Python 脚本的绝对路径或相对路径。 假设 Python 脚本位于桌面上并命名为 `hello.py`，并且命令提示符在用户主目录打开，那么可以看到类似于这样的东西:
 
@@ -93,27 +93,27 @@ C:\Users\YourName> py Desktop\hello.py
 hello
 ```
 
-## [我怎么让 Python 脚本可执行？](https://docs.python.org/zh-cn/3.13/faq/windows.html#id4)
+## [我怎么让 Python 脚本可执行？]({{< ref "/faq/windows#id4" >}})
 
 ​	在 Windows 上，标准 Python 安装程序已将 .py 扩展名与文件类型 (Python.File) 相关联，并为该文件类型提供运行解释器的打开命令 (`D:\Program Files\Python\python.exe "%1" %*`) 。 这足以使脚本在命令提示符下作为“foo.py”命令被执行。 如果希望通过简单地键入“foo”而无需输入文件扩展名来执行脚本，则需要将 .py 添加到 PATHEXT 环境变量中。
 
-## [为什么有时候 Python 程序会启动缓慢？](https://docs.python.org/zh-cn/3.13/faq/windows.html#id5)
+## [为什么有时候 Python 程序会启动缓慢？]({{< ref "/faq/windows#id5" >}})
 
 ​	通常，Python 在 Windows 上启动得很快，但偶尔会有错误报告说 Python 突然需要很长时间才能启动。更令人费解的是，在其他配置相同的 Windows 系统上，Python 却可以工作得很好。
 
 ​	该问题可能是由于计算机上的杀毒软件配置错误造成的。当将病毒扫描配置为监视文件系统中所有读取行为时，一些杀毒扫描程序会导致两个数量级的启动开销。请检查你系统安装的杀毒扫描程序的配置，确保两台机它们是同样的配置。已知的， McAfee 杀毒软件在将它设置为扫描所有文件系统访问时，会产生这个问题。
 
-## [我怎样使用 Python 脚本制作可执行文件？](https://docs.python.org/zh-cn/3.13/faq/windows.html#id6)
+## [我怎样使用 Python 脚本制作可执行文件？]({{< ref "/faq/windows#id6" >}})
 
-​	请参阅 [如何由 Python 脚本创建能独立运行的二进制程序？](https://docs.python.org/zh-cn/3.13/faq/programming.html#faq-create-standalone-binary) 查看可用来生成可执行文件的工具清单。
+​	请参阅 [如何由 Python 脚本创建能独立运行的二进制程序？]({{< ref "/faq/programming#faq-create-standalone-binary" >}}) 查看可用来生成可执行文件的工具清单。
 
-## [`*.pyd` 文件和 DLL 文件相同吗？](https://docs.python.org/zh-cn/3.13/faq/windows.html#id7)
+## [`*.pyd` 文件和 DLL 文件相同吗？]({{< ref "/faq/windows#id7" >}})
 
 ​	是的， .pyd 文件也是 dll ，但有一些差异。如果你有一个名为 `foo.pyd` 的DLL，那么它必须有一个函数 `PyInit_foo()` 。 然后你可以编写 Python 代码 “import foo” ，Python 将搜索 foo.pyd （以及 foo.py 、 foo.pyc ）。如果找到它，将尝试调用 `PyInit_foo()` 来初始化它。你不应将 .exe 与 foo.lib 链接，因为这会导致 Windows 要求存在 DLL 。
 
 ​	请注意， foo.pyd 的搜索路径是 PYTHONPATH ，与 Windows 用于搜索 foo.dll 的路径不同。此外， foo.pyd 不需要存在来运行你的程序，而如果你将程序与 dll 链接，则需要 dll 。 当然，如果你想 `import foo` ，则需要 foo.pyd 。在 DLL 中，链接在源代码中用 `__declspec(dllexport)` 声明。 在 .pyd 中，链接在可用函数列表中定义。
 
-## [我怎样将 Python 嵌入一个 Windows 程序？](https://docs.python.org/zh-cn/3.13/faq/windows.html#id8)
+## [我怎样将 Python 嵌入一个 Windows 程序？]({{< ref "/faq/windows#id8" >}})
 
 ​	在 Windows 应用程序中嵌入 Python 解释器可以总结如下：
 
@@ -161,18 +161,18 @@ hello
 
 6. 使用 Python shell 脚本从 Windows 应用程序内部建立 Python 解释器窗口并不是一个好主意；生成的窗口将独立于应用程序的窗口系统。相反，你（或 wxPythonWindow 类）应该创建一个“本机”解释器窗口。将该窗口连接到Python解释器很容易。你可以将 Python的 i/o 重定向到支持读写的 _任意_ 对象，因此你只需要一个包含 read() 和 write() 方法的 Python 对象（在扩展模块中定义）。
 
-## [如何让编辑器不要在我的 Python 源代码中插入 tab ？](https://docs.python.org/zh-cn/3.13/faq/windows.html#id9)
+## [如何让编辑器不要在我的 Python 源代码中插入 tab ？]({{< ref "/faq/windows#id9" >}})
 
 ​	本 FAQ 不建议使用制表符， Python 样式指南 [**PEP 8**](https://peps.python.org/pep-0008/) ，为发行的 Python 代码推荐 4 个空格；这也是 Emacs python-mode 默认值。
 
 ​	在任何编辑器下，混合制表符和空格都是一个坏主意。 MSVC 在这方面没有什么不同，并且很容易配置为使用空格： 点击 Tools ‣ Options ‣ Tabs，对于文件类型“Default”，设置“Tab size”和“Indent size”为 4 ，并选择“插入空格”单选按钮。
 
-​	如果混合制表符和空格导致前导空格出现问题， Python 会引发 [`IndentationError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#IndentationError) 或 [`TabError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TabError) 。你还可以运行 [`tabnanny`](https://docs.python.org/zh-cn/3.13/library/tabnanny.html#module-tabnanny) 模块以批处理模式检查目录树。
+​	如果混合制表符和空格导致前导空格出现问题， Python 会引发 [`IndentationError`]({{< ref "/library/exceptions#IndentationError" >}}) 或 [`TabError`]({{< ref "/library/exceptions#TabError" >}}) 。你还可以运行 [`tabnanny`]({{< ref "/library/language/tabnanny#module-tabnanny" >}}) 模块以批处理模式检查目录树。
 
-## [如何在不阻塞的情况下检查按键？](https://docs.python.org/zh-cn/3.13/faq/windows.html#id10)
+## [如何在不阻塞的情况下检查按键？]({{< ref "/faq/windows#id10" >}})
 
-​	使用 [`msvcrt`](https://docs.python.org/zh-cn/3.13/library/msvcrt.html#module-msvcrt) 模块。 这是一个标准的 Windows 专属扩展模块。 它定义了一个函数 `kbhit()` 用于检查是否有键盘中的某个键被按下，以及 `getch()` 用于获取一个字符而不将其回显。
+​	使用 [`msvcrt`]({{< ref "/library/windows/msvcrt#module-msvcrt" >}}) 模块。 这是一个标准的 Windows 专属扩展模块。 它定义了一个函数 `kbhit()` 用于检查是否有键盘中的某个键被按下，以及 `getch()` 用于获取一个字符而不将其回显。
 
-## [我该如何解决缺失 api-ms-win-crt-runtime-l1-1-0.dll 错误？](https://docs.python.org/zh-cn/3.13/faq/windows.html#id11)
+## [我该如何解决缺失 api-ms-win-crt-runtime-l1-1-0.dll 错误？]({{< ref "/faq/windows#id11" >}})
 
 ​	这将在使用未安装全部更新的 Windows 8.1 或更旧的系统时发生于 Python 3.5 及之后的版本上。 首先请确保你的操作系统受支持并且已经更新补丁，如果此问题仍未解决，请访问 [Microsoft support page](https://support.microsoft.com/en-us/help/3118401/) 获取有关手动安装 C 运行时更新补丁的指导。

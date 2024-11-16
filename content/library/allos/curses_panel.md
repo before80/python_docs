@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/curses.panel.html](https://docs.python.org/zh-cn/3.13/library/curses.panel.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/curses.panel.html](https://docs.python.org/zh-cn/3.13/library/curses.panel.html)
 >
 > 收录该文档的时间：`2024-11-15T12:09:25+08:00`
 
@@ -22,7 +22,7 @@ draft = false
 
 ## 函数
 
-[`curses.panel`](https://docs.python.org/zh-cn/3.13/library/curses.panel.html#module-curses.panel) 模块定义了以下函数:
+[`curses.panel`]({{< ref "/library/allos/curses_panel#module-curses.panel" >}}) 模块定义了以下函数:
 
 ## curses.panel.**bottom_panel**()
 
@@ -38,13 +38,13 @@ draft = false
 
 ## curses.panel.**update_panels**()
 
-​	在面板栈发生改变后更新虚拟屏幕。 这不会调用 [`curses.doupdate()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.doupdate)，因此你不必自己执行此操作。
+​	在面板栈发生改变后更新虚拟屏幕。 这不会调用 [`curses.doupdate()`]({{< ref "/library/allos/curses#curses.doupdate" >}})，因此你不必自己执行此操作。
 
 
 
 ## Panel 对象
 
-​	Panel 对象，如上面 [`new_panel()`](https://docs.python.org/zh-cn/3.13/library/curses.panel.html#curses.panel.new_panel) 所返回的对象，是带有栈顺序的多个窗口。 总是会有一个窗口与确定内容的面板相关联，面板方法会负责窗口在面板栈中的深度。
+​	Panel 对象，如上面 [`new_panel()`]({{< ref "/library/allos/curses_panel#curses.panel.new_panel" >}}) 所返回的对象，是带有栈顺序的多个窗口。 总是会有一个窗口与确定内容的面板相关联，面板方法会负责窗口在面板栈中的深度。
 
 ​	Panel 对象具有以下方法:
 

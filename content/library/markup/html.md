@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/html.html](https://docs.python.org/zh-cn/3.13/library/html.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/html.html](https://docs.python.org/zh-cn/3.13/library/html.html)
 >
 > 收录该文档的时间：`2024-11-15T15:24:42+08:00`
 
@@ -29,7 +29,7 @@ draft = false
 
 ## html.**unescape**(*s*)
 
-​	将字符串 *s* 中的所有命名和数字字符引用 (例如 `>`, `>`, `>`) 转换为相应的Unicode字符。 此函数使用HTML 5标准为有效和无效字符引用定义的规则，以及 [`HTML 5 命名字符引用列表`](https://docs.python.org/zh-cn/3.13/library/html.entities.html#html.entities.html5)。
+​	将字符串 *s* 中的所有命名和数字字符引用 (例如 `>`, `>`, `>`) 转换为相应的Unicode字符。 此函数使用HTML 5标准为有效和无效字符引用定义的规则，以及 [`HTML 5 命名字符引用列表`]({{< ref "/library/markup/html_entities#html.entities.html5" >}})。
 
 > Added in version 3.4.
 >
@@ -38,5 +38,5 @@ draft = false
 
 `html` 包中的子模块是：
 
-- [`html.parser`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#module-html.parser) —— 具有宽松解析模式的HTML / XHTML解析器
-- [`html.entities`](https://docs.python.org/zh-cn/3.13/library/html.entities.html#module-html.entities) -- HTML 实体定义
+- [`html.parser`]({{< ref "/library/markup/html_parser#module-html.parser" >}}) —— 具有宽松解析模式的HTML / XHTML解析器
+- [`html.entities`]({{< ref "/library/markup/html_entities#module-html.entities" >}}) -- HTML 实体定义

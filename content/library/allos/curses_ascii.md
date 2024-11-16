@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/curses.ascii.html](https://docs.python.org/zh-cn/3.13/library/curses.ascii.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/curses.ascii.html](https://docs.python.org/zh-cn/3.13/library/curses.ascii.html)
 >
 > 收录该文档的时间：`2024-11-15T12:09:25+08:00`
 
@@ -18,7 +18,7 @@ draft = false
 
 ------
 
-[`curses.ascii`](https://docs.python.org/zh-cn/3.13/library/curses.ascii.html#module-curses.ascii) 模块提供了一些 ASCII 字符的名称常量以及在各种 ASCII 字符类中执行成员检测的函数。 所提供的控制字符常量如下:
+[`curses.ascii`]({{< ref "/library/allos/curses_ascii#module-curses.ascii" >}}) 模块提供了一些 ASCII 字符的名称常量以及在各种 ASCII 字符类中执行成员检测的函数。 所提供的控制字符常量如下:
 
 | 名称                 | 含意                                                         |
 | :------------------- | :----------------------------------------------------------- |
@@ -27,14 +27,14 @@ draft = false
 | curses.ascii.**STX** | 文本开始                                                     |
 | curses.ascii.**ETX** | 文本结束                                                     |
 | curses.ascii.**EOT** | 传输结束                                                     |
-| curses.ascii.**ENQ** | 查询，附带 [`ACK`](https://docs.python.org/zh-cn/3.13/library/curses.ascii.html#curses.ascii.ACK) 流量控制 |
+| curses.ascii.**ENQ** | 查询，附带 [`ACK`]({{< ref "/library/allos/curses_ascii#curses.ascii.ACK" >}}) 流量控制 |
 | curses.ascii.**ACK** | 确认                                                         |
 | curses.ascii.**BEL** | 蜂鸣器                                                       |
 | curses.ascii.**BS**  | 退格                                                         |
 | curses.ascii.**TAB** | 制表符                                                       |
-| curses.ascii.**HT**  | [`TAB`](https://docs.python.org/zh-cn/3.13/library/curses.ascii.html#curses.ascii.TAB) 的别名： "水平制表符” |
+| curses.ascii.**HT**  | [`TAB`]({{< ref "/library/allos/curses_ascii#curses.ascii.TAB" >}}) 的别名： "水平制表符” |
 | curses.ascii.**LF**  | 换行                                                         |
-| curses.ascii.**NL**  | [`LF`](https://docs.python.org/zh-cn/3.13/library/curses.ascii.html#curses.ascii.LF) 的别名： "新行" |
+| curses.ascii.**NL**  | [`LF`]({{< ref "/library/allos/curses_ascii#curses.ascii.LF" >}}) 的别名： "新行" |
 | curses.ascii.**VT**  | 垂直制表符                                                   |
 | curses.ascii.**FF**  | 换页                                                         |
 | curses.ascii.**CR**  | 回车                                                         |
@@ -123,7 +123,7 @@ draft = false
 
 ​	检测非 ASCII 字符（码位值 0x80 及以上）。
 
-​	这些函数接受整数或单字符字符串；当参数为字符串时，会先使用内置函数 [`ord()`](https://docs.python.org/zh-cn/3.13/library/functions.html#ord) 进行转换。
+​	这些函数接受整数或单字符字符串；当参数为字符串时，会先使用内置函数 [`ord()`]({{< ref "/library/functions#ord" >}}) 进行转换。
 
 ​	请注意所有这些函数都是检测根据你传入的字符串的字符所生成的码位值；它们实际上完全不会知晓本机的字符编码格式。
 

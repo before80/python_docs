@@ -9,7 +9,7 @@ draft = false
 
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/extending/building.html](https://docs.python.org/zh-cn/3.13/extending/building.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/extending/building.html](https://docs.python.org/zh-cn/3.13/extending/building.html)
 >
 > 收录该文档的时间：`2024-11-14T22:13:29+08:00`
 
@@ -17,7 +17,7 @@ draft = false
 
 ​	一个CPython的C扩展是一个共享库(例如一个Linux上的 `.so` ，或者Windows上的 `.pyd` )，其会导出一个 *初始化函数* 。
 
-​	为了可导入，共享库必须在 [`PYTHONPATH`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONPATH) 中列出，且必须按照模块名称命名，并带有正确的扩展名。 当使用 setuptools 时，会自动生成正确的文件名。
+​	为了可导入，共享库必须在 [`PYTHONPATH`]({{< ref "/using/cmdline#envvar-PYTHONPATH" >}}) 中列出，且必须按照模块名称命名，并带有正确的扩展名。 当使用 setuptools 时，会自动生成正确的文件名。
 
 ​	初始化函数的声明如下：
 

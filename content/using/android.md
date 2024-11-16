@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/using/android.html](https://docs.python.org/zh-cn/3.13/using/android.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/using/android.html](https://docs.python.org/zh-cn/3.13/using/android.html)
 >
 > 收录该文档的时间：`2024-11-14T22:13:29+08:00`
 
@@ -18,9 +18,9 @@ draft = false
 
 ​	在安卓系统中，没有将安装作为系统资源的概念。 软件分发的唯一单位是"应用程序"。 也没有可以运行 **python** 可执行文件或与 Python REPL 交互的控制台。
 
-​	As a result, the only way you can use Python on Android is in embedded mode – that is, by writing a native Android application, embedding a Python interpreter using `libpython`, and invoking Python code using the [Python embedding API](https://docs.python.org/zh-cn/3.13/extending/embedding.html#embedding). The full Python interpreter, the standard library, and all your Python code is then packaged into your app for its own private use.
+​	As a result, the only way you can use Python on Android is in embedded mode – that is, by writing a native Android application, embedding a Python interpreter using `libpython`, and invoking Python code using the [Python embedding API]({{< ref "/extending/embedding#embedding" >}}). The full Python interpreter, the standard library, and all your Python code is then packaged into your app for its own private use.
 
-​	Python 标准库在 Android 上有一些明显的遗漏和限制。 详情参见 [API 可用性指南](https://docs.python.org/zh-cn/3.13/library/intro.html#mobile-availability)。
+​	Python 标准库在 Android 上有一些明显的遗漏和限制。 详情参见 [API 可用性指南]({{< ref "/library/intro#mobile-availability" >}})。
 
 ## 6.1. 添加Python到Android app
 

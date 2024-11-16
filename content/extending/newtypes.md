@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/extending/newtypes.html](https://docs.python.org/zh-cn/3.13/extending/newtypes.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/extending/newtypes.html](https://docs.python.org/zh-cn/3.13/extending/newtypes.html)
 >
 > 收录该文档的时间：`2024-11-14T22:13:29+08:00`
 
@@ -16,7 +16,7 @@ draft = false
 
 ​	本章节目标是提供一个各种你可以实现的类型方法及其功能的简短介绍。
 
-​	这是 C 类型 [`PyTypeObject`](https://docs.python.org/zh-cn/3.13/c-api/type.html#c.PyTypeObject) 的定义，省略了只用于 [调试构建](https://docs.python.org/zh-cn/3.13/using/configure.html#debug-build) 的字段：
+​	这是 C 类型 [`PyTypeObject`](https://docs.python.org/zh-cn/3.13/c-api/type.html#c.PyTypeObject) 的定义，省略了只用于 [调试构建]({{< ref "/using/configure#debug-build" >}}) 的字段：
 
 ```
 typedef struct _typeobject {
@@ -161,7 +161,7 @@ newdatatype_dealloc(newdatatypeobject *obj)
 }
 ```
 
-​	一个重要的释放器函数实现要求是把所有未决异常放着不动。这很重要是因为释放器会被解释器频繁的调用，当栈异常退出时(而非正常返回)，不会有任何办法保护释放器看到一个异常尚未被设置。此事释放器的任何行为都会导致额外增加的Python代码来检查异常是否被设置。这可能导致解释器的误导性错误。正确的保护方法是，在任何不安全的操作前，保存未决异常，然后在其完成后恢复。者可以通过 [`PyErr_Fetch()`](https://docs.python.org/zh-cn/3.13/c-api/exceptions.html#c.PyErr_Fetch) 和 [`PyErr_Restore()`](https://docs.python.org/zh-cn/3.13/c-api/exceptions.html#c.PyErr_Restore) 函数来实现:
+​	一个重要的释放器函数实现要求是把所有未决异常放着不动。这很重要是因为释放器会被解释器频繁的调用，当栈异常退出时(而非正常返回)，不会有任何办法保护释放器看到一个异常尚未被设置。此事释放器的任何行为都会导致额外增加的Python代码来检查异常是否被设置。这可能导致解释器的误导性错误。正确的保护方法是，在任何不安全的操作前，保存未决异常，然后在其完成后恢复。者可以通过 [`PyErr_Fetch()`]({{< ref "/c_api/exceptions#c.PyErr_Fetch" >}}) 和 [`PyErr_Restore()`]({{< ref "/c_api/exceptions#c.PyErr_Restore" >}}) 函数来实现:
 
 ```
 static void
@@ -191,16 +191,14 @@ my_dealloc(PyObject *obj)
 }
 ```
 
-​	备注
-
+​备注
  
 
 ​	你能在释放器函数中安全执行的操作是有限的。 首先，如果你的类型支持垃圾回收 (使用 [`tp_traverse`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_traverse) 和/或 [`tp_clear`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_clear))，对象的部分成员可以在调用 [`tp_dealloc`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_dealloc) 时被清空或终结。 其次，在 [`tp_dealloc`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_dealloc) 中，你的对象将处于不稳定状态：它的引用计数等于零。 任何对非琐碎对象或 API 的调用 (如上面的示例所做的) 最终都可能会再次调用 [`tp_dealloc`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_dealloc)，导致双重释放并发生崩溃。
 
 ​	从 Python 3.4 开始，推荐不要在 [`tp_dealloc`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_dealloc) 放复杂的终结代码，而是使用新的 [`tp_finalize`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_finalize) 类型方法。
 
-​	参见
-
+​参见
  
 
 [**PEP 442**](https://peps.python.org/pep-0442/) 解释了新的终结方案。
@@ -209,7 +207,7 @@ my_dealloc(PyObject *obj)
 
 ## 3.2. 对象展示
 
-​	在 Python 中，有两种方式可以生成对象的文本表示: [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr) 函数和 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 函数。 ([`print()`](https://docs.python.org/zh-cn/3.13/library/functions.html#print) 函数会直接调用 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str)。) 这些处理程序都是可选的。
+​	在 Python 中，有两种方式可以生成对象的文本表示: [`repr()`]({{< ref "/library/functions#repr" >}}) 函数和 [`str()`]({{< ref "/library/stdtypes#str" >}}) 函数。 ([`print()`]({{< ref "/library/functions#print" >}}) 函数会直接调用 [`str()`]({{< ref "/library/stdtypes#str" >}})。) 这些处理程序都是可选的。
 
 ```
 reprfunc tp_repr;
@@ -229,7 +227,7 @@ newdatatype_repr(newdatatypeobject *obj)
 
 ​	如果没有指定 [`tp_repr`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_repr) 处理器，解释器将提供一个使用类型的 [`tp_name`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_name) 的表示形式以及对象的唯一标识值。
 
-[`tp_str`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_str) 处理器对于 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 就如上述的 [`tp_repr`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_repr) 处理器对于 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr) 一样；也就是说，它会在当 Python 代码在你的对象的某个实例上调用 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 时被调用。 它的实现与 [`tp_repr`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_repr) 函数非常相似，但其结果字符串是供人类查看的。 如果未指定 [`tp_str`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_str)，则会使用 [`tp_repr`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_repr) 处理器来代替。
+[`tp_str`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_str) 处理器对于 [`str()`]({{< ref "/library/stdtypes#str" >}}) 就如上述的 [`tp_repr`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_repr) 处理器对于 [`repr()`]({{< ref "/library/functions#repr" >}}) 一样；也就是说，它会在当 Python 代码在你的对象的某个实例上调用 [`str()`]({{< ref "/library/stdtypes#str" >}}) 时被调用。 它的实现与 [`tp_repr`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_repr) 函数非常相似，但其结果字符串是供人类查看的。 如果未指定 [`tp_str`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_str)，则会使用 [`tp_repr`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_repr) 处理器来代替。
 
 ​	下面是一个简单的例子:
 
@@ -269,7 +267,7 @@ setattrofunc tp_setattro;
 
 ​	请注意，此列表不对属性的值、值的计算时间或相关数据的存储方式施加任何限制。
 
-​	当 [`PyType_Ready()`](https://docs.python.org/zh-cn/3.13/c-api/type.html#c.PyType_Ready) 被调用时，它会使用由类型对象所引用的三个表来创建要放置到类型对象的字典中的 [descriptor](https://docs.python.org/zh-cn/3.13/glossary.html#term-descriptor)。 每个描述器控制对实例对象的一个属性的访问。 每个表都是可选的；如果三个表全都为 `NULL`，则该类型的实例将只有从它们的基础类型继承来的属性，并且还应当让 [`tp_getattro`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_getattro) 和 [`tp_setattro`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_setattro) 字段保持为 `NULL`，以允许由基础类型处理这些属性。
+​	当 [`PyType_Ready()`](https://docs.python.org/zh-cn/3.13/c-api/type.html#c.PyType_Ready) 被调用时，它会使用由类型对象所引用的三个表来创建要放置到类型对象的字典中的 [descriptor]({{< ref "/glossary/idx#term-descriptor" >}})。 每个描述器控制对实例对象的一个属性的访问。 每个表都是可选的；如果三个表全都为 `NULL`，则该类型的实例将只有从它们的基础类型继承来的属性，并且还应当让 [`tp_getattro`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_getattro) 和 [`tp_setattro`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_setattro) 字段保持为 `NULL`，以允许由基础类型处理这些属性。
 
 ​	表被声明为object::类型的三个字段:
 
@@ -304,9 +302,9 @@ typedef struct PyMemberDef {
 } PyMemberDef;
 ```
 
-​	对于表中的每个条目，都将构建一个 [descriptor](https://docs.python.org/zh-cn/3.13/glossary.html#term-descriptor) 并添加到类型中使其能够从实例结构体中提取值。 [`type`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.PyMemberDef.type) 字段应包含一个类型代码如 [`Py_T_INT`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.Py_T_INT) 或 [`Py_T_DOUBLE`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.Py_T_DOUBLE)；该值将用于确定如何将 Python 值转换为 C 值或反之。 [`flags`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.PyMemberDef.flags) 字段用于保存控制属性要如何被访问的旗标：你可以将其设为 [`Py_READONLY`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.Py_READONLY) 以防止 Python 代码设置它。
+​	对于表中的每个条目，都将构建一个 [descriptor]({{< ref "/glossary/idx#term-descriptor" >}}) 并添加到类型中使其能够从实例结构体中提取值。 [`type`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.PyMemberDef.type) 字段应包含一个类型代码如 [`Py_T_INT`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.Py_T_INT) 或 [`Py_T_DOUBLE`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.Py_T_DOUBLE)；该值将用于确定如何将 Python 值转换为 C 值或反之。 [`flags`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.PyMemberDef.flags) 字段用于保存控制属性要如何被访问的旗标：你可以将其设为 [`Py_READONLY`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.Py_READONLY) 以防止 Python 代码设置它。
 
-​	An interesting advantage of using the [`tp_members`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_members) table to build descriptors that are used at runtime is that any attribute defined this way can have an associated doc string simply by providing the text in the table. An application can use the introspection API to retrieve the descriptor from the class object, and get the doc string using its [`__doc__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#type.__doc__) attribute.
+​	An interesting advantage of using the [`tp_members`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_members) table to build descriptors that are used at runtime is that any attribute defined this way can have an associated doc string simply by providing the text in the table. An application can use the introspection API to retrieve the descriptor from the class object, and get the doc string using its [`__doc__`]({{< ref "/reference/datamodel#type.__doc__" >}}) attribute.
 
 ​	与 [`tp_methods`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_methods) 表一样，需要有一个值为 `NULL` 的 [`ml_name`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.PyMethodDef.ml_name) 哨兵条目。
 
@@ -314,7 +312,7 @@ typedef struct PyMemberDef {
 
 ​	为了简单起见，这里只演示 char* 版本； name 形参的类型是 char* 和 [PyObject](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.PyObject)* 风格接口之间的唯一区别。 这个示例实际上做了与上面的泛用示例相同的事情，但没有使用在 Python 2.2 中增加的泛用支持。 它解释了处理器函数是如何被调用的，因此如果你确实需要扩展它们的功能，你就会明白有什么是需要做的。
 
-[`tp_getattr`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_getattr) 处理器会在对象需要进行属性查找时被调用。 它被调用的场合与一个类的 [`__getattr__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getattr__) 方法要被调用的场合相同。
+[`tp_getattr`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_getattr) 处理器会在对象需要进行属性查找时被调用。 它被调用的场合与一个类的 [`__getattr__()`]({{< ref "/reference/datamodel#object.__getattr__" >}}) 方法要被调用的场合相同。
 
 ​	例如：
 
@@ -334,7 +332,7 @@ newdatatype_getattr(newdatatypeobject *obj, char *name)
 }
 ```
 
-​	当调用类实例的 [`__setattr__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__setattr__) 或 [`__delattr__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__delattr__) 方法时会调用 [`tp_setattr`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_setattr) 处理器。 当需要删除一个属性时，第三个形参将为 `NULL`。 下面是一个简单地引发异常的例子；如果这确实是你想要的，则 [`tp_setattr`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_setattr) 处理器应当被设为 `NULL`。
+​	当调用类实例的 [`__setattr__()`]({{< ref "/reference/datamodel#object.__setattr__" >}}) 或 [`__delattr__()`]({{< ref "/reference/datamodel#object.__delattr__" >}}) 方法时会调用 [`tp_setattr`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_setattr) 处理器。 当需要删除一个属性时，第三个形参将为 `NULL`。 下面是一个简单地引发异常的例子；如果这确实是你想要的，则 [`tp_setattr`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_setattr) 处理器应当被设为 `NULL`。
 
 ```
 static int
@@ -351,7 +349,7 @@ newdatatype_setattr(newdatatypeobject *obj, char *name, PyObject *v)
 richcmpfunc tp_richcompare;
 ```
 
-[`tp_richcompare`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_richcompare) 处理器会在需要进行比较时被调用。 它类似于 [富比较方法](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#richcmpfuncs)，例如 `__lt__()`，并会被 [`PyObject_RichCompare()`](https://docs.python.org/zh-cn/3.13/c-api/object.html#c.PyObject_RichCompare) 和 [`PyObject_RichCompareBool()`](https://docs.python.org/zh-cn/3.13/c-api/object.html#c.PyObject_RichCompareBool) 调用。
+[`tp_richcompare`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_richcompare) 处理器会在需要进行比较时被调用。 它类似于 [富比较方法]({{< ref "/reference/datamodel#richcmpfuncs" >}})，例如 `__lt__()`，并会被 [`PyObject_RichCompare()`](https://docs.python.org/zh-cn/3.13/c-api/object.html#c.PyObject_RichCompare) 和 [`PyObject_RichCompareBool()`](https://docs.python.org/zh-cn/3.13/c-api/object.html#c.PyObject_RichCompareBool) 调用。
 
 ​	此函数被调用时将传入两个 Python 对象和运算符作为参数，其中运算符为 `Py_EQ`, `Py_NE`, `Py_LE`, `Py_GE`, `Py_LT` 或 `Py_GT` 之一。 它应当使用指定的运算符来比较两个对象并在比较操作成功时返回 `Py_True` 或 `Py_False`，如果比较操作未被实现并应尝试其他对象比较方法时则返回 `Py_NotImplemented`，或者如果设置了异常则返回 `NULL`。
 
@@ -386,7 +384,7 @@ newdatatype_richcmp(newdatatypeobject *obj1, newdatatypeobject *obj2, int op)
 
 ## 3.5. 抽象协议支持
 
-​	Python 支持多种 *抽象* '协议'；被提供来使用这些接口的专门接口说明请在 [抽象对象层](https://docs.python.org/zh-cn/3.13/c-api/abstract.html#abstract) 中查看。
+​	Python 支持多种 *抽象* '协议'；被提供来使用这些接口的专门接口说明请在 [抽象对象层]({{< ref "/c_api/abstract#abstract" >}}) 中查看。
 
 ​	这些抽象接口很多都是在 Python 实现开发的早期被定义的。 特别地，数字、映射和序列协议从一开始就已经是 Python 的组成部分。 其他协议则是后来添加的。 对于依赖某些来自类型实现的处理器例程的协议来说，较旧的协议被定义为类型对象所引用的处理器的可选块。 对于较新的协议来说在主类型对象中还有额外的槽位，并带有一个预设旗标位来指明存在该槽位并应当由解释器来检查。 （此旗标位并不会指明槽位值非 `NULL` 的情况，可以设置该旗标来指明一个槽位的存在，但此本位仍可能保持未填充的状态。）
 
@@ -428,7 +426,7 @@ ternaryfunc tp_call;
 
 1. *self* 是作为调用目标的数据类型实例。 如果调用是 `obj1('hello')`，则 *self* 为 `obj1`。
 2. *args* 是包含调用参数的元组。 你可以使用 [`PyArg_ParseTuple()`](https://docs.python.org/zh-cn/3.13/c-api/arg.html#c.PyArg_ParseTuple) 来提取参数。
-3. *kwds* 是由传入的关键字参数组成的字典。 如果它不为 `NULL` 且你支持关键字参数，则可使用 [`PyArg_ParseTupleAndKeywords()`](https://docs.python.org/zh-cn/3.13/c-api/arg.html#c.PyArg_ParseTupleAndKeywords) 来提取参数。 如果你不想支持关键字参数而它为非 `NULL` 值，则会引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError) 并附带一个提示不支持关键字参数的消息。
+3. *kwds* 是由传入的关键字参数组成的字典。 如果它不为 `NULL` 且你支持关键字参数，则可使用 [`PyArg_ParseTupleAndKeywords()`](https://docs.python.org/zh-cn/3.13/c-api/arg.html#c.PyArg_ParseTupleAndKeywords) 来提取参数。 如果你不想支持关键字参数而它为非 `NULL` 值，则会引发 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}}) 并附带一个提示不支持关键字参数的消息。
 
 ​	下面是一个演示性的 `tp_call` 实现:
 
@@ -455,14 +453,14 @@ getiterfunc tp_iter;
 iternextfunc tp_iternext;
 ```
 
-​	这些函数提供了对迭代器协议的支持。 这两个处理器都只接受一个形参，即它们被调用时所使用的实例，并返回一个新的引用。 当发生错误时，它们应设置一个异常并返回 `NULL`。 [`tp_iter`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iter) 对应于 Python [`__iter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__iter__) 方法，而 [`tp_iternext`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iternext) 对应于 Python [`__next__()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#iterator.__next__) 方法。
+​	这些函数提供了对迭代器协议的支持。 这两个处理器都只接受一个形参，即它们被调用时所使用的实例，并返回一个新的引用。 当发生错误时，它们应设置一个异常并返回 `NULL`。 [`tp_iter`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iter) 对应于 Python [`__iter__()`]({{< ref "/reference/datamodel#object.__iter__" >}}) 方法，而 [`tp_iternext`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iternext) 对应于 Python [`__next__()`]({{< ref "/library/stdtypes#iterator.__next__" >}}) 方法。
 
-​	任何 [iterable](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterable) 对象都必须实现 [`tp_iter`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iter) 处理器，该处理器必须返回一个 [iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterator) 对象。 下面是与 Python 类所应用的同一个指导原则:
+​	任何 [iterable]({{< ref "/glossary/idx#term-iterable" >}}) 对象都必须实现 [`tp_iter`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iter) 处理器，该处理器必须返回一个 [iterator]({{< ref "/glossary/idx#term-iterator" >}}) 对象。 下面是与 Python 类所应用的同一个指导原则:
 
 - 对于可以支持多个独立迭代器的多项集（如列表和元组），则应当在每次调用 [`tp_iter`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iter) 时创建并返回一个新的迭代器。
 - 只能被迭代一次的对象（通常是由于迭代操作的附带影响，例如文件对象）可以通过返回一个指向自身的新引用来实现 [`tp_iter`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iter) -- 并且为此还应当实现 [`tp_iternext`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iternext) 处理器。
 
-​	任何 [iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterator) 对象都应当同时实现 [`tp_iter`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iter) 和 [`tp_iternext`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iternext)。 一个迭代器的 [`tp_iter`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iter) 处理器应当返回一个指向该迭代器的新引用。 它的 [`tp_iternext`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iternext) 处理器应当返回一个指向迭代操作的下一个对象的新引用，如果还有下一个对象的话。 如果迭代已到达末尾，则 [`tp_iternext`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iternext) 可以返回 `NULL` 而不设置异常，或者也可以在返回 `NULL` 的基础上 *额外* 设置 [`StopIteration`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#StopIteration)；避免异常可以产生更好的性能。 如果发生了实际的错误，则 [`tp_iternext`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iternext) 应当总是设置一个异常并返回 `NULL`。
+​	任何 [iterator]({{< ref "/glossary/idx#term-iterator" >}}) 对象都应当同时实现 [`tp_iter`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iter) 和 [`tp_iternext`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iternext)。 一个迭代器的 [`tp_iter`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iter) 处理器应当返回一个指向该迭代器的新引用。 它的 [`tp_iternext`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iternext) 处理器应当返回一个指向迭代操作的下一个对象的新引用，如果还有下一个对象的话。 如果迭代已到达末尾，则 [`tp_iternext`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iternext) 可以返回 `NULL` 而不设置异常，或者也可以在返回 `NULL` 的基础上 *额外* 设置 [`StopIteration`]({{< ref "/library/exceptions#StopIteration" >}})；避免异常可以产生更好的性能。 如果发生了实际的错误，则 [`tp_iternext`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_iternext) 应当总是设置一个异常并返回 `NULL`。
 
 
 
@@ -470,11 +468,10 @@ iternextfunc tp_iternext;
 
 ​	One of the goals of Python 弱引用实现的目标之一是允许任意类型参与弱引用机制而不会在重视性能的对象（例如数字）上产生额外开销。
 
-​	参见
-
+​参见
  
 
-[`weakref`](https://docs.python.org/zh-cn/3.13/library/weakref.html#module-weakref) 模块的文档。
+[`weakref`]({{< ref "/library/datatypes/weakref#module-weakref" >}}) 模块的文档。
 
 ​	对于可被弱引用的对象，扩展类型必须设置 [`tp_flags`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_flags) 字段的 `Py_TPFLAGS_MANAGED_WEAKREF` 比特位。 旧式的 [`tp_weaklistoffset`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_weaklistoffset) 字段应当保持为零。
 
@@ -503,7 +500,7 @@ Trivial_dealloc(TrivialObject *self)
 
 ## 3.7. 更多建议
 
-​	为了学习如何为你的新数据类型实现任何特定方法，请获取 [CPython](https://docs.python.org/zh-cn/3.13/glossary.html#term-CPython) 源代码。 进入 `Objects` 目录，然后在 C 源文件中搜索 `tp_` 加上你想要的函数 (例如，`tp_richcompare`)。 你将找到你想要实现的函数的例子。
+​	为了学习如何为你的新数据类型实现任何特定方法，请获取 [CPython]({{< ref "/glossary/idx#term-CPython" >}}) 源代码。 进入 `Objects` 目录，然后在 C 源文件中搜索 `tp_` 加上你想要的函数 (例如，`tp_richcompare`)。 你将找到你想要实现的函数的例子。
 
 ​	当你需要验证一个对象是否为你实现的类型的具体实例时，请使用 [`PyObject_TypeCheck()`](https://docs.python.org/zh-cn/3.13/c-api/object.html#c.PyObject_TypeCheck) 函数。 它的一个用法示例如下:
 
@@ -514,8 +511,7 @@ if (!PyObject_TypeCheck(some_object, &MyType)) {
 }
 ```
 
-​	参见
-
+​参见
 下载CPython源代码版本。
 
 https://www.python.org/downloads/source/

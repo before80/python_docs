@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/regex.html](https://docs.python.org/zh-cn/3.13/howto/regex.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/regex.html](https://docs.python.org/zh-cn/3.13/howto/regex.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -20,11 +20,11 @@ draft = false
 
 ​	摘要
 
-​	本文是关于在 Python 中通过 [`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 模块使用正则表达式的入门教程。它提供了比“标准库参考”的相关章节更平易的介绍。
+​	本文是关于在 Python 中通过 [`re`]({{< ref "/library/text/re#module-re" >}}) 模块使用正则表达式的入门教程。它提供了比“标准库参考”的相关章节更平易的介绍。
 
 ## 引言
 
-​	正则表达式（Regular expressions，也叫 REs、 regexs 或 regex patterns），本质上是嵌入 Python 内部并通过 [`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 模块提供的一种微小的、高度专业化的编程语言。使用这种小语言，你可以为想要匹配的可能字符串编写规则；这些字符串可能是英文句子、邮箱地址、TeX 命令或任何你喜欢的内容。然后，你可以提出诸如“此字符串是否与表达式匹配？”、“字符串中是否存在表达式的匹配项？”之类的问题。你还可以用正则来修改字符串，或以各种方式将其拆分。
+​	正则表达式（Regular expressions，也叫 REs、 regexs 或 regex patterns），本质上是嵌入 Python 内部并通过 [`re`]({{< ref "/library/text/re#module-re" >}}) 模块提供的一种微小的、高度专业化的编程语言。使用这种小语言，你可以为想要匹配的可能字符串编写规则；这些字符串可能是英文句子、邮箱地址、TeX 命令或任何你喜欢的内容。然后，你可以提出诸如“此字符串是否与表达式匹配？”、“字符串中是否存在表达式的匹配项？”之类的问题。你还可以用正则来修改字符串，或以各种方式将其拆分。
 
 ​	正则表达式会被编译成一系列字节码，然后由 C 语言编写的匹配引擎执行。对于高级用途，可能有必要特别注意引擎将如何执行一个给定的正则，并以某种方式写入正则，以生成运行更快的字节码。本文不涉及优化问题，因为这要求你对正则引擎的匹配过程有很好的了解。
 
@@ -58,9 +58,9 @@ draft = false
 
 ​	一些以 `'\'` 开头的特殊序列表示预定义的字符集合，这些字符集通常很有用，例如数字集合、字母集合或非空白字符集合。
 
-​	让我们举一个例子：`\w` 匹配任何字母数字字符。 如果正则表达式以 bytes 类型表示，`\w` 相当于字符类 `[a-zA-Z0-9_]` 。如果正则表达式是 str 类型，`\w` 将匹配由 [`unicodedata`](https://docs.python.org/zh-cn/3.13/library/unicodedata.html#module-unicodedata) 模块提供的 Unicode 数据库中标记为字母的所有字符。 通过在编译正则表达式时提供 [`re.ASCII`](https://docs.python.org/zh-cn/3.13/library/re.html#re.ASCII) 标志，可以在 str 表达式中使用较为狭窄的 `\w` 定义。
+​	让我们举一个例子：`\w` 匹配任何字母数字字符。 如果正则表达式以 bytes 类型表示，`\w` 相当于字符类 `[a-zA-Z0-9_]` 。如果正则表达式是 str 类型，`\w` 将匹配由 [`unicodedata`]({{< ref "/library/text/unicodedata#module-unicodedata" >}}) 模块提供的 Unicode 数据库中标记为字母的所有字符。 通过在编译正则表达式时提供 [`re.ASCII`]({{< ref "/library/text/re#re.ASCII" >}}) 标志，可以在 str 表达式中使用较为狭窄的 `\w` 定义。
 
-​	以下为特殊序列的不完全列表。 有关 Unicode 字符串正则表达式的序列和扩展类定义的完整列表，参见标准库参考中 [正则表达式语法](https://docs.python.org/zh-cn/3.13/library/re.html#re-syntax) 的最后一部分 。通常，Unicode 版本的字符类会匹配 Unicode 数据库的相应类别中的任何字符。
+​	以下为特殊序列的不完全列表。 有关 Unicode 字符串正则表达式的序列和扩展类定义的完整列表，参见标准库参考中 [正则表达式语法]({{< ref "/library/text/re#re-syntax" >}}) 的最后一部分 。通常，Unicode 版本的字符类会匹配 Unicode 数据库的相应类别中的任何字符。
 
 ## `\d`
 
@@ -88,7 +88,7 @@ draft = false
 
 ​	这些序列可以包含在字符类中。 例如，`[\s,.]` 是一个匹配任何空白字符、`','` 或 `'.'` 的字符类。
 
-​	本节的最后一个元字符是 `.` 。 它匹配除换行符之外的任何字符，并且有一个可选模式（ [`re.DOTALL`](https://docs.python.org/zh-cn/3.13/library/re.html#re.DOTALL) ），在该模式下它甚至可以匹配换行符。 `.` 通常用于你想匹配“任何字符”的场景。
+​	本节的最后一个元字符是 `.` 。 它匹配除换行符之外的任何字符，并且有一个可选模式（ [`re.DOTALL`]({{< ref "/library/text/re#re.DOTALL" >}}) ），在该模式下它甚至可以匹配换行符。 `.` 通常用于你想匹配“任何字符”的场景。
 
 ### 重复
 
@@ -128,7 +128,7 @@ draft = false
 
 ## 使用正则表达式
 
-​	现在我们已经了解了一些简单的正则表达式，那么我们如何在 Python 中实际使用它们呢？ [`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 模块提供了正则表达式引擎的接口，可以让你将正则编译为对象，然后用它们来进行匹配。
+​	现在我们已经了解了一些简单的正则表达式，那么我们如何在 Python 中实际使用它们呢？ [`re`]({{< ref "/library/text/re#module-re" >}}) 模块提供了正则表达式引擎的接口，可以让你将正则编译为对象，然后用它们来进行匹配。
 
 ### 编译正则表达式
 
@@ -143,7 +143,7 @@ draft = false
 re.compile('ab*')
 ```
 
-[`re.compile()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.compile) 也接受一个可选的 *flags* 参数，用于启用各种特殊功能和语法变体。 我们稍后将介绍可用的设置，但现在只需一个例子
+[`re.compile()`]({{< ref "/library/text/re#re.compile" >}}) 也接受一个可选的 *flags* 参数，用于启用各种特殊功能和语法变体。 我们稍后将介绍可用的设置，但现在只需一个例子
 
 
 
@@ -151,7 +151,7 @@ re.compile('ab*')
 >>> p = re.compile('ab*', re.IGNORECASE)
 ```
 
-​	正则作为字符串传递给 [`re.compile()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.compile) 。 正则被处理为字符串，因为正则表达式不是核心Python语言的一部分，并且没有创建用于表达它们的特殊语法。 （有些应用程序根本不需要正则，因此不需要通过包含它们来扩展语言规范。）相反，[`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 模块只是Python附带的C扩展模块，就类似于 [`socket`](https://docs.python.org/zh-cn/3.13/library/socket.html#module-socket) 或 [`zlib`](https://docs.python.org/zh-cn/3.13/library/zlib.html#module-zlib) 模块。
+​	正则作为字符串传递给 [`re.compile()`]({{< ref "/library/text/re#re.compile" >}}) 。 正则被处理为字符串，因为正则表达式不是核心Python语言的一部分，并且没有创建用于表达它们的特殊语法。 （有些应用程序根本不需要正则，因此不需要通过包含它们来扩展语言规范。）相反，[`re`]({{< ref "/library/text/re#module-re" >}}) 模块只是Python附带的C扩展模块，就类似于 [`socket`]({{< ref "/library/ipc/socket#module-socket" >}}) 或 [`zlib`]({{< ref "/library/archiving/zlib#module-zlib" >}}) 模块。
 
 ​	将正则放在字符串中可以使 Python 语言更简单，但有一个缺点是下一节的主题。
 
@@ -161,19 +161,19 @@ re.compile('ab*')
 
 ​	如前所述，正则表达式使用反斜杠字符 (`'\'`) 来表示特殊形式或允许使用特殊字符而不调用它们的特殊含义。 这与 Python 在字符串文字中用于相同目的的相同字符的使用相冲突。
 
-​	假设你想要编写一个与字符串 `\section` 相匹配的正则，它可以在 LaTeX 文件中找到。 要找出在程序代码中写入的内容，请从要匹配的字符串开始。 接下来，您必须通过在反斜杠前面添加反斜杠和其他元字符，从而产生字符串 `\\section`。 必须传递给 [`re.compile()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.compile) 的结果字符串必须是 `\\section`。 但是，要将其表示为 Python 字符串文字，必须 *再次* 转义两个反斜杠。
+​	假设你想要编写一个与字符串 `\section` 相匹配的正则，它可以在 LaTeX 文件中找到。 要找出在程序代码中写入的内容，请从要匹配的字符串开始。 接下来，您必须通过在反斜杠前面添加反斜杠和其他元字符，从而产生字符串 `\\section`。 必须传递给 [`re.compile()`]({{< ref "/library/text/re#re.compile" >}}) 的结果字符串必须是 `\\section`。 但是，要将其表示为 Python 字符串文字，必须 *再次* 转义两个反斜杠。
 
 | 字符            | 阶段                                                         |
 | :-------------- | :----------------------------------------------------------- |
 | `\section`      | 被匹配的字符串                                               |
-| `\\section`     | 为 [`re.compile()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.compile) 转义的反斜杠 |
+| `\\section`     | 为 [`re.compile()`]({{< ref "/library/text/re#re.compile" >}}) 转义的反斜杠 |
 | `"\\\\section"` | 为字符串字面转义的反斜杠                                     |
 
 ​	简而言之，要匹配文字反斜杠，必须将 `'\\\\'` 写为正则字符串，因为正则表达式必须是 `\\`，并且每个反斜杠必须表示为 `\\` 在常规Python字符串字面中。 在反复使用反斜杠的正则中，这会导致大量重复的反斜杠，并使得生成的字符串难以理解。
 
 ​	解决方案是使用 Python 的原始字符串表示法来表示正则表达式；反斜杠不以任何特殊的方式处理前缀为 `'r'` 的字符串字面，因此 `r"\n"` 是一个包含 `'\'` 和 `'n'` 的双字符字符串，而 `"\n"` 是一个包含换行符的单字符字符串。 正则表达式通常使用这种原始字符串表示法用 Python 代码编写。
 
-​	此外，在正则表达式中有效但在 Python 字符串文字中无效的特殊转义序列现在导致 [`DeprecationWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#DeprecationWarning) 并最终变为 [`SyntaxError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxError)。 这意味着如果未使用原始字符串表示法或转义反斜杠，序列将无效。
+​	此外，在正则表达式中有效但在 Python 字符串文字中无效的特殊转义序列现在导致 [`DeprecationWarning`]({{< ref "/library/exceptions#DeprecationWarning" >}}) 并最终变为 [`SyntaxError`]({{< ref "/library/exceptions#SyntaxError" >}})。 这意味着如果未使用原始字符串表示法或转义反斜杠，序列将无效。
 
 | 常规字符串      | 原始字符串     |
 | :-------------- | :------------- |
@@ -183,20 +183,20 @@ re.compile('ab*')
 
 ### 应用匹配
 
-​	一旦你有一个表示编译正则表达式的对象，你用它做什么？ 模式对象有几种方法和属性。 这里只介绍最重要的内容；请参阅 [`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 文档获取完整列表。
+​	一旦你有一个表示编译正则表达式的对象，你用它做什么？ 模式对象有几种方法和属性。 这里只介绍最重要的内容；请参阅 [`re`]({{< ref "/library/text/re#module-re" >}}) 文档获取完整列表。
 
 | 方法 / 属性  | 目的                                                         |
 | :----------- | :----------------------------------------------------------- |
 | `match()`    | 确定正则是否从字符串的开头匹配。                             |
 | `search()`   | 扫描字符串，查找此正则匹配的任何位置。                       |
 | `findall()`  | 找到正则匹配的所有子字符串，并将它们作为列表返回。           |
-| `finditer()` | 找到正则匹配的所有子字符串，并将它们返回为一个 [iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterator)。 |
+| `finditer()` | 找到正则匹配的所有子字符串，并将它们返回为一个 [iterator]({{< ref "/glossary/idx#term-iterator" >}})。 |
 
-​	如果没有找到匹配， [`match()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.match) 和 [`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.search) 返回 `None` 。如果它们成功， 一个 [匹配对象](https://docs.python.org/zh-cn/3.13/library/re.html#match-objects) 实例将被返回，包含匹配相关的信息：起始和终结位置、匹配的子串以及其它。
+​	如果没有找到匹配， [`match()`]({{< ref "/library/text/re#re.Pattern.match" >}}) 和 [`search()`]({{< ref "/library/text/re#re.Pattern.search" >}}) 返回 `None` 。如果它们成功， 一个 [匹配对象]({{< ref "/library/text/re#match-objects" >}}) 实例将被返回，包含匹配相关的信息：起始和终结位置、匹配的子串以及其它。
 
-​	你可以通过交互式地试验 [`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 模块来学习这一点。
+​	你可以通过交互式地试验 [`re`]({{< ref "/library/text/re#module-re" >}}) 模块来学习这一点。
 
-​	本 HOWTO 使用标准 Python 解释器作为示例。 首先，运行 Python 解释器，导入 [`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 模块，然后编译一个正则
+​	本 HOWTO 使用标准 Python 解释器作为示例。 首先，运行 Python 解释器，导入 [`re`]({{< ref "/library/text/re#module-re" >}}) 模块，然后编译一个正则
 
 
 
@@ -207,7 +207,7 @@ re.compile('ab*')
 re.compile('[a-z]+')
 ```
 
-​	现在，你可以尝试匹配正则 `[a-z]+` 的各种字符串。 空字符串根本不匹配，因为 `+` 表示“一次或多次重复”。 [`match()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.match) 在这种情况下应返回 `None`，这将导致解释器不打印输出。 你可以显式打印 `match()` 的结果，使其清晰。:
+​	现在，你可以尝试匹配正则 `[a-z]+` 的各种字符串。 空字符串根本不匹配，因为 `+` 表示“一次或多次重复”。 [`match()`]({{< ref "/library/text/re#re.Pattern.match" >}}) 在这种情况下应返回 `None`，这将导致解释器不打印输出。 你可以显式打印 `match()` 的结果，使其清晰。:
 
 
 
@@ -217,7 +217,7 @@ re.compile('[a-z]+')
 None
 ```
 
-​	现在，让我们尝试一下它应该匹配的字符串，例如 `tempo`。在这个例子中 [`match()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.match) 将返回一个 [匹配对象](https://docs.python.org/zh-cn/3.13/library/re.html#match-objects)，因此你应该将结果储存到一个变量中以供稍后使用。
+​	现在，让我们尝试一下它应该匹配的字符串，例如 `tempo`。在这个例子中 [`match()`]({{< ref "/library/text/re#re.Pattern.match" >}}) 将返回一个 [匹配对象]({{< ref "/library/text/re#match-objects" >}})，因此你应该将结果储存到一个变量中以供稍后使用。
 
 
 
@@ -227,7 +227,7 @@ None
 <re.Match object; span=(0, 5), match='tempo'>
 ```
 
-​	现在你可以检查 [匹配对象](https://docs.python.org/zh-cn/3.13/library/re.html#match-objects) 以获取有关匹配字符串的信息。 匹配对象实例也有几个方法和属性；最重要的是：
+​	现在你可以检查 [匹配对象]({{< ref "/library/text/re#match-objects" >}}) 以获取有关匹配字符串的信息。 匹配对象实例也有几个方法和属性；最重要的是：
 
 | 方法 / 属性 | 目的                                 |
 | :---------- | :----------------------------------- |
@@ -249,7 +249,7 @@ None
 (0, 5)
 ```
 
-[`group()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.group) 返回正则匹配的子字符串。 [`start()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.start) 和 [`end()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.end) 返回匹配的起始和结束索引。 [`span()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.span) 在单个元组中返回开始和结束索引。 由于 [`match()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.match) 方法只检查正则是否在字符串的开头匹配，所以 `start()` 将始终为零。 但是，模式的 [`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.search) 方法会扫描字符串，因此在这种情况下匹配可能不会从零开始。:
+[`group()`]({{< ref "/library/text/re#re.Match.group" >}}) 返回正则匹配的子字符串。 [`start()`]({{< ref "/library/text/re#re.Match.start" >}}) 和 [`end()`]({{< ref "/library/text/re#re.Match.end" >}}) 返回匹配的起始和结束索引。 [`span()`]({{< ref "/library/text/re#re.Match.span" >}}) 在单个元组中返回开始和结束索引。 由于 [`match()`]({{< ref "/library/text/re#re.Pattern.match" >}}) 方法只检查正则是否在字符串的开头匹配，所以 `start()` 将始终为零。 但是，模式的 [`search()`]({{< ref "/library/text/re#re.Pattern.search" >}}) 方法会扫描字符串，因此在这种情况下匹配可能不会从零开始。:
 
 
 
@@ -264,7 +264,7 @@ None
 (4, 11)
 ```
 
-​	在实际程序中，最常见的样式是在变量中存储 [匹配对象](https://docs.python.org/zh-cn/3.13/library/re.html#match-objects)，然后检查它是否为 `None`。 这通常看起来像:
+​	在实际程序中，最常见的样式是在变量中存储 [匹配对象]({{< ref "/library/text/re#match-objects" >}})，然后检查它是否为 `None`。 这通常看起来像:
 
 ```
 p = re.compile( ... )
@@ -275,7 +275,7 @@ else:
     print('No match')
 ```
 
-​	两种模式方法返回模式的所有匹配项。 [`findall()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.findall) 返回匹配字符串的列表:
+​	两种模式方法返回模式的所有匹配项。 [`findall()`]({{< ref "/library/text/re#re.Pattern.findall" >}}) 返回匹配字符串的列表:
 
 
 
@@ -285,9 +285,9 @@ else:
 ['12', '11', '10']
 ```
 
-​	在这个例子中需要 `r` 前缀，使字面为原始字符串字面，因为普通的“加工”字符串字面中的转义序列不能被 Python 识别为正则表达式，导致 [`DeprecationWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#DeprecationWarning) 并最终产生 [`SyntaxError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxError)。 请参阅 [反斜杠灾难](https://docs.python.org/zh-cn/3.13/howto/regex.html#the-backslash-plague)。
+​	在这个例子中需要 `r` 前缀，使字面为原始字符串字面，因为普通的“加工”字符串字面中的转义序列不能被 Python 识别为正则表达式，导致 [`DeprecationWarning`]({{< ref "/library/exceptions#DeprecationWarning" >}}) 并最终产生 [`SyntaxError`]({{< ref "/library/exceptions#SyntaxError" >}})。 请参阅 [反斜杠灾难]({{< ref "/howto/regex#the-backslash-plague" >}})。
 
-[`findall()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.findall) 必须先创建整个列表才能返回结果。 [`finditer()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.finditer) 方法将一个 [匹配对象](https://docs.python.org/zh-cn/3.13/library/re.html#match-objects) 的序列返回为一个 [iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterator)
+[`findall()`]({{< ref "/library/text/re#re.Pattern.findall" >}}) 必须先创建整个列表才能返回结果。 [`finditer()`]({{< ref "/library/text/re#re.Pattern.finditer" >}}) 方法将一个 [匹配对象]({{< ref "/library/text/re#match-objects" >}}) 的序列返回为一个 [iterator]({{< ref "/glossary/idx#term-iterator" >}})
 
 
 
@@ -305,7 +305,7 @@ else:
 
 ### 模块级函数
 
-​	你不必创建模式对象并调用其方法；[`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 模块还提供了顶级函数 [`match()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.match)，[`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.search)，[`findall()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.findall)，[`sub()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.sub) 等等。 这些函数采用与相应模式方法相同的参数，并将正则字符串作为第一个参数添加，并仍然返回 `None` 或 [匹配对象](https://docs.python.org/zh-cn/3.13/library/re.html#match-objects) 实例。:
+​	你不必创建模式对象并调用其方法；[`re`]({{< ref "/library/text/re#module-re" >}}) 模块还提供了顶级函数 [`match()`]({{< ref "/library/text/re#re.match" >}})，[`search()`]({{< ref "/library/text/re#re.search" >}})，[`findall()`]({{< ref "/library/text/re#re.findall" >}})，[`sub()`]({{< ref "/library/text/re#re.sub" >}}) 等等。 这些函数采用与相应模式方法相同的参数，并将正则字符串作为第一个参数添加，并仍然返回 `None` 或 [匹配对象]({{< ref "/library/text/re#match-objects" >}}) 实例。:
 
 
 
@@ -322,24 +322,24 @@ None
 
 ### 编译标志
 
-​	编译标志允许你修改正则表达式的工作方式。 标志在 [`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 模块中有两个名称，长名称如 [`IGNORECASE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.IGNORECASE) 和一个简短的单字母形式，例如 [`I`](https://docs.python.org/zh-cn/3.13/library/re.html#re.I)。 （如果你熟悉 Perl 的模式修饰符，则单字母形式使用和其相同的字母；例如， [`re.VERBOSE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.VERBOSE) 的缩写形式为 [`re.X`](https://docs.python.org/zh-cn/3.13/library/re.html#re.X)。）多个标志可以 通过按位或运算来指定它们；例如，`re.I | re.M` 设置 [`I`](https://docs.python.org/zh-cn/3.13/library/re.html#re.I) 和 [`M`](https://docs.python.org/zh-cn/3.13/library/re.html#re.M) 标志。
+​	编译标志允许你修改正则表达式的工作方式。 标志在 [`re`]({{< ref "/library/text/re#module-re" >}}) 模块中有两个名称，长名称如 [`IGNORECASE`]({{< ref "/library/text/re#re.IGNORECASE" >}}) 和一个简短的单字母形式，例如 [`I`]({{< ref "/library/text/re#re.I" >}})。 （如果你熟悉 Perl 的模式修饰符，则单字母形式使用和其相同的字母；例如， [`re.VERBOSE`]({{< ref "/library/text/re#re.VERBOSE" >}}) 的缩写形式为 [`re.X`]({{< ref "/library/text/re#re.X" >}})。）多个标志可以 通过按位或运算来指定它们；例如，`re.I | re.M` 设置 [`I`]({{< ref "/library/text/re#re.I" >}}) 和 [`M`]({{< ref "/library/text/re#re.M" >}}) 标志。
 
 ​	这是一个可用标志表，以及每个标志的更详细说明。
 
 | 旗标                                                         | 含意                                                         |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| [`ASCII`](https://docs.python.org/zh-cn/3.13/library/re.html#re.ASCII), [`A`](https://docs.python.org/zh-cn/3.13/library/re.html#re.A) | 使几个转义如 `\w`、`\b`、`\s` 和 `\d` 匹配仅与具有相应特征属性的 ASCII 字符匹配。 |
-| [`DOTALL`](https://docs.python.org/zh-cn/3.13/library/re.html#re.DOTALL), [`S`](https://docs.python.org/zh-cn/3.13/library/re.html#re.S) | 使 `.` 匹配任何字符，包括换行符。                            |
-| [`IGNORECASE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.IGNORECASE), [`I`](https://docs.python.org/zh-cn/3.13/library/re.html#re.I) | 进行大小写不敏感匹配。                                       |
-| [`LOCALE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.LOCALE), [`L`](https://docs.python.org/zh-cn/3.13/library/re.html#re.L) | 进行区域设置感知匹配。                                       |
-| [`MULTILINE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.MULTILINE), [`M`](https://docs.python.org/zh-cn/3.13/library/re.html#re.M) | 多行匹配，影响 `^` 和 `$`。                                  |
-| [`VERBOSE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.VERBOSE), [`X`](https://docs.python.org/zh-cn/3.13/library/re.html#re.X) （为 '扩展'） | 启用详细的正则，可以更清晰，更容易理解。                     |
+| [`ASCII`]({{< ref "/library/text/re#re.ASCII" >}}), [`A`]({{< ref "/library/text/re#re.A" >}}) | 使几个转义如 `\w`、`\b`、`\s` 和 `\d` 匹配仅与具有相应特征属性的 ASCII 字符匹配。 |
+| [`DOTALL`]({{< ref "/library/text/re#re.DOTALL" >}}), [`S`]({{< ref "/library/text/re#re.S" >}}) | 使 `.` 匹配任何字符，包括换行符。                            |
+| [`IGNORECASE`]({{< ref "/library/text/re#re.IGNORECASE" >}}), [`I`]({{< ref "/library/text/re#re.I" >}}) | 进行大小写不敏感匹配。                                       |
+| [`LOCALE`]({{< ref "/library/text/re#re.LOCALE" >}}), [`L`]({{< ref "/library/text/re#re.L" >}}) | 进行区域设置感知匹配。                                       |
+| [`MULTILINE`]({{< ref "/library/text/re#re.MULTILINE" >}}), [`M`]({{< ref "/library/text/re#re.M" >}}) | 多行匹配，影响 `^` 和 `$`。                                  |
+| [`VERBOSE`]({{< ref "/library/text/re#re.VERBOSE" >}}), [`X`]({{< ref "/library/text/re#re.X" >}}) （为 '扩展'） | 启用详细的正则，可以更清晰，更容易理解。                     |
 
 ## re.**I**
 
 ## re.**IGNORECASE**
 
-​	执行不区分大小写的匹配；字符类和字面字符串将通过忽略大小写来匹配字母。 例如，`[A-Z]` 也匹配小写字母。 除非使用 [`ASCII`](https://docs.python.org/zh-cn/3.13/library/re.html#re.ASCII) 标志来禁用非ASCII匹配，否则完全 Unicode 匹配也有效。 当 Unicode 模式 `[a-z]` 或 `[A-Z]` 与 [`IGNORECASE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.IGNORECASE) 标志结合使用时，它们将匹配 52 个 ASCII 字母和 4 个额外的非 ASCII 字母：'İ' (U+0130，拉丁大写字母 I，带上面的点)，'ı' (U+0131，拉丁文小写字母无点 i)，'s' (U+017F，拉丁文小写字母长 s) 和'K' (U+212A，开尔文符号)。 `Spam` 将匹配 `'Spam'`，`'spam'`，`'spAM'` 或 `'ſpam'` (后者仅在 Unicode 模式下匹配)。 此小写不考虑当前区域设置；如果你还设置了 [`LOCALE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.LOCALE) 标志，则将考虑。
+​	执行不区分大小写的匹配；字符类和字面字符串将通过忽略大小写来匹配字母。 例如，`[A-Z]` 也匹配小写字母。 除非使用 [`ASCII`]({{< ref "/library/text/re#re.ASCII" >}}) 标志来禁用非ASCII匹配，否则完全 Unicode 匹配也有效。 当 Unicode 模式 `[a-z]` 或 `[A-Z]` 与 [`IGNORECASE`]({{< ref "/library/text/re#re.IGNORECASE" >}}) 标志结合使用时，它们将匹配 52 个 ASCII 字母和 4 个额外的非 ASCII 字母：'İ' (U+0130，拉丁大写字母 I，带上面的点)，'ı' (U+0131，拉丁文小写字母无点 i)，'s' (U+017F，拉丁文小写字母长 s) 和'K' (U+212A，开尔文符号)。 `Spam` 将匹配 `'Spam'`，`'spam'`，`'spAM'` 或 `'ſpam'` (后者仅在 Unicode 模式下匹配)。 此小写不考虑当前区域设置；如果你还设置了 [`LOCALE`]({{< ref "/library/text/re#re.LOCALE" >}}) 标志，则将考虑。
 
 ## re.**L**
 
@@ -347,13 +347,13 @@ None
 
 ​	使 `\w`、`\W`、`\b`、`\B` 和大小写敏感匹配依赖于当前区域而不是 Unicode 数据库。
 
-​	区域设置是 C 库的一个功能，旨在帮助编写考虑到语言差异的程序。例如，如果你正在处理编码的法语文本，那么你希望能够编写 `\w+` 来匹配单词，但 `\w` 只匹配字符类 `[A-Za-z]` 字节模式；它不会匹配对应于 `é` 或 `ç` 的字节。如果你的系统配置正确并且选择了法语区域设置，某些C函数将告诉程序对应于 `é` 的字节也应该被视为字母。在编译正则表达式时设置 [`LOCALE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.LOCALE) 标志将导致生成的编译对象将这些C函数用于 `\w`；这比较慢，但也可以使 `\w+` 匹配你所期望的法语单词。在 Python 3 中不鼓励使用此标志，因为语言环境机制非常不可靠，它一次只处理一个“文化”，它只适用于 8 位语言环境。默认情况下，Python 3 中已经为 Unicode（str）模式启用了 Unicode 匹配，并且它能够处理不同的区域/语言。
+​	区域设置是 C 库的一个功能，旨在帮助编写考虑到语言差异的程序。例如，如果你正在处理编码的法语文本，那么你希望能够编写 `\w+` 来匹配单词，但 `\w` 只匹配字符类 `[A-Za-z]` 字节模式；它不会匹配对应于 `é` 或 `ç` 的字节。如果你的系统配置正确并且选择了法语区域设置，某些C函数将告诉程序对应于 `é` 的字节也应该被视为字母。在编译正则表达式时设置 [`LOCALE`]({{< ref "/library/text/re#re.LOCALE" >}}) 标志将导致生成的编译对象将这些C函数用于 `\w`；这比较慢，但也可以使 `\w+` 匹配你所期望的法语单词。在 Python 3 中不鼓励使用此标志，因为语言环境机制非常不可靠，它一次只处理一个“文化”，它只适用于 8 位语言环境。默认情况下，Python 3 中已经为 Unicode（str）模式启用了 Unicode 匹配，并且它能够处理不同的区域/语言。
 
 ## re.**M**
 
 ## re.**MULTILINE**
 
-​	(`^` 和 `$` 还没有解释；它们将在以下部分介绍 [更多元字符](https://docs.python.org/zh-cn/3.13/howto/regex.html#more-metacharacters)。)
+​	(`^` 和 `$` 还没有解释；它们将在以下部分介绍 [更多元字符]({{< ref "/howto/regex#more-metacharacters" >}})。)
 
 ​	通常 `^` 只匹配字符串的开头，而 `$` 只匹配字符串的结尾，紧接在字符串末尾的换行符（如果有的话）之前。 当指定了这个标志时，`^` 匹配字符串的开头和字符串中每一行的开头，紧跟在每个换行符之后。 类似地，`$` 元字符匹配字符串的结尾和每行的结尾（紧接在每个换行符之前）。
 
@@ -375,7 +375,7 @@ None
 
 ​	此标志允许你编写更易读的正则表达式，方法是为您提供更灵活的格式化方式。 指定此标志后，将忽略正则字符串中的空格，除非空格位于字符类中或前面带有未转义的反斜杠；这使你可以更清楚地组织和缩进正则。 此标志还允许你将注释放在正则中，引擎将忽略该注释；注释标记为 `'#'` 既不是在字符类中，也不是在未转义的反斜杠之前。
 
-​	例如，这里的正则使用 [`re.VERBOSE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.VERBOSE)；看看阅读有多容易？:
+​	例如，这里的正则使用 [`re.VERBOSE`]({{< ref "/library/text/re#re.VERBOSE" >}})；看看阅读有多容易？:
 
 ```
 charref = re.compile(r"""
@@ -397,7 +397,7 @@ charref = re.compile("&#(0[0-7]+"
                      "|x[0-9a-fA-F]+);")
 ```
 
-​	在上面的例子中，Python的字符串文字的自动连接已被用于将正则分解为更小的部分，但它仍然比以下使用 [`re.VERBOSE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.VERBOSE) 版本更难理解。
+​	在上面的例子中，Python的字符串文字的自动连接已被用于将正则分解为更小的部分，但它仍然比以下使用 [`re.VERBOSE`]({{< ref "/library/text/re#re.VERBOSE" >}}) 版本更难理解。
 
 ## 更多模式能力
 
@@ -419,7 +419,7 @@ charref = re.compile("&#(0[0-7]+"
 
 ## `^`
 
-​	在行的开头匹配。 除非设置了 [`MULTILINE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.MULTILINE) 标志，否则只会在字符串的开头匹配。 在 [`MULTILINE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.MULTILINE) 模式下，这也在字符串中的每个换行符后立即匹配。
+​	在行的开头匹配。 除非设置了 [`MULTILINE`]({{< ref "/library/text/re#re.MULTILINE" >}}) 标志，否则只会在字符串的开头匹配。 在 [`MULTILINE`]({{< ref "/library/text/re#re.MULTILINE" >}}) 模式下，这也在字符串中的每个换行符后立即匹配。
 
 ​	例如，如果你希望仅在行的开头匹配单词 `From`，则要使用的正则 `^From`。:
 
@@ -453,7 +453,7 @@ None
 
 ## `\A`
 
-​	仅匹配字符串的开头。 当不在 [`MULTILINE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.MULTILINE) 模式时，`\A` 和 `^` 实际上是相同的。 在 [`MULTILINE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.MULTILINE) 模式中，它们是不同的: `\A` 仍然只在字符串的开头匹配，但 `^` 可以匹配在换行符之后的字符串内的任何位置。
+​	仅匹配字符串的开头。 当不在 [`MULTILINE`]({{< ref "/library/text/re#re.MULTILINE" >}}) 模式时，`\A` 和 `^` 实际上是相同的。 在 [`MULTILINE`]({{< ref "/library/text/re#re.MULTILINE" >}}) 模式中，它们是不同的: `\A` 仍然只在字符串的开头匹配，但 `^` 可以匹配在换行符之后的字符串内的任何位置。
 
 ## `\Z`
 
@@ -518,7 +518,7 @@ To: editor@example.com
 (0, 10)
 ```
 
-​	用 `'('`，`')'` 表示的组也捕获它们匹配的文本的起始和结束索引；这可以通过将参数传递给 [`group()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.group)、[`start()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.start)、[`end()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.end) 以及 [`span()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.span)。 组从 0 开始编号。组 0 始终存在；它表示整个正则，所以 [匹配对象](https://docs.python.org/zh-cn/3.13/library/re.html#match-objects) 方法都将组 0 作为默认参数。 稍后我们将看到如何表达不捕获它们匹配的文本范围的组。:
+​	用 `'('`，`')'` 表示的组也捕获它们匹配的文本的起始和结束索引；这可以通过将参数传递给 [`group()`]({{< ref "/library/text/re#re.Match.group" >}})、[`start()`]({{< ref "/library/text/re#re.Match.start" >}})、[`end()`]({{< ref "/library/text/re#re.Match.end" >}}) 以及 [`span()`]({{< ref "/library/text/re#re.Match.span" >}})。 组从 0 开始编号。组 0 始终存在；它表示整个正则，所以 [匹配对象]({{< ref "/library/text/re#match-objects" >}}) 方法都将组 0 作为默认参数。 稍后我们将看到如何表达不捕获它们匹配的文本范围的组。:
 
 
 
@@ -546,7 +546,7 @@ To: editor@example.com
 'b'
 ```
 
-[`group()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.group) 可以一次传递多个组号，在这种情况下，它将返回一个包含这些组的相应值的元组。:
+[`group()`]({{< ref "/library/text/re#re.Match.group" >}}) 可以一次传递多个组号，在这种情况下，它将返回一个包含这些组的相应值的元组。:
 
 
 
@@ -555,7 +555,7 @@ To: editor@example.com
 ('b', 'abc', 'b')
 ```
 
-[`groups()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.groups) 方法返回一个元组，其中包含所有子组的字符串，从1到最后一个子组。:
+[`groups()`]({{< ref "/library/text/re#re.Match.groups" >}}) 方法返回一个元组，其中包含所有子组的字符串，从1到最后一个子组。:
 
 
 
@@ -607,7 +607,7 @@ To: editor@example.com
 
 ​	更重要的功能是命名组：不是通过数字引用它们，而是可以通过名称引用组。
 
-​	命名组的语法是Python特定的扩展之一: `(?P<name>...)`。 *name* 显然是该组的名称。 命名组的行为与捕获组完全相同，并且还将名称与组关联。 处理捕获组的 [匹配对象](https://docs.python.org/zh-cn/3.13/library/re.html#match-objects) 方法都接受按编号引用组的整数或包含所需组名的字符串。 命名组仍然是给定的数字，因此你可以通过两种方式检索有关组的信息:
+​	命名组的语法是Python特定的扩展之一: `(?P<name>...)`。 *name* 显然是该组的名称。 命名组的行为与捕获组完全相同，并且还将名称与组关联。 处理捕获组的 [匹配对象]({{< ref "/library/text/re#match-objects" >}}) 方法都接受按编号引用组的整数或包含所需组名的字符串。 命名组仍然是给定的数字，因此你可以通过两种方式检索有关组的信息:
 
 
 
@@ -620,7 +620,7 @@ To: editor@example.com
 'Lots'
 ```
 
-​	此外，你可以通过 [`groupdict()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Match.groupdict) 将命名分组提取为一个字典:
+​	此外，你可以通过 [`groupdict()`]({{< ref "/library/text/re#re.Match.groupdict" >}}) 将命名分组提取为一个字典:
 
 
 
@@ -630,7 +630,7 @@ To: editor@example.com
 {'first': 'Jane', 'last': 'Doe'}
 ```
 
-​	命名分组很方便因为它们让你可以使用容易记忆的名称，而不必记忆数字。 下面是一个来自 [`imaplib`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#module-imaplib) 模块的正则表达式示例:
+​	命名分组很方便因为它们让你可以使用容易记忆的名称，而不必记忆数字。 下面是一个来自 [`imaplib`]({{< ref "/library/internet/imaplib#module-imaplib" >}}) 模块的正则表达式示例:
 
 ```
 InternalDate = re.compile(r'INTERNALDATE "'
@@ -715,7 +715,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 ### 分割字符串
 
-​	模式的 [`split()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.split) 方法在正则匹配的任何地方拆分字符串，返回一个片段列表。 它类似于 [`split()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.split) 字符串方法，但在分隔符的分隔符中提供了更多的通用性；字符串的 `split()` 仅支持按空格或固定字符串进行拆分。 正如你所期望的那样，还有一个模块级 [`re.split()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.split) 函数。
+​	模式的 [`split()`]({{< ref "/library/text/re#re.Pattern.split" >}}) 方法在正则匹配的任何地方拆分字符串，返回一个片段列表。 它类似于 [`split()`]({{< ref "/library/stdtypes#str.split" >}}) 字符串方法，但在分隔符的分隔符中提供了更多的通用性；字符串的 `split()` 仅支持按空格或固定字符串进行拆分。 正如你所期望的那样，还有一个模块级 [`re.split()`]({{< ref "/library/text/re#re.split" >}}) 函数。
 
 ## .**split**(*string*[, *maxsplit=0*])
 
@@ -746,7 +746,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 ['This', '... ', 'is', ' ', 'a', ' ', 'test', '.', '']
 ```
 
-​	模块级函数 [`re.split()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.split) 添加要正则作为第一个参数，但在其他方面是相同的。:
+​	模块级函数 [`re.split()`]({{< ref "/library/text/re#re.split" >}}) 添加要正则作为第一个参数，但在其他方面是相同的。:
 
 
 
@@ -761,7 +761,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 ### 搜索和替换
 
-​	另一个常见任务是找到模式的所有匹配项，并用不同的字符串替换它们。 [`sub()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.sub) 方法接受一个替换值，可以是字符串或函数，也可以是要处理的字符串。
+​	另一个常见任务是找到模式的所有匹配项，并用不同的字符串替换它们。 [`sub()`]({{< ref "/library/text/re#re.Pattern.sub" >}}) 方法接受一个替换值，可以是字符串或函数，也可以是要处理的字符串。
 
 ## .**sub**(*replacement*, *string*[, *count=0*])
 
@@ -769,7 +769,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 ​	可选参数 *count* 是要替换的模式最大的出现次数；*count* 必须是非负整数。 默认值 0 表示替换所有。
 
-​	这是一个使用 [`sub()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.sub) 方法的简单示例。 它用 `colour` 这个词取代颜色名称:
+​	这是一个使用 [`sub()`]({{< ref "/library/text/re#re.Pattern.sub" >}}) 方法的简单示例。 它用 `colour` 这个词取代颜色名称:
 
 
 
@@ -781,7 +781,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 'colour socks and red shoes'
 ```
 
-[`subn()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.Pattern.subn) 方法完成相同的工作，但返回一个包含新字符串值和已执行的替换次数的 2 元组:
+[`subn()`]({{< ref "/library/text/re#re.Pattern.subn" >}}) 方法完成相同的工作，但返回一个包含新字符串值和已执行的替换次数的 2 元组:
 
 
 
@@ -829,7 +829,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 'subsection{First}'
 ```
 
-*replacement* 也可以是一个函数，它可以为你提供更多控制。 如果 *replacement* 是一个函数，则为 *pattern* 的每次非重叠出现将调用该函数。 在每次调用时，函数都会传递一个匹配的 [匹配对象](https://docs.python.org/zh-cn/3.13/library/re.html#match-objects) 参数，并可以使用此信息计算所需的替换字符串并将其返回。
+*replacement* 也可以是一个函数，它可以为你提供更多控制。 如果 *replacement* 是一个函数，则为 *pattern* 的每次非重叠出现将调用该函数。 在每次调用时，函数都会传递一个匹配的 [匹配对象]({{< ref "/library/text/re#match-objects" >}}) 参数，并可以使用此信息计算所需的替换字符串并将其返回。
 
 ​	在以下示例中，替换函数将小数转换为十六进制:
 
@@ -846,7 +846,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 'Call 0xffd2 for printing, 0xc000 for user code.'
 ```
 
-​	使用模块级别 [`re.sub()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.sub) 函数时，模式作为第一个参数传递。 模式可以是对象或字符串；如果需要指定正则表达式标志，则必须使用模式对象作为第一个参数，或者在模式字符串中使用嵌入式修饰符，例如: `sub("(?i)b+", "x", "bbbb BBBB")` 返回 `'x x'`。
+​	使用模块级别 [`re.sub()`]({{< ref "/library/text/re#re.sub" >}}) 函数时，模式作为第一个参数传递。 模式可以是对象或字符串；如果需要指定正则表达式标志，则必须使用模式对象作为第一个参数，或者在模式字符串中使用嵌入式修饰符，例如: `sub("(?i)b+", "x", "bbbb BBBB")` 返回 `'x x'`。
 
 ## 常见问题
 
@@ -854,17 +854,17 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 ### 使用字符串方法
 
-​	有时使用 [`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 模块是一个错误。 如果你匹配固定字符串或单个字符类，并且你没有使用任何 [`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 功能，例如 [`IGNORECASE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.IGNORECASE) 标志，那么正则表达式的全部功能可能不是必需的。 字符串有几种方法可以使用固定字符串执行操作，它们通常要快得多，因为实现是一个针对此目的而优化的单个小 C 循环，而不是大型、更通用的正则表达式引擎。
+​	有时使用 [`re`]({{< ref "/library/text/re#module-re" >}}) 模块是一个错误。 如果你匹配固定字符串或单个字符类，并且你没有使用任何 [`re`]({{< ref "/library/text/re#module-re" >}}) 功能，例如 [`IGNORECASE`]({{< ref "/library/text/re#re.IGNORECASE" >}}) 标志，那么正则表达式的全部功能可能不是必需的。 字符串有几种方法可以使用固定字符串执行操作，它们通常要快得多，因为实现是一个针对此目的而优化的单个小 C 循环，而不是大型、更通用的正则表达式引擎。
 
-​	一个例子可能是用另一个固定字符串替换一个固定字符串；例如，你可以用 `deed` 替换 `word` 。 [`re.sub()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.sub) 看起来像是用于此的函数，但请考虑 [`replace()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.replace) 方法。 注意 `replace()` 也会替换单词里面的 `word` ，把 `swordfish` 变成 `sdeedfish` ，但简单的正则 `word` 也会这样做。 （为了避免对单词的部分进行替换，模式必须是 `\bword\b`，以便要求 `word` 在任何一方都有一个单词边界。这使得工作超出了 `replace()` 的能力。）
+​	一个例子可能是用另一个固定字符串替换一个固定字符串；例如，你可以用 `deed` 替换 `word` 。 [`re.sub()`]({{< ref "/library/text/re#re.sub" >}}) 看起来像是用于此的函数，但请考虑 [`replace()`]({{< ref "/library/stdtypes#str.replace" >}}) 方法。 注意 `replace()` 也会替换单词里面的 `word` ，把 `swordfish` 变成 `sdeedfish` ，但简单的正则 `word` 也会这样做。 （为了避免对单词的部分进行替换，模式必须是 `\bword\b`，以便要求 `word` 在任何一方都有一个单词边界。这使得工作超出了 `replace()` 的能力。）
 
-​	另一个常见任务是从字符串中删除单个字符的每个匹配项或将其替换为另一个字符。 你可以用 `re.sub('\n', ' ', S)` 之类的东西来做这件事，但是 [`translate()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.translate) 能够完成这两项任务，并且比任何正则表达式都快。
+​	另一个常见任务是从字符串中删除单个字符的每个匹配项或将其替换为另一个字符。 你可以用 `re.sub('\n', ' ', S)` 之类的东西来做这件事，但是 [`translate()`]({{< ref "/library/stdtypes#str.translate" >}}) 能够完成这两项任务，并且比任何正则表达式都快。
 
-​	简而言之，在转向 [`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 模块之前，请考虑是否可以使用更快更简单的字符串方法解决问题。
+​	简而言之，在转向 [`re`]({{< ref "/library/text/re#module-re" >}}) 模块之前，请考虑是否可以使用更快更简单的字符串方法解决问题。
 
 ### match() 和 search()
 
-​	The [`match()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.match) function only checks if the RE matches at the beginning of the string while [`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.search) will scan forward through the string for a match. It's important to keep this distinction in mind. Remember, `match()` will only report a successful match which will start at 0; if the match wouldn't start at zero, `match()` will *not* report it.
+​	The [`match()`]({{< ref "/library/text/re#re.match" >}}) function only checks if the RE matches at the beginning of the string while [`search()`]({{< ref "/library/text/re#re.search" >}}) will scan forward through the string for a match. It's important to keep this distinction in mind. Remember, `match()` will only report a successful match which will start at 0; if the match wouldn't start at zero, `match()` will *not* report it.
 
 
 
@@ -875,7 +875,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 None
 ```
 
-​	另一方面， [`search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.search) 将向前扫描字符串，报告它找到的第一个匹配项。:
+​	另一方面， [`search()`]({{< ref "/library/text/re#re.search" >}}) 将向前扫描字符串，报告它找到的第一个匹配项。:
 
 
 
@@ -886,9 +886,9 @@ None
 (2, 7)
 ```
 
-​	有时你会被诱惑继续使用 [`re.match()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.match) ，只需在你的正则前面添加 `.*` 。抵制这种诱惑并使用 [`re.search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.search) 代替。 正则表达式编译器对正则进行一些分析，以加快寻找匹配的过程。 其中一个分析可以确定匹配的第一个特征必须是什么；例如，以 `Crow` 开头的模式必须与 `'C'` 匹配。 分析让引擎快速扫描字符串，寻找起始字符，只在找到 `'C'` 时尝试完全匹配。
+​	有时你会被诱惑继续使用 [`re.match()`]({{< ref "/library/text/re#re.match" >}}) ，只需在你的正则前面添加 `.*` 。抵制这种诱惑并使用 [`re.search()`]({{< ref "/library/text/re#re.search" >}}) 代替。 正则表达式编译器对正则进行一些分析，以加快寻找匹配的过程。 其中一个分析可以确定匹配的第一个特征必须是什么；例如，以 `Crow` 开头的模式必须与 `'C'` 匹配。 分析让引擎快速扫描字符串，寻找起始字符，只在找到 `'C'` 时尝试完全匹配。
 
-​	添加 `.*` 会使这个优化失效，需要扫描到字符串的末尾，然后回溯以找到正则的其余部分的匹配。 使用 [`re.search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.search) 代替。
+​	添加 `.*` 会使这个优化失效，需要扫描到字符串的末尾，然后回溯以找到正则的其余部分的匹配。 使用 [`re.search()`]({{< ref "/library/text/re#re.search" >}}) 代替。
 
 ### 贪婪与非贪婪
 
@@ -923,7 +923,7 @@ None
 
 ​	到目前为止，你可能已经注意到正则表达式是一种非常紧凑的表示法，但它们并不是非常易读。 具有中等复杂度的正则可能会成为反斜杠、括号和元字符的冗长集合，使其难以阅读和理解。
 
-​	对于这样的正则，在编译正则表达式时指定 [`re.VERBOSE`](https://docs.python.org/zh-cn/3.13/library/re.html#re.VERBOSE) 标志可能会有所帮助，因为它允许你更清楚地格式化正则表达式。
+​	对于这样的正则，在编译正则表达式时指定 [`re.VERBOSE`]({{< ref "/library/text/re#re.VERBOSE" >}}) 标志可能会有所帮助，因为它允许你更清楚地格式化正则表达式。
 
 `re.VERBOSE` 标志有几种效果。 正则表达式中的 *不是* 在字符类中的空格将被忽略。 这意味着表达式如 `dog | cat` 等同于不太可读的 `dog|cat` ，但 `[a b]` 仍将匹配字符 `'a'` 、 `'b'` 或空格。 此外，你还可以在正则中放置注释；注释从 `#` 字符扩展到下一个换行符。 当与三引号字符串一起使用时，这使正则的格式更加整齐:
 

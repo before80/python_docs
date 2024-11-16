@@ -8,37 +8,37 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/weakref.html](https://docs.python.org/zh-cn/3.13/library/weakref.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/weakref.html](https://docs.python.org/zh-cn/3.13/library/weakref.html)
 >
 > 收录该文档的时间：`2024-11-15T11:18:41+08:00`
 
-# [`weakref`](https://docs.python.org/zh-cn/3.13/library/weakref.html#module-weakref) --- 弱引用
+# [`weakref`]({{< ref "/library/datatypes/weakref#module-weakref" >}}) --- 弱引用
 
 **源代码：** [Lib/weakref.py](https://github.com/python/cpython/tree/3.13/Lib/weakref.py)
 
 ------
 
-[`weakref`](https://docs.python.org/zh-cn/3.13/library/weakref.html#module-weakref) 模块允许 Python 程序员创建对象的 *弱引用* 。
+[`weakref`]({{< ref "/library/datatypes/weakref#module-weakref" >}}) 模块允许 Python 程序员创建对象的 *弱引用* 。
 
 ​	在下文中，术语 *所指对象* 表示弱引用所指向的对象。
 
-​	对象的弱引用不能保证对象存活：当所指对像的引用只剩弱引用时， [垃圾回收](https://docs.python.org/zh-cn/3.13/glossary.html#term-garbage-collection) 可以销毁所指对象，并将其内存重新用于其它用途。但是，在实际销毁对象之前，即使没有强引用，弱引用也能返回该对象。
+​	对象的弱引用不能保证对象存活：当所指对像的引用只剩弱引用时， [垃圾回收]({{< ref "/glossary/idx#term-garbage-collection" >}}) 可以销毁所指对象，并将其内存重新用于其它用途。但是，在实际销毁对象之前，即使没有强引用，弱引用也能返回该对象。
 
 ​	弱引用的一个主要用途是实现一个存储大型对象的缓存或映射，但又不希望该大型对象仅因为它只出现在这个缓存或映射中而保持存活。
 
-​	例如，如果你有许多大型二进制图像对象，你可能希望为每个对象关联一个名称。如果你使用 Python 字典来将名称映射到图像，或将图像映射到名称，那么图像对象将因为它们在字典中作为值或键而保持存活。 [`weakref`](https://docs.python.org/zh-cn/3.13/library/weakref.html#module-weakref) 模块提供的 [`WeakKeyDictionary`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.WeakKeyDictionary) 和 [`WeakValueDictionary`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.WeakValueDictionary) 类可以替代 Python 字典，它们使用弱引用来构造映射，这种映射不会仅因为对象出现在映射中而使对象保持存活。例如，如果一个图像对象是 [`WeakValueDictionary`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.WeakValueDictionary) 中的值，那么当对该图像对象的剩余引用是弱映射对象所持有的弱引用时，垃圾回收器将回收该对象，并删除弱映射对象中相应的条目。
+​	例如，如果你有许多大型二进制图像对象，你可能希望为每个对象关联一个名称。如果你使用 Python 字典来将名称映射到图像，或将图像映射到名称，那么图像对象将因为它们在字典中作为值或键而保持存活。 [`weakref`]({{< ref "/library/datatypes/weakref#module-weakref" >}}) 模块提供的 [`WeakKeyDictionary`]({{< ref "/library/datatypes/weakref#weakref.WeakKeyDictionary" >}}) 和 [`WeakValueDictionary`]({{< ref "/library/datatypes/weakref#weakref.WeakValueDictionary" >}}) 类可以替代 Python 字典，它们使用弱引用来构造映射，这种映射不会仅因为对象出现在映射中而使对象保持存活。例如，如果一个图像对象是 [`WeakValueDictionary`]({{< ref "/library/datatypes/weakref#weakref.WeakValueDictionary" >}}) 中的值，那么当对该图像对象的剩余引用是弱映射对象所持有的弱引用时，垃圾回收器将回收该对象，并删除弱映射对象中相应的条目。
 
-[`WeakKeyDictionary`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.WeakKeyDictionary) 和 [`WeakValueDictionary`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.WeakValueDictionary) 在它们的实现中使用了弱引用，并在弱引用上设置当键或值被垃圾回收器回收时通知弱字典的回调函数。 [`WeakSet`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.WeakSet) 实现了 [`set`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#set) 接口，但像 [`WeakKeyDictionary`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.WeakKeyDictionary) 一样，只持有其元素的弱引用。
+[`WeakKeyDictionary`]({{< ref "/library/datatypes/weakref#weakref.WeakKeyDictionary" >}}) 和 [`WeakValueDictionary`]({{< ref "/library/datatypes/weakref#weakref.WeakValueDictionary" >}}) 在它们的实现中使用了弱引用，并在弱引用上设置当键或值被垃圾回收器回收时通知弱字典的回调函数。 [`WeakSet`]({{< ref "/library/datatypes/weakref#weakref.WeakSet" >}}) 实现了 [`set`]({{< ref "/library/stdtypes#set" >}}) 接口，但像 [`WeakKeyDictionary`]({{< ref "/library/datatypes/weakref#weakref.WeakKeyDictionary" >}}) 一样，只持有其元素的弱引用。
 
-[`finalize`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.finalize) 提供了一种直接的方法来注册当对象被垃圾收集时要调用的清理函数。这比在普通的弱引用上设置回调函数的方式更简单，因为模块会自动确保对象被回收前终结器一直保持存活。
+[`finalize`]({{< ref "/library/datatypes/weakref#weakref.finalize" >}}) 提供了一种直接的方法来注册当对象被垃圾收集时要调用的清理函数。这比在普通的弱引用上设置回调函数的方式更简单，因为模块会自动确保对象被回收前终结器一直保持存活。
 
-​	这些弱容器类型之一或者 [`finalize`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.finalize) 就是大多数程序所需要的——通常不需要直接创建自己的弱引用。[`weakref`](https://docs.python.org/zh-cn/3.13/library/weakref.html#module-weakref) 模块暴露了底层机制，以便用于高级用途。
+​	这些弱容器类型之一或者 [`finalize`]({{< ref "/library/datatypes/weakref#weakref.finalize" >}}) 就是大多数程序所需要的——通常不需要直接创建自己的弱引用。[`weakref`]({{< ref "/library/datatypes/weakref#module-weakref" >}}) 模块暴露了底层机制，以便用于高级用途。
 
-​	并非所有对象都可以被弱引用。支持弱引用的对象包括类实例、用 Python（而非用 C）编写的函数、实例方法、集合、冻结集合、某些 [文件对象](https://docs.python.org/zh-cn/3.13/glossary.html#term-file-object)、[生成器](https://docs.python.org/zh-cn/3.13/glossary.html#term-generator)、类型对象、套接字、数组、双端队列、正则表达式模式对象以及代码对象。
+​	并非所有对象都可以被弱引用。支持弱引用的对象包括类实例、用 Python（而非用 C）编写的函数、实例方法、集合、冻结集合、某些 [文件对象]({{< ref "/glossary/idx#term-file-object" >}})、[生成器]({{< ref "/glossary/idx#term-generator" >}})、类型对象、套接字、数组、双端队列、正则表达式模式对象以及代码对象。
 
-*在 3.2 版本发生变更:* 添加了对 thread.lock，threading.Lock 和代码对象的支持。
+> 在 3.2 版本发生变更: 添加了对 thread.lock，threading.Lock 和代码对象的支持。
 
-​	一些内置类型，如 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 和 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict)，不直接支持弱引用，但可以通过子类化添加支持:
+​	一些内置类型，如 [`list`]({{< ref "/library/stdtypes#list" >}}) 和 [`dict`]({{< ref "/library/stdtypes#dict" >}})，不直接支持弱引用，但可以通过子类化添加支持:
 
 ```
 class Dict(dict):
@@ -47,39 +47,39 @@ class Dict(dict):
 obj = Dict(red=1, green=2, blue=3)   # 此对象是可弱引用的
 ```
 
-**CPython 实现细节：** 其他内置类型，如 [`tuple`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#tuple) 和 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int)，不支持弱引用，即使通过子类化也不支持。
+**CPython 实现细节：** 其他内置类型，如 [`tuple`]({{< ref "/library/stdtypes#tuple" >}}) 和 [`int`]({{< ref "/library/functions#int" >}})，不支持弱引用，即使通过子类化也不支持。
 
-​	可以轻松地使扩展类型支持弱引用；参见 [弱引用支持](https://docs.python.org/zh-cn/3.13/extending/newtypes.html#weakref-support)。
+​	可以轻松地使扩展类型支持弱引用；参见 [弱引用支持]({{< ref "/extending/newtypes#weakref-support" >}})。
 
-​	当为某个给定类型定义了 `__slots__` 时，弱引用支持会被禁用，除非将 `'__weakref__'` 字符串也加入到 `__slots__` 声明的字符串序列中。 请参阅 [__slots__ 文档](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#slots) 了解详情。
+​	当为某个给定类型定义了 `__slots__` 时，弱引用支持会被禁用，除非将 `'__weakref__'` 字符串也加入到 `__slots__` 声明的字符串序列中。 请参阅 [__slots__ 文档]({{< ref "/reference/datamodel#slots" >}}) 了解详情。
 
 ## *class* weakref.**ref**(*object*[, *callback*])
 
-​	返回 *object* 的弱引用。如果所指对象存活，则可以通过调用引用对象来获取原始对象；如果所指对象不存在，则调用引用对象将得到 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None) 。如果提供了值不是 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None) 的 *callback*，并且返回的弱引用对象仍然存活，则在对象即将终结时将调用回调函数；弱引用对象将作为回调函数的唯一参数传递；然后所指对象将不再可用。
+​	返回 *object* 的弱引用。如果所指对象存活，则可以通过调用引用对象来获取原始对象；如果所指对象不存在，则调用引用对象将得到 [`None`]({{< ref "/library/constants#None" >}}) 。如果提供了值不是 [`None`]({{< ref "/library/constants#None" >}}) 的 *callback*，并且返回的弱引用对象仍然存活，则在对象即将终结时将调用回调函数；弱引用对象将作为回调函数的唯一参数传递；然后所指对象将不再可用。
 
 ​	允许为同一个对象的构造多个弱引用。每个弱引用注册的回调函数将按从最近注册的回调函数，到最早注册的回调函数的顺序调用。
 
-​	由回调函数引发的异常将记录于标准错误输入，但无法传播该异常；这些异常的处理方式与对象 [`__del__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__del__) 方法引发异常的处理方式相同。
+​	由回调函数引发的异常将记录于标准错误输入，但无法传播该异常；这些异常的处理方式与对象 [`__del__()`]({{< ref "/reference/datamodel#object.__del__" >}}) 方法引发异常的处理方式相同。
 
-​	如果 *object* 可哈希，则弱引用也 [可哈希](https://docs.python.org/zh-cn/3.13/glossary.html#term-hashable)。即使在 *object* 被删除之后，弱引用仍将保持其哈希值。如果在 *object* 被删除之后才首次调用 [`hash()`](https://docs.python.org/zh-cn/3.13/library/functions.html#hash)，则该调用将引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
+​	如果 *object* 可哈希，则弱引用也 [可哈希]({{< ref "/glossary/idx#term-hashable" >}})。即使在 *object* 被删除之后，弱引用仍将保持其哈希值。如果在 *object* 被删除之后才首次调用 [`hash()`]({{< ref "/library/functions#hash" >}})，则该调用将引发 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}})。
 
 ​	弱引用支持相等性测试，但不支持排序。如果所指对象仍然存活，两个引用具有与它们的所指对象具有一致的相等关系（无论 *callback* 是否相同）。如果删除了任一所指对象，则仅在两个引用指向同一对象时，二者才相等。
 
 ​	这是一个可子类化的类型，而非一个工厂函数。
 
-## **__callback__**
+## `__callback__`
 
 ​	这个只读属性会返回当前关联到弱引用的回调函数。 如果回调函数不存在，或弱引用的所指对象已不存在，则此属性的值为 `None`。
 
-*在 3.4 版本发生变更:* 添加了 [`__callback__`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.ref.__callback__) 属性。
+> 在 3.4 版本发生变更: 添加了 [`__callback__`]({{< ref "/library/datatypes/weakref#weakref.ref.__callback__" >}}) 属性。
 
 ## weakref.**proxy**(*object*[, *callback*])
 
-​	返回一个使用弱引用的 *object* 代理。此函数支持在大多数上下文中使用代理，而不要求显式地解引用弱引用对象。返回的对象类型将为 `ProxyType` 或 `CallableProxyType`，具体取决于 *object* 是否为可调用对象。无论所指对象是否可哈希，代理对象都不属于 [可哈希](https://docs.python.org/zh-cn/3.13/glossary.html#term-hashable) 对象；这避免了与它们的基本可变性质相关的许多问题，且防止代理被用作字典的键。*callback* 形参含义与 [`ref()`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.ref) 函数的同名形参含义相同。
+​	返回一个使用弱引用的 *object* 代理。此函数支持在大多数上下文中使用代理，而不要求显式地解引用弱引用对象。返回的对象类型将为 `ProxyType` 或 `CallableProxyType`，具体取决于 *object* 是否为可调用对象。无论所指对象是否可哈希，代理对象都不属于 [可哈希]({{< ref "/glossary/idx#term-hashable" >}}) 对象；这避免了与它们的基本可变性质相关的许多问题，且防止代理被用作字典的键。*callback* 形参含义与 [`ref()`]({{< ref "/library/datatypes/weakref#weakref.ref" >}}) 函数的同名形参含义相同。
 
-​	在所指对象被作为垃圾回收后访问代理对象的属性将引发 [`ReferenceError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ReferenceError)。
+​	在所指对象被作为垃圾回收后访问代理对象的属性将引发 [`ReferenceError`]({{< ref "/library/exceptions#ReferenceError" >}})。
 
-*在 3.8 版本发生变更:* 扩展代理对象所支持的运算符，包括矩阵乘法运算符 `@` 和 `@=`。
+> 在 3.8 版本发生变更: 扩展代理对象所支持的运算符，包括矩阵乘法运算符 `@` 和 `@=`。
 
 ## weakref.**getweakrefcount**(*object*)
 
@@ -122,9 +122,9 @@ obj = Dict(red=1, green=2, blue=3)   # 此对象是可弱引用的
 >>> del k1      # d = {k2: 2}
 ```
 
-*在 3.9 版本发生变更:* 增加了对 `|` 和 `|=` 运算符的支持，相关说明见 [**PEP 584**](https://peps.python.org/pep-0584/)。
+> 在 3.9 版本发生变更: 增加了对 `|` 和 `|=` 运算符的支持，相关说明见 [**PEP 584**](https://peps.python.org/pep-0584/)。
 
-[`WeakKeyDictionary`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.WeakKeyDictionary) 对象具有一个额外方法，可以直接公开内部引用。这些引用不保证在它们被使用时仍然保持“存活”，因此这些引用的调用结果需要在使用前进行检测。 此方法可用于避免创建会导致垃圾回收器将保留键超出实际需要时长的引用。
+[`WeakKeyDictionary`]({{< ref "/library/datatypes/weakref#weakref.WeakKeyDictionary" >}}) 对象具有一个额外方法，可以直接公开内部引用。这些引用不保证在它们被使用时仍然保持“存活”，因此这些引用的调用结果需要在使用前进行检测。 此方法可用于避免创建会导致垃圾回收器将保留键超出实际需要时长的引用。
 
 ## WeakKeyDictionary.**keyrefs**()
 
@@ -134,9 +134,9 @@ obj = Dict(red=1, green=2, blue=3)   # 此对象是可弱引用的
 
 ​	弱引用值的映射类。当不再存在对该值的强引用时，字典中的条目将被丢弃。
 
-*在 3.9 版本发生变更:* 增加了对 `|` 和 `|=` 运算符的支持，相关说明见 [**PEP 584**](https://peps.python.org/pep-0584/)。
+> 在 3.9 版本发生变更: 增加了对 `|` 和 `|=` 运算符的支持，相关说明见 [**PEP 584**](https://peps.python.org/pep-0584/)。
 
-[`WeakValueDictionary`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.WeakValueDictionary) 对象具有一个额外方法，此方法存在与 [`WeakKeyDictionary.keyrefs()`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.WeakKeyDictionary.keyrefs) 方法相同的问题。
+[`WeakValueDictionary`]({{< ref "/library/datatypes/weakref#weakref.WeakValueDictionary" >}}) 对象具有一个额外方法，此方法存在与 [`WeakKeyDictionary.keyrefs()`]({{< ref "/library/datatypes/weakref#weakref.WeakKeyDictionary.keyrefs" >}}) 方法相同的问题。
 
 ## WeakValueDictionary.**valuerefs**()
 
@@ -148,7 +148,7 @@ obj = Dict(red=1, green=2, blue=3)   # 此对象是可弱引用的
 
 ## *class* weakref.**WeakMethod**(*method*[, *callback*])
 
-​	一个模拟对绑定方法（即在类中定义并在实例中查找的方法）进行弱引用的自定义 [`ref`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.ref) 子类。 由于绑定方法是临时性的，标准弱引用无法保持它。 [`WeakMethod`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.WeakMethod) 包含特别代码用来重新创建绑定方法，直到对象或初始函数被销毁:
+​	一个模拟对绑定方法（即在类中定义并在实例中查找的方法）进行弱引用的自定义 [`ref`]({{< ref "/library/datatypes/weakref#weakref.ref" >}}) 子类。 由于绑定方法是临时性的，标准弱引用无法保持它。 [`WeakMethod`]({{< ref "/library/datatypes/weakref#weakref.WeakMethod" >}}) 包含特别代码用来重新创建绑定方法，直到对象或初始函数被销毁:
 
 
 
@@ -172,7 +172,7 @@ method called!
 >>>
 ```
 
-*callback* 与 [`ref()`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.ref) 函数的同名形参含义相同。
+*callback* 与 [`ref()`]({{< ref "/library/datatypes/weakref#weakref.ref" >}}) 函数的同名形参含义相同。
 
 > Added in version 3.4.
 >
@@ -181,25 +181,25 @@ method called!
 
 ​	返回一个可调用的终结器对象，该对象将在 *obj* 作为垃圾回收时被调用。与普通的弱引用不同，终结器将总是存活，直到引用对象被回收，这极大地简化了生命周期管理。
 
-​	终结器总是被视为 *存活* 直到它被调用（显式调用或在垃圾回收时隐式调用），调用之后它将 *死亡*。 调用存活的终结器将返回 `func(*arg, **kwargs)` 的求值结果，而调用死亡的终结器将返回 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None)。
+​	终结器总是被视为 *存活* 直到它被调用（显式调用或在垃圾回收时隐式调用），调用之后它将 *死亡*。 调用存活的终结器将返回 `func(*arg, **kwargs)` 的求值结果，而调用死亡的终结器将返回 [`None`]({{< ref "/library/constants#None" >}})。
 
-​	在垃圾收集期间由终结器回调所引发的异常将显示在标准错误输出中，但无法被传播。 它们会按与对象的 [`__del__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__del__) 方法或或弱引用的回调所引发的异常相同的方式被处理。
+​	在垃圾收集期间由终结器回调所引发的异常将显示在标准错误输出中，但无法被传播。 它们会按与对象的 [`__del__()`]({{< ref "/reference/datamodel#object.__del__" >}}) 方法或或弱引用的回调所引发的异常相同的方式被处理。
 
-​	当程序退出时，剩余的存活终结器会被调用，除非它们的 [`atexit`](https://docs.python.org/zh-cn/3.13/library/atexit.html#module-atexit) 属性已被设为假值。 它们会按与创建时相反的顺序被调用。
+​	当程序退出时，剩余的存活终结器会被调用，除非它们的 [`atexit`]({{< ref "/library/python/atexit#module-atexit" >}}) 属性已被设为假值。 它们会按与创建时相反的顺序被调用。
 
-​	终结器在 [interpreter shutdown](https://docs.python.org/zh-cn/3.13/glossary.html#term-interpreter-shutdown) 的后期绝不会发起调用其回调函数，此时模块全局变量很可能已被替换为 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None)。
+​	终结器在 [interpreter shutdown]({{< ref "/glossary/idx#term-interpreter-shutdown" >}}) 的后期绝不会发起调用其回调函数，此时模块全局变量很可能已被替换为 [`None`]({{< ref "/library/constants#None" >}})。
 
-## **__call__**()
+## `__call__`()
 
-​	如果 *self* 为存活状态则将其标记为已死亡，并返回调用 `func(*args, **kwargs)` 的结果。 如果 *self* 已死亡则返回 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None)。
+​	如果 *self* 为存活状态则将其标记为已死亡，并返回调用 `func(*args, **kwargs)` 的结果。 如果 *self* 已死亡则返回 [`None`]({{< ref "/library/constants#None" >}})。
 
 ## **detach**()
 
-​	如果 *self* 为存活状态则将其标记为已死亡，并返回元组 `(obj, func, args, kwargs)`。 如果 *self* 已死亡则返 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None)。
+​	如果 *self* 为存活状态则将其标记为已死亡，并返回元组 `(obj, func, args, kwargs)`。 如果 *self* 已死亡则返 [`None`]({{< ref "/library/constants#None" >}})。
 
 ## **peek**()
 
-​	如果 *self* 为存活状态则返回元组 `(obj, func, args, kwargs)`。 如果 *self* 已死亡则返回 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None)。
+​	如果 *self* 为存活状态则返回元组 `(obj, func, args, kwargs)`。 如果 *self* 已死亡则返回 [`None`]({{< ref "/library/constants#None" >}})。
 
 ## **alive**
 
@@ -207,10 +207,9 @@ method called!
 
 ## **atexit**
 
-​	一个可写的布尔型特征属性，默认为真值。 当程序退出时，它会调用所有 [`atexit`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.finalize.atexit) 为真值的剩余存活终结器。 它们会按与创建时相反的顺序被调用。
+​	一个可写的布尔型特征属性，默认为真值。 当程序退出时，它会调用所有 [`atexit`]({{< ref "/library/datatypes/weakref#weakref.finalize.atexit" >}}) 为真值的剩余存活终结器。 它们会按与创建时相反的顺序被调用。
 
-​	备注
-
+​备注
  
 
 ​	很重要的一点是确保 *func*, *args* 和 *kwargs* 不拥有任何对 *obj* 的引用，无论是直接的或是间接的，否则的话 *obj* 将永远不会被作为垃圾回收。 特别地，*func* 不应当是 *obj* 的一个绑定方法。
@@ -234,9 +233,8 @@ method called!
 
 ​	包含所有代理的类型对象的序列。 这可以用于更方便地检测一个对象是否是代理，而不必依赖于两种代理对象的名称。
 
-​	参见
-
-## [**PEP 205**](https://peps.python.org/pep-0205/) - 弱引用
+​参见
+[**PEP 205**](https://peps.python.org/pep-0205/) - 弱引用
 
 ​	此特性的提议和理由，包括早期实现的链接和其他语言中类似特性的相关信息。
 
@@ -244,7 +242,7 @@ method called!
 
 ## 弱引用对象
 
-​	弱引用对象没有 [`ref.__callback__`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.ref.__callback__) 以外的方法和属性。 一个弱引用对象如果存在，就允许通过调用它来获取引用:
+​	弱引用对象没有 [`ref.__callback__`]({{< ref "/library/datatypes/weakref#weakref.ref.__callback__" >}}) 以外的方法和属性。 一个弱引用对象如果存在，就允许通过调用它来获取引用:
 
 
 
@@ -260,7 +258,7 @@ method called!
 True
 ```
 
-​	如果引用已不存在，则调用引用对象将返回 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None):
+​	如果引用已不存在，则调用引用对象将返回 [`None`]({{< ref "/library/constants#None" >}}):
 
 
 
@@ -285,9 +283,9 @@ else:
 
 ​	使用单独的“存活”测试会在多线程应用中制造竞争条件；其他线程可能导致某个弱引用在该弱引用被调用前就失效；上述的写法在多线程应用和单线程应用中都是安全的。
 
-​	特别版本的 [`ref`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.ref) 对象可以通过子类化来创建。 在 [`WeakValueDictionary`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.WeakValueDictionary) 的实现中就使用了这种方式来减少映射中每个条目的内存开销。 这对于将附加信息关联到引用的情况最为适用，但也可以被用于在调用中插入额外处理来提取引用。
+​	特别版本的 [`ref`]({{< ref "/library/datatypes/weakref#weakref.ref" >}}) 对象可以通过子类化来创建。 在 [`WeakValueDictionary`]({{< ref "/library/datatypes/weakref#weakref.WeakValueDictionary" >}}) 的实现中就使用了这种方式来减少映射中每个条目的内存开销。 这对于将附加信息关联到引用的情况最为适用，但也可以被用于在调用中插入额外处理来提取引用。
 
-​	这个例子演示了如何将 [`ref`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.ref) 的一个子类用于存储有关对象的附加信息并在引用被访问时影响其所返回的值:
+​	这个例子演示了如何将 [`ref`]({{< ref "/library/datatypes/weakref#weakref.ref" >}}) 的一个子类用于存储有关对象的附加信息并在引用被访问时影响其所返回的值:
 
 ```
 import weakref
@@ -334,7 +332,7 @@ def id2obj(oid):
 
 ## 终结器对象
 
-​	使用 [`finalize`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.finalize) 的主要好处在于它能更简便地注册回调函数，而无须保留所返回的终结器对象。 例如
+​	使用 [`finalize`]({{< ref "/library/datatypes/weakref#weakref.finalize" >}}) 的主要好处在于它能更简便地注册回调函数，而无须保留所返回的终结器对象。 例如
 
 
 
@@ -369,7 +367,7 @@ CALLBACK
 >>> del obj                 # callback not called because finalizer dead
 ```
 
-​	你可以使用 [`detach()`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.finalize.detach) 方法来注销一个终结器。 该方法将销毁终结器并返回其被创建时传给构造器的参数。
+​	你可以使用 [`detach()`]({{< ref "/library/datatypes/weakref#weakref.finalize.detach" >}}) 方法来注销一个终结器。 该方法将销毁终结器并返回其被创建时传给构造器的参数。
 
 
 
@@ -385,7 +383,7 @@ CALLBACK
 CALLBACK
 ```
 
-​	除非你将 [`atexit`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.finalize.atexit) 属性设为 [`False`](https://docs.python.org/zh-cn/3.13/library/constants.html#False)，否则终结器在程序退出时如果仍然存活就将被调用。 例如
+​	除非你将 [`atexit`]({{< ref "/library/datatypes/weakref#weakref.finalize.atexit" >}}) 属性设为 [`False`]({{< ref "/library/constants#False" >}})，否则终结器在程序退出时如果仍然存活就将被调用。 例如
 
 
 
@@ -397,7 +395,7 @@ CALLBACK
 obj dead or exiting
 ```
 
-## 比较终结器与 [`__del__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__del__) 方法
+## 比较终结器与 [`__del__()`]({{< ref "/reference/datamodel#object.__del__" >}}) 方法
 
 ​	假设我们想创建一个类，用它的实例来代表临时目录。 当以下事件中的某一个发生时，这个目录应当与其内容一起被删除：
 
@@ -405,7 +403,7 @@ obj dead or exiting
 - 对象的 `remove()` 方法被调用，或
 - 程序退出。
 
-​	我们可以像下面这样尝试使用 [`__del__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__del__) 方法来实现这个类:
+​	我们可以像下面这样尝试使用 [`__del__()`]({{< ref "/reference/datamodel#object.__del__" >}}) 方法来实现这个类:
 
 ```
 class TempDir:
@@ -425,9 +423,9 @@ class TempDir:
         self.remove()
 ```
 
-​	从 Python 3.4 开始，[`__del__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__del__) 方法会不再阻止循环引用被作为垃圾回收，并且模块全局变量在 [interpreter shutdown](https://docs.python.org/zh-cn/3.13/glossary.html#term-interpreter-shutdown) 期间不会再被强制设为 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None)。 因此这段代码在 CPython 上应该会正常运行而不会出现任何问题。
+​	从 Python 3.4 开始，[`__del__()`]({{< ref "/reference/datamodel#object.__del__" >}}) 方法会不再阻止循环引用被作为垃圾回收，并且模块全局变量在 [interpreter shutdown]({{< ref "/glossary/idx#term-interpreter-shutdown" >}}) 期间不会再被强制设为 [`None`]({{< ref "/library/constants#None" >}})。 因此这段代码在 CPython 上应该会正常运行而不会出现任何问题。
 
-​	然而，[`__del__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__del__) 方法的处理严重受影响于具体实现，因为它依赖于解释器的垃圾回收实现方式的内部细节。
+​	然而，[`__del__()`]({{< ref "/reference/datamodel#object.__del__" >}}) 方法的处理严重受影响于具体实现，因为它依赖于解释器的垃圾回收实现方式的内部细节。
 
 ​	更健壮的替代方式可以是定义一个终结器，只引用它所需要的特定函数和对象，而不是获取对整个对象状态的访问权:
 
@@ -456,8 +454,7 @@ def unloading_module():
 weakref.finalize(sys.modules[__name__], unloading_module)
 ```
 
-​	备注
-
+​备注
  
 
-​	如果当程序退出时你恰好在守护线程中创建终结器对象，则有可能该终结器不会在退出时被调用。 但是，在一个守护线程中 [`atexit.register()`](https://docs.python.org/zh-cn/3.13/library/atexit.html#atexit.register), `try: ... finally: ...` 和 `with: ...` 同样不能保证执行清理。
+​	如果当程序退出时你恰好在守护线程中创建终结器对象，则有可能该终结器不会在退出时被调用。 但是，在一个守护线程中 [`atexit.register()`]({{< ref "/library/python/atexit#atexit.register" >}}), `try: ... finally: ...` 和 `with: ...` 同样不能保证执行清理。

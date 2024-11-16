@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/hashlib.html](https://docs.python.org/zh-cn/3.13/library/hashlib.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/hashlib.html](https://docs.python.org/zh-cn/3.13/library/hashlib.html)
 >
 > 收录该文档的时间：`2024-11-15T12:06:46+08:00`
 
@@ -22,38 +22,37 @@ draft = false
 
 ​	本模块针对许多不同的安全哈希和消息摘要算法实现了一个通用接口。 包括了 FIPS 安全哈希算法 SHA1, SHA224, SHA256, SHA384, SHA512, (定义见 [the FIPS 180-4 standard](https://csrc.nist.gov/pubs/fips/180-4/upd1/final)), SHA-3 系列 (定义见 [the FIPS 202 standard](https://csrc.nist.gov/pubs/fips/202/final)) 以及 RSA 的 MD5 算法 (定义见互联网 [**RFC 1321**](https://datatracker.ietf.org/doc/html/rfc1321.html))。 术语 "安全哈希" 和 "消息摘要" 是同义的。 较旧的算法被称为消息摘要。 现代的术语则是安全哈希。
 
-​	备注
-
+​备注
  
 
-​	如果你想找到 adler32 或 crc32 哈希函数，它们在 [`zlib`](https://docs.python.org/zh-cn/3.13/library/zlib.html#module-zlib) 模块中。
+​	如果你想找到 adler32 或 crc32 哈希函数，它们在 [`zlib`]({{< ref "/library/archiving/zlib#module-zlib" >}}) 模块中。
 
 
 
 ## 哈希算法
 
-​	每种类型的 *hash* 都有一个构造器方法。 它们都返回一个具有相同简单接口的哈希对象。 例如，使用 [`sha256()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha256) 创建一个 SHA-256 哈希对象。 你可以使用 [`update`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.update) 方法向这个对象输入 [字节类对象](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object) (通常是 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes))。 在任何时候你都可以使用 [`digest()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.digest) 或 [`hexdigest()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.hexdigest) 方法获得到目前为止输入这个对象的拼接数据的 *digest*。
+​	每种类型的 *hash* 都有一个构造器方法。 它们都返回一个具有相同简单接口的哈希对象。 例如，使用 [`sha256()`]({{< ref "/library/crypto/hashlib#hashlib.sha256" >}}) 创建一个 SHA-256 哈希对象。 你可以使用 [`update`]({{< ref "/library/crypto/hashlib#hashlib.hash.update" >}}) 方法向这个对象输入 [字节类对象]({{< ref "/glossary/idx#term-bytes-like-object" >}}) (通常是 [`bytes`]({{< ref "/library/stdtypes#bytes" >}}))。 在任何时候你都可以使用 [`digest()`]({{< ref "/library/crypto/hashlib#hashlib.hash.digest" >}}) 或 [`hexdigest()`]({{< ref "/library/crypto/hashlib#hashlib.hash.hexdigest" >}}) 方法获得到目前为止输入这个对象的拼接数据的 *digest*。
 
-​	为了允许多线程，当在其构造器或 [`.update`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.update) 方法中计算一次性提供超过 2047 字节数据的哈希时将会释放 Python [GIL](https://docs.python.org/zh-cn/3.13/glossary.html#term-GIL)。
+​	为了允许多线程，当在其构造器或 [`.update`]({{< ref "/library/crypto/hashlib#hashlib.hash.update" >}}) 方法中计算一次性提供超过 2047 字节数据的哈希时将会释放 Python [GIL]({{< ref "/glossary/idx#term-GIL" >}})。
 
-​	本模块中总是存在的哈希算法构造器有 [`sha1()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha1), [`sha224()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha224), [`sha256()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha256), [`sha384()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha384), [`sha512()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha512), [`sha3_224()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_224), [`sha3_256()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_256), [`sha3_384()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_384), [`sha3_512()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_512), [`shake_128()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.shake_128), [`shake_256()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.shake_256), [`blake2b()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.blake2b) 和 [`blake2s()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.blake2s)。 [`md5()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.md5) 通常也是可用的，但在你使用稀有的 "FIPS 兼容" Python 编译版时它可能会缺失或被屏蔽。 这些构造器对应于 [`algorithms_guaranteed`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.algorithms_guaranteed)。
+​	本模块中总是存在的哈希算法构造器有 [`sha1()`]({{< ref "/library/crypto/hashlib#hashlib.sha1" >}}), [`sha224()`]({{< ref "/library/crypto/hashlib#hashlib.sha224" >}}), [`sha256()`]({{< ref "/library/crypto/hashlib#hashlib.sha256" >}}), [`sha384()`]({{< ref "/library/crypto/hashlib#hashlib.sha384" >}}), [`sha512()`]({{< ref "/library/crypto/hashlib#hashlib.sha512" >}}), [`sha3_224()`]({{< ref "/library/crypto/hashlib#hashlib.sha3_224" >}}), [`sha3_256()`]({{< ref "/library/crypto/hashlib#hashlib.sha3_256" >}}), [`sha3_384()`]({{< ref "/library/crypto/hashlib#hashlib.sha3_384" >}}), [`sha3_512()`]({{< ref "/library/crypto/hashlib#hashlib.sha3_512" >}}), [`shake_128()`]({{< ref "/library/crypto/hashlib#hashlib.shake_128" >}}), [`shake_256()`]({{< ref "/library/crypto/hashlib#hashlib.shake_256" >}}), [`blake2b()`]({{< ref "/library/crypto/hashlib#hashlib.blake2b" >}}) 和 [`blake2s()`]({{< ref "/library/crypto/hashlib#hashlib.blake2s" >}})。 [`md5()`]({{< ref "/library/crypto/hashlib#hashlib.md5" >}}) 通常也是可用的，但在你使用稀有的 "FIPS 兼容" Python 编译版时它可能会缺失或被屏蔽。 这些构造器对应于 [`algorithms_guaranteed`]({{< ref "/library/crypto/hashlib#hashlib.algorithms_guaranteed" >}})。
 
-​	如果你的 Python 分发版的 [`hashlib`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#module-hashlib) 是基于提供了其他算法的 OpenSSL 编译版上链接的那么还可能存在一些附加的算法。 其他算法在所有安装版上 *不保证全都可用* 并且仅可通过 [`new()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.new) 使用名称来访问。 参见 [`algorithms_available`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.algorithms_available)。
+​	如果你的 Python 分发版的 [`hashlib`]({{< ref "/library/crypto/hashlib#module-hashlib" >}}) 是基于提供了其他算法的 OpenSSL 编译版上链接的那么还可能存在一些附加的算法。 其他算法在所有安装版上 *不保证全都可用* 并且仅可通过 [`new()`]({{< ref "/library/crypto/hashlib#hashlib.new" >}}) 使用名称来访问。 参见 [`algorithms_available`]({{< ref "/library/crypto/hashlib#hashlib.algorithms_available" >}})。
 
 ​	警告
 
  
 
-​	一些算法具有已知的碰撞弱点（包括 MD5 和 SHA1）。 请参阅本文档末尾的 [Attacks on cryptographic hash algorithms](https://en.wikipedia.org/wiki/Cryptographic_hash_function#Attacks_on_cryptographic_hash_algorithms) 和 [hashlib-seealso](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib-seealso) 小节。
+​	一些算法具有已知的碰撞弱点（包括 MD5 和 SHA1）。 请参阅本文档末尾的 [Attacks on cryptographic hash algorithms](https://en.wikipedia.org/wiki/Cryptographic_hash_function#Attacks_on_cryptographic_hash_algorithms) 和 [hashlib-seealso]({{< ref "/library/crypto/hashlib#hashlib-seealso" >}}) 小节。
 
 > Added in version 3.6:
-> 增加了 SHA3 (Keccak) 和 SHAKE 构造器 [`sha3_224()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_224), [`sha3_256()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_256), [`sha3_384()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_384), [`sha3_512()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_512), [`shake_128()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.shake_128), [`shake_256()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.shake_256)。 并增加了 [`blake2b()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.blake2b) 和 [`blake2s()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.blake2s)。
+> 增加了 SHA3 (Keccak) 和 SHAKE 构造器 [`sha3_224()`]({{< ref "/library/crypto/hashlib#hashlib.sha3_224" >}}), [`sha3_256()`]({{< ref "/library/crypto/hashlib#hashlib.sha3_256" >}}), [`sha3_384()`]({{< ref "/library/crypto/hashlib#hashlib.sha3_384" >}}), [`sha3_512()`]({{< ref "/library/crypto/hashlib#hashlib.sha3_512" >}}), [`shake_128()`]({{< ref "/library/crypto/hashlib#hashlib.shake_128" >}}), [`shake_256()`]({{< ref "/library/crypto/hashlib#hashlib.shake_256" >}})。 并增加了 [`blake2b()`]({{< ref "/library/crypto/hashlib#hashlib.blake2b" >}}) 和 [`blake2s()`]({{< ref "/library/crypto/hashlib#hashlib.blake2s" >}})。
 
-*在 3.9 版本发生变更:* 所有 hashlib 的构造器都接受仅限关键字参数 *usedforsecurity* 且其默认值为 `True`。 设为假值即允许在受限的环境中使用不安全且阻塞的哈希算法。 `False` 表示此哈希算法不可用于安全场景，例如用作非加密的单向压缩函数。
+> 在 3.9 版本发生变更: 所有 hashlib 的构造器都接受仅限关键字参数 *usedforsecurity* 且其默认值为 `True`。 设为假值即允许在受限的环境中使用不安全且阻塞的哈希算法。 `False` 表示此哈希算法不可用于安全场景，例如用作非加密的单向压缩函数。
 
-*在 3.9 版本发生变更:* 现在 hashlib 会在 OpenSSL 有提供的情况下使用 SHA3 和 SHAKE。
+> 在 3.9 版本发生变更: 现在 hashlib 会在 OpenSSL 有提供的情况下使用 SHA3 和 SHAKE。
 
-*在 3.12 版本发生变更:* 在所链接的 OpenSSL 未提供 MD5, SHA1, SHA2 或 SHA3 算法的情况下我们将回退至来自 [HACL* project](https://github.com/hacl-star/hacl-star) 的已验证的实现。
+> 在 3.12 版本发生变更: 在所链接的 OpenSSL 未提供 MD5, SHA1, SHA2 或 SHA3 算法的情况下我们将回退至来自 [HACL* project](https://github.com/hacl-star/hacl-star) 的已验证的实现。
 
 ## 用法
 
@@ -87,7 +86,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 ​	接受想要的算法对应的字符串 *name* 作为其第一个形参的泛型构造器。 它还允许访问上面列出的哈希算法以及你的 OpenSSL 库可能提供的任何其他算法。
 
-​	使用 [`new()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.new) 并附带一个算法名称:
+​	使用 [`new()`]({{< ref "/library/crypto/hashlib#hashlib.new" >}}) 并附带一个算法名称:
 
 
 
@@ -118,7 +117,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 ## hashlib.**sha3_512**([*data*, ]***, *usedforsecurity=True*)
 
-​	这些带命名的构造器速度相比向 [`new()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.new) 传入算法名称更快。
+​	这些带命名的构造器速度相比向 [`new()`]({{< ref "/library/crypto/hashlib#hashlib.new" >}}) 传入算法名称更快。
 
 ## 属性
 
@@ -133,7 +132,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 ## hashlib.**algorithms_available**
 
-​	一个集合，其中包含在所运行的 Python 解释器上可用的哈希算法的名称。 将这些名称传给 [`new()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.new) 时将可被识别。 [`algorithms_guaranteed`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.algorithms_guaranteed) 将总是它的一个子集。 同样的算法在此集合中可能以不同的名称出现多次（这是 OpenSSL 的原因）。
+​	一个集合，其中包含在所运行的 Python 解释器上可用的哈希算法的名称。 将这些名称传给 [`new()`]({{< ref "/library/crypto/hashlib#hashlib.new" >}}) 时将可被识别。 [`algorithms_guaranteed`]({{< ref "/library/crypto/hashlib#hashlib.algorithms_guaranteed" >}}) 将总是它的一个子集。 同样的算法在此集合中可能以不同的名称出现多次（这是 OpenSSL 的原因）。
 
 > Added in version 3.2.
 >
@@ -154,23 +153,23 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 ## hash.**name**
 
-​	此哈希对象的规范名称，总是为小写形式并且总是可以作为 [`new()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.new) 的形参用来创建另一个此类型的哈希对象。
+​	此哈希对象的规范名称，总是为小写形式并且总是可以作为 [`new()`]({{< ref "/library/crypto/hashlib#hashlib.new" >}}) 的形参用来创建另一个此类型的哈希对象。
 
-*在 3.4 版本发生变更:* 该属性名称自被引入起即存在于 CPython 中，但在 Python 3.4 之前并未正式指明，因此可能不存在于某些平台上。
+> 在 3.4 版本发生变更: 该属性名称自被引入起即存在于 CPython 中，但在 Python 3.4 之前并未正式指明，因此可能不存在于某些平台上。
 
 ​	哈希对象具有下列方法:
 
 ## hash.**update**(*data*)
 
-​	用 [bytes-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object) 来更新哈希对象。 重复调用相当于单次调用并传入所有参数的拼接结果: `m.update(a); m.update(b)` 等价于 `m.update(a+b)`。
+​	用 [bytes-like object]({{< ref "/glossary/idx#term-bytes-like-object" >}}) 来更新哈希对象。 重复调用相当于单次调用并传入所有参数的拼接结果: `m.update(a); m.update(b)` 等价于 `m.update(a+b)`。
 
 ## hash.**digest**()
 
-​	返回当前已传给 [`update()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.update) 方法的数据摘要。 这是一个大小为 [`digest_size`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.digest_size) 的字节串对象，字节串中可包含 0 至 255 的完整取值范围。
+​	返回当前已传给 [`update()`]({{< ref "/library/crypto/hashlib#hashlib.hash.update" >}}) 方法的数据摘要。 这是一个大小为 [`digest_size`]({{< ref "/library/crypto/hashlib#hashlib.hash.digest_size" >}}) 的字节串对象，字节串中可包含 0 至 255 的完整取值范围。
 
 ## hash.**hexdigest**()
 
-​	类似于 [`digest()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.digest) 但摘要会以两倍长度字符串对象的形式返回，其中仅包含十六进制数码。 这可以被用于在电子邮件或其他非二进制环境中安全地交换数据值。
+​	类似于 [`digest()`]({{< ref "/library/crypto/hashlib#hashlib.hash.digest" >}}) 但摘要会以两倍长度字符串对象的形式返回，其中仅包含十六进制数码。 这可以被用于在电子邮件或其他非二进制环境中安全地交换数据值。
 
 ## hash.**copy**()
 
@@ -182,15 +181,15 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 ## hashlib.**shake_256**([*data*, ]***, *usedforsecurity=True*)
 
-[`shake_128()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.shake_128) 和 [`shake_256()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.shake_256) 算法提供安全的 length_in_bits//2 至 128 或 256 位可变长度摘要。 为此，它们的摘要需指定一个长度。 SHAKE 算法不限制最大长度。
+[`shake_128()`]({{< ref "/library/crypto/hashlib#hashlib.shake_128" >}}) 和 [`shake_256()`]({{< ref "/library/crypto/hashlib#hashlib.shake_256" >}}) 算法提供安全的 length_in_bits//2 至 128 或 256 位可变长度摘要。 为此，它们的摘要需指定一个长度。 SHAKE 算法不限制最大长度。
 
 ## shake.**digest**(*length*)
 
-​	返回当前已传给 [`update()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.update) 方法的数据摘要。 这是一个大小为 *length* 的字节串对象，其中可包含 0 至 255 完整范围内的字节值。
+​	返回当前已传给 [`update()`]({{< ref "/library/crypto/hashlib#hashlib.hash.update" >}}) 方法的数据摘要。 这是一个大小为 *length* 的字节串对象，其中可包含 0 至 255 完整范围内的字节值。
 
 ## shake.**hexdigest**(*length*)
 
-​	类似于 [`digest()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.shake.digest) 但摘要会以两倍长度字符串对象的形式返回，其中仅包含十六进制数码。 这可以被用于在电子邮件或其他非二进制环境中安全地交换数据值。
+​	类似于 [`digest()`]({{< ref "/library/crypto/hashlib#hashlib.shake.digest" >}}) 但摘要会以两倍长度字符串对象的形式返回，其中仅包含十六进制数码。 这可以被用于在电子邮件或其他非二进制环境中安全地交换数据值。
 
 ​	用法示例:
 
@@ -210,7 +209,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 ​	返回一个根据文件对象进行更新的摘要对象。
 
-*fileobj* 必须是一个以二进制模式打开用于读取的文件型对象。 它接受来自内置 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open), [`BytesIO`](https://docs.python.org/zh-cn/3.13/library/io.html#io.BytesIO) 实例, [`socket.socket.makefile()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.makefile) 创建的 SocketIO 及其他类似的文件对象。 此函数也可能绕过 Python 的并直接使用来自 [`fileno()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.IOBase.fileno) 的文件描述符。 在此函数返回或引发异常之后必须假定 *fileobj* 已处于未知状态。 应当由调用方来负责关闭 *fileobj*。
+*fileobj* 必须是一个以二进制模式打开用于读取的文件型对象。 它接受来自内置 [`open()`]({{< ref "/library/functions#open" >}}), [`BytesIO`]({{< ref "/library/allos/io#io.BytesIO" >}}) 实例, [`socket.socket.makefile()`]({{< ref "/library/ipc/socket#socket.socket.makefile" >}}) 创建的 SocketIO 及其他类似的文件对象。 此函数也可能绕过 Python 的并直接使用来自 [`fileno()`]({{< ref "/library/allos/io#io.IOBase.fileno" >}}) 的文件描述符。 在此函数返回或引发异常之后必须假定 *fileobj* 已处于未知状态。 应当由调用方来负责关闭 *fileobj*。
 
 *digest* 必须是一个 *str* 形式的哈希算法名称、哈希构造器或返回哈希对象的可调用对象。
 
@@ -256,7 +255,7 @@ True
 
 ​	此函数提供 PKCS#5 基于密码的密钥派生函数 2。 它使用 HMAC 作为伪随机函数。
 
-​	字符串 *hash_name* 是要求用于 HMAC 的哈希摘要算法的名称，例如 'sha1' 或 'sha256'。 *password* 和 *salt* 会以字节串缓冲区的形式被解析。 应用和库应当将 *password* 限制在合理长度 (例如 1024)。 *salt* 应当为适当来源例如 [`os.urandom()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.urandom) 的大约 16 个或更多的字节串数据。
+​	字符串 *hash_name* 是要求用于 HMAC 的哈希摘要算法的名称，例如 'sha1' 或 'sha256'。 *password* 和 *salt* 会以字节串缓冲区的形式被解析。 应用和库应当将 *password* 限制在合理长度 (例如 1024)。 *salt* 应当为适当来源例如 [`os.urandom()`]({{< ref "/library/allos/os#os.urandom" >}}) 的大约 16 个或更多的字节串数据。
 
 *iterations* 的数值应当基于哈希算法和机器算力来选择。 在 2022 年，建议选择进行数万次的 SHA-256 迭代。 对于为何以及如何选择最适合你的应用程序的迭代次数的理由，请参阅 [NIST-SP-800-132](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) 的 *Appendix A.2.2*。 其中 [stackexchange pbkdf2 迭代问题](https://security.stackexchange.com/questions/3959/recommended-of-iterations-when-using-pbkdf2-sha256/) 的解答提供的详细的说明。
 
@@ -277,13 +276,13 @@ True
 > Added in version 3.4.
 >
 
-*在 3.12 版本发生变更:* 现在此函数只有在 Python 附带 OpenSSL 构建时才可用。 慢速的纯 Python 实现已被移除。
+> 在 3.12 版本发生变更: 现在此函数只有在 Python 附带 OpenSSL 构建时才可用。 慢速的纯 Python 实现已被移除。
 
 ## hashlib.**scrypt**(*password*, ***, *salt*, *n*, *r*, *p*, *maxmem=0*, *dklen=64*)
 
 ​	此函数提供基于密码加密的密钥派生函数，其定义参见 [**RFC 7914**](https://datatracker.ietf.org/doc/html/rfc7914.html)。
 
-*password* 和 *salt* 必须为 [字节类对象](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object)。 应用和库应当将 *password* 限制在合理长度 (例如 1024)。 *salt* 应当为适当来源例如 [`os.urandom()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.urandom) 的大约 16 个或更多的字节串数据。
+*password* 和 *salt* 必须为 [字节类对象]({{< ref "/glossary/idx#term-bytes-like-object" >}})。 应用和库应当将 *password* 限制在合理长度 (例如 1024)。 *salt* 应当为适当来源例如 [`os.urandom()`]({{< ref "/library/allos/os#os.urandom" >}}) 的大约 16 个或更多的字节串数据。
 
 *n* 是 CPU/内存开销因子，*r* 是块大小，*p* 是并行化因子而 *maxmem* 是内存上限（OpenSSL 1.1.0 默认为 32 MiB）。 *dklen* 是以字节数表示的派生密钥长度。
 
@@ -301,7 +300,7 @@ True
 
 ​	BLAKE2 支持 **keyed mode** ([HMAC](https://en.wikipedia.org/wiki/Hash-based_message_authentication_code) 的更快速更简单的替代), **salted hashing**, **personalization** 和 **tree hashing**.
 
-​	此模块的哈希对象遵循标准库 [`hashlib`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#module-hashlib) 对象的 API。
+​	此模块的哈希对象遵循标准库 [`hashlib`]({{< ref "/library/crypto/hashlib#module-hashlib" >}}) 对象的 API。
 
 ### 创建哈希对象
 
@@ -313,7 +312,7 @@ True
 
 ​	这些函数返回用于计算 BLAKE2b 或 BLAKE2s 的相应的哈希对象。 它们接受下列可选通用形参:
 
-- *data*: 要哈希的初始数据块，它必须为 [bytes-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object)。 它只能作为位置参数传入。
+- *data*: 要哈希的初始数据块，它必须为 [bytes-like object]({{< ref "/glossary/idx#term-bytes-like-object" >}})。 它只能作为位置参数传入。
 - *digest_size*: 以字节数表示的输出摘要大小。
 - *key*: 用于密钥哈希的密钥（对于 BLAKE2b 最长 64 字节，对于 BLAKE2s 最长 32 字节）。
 - *salt*: 用于随机哈希的盐值（对于 BLAKE2b 最长 16 字节，对于 BLAKE2s 最长 8 字节）。
@@ -326,13 +325,12 @@ True
 | BLAKE2b | 64       | 64         | 16         | 16           |
 | BLAKE2s | 32       | 32         | 8          | 8            |
 
-​	备注
-
+​备注
  
 
 ​	BLAKE2 规格描述为盐值和个性化形参定义了固定的长度，但是为了方便起见，此实现接受指定在长度以内的任意大小的字节串。 如果形参长度小于指定值，它将以零值进行填充，因此举例来说，`b'salt'` 和 `b'salt\x00'` 为相同的值 (*key* 的情况则并非如此。)
 
-​	如下面的模块 [constants](https://docs.python.org/zh-cn/3.13/library/hashlib.html#constants) 所描述，这些是可用的大小取值。
+​	如下面的模块 [constants]({{< ref "/library/crypto/hashlib#constants" >}}) 所描述，这些是可用的大小取值。
 
 ​	构造器函数还接受下列树形哈希形参:
 
@@ -378,7 +376,7 @@ True
 
 #### 简单哈希
 
-​	要计算某个数据的哈希值，你应该首先通过调用适当的构造器函数 ([`blake2b()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.blake2b) 或 [`blake2s()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.blake2s)) 来构造一个哈希对象，然后通过在该对象上调用 [`update()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.update) 来更新目标数据，最后再通过调用 [`digest()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.digest) (或针对十六进制编码字符串的 [`hexdigest()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.hexdigest)) 来获取该对象的摘要。
+​	要计算某个数据的哈希值，你应该首先通过调用适当的构造器函数 ([`blake2b()`]({{< ref "/library/crypto/hashlib#hashlib.blake2b" >}}) 或 [`blake2s()`]({{< ref "/library/crypto/hashlib#hashlib.blake2s" >}})) 来构造一个哈希对象，然后通过在该对象上调用 [`update()`]({{< ref "/library/crypto/hashlib#hashlib.hash.update" >}}) 来更新目标数据，最后再通过调用 [`digest()`]({{< ref "/library/crypto/hashlib#hashlib.hash.digest" >}}) (或针对十六进制编码字符串的 [`hexdigest()`]({{< ref "/library/crypto/hashlib#hashlib.hash.hexdigest" >}})) 来获取该对象的摘要。
 
 
 
@@ -400,7 +398,7 @@ True
 '6ff843ba685842aa82031d3f53c48b66326df7639a63d128974c5c14f31a0f33343a8c65551134ed1ae0f2b0dd2bb495dc81039e3eeb0aa1bb0388bbeac29183'
 ```
 
-​	你可以多次调用 [`hash.update()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.hash.update) 至你所想要的任意次数以迭代地更新哈希值:
+​	你可以多次调用 [`hash.update()`]({{< ref "/library/crypto/hashlib#hashlib.hash.update" >}}) 至你所想要的任意次数以迭代地更新哈希值:
 
 
 
@@ -497,7 +495,7 @@ False
 False
 ```
 
-​	即使存在原生的密钥哈希模式，BLAKE2 也同样可在 [`hmac`](https://docs.python.org/zh-cn/3.13/library/hmac.html#module-hmac) 模块的 HMAC 构造过程中使用:
+​	即使存在原生的密钥哈希模式，BLAKE2 也同样可在 [`hmac`]({{< ref "/library/crypto/hmac#module-hmac" >}}) 模块的 HMAC 构造过程中使用:
 
 
 
@@ -652,11 +650,11 @@ G9GtHFE1YluXY1zWPlYk1e/nWfu0WSEb0KRcjhDeP/o=
 >
 > 
 >
-> - 模块 [`hmac`](https://docs.python.org/zh-cn/3.13/library/hmac.html#module-hmac)
+> - 模块 [`hmac`]({{< ref "/library/crypto/hmac#module-hmac" >}})
 >
 >   使用哈希运算来生成消息验证代码的模块。
 >
-> - 模块 [`base64`](https://docs.python.org/zh-cn/3.13/library/base64.html#module-base64)
+> - 模块 [`base64`]({{< ref "/library/netdata/base64#module-base64" >}})
 >
 >   针对非二进制环境对二进制哈希值进行编辑的另一种方式。
 >

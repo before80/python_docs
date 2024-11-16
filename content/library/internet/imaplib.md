@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/imaplib.html](https://docs.python.org/zh-cn/3.13/library/imaplib.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/imaplib.html](https://docs.python.org/zh-cn/3.13/library/imaplib.html)
 >
 > 收录该文档的时间：`2024-11-15T20:28:46+08:00`
 
@@ -18,19 +18,19 @@ draft = false
 
 ------
 
-​	本模块定义了三个类： [`IMAP4`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4) 、 [`IMAP4_SSL`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4_SSL) 和 [`IMAP4_stream`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4_stream) 。这三个类封装了与IMAP4服务器的连接并实现了 [**RFC 2060**](https://datatracker.ietf.org/doc/html/rfc2060.html) 当中定义的大多数IMAP4rev1客户端协议。其与IMAP4（ [**RFC 1730**](https://datatracker.ietf.org/doc/html/rfc1730.html) ）服务器后向兼容，但是 `STATUS` 指令在IMAP4中不支持。
+​	本模块定义了三个类： [`IMAP4`]({{< ref "/library/internet/imaplib#imaplib.IMAP4" >}}) 、 [`IMAP4_SSL`]({{< ref "/library/internet/imaplib#imaplib.IMAP4_SSL" >}}) 和 [`IMAP4_stream`]({{< ref "/library/internet/imaplib#imaplib.IMAP4_stream" >}}) 。这三个类封装了与IMAP4服务器的连接并实现了 [**RFC 2060**](https://datatracker.ietf.org/doc/html/rfc2060.html) 当中定义的大多数IMAP4rev1客户端协议。其与IMAP4（ [**RFC 1730**](https://datatracker.ietf.org/doc/html/rfc1730.html) ）服务器后向兼容，但是 `STATUS` 指令在IMAP4中不支持。
 
-[Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): not WASI.
+[Availability]({{< ref "/library/intro#availability" >}}): not WASI.
 
-​	此模块在 WebAssembly 平台上无效或不可用。 请参阅 [WebAssembly 平台](https://docs.python.org/zh-cn/3.13/library/intro.html#wasm-availability) 了解详情。
+​	此模块在 WebAssembly 平台上无效或不可用。 请参阅 [WebAssembly 平台]({{< ref "/library/intro#wasm-availability" >}}) 了解详情。
 
-[`imaplib`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#module-imaplib) 模块提供了三个类，其中 [`IMAP4`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4) 是基类：
+[`imaplib`]({{< ref "/library/internet/imaplib#module-imaplib" >}}) 模块提供了三个类，其中 [`IMAP4`]({{< ref "/library/internet/imaplib#imaplib.IMAP4" >}}) 是基类：
 
 ## *class* imaplib.**IMAP4**(*host=''*, *port=IMAP4_PORT*, *timeout=None*)
 
 ​	这个类实现了实际的 IMAP4 协议。 当其实例被初始化时会创建连接并确定协议版本 (IMAP4 或 IMAP4rev1)。 如果未指明 *host*，则会使用 `''` (本地主机)。 如果省略 *port*，则会使用标准的 IMAP4 端口 (143)。 可选的 *timeout* 形参指定连接尝试的超时秒数。 如果未指定超时或为 `None`，则会使用全局默认的套接字超时。
 
-[`IMAP4`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4) 类支持 [`with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#with) 语句。 当这样使用时，IMAP4 `LOGOUT` 命令会在 `with` 语句退出时自动发出。 例如:
+[`IMAP4`]({{< ref "/library/internet/imaplib#imaplib.IMAP4" >}}) 类支持 [`with`]({{< ref "/reference/compound_stmts#with" >}}) 语句。 当这样使用时，IMAP4 `LOGOUT` 命令会在 `with` 语句退出时自动发出。 例如:
 
 
 
@@ -42,11 +42,11 @@ draft = false
 ('OK', [b'Nothing Accomplished. d25if65hy903weo.87'])
 ```
 
-*在 3.5 版本发生变更:* 添加了对 [`with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#with) 语句的支持。
+> 在 3.5 版本发生变更: 添加了对 [`with`]({{< ref "/reference/compound_stmts#with" >}}) 语句的支持。
 
-*在 3.9 版本发生变更:* 添加了可选的 *timeout* 形参。
+> 在 3.9 版本发生变更: 添加了可选的 *timeout* 形参。
 
-​	有三个异常被定义为 [`IMAP4`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4) 类的属性:
+​	有三个异常被定义为 [`IMAP4`]({{< ref "/library/internet/imaplib#imaplib.IMAP4" >}}) 类的属性:
 
 ## *exception* IMAP4.**error**
 
@@ -54,39 +54,39 @@ draft = false
 
 ## *exception* IMAP4.**abort**
 
-​	IMAP4 服务器错误会导致引发该异常。 这是 [`IMAP4.error`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.error) 的子类。 请注意关闭此实例并实例化一个新实例通常将会允许从该异常中恢复。
+​	IMAP4 服务器错误会导致引发该异常。 这是 [`IMAP4.error`]({{< ref "/library/internet/imaplib#imaplib.IMAP4.error" >}}) 的子类。 请注意关闭此实例并实例化一个新实例通常将会允许从该异常中恢复。
 
 ## *exception* IMAP4.**readonly**
 
-​	当一个可写邮箱的状态被服务器修改时会引发此异常。 此异常是 [`IMAP4.error`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.error) 的子类。 某个其他客户端现在会具有写入权限，将需要重新打开该邮箱以重新获得写入权限。
+​	当一个可写邮箱的状态被服务器修改时会引发此异常。 此异常是 [`IMAP4.error`]({{< ref "/library/internet/imaplib#imaplib.IMAP4.error" >}}) 的子类。 某个其他客户端现在会具有写入权限，将需要重新打开该邮箱以重新获得写入权限。
 
 ​	另外还有一个针对安全连接的子类:
 
 ## *class* imaplib.**IMAP4_SSL**(*host=''*, *port=IMAP4_SSL_PORT*, ***, *ssl_context=None*, *timeout=None*)
 
-​	这是一个派生自 [`IMAP4`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4) 的子类，它使用经 SSL 加密的套接字进行连接 (为了使用这个类你需要编译时附带 SSL 支持的 socket 模块)。 如果未指定 *host*，则会使用 `''` (本地主机)。 如果省略了 *port*，则会使用标准的 IMAP4-over-SSL 端口 (993)。 *ssl_context* 是一个 [`ssl.SSLContext`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext) 对象，它允许将 SSL 配置选项、证书和私钥打包放入一个单独的 (可以长久存在的) 结构体中。 请阅读 [安全考量](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl-security) 以获取最佳实践。
+​	这是一个派生自 [`IMAP4`]({{< ref "/library/internet/imaplib#imaplib.IMAP4" >}}) 的子类，它使用经 SSL 加密的套接字进行连接 (为了使用这个类你需要编译时附带 SSL 支持的 socket 模块)。 如果未指定 *host*，则会使用 `''` (本地主机)。 如果省略了 *port*，则会使用标准的 IMAP4-over-SSL 端口 (993)。 *ssl_context* 是一个 [`ssl.SSLContext`]({{< ref "/library/ipc/ssl#ssl.SSLContext" >}}) 对象，它允许将 SSL 配置选项、证书和私钥打包放入一个单独的 (可以长久存在的) 结构体中。 请阅读 [安全考量]({{< ref "/library/ipc/ssl#ssl-security" >}}) 以获取最佳实践。
 
 ​	可选的 *timeout* 形参指明连接尝试的超时秒数。 如果超时值未给出或为 `None`，则会使用全局默认的套接字超时设置。
 
-*在 3.3 版本发生变更:* 增加了 *ssl_context* 形参。
+> 在 3.3 版本发生变更: 增加了 *ssl_context* 形参。
 
-*在 3.4 版本发生变更:* 该类现在支持使用 [`ssl.SSLContext.check_hostname`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.check_hostname) 和 *服务器名称提示* (参见 [`ssl.HAS_SNI`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.HAS_SNI)) 进行主机名检测。
+> 在 3.4 版本发生变更: 该类现在支持使用 [`ssl.SSLContext.check_hostname`]({{< ref "/library/ipc/ssl#ssl.SSLContext.check_hostname" >}}) 和 *服务器名称提示* (参见 [`ssl.HAS_SNI`]({{< ref "/library/ipc/ssl#ssl.HAS_SNI" >}})) 进行主机名检测。
 
-*在 3.9 版本发生变更:* 添加了可选的 *timeout* 形参。
+> 在 3.9 版本发生变更: 添加了可选的 *timeout* 形参。
 
-*在 3.12 版本发生变更:* 已弃用的 *keyfile* 和 *certfile* 形参已被移除。
+> 在 3.12 版本发生变更: 已弃用的 *keyfile* 和 *certfile* 形参已被移除。
 
 ​	第二个子类允许由子进程所创建的连接:
 
 ## *class* imaplib.**IMAP4_stream**(*command*)
 
-​	这是一个派生自 [`IMAP4`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4) 的子类，它可以连接 `stdin/stdout` 文件描述符，此种文件是通过向 `subprocess.Popen()` 传入 *command* 来创建的。
+​	这是一个派生自 [`IMAP4`]({{< ref "/library/internet/imaplib#imaplib.IMAP4" >}}) 的子类，它可以连接 `stdin/stdout` 文件描述符，此种文件是通过向 `subprocess.Popen()` 传入 *command* 来创建的。
 
 ​	定义了下列工具函数:
 
 ## imaplib.**Internaldate2tuple**(*datestr*)
 
-​	解析一个 IMAP4 `INTERNALDATE` 字符串并返回对应的本地时间。 返回值是一个 [`time.struct_time`](https://docs.python.org/zh-cn/3.13/library/time.html#time.struct_time) 元组或者如果字符串格式错误则为 `None`。
+​	解析一个 IMAP4 `INTERNALDATE` 字符串并返回对应的本地时间。 返回值是一个 [`time.struct_time`]({{< ref "/library/allos/time#time.struct_time" >}}) 元组或者如果字符串格式错误则为 `None`。
 
 ## imaplib.**Int2AP**(*num*)
 
@@ -98,14 +98,13 @@ draft = false
 
 ## imaplib.**Time2Internaldate**(*date_time*)
 
-​	将 *date_time* 转换为 IMAP4 `INTERNALDATE` 表示形式。 返回值是以下形式的字符串: `"DD-Mmm-YYYY HH:MM:SS +HHMM"` (包括双引号)。 *date_time* 参数可以是一个代表距离纪元起始的秒数 (如 [`time.time()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.time) 的返回值) 的数字 (整数或浮点数)，一个代表本地时间的 9 元组，一个 [`time.struct_time`](https://docs.python.org/zh-cn/3.13/library/time.html#time.struct_time) 实例 (如 [`time.localtime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.localtime) 的返回值)，一个感知型的 [`datetime.datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime) 实例，或一个双引号字符串。 在最后一种情况下，它会被假定已经具有正确的格式。
+​	将 *date_time* 转换为 IMAP4 `INTERNALDATE` 表示形式。 返回值是以下形式的字符串: `"DD-Mmm-YYYY HH:MM:SS +HHMM"` (包括双引号)。 *date_time* 参数可以是一个代表距离纪元起始的秒数 (如 [`time.time()`]({{< ref "/library/allos/time#time.time" >}}) 的返回值) 的数字 (整数或浮点数)，一个代表本地时间的 9 元组，一个 [`time.struct_time`]({{< ref "/library/allos/time#time.struct_time" >}}) 实例 (如 [`time.localtime()`]({{< ref "/library/allos/time#time.localtime" >}}) 的返回值)，一个感知型的 [`datetime.datetime`]({{< ref "/library/datatypes/datetime#datetime.datetime" >}}) 实例，或一个双引号字符串。 在最后一种情况下，它会被假定已经具有正确的格式。
 
 ​	请注意 IMAP4 消息编号会随邮箱的改变而改变；特别是在使用 `EXPUNGE` 命令执行删除后剩余的消息会被重新编号。 因此高度建议通过 UID 命令来改用 UID。
 
 ​	模块的最后有一段测试，其中包含的用法示例更加广泛。
 
-​	参见
-
+​参见
  
 
 ​	描述该协议的文档，实现该协议的服务器源代码，由华盛顿大学 IMAP 信息中心提供 (**源代码**) https://github.com/uw-imap/imap (**不再维护**)。
@@ -122,7 +121,7 @@ draft = false
 
 ​	以下命令的 *message_set* 选项为指定要操作的一条或多条消息的字符串。 它可以是一个简单的消息编号 (`'1'`)，一段消息编号区间 (`'2:4'`)，或者一组以逗号分隔的非连续区间 (`'1:3,6:9'`)。 区间可以包含一个星号来表示无限的上界 (`'3:*'`)。
 
-[`IMAP4`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4) 实例具有下列方法:
+[`IMAP4`]({{< ref "/library/internet/imaplib#imaplib.IMAP4" >}}) 实例具有下列方法:
 
 ## IMAP4.**append**(*mailbox*, *flags*, *date_time*, *message*)
 
@@ -142,7 +141,7 @@ data = authobject(response)
 
 ​	它将被调用以便处理服务器连续响应；传给它的 *response* 参数将为 `bytes` 类型。 它应当返回 base64 编码的 `bytes` *数据* 并发送给服务器。 或者在客户端中止响应时返回 `None` 并应改为发送 `*`。
 
-*在 3.5 版本发生变更:* 字符串形式的用户名和密码现在会被执行 `utf-8` 编码而不限于 ASCII 字符。
+> 在 3.5 版本发生变更: 字符串形式的用户名和密码现在会被执行 `utf-8` 编码而不限于 ASCII 字符。
 
 ## IMAP4.**check**()
 
@@ -172,8 +171,7 @@ data = authobject(response)
 
 ​	启用 *capability* (参见 [**RFC 5161**](https://datatracker.ietf.org/doc/html/rfc5161.html))。 大多数功能都不需要被启用。 目前只有 `UTF8=ACCEPT` 功能受到支持 (参见 [**RFC 6855**](https://datatracker.ietf.org/doc/html/rfc6855.html))。
 
-> Added in version 3.5:* [`enable()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.enable) 方法本身，以及 [**RFC 6855*
->](https://datatracker.ietf.org/doc/html/rfc6855.html) 支持。
+> Added in version 3.5:* [`enable()`]({{< ref "/library/internet/imaplib#imaplib.IMAP4.enable" >}}) 方法本身，以及 [**RFC 6855*](https://datatracker.ietf.org/doc/html/rfc6855.html) 支持。
 
 ## IMAP4.**expunge**()
 
@@ -215,7 +213,7 @@ data = authobject(response)
 
 ​	关闭对服务器的连接。 返回服务器 `BYE` 响应。
 
-*在 3.8 版本发生变更:* 此方法不会再忽略静默的任意异常。
+> 在 3.8 版本发生变更: 此方法不会再忽略静默的任意异常。
 
 ## IMAP4.**lsub**(*directory='""'*, *pattern='\*'*)
 
@@ -235,11 +233,11 @@ data = authobject(response)
 
 ## IMAP4.**open**(*host*, *port*, *timeout=None*)
 
-​	打开连接到 *host* 上 *port* 的套接字。 可选的 *timeout* 形参指定连接尝试的超时秒数。 如果超时值未给出或为 `None`，则会使用全局默认的套接字超时。 另外请注意如果 *timeout* 形参被设为零，它将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 以拒绝创建非阻塞套接字。 此方法会由 [`IMAP4`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4) 构造器隐式地调用。 此方法所建立的连接对象将在 [`IMAP4.read()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.read), [`IMAP4.readline()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.readline), [`IMAP4.send()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.send) 和 [`IMAP4.shutdown()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.shutdown) 等方法中被使用。 你可以重写此方法。
+​	打开连接到 *host* 上 *port* 的套接字。 可选的 *timeout* 形参指定连接尝试的超时秒数。 如果超时值未给出或为 `None`，则会使用全局默认的套接字超时。 另外请注意如果 *timeout* 形参被设为零，它将引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) 以拒绝创建非阻塞套接字。 此方法会由 [`IMAP4`]({{< ref "/library/internet/imaplib#imaplib.IMAP4" >}}) 构造器隐式地调用。 此方法所建立的连接对象将在 [`IMAP4.read()`]({{< ref "/library/internet/imaplib#imaplib.IMAP4.read" >}}), [`IMAP4.readline()`]({{< ref "/library/internet/imaplib#imaplib.IMAP4.readline" >}}), [`IMAP4.send()`]({{< ref "/library/internet/imaplib#imaplib.IMAP4.send" >}}) 和 [`IMAP4.shutdown()`]({{< ref "/library/internet/imaplib#imaplib.IMAP4.shutdown" >}}) 等方法中被使用。 你可以重写此方法。
 
-​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `imaplib.open` 并附带参数 `self`, `host`, `port`。
+​	引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `imaplib.open` 并附带参数 `self`, `host`, `port`。
 
-*在 3.9 版本发生变更:* 加入 *timeout* 参数。
+> 在 3.9 版本发生变更: 加入 *timeout* 参数。
 
 ## IMAP4.**partial**(*message_num*, *message_part*, *start*, *length*)
 
@@ -271,7 +269,7 @@ data = authobject(response)
 
 ## IMAP4.**search**(*charset*, *criterion*[, *...*])
 
-​	在邮箱中搜索匹配的消息。 *charset* 可以为 `None`，在这种情况下在发给服务器的请求中将不指定 `CHARSET`。 IMAP 协议要求至少指定一个标准；当服务器返回错误时将会引发异常。 *charset* 为 `None` 对应使用 [`enable()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.enable) 命令启用了 `UTF8=ACCEPT` 功能的情况。
+​	在邮箱中搜索匹配的消息。 *charset* 可以为 `None`，在这种情况下在发给服务器的请求中将不指定 `CHARSET`。 IMAP 协议要求至少指定一个标准；当服务器返回错误时将会引发异常。 *charset* 为 `None` 对应使用 [`enable()`]({{< ref "/library/internet/imaplib#imaplib.IMAP4.enable" >}}) 命令启用了 `UTF8=ACCEPT` 功能的情况。
 
 ​	示例:
 
@@ -291,7 +289,7 @@ typ, msgnums = M.search(None, '(FROM "LDJ")')
 
 ​	将 `data` 发送给远程服务器。 你可以重写此方法。
 
-​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `imaplib.send` 并附带参数 `self`, `data`。
+​	引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `imaplib.send` 并附带参数 `self`, `data`。
 
 ## IMAP4.**setacl**(*mailbox*, *who*, *what*)
 
@@ -307,7 +305,7 @@ typ, msgnums = M.search(None, '(FROM "LDJ")')
 
 ## IMAP4.**shutdown**()
 
-​	关闭在 `open` 中建立的连接。 此方法会由 [`IMAP4.logout()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.logout) 隐式地调用。 你可以重写此方法。
+​	关闭在 `open` 中建立的连接。 此方法会由 [`IMAP4.logout()`]({{< ref "/library/internet/imaplib#imaplib.IMAP4.logout" >}}) 隐式地调用。 你可以重写此方法。
 
 ## IMAP4.**socket**()
 
@@ -323,12 +321,12 @@ typ, msgnums = M.search(None, '(FROM "LDJ")')
 
 ## IMAP4.**starttls**(*ssl_context=None*)
 
-​	发送一个 `STARTTLS` 命令。 *ssl_context* 参数是可选的并且应为一个 [`ssl.SSLContext`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext) 对象。 这将在 IMAP 连接上启用加密。 请阅读 [安全考量](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl-security) 来了解最佳实践。
+​	发送一个 `STARTTLS` 命令。 *ssl_context* 参数是可选的并且应为一个 [`ssl.SSLContext`]({{< ref "/library/ipc/ssl#ssl.SSLContext" >}}) 对象。 这将在 IMAP 连接上启用加密。 请阅读 [安全考量]({{< ref "/library/ipc/ssl#ssl-security" >}}) 来了解最佳实践。
 
 > Added in version 3.2.
 >
 
-*在 3.4 版本发生变更:* 该方法现在支持使用 [`ssl.SSLContext.check_hostname`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.check_hostname) 和 *服务器名称提示* (参见 [`ssl.HAS_SNI`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.HAS_SNI)) 进行主机名称检测。
+> 在 3.4 版本发生变更: 该方法现在支持使用 [`ssl.SSLContext.check_hostname`]({{< ref "/library/ipc/ssl#ssl.SSLContext.check_hostname" >}}) 和 *服务器名称提示* (参见 [`ssl.HAS_SNI`]({{< ref "/library/ipc/ssl#ssl.HAS_SNI" >}})) 进行主机名称检测。
 
 ## IMAP4.**status**(*mailbox*, *names*)
 
@@ -347,8 +345,7 @@ for num in data[0].split():
 M.expunge()
 ```
 
-​	备注
-
+​备注
  
 
 ​	创建包含 ']' (例如: "[test]") 的旗标并违反 [**RFC 3501**](https://datatracker.ietf.org/doc/html/rfc3501.html) (即 IMAP 协议)。 不过，imaplib 在历史上曾经允许创建这样的标签，并且流行的 IMAP 服务器，如 Gmail，都接受并会产生这样的旗标。 有些非 Python 程序也会创建这样的旗标。 虽然它违反 RFC 并且 IMAP 客户端和服务器应当严格规范，但是 imaplib 出于向下兼容的考虑仍然继承允许创建这样的标签，并且像在 Python 3.6 中一样，会在当其被服务器所发送时处理它们，因为这能提升在真实世界中的兼容性。
@@ -377,7 +374,7 @@ M.expunge()
 
 ## IMAP4.**unselect**()
 
-[`imaplib.IMAP4.unselect()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.unselect) 会释放关联到选定邮箱的服务器资源并将服务器返回到已认证状态。 此命令会执行与 [`imaplib.IMAP4.close()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.close) 相同的动作，区别在于它不会从当前选定邮箱中永久性地移除消息。
+[`imaplib.IMAP4.unselect()`]({{< ref "/library/internet/imaplib#imaplib.IMAP4.unselect" >}}) 会释放关联到选定邮箱的服务器资源并将服务器返回到已认证状态。 此命令会执行与 [`imaplib.IMAP4.close()`]({{< ref "/library/internet/imaplib#imaplib.IMAP4.close" >}}) 相同的动作，区别在于它不会从当前选定邮箱中永久性地移除消息。
 
 > Added in version 3.9.
 >
@@ -386,7 +383,7 @@ M.expunge()
 
 ​	允许服务器在 `CAPABILITY` 响应中通知简单的扩展命令。
 
-​	在 [`IMAP4`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4) 的实例上定义了下列属性:
+​	在 [`IMAP4`]({{< ref "/library/internet/imaplib#imaplib.IMAP4" >}}) 的实例上定义了下列属性:
 
 ## IMAP4.**PROTOCOL_VERSION**
 
@@ -398,7 +395,7 @@ M.expunge()
 
 ## IMAP4.**utf8_enabled**
 
-​	通常为 `False` 的布尔值，但也可以被设为 `True`，如果成功地为 `UTF8=ACCEPT` 功能发送了 [`enable()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.enable) 命令的话。
+​	通常为 `False` 的布尔值，但也可以被设为 `True`，如果成功地为 `UTF8=ACCEPT` 功能发送了 [`enable()`]({{< ref "/library/internet/imaplib#imaplib.IMAP4.enable" >}}) 命令的话。
 
 > Added in version 3.5.
 >

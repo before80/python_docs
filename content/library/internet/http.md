@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/http.html](https://docs.python.org/zh-cn/3.13/library/http.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/http.html](https://docs.python.org/zh-cn/3.13/library/http.html)
 >
 > 收录该文档的时间：`2024-11-15T20:28:46+08:00`
 
@@ -18,21 +18,21 @@ draft = false
 
 ------
 
-[`http`](https://docs.python.org/zh-cn/3.13/library/http.html#module-http) 是一个包，它收集了多个用于处理超文本传输协议的模块:
+[`http`]({{< ref "/library/internet/http#module-http" >}}) 是一个包，它收集了多个用于处理超文本传输协议的模块:
 
-- [`http.client`](https://docs.python.org/zh-cn/3.13/library/http.client.html#module-http.client) 是一个底层的 HTTP 协议客户端；对于高层级的 URL 访问请使用 [`urllib.request`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#module-urllib.request)
-- [`http.server`](https://docs.python.org/zh-cn/3.13/library/http.server.html#module-http.server) 包含基于 [`socketserver`](https://docs.python.org/zh-cn/3.13/library/socketserver.html#module-socketserver) 的基本 HTTP 服务类
-- [`http.cookies`](https://docs.python.org/zh-cn/3.13/library/http.cookies.html#module-http.cookies) 包含一些有用来实现通过 cookies 进行状态管理的工具
-- [`http.cookiejar`](https://docs.python.org/zh-cn/3.13/library/http.cookiejar.html#module-http.cookiejar) 提供了 cookies 的持久化
+- [`http.client`]({{< ref "/library/internet/http_client#module-http.client" >}}) 是一个底层的 HTTP 协议客户端；对于高层级的 URL 访问请使用 [`urllib.request`]({{< ref "/library/internet/urllib/urllib_request#module-urllib.request" >}})
+- [`http.server`]({{< ref "/library/internet/http_server#module-http.server" >}}) 包含基于 [`socketserver`]({{< ref "/library/internet/socketserver#module-socketserver" >}}) 的基本 HTTP 服务类
+- [`http.cookies`]({{< ref "/library/internet/http_cookies#module-http.cookies" >}}) 包含一些有用来实现通过 cookies 进行状态管理的工具
+- [`http.cookiejar`]({{< ref "/library/internet/http_cookiejar#module-http.cookiejar" >}}) 提供了 cookies 的持久化
 
-[`http`](https://docs.python.org/zh-cn/3.13/library/http.html#module-http) 模块还定义了下列枚举来帮助你使用 http 相关的代码:
+[`http`]({{< ref "/library/internet/http#module-http" >}}) 模块还定义了下列枚举来帮助你使用 http 相关的代码:
 
 ## *class* http.**HTTPStatus**
 
 > Added in version 3.5.
 >
 
-[`enum.IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 的子类，它定义了组 HTTP 状态码，原理短语以及用英语书写的长描述文本。
+[`enum.IntEnum`]({{< ref "/library/datatypes/enum#enum.IntEnum" >}}) 的子类，它定义了组 HTTP 状态码，原理短语以及用英语书写的长描述文本。
 
 ​	用法：
 
@@ -58,7 +58,7 @@ True
 
 ## HTTP 状态码
 
-​	已支持的，[IANA 注册的状态码](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) 在 [`http.HTTPStatus`](https://docs.python.org/zh-cn/3.13/library/http.html#http.HTTPStatus) 中可用的有:
+​	已支持的，[IANA 注册的状态码](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) 在 [`http.HTTPStatus`]({{< ref "/library/internet/http#http.HTTPStatus" >}}) 中可用的有:
 
 | 双字母代码 | 映射名                                                | 详情                                                         |
 | :--------- | :---------------------------------------------------- | :----------------------------------------------------------- |
@@ -125,9 +125,9 @@ True
 | `510`      | `NOT_EXTENDED`：不扩展                                | WebDAV Binding Extensions RFC 5842, 7.2 节（实验性）         |
 | `511`      | `NETWORK_AUTHENTICATION_REQUIRED`：要求网络身份验证   | Additional HTTP Status Codes [**RFC 6585**](https://datatracker.ietf.org/doc/html/rfc6585.html), 6 节 |
 
-​	为了保持向后兼容性，枚举值也以常量形式出现在 [`http.client`](https://docs.python.org/zh-cn/3.13/library/http.client.html#module-http.client) 模块中，。 枚举名等于常量名 (例如 `http.HTTPStatus.OK` 也可以是 `http.client.OK`)。
+​	为了保持向后兼容性，枚举值也以常量形式出现在 [`http.client`]({{< ref "/library/internet/http_client#module-http.client" >}}) 模块中，。 枚举名等于常量名 (例如 `http.HTTPStatus.OK` 也可以是 `http.client.OK`)。
 
-*在 3.7 版本发生变更:* 添加了 `421 MISDIRECTED_REQUEST` 状态码。
+> 在 3.7 版本发生变更: 添加了 `421 MISDIRECTED_REQUEST` 状态码。
 
 > Added in version 3.8:
 > 添加了 `451 UNAVAILABLE_FOR_LEGAL_REASONS` 状态码。
@@ -135,7 +135,7 @@ True
 > Added in version 3.9:
 > 增加了 `103 EARLY_HINTS`, `418 IM_A_TEAPOT` 和 `425 TOO_EARLY` 状态码
 
-*在 3.13 版本发生变更:* 实现了针对状态常量的 RFC9110 命名。 旧常量名被保留用于向下兼容。
+> 在 3.13 版本发生变更: 实现了针对状态常量的 RFC9110 命名。 旧常量名被保留用于向下兼容。
 
 ## HTTP 状态类别
 
@@ -169,7 +169,7 @@ True
 > Added in version 3.11.
 >
 
-​	一个 [`enum.StrEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.StrEnum) 的子类，它定义了一组 HTTP 方法以及用英文书写的描述。
+​	一个 [`enum.StrEnum`]({{< ref "/library/datatypes/enum#enum.StrEnum" >}}) 的子类，它定义了一组 HTTP 方法以及用英文书写的描述。
 
 ​	用法：
 
@@ -202,7 +202,7 @@ True
 
 ## HTTP 方法
 
-​	已支持的，[IANA 注册的方法](https://www.iana.org/assignments/http-methods/http-methods.xhtml) 在 [`http.HTTPMethod`](https://docs.python.org/zh-cn/3.13/library/http.html#http.HTTPMethod) 中可用的有:
+​	已支持的，[IANA 注册的方法](https://www.iana.org/assignments/http-methods/http-methods.xhtml) 在 [`http.HTTPMethod`]({{< ref "/library/internet/http#http.HTTPMethod" >}}) 中可用的有:
 
 | 方法      | 映射名    | 详情                                                         |
 | :-------- | :-------- | :----------------------------------------------------------- |

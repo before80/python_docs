@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/collections.abc.html](https://docs.python.org/zh-cn/3.13/library/collections.abc.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/collections.abc.html](https://docs.python.org/zh-cn/3.13/library/collections.abc.html)
 >
 > 收录该文档的时间：`2024-11-15T11:18:41+08:00`
 
@@ -18,13 +18,13 @@ draft = false
 
 ------
 
-​	这个模块实现了一些专门化的容器，提供了对 Python 的通用内建容器 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict)、[`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list)、[`set`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#set) 和 [`tuple`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#tuple) 的补充。
+​	这个模块实现了一些专门化的容器，提供了对 Python 的通用内建容器 [`dict`]({{< ref "/library/stdtypes#dict" >}})、[`list`]({{< ref "/library/stdtypes#list" >}})、[`set`]({{< ref "/library/stdtypes#set" >}}) 和 [`tuple`]({{< ref "/library/stdtypes#tuple" >}}) 的补充。
 
 | [`namedtuple()`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.namedtuple) | 一个工厂函数，用来创建元组的子类，子类的字段是有名称的。     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [`deque`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.deque) | 类似列表的容器，但 append 和 pop 在其两端的速度都很快。      |
 | [`ChainMap`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.ChainMap) | 类似字典的类，用于创建包含多个映射的单个视图。               |
-| [`Counter`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter) | 用于计数 [hashable](https://docs.python.org/zh-cn/3.13/glossary.html#term-hashable) 对象的字典子类 |
+| [`Counter`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter) | 用于计数 [hashable]({{< ref "/glossary/idx#term-hashable" >}}) 对象的字典子类 |
 | [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) | 字典的子类，能记住条目被添加进去的顺序。                     |
 | [`defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) | 字典的子类，通过调用用户指定的工厂函数，为键提供默认值。     |
 | [`UserDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserDict) | 封装了字典对象，简化了字典子类化                             |
@@ -36,7 +36,7 @@ draft = false
 > Added in version 3.3.
 >
 
-[`ChainMap`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.ChainMap) 类将多个映射迅速地链到一起，这样它们就可以作为一个单元处理。这通常比创建一个新字典再重复地使用 [`update()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict.update) 要快得多。
+[`ChainMap`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.ChainMap) 类将多个映射迅速地链到一起，这样它们就可以作为一个单元处理。这通常比创建一个新字典再重复地使用 [`update()`]({{< ref "/library/stdtypes#dict.update" >}}) 要快得多。
 
 ​	这个类可以用于模拟嵌套作用域，并且对模版化有用。
 
@@ -60,13 +60,13 @@ draft = false
 
 ​	返回一个新的 [`ChainMap`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.ChainMap)，其中包含一个新的映射，后面跟随当前实例中的所有映射。 如果指定了 `m`，它会成为新的映射加在映射列表的前面；如果未指定，则会使用一个空字典，因此调用 `d.new_child()` 就等价于 `ChainMap({}, *d.maps)`。 如果指定了任何关键字参数，它们会更新所传入的映射或新的空字典。 此方法被用于创建子上下文，它可在不改变任何上级映射的情况下被更新。
 
-*在 3.4 版本发生变更:* 添加了可选的 `m` 形参。
+> 在 3.4 版本发生变更: 添加了可选的 `m` 形参。
 
-*在 3.10 版本发生变更:* 增加了对关键字参数的支持。
+> 在 3.10 版本发生变更: 增加了对关键字参数的支持。
 
 ## **parents**
 
-​	属性返回一个新的 [`ChainMap`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.ChainMap) 包含所有的当前实例的映射，除了第一个。这样可以在搜索的时候跳过第一个映射。 使用的场景类似在 [nested scopes](https://docs.python.org/zh-cn/3.13/glossary.html#term-nested-scope) 嵌套作用域中使用 [`nonlocal`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#nonlocal) 关键词。用例也可以类比内建函数 [`super()`](https://docs.python.org/zh-cn/3.13/library/functions.html#super) 。一个 `d.parents` 的引用等价于 `ChainMap(*d.maps[1:])` 。
+​	属性返回一个新的 [`ChainMap`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.ChainMap) 包含所有的当前实例的映射，除了第一个。这样可以在搜索的时候跳过第一个映射。 使用的场景类似在 [nested scopes]({{< ref "/glossary/idx#term-nested-scope" >}}) 嵌套作用域中使用 [`nonlocal`]({{< ref "/reference/simple_stmts#nonlocal" >}}) 关键词。用例也可以类比内建函数 [`super()`]({{< ref "/library/functions#super" >}}) 。一个 `d.parents` 的引用等价于 `ChainMap(*d.maps[1:])` 。
 
 ​	注意，[`ChainMap`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.ChainMap) 的迭代顺序是通过从后往前扫描所有映射来确定的:
 
@@ -79,7 +79,7 @@ draft = false
 ['music', 'art', 'opera']
 ```
 
-​	使得顺序与从最后一个映射开始调用一系列 [`dict.update()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict.update) 得到的字典的迭代顺序相同：
+​	使得顺序与从最后一个映射开始调用一系列 [`dict.update()`]({{< ref "/library/stdtypes#dict.update" >}}) 得到的字典的迭代顺序相同：
 
 
 
@@ -90,10 +90,9 @@ draft = false
 ['music', 'art', 'opera']
 ```
 
-*在 3.9 版本发生变更:* 增加了对 `|` 和 `|=` 运算符的支持，相关说明见 [**PEP 584**](https://peps.python.org/pep-0584/)。
+> 在 3.9 版本发生变更: 增加了对 `|` 和 `|=` 运算符的支持，相关说明见 [**PEP 584**](https://peps.python.org/pep-0584/)。
 
-​	参见
-
+​参见
 - [MultiContext class](https://github.com/enthought/codetools/blob/4.0.0/codetools/contexts/multi_context.py) 在 Enthought [CodeTools package](https://github.com/enthought/codetools) 有支持写映射的选项。
 - Django 中用于模板的 [Context class](https://github.com/django/django/blob/main/django/template/context.py) 是只读的映射链。 它还具有上下文推送和弹出特性，类似于 [`new_child()`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.ChainMap.new_child) 方法和 [`parents`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.ChainMap.parents) 特征属性。
 - [Nested Contexts recipe](https://code.activestate.com/recipes/577434-nested-contexts-a-chain-of-mapping-objects/) 提供了对于写入和其他修改是只应用于链路中第一个映射还是所有映射的选项。
@@ -201,7 +200,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 
 ## *class* collections.**Counter**([*iterable-or-mapping*])
 
-[`Counter`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter) 是 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 的子类，用于计数 [hashable](https://docs.python.org/zh-cn/3.13/glossary.html#term-hashable) 对象。它是一个多项集，元素存储为字典的键而它们的计数存储为字典的值。计数可以是任何整数，包括零或负的计数值。[`Counter`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter) 类与其他语言中的 bag 或 multiset 很相似。
+[`Counter`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter) 是 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 的子类，用于计数 [hashable]({{< ref "/glossary/idx#term-hashable" >}}) 对象。它是一个多项集，元素存储为字典的键而它们的计数存储为字典的值。计数可以是任何整数，包括零或负的计数值。[`Counter`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter) 类与其他语言中的 bag 或 multiset 很相似。
 
 ​	它可以通过计数一个 *iterable* 中的元素来初始化，或用其它 *mapping* (包括 counter) 初始化：
 
@@ -214,7 +213,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 >>> c = Counter(cats=4, dogs=8)             # a new counter from keyword args
 ```
 
-​	Counter 对象的接口类似于字典，不同的是，如果查询的键不在 Counter 中，它会返回一个 0 而不是引发一个 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError)：
+​	Counter 对象的接口类似于字典，不同的是，如果查询的键不在 Counter 中，它会返回一个 0 而不是引发一个 [`KeyError`]({{< ref "/library/exceptions#KeyError" >}})：
 
 
 
@@ -236,7 +235,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 > Added in version 3.1.
 >
 
-*在 3.7 版本发生变更:* 作为 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 的子类，[`Counter`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter) 继承了记住插入顺序的功能。*Counter* 对象间的数学运算也是保序的。结果首先把左操作数中存在的元素按照它们在左操作数中的顺序排序，后面跟着其它元素，按它们在右操作数中的顺序排序。
+> 在 3.7 版本发生变更: 作为 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 的子类，[`Counter`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter) 继承了记住插入顺序的功能。*Counter* 对象间的数学运算也是保序的。结果首先把左操作数中存在的元素按照它们在左操作数中的顺序排序，后面跟着其它元素，按它们在右操作数中的顺序排序。
 
 ​	Counter 对象在对所有字典可用的方法以外还支持一些附加方法:
 
@@ -265,7 +264,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 
 ## **subtract**([*iterable-or-mapping*])
 
-​	减去一个 *可迭代对象* 或 *映射对象* (或 counter) 中的元素。类似于 [`dict.update()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict.update) 但是是减去而非替换。输入和输出都可以是 0 或负数。
+​	减去一个 *可迭代对象* 或 *映射对象* (或 counter) 中的元素。类似于 [`dict.update()`]({{< ref "/library/stdtypes#dict.update" >}}) 但是是减去而非替换。输入和输出都可以是 0 或负数。
 
 
 
@@ -303,13 +302,13 @@ Counter({'a': 3, 'b': 0, 'c': -3, 'd': -6})
 
 ## **update**([*iterable-or-mapping*])
 
-​	加上一个 *可迭代对象* 或 *映射对象* (或 counter) 中的元素。类似于 [`dict.update()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict.update) 但是是加上而非替换。另外，*可迭代对象* 应当是一个元素序列，而不是一个 `(key, value)` 对的序列。
+​	加上一个 *可迭代对象* 或 *映射对象* (或 counter) 中的元素。类似于 [`dict.update()`]({{< ref "/library/stdtypes#dict.update" >}}) 但是是加上而非替换。另外，*可迭代对象* 应当是一个元素序列，而不是一个 `(key, value)` 对的序列。
 
 ​	计数对象支持相等性、子集和超集关系等富比较运算符: `==`, `!=`, `<`, `<=`, `>`, `>=`。 所有这些检测会将不存在的元素当作计数值为零，因此 `Counter(a=1) == Counter(a=1, b=0)` 将返回真值。
 
-*在 3.10 版本发生变更:* 增加了富比较运算。
+> 在 3.10 版本发生变更: 增加了富比较运算。
 
-*在 3.10 版本发生变更:* 在相等性检测中，不存在的元素会被当作计数值为零。 在此之前，`Counter(a=3)` 和 `Counter(a=3, b=0)` 会被视为不同。
+> 在 3.10 版本发生变更: 在相等性检测中，不存在的元素会被当作计数值为零。 在此之前，`Counter(a=3)` 和 `Counter(a=3, b=0)` 会被视为不同。
 
 [`Counter`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter) 对象的常用案例
 
@@ -361,8 +360,7 @@ Counter({'b': 4})
 > Added in version 3.3:
 > 添加了对一元加，一元减和位置集合操作的支持。
 
-​	备注
-
+​备注
  
 
 ​	计数器主要是为了表达运行的正的计数而设计；但是，小心不要预先排除负数或者其他类型。为了帮助这些用例，这一节记录了最小范围和类型限制。
@@ -373,8 +371,7 @@ Counter({'b': 4})
 - 多集方法是专为只会遇到正值的使用情况设计的。输入可以是 0 或负数，但只输出计数为正的值。没有类型限制，但值的类型需支持加、减和比较操作。
 - [`elements()`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter.elements) 方法要求正整数计数。忽略0和负数计数。
 
-​	参见
-
+​参见
 - [Bag class](https://www.gnu.org/software/smalltalk/manual-base/html_node/Bag.html) 在 Smalltalk。
 
 - Wikipedia 链接 [Multisets](https://en.wikipedia.org/wiki/Multiset).
@@ -383,7 +380,7 @@ Counter({'b': 4})
 
 - 数学操作和多集合用例，参考 *Knuth, Donald. The Art of Computer Programming Volume II, Section 4.6.3, Exercise 19* 。
 
-- 在给定数量和集合元素枚举所有不同的多集合，参考 [`itertools.combinations_with_replacement()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.combinations_with_replacement)
+- 在给定数量和集合元素枚举所有不同的多集合，参考 [`itertools.combinations_with_replacement()`]({{< ref "/library/functional/itertools#itertools.combinations_with_replacement" >}})
 
   ```
   map(Counter, combinations_with_replacement('ABC', 2)) # --> AA AB AC BB BC CC
@@ -397,7 +394,7 @@ Counter({'b': 4})
 
 ​	Deque 队列是对栈或 queue 队列的泛化（该名称的发音为 "deck"，是 "double-ended queue" 的简写形式)。 Deque 支持线程安全，高度节省内存地从 deque 的任一端添加和弹出条目，在两个方向上的大致性能均为 *O*(1)。
 
-​	虽然 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 对象也支持类似的操作，但它们是针对快速的固定长度的操作进行优化而 `pop(0)` 和 `insert(0, v)` 操作对下层数据表示的大小和位置改变都将产生 *O*(*n*) 的内存移动开销。
+​	虽然 [`list`]({{< ref "/library/stdtypes#list" >}}) 对象也支持类似的操作，但它们是针对快速的固定长度的操作进行优化而 `pop(0)` 和 `insert(0, v)` 操作对下层数据表示的大小和位置改变都将产生 *O*(*n*) 的内存移动开销。
 
 ​	如果 *maxlen* 没有指定或者是 `None` ，deques 可以增长到任意长度。否则，deque就限定到指定最大长度。一旦限定长度的deque满了，当新项加入时，同样数量的项就从另一端弹出。限定长度deque提供类似Unix filter `tail` 的功能。它们同样可以用与追踪最近的交换和其他数据池活动。
 
@@ -439,7 +436,7 @@ Counter({'b': 4})
 
 ## **index**(*x*[, *start*[, *stop*]])
 
-​	返回 *x* 在 deque 中的位置（在索引 *start* 之后，索引 *stop* 之前）。 返回第一个匹配项，如果未找到则引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	返回 *x* 在 deque 中的位置（在索引 *start* 之后，索引 *stop* 之前）。 返回第一个匹配项，如果未找到则引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 > Added in version 3.5.
 >
@@ -448,22 +445,22 @@ Counter({'b': 4})
 
 ​	在位置 *i* 插入 *x* 。
 
-​	如果插入会导致一个限长 deque 超出长度 *maxlen* 的话，就引发一个 [`IndexError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#IndexError)。
+​	如果插入会导致一个限长 deque 超出长度 *maxlen* 的话，就引发一个 [`IndexError`]({{< ref "/library/exceptions#IndexError" >}})。
 
 > Added in version 3.5.
 >
 
 ## **pop**()
 
-​	移去并且返回一个元素，deque 最右侧的那一个。 如果没有元素的话，就引发一个 [`IndexError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#IndexError)。
+​	移去并且返回一个元素，deque 最右侧的那一个。 如果没有元素的话，就引发一个 [`IndexError`]({{< ref "/library/exceptions#IndexError" >}})。
 
 ## **popleft**()
 
-​	移去并且返回一个元素，deque 最左侧的那一个。 如果没有元素的话，就引发 [`IndexError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#IndexError)。
+​	移去并且返回一个元素，deque 最左侧的那一个。 如果没有元素的话，就引发 [`IndexError`]({{< ref "/library/exceptions#IndexError" >}})。
 
 ## **remove**(*value*)
 
-​	移除找到的第一个 *value*。 如果没有的话就引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	移除找到的第一个 *value*。 如果没有的话就引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 ## **reverse**()
 
@@ -487,7 +484,7 @@ Counter({'b': 4})
 > Added in version 3.1.
 >
 
-​	在上述操作以外，deque 还支持迭代, 封存, `len(d)`, `reversed(d)`, `copy.copy(d)`, `copy.deepcopy(d)`, 使用 [`in`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#in) 运算符的成员检测以及下标引用例如通过 `d[0]` 访问首个元素等。 索引访问在两端的时间复杂度均为 *O*(1) 但在中间则会低至 *O*(*n*)。 对于快速随机访问，请改用列表。
+​	在上述操作以外，deque 还支持迭代, 封存, `len(d)`, `reversed(d)`, `copy.copy(d)`, `copy.deepcopy(d)`, 使用 [`in`]({{< ref "/reference/expressions#in" >}}) 运算符的成员检测以及下标引用例如通过 `d[0]` 访问首个元素等。 索引访问在两端的时间复杂度均为 *O*(1) 但在中间则会低至 *O*(*n*)。 对于快速随机访问，请改用列表。
 
 ​	Deque从版本3.5开始支持 `__add__()`, `__mul__()`, 和 `__imul__()` 。
 
@@ -608,23 +605,23 @@ def delete_nth(d, n):
 
 ## *class* collections.**defaultdict**(*default_factory=None*, */*[, *...*])
 
-​	返回一个新的类似字典的对象。 [`defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) 是内置 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 类的子类。 它重写了一个方法并添加了一个可写的实例变量。 其余的功能与 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 类相同因而不在此文档中写明。
+​	返回一个新的类似字典的对象。 [`defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) 是内置 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 类的子类。 它重写了一个方法并添加了一个可写的实例变量。 其余的功能与 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 类相同因而不在此文档中写明。
 
-​	本对象包含一个名为 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 的属性，构造时，第一个参数用于为该属性提供初始值，默认为 `None`。所有其他参数（包括关键字参数）都相当于传递给 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 的构造函数。
+​	本对象包含一个名为 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 的属性，构造时，第一个参数用于为该属性提供初始值，默认为 `None`。所有其他参数（包括关键字参数）都相当于传递给 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 的构造函数。
 
-[`defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) 对象除了支持标准 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 的操作，还支持以下方法作为扩展：
+[`defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) 对象除了支持标准 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 的操作，还支持以下方法作为扩展：
 
-## **__missing__**(*key*)
+## `__missing__`(*key*)
 
-​	如果 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 属性为 `None`，则调用本方法会抛出 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError) 异常，附带参数 *key*。
+​	如果 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 属性为 `None`，则调用本方法会抛出 [`KeyError`]({{< ref "/library/exceptions#KeyError" >}}) 异常，附带参数 *key*。
 
 ​	如果 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 不为 `None`，则它会被（不带参数地）调用来为 *key* 提供一个默认值，这个值和 *key* 作为一对键值对被插入到字典中，并作为本方法的返回值返回。
 
 ​	如果调用 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 时抛出了异常，这个异常会原封不动地向外层传递。
 
-​	当请求的键未找到时本方法会被 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 类的 [`__getitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getitem__) 方法调用；它返回或引发的任何对象都会被 [`__getitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getitem__) 返回或引发。
+​	当请求的键未找到时本方法会被 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 类的 [`__getitem__()`]({{< ref "/reference/datamodel#object.__getitem__" >}}) 方法调用；它返回或引发的任何对象都会被 [`__getitem__()`]({{< ref "/reference/datamodel#object.__getitem__" >}}) 返回或引发。
 
-​	请注意除了 [`__getitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getitem__) 之外 [`__missing__()`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.__missing__) *不会* 被调用进行任何操作。 这意味着 `get()` 会像普通字典一样返回 `None` 作为默认值而不是使用 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory)。
+​	请注意除了 [`__getitem__()`]({{< ref "/reference/datamodel#object.__getitem__" >}}) 之外 [`__missing__()`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.__missing__) *不会* 被调用进行任何操作。 这意味着 `get()` 会像普通字典一样返回 `None` 作为默认值而不是使用 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory)。
 
 [`defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) 对象支持以下实例变量：
 
@@ -632,11 +629,11 @@ def delete_nth(d, n):
 
 ​	本属性由 [`__missing__()`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.__missing__) 方法来调用。如果构造对象时提供了第一个参数，则本属性会被初始化成那个参数，如果未提供第一个参数，则本属性为 `None`。
 
-*在 3.9 版本发生变更:* 增加了合并 (`|`) 与更新 (`|=`) 运算符，相关说明见 [**PEP 584**](https://peps.python.org/pep-0584/)。
+> 在 3.9 版本发生变更: 增加了合并 (`|`) 与更新 (`|=`) 运算符，相关说明见 [**PEP 584**](https://peps.python.org/pep-0584/)。
 
 ### [`defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) 例子
 
-​	使用 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 作为 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory)，很轻松地将（键-值对组成的）序列转换为（键-列表组成的）字典：
+​	使用 [`list`]({{< ref "/library/stdtypes#list" >}}) 作为 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory)，很轻松地将（键-值对组成的）序列转换为（键-列表组成的）字典：
 
 
 
@@ -650,7 +647,7 @@ def delete_nth(d, n):
 [('blue', [2, 4]), ('red', [1]), ('yellow', [1, 3])]
 ```
 
-​	当每个键第一次遇见时，它还没有在字典里面，所以自动创建该条目，即调用 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 方法，返回一个空的 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list)。 `list.append()` 操作添加值到这个新的列表里。当再次存取该键时，就正常操作，`list.append()` 添加另一个值到列表中。这个计数比它的等价方法 [`dict.setdefault()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict.setdefault) 要快速和简单：
+​	当每个键第一次遇见时，它还没有在字典里面，所以自动创建该条目，即调用 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 方法，返回一个空的 [`list`]({{< ref "/library/stdtypes#list" >}})。 `list.append()` 操作添加值到这个新的列表里。当再次存取该键时，就正常操作，`list.append()` 添加另一个值到列表中。这个计数比它的等价方法 [`dict.setdefault()`]({{< ref "/library/stdtypes#dict.setdefault" >}}) 要快速和简单：
 
 
 
@@ -663,7 +660,7 @@ def delete_nth(d, n):
 [('blue', [2, 4]), ('red', [1]), ('yellow', [1, 3])]
 ```
 
-​	设置 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 为 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int)，使 [`defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) 用于计数（类似其他语言中的 bag 或 multiset）：
+​	设置 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 为 [`int`]({{< ref "/library/functions#int" >}})，使 [`defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) 用于计数（类似其他语言中的 bag 或 multiset）：
 
 
 
@@ -677,9 +674,9 @@ def delete_nth(d, n):
 [('i', 4), ('m', 1), ('p', 2), ('s', 4)]
 ```
 
-​	当一个字母首次遇到时，它会查询失败，则 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 会调用 [`int()`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 来提供一个整数 0 作为默认值。后续的自增操作建立起对每个字母的计数。
+​	当一个字母首次遇到时，它会查询失败，则 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 会调用 [`int()`]({{< ref "/library/functions#int" >}}) 来提供一个整数 0 作为默认值。后续的自增操作建立起对每个字母的计数。
 
-​	函数 [`int()`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 总是返回 0，这是常数函数的特殊情况。一个更快和灵活的方法是使用 lambda 函数，可以提供任何常量值（不只是0）：
+​	函数 [`int()`]({{< ref "/library/functions#int" >}}) 总是返回 0，这是常数函数的特殊情况。一个更快和灵活的方法是使用 lambda 函数，可以提供任何常量值（不只是0）：
 
 
 
@@ -693,7 +690,7 @@ def delete_nth(d, n):
 'John ran to <missing>'
 ```
 
-​	设置 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 为 [`set`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#set) 使 [`defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) 用于构建 set 集合：
+​	设置 [`default_factory`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict.default_factory) 为 [`set`]({{< ref "/library/stdtypes#set" >}}) 使 [`defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) 用于构建 set 集合：
 
 
 
@@ -717,27 +714,27 @@ def delete_nth(d, n):
 
 *field_names* 是一个像 `[‘x’, ‘y’]` 一样的字符串序列。另外 *field_names* 可以是一个纯字符串，用空白或逗号分隔开元素名，比如 `'x y'` 或者 `'x, y'` 。
 
-​	任何有效的Python 标识符都可以作为字段名，除了下划线开头的那些。有效标识符由字母，数字，下划线组成，但首字母不能是数字或下划线，另外不能是关键词 [`keyword`](https://docs.python.org/zh-cn/3.13/library/keyword.html#module-keyword) 比如 *class*, *for*, *return*, *global*, *pass*, 或 *raise* 。
+​	任何有效的Python 标识符都可以作为字段名，除了下划线开头的那些。有效标识符由字母，数字，下划线组成，但首字母不能是数字或下划线，另外不能是关键词 [`keyword`]({{< ref "/library/language/keyword#module-keyword" >}}) 比如 *class*, *for*, *return*, *global*, *pass*, 或 *raise* 。
 
 ​	如果 *rename* 为真， 无效字段名会自动转换成位置名。比如 `['abc', 'def', 'ghi', 'abc']` 转换成 `['abc', '_1', 'ghi', '_3']` ， 消除关键词 `def` 和重复字段名 `abc` 。
 
-*defaults* 可以为 `None` 或者是一个默认值的 [iterable](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterable) 。如果一个默认值域必须跟其他没有默认值的域在一起出现，*defaults* 就应用到最右边的参数。比如如果域名 `['x', 'y', 'z']` 和默认值 `(1, 2)` ，那么 `x` 就必须指定一个参数值 ，`y` 默认值 `1` ， `z` 默认值 `2` 。
+*defaults* 可以为 `None` 或者是一个默认值的 [iterable]({{< ref "/glossary/idx#term-iterable" >}}) 。如果一个默认值域必须跟其他没有默认值的域在一起出现，*defaults* 就应用到最右边的参数。比如如果域名 `['x', 'y', 'z']` 和默认值 `(1, 2)` ，那么 `x` 就必须指定一个参数值 ，`y` 默认值 `1` ， `z` 默认值 `2` 。
 
-​	If *module* is defined, the [`__module__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#type.__module__) attribute of the named tuple is set to that value.
+​	If *module* is defined, the [`__module__`]({{< ref "/reference/datamodel#type.__module__" >}}) attribute of the named tuple is set to that value.
 
 ​	具名元组实例毋需字典来保存每个实例的不同属性，所以它们轻量，占用的内存和普通元组一样。
 
 ​	要支持封存操作，应当将命名元组类赋值给一个匹配 *typename* 的变量。
 
-*在 3.1 版本发生变更:* 添加了对 *rename* 的支持。
+> 在 3.1 版本发生变更: 添加了对 *rename* 的支持。
 
-*在 3.6 版本发生变更:* *verbose* 和 *rename* 参数成为 [仅限关键字参数](https://docs.python.org/zh-cn/3.13/glossary.html#keyword-only-parameter).
+> 在 3.6 版本发生变更: *verbose* 和 *rename* 参数成为 [仅限关键字参数]({{< ref "/glossary/idx#keyword-only-parameter" >}}).
 
-*在 3.6 版本发生变更:* 添加了 *module* 参数。
+> 在 3.6 版本发生变更: 添加了 *module* 参数。
 
-*在 3.7 版本发生变更:* 移除了 *verbose* 形参和 `_source` 属性。
+> 在 3.7 版本发生变更: 移除了 *verbose* 形参和 `_source` 属性。
 
-*在 3.7 版本发生变更:* 添加了 *defaults* 参数和 `_field_defaults` 属性。
+> 在 3.7 版本发生变更: 添加了 *defaults* 参数和 `_field_defaults` 属性。
 
 
 
@@ -756,7 +753,7 @@ def delete_nth(d, n):
 Point(x=11, y=22)
 ```
 
-​	命名元组尤其有用于赋值 [`csv`](https://docs.python.org/zh-cn/3.13/library/csv.html#module-csv) [`sqlite3`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#module-sqlite3) 模块返回的元组
+​	命名元组尤其有用于赋值 [`csv`]({{< ref "/library/fileformats/csv#module-csv" >}}) [`sqlite3`]({{< ref "/library/persistence/sqlite3#module-sqlite3" >}}) 模块返回的元组
 
 ```
 EmployeeRecord = namedtuple('EmployeeRecord', 'name, age, title, department, paygrade')
@@ -789,7 +786,7 @@ Point(x=11, y=22)
 
 ## somenamedtuple.**_asdict**()
 
-​	返回一个新的 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) ，它将字段名称映射到它们对应的值：
+​	返回一个新的 [`dict`]({{< ref "/library/stdtypes#dict" >}}) ，它将字段名称映射到它们对应的值：
 
 
 
@@ -799,9 +796,9 @@ Point(x=11, y=22)
 {'x': 11, 'y': 22}
 ```
 
-*在 3.1 版本发生变更:* 返回一个 [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 而不是 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 。
+> 在 3.1 版本发生变更: 返回一个 [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 而不是 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 。
 
-*在 3.8 版本发生变更:* 返回一个常规 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 而不是 [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict)。 因为自 Python 3.7 起，常规字典已经保证有序。 如果需要 [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 的额外特性，推荐的解决方案是将结果转换为需要的类型: `OrderedDict(nt._asdict())`。
+> 在 3.8 版本发生变更: 返回一个常规 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 而不是 [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict)。 因为自 Python 3.7 起，常规字典已经保证有序。 如果需要 [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 的额外特性，推荐的解决方案是将结果转换为需要的类型: `OrderedDict(nt._asdict())`。
 
 ## somenamedtuple.**_replace**(***kwargs*)
 
@@ -818,9 +815,9 @@ Point(x=33, y=22)
 ...     inventory[partnum] = record._replace(price=newprices[partnum], timestamp=time.now())
 ```
 
-​	泛型函数 [`copy.replace()`](https://docs.python.org/zh-cn/3.13/library/copy.html#copy.replace) 也支持具名元组。
+​	泛型函数 [`copy.replace()`]({{< ref "/library/datatypes/copy#copy.replace" >}}) 也支持具名元组。
 
-*在 3.13 版本发生变更:* 对于无效的关键字参数将引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError) 而不是 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+> 在 3.13 版本发生变更: 对于无效的关键字参数将引发 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}}) 而不是 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 ## somenamedtuple.**_fields**
 
@@ -852,7 +849,7 @@ Pixel(x=11, y=22, red=128, green=255, blue=0)
 Account(type='premium', balance=0)
 ```
 
-​	要获取这个名字域的值，使用 [`getattr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#getattr) 函数 :
+​	要获取这个名字域的值，使用 [`getattr()`]({{< ref "/library/functions#getattr" >}}) 函数 :
 
 
 
@@ -861,7 +858,7 @@ Account(type='premium', balance=0)
 11
 ```
 
-​	转换一个字典到命名元组，使用 ** 两星操作符 (所述如 [解包实参列表](https://docs.python.org/zh-cn/3.13/tutorial/controlflow.html#tut-unpacking-arguments)):
+​	转换一个字典到命名元组，使用 ** 两星操作符 (所述如 [解包实参列表]({{< ref "/tutorial/controlflow#tut-unpacking-arguments" >}})):
 
 
 
@@ -912,11 +909,10 @@ Point: x=14.000  y= 0.714  hypot=14.018
 >>> Book.authors.__doc__ = 'List of authors sorted by last name'
 ```
 
-*在 3.5 版本发生变更:* 文档字符串属性变成可写。
+> 在 3.5 版本发生变更: 文档字符串属性变成可写。
 
-​	参见
-
-- 请参阅 [`typing.NamedTuple`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.NamedTuple) ，以获取为命名元组添加类型提示的方法。 它还使用 [`class`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#class) 关键字提供了一种优雅的符号:
+​参见
+- 请参阅 [`typing.NamedTuple`]({{< ref "/library/development/typing#typing.NamedTuple" >}}) ，以获取为命名元组添加类型提示的方法。 它还使用 [`class`]({{< ref "/reference/compound_stmts#class" >}}) 关键字提供了一种优雅的符号:
 
   ```
   class Component(NamedTuple):
@@ -925,43 +921,43 @@ Point: x=14.000  y= 0.714  hypot=14.018
       description: Optional[str] = None
   ```
 
-- 对于以字典为底层的可变域名， 参考 [`types.SimpleNamespace()`](https://docs.python.org/zh-cn/3.13/library/types.html#types.SimpleNamespace) 。
+- 对于以字典为底层的可变域名， 参考 [`types.SimpleNamespace()`]({{< ref "/library/datatypes/types#types.SimpleNamespace" >}}) 。
 
-- [`dataclasses`](https://docs.python.org/zh-cn/3.13/library/dataclasses.html#module-dataclasses) 模块提供了一个装饰器和一些函数，用于自动将生成的特殊方法添加到用户定义的类中。
+- [`dataclasses`]({{< ref "/library/python/dataclasses#module-dataclasses" >}}) 模块提供了一个装饰器和一些函数，用于自动将生成的特殊方法添加到用户定义的类中。
 
 ## [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 对象
 
-​	有序词典就像常规词典一样，但有一些与排序操作相关的额外功能。由于内置的 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 类获得了记住插入顺序的能力（在 Python 3.7 中保证了这种新行为），它们变得不那么重要了。
+​	有序词典就像常规词典一样，但有一些与排序操作相关的额外功能。由于内置的 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 类获得了记住插入顺序的能力（在 Python 3.7 中保证了这种新行为），它们变得不那么重要了。
 
-​	一些与 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 的不同仍然存在：
+​	一些与 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 的不同仍然存在：
 
-- 常规的 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 被设计为非常擅长映射操作。 跟踪插入顺序是次要的。
+- 常规的 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 被设计为非常擅长映射操作。 跟踪插入顺序是次要的。
 
 - [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 旨在擅长重新排序操作。 空间效率、迭代速度和更新操作的性能是次要的。
 
-- [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 算法能比 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 更好地处理频繁的重排序操作。 如下面的例程所示，这使得它更适用于实现各种 LRU 缓存。
+- [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 算法能比 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 更好地处理频繁的重排序操作。 如下面的例程所示，这使得它更适用于实现各种 LRU 缓存。
 
 - 对于 [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) ，相等操作检查匹配顺序。
 
-  常规的 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 可以使用 `p == q and all(k1 == k2 for k1, k2 in zip(p, q))` 进行模拟顺序相等性测试。
+  常规的 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 可以使用 `p == q and all(k1 == k2 for k1, k2 in zip(p, q))` 进行模拟顺序相等性测试。
 
 - [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 类的 `popitem()` 方法有不同的签名。它接受一个可选参数来指定弹出哪个元素。
 
-  常规的 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 可以使用 `d.popitem()` 模拟 OrderedDict 的 `od.popitem(last=True)`，其保证会返回最右边（最后）的项。
+  常规的 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 可以使用 `d.popitem()` 模拟 OrderedDict 的 `od.popitem(last=True)`，其保证会返回最右边（最后）的项。
 
-  常规的 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 可以通过 `(k := next(iter(d)), d.pop(k))` 来模拟 OrderedDict 的 `od.popitem(last=False)`，它将返回并移除最左边（开头）的条目，如果条目存在的话。
+  常规的 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 可以通过 `(k := next(iter(d)), d.pop(k))` 来模拟 OrderedDict 的 `od.popitem(last=False)`，它将返回并移除最左边（开头）的条目，如果条目存在的话。
 
 - [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 类有一个 `move_to_end()` 方法，可以有效地将元素移动到任一端。
 
-  常规的 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 可以通过 `d[k] = d.pop(k)` 来模拟 OrderedDict 的 `od.move_to_end(k, last=True)`，它将把键及其所关联的值移到最右边（末尾）的位置。
+  常规的 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 可以通过 `d[k] = d.pop(k)` 来模拟 OrderedDict 的 `od.move_to_end(k, last=True)`，它将把键及其所关联的值移到最右边（末尾）的位置。
 
-  常规的 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 没有 OrderedDict 的 `od.move_to_end(k, last=False)` 的高效等价物，它会把键及其所关联的值移到最左边（开头）的位置。
+  常规的 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 没有 OrderedDict 的 `od.move_to_end(k, last=False)` 的高效等价物，它会把键及其所关联的值移到最左边（开头）的位置。
 
-- Python 3.8之前， [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 缺少 `__reversed__()` 方法。
+- Python 3.8之前， [`dict`]({{< ref "/library/stdtypes#dict" >}}) 缺少 `__reversed__()` 方法。
 
 ## *class* collections.**OrderedDict**([*items*])
 
-​	返回一个 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 子类的实例，它具有专门用于重新排列字典顺序的方法。
+​	返回一个 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 子类的实例，它具有专门用于重新排列字典顺序的方法。
 
 > Added in version 3.1.
 >
@@ -972,7 +968,7 @@ Point: x=14.000  y= 0.714  hypot=14.018
 
 ## **move_to_end**(*key*, *last=True*)
 
-​	将一个现有的 *key* 移到序字典的任一端。 如果 *last* 为真值（默认）则将条目移到右端，或者如果 *last* 为假值则将条目移到开头。 如果 *key* 不存在则会引发 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError):
+​	将一个现有的 *key* 移到序字典的任一端。 如果 *last* 为真值（默认）则将条目移到右端，或者如果 *last* 为假值则将条目移到开头。 如果 *key* 不存在则会引发 [`KeyError`]({{< ref "/library/exceptions#KeyError" >}}):
 
 
 
@@ -989,17 +985,17 @@ Point: x=14.000  y= 0.714  hypot=14.018
 > Added in version 3.2.
 >
 
-​	相对于通常的映射方法，有序字典还另外提供了逆序迭代的支持，通过 [`reversed()`](https://docs.python.org/zh-cn/3.13/library/functions.html#reversed) 。
+​	相对于通常的映射方法，有序字典还另外提供了逆序迭代的支持，通过 [`reversed()`]({{< ref "/library/functions#reversed" >}}) 。
 
 ​	Equality tests between [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) objects are order-sensitive and are roughly equivalent to `list(od1.items())==list(od2.items())`.
 
-​	Equality tests between [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) objects and other [`Mapping`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Mapping) objects are order-insensitive like regular dictionaries. This allows [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) objects to be substituted anywhere a regular dictionary is used.
+​	Equality tests between [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) objects and other [`Mapping`]({{< ref "/library/datatypes/collections_abc#collections.abc.Mapping" >}}) objects are order-insensitive like regular dictionaries. This allows [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) objects to be substituted anywhere a regular dictionary is used.
 
-*在 3.5 版本发生变更:* [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 的项(item)，键(key)和值(value) [视图](https://docs.python.org/zh-cn/3.13/glossary.html#term-dictionary-view) 现在支持逆序迭代，通过 [`reversed()`](https://docs.python.org/zh-cn/3.13/library/functions.html#reversed) 。
+> 在 3.5 版本发生变更: [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 的项(item)，键(key)和值(value) [视图]({{< ref "/glossary/idx#term-dictionary-view" >}}) 现在支持逆序迭代，通过 [`reversed()`]({{< ref "/library/functions#reversed" >}}) 。
 
-*在 3.6 版本发生变更:* [**PEP 468**](https://peps.python.org/pep-0468/) 赞成将关键词参数的顺序保留， 通过传递给 [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 构造器和它的 `update()` 方法。
+> 在 3.6 版本发生变更: [**PEP 468**](https://peps.python.org/pep-0468/) 赞成将关键词参数的顺序保留， 通过传递给 [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 构造器和它的 `update()` 方法。
 
-*在 3.9 版本发生变更:* 增加了合并 (`|`) 与更新 (`|=`) 运算符，相关说明见 [**PEP 584**](https://peps.python.org/pep-0584/)。
+> 在 3.9 版本发生变更: 增加了合并 (`|`) 与更新 (`|=`) 运算符，相关说明见 [**PEP 584**](https://peps.python.org/pep-0584/)。
 
 ### [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 例子和用法
 
@@ -1014,7 +1010,7 @@ class LastUpdatedOrderedDict(OrderedDict):
         self.move_to_end(key)
 ```
 
-​	一个 [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 对于实现 [`functools.lru_cache()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.lru_cache) 的变体也很有用:
+​	一个 [`OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 对于实现 [`functools.lru_cache()`]({{< ref "/library/functional/functools#functools.lru_cache" >}}) 的变体也很有用:
 
 ```
 from collections import OrderedDict
@@ -1077,7 +1073,7 @@ class MultiHitLRUCache:
 
 ## [`UserDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserDict) 对象
 
-[`UserDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserDict) 类是用作字典对象的外包装。对这个类的需求已部分由直接创建 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 的子类的功能所替代；不过，这个类处理起来更容易，因为底层的字典可以作为属性来访问。
+[`UserDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserDict) 类是用作字典对象的外包装。对这个类的需求已部分由直接创建 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 的子类的功能所替代；不过，这个类处理起来更容易，因为底层的字典可以作为属性来访问。
 
 ## *class* collections.**UserDict**([*initialdata*])
 
@@ -1093,7 +1089,7 @@ class MultiHitLRUCache:
 
 ​	这个类封装了列表对象。它是一个有用的基础类，对于你想自定义的类似列表的类，可以继承和覆盖现有的方法，也可以添加新的方法。这样我们可以对列表添加新的行为。
 
-​	对这个类的需求已部分由直接创建 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 的子类的功能所替代；不过，这个类处理起来更容易，因为底层的列表可以作为属性来访问。
+​	对这个类的需求已部分由直接创建 [`list`]({{< ref "/library/stdtypes#list" >}}) 的子类的功能所替代；不过，这个类处理起来更容易，因为底层的列表可以作为属性来访问。
 
 ## *class* collections.**UserList**([*list*])
 
@@ -1103,7 +1099,7 @@ class MultiHitLRUCache:
 
 ## **data**
 
-​	一个 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 对象用于存储 [`UserList`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserList) 的内容。
+​	一个 [`list`]({{< ref "/library/stdtypes#list" >}}) 对象用于存储 [`UserList`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserList) 的内容。
 
 **子类化的要求:** [`UserList`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserList) 的子类需要提供一个构造器，可以无参数调用，或者一个参数调用。返回一个新序列的列表操作需要创建一个实现类的实例。它假定了构造器可以以一个参数进行调用，这个参数是一个序列对象，作为数据源。
 
@@ -1111,16 +1107,16 @@ class MultiHitLRUCache:
 
 ## [`UserString`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserString) 对象
 
-[`UserString`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserString) 类是用作字符串对象的外包装。对这个类的需求已部分由直接创建 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 的子类的功能所替代；不过，这个类处理起来更容易，因为底层的字符串可以作为属性来访问。
+[`UserString`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserString) 类是用作字符串对象的外包装。对这个类的需求已部分由直接创建 [`str`]({{< ref "/library/stdtypes#str" >}}) 的子类的功能所替代；不过，这个类处理起来更容易，因为底层的字符串可以作为属性来访问。
 
 ## *class* collections.**UserString**(*seq*)
 
-​	模拟一个字符串对象。这个实例对象的内容保存为一个正常字符串，通过 [`UserString`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserString) 的 [`data`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserString.data) 属性存取。实例内容初始化设置为 *seq* 的copy。*seq* 参数可以是任何可通过内建 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 函数转换为字符串的对象。
+​	模拟一个字符串对象。这个实例对象的内容保存为一个正常字符串，通过 [`UserString`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserString) 的 [`data`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserString.data) 属性存取。实例内容初始化设置为 *seq* 的copy。*seq* 参数可以是任何可通过内建 [`str()`]({{< ref "/library/stdtypes#str" >}}) 函数转换为字符串的对象。
 
 [`UserString`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserString) 提供了以下属性作为字符串方法和操作的额外支持：
 
 ## **data**
 
-​	一个真正的 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 对象用来存放 [`UserString`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserString) 类的内容。
+​	一个真正的 [`str`]({{< ref "/library/stdtypes#str" >}}) 对象用来存放 [`UserString`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.UserString) 类的内容。
 
-*在 3.5 版本发生变更:* 新方法 `__getnewargs__`, `__rmod__`, `casefold`, `format_map`, `isprintable`, 和 `maketrans`。
+> 在 3.5 版本发生变更: 新方法 `__getnewargs__`, `__rmod__`, `casefold`, `format_map`, `isprintable`, 和 `maketrans`。

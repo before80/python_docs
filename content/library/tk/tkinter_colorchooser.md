@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/tkinter.colorchooser.html](https://docs.python.org/zh-cn/3.13/library/tkinter.colorchooser.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/tkinter.colorchooser.html](https://docs.python.org/zh-cn/3.13/library/tkinter.colorchooser.html)
 >
 > 收录该文档的时间：`2024-11-15T20:56:44+08:00`
 
@@ -18,7 +18,7 @@ draft = false
 
 ------
 
-​	[`tkinter.colorchooser`](https://docs.python.org/zh-cn/3.13/library/tkinter.colorchooser.html#module-tkinter.colorchooser) 模块提供了 [`Chooser`](https://docs.python.org/zh-cn/3.13/library/tkinter.colorchooser.html#tkinter.colorchooser.Chooser) 类作为原生颜色选择对话框的接口。 `Chooser` 实现了一个模式颜色选择对话框窗口。 `Chooser` 类继承自 [`Dialog`](https://docs.python.org/zh-cn/3.13/library/dialog.html#tkinter.commondialog.Dialog) 类。
+​	[`tkinter.colorchooser`]({{< ref "/library/tk/tkinter_colorchooser#module-tkinter.colorchooser" >}}) 模块提供了 [`Chooser`]({{< ref "/library/tk/tkinter_colorchooser#tkinter.colorchooser.Chooser" >}}) 类作为原生颜色选择对话框的接口。 `Chooser` 实现了一个模式颜色选择对话框窗口。 `Chooser` 类继承自 [`Dialog`]({{< ref "/library/tk/dialog#tkinter.commondialog.Dialog" >}}) 类。
 
 - *class* tkinter.colorchooser.**Chooser**(*master=None*, ***options*)
 
@@ -30,6 +30,6 @@ draft = false
 
 参见
 
-- 模块 [`tkinter.commondialog`](https://docs.python.org/zh-cn/3.13/library/dialog.html#module-tkinter.commondialog)
+- 模块 [`tkinter.commondialog`]({{< ref "/library/tk/dialog#module-tkinter.commondialog" >}})
 
   Tkinter 标准对话框模块

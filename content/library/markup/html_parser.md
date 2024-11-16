@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/html.parser.html](https://docs.python.org/zh-cn/3.13/library/html.parser.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/html.parser.html](https://docs.python.org/zh-cn/3.13/library/html.parser.html)
 >
 > 收录该文档的时间：`2024-11-15T15:24:42+08:00`
 
@@ -18,7 +18,7 @@ draft = false
 
 ------
 
-​	这个模块定义了一个 [`HTMLParser`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser) 类，为 HTML（超文本标记语言）和 XHTML 文本文件解析提供基础。
+​	这个模块定义了一个 [`HTMLParser`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser" >}}) 类，为 HTML（超文本标记语言）和 XHTML 文本文件解析提供基础。
 
 ## *class* html.parser.**HTMLParser**(***, *convert_charrefs=True*)
 
@@ -26,17 +26,17 @@ draft = false
 
 ​	如果 *convert_charrefs* 为 `True` (默认值)，则所有字符引用( `script`/`style` 元素中的除外)都会自动转换为相应的 Unicode 字符。
 
-​	一个 [`HTMLParser`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser) 类的实例用来接受 HTML 数据，并在标记开始、标记结束、文本、注释和其他元素标记出现的时候调用对应的方法。要实现具体的行为，请使用 [`HTMLParser`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser) 的子类并重写其方法。
+​	一个 [`HTMLParser`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser" >}}) 类的实例用来接受 HTML 数据，并在标记开始、标记结束、文本、注释和其他元素标记出现的时候调用对应的方法。要实现具体的行为，请使用 [`HTMLParser`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser" >}}) 的子类并重写其方法。
 
 ​	这个解析器不检查结束标记是否与开始标记匹配，也不会因外层元素完毕而隐式关闭了的元素引发结束标记处理。
 
-*在 3.4 版本发生变更:* *convert_charrefs* 关键字参数被添加。
+> 在 3.4 版本发生变更: *convert_charrefs* 关键字参数被添加。
 
-*在 3.5 版本发生变更:* *convert_charrefs* 参数的默认值现在为 `True`。
+> 在 3.5 版本发生变更: *convert_charrefs* 参数的默认值现在为 `True`。
 
 ## HTML 解析器的示例程序
 
-​	下面是简单的 HTML 解析器的一个基本示例，使用 [`HTMLParser`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser) 类，当遇到开始标记、结束标记以及数据的时候将内容打印出来。
+​	下面是简单的 HTML 解析器的一个基本示例，使用 [`HTMLParser`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser" >}}) 类，当遇到开始标记、结束标记以及数据的时候将内容打印出来。
 
 ```
 from html.parser import HTMLParser
@@ -73,17 +73,17 @@ Encountered an end tag : body
 Encountered an end tag : html
 ```
 
-## [`HTMLParser`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser) 方法
+## [`HTMLParser`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser" >}}) 方法
 
-[`HTMLParser`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser) 实例有下列方法：
+[`HTMLParser`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser" >}}) 实例有下列方法：
 
 ## HTMLParser.**feed**(*data*)
 
-​	填充一些文本到解析器中。如果包含完整的元素，则被处理；如果数据不完整，将被缓冲直到更多的数据被填充，或者 [`close()`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser.close) 被调用。*data* 必须为 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 类型。
+​	填充一些文本到解析器中。如果包含完整的元素，则被处理；如果数据不完整，将被缓冲直到更多的数据被填充，或者 [`close()`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser.close" >}}) 被调用。*data* 必须为 [`str`]({{< ref "/library/stdtypes#str" >}}) 类型。
 
 ## HTMLParser.**close**()
 
-​	如同后面跟着一个文件结束标记一样，强制处理所有缓冲数据。这个方法能被派生类重新定义，用于在输入的末尾定义附加处理，但是重定义的版本应当始终调用基类 [`HTMLParser`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser) 的 [`close()`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser.close) 方法。
+​	如同后面跟着一个文件结束标记一样，强制处理所有缓冲数据。这个方法能被派生类重新定义，用于在输入的末尾定义附加处理，但是重定义的版本应当始终调用基类 [`HTMLParser`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser" >}}) 的 [`close()`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser.close" >}}) 方法。
 
 ## HTMLParser.**reset**()
 
@@ -97,7 +97,7 @@ Encountered an end tag : html
 
 ​	返回最近打开的开始标记中的文本。 结构化处理时通常应该不需要这个，但在处理“已部署”的 HTML 或是在以最小改变来重新生成输入时可能会有用处（例如可以保留属性间的空格等）。
 
-​	下列方法将在遇到数据或者标记元素的时候被调用。他们需要在子类中重写。基类的实现中没有任何实际操作（除了 [`handle_startendtag()`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser.handle_startendtag) ）：
+​	下列方法将在遇到数据或者标记元素的时候被调用。他们需要在子类中重写。基类的实现中没有任何实际操作（除了 [`handle_startendtag()`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser.handle_startendtag" >}}) ）：
 
 ## HTMLParser.**handle_starttag**(*tag*, *attrs*)
 
@@ -107,7 +107,7 @@ Encountered an end tag : html
 
 ​	实例中，对于标签 `<A HREF="https://www.cwi.nl/">`，这个方法将以下列形式被调用 `handle_starttag('a', [('href', 'https://www.cwi.nl/')])` 。
 
-[`html.entities`](https://docs.python.org/zh-cn/3.13/library/html.entities.html#module-html.entities) 中的所有实体引用，会被替换为属性值。
+[`html.entities`]({{< ref "/library/markup/html_entities#module-html.entities" >}}) 中的所有实体引用，会被替换为属性值。
 
 ## HTMLParser.**handle_endtag**(*tag*)
 
@@ -117,7 +117,7 @@ Encountered an end tag : html
 
 ## HTMLParser.**handle_startendtag**(*tag*, *attrs*)
 
-​	类似于 [`handle_starttag()`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser.handle_starttag), 只是在解析器遇到 XHTML 样式的空标记时被调用（ `<img ... />`）。这个方法能被需要这种特殊词法信息的子类重写；默认实现仅简单调用 [`handle_starttag()`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser.handle_starttag) 和 [`handle_endtag()`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser.handle_endtag) 。
+​	类似于 [`handle_starttag()`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser.handle_starttag" >}}), 只是在解析器遇到 XHTML 样式的空标记时被调用（ `<img ... />`）。这个方法能被需要这种特殊词法信息的子类重写；默认实现仅简单调用 [`handle_starttag()`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser.handle_starttag" >}}) 和 [`handle_endtag()`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser.handle_endtag" >}}) 。
 
 ## HTMLParser.**handle_data**(*data*)
 
@@ -149,11 +149,10 @@ Encountered an end tag : html
 
 ​	此方法在遇到处理指令的时候被调用。*data* 形参将包含整个处理指令。例如，对于处理指令 `<?proc color='red'>` ，这个方法将以 `handle_pi("proc color='red'")` 形式被调用。它旨在被派生类重写；基类实现中无任何实际操作。
 
-​	备注
-
+​备注
  
 
-[`HTMLParser`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser) 类使用 SGML 语法规则处理指令。使用 `'?'` 结尾的 XHTML 处理指令将导致 `'?'` 包含在 *data* 中。
+[`HTMLParser`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser" >}}) 类使用 SGML 语法规则处理指令。使用 `'?'` 结尾的 XHTML 处理指令将导致 `'?'` 包含在 *data* 中。
 
 ## HTMLParser.**unknown_decl**(*data*)
 
@@ -270,7 +269,7 @@ Num ent  : >
 Num ent  : >
 ```
 
-​	填充不完整的块给 [`feed()`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser.feed) 执行，[`handle_data()`](https://docs.python.org/zh-cn/3.13/library/html.parser.html#html.parser.HTMLParser.handle_data) 可能会多次调用（除非 *convert_charrefs* 被设置为 `True` ）:
+​	填充不完整的块给 [`feed()`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser.feed" >}}) 执行，[`handle_data()`]({{< ref "/library/markup/html_parser#html.parser.HTMLParser.handle_data" >}}) 可能会多次调用（除非 *convert_charrefs* 被设置为 `True` ）:
 
 
 

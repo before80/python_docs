@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/xmlrpc.html](https://docs.python.org/zh-cn/3.13/library/xmlrpc.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/xmlrpc.html](https://docs.python.org/zh-cn/3.13/library/xmlrpc.html)
 >
 > 收录该文档的时间：`2024-11-15T20:28:46+08:00`
 
@@ -18,5 +18,5 @@ draft = false
 
 ​	`xmlrpc` 是一个集合了 XML-RPC 服务端与客户端实现模块的包。 这些模块是:
 
-- [`xmlrpc.client`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#module-xmlrpc.client)
-- [`xmlrpc.server`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.server.html#module-xmlrpc.server)
+- [`xmlrpc.client`]({{< ref "/library/internet/xmlrpc_client#module-xmlrpc.client" >}})
+- [`xmlrpc.server`]({{< ref "/library/internet/xmlrpc_server#module-xmlrpc.server" >}})

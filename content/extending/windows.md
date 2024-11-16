@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/extending/windows.html](https://docs.python.org/zh-cn/3.13/extending/windows.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/extending/windows.html](https://docs.python.org/zh-cn/3.13/extending/windows.html)
 >
 > 收录该文档的时间：`2024-11-14T22:13:29+08:00`
 
@@ -18,8 +18,7 @@ draft = false
 
 ​	鼓励模块作者使用 distutils 方式来构建扩展模块，而不使用本节所描述的方式。 你仍将需要使用 C 编译器来构建 Python；通常为 Microsoft Visual C++。
 
-​	备注
-
+​备注
  
 
 ​	这一章提及了多个包括已编码 Python 版本号的文件名。 这些文件名以显示为 `XY` 的版本号来代表；在实践中，`'X'` 将为你所使用的 Python 发布版的主版本号而 `'Y'` 将为次版本号。 例如，如果你所使用的是 Python 2.2.1，`XY` 将为 `22`。
@@ -28,7 +27,7 @@ draft = false
 
 ## 5.1. 菜谱式说明
 
-​	与在 Unix 上一样，在 Windows 上构造扩展模块也有两种方式：使用 `setuptools` 包来控制构建过程，或者全手动操作。 setuptools 方式适用于大多数扩展；使用 `setuptools` 构建和打包扩展模块的文档见 [使用 setuptools 构建 C 和 C++ 扩展](https://docs.python.org/zh-cn/3.13/extending/building.html#setuptools-index)。 如果你发现你真的需要手动操作，那么研究一下 [winsound](https://github.com/python/cpython/tree/3.13/PCbuild/winsound.vcxproj) 标准库模块的项目文件可能会很有帮助。standard library module.
+​	与在 Unix 上一样，在 Windows 上构造扩展模块也有两种方式：使用 `setuptools` 包来控制构建过程，或者全手动操作。 setuptools 方式适用于大多数扩展；使用 `setuptools` 构建和打包扩展模块的文档见 [使用 setuptools 构建 C 和 C++ 扩展]({{< ref "/extending/building#setuptools-index" >}})。 如果你发现你真的需要手动操作，那么研究一下 [winsound](https://github.com/python/cpython/tree/3.13/PCbuild/winsound.vcxproj) 标准库模块的项目文件可能会很有帮助。standard library module.
 
 
 

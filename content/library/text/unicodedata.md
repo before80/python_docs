@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/unicodedata.html](https://docs.python.org/zh-cn/3.13/library/unicodedata.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/unicodedata.html](https://docs.python.org/zh-cn/3.13/library/unicodedata.html)
 >
 > 收录该文档的时间：`2024-11-15T11:04:21+08:00`
 
@@ -22,25 +22,25 @@ draft = false
 
 ## unicodedata.**lookup**(*name*)
 
-​	按名称查找字符。如果找到具有给定名称的字符，则返回相应的字符。 如果没有找到，则 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError) 被引发。
+​	按名称查找字符。如果找到具有给定名称的字符，则返回相应的字符。 如果没有找到，则 [`KeyError`]({{< ref "/library/exceptions#KeyError" >}}) 被引发。
 
-*在 3.3 版本发生变更:* 已添加对名称别名 [[1\]](https://docs.python.org/zh-cn/3.13/library/unicodedata.html#id3) 和命名序列 [[2\]](https://docs.python.org/zh-cn/3.13/library/unicodedata.html#id4) 的支持。
+> 在 3.3 版本发生变更: 已添加对名称别名 [[1\]]({{< ref "/library/text/unicodedata#id3" >}}) 和命名序列 [[2\]]({{< ref "/library/text/unicodedata#id4" >}}) 的支持。
 
 ## unicodedata.**name**(*chr*[, *default*])
 
-​	返回分配给字符 *chr* 的名称作为字符串。如果没有定义名称，则返回 *default* ，如果没有给出，则 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 被引发。
+​	返回分配给字符 *chr* 的名称作为字符串。如果没有定义名称，则返回 *default* ，如果没有给出，则 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) 被引发。
 
 ## unicodedata.**decimal**(*chr*[, *default*])
 
-​	返回分配给字符 *chr* 的十进制值作为整数。 如果没有定义这样的值，则返回 *default* ，如果没有给出，则 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 被引发。
+​	返回分配给字符 *chr* 的十进制值作为整数。 如果没有定义这样的值，则返回 *default* ，如果没有给出，则 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) 被引发。
 
 ## unicodedata.**digit**(*chr*[, *default*])
 
-​	返回分配给字符 *chr* 的数字值作为整数。 如果没有定义这样的值，则返回 *default* ，如果没有给出，则 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 被引发。
+​	返回分配给字符 *chr* 的数字值作为整数。 如果没有定义这样的值，则返回 *default* ，如果没有给出，则 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) 被引发。
 
 ## unicodedata.**numeric**(*chr*[, *default*])
 
-​	返回分配给字符 *chr* 的数值作为浮点数。 如果没有定义这样的值，则返回 *default* ，如果没有给出，则 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 被引发。
+​	返回分配给字符 *chr* 的数值作为浮点数。 如果没有定义这样的值，则返回 *default* ，如果没有给出，则 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) 被引发。
 
 ## unicodedata.**category**(*chr*)
 
@@ -119,12 +119,11 @@ ValueError: not a decimal
 'AN'
 ```
 
-​	备注
-
-[[1](https://docs.python.org/zh-cn/3.13/library/unicodedata.html#id1)]
+​备注
+[[1]({{< ref "/library/text/unicodedata#id1" >}})]
 
 https://www.unicode.org/Public/15.1.0/ucd/NameAliases.txt
 
-[[2](https://docs.python.org/zh-cn/3.13/library/unicodedata.html#id2)]
+[[2]({{< ref "/library/text/unicodedata#id2" >}})]
 
 https://www.unicode.org/Public/15.1.0/ucd/NamedSequences.txt

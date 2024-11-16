@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/tutorial/interactive.html](https://docs.python.org/zh-cn/3.13/tutorial/interactive.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/tutorial/interactive.html](https://docs.python.org/zh-cn/3.13/tutorial/interactive.html)
 >
 > 收录该文档的时间：`2024-11-14T22:01:54+08:00`
 
@@ -20,7 +20,7 @@ draft = false
 
 ## 14.1. Tab 补全和编辑历史
 
-​	在解释器启动的时候变量和模块名补全功能将 [自动启用](https://docs.python.org/zh-cn/3.13/library/site.html#rlcompleter-config) 以便在按下 Tab 键时发起调用补全函数；它会查找 Python 语句名称、当前局部变量和可用的模块名称。 对于带点号的表达式如 `string.a`，它会对该表达式最后一个 `'.'` 之前的部分求值然后根据结果对象的属性给出补全建议。 请注意如果具有 [`__getattr__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getattr__) 方法的对象是该表达式的一部分这可能会执行应用程序定义的代码。 默认配置还会将你的编辑历史保存到你的用户目录下名为 `.python_history` 的文件。 该历史在下一次交互式解释器会话期间将继续可用。
+​	在解释器启动的时候变量和模块名补全功能将 [自动启用]({{< ref "/library/python/site#rlcompleter-config" >}}) 以便在按下 Tab 键时发起调用补全函数；它会查找 Python 语句名称、当前局部变量和可用的模块名称。 对于带点号的表达式如 `string.a`，它会对该表达式最后一个 `'.'` 之前的部分求值然后根据结果对象的属性给出补全建议。 请注意如果具有 [`__getattr__()`]({{< ref "/reference/datamodel#object.__getattr__" >}}) 方法的对象是该表达式的一部分这可能会执行应用程序定义的代码。 默认配置还会将你的编辑历史保存到你的用户目录下名为 `.python_history` 的文件。 该历史在下一次交互式解释器会话期间将继续可用。
 
 
 

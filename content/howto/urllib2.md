@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/urllib2.html](https://docs.python.org/zh-cn/3.13/howto/urllib2.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/urllib2.html](https://docs.python.org/zh-cn/3.13/howto/urllib2.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -32,7 +32,7 @@ draft = false
 
 ​	urllib.request 支持多种 "URL 方案" （通过 URL中 `":"` 之前的字符串加以区分——如 `"ftp://python.org/"` 中的 `"ftp"`）即为采用其关联网络协议（FTP、HTTP 之类）的 URL 方案 。本教程重点关注最常用的 HTTP 场景。
 
-​	对于简单场景而言， *urlopen* 用起来十分容易。但只要在打开 HTTP URL 时遇到错误或非常情况，就需要对超文本传输协议有所了解才行。最全面、最权威的 HTTP 参考是 [**RFC 2616**](https://datatracker.ietf.org/doc/html/rfc2616.html) 。那是一份技术文档，并没有追求可读性。本 文旨在说明 *urllib* 的用法，为了便于阅读也附带了足够详细的 HTTP 信息。本文并不是为了替代 [`urllib.request`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#module-urllib.request) 文档，只是其补充说明而已。
+​	对于简单场景而言， *urlopen* 用起来十分容易。但只要在打开 HTTP URL 时遇到错误或非常情况，就需要对超文本传输协议有所了解才行。最全面、最权威的 HTTP 参考是 [**RFC 2616**](https://datatracker.ietf.org/doc/html/rfc2616.html) 。那是一份技术文档，并没有追求可读性。本 文旨在说明 *urllib* 的用法，为了便于阅读也附带了足够详细的 HTTP 信息。本文并不是为了替代 [`urllib.request`]({{< ref "/library/internet/urllib/urllib_request#module-urllib.request" >}}) 文档，只是其补充说明而已。
 
 ## 获取 URL 资源
 
@@ -44,7 +44,7 @@ with urllib.request.urlopen('http://python.org/') as response:
    html = response.read()
 ```
 
-​	如果想通过 URL 获取资源并临时存储一下，可以采用 [`shutil.copyfileobj()`](https://docs.python.org/zh-cn/3.13/library/shutil.html#shutil.copyfileobj) 和 [`tempfile.NamedTemporaryFile()`](https://docs.python.org/zh-cn/3.13/library/tempfile.html#tempfile.NamedTemporaryFile) 函数：
+​	如果想通过 URL 获取资源并临时存储一下，可以采用 [`shutil.copyfileobj()`]({{< ref "/library/filesys/shutil#shutil.copyfileobj" >}}) 和 [`tempfile.NamedTemporaryFile()`]({{< ref "/library/filesys/tempfile#tempfile.NamedTemporaryFile" >}}) 函数：
 
 ```
 import shutil
@@ -81,7 +81,7 @@ req = urllib.request.Request('ftp://example.com/')
 
 ### 数据
 
-​	有时需要向某个 URL 发送数据，通常此 URL 会指向某个CGI（通用网关接口）脚本或其他 web 应用。对于 HTTP 而言，这通常会用所谓的 **POST** 请求来完成。当要把 Web 页填写的 HTML 表单提交时，浏览器通常会执行此操作。但并不是所有的 POST 都来自表单：可以用 POST 方式传输任何数据到自己的应用上。对于通常的 HTML 表单，数据需要以标准的方式编码，然后作为 `data` 参数传给 Request 对象。编码过程是用 [`urllib.parse`](https://docs.python.org/zh-cn/3.13/library/urllib.parse.html#module-urllib.parse) 库的函数完成的：
+​	有时需要向某个 URL 发送数据，通常此 URL 会指向某个CGI（通用网关接口）脚本或其他 web 应用。对于 HTTP 而言，这通常会用所谓的 **POST** 请求来完成。当要把 Web 页填写的 HTML 表单提交时，浏览器通常会执行此操作。但并不是所有的 POST 都来自表单：可以用 POST 方式传输任何数据到自己的应用上。对于通常的 HTML 表单，数据需要以标准的方式编码，然后作为 `data` 参数传给 Request 对象。编码过程是用 [`urllib.parse`]({{< ref "/library/internet/urllib/urllib_parse#module-urllib.parse" >}}) 库的函数完成的：
 
 ```
 import urllib.parse
@@ -128,7 +128,7 @@ name=Somebody+Here&language=Python&location=Northampton
 
 ​	下面介绍一个具体的 HTTP 头部信息，以此说明如何在 HTTP 请求加入头部信息。
 
-​	有些网站 [[1\]](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#id8) 不愿被程序浏览到，或者要向不同的浏览器发送不同版本 [[2\]](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#id9) 的网页。默认情况下，urllib 将自身标识为“Python-urllib/xy”（其中 `x` 、 `y` 是 Python 版本的主、次版本号，例如 `Python-urllib/2.5`），这可能会让网站不知所措，或者干脆就使其无法正常工作。浏览器是通过头部信息 `User-Agent` [[3\]](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#id10) 来标识自己的。在创建 Request 对象时，可以传入字典形式的头部信息。以下示例将生成与之前相同的请求，只是将自身标识为某个版本的 Internet Explorer [[4\]](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#id11) ：
+​	有些网站 [[1\]]({{< ref "/howto/urllib2#id8" >}}) 不愿被程序浏览到，或者要向不同的浏览器发送不同版本 [[2\]]({{< ref "/howto/urllib2#id9" >}}) 的网页。默认情况下，urllib 将自身标识为“Python-urllib/xy”（其中 `x` 、 `y` 是 Python 版本的主、次版本号，例如 `Python-urllib/2.5`），这可能会让网站不知所措，或者干脆就使其无法正常工作。浏览器是通过头部信息 `User-Agent` [[3\]]({{< ref "/howto/urllib2#id10" >}}) 来标识自己的。在创建 Request 对象时，可以传入字典形式的头部信息。以下示例将生成与之前相同的请求，只是将自身标识为某个版本的 Internet Explorer [[4\]]({{< ref "/howto/urllib2#id11" >}}) ：
 
 ```
 import urllib.parse
@@ -148,15 +148,15 @@ with urllib.request.urlopen(req) as response:
    the_page = response.read()
 ```
 
-​	响应对象也有两个很有用的方法。请参阅有关 [info 和 geturl](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#info-and-geturl) 部分，了解出现问题时会发生什么。
+​	响应对象也有两个很有用的方法。请参阅有关 [info 和 geturl]({{< ref "/howto/urllib2#info-and-geturl" >}}) 部分，了解出现问题时会发生什么。
 
 ## 异常的处理
 
-​	当 *urlopen* 无法处理响应信息时将会引发 [`URLError`](https://docs.python.org/zh-cn/3.13/library/urllib.error.html#urllib.error.URLError) (当然与 Python API 通常的情况一样，也可能会引发如 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError), [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError) 之类的内置异常)。
+​	当 *urlopen* 无法处理响应信息时将会引发 [`URLError`]({{< ref "/library/internet/urllib/urllib_error#urllib.error.URLError" >}}) (当然与 Python API 通常的情况一样，也可能会引发如 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}), [`TypeError`]({{< ref "/library/exceptions#TypeError" >}}) 之类的内置异常)。
 
-[`HTTPError`](https://docs.python.org/zh-cn/3.13/library/urllib.error.html#urllib.error.HTTPError) 是在 HTTP URL 的特定情况下引发的 [`URLError`](https://docs.python.org/zh-cn/3.13/library/urllib.error.html#urllib.error.URLError) 的子类。
+[`HTTPError`]({{< ref "/library/internet/urllib/urllib_error#urllib.error.HTTPError" >}}) 是在 HTTP URL 的特定情况下引发的 [`URLError`]({{< ref "/library/internet/urllib/urllib_error#urllib.error.URLError" >}}) 的子类。
 
-​	上述异常类是从 [`urllib.error`](https://docs.python.org/zh-cn/3.13/library/urllib.error.html#module-urllib.error) 模块中导出的。
+​	上述异常类是从 [`urllib.error`]({{< ref "/library/internet/urllib/urllib_error#module-urllib.error" >}}) 模块中导出的。
 
 ### URLError
 
@@ -177,17 +177,17 @@ with urllib.request.urlopen(req) as response:
 
 ### HTTPError
 
-​	来自服务器的每个 HTTP 响应都包含一个数字形式的“状态码”。 有时该状态码表明服务器无法完成请求。默认的处理器将会为你处理其中的部分响应（例如，当响应为要求客户端从另一 URL 获取文档的“重定向”响应时，urllib 将为你处理该响应）。 对于无法处理的响应，urlopen 将会引发 [`HTTPError`](https://docs.python.org/zh-cn/3.13/library/urllib.error.html#urllib.error.HTTPError)。 典型的错误包括 "404"（页面未找到）、"403"（请求遭拒）和 "401"（需要身份认证）等。
+​	来自服务器的每个 HTTP 响应都包含一个数字形式的“状态码”。 有时该状态码表明服务器无法完成请求。默认的处理器将会为你处理其中的部分响应（例如，当响应为要求客户端从另一 URL 获取文档的“重定向”响应时，urllib 将为你处理该响应）。 对于无法处理的响应，urlopen 将会引发 [`HTTPError`]({{< ref "/library/internet/urllib/urllib_error#urllib.error.HTTPError" >}})。 典型的错误包括 "404"（页面未找到）、"403"（请求遭拒）和 "401"（需要身份认证）等。
 
 ​	全部的 HTTP 错误码请参阅 [**RFC 2616**](https://datatracker.ietf.org/doc/html/rfc2616.html) 。
 
-​	被引发的 [`HTTPError`](https://docs.python.org/zh-cn/3.13/library/urllib.error.html#urllib.error.HTTPError) 实例将有一个整数形式的 'code' 属性，对应于服务器发送的错误信息。
+​	被引发的 [`HTTPError`]({{< ref "/library/internet/urllib/urllib_error#urllib.error.HTTPError" >}}) 实例将有一个整数形式的 'code' 属性，对应于服务器发送的错误信息。
 
 #### 错误代码
 
 ​	由于默认处理函数会自行处理重定向（300 以内的错误码），而且 100--299 的状态码表示成功，因此通常只会出现 400--599 的错误码。
 
-[`http.server.BaseHTTPRequestHandler.responses`](https://docs.python.org/zh-cn/3.13/library/http.server.html#http.server.BaseHTTPRequestHandler.responses) 是很有用的响应码字典，其中给出了 [**RFC 2616**](https://datatracker.ietf.org/doc/html/rfc2616.html) 用到的所有响应代码。为方便起见，将此字典转载如下：
+[`http.server.BaseHTTPRequestHandler.responses`]({{< ref "/library/internet/http_server#http.server.BaseHTTPRequestHandler.responses" >}}) 是很有用的响应码字典，其中给出了 [**RFC 2616**](https://datatracker.ietf.org/doc/html/rfc2616.html) 用到的所有响应代码。为方便起见，将此字典转载如下：
 
 ```
 # 响应代码到消息的映射表；条目的形式为
@@ -259,7 +259,7 @@ responses = {
     }
 ```
 
-​	当错误被引发时服务器会通过返回 HTTP 错误码 *和* 错误页面进行响应。 你可以在返回的页面上使用 [`HTTPError`](https://docs.python.org/zh-cn/3.13/library/urllib.error.html#urllib.error.HTTPError) 实例作为响应。 这意味着除了 code 属性之外，它还像 `urllib.response` 模块: 所返回对象那样具有 read, geturl 和 info 等方法:
+​	当错误被引发时服务器会通过返回 HTTP 错误码 *和* 错误页面进行响应。 你可以在返回的页面上使用 [`HTTPError`]({{< ref "/library/internet/urllib/urllib_error#urllib.error.HTTPError" >}}) 实例作为响应。 这意味着除了 code 属性之外，它还像 `urllib.response` 模块: 所返回对象那样具有 read, geturl 和 info 等方法:
 
 
 
@@ -281,7 +281,7 @@ b'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 
 ### 总之
 
-​	因此当你想为 [`HTTPError`](https://docs.python.org/zh-cn/3.13/library/urllib.error.html#urllib.error.HTTPError) *或* [`URLError`](https://docs.python.org/zh-cn/3.13/library/urllib.error.html#urllib.error.URLError) 做好准备时有两种基本的方案。 我更倾向使用第二种方案。
+​	因此当你想为 [`HTTPError`]({{< ref "/library/internet/urllib/urllib_error#urllib.error.HTTPError" >}}) *或* [`URLError`]({{< ref "/library/internet/urllib/urllib_error#urllib.error.URLError" >}}) 做好准备时有两种基本的方案。 我更倾向使用第二种方案。
 
 #### 第一种方案
 
@@ -301,11 +301,10 @@ else:
     # 一切正常
 ```
 
-​	备注
-
+​备注
  
 
-`except HTTPError` *必须* 首先被处理，否则 `except URLError` 将会 *同时* 捕获 [`HTTPError`](https://docs.python.org/zh-cn/3.13/library/urllib.error.html#urllib.error.HTTPError)。
+`except HTTPError` *必须* 首先被处理，否则 `except URLError` 将会 *同时* 捕获 [`HTTPError`]({{< ref "/library/internet/urllib/urllib_error#urllib.error.HTTPError" >}})。
 
 #### 第二种方案
 
@@ -328,16 +327,16 @@ else:
 
 ## info 和 geturl 方法
 
-​	urlopen 返回的响应（或 [`HTTPError`](https://docs.python.org/zh-cn/3.13/library/urllib.error.html#urllib.error.HTTPError) 实例）包含两个有用的方法 `info()` 和 `geturl()` 并且是在 [`urllib.response`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#module-urllib.response) 模块中定义的。
+​	urlopen 返回的响应（或 [`HTTPError`]({{< ref "/library/internet/urllib/urllib_error#urllib.error.HTTPError" >}}) 实例）包含两个有用的方法 `info()` 和 `geturl()` 并且是在 [`urllib.response`]({{< ref "/library/internet/urllib/urllib_request#module-urllib.response" >}}) 模块中定义的。
 
 - **geturl** ——返回所获取页面的真实 URL。该方法很有用，因为 `urlopen` （或 opener 对象）可能已经经过了一次重定向。已获取页面的 URL 未必就是所请求的 URL 。
-- **info** - 该方法返回一个类似字典的对象，描述了所获取的页面，特别是由服务器送出的头部信息（headers） 。目前它是一个 [`http.client.HTTPMessage`](https://docs.python.org/zh-cn/3.13/library/http.client.html#http.client.HTTPMessage) 实例。
+- **info** - 该方法返回一个类似字典的对象，描述了所获取的页面，特别是由服务器送出的头部信息（headers） 。目前它是一个 [`http.client.HTTPMessage`]({{< ref "/library/internet/http_client#http.client.HTTPMessage" >}}) 实例。
 
 ​	典型的标头包括 'Content-length', 'Content-type' 等等。 请参阅 [HTTP 标头快速参考](https://jkorpela.fi/http.html) 获取 HTTP 标头的完整列表及其含义和用法的简要说明。
 
 ## Opener 和 Handler
 
-​	当你获取 URL 时会使用一个 opener (名称可能有些令人困惑的 [`urllib.request.OpenerDirector`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#urllib.request.OpenerDirector) 的实例)。 通常我们会使用默认的 opener —— 通过 `urlopen` —— 但你也可以创建自定义的 opener。 opener 还会用到 handler。 所有 "繁重工作" 都是由 handler 来完成的。 每种 handler 都知道要以何种 URL 方案 (http, ftp 等等) 来打开特定的 URL，或是如何处理 URL 打开时的特定操作，例如 HTTP 重定向或 HTTP cookie 等。
+​	当你获取 URL 时会使用一个 opener (名称可能有些令人困惑的 [`urllib.request.OpenerDirector`]({{< ref "/library/internet/urllib/urllib_request#urllib.request.OpenerDirector" >}}) 的实例)。 通常我们会使用默认的 opener —— 通过 `urlopen` —— 但你也可以创建自定义的 opener。 opener 还会用到 handler。 所有 "繁重工作" 都是由 handler 来完成的。 每种 handler 都知道要以何种 URL 方案 (http, ftp 等等) 来打开特定的 URL，或是如何处理 URL 打开时的特定操作，例如 HTTP 重定向或 HTTP cookie 等。
 
 ​	若要用已安装的某个 handler 获取 URL，需要创建一个 opener 对象，例如处理 cookie 的 opener，或对重定向不做处理的 opener。
 
@@ -391,8 +390,7 @@ opener.open(a_url)
 urllib.request.install_opener(opener)
 ```
 
-​	备注
-
+​备注
  
 
 ​	在上面的救命中我们只向 `build_opener` 提供了 `HTTPBasicAuthHandler`。 在默认情况下 opener 会包含针对常见状况的处理器 -- `ProxyHandler` (如果设置了代理如设置了 `http_proxy` 环境变量)，`UnknownHandler`, `HTTPHandler`, `HTTPDefaultErrorHandler`, `HTTPRedirectHandler`, `FTPHandler`, `FileHandler`, `DataHandler`, `HTTPErrorProcessor`。
@@ -401,7 +399,7 @@ urllib.request.install_opener(opener)
 
 ## 代理
 
-**urllib** 将自动检测并使用代理设置。 这是通过 `ProxyHandler` 实现的，当检测到代理设置时，是正常 handler 链中的一部分。通常这是一件好事，但有时也可能会无效 [[5\]](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#id12)。 一种方案是配置自己的 `ProxyHandler` ，不要定义代理。 设置的步骤与 [Basic Authentication](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#basic-authentication) handler 类似:
+**urllib** 将自动检测并使用代理设置。 这是通过 `ProxyHandler` 实现的，当检测到代理设置时，是正常 handler 链中的一部分。通常这是一件好事，但有时也可能会无效 [[5\]]({{< ref "/howto/urllib2#id12" >}})。 一种方案是配置自己的 `ProxyHandler` ，不要定义代理。 设置的步骤与 [Basic Authentication]({{< ref "/howto/urllib2#basic-authentication" >}}) handler 类似:
 
 
 
@@ -411,21 +409,19 @@ urllib.request.install_opener(opener)
 >>> urllib.request.install_opener(opener)
 ```
 
-​	备注
-
+​备注
  
 
-​	目前 `urllib.request` *尚不* 支持通过代理抓取 `https` 链接地址。 但此功能可以通过扩展 urllib.request 来启用，如以下例程所示 [[6\]](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#id13)。
+​	目前 `urllib.request` *尚不* 支持通过代理抓取 `https` 链接地址。 但此功能可以通过扩展 urllib.request 来启用，如以下例程所示 [[6\]]({{< ref "/howto/urllib2#id13" >}})。
 
-​	备注
-
+​备注
  
 
-​	如果设置了 `REQUEST_METHOD` 变量，则会忽略 `HTTP_PROXY` ；参阅 [`getproxies()`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#urllib.request.getproxies) 文档。
+​	如果设置了 `REQUEST_METHOD` 变量，则会忽略 `HTTP_PROXY` ；参阅 [`getproxies()`]({{< ref "/library/internet/urllib/urllib_request#urllib.request.getproxies" >}}) 文档。
 
 ## 套接字与分层
 
-​	Python 获取 Web 资源的能力是分层的。urllib 用到的是 [`http.client`](https://docs.python.org/zh-cn/3.13/library/http.client.html#module-http.client) 库，而后者又用到了套接字库。
+​	Python 获取 Web 资源的能力是分层的。urllib 用到的是 [`http.client`]({{< ref "/library/internet/http_client#module-http.client" >}}) 库，而后者又用到了套接字库。
 
 ​	从 Python 2.3 开始，可以指定套接字等待响应的超时时间。这对必须要读到网页数据的应用程序会很有用。默认情况下，套接字模块 *不会超时* 并且可以挂起。目前，套接字超时机制未暴露给 http.client 或 urllib.request 层使用。不过可以为所有套接字应用设置默认的全局超时。
 
@@ -449,26 +445,26 @@ response = urllib.request.urlopen(req)
 
 ​	这篇文档由 John Lee 审订。
 
-[[1](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#id1)]
+[[1]({{< ref "/howto/urllib2#id1" >}})]
 
 ​	例如 Google。
 
-[[2](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#id2)]
+[[2]({{< ref "/howto/urllib2#id2" >}})]
 
 ​	对于网站设计而言，探测不同的浏览器是非常糟糕的做法——更为明智的做法是采用 web 标准构建网站。不幸的是，很多网站依然向不同的浏览器发送不同版本的网页。
 
-[[3](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#id3)]
+[[3]({{< ref "/howto/urllib2#id3" >}})]
 
 ​	MSIE 6 的 user-agent 信息是 *“Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)”*
 
-[[4](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#id4)]
+[[4]({{< ref "/howto/urllib2#id4" >}})]
 
-​	有关 HTTP 请求的头部信息，详情请参阅 [Quick Reference to HTTP Headers](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#quick-reference-to-http-headers)。
+​	有关 HTTP 请求的头部信息，详情请参阅 [Quick Reference to HTTP Headers]({{< ref "/howto/urllib2#quick-reference-to-http-headers" >}})。
 
-[[5](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#id6)]
+[[5]({{< ref "/howto/urllib2#id6" >}})]
 
 ​	本人必须使用代理才能在工作中访问互联网。如果尝试通过代理获取 *localhost* URL，将会遭到阻止。IE 设置为代理模式，urllib 就会获取到配置信息。为了用 localhost 服务器测试脚本，我必须阻止 urllib 使用代理。
 
-[[6](https://docs.python.org/zh-cn/3.13/howto/urllib2.html#id7)]
+[[6]({{< ref "/howto/urllib2#id7" >}})]
 
 ​	urllib 的 SSL 代理 opener (CONNECT 方法): [ASPN Cookbook Recipe](https://code.activestate.com/recipes/456195-urrlib2-opener-for-ssl-proxy-connect-method/)。

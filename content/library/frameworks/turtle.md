@@ -8,11 +8,11 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/turtle.html](https://docs.python.org/zh-cn/3.13/library/turtle.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/turtle.html](https://docs.python.org/zh-cn/3.13/library/turtle.html)
 >
 > 收录该文档的时间：`2024-11-15T20:49:53+08:00`
 
-# [`turtle`](https://docs.python.org/zh-cn/3.13/library/turtle.html#module-turtle) --- 海龟绘图
+# [`turtle`]({{< ref "/library/frameworks/turtle#module-turtle" >}}) --- 海龟绘图
 
 **源码：** [Lib/turtle.py](https://github.com/python/cpython/tree/3.13/Lib/turtle.py)
 
@@ -52,7 +52,7 @@ draft = false
 from turtle import *
 ```
 
-​	如果你遇到了 `No module named '_tkinter'` 错误，则需要在你的系统中安装 [`Tk 接口包`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter)。
+​	如果你遇到了 `No module named '_tkinter'` 错误，则需要在你的系统中安装 [`Tk 接口包`]({{< ref "/library/tk/tkinter#module-tkinter" >}})。
 
 ### 基本绘图
 
@@ -165,11 +165,11 @@ end_fill()
 
 ​	海龟绘图形的乐趣之一在于通过简单的命令就能获得即时的视觉反馈 —— 这是一种向儿童介绍编程理念的绝佳方式，而且开销最小（当然，不仅适用于儿童）。
 
-​	海龟模块将其所有基本功能作为函数公开，并通过 `from turtle import *` 提供使这一切成为可能。 [海龟绘图教程](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle-tutorial) 介绍了相关的步骤。
+​	海龟模块将其所有基本功能作为函数公开，并通过 `from turtle import *` 提供使这一切成为可能。 [海龟绘图教程]({{< ref "/library/frameworks/turtle#turtle-tutorial" >}}) 介绍了相关的步骤。
 
-​	值得注意的是许多海乌命令还有更简洁的等价形式，例如 `fd()` 对应 [`forward()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.forward)。 对于不擅长打字的学习者来说这尤其有用。
+​	值得注意的是许多海乌命令还有更简洁的等价形式，例如 `fd()` 对应 [`forward()`]({{< ref "/library/frameworks/turtle#turtle.forward" >}})。 对于不擅长打字的学习者来说这尤其有用。
 
-> ​	你需要在系统中安装 [`Tk 接口软件包`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter)，才能使用海龟绘图。 请注意这并不总是很容易做到的，所以如果你打算让学习者使用海龟绘图请事先检查这一点。
+> ​	你需要在系统中安装 [`Tk 接口软件包`]({{< ref "/library/tk/tkinter#module-tkinter" >}})，才能使用海龟绘图。 请注意这并不总是很容易做到的，所以如果你打算让学习者使用海龟绘图请事先检查这一点。
 
 ### 使用 `turtle` 模块命名空间
 
@@ -202,11 +202,10 @@ t.mainloop()
 
 ### 使用面向对象的海龟绘图
 
-​	参见
-
+​参见
  
 
-[面向对象接口说明](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle-explanation)
+[面向对象接口说明]({{< ref "/library/frameworks/turtle#turtle-explanation" >}})
 
 ​	除了非常基本的入门目的，或是尽快尝试操作之外，使用面向对象的方式进行海龟绘图更为常见也更为强大。 例如，这将允许屏幕上同时存在多只海龟。
 
@@ -228,7 +227,7 @@ for i in range(100):
 t.screen.mainloop()
 ```
 
-​	请注意最后一行。 `t.screen` 是 Turtle 实例所在的 [`Screen`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Screen) 的实例；它是与海龟一起自动创建的。
+​	请注意最后一行。 `t.screen` 是 Turtle 实例所在的 [`Screen`]({{< ref "/library/frameworks/turtle#turtle.Screen" >}}) 的实例；它是与海龟一起自动创建的。
 
 ​	海龟的屏幕可以被自定义，例如:
 
@@ -239,8 +238,7 @@ t.screen.bgcolor("orange")
 
 ## 海龟绘图参考
 
-​	备注
-
+​备注
  
 
 ​	以下文档给出了函数的参数列表。对于方法来说当然还有额外的第一个参数 *self*，这里省略了。
@@ -251,223 +249,223 @@ t.screen.bgcolor("orange")
 
 ## 移动和绘制
 
-[`forward()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.forward) | [`fd()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.fd) 前进
+[`forward()`]({{< ref "/library/frameworks/turtle#turtle.forward" >}}) | [`fd()`]({{< ref "/library/frameworks/turtle#turtle.fd" >}}) 前进
 
-[`backward()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.backward) | [`bk()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.bk) | [`back()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.back) 后退
+[`backward()`]({{< ref "/library/frameworks/turtle#turtle.backward" >}}) | [`bk()`]({{< ref "/library/frameworks/turtle#turtle.bk" >}}) | [`back()`]({{< ref "/library/frameworks/turtle#turtle.back" >}}) 后退
 
-[`right()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.right) | [`rt()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.rt) 右转
+[`right()`]({{< ref "/library/frameworks/turtle#turtle.right" >}}) | [`rt()`]({{< ref "/library/frameworks/turtle#turtle.rt" >}}) 右转
 
-[`left()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.left) | [`lt()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.lt) 左转
+[`left()`]({{< ref "/library/frameworks/turtle#turtle.left" >}}) | [`lt()`]({{< ref "/library/frameworks/turtle#turtle.lt" >}}) 左转
 
-[`goto()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.goto) | [`setpos()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.setpos) | [`setposition()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.setposition) 前往/定位
+[`goto()`]({{< ref "/library/frameworks/turtle#turtle.goto" >}}) | [`setpos()`]({{< ref "/library/frameworks/turtle#turtle.setpos" >}}) | [`setposition()`]({{< ref "/library/frameworks/turtle#turtle.setposition" >}}) 前往/定位
 
-[`teleport()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.teleport)
+[`teleport()`]({{< ref "/library/frameworks/turtle#turtle.teleport" >}})
 
-[`setx()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.setx) 设置x坐标
+[`setx()`]({{< ref "/library/frameworks/turtle#turtle.setx" >}}) 设置x坐标
 
-[`sety()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.sety) 设置y坐标
+[`sety()`]({{< ref "/library/frameworks/turtle#turtle.sety" >}}) 设置y坐标
 
-[`setheading()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.setheading) | [`seth()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.seth) 设置朝向
+[`setheading()`]({{< ref "/library/frameworks/turtle#turtle.setheading" >}}) | [`seth()`]({{< ref "/library/frameworks/turtle#turtle.seth" >}}) 设置朝向
 
-[`home()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.home) 返回原点
+[`home()`]({{< ref "/library/frameworks/turtle#turtle.home" >}}) 返回原点
 
-[`circle()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.circle) 画圆
+[`circle()`]({{< ref "/library/frameworks/turtle#turtle.circle" >}}) 画圆
 
-[`dot()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.dot) 画点
+[`dot()`]({{< ref "/library/frameworks/turtle#turtle.dot" >}}) 画点
 
-[`stamp()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.stamp) 印章
+[`stamp()`]({{< ref "/library/frameworks/turtle#turtle.stamp" >}}) 印章
 
-[`clearstamp()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.clearstamp) 清除印章
+[`clearstamp()`]({{< ref "/library/frameworks/turtle#turtle.clearstamp" >}}) 清除印章
 
-[`clearstamps()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.clearstamps) 清除多个印章
+[`clearstamps()`]({{< ref "/library/frameworks/turtle#turtle.clearstamps" >}}) 清除多个印章
 
-[`undo()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.undo) 撤消
+[`undo()`]({{< ref "/library/frameworks/turtle#turtle.undo" >}}) 撤消
 
-[`speed()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.speed) 速度
+[`speed()`]({{< ref "/library/frameworks/turtle#turtle.speed" >}}) 速度
 
 ## 获取海龟的状态
 
-[`position()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.position) | [`pos()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.pos) 位置
+[`position()`]({{< ref "/library/frameworks/turtle#turtle.position" >}}) | [`pos()`]({{< ref "/library/frameworks/turtle#turtle.pos" >}}) 位置
 
-[`towards()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.towards) 目标方向
+[`towards()`]({{< ref "/library/frameworks/turtle#turtle.towards" >}}) 目标方向
 
-[`xcor()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.xcor) x坐标
+[`xcor()`]({{< ref "/library/frameworks/turtle#turtle.xcor" >}}) x坐标
 
-[`ycor()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.ycor) y坐标
+[`ycor()`]({{< ref "/library/frameworks/turtle#turtle.ycor" >}}) y坐标
 
-[`heading()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.heading) 朝向
+[`heading()`]({{< ref "/library/frameworks/turtle#turtle.heading" >}}) 朝向
 
-[`distance()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.distance) 距离
+[`distance()`]({{< ref "/library/frameworks/turtle#turtle.distance" >}}) 距离
 
 ## 设置与度量单位
 
-[`degrees()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.degrees) 角度
+[`degrees()`]({{< ref "/library/frameworks/turtle#turtle.degrees" >}}) 角度
 
-[`radians()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.radians) 弧度
+[`radians()`]({{< ref "/library/frameworks/turtle#turtle.radians" >}}) 弧度
 
 ## 画笔控制
 
 ## 绘图状态
 
-[`pendown()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.pendown) | [`pd()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.pd) | [`down()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.down) 画笔落下
+[`pendown()`]({{< ref "/library/frameworks/turtle#turtle.pendown" >}}) | [`pd()`]({{< ref "/library/frameworks/turtle#turtle.pd" >}}) | [`down()`]({{< ref "/library/frameworks/turtle#turtle.down" >}}) 画笔落下
 
-[`penup()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.penup) | [`pu()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.pu) | [`up()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.up) 画笔抬起
+[`penup()`]({{< ref "/library/frameworks/turtle#turtle.penup" >}}) | [`pu()`]({{< ref "/library/frameworks/turtle#turtle.pu" >}}) | [`up()`]({{< ref "/library/frameworks/turtle#turtle.up" >}}) 画笔抬起
 
-[`pensize()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.pensize) | [`width()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.width) 画笔粗细
+[`pensize()`]({{< ref "/library/frameworks/turtle#turtle.pensize" >}}) | [`width()`]({{< ref "/library/frameworks/turtle#turtle.width" >}}) 画笔粗细
 
-[`pen()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.pen) 画笔
+[`pen()`]({{< ref "/library/frameworks/turtle#turtle.pen" >}}) 画笔
 
-[`isdown()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.isdown) 画笔是否落下
+[`isdown()`]({{< ref "/library/frameworks/turtle#turtle.isdown" >}}) 画笔是否落下
 
 ## 颜色控制
 
-[`color()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.color) 颜色
+[`color()`]({{< ref "/library/frameworks/turtle#turtle.color" >}}) 颜色
 
-[`pencolor()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.pencolor) 画笔颜色
+[`pencolor()`]({{< ref "/library/frameworks/turtle#turtle.pencolor" >}}) 画笔颜色
 
-[`fillcolor()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.fillcolor) 填充颜色
+[`fillcolor()`]({{< ref "/library/frameworks/turtle#turtle.fillcolor" >}}) 填充颜色
 
 ## 填充
 
-[`filling()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.filling) 是否填充
+[`filling()`]({{< ref "/library/frameworks/turtle#turtle.filling" >}}) 是否填充
 
-[`begin_fill()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.begin_fill) 开始填充
+[`begin_fill()`]({{< ref "/library/frameworks/turtle#turtle.begin_fill" >}}) 开始填充
 
-[`end_fill()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.end_fill) 结束填充
+[`end_fill()`]({{< ref "/library/frameworks/turtle#turtle.end_fill" >}}) 结束填充
 
 ## 更多绘图控制
 
-[`reset()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.reset) 重置
+[`reset()`]({{< ref "/library/frameworks/turtle#turtle.reset" >}}) 重置
 
-[`clear()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.clear) 清空
+[`clear()`]({{< ref "/library/frameworks/turtle#turtle.clear" >}}) 清空
 
-[`write()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.write) 书写
+[`write()`]({{< ref "/library/frameworks/turtle#turtle.write" >}}) 书写
 
 ## 海龟状态
 
 ## 可见性
 
-[`showturtle()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.showturtle) | [`st()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.st) 显示海龟
+[`showturtle()`]({{< ref "/library/frameworks/turtle#turtle.showturtle" >}}) | [`st()`]({{< ref "/library/frameworks/turtle#turtle.st" >}}) 显示海龟
 
-[`hideturtle()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.hideturtle) | [`ht()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.ht) 隐藏海龟
+[`hideturtle()`]({{< ref "/library/frameworks/turtle#turtle.hideturtle" >}}) | [`ht()`]({{< ref "/library/frameworks/turtle#turtle.ht" >}}) 隐藏海龟
 
-[`isvisible()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.isvisible) 是否可见
+[`isvisible()`]({{< ref "/library/frameworks/turtle#turtle.isvisible" >}}) 是否可见
 
 ## 外观
 
-[`shape()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.shape) 形状
+[`shape()`]({{< ref "/library/frameworks/turtle#turtle.shape" >}}) 形状
 
-[`resizemode()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.resizemode) 大小调整模式
+[`resizemode()`]({{< ref "/library/frameworks/turtle#turtle.resizemode" >}}) 大小调整模式
 
-[`shapesize()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.shapesize) | [`turtlesize()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.turtlesize) 形状大小
+[`shapesize()`]({{< ref "/library/frameworks/turtle#turtle.shapesize" >}}) | [`turtlesize()`]({{< ref "/library/frameworks/turtle#turtle.turtlesize" >}}) 形状大小
 
-[`shearfactor()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.shearfactor) 剪切因子
+[`shearfactor()`]({{< ref "/library/frameworks/turtle#turtle.shearfactor" >}}) 剪切因子
 
-[`tiltangle()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.tiltangle) 倾角
+[`tiltangle()`]({{< ref "/library/frameworks/turtle#turtle.tiltangle" >}}) 倾角
 
-[`tilt()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.tilt) 倾斜
+[`tilt()`]({{< ref "/library/frameworks/turtle#turtle.tilt" >}}) 倾斜
 
-[`shapetransform()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.shapetransform) 变形
+[`shapetransform()`]({{< ref "/library/frameworks/turtle#turtle.shapetransform" >}}) 变形
 
-[`get_shapepoly()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.get_shapepoly) 获取形状多边形
+[`get_shapepoly()`]({{< ref "/library/frameworks/turtle#turtle.get_shapepoly" >}}) 获取形状多边形
 
 ## 使用事件
 
-[`onclick()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.onclick) 当鼠标点击
+[`onclick()`]({{< ref "/library/frameworks/turtle#turtle.onclick" >}}) 当鼠标点击
 
-[`onrelease()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.onrelease) 当鼠标释放
+[`onrelease()`]({{< ref "/library/frameworks/turtle#turtle.onrelease" >}}) 当鼠标释放
 
-[`ondrag()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.ondrag) 当鼠标拖动
+[`ondrag()`]({{< ref "/library/frameworks/turtle#turtle.ondrag" >}}) 当鼠标拖动
 
 ## 特殊海龟方法
 
-[`begin_poly()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.begin_poly) 开始记录多边形
+[`begin_poly()`]({{< ref "/library/frameworks/turtle#turtle.begin_poly" >}}) 开始记录多边形
 
-[`end_poly()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.end_poly) 结束记录多边形
+[`end_poly()`]({{< ref "/library/frameworks/turtle#turtle.end_poly" >}}) 结束记录多边形
 
-[`get_poly()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.get_poly) 获取多边形
+[`get_poly()`]({{< ref "/library/frameworks/turtle#turtle.get_poly" >}}) 获取多边形
 
-[`clone()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.clone) 克隆
+[`clone()`]({{< ref "/library/frameworks/turtle#turtle.clone" >}}) 克隆
 
-[`getturtle()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.getturtle) | [`getpen()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.getpen) 获取海龟画笔
+[`getturtle()`]({{< ref "/library/frameworks/turtle#turtle.getturtle" >}}) | [`getpen()`]({{< ref "/library/frameworks/turtle#turtle.getpen" >}}) 获取海龟画笔
 
-[`getscreen()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.getscreen) 获取屏幕
+[`getscreen()`]({{< ref "/library/frameworks/turtle#turtle.getscreen" >}}) 获取屏幕
 
-[`setundobuffer()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.setundobuffer) 设置撤消缓冲区
+[`setundobuffer()`]({{< ref "/library/frameworks/turtle#turtle.setundobuffer" >}}) 设置撤消缓冲区
 
-[`undobufferentries()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.undobufferentries) 撤消缓冲区条目数
+[`undobufferentries()`]({{< ref "/library/frameworks/turtle#turtle.undobufferentries" >}}) 撤消缓冲区条目数
 
 ### TurtleScreen/Screen 方法
 
 ## 窗口控制
 
-[`bgcolor()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.bgcolor) 背景颜色
+[`bgcolor()`]({{< ref "/library/frameworks/turtle#turtle.bgcolor" >}}) 背景颜色
 
-[`bgpic()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.bgpic) 背景图片
+[`bgpic()`]({{< ref "/library/frameworks/turtle#turtle.bgpic" >}}) 背景图片
 
-[`clearscreen()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.clearscreen)
+[`clearscreen()`]({{< ref "/library/frameworks/turtle#turtle.clearscreen" >}})
 
-[`resetscreen()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.resetscreen)
+[`resetscreen()`]({{< ref "/library/frameworks/turtle#turtle.resetscreen" >}})
 
-[`screensize()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.screensize) 屏幕大小
+[`screensize()`]({{< ref "/library/frameworks/turtle#turtle.screensize" >}}) 屏幕大小
 
-[`setworldcoordinates()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.setworldcoordinates) 设置世界坐标系
+[`setworldcoordinates()`]({{< ref "/library/frameworks/turtle#turtle.setworldcoordinates" >}}) 设置世界坐标系
 
 ## 动画控制
 
-[`delay()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.delay) 延迟
+[`delay()`]({{< ref "/library/frameworks/turtle#turtle.delay" >}}) 延迟
 
-[`tracer()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.tracer) 追踪
+[`tracer()`]({{< ref "/library/frameworks/turtle#turtle.tracer" >}}) 追踪
 
-[`update()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.update) 更新
+[`update()`]({{< ref "/library/frameworks/turtle#turtle.update" >}}) 更新
 
 ## 使用屏幕事件
 
-[`listen()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.listen) 监听
+[`listen()`]({{< ref "/library/frameworks/turtle#turtle.listen" >}}) 监听
 
-[`onkey()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.onkey) | [`onkeyrelease()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.onkeyrelease) 当键盘按下并释放
+[`onkey()`]({{< ref "/library/frameworks/turtle#turtle.onkey" >}}) | [`onkeyrelease()`]({{< ref "/library/frameworks/turtle#turtle.onkeyrelease" >}}) 当键盘按下并释放
 
-[`onkeypress()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.onkeypress) 当键盘按下
+[`onkeypress()`]({{< ref "/library/frameworks/turtle#turtle.onkeypress" >}}) 当键盘按下
 
-[`onclick()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.onclick) | [`onscreenclick()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.onscreenclick) 当点击屏幕
+[`onclick()`]({{< ref "/library/frameworks/turtle#turtle.onclick" >}}) | [`onscreenclick()`]({{< ref "/library/frameworks/turtle#turtle.onscreenclick" >}}) 当点击屏幕
 
-[`ontimer()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.ontimer) 当达到定时
+[`ontimer()`]({{< ref "/library/frameworks/turtle#turtle.ontimer" >}}) 当达到定时
 
-[`mainloop()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.mainloop) | [`done()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.done) 主循环
+[`mainloop()`]({{< ref "/library/frameworks/turtle#turtle.mainloop" >}}) | [`done()`]({{< ref "/library/frameworks/turtle#turtle.done" >}}) 主循环
 
 ## 设置与特殊方法
 
-[`mode()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.mode)
+[`mode()`]({{< ref "/library/frameworks/turtle#turtle.mode" >}})
 
-[`colormode()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.colormode) 颜色模式
+[`colormode()`]({{< ref "/library/frameworks/turtle#turtle.colormode" >}}) 颜色模式
 
-[`getcanvas()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.getcanvas) 获取画布
+[`getcanvas()`]({{< ref "/library/frameworks/turtle#turtle.getcanvas" >}}) 获取画布
 
-[`getshapes()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.getshapes) 获取形状
+[`getshapes()`]({{< ref "/library/frameworks/turtle#turtle.getshapes" >}}) 获取形状
 
-[`register_shape()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.register_shape) | [`addshape()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.addshape) 添加形状
+[`register_shape()`]({{< ref "/library/frameworks/turtle#turtle.register_shape" >}}) | [`addshape()`]({{< ref "/library/frameworks/turtle#turtle.addshape" >}}) 添加形状
 
-[`turtles()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.turtles) 所有海龟
+[`turtles()`]({{< ref "/library/frameworks/turtle#turtle.turtles" >}}) 所有海龟
 
-[`window_height()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.window_height) 窗口高度
+[`window_height()`]({{< ref "/library/frameworks/turtle#turtle.window_height" >}}) 窗口高度
 
-[`window_width()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.window_width) 窗口宽度
+[`window_width()`]({{< ref "/library/frameworks/turtle#turtle.window_width" >}}) 窗口宽度
 
 ## 输入方法
 
-[`textinput()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.textinput) 文本输入
+[`textinput()`]({{< ref "/library/frameworks/turtle#turtle.textinput" >}}) 文本输入
 
-[`numinput()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.numinput) 数字输入
+[`numinput()`]({{< ref "/library/frameworks/turtle#turtle.numinput" >}}) 数字输入
 
 ## Screen 专有方法
 
-[`bye()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.bye) 退出
+[`bye()`]({{< ref "/library/frameworks/turtle#turtle.bye" >}}) 退出
 
-[`exitonclick()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.exitonclick) 当点击时退出
+[`exitonclick()`]({{< ref "/library/frameworks/turtle#turtle.exitonclick" >}}) 当点击时退出
 
-[`setup()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.setup) 设置
+[`setup()`]({{< ref "/library/frameworks/turtle#turtle.setup" >}}) 设置
 
-[`title()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.title) 标题
+[`title()`]({{< ref "/library/frameworks/turtle#turtle.title" >}}) 标题
 
 ## RawTurtle/Turtle 方法和对应函数
 
@@ -528,7 +526,7 @@ t.screen.bgcolor("orange")
 
 **angle** -- 一个数值 (整型或浮点型)
 
-​	海龟右转 *angle* 个单位。(单位默认为角度，但可通过 [`degrees()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.degrees) 和 [`radians()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.radians) 函数改变设置。) 角度的正负由海龟模式确定，参见 [`mode()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.mode)。
+​	海龟右转 *angle* 个单位。(单位默认为角度，但可通过 [`degrees()`]({{< ref "/library/frameworks/turtle#turtle.degrees" >}}) 和 [`radians()`]({{< ref "/library/frameworks/turtle#turtle.radians" >}}) 函数改变设置。) 角度的正负由海龟模式确定，参见 [`mode()`]({{< ref "/library/frameworks/turtle#turtle.mode" >}})。
 
 
 
@@ -548,7 +546,7 @@ t.screen.bgcolor("orange")
 
 **angle** -- 一个数值 (整型或浮点型)
 
-​	海龟左转 *angle* 个单位。(单位默认为角度，但可通过 [`degrees()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.degrees) 和 [`radians()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.radians) 函数改变设置。) 角度的正负由海龟模式确定，参见 [`mode()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.mode)。
+​	海龟左转 *angle* 个单位。(单位默认为角度，但可通过 [`degrees()`]({{< ref "/library/frameworks/turtle#turtle.degrees" >}}) 和 [`radians()`]({{< ref "/library/frameworks/turtle#turtle.radians" >}}) 函数改变设置。) 角度的正负由海龟模式确定，参见 [`mode()`]({{< ref "/library/frameworks/turtle#turtle.mode" >}})。
 
 
 
@@ -571,7 +569,7 @@ t.screen.bgcolor("orange")
 - **x** -- 一个数值或数值对/向量
 - **y** -- 一个数值或 `None`
 
-​	如果 *y* 为 `None`，*x* 应为一个表示坐标的数值对或 [`Vec2D`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Vec2D) 类对象 (例如 [`pos()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.pos) 返回的对象).
+​	如果 *y* 为 `None`，*x* 应为一个表示坐标的数值对或 [`Vec2D`]({{< ref "/library/frameworks/turtle#turtle.Vec2D" >}}) 类对象 (例如 [`pos()`]({{< ref "/library/frameworks/turtle#turtle.pos" >}}) 返回的对象).
 
 ​	海龟移动到一个绝对坐标。如果画笔已落下将会画线。不改变海龟的朝向。
 
@@ -685,7 +683,7 @@ t.screen.bgcolor("orange")
 
 ## turtle.**home**()
 
-​	海龟移至初始坐标 (0,0)，并设置朝向为初始方向 (由海龟模式确定，参见 [`mode()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.mode))。
+​	海龟移至初始坐标 (0,0)，并设置朝向为初始方向 (由海龟模式确定，参见 [`mode()`]({{< ref "/library/frameworks/turtle#turtle.mode" >}}))。
 
 
 
@@ -770,7 +768,7 @@ t.screen.bgcolor("orange")
 
 ## 参数:
 
-**stampid** -- 一个整型数，必须是之前 [`stamp()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.stamp) 调用的返回值
+**stampid** -- 一个整型数，必须是之前 [`stamp()`]({{< ref "/library/frameworks/turtle#turtle.stamp" >}}) 调用的返回值
 
 ​	删除 *stampid* 指定的印章。
 
@@ -861,7 +859,7 @@ t.screen.bgcolor("orange")
 
 ## turtle.**pos**()
 
-​	返回海龟当前的坐标 (x,y) (为 [`Vec2D`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Vec2D) 矢量类对象)。
+​	返回海龟当前的坐标 (x,y) (为 [`Vec2D`]({{< ref "/library/frameworks/turtle#turtle.Vec2D" >}}) 矢量类对象)。
 
 
 
@@ -921,7 +919,7 @@ t.screen.bgcolor("orange")
 
 ## turtle.**heading**()
 
-​	返回海龟当前的朝向 (数值依赖于海龟模式参见 [`mode()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.mode))。
+​	返回海龟当前的朝向 (数值依赖于海龟模式参见 [`mode()`]({{< ref "/library/frameworks/turtle#turtle.mode" >}}))。
 
 
 
@@ -1057,7 +1055,7 @@ grade 或 gradian，等于直角的 1/100。）
 - "outline": 正数值
 - "tilt": 数值
 
-​	此字典可作为后续调用 [`pen()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.pen) 时的参数，以恢复之前的画笔状态。另外还可将这些属性作为关键词参数提交。使用此方式可以用一条语句设置画笔的多个属性。
+​	此字典可作为后续调用 [`pen()`]({{< ref "/library/frameworks/turtle#turtle.pen" >}}) 时的参数，以恢复之前的画笔状态。另外还可将这些属性作为关键词参数提交。使用此方式可以用一条语句设置画笔的多个属性。
 
 
 
@@ -1111,7 +1109,7 @@ True
 
 ## `pencolor((r, g, b))`
 
-​	设置画笔颜色为以 *r*, *g*, *b* 元组表示的 RGB 颜色。*r*, *g*, *b* 的取值范围应为 0..colormode，colormode 的值为 1.0 或 255 (参见 [`colormode()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.colormode))。
+​	设置画笔颜色为以 *r*, *g*, *b* 元组表示的 RGB 颜色。*r*, *g*, *b* 的取值范围应为 0..colormode，colormode 的值为 1.0 或 255 (参见 [`colormode()`]({{< ref "/library/frameworks/turtle#turtle.colormode" >}}))。
 
 ## `pencolor(r, g, b)`
 
@@ -1157,7 +1155,7 @@ True
 
 ## `fillcolor((r, g, b))`
 
-​	设置填充颜色为以 *r*, *g*, *b* 元组表示的 RGB 颜色。*r*, *g*, *b* 的取值范围应为 0..colormode，colormode 的值为 1.0 或 255 (参见 [`colormode()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.colormode))。
+​	设置填充颜色为以 *r*, *g*, *b* 元组表示的 RGB 颜色。*r*, *g*, *b* 的取值范围应为 0..colormode，colormode 的值为 1.0 或 255 (参见 [`colormode()`]({{< ref "/library/frameworks/turtle#turtle.colormode" >}}))。
 
 ## `fillcolor(r, g, b)`
 
@@ -1189,11 +1187,11 @@ True
 
 ## `color()`
 
-​	返回以一对颜色描述字符串或元组表示的当前画笔颜色和填充颜色，两者可分别由 [`pencolor()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.pencolor) 和 [`fillcolor()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.fillcolor) 返回。
+​	返回以一对颜色描述字符串或元组表示的当前画笔颜色和填充颜色，两者可分别由 [`pencolor()`]({{< ref "/library/frameworks/turtle#turtle.pencolor" >}}) 和 [`fillcolor()`]({{< ref "/library/frameworks/turtle#turtle.fillcolor" >}}) 返回。
 
 ## `color(colorstring)`, `color((r,g,b))`, `color(r,g,b)`
 
-​	输入格式与 [`pencolor()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.pencolor) 相同，同时设置填充颜色和画笔颜色为指定的值。
+​	输入格式与 [`pencolor()`]({{< ref "/library/frameworks/turtle#turtle.pencolor" >}}) 相同，同时设置填充颜色和画笔颜色为指定的值。
 
 ## `color(colorstring1, colorstring2)`, `color((r1,g1,b1), (r2,g2,b2))`
 
@@ -1212,7 +1210,7 @@ True
 ((40.0, 80.0, 120.0), (160.0, 200.0, 240.0))
 ```
 
-​	另参见: Screen 方法 [`colormode()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.colormode)。
+​	另参见: Screen 方法 [`colormode()`]({{< ref "/library/frameworks/turtle#turtle.colormode" >}})。
 
 #### 填充
 
@@ -1236,7 +1234,7 @@ True
 
 ## turtle.**end_fill**()
 
-​	填充上次调用 [`begin_fill()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.begin_fill) 之后绘制的形状。
+​	填充上次调用 [`begin_fill()`]({{< ref "/library/frameworks/turtle#turtle.begin_fill" >}}) 之后绘制的形状。
 
 ​	自相交多边形或多个形状间的重叠区域是否填充取决于操作系统的图形引擎、重叠的类型以及重叠的层数。 例如上面的 Turtle 多芒星可能会全部填充为黄色，也可能会有一些白色区域。
 
@@ -1344,7 +1342,7 @@ True
 
 **name** -- 一个有效的形状名字符串
 
-​	设置海龟形状为 *name* 指定的形状名，如未指定形状名则返回当前的形状名。*name* 指定的形状名应存在于 TurtleScreen 的 shape 字典中。多边形的形状初始时有以下几种: "arrow", "turtle", "circle", "square", "triangle", "classic"。要了解如何处理形状请参看 Screen 方法 [`register_shape()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.register_shape)。
+​	设置海龟形状为 *name* 指定的形状名，如未指定形状名则返回当前的形状名。*name* 指定的形状名应存在于 TurtleScreen 的 shape 字典中。多边形的形状初始时有以下几种: "arrow", "turtle", "circle", "square", "triangle", "classic"。要了解如何处理形状请参看 Screen 方法 [`register_shape()`]({{< ref "/library/frameworks/turtle#turtle.register_shape" >}})。
 
 
 
@@ -1365,10 +1363,10 @@ True
 ​	设置大小调整模式为以下值之一: "auto", "user", "noresize"。如未指定 *rmode* 则返回当前的大小调整模式。不同的大小调整模式的效果如下:
 
 - "auto": 根据画笔粗细值调整海龟的外观。
-- "user": 根据拉伸因子和轮廓宽度 (outline) 值调整海龟的外观，两者是由 [`shapesize()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.shapesize) 设置的。
+- "user": 根据拉伸因子和轮廓宽度 (outline) 值调整海龟的外观，两者是由 [`shapesize()`]({{< ref "/library/frameworks/turtle#turtle.shapesize" >}}) 设置的。
 - "noresize": 不调整海龟的外观大小。
 
-`resizemode("user")` 会由 [`shapesize()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.shapesize) 带参数使用时被调用。
+`resizemode("user")` 会由 [`shapesize()`]({{< ref "/library/frameworks/turtle#turtle.shapesize" >}}) 带参数使用时被调用。
 
 
 
@@ -1623,7 +1621,7 @@ True
 
 ## turtle.**getscreen**()
 
-​	返回作为海龟绘图场所的 [`TurtleScreen`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.TurtleScreen) 类对象。该对象将可调用 TurtleScreen 方法。
+​	返回作为海龟绘图场所的 [`TurtleScreen`]({{< ref "/library/frameworks/turtle#turtle.TurtleScreen" >}}) 类对象。该对象将可调用 TurtleScreen 方法。
 
 
 
@@ -1640,7 +1638,7 @@ True
 
 **size** -- 一个整型数值或 `None`
 
-​	设置或禁用撤销缓冲区。 如果 *size* 为整数，则开辟一个给定大小的空撤销缓冲区。 *size* 给出了可以通过 [`undo()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.undo) 方法/函数撤销海龟动作的最大次数。 如果 *size* 为 `None`，则禁用撤销缓冲区。
+​	设置或禁用撤销缓冲区。 如果 *size* 为整数，则开辟一个给定大小的空撤销缓冲区。 *size* 给出了可以通过 [`undo()`]({{< ref "/library/frameworks/turtle#turtle.undo" >}}) 方法/函数撤销海龟动作的最大次数。 如果 *size* 为 `None`，则禁用撤销缓冲区。
 
 
 
@@ -1663,11 +1661,11 @@ True
 
 ### 复合形状
 
-​	要使用由多个不同颜色多边形构成的复合海龟形状，你必须明确地使用辅助类 [`Shape`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Shape)，具体步骤如下:
+​	要使用由多个不同颜色多边形构成的复合海龟形状，你必须明确地使用辅助类 [`Shape`]({{< ref "/library/frameworks/turtle#turtle.Shape" >}})，具体步骤如下:
 
 1. 创建一个空 Shape 对象，类型为 "compound"。
 
-2. 可根据需要使用 [`addcomponent()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Shape.addcomponent) 方法向此对象添加多个组件。
+2. 可根据需要使用 [`addcomponent()`]({{< ref "/library/frameworks/turtle#turtle.Shape.addcomponent" >}}) 方法向此对象添加多个组件。
 
    例如:
 
@@ -1690,11 +1688,10 @@ True
    >>> shape("myshape")
    ```
 
-​	备注
-
+​备注
  
 
-[`Shape`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Shape) 类在 [`register_shape()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.register_shape) 方法的内部以多种方式使用。应用程序编写者 *只有* 在使用上述的复合形状时才需要处理 Shape 类。
+[`Shape`]({{< ref "/library/frameworks/turtle#turtle.Shape" >}}) 类在 [`register_shape()`]({{< ref "/library/frameworks/turtle#turtle.register_shape" >}}) 方法的内部以多种方式使用。应用程序编写者 *只有* 在使用上述的复合形状时才需要处理 Shape 类。
 
 ## TurtleScreen/Screen 方法及对应函数
 
@@ -1741,8 +1738,7 @@ True
 
 ## turtle.**clear**()
 
-​	备注
-
+​备注
  
 
 ​	此 TurtleScreen 方法作为全局函数时只有一个名字 `clearscreen`。全局函数 `clear` 所对应的是 Turtle 方法 `clear`。
@@ -1753,8 +1749,7 @@ True
 
 ## turtle.**reset**()
 
-​	备注
-
+​备注
  
 
 ​	此 TurtleScreen 方法作为全局函数时只有一个名字 `resetscreen`。全局函数 `reset` 所对应的是 Turtle 方法 `reset`。
@@ -1839,7 +1834,7 @@ True
 - **n** -- 非负整型数
 - **delay** -- 非负整型数
 
-​	启用/禁用海龟动画并设置刷新图形的延迟时间。如果指定 *n* 值，则只有每第 n 次屏幕刷新会实际执行。(可被用来加速复杂图形的绘制。) 如果调用时不带参数，则返回当前保存的 n 值。第二个参数设置延迟值 (参见 [`delay()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.delay))。
+​	启用/禁用海龟动画并设置刷新图形的延迟时间。如果指定 *n* 值，则只有每第 n 次屏幕刷新会实际执行。(可被用来加速复杂图形的绘制。) 如果调用时不带参数，则返回当前保存的 n 值。第二个参数设置延迟值 (参见 [`delay()`]({{< ref "/library/frameworks/turtle#turtle.delay" >}}))。
 
 
 
@@ -1856,13 +1851,13 @@ True
 
 ​	执行一次 TurtleScreen 刷新。在禁用追踪时使用。
 
-​	另参见 RawTurtle/Turtle 方法 [`speed()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.speed)。
+​	另参见 RawTurtle/Turtle 方法 [`speed()`]({{< ref "/library/frameworks/turtle#turtle.speed" >}})。
 
 ### 使用屏幕事件
 
 ## turtle.**listen**(*xdummy=None*, *ydummy=None*)
 
-​	设置焦点到 TurtleScreen (以便接收按键事件)。使用两个 Dummy 参数以便能够传递 [`listen()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.listen) 给 onclick 方法。
+​	设置焦点到 TurtleScreen (以便接收按键事件)。使用两个 Dummy 参数以便能够传递 [`listen()`]({{< ref "/library/frameworks/turtle#turtle.listen" >}}) 给 onclick 方法。
 
 ## turtle.**onkey**(*fun*, *key*)
 
@@ -1873,7 +1868,7 @@ True
 - **fun** -- 一个无参数的函数或 `None`
 - **key** -- 一个字符串: 键 (例如 "a") 或键标 (例如 "space")
 
-​	绑定 *fun* 指定的函数到按键释放事件。如果 *fun* 值为 `None`，则移除事件绑定。注: 为了能够注册按键事件，TurtleScreen 必须得到焦点。(参见 method [`listen()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.listen) 方法。)
+​	绑定 *fun* 指定的函数到按键释放事件。如果 *fun* 值为 `None`，则移除事件绑定。注: 为了能够注册按键事件，TurtleScreen 必须得到焦点。(参见 method [`listen()`]({{< ref "/library/frameworks/turtle#turtle.listen" >}}) 方法。)
 
 
 
@@ -1893,7 +1888,7 @@ True
 - **fun** -- 一个无参数的函数或 `None`
 - **key** -- 一个字符串: 键 (例如 "a") 或键标 (例如 "space")
 
-​	绑定 *fun* 指定的函数到指定键的按下事件。如未指定键则绑定到任意键的按下事件。注: 为了能够注册按键事件，必须得到焦点。(参见 [`listen()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.listen) 方法。)
+​	绑定 *fun* 指定的函数到指定键的按下事件。如未指定键则绑定到任意键的按下事件。注: 为了能够注册按键事件，必须得到焦点。(参见 [`listen()`]({{< ref "/library/frameworks/turtle#turtle.listen" >}}) 方法。)
 
 
 
@@ -1927,8 +1922,7 @@ True
 >>> screen.onclick(None)        # 再次移除事件绑定
 ```
 
-​	备注
-
+​备注
  
 
 ​	此 TurtleScreen 方法作为全局函数时只有一个名字 `onscreenclick`。全局函数 `onclick` 所对应的是 Turtle 方法 `onclick`。
@@ -2012,7 +2006,7 @@ True
 
 ​	设置海龟模式 ("standard", "logo" 或 "world") 并执行重置。如未指定模式则返回当前的模式。
 
-​	"standard" 模式与旧的 [`turtle`](https://docs.python.org/zh-cn/3.13/library/turtle.html#module-turtle) 兼容。"logo" 模式与大部分 Logo 海龟绘图兼容。"world" 模式使用用户自定义的 "世界坐标系"。**注意**: 在此模式下，如果 `x/y` 单位比率不等于 1 则角度会显得扭曲。
+​	"standard" 模式与旧的 [`turtle`]({{< ref "/library/frameworks/turtle#module-turtle" >}}) 兼容。"logo" 模式与大部分 Logo 海龟绘图兼容。"world" 模式使用用户自定义的 "世界坐标系"。**注意**: 在此模式下，如果 `x/y` 单位比率不等于 1 则角度会显得扭曲。
 
 | 模式       | 初始海龟朝向 | 正数角度 |
 | :--------- | :----------- | :------- |
@@ -2088,8 +2082,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
    >>> screen.register_shape("turtle.gif")
    ```
 
-   ​	备注
-
+   ​备注
     
 
    ​	当海龟转向时图像形状 *不会* 转动，因此无法显示海龟的朝向!
@@ -2102,7 +2095,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
    >>> screen.register_shape("triangle", ((5,-3), (0,5), (-5,-3)))
    ```
 
-3. *name* 为任意字符串而 *shape* 为 (复合) [`Shape`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Shape) 对象：安装相应的复合形状。Install the corresponding compound shape.
+3. *name* 为任意字符串而 *shape* 为 (复合) [`Shape`]({{< ref "/library/frameworks/turtle#turtle.Shape" >}}) 对象：安装相应的复合形状。Install the corresponding compound shape.
 
 ​	将一个海龟形状加入 TurtleScreen 的形状列表。只有这样注册过的形状才能通过执行 `shape(shapename)` 命令来使用。
 
@@ -2195,13 +2188,13 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 ## 参数:
 
-**canvas** -- 一个 `tkinter.Canvas`, [`ScrolledCanvas`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.ScrolledCanvas) 或 [`TurtleScreen`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.TurtleScreen)
+**canvas** -- 一个 `tkinter.Canvas`, [`ScrolledCanvas`]({{< ref "/library/frameworks/turtle#turtle.ScrolledCanvas" >}}) 或 [`TurtleScreen`]({{< ref "/library/frameworks/turtle#turtle.TurtleScreen" >}})
 
 ​	创建一个海龟。海龟对象具有 "Turtle/RawTurtle 方法" 一节所述的全部方法。
 
 ## *class* turtle.**Turtle**
 
-​	RawTurtle 的子类，具有相同的接口，但其绘图场所为默认的 [`Screen`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Screen) 类对象，在首次使用时自动创建。
+​	RawTurtle 的子类，具有相同的接口，但其绘图场所为默认的 [`Screen`]({{< ref "/library/frameworks/turtle#turtle.Screen" >}}) 类对象，在首次使用时自动创建。
 
 ## *class* turtle.**TurtleScreen**(*cv*)
 
@@ -2209,11 +2202,11 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 **cv** -- 一个 `tkinter.Canvas`
 
-​	提供面向屏幕的方法如 [`bgcolor()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.bgcolor) 等。 说明见上文。
+​	提供面向屏幕的方法如 [`bgcolor()`]({{< ref "/library/frameworks/turtle#turtle.bgcolor" >}}) 等。 说明见上文。
 
 ## *class* turtle.**Screen**
 
-​	TurtleScreen 的子类，[增加了四个方法](https://docs.python.org/zh-cn/3.13/library/turtle.html#screenspecific).
+​	TurtleScreen 的子类，[增加了四个方法]({{< ref "/library/frameworks/turtle#screenspecific" >}}).
 
 ## *class* turtle.**ScrolledCanvas**(*master*)
 
@@ -2235,7 +2228,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 | :--------- | :----------------------------------------------------------- |
 | "polygon"  | 一个多边形元组，即由坐标值对构成的元组                       |
 | "image"    | 一个图片 (此形式仅限内部使用!)                               |
-| "compound" | `None` (复合形状必须使用 [`addcomponent()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Shape.addcomponent) 方法来构建) |
+| "compound" | `None` (复合形状必须使用 [`addcomponent()`]({{< ref "/library/frameworks/turtle#turtle.Shape.addcomponent" >}}) 方法来构建) |
 
 ## **addcomponent**(*poly*, *fill*, *outline=None*)
 
@@ -2256,7 +2249,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 >>> # ... 添加更多组件，然后使用 register_shape()
 ```
 
-​	参见 [复合形状](https://docs.python.org/zh-cn/3.13/library/turtle.html#compoundshapes)。
+​	参见 [复合形状]({{< ref "/library/frameworks/turtle#compoundshapes" >}})。
 
 ## *class* turtle.**Vec2D**(*x*, *y*)
 
@@ -2277,11 +2270,11 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 ​	海龟对象在屏幕对象上绘图，在 turtle 的面向对象接口中有许多关键的类可被用于创建它们并将它们相互关联。
 
-[`Turtle`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Turtle) 实例将自动创建一个 [`Screen`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Screen) 实例，如果它还未创建的话。
+[`Turtle`]({{< ref "/library/frameworks/turtle#turtle.Turtle" >}}) 实例将自动创建一个 [`Screen`]({{< ref "/library/frameworks/turtle#turtle.Screen" >}}) 实例，如果它还未创建的话。
 
-`Turtle` 是 [`RawTurtle`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.RawTurtle) 的子类，它 *不会* 自动创建绘图区域 —— 需要为其提供或创建一个 *canvas*。 *canvas* 可以是一个 `tkinter.Canvas`, [`ScrolledCanvas`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.ScrolledCanvas) 或 [`TurtleScreen`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.TurtleScreen)。
+`Turtle` 是 [`RawTurtle`]({{< ref "/library/frameworks/turtle#turtle.RawTurtle" >}}) 的子类，它 *不会* 自动创建绘图区域 —— 需要为其提供或创建一个 *canvas*。 *canvas* 可以是一个 `tkinter.Canvas`, [`ScrolledCanvas`]({{< ref "/library/frameworks/turtle#turtle.ScrolledCanvas" >}}) 或 [`TurtleScreen`]({{< ref "/library/frameworks/turtle#turtle.TurtleScreen" >}})。
 
-[`TurtleScreen`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.TurtleScreen) 是基本的海龟绘图区域。 [`Screen`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Screen) 是 `TurtleScreen` 的子类，并包括 [一些额外方法](https://docs.python.org/zh-cn/3.13/library/turtle.html#screenspecific) 用来管理其外观（包括大小和标题）及行为。 `TurtleScreen` 的构造器需要一个 `tkinter.Canvas` 或 [`ScrolledCanvas`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.ScrolledCanvas) 作为参数。
+[`TurtleScreen`]({{< ref "/library/frameworks/turtle#turtle.TurtleScreen" >}}) 是基本的海龟绘图区域。 [`Screen`]({{< ref "/library/frameworks/turtle#turtle.Screen" >}}) 是 `TurtleScreen` 的子类，并包括 [一些额外方法]({{< ref "/library/frameworks/turtle#screenspecific" >}}) 用来管理其外观（包括大小和标题）及行为。 `TurtleScreen` 的构造器需要一个 `tkinter.Canvas` 或 [`ScrolledCanvas`]({{< ref "/library/frameworks/turtle#turtle.ScrolledCanvas" >}}) 作为参数。
 
 ​	海龟绘图形的函数式接口使用 `Turtle` 和 `TurtleScreen`/`Screen` 的各种方法。 在下层，每当从 `Screen` 方法派生的函数被调用时就会自动创建一个屏幕对象。 同样地，每当从 Turtle 方法派生的函数被调用时也都会自动创建一个 Turtle 对象。
 
@@ -2295,7 +2288,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 - 当使用 IDLE 时，输入函数/方法调用将弹出工具提示显示其签名和文档字符串的头几行。
 
-- 对文法或函数调用 [`help()`](https://docs.python.org/zh-cn/3.13/library/functions.html#help) 将显示其文档字符串:
+- 对文法或函数调用 [`help()`]({{< ref "/library/functions#help" >}}) 将显示其文档字符串:
 
   
 
@@ -2381,7 +2374,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 ​	创建文档字符串字典并将其写入 filename 指定的 Python 脚本文件。此函数必须显示地调用 (海龟绘图类并不使用此函数)。文档字符串字典将被写入到 Python 脚本文件 `*filename*.py`。该文件可作为模板用来将文档字符串翻译为不同语言。
 
-​	如果你 (或你的学生) 想使用本国语言版本的 [`turtle`](https://docs.python.org/zh-cn/3.13/library/turtle.html#module-turtle) 在线帮助，你必须翻译文档字符串并保存结果文件，例如 `turtle_docstringdict_german.py`.
+​	如果你 (或你的学生) 想使用本国语言版本的 [`turtle`]({{< ref "/library/frameworks/turtle#module-turtle" >}}) 在线帮助，你必须翻译文档字符串并保存结果文件，例如 `turtle_docstringdict_german.py`.
 
 ​	如果你在 `turtle.cfg` 文件中加入了相应的条目，此字典将在导入模块时被读取并替代原有的英文版文档字符串。
 
@@ -2420,24 +2413,24 @@ using_IDLE = False
 
 ​	选定条目的简短说明:
 
-- 开头的四行对应了 [`Screen.setup`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.setup) 方法的参数。
-- 第 5 和第 6 行对应于 [`Screen.screensize`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.screensize) 方法的参数。
+- 开头的四行对应了 [`Screen.setup`]({{< ref "/library/frameworks/turtle#turtle.setup" >}}) 方法的参数。
+- 第 5 和第 6 行对应于 [`Screen.screensize`]({{< ref "/library/frameworks/turtle#turtle.screensize" >}}) 方法的参数。
 - *shape* 可以是任何内置形状，即: arrow, turtle 等。更多信息可用 `help(shape)` 查看。
 - 如果你想使用无填充色（即让海龟变透明），则你必须写 `fillcolor = ""` (但在but all nonempty strings must not have quotes in the cfg 文件中所有非空字符串都不可加引号)。
 - 如果你想令海龟反映其状态，你必须使用 `resizemode = auto`。
-- 例如当你设置了 `language = italian` 则文档字符串字典 `turtle_docstringdict_italian.py` 将在导入时被加载（如果它存在于导入路径，即与 [`turtle`](https://docs.python.org/zh-cn/3.13/library/turtle.html#module-turtle) 相同的目录中）。
+- 例如当你设置了 `language = italian` 则文档字符串字典 `turtle_docstringdict_italian.py` 将在导入时被加载（如果它存在于导入路径，即与 [`turtle`]({{< ref "/library/frameworks/turtle#module-turtle" >}}) 相同的目录中）。
 - *exampleturtle* 和 *examplescreen* 条目定义了相应对象在文档字符串中显示的名称。方法文档字符串转换为函数文档字符串时将从文档字符串中删去这些名称。
-- *using_IDLE*: 如果你经常使用 IDLE 及其 `-n` 开关选项（"无子进程"）则将此项设为 `True`。 这将阻止 [`exitonclick()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.exitonclick) 进入主事件循环。
+- *using_IDLE*: 如果你经常使用 IDLE 及其 `-n` 开关选项（"无子进程"）则将此项设为 `True`。 这将阻止 [`exitonclick()`]({{< ref "/library/frameworks/turtle#turtle.exitonclick" >}}) 进入主事件循环。
 
-`turtle.cfg` 文件可以保存于 [`turtle`](https://docs.python.org/zh-cn/3.13/library/turtle.html#module-turtle) 所在目录，当前工作目录也可以有一个同名文件。后者会重载覆盖前者的设置。
+`turtle.cfg` 文件可以保存于 [`turtle`]({{< ref "/library/frameworks/turtle#module-turtle" >}}) 所在目录，当前工作目录也可以有一个同名文件。后者会重载覆盖前者的设置。
 
 `Lib/turtledemo` 目录中也有一个 `turtle.cfg` 文件。你可以将其作为示例进行研究，并在运行演示时查看其作用效果 (但最好不要在演示查看器中运行)。
 
 
 
-## [`turtledemo`](https://docs.python.org/zh-cn/3.13/library/turtle.html#module-turtledemo) --- 演示脚本集
+## [`turtledemo`]({{< ref "/library/frameworks/turtle#module-turtledemo" >}}) --- 演示脚本集
 
-[`turtledemo`](https://docs.python.org/zh-cn/3.13/library/turtle.html#module-turtledemo) 包汇集了一组演示脚本。这些脚本可以通过以下命令打开所提供的演示查看器运行和查看:
+[`turtledemo`]({{< ref "/library/frameworks/turtle#module-turtledemo" >}}) 包汇集了一组演示脚本。这些脚本可以通过以下命令打开所提供的演示查看器运行和查看:
 
 ```
 python -m turtledemo
@@ -2449,48 +2442,48 @@ python -m turtledemo
 python -m turtledemo.bytedesign
 ```
 
-[`turtledemo`](https://docs.python.org/zh-cn/3.13/library/turtle.html#module-turtledemo) 包目录中的内容:
+[`turtledemo`]({{< ref "/library/frameworks/turtle#module-turtledemo" >}}) 包目录中的内容:
 
 - 一个演示查看器 `__main__.py`，可用来查看脚本的源码并即时运行。
-- 多个脚本文件，演示 [`turtle`](https://docs.python.org/zh-cn/3.13/library/turtle.html#module-turtle) 模块的不同特性。所有示例可通过 Examples 菜单打开。也可以单独运行每个脚本。
+- 多个脚本文件，演示 [`turtle`]({{< ref "/library/frameworks/turtle#module-turtle" >}}) 模块的不同特性。所有示例可通过 Examples 菜单打开。也可以单独运行每个脚本。
 - 一个 `turtle.cfg` 文件，作为说明如何编写并使用模块配置文件的示例模板。
 
 ​	演示脚本清单如下:
 
 | 名称            | 描述                                                         | 相关特性                                                     |
 | :-------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| bytedesign      | 复杂的传统海龟绘图模式                                       | [`tracer()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.tracer), delay, [`update()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.update) |
+| bytedesign      | 复杂的传统海龟绘图模式                                       | [`tracer()`]({{< ref "/library/frameworks/turtle#turtle.tracer" >}}), delay, [`update()`]({{< ref "/library/frameworks/turtle#turtle.update" >}}) |
 | chaos           | 绘制 Verhulst 动态模型，演示通过计算机的运算可能会生成令人惊叹的结果 | 世界坐标系                                                   |
 | clock           | 绘制模拟时钟显示本机的当前时间                               | 海龟作为表针, ontimer                                        |
-| colormixer      | 试验 r, g, b 颜色模式                                        | [`ondrag()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.ondrag) 当鼠标拖动 |
+| colormixer      | 试验 r, g, b 颜色模式                                        | [`ondrag()`]({{< ref "/library/frameworks/turtle#turtle.ondrag" >}}) 当鼠标拖动 |
 | forest          | 绘制 3 棵广度优先树                                          | 随机化                                                       |
 | fractalcurves   | 绘制 Hilbert & Koch 曲线                                     | 递归                                                         |
 | lindenmayer     | 文化数学 (印度装饰艺术)                                      | L-系统                                                       |
 | minimal_hanoi   | 汉诺塔                                                       | 矩形海龟作为汉诺盘 (shape, shapesize)                        |
 | nim             | 玩经典的“尼姆”游戏，开始时有三堆小棒，与电脑对战。           | 海龟作为小棒，事件驱动 (鼠标, 键盘)                          |
-| paint           | 超极简主义绘画程序                                           | [`onclick()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.onclick) 当鼠标点击 |
+| paint           | 超极简主义绘画程序                                           | [`onclick()`]({{< ref "/library/frameworks/turtle#turtle.onclick" >}}) 当鼠标点击 |
 | peace           | 初级技巧                                                     | 海龟: 外观与动画                                             |
-| penrose         | 非周期性地使用风筝和飞镖形状铺满平面                         | [`stamp()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.stamp) 印章 |
-| planet_and_moon | 模拟引力系统                                                 | 复合开关, [`Vec2D`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Vec2D) 类 |
-| rosette         | 一个来自介绍海龟绘图的维基百科文章的图案                     | [`clone()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.clone), [`undo()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.undo) |
+| penrose         | 非周期性地使用风筝和飞镖形状铺满平面                         | [`stamp()`]({{< ref "/library/frameworks/turtle#turtle.stamp" >}}) 印章 |
+| planet_and_moon | 模拟引力系统                                                 | 复合开关, [`Vec2D`]({{< ref "/library/frameworks/turtle#turtle.Vec2D" >}}) 类 |
+| rosette         | 一个来自介绍海龟绘图的维基百科文章的图案                     | [`clone()`]({{< ref "/library/frameworks/turtle#turtle.clone" >}}), [`undo()`]({{< ref "/library/frameworks/turtle#turtle.undo" >}}) |
 | round_dance     | 两两相对并不断旋转舞蹈的海龟                                 | 复合形状, clone shapesize, tilt, get_shapepoly, update       |
 | sorting_animate | 动态演示不同的排序方法                                       | 简单对齐, 随机化                                             |
-| tree            | 一棵 (图形化的) 广度优先树 (使用生成器)                      | [`clone()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.clone) 克隆 |
+| tree            | 一棵 (图形化的) 广度优先树 (使用生成器)                      | [`clone()`]({{< ref "/library/frameworks/turtle#turtle.clone" >}}) 克隆 |
 | two_canvases    | 简单设计                                                     | 两块画布上的海龟                                             |
-| yinyang         | 另一个初级示例                                               | [`circle()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.circle) 画圆 |
+| yinyang         | 另一个初级示例                                               | [`circle()`]({{< ref "/library/frameworks/turtle#turtle.circle" >}}) 画圆 |
 
 ​	祝你玩得开心！
 
 ## Python 2.6 之后的变化
 
-- [`Turtle.tracer`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.tracer), [`Turtle.window_width`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.window_width) 和 [`Turtle.window_height`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.window_height) 等方法已被去除。 具有这些名称和功能的方法现在只限于作为 [`Screen`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Screen) 的方法。 自这些方法派生的函数仍保持可用。 (实际上在 Python 2.6 中这些方法就已经只是对应 [`TurtleScreen`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.TurtleScreen)/[`Screen`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Screen) 方法的副本了。)
-- `Turtle.fill()` 方法已被去除。 [`begin_fill()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.begin_fill) 和 [`end_fill()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.end_fill) 的行为则有细微改变：现在每个填充过程必须以一个 `end_fill()` 调用来结束。
-- 增加了一个 [`Turtle.filling`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.filling) 方法。 该方法返回一个布尔值：如果填充过程正在运行则为 `True`，否则为 `False`。 此行为对应于 Python 2.6 中一个不带参数的 `fill()` 调用。
+- [`Turtle.tracer`]({{< ref "/library/frameworks/turtle#turtle.tracer" >}}), [`Turtle.window_width`]({{< ref "/library/frameworks/turtle#turtle.window_width" >}}) 和 [`Turtle.window_height`]({{< ref "/library/frameworks/turtle#turtle.window_height" >}}) 等方法已被去除。 具有这些名称和功能的方法现在只限于作为 [`Screen`]({{< ref "/library/frameworks/turtle#turtle.Screen" >}}) 的方法。 自这些方法派生的函数仍保持可用。 (实际上在 Python 2.6 中这些方法就已经只是对应 [`TurtleScreen`]({{< ref "/library/frameworks/turtle#turtle.TurtleScreen" >}})/[`Screen`]({{< ref "/library/frameworks/turtle#turtle.Screen" >}}) 方法的副本了。)
+- `Turtle.fill()` 方法已被去除。 [`begin_fill()`]({{< ref "/library/frameworks/turtle#turtle.begin_fill" >}}) 和 [`end_fill()`]({{< ref "/library/frameworks/turtle#turtle.end_fill" >}}) 的行为则有细微改变：现在每个填充过程必须以一个 `end_fill()` 调用来结束。
+- 增加了一个 [`Turtle.filling`]({{< ref "/library/frameworks/turtle#turtle.filling" >}}) 方法。 该方法返回一个布尔值：如果填充过程正在运行则为 `True`，否则为 `False`。 此行为对应于 Python 2.6 中一个不带参数的 `fill()` 调用。
 
 ## Python 3.0 之后的变化
 
-- 增加了 [`Turtle`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Turtle) 方法 [`shearfactor()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.shearfactor), [`shapetransform()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.shapetransform) 和 [`get_shapepoly()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.get_shapepoly)。 这样就可以使用所有的常规线性变换来改变海龟形状。 [`tiltangle()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.tiltangle) 的功能已得到加强：现在它可以被用来获取或设置倾斜角度。
-- 增加了 [`Screen`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Screen) 方法 [`onkeypress()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.onkeypress) 作为 [`onkey()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.onkey) 的补充。 当后者将动作绑定到松开按键事件时，还将为它添加一个别名: [`onkeyrelease()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.onkeyrelease)。
-- 增加了 [`Screen.mainloop`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.mainloop) 方法，这样在操作 [`Screen`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Screen) 和 [`Turtle`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.Turtle) 对象时就无需再使用单独的 [`mainloop()`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.mainloop) 函数。
-- 增加了两个输入方法: [`Screen.textinput`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.textinput) 和 [`Screen.numinput`](https://docs.python.org/zh-cn/3.13/library/turtle.html#turtle.numinput)。 这两个方法会弹出输入对话框接受输入并分别返回字符串和数字。 These pop up input dialogs and return strings and numbers respectively.
+- 增加了 [`Turtle`]({{< ref "/library/frameworks/turtle#turtle.Turtle" >}}) 方法 [`shearfactor()`]({{< ref "/library/frameworks/turtle#turtle.shearfactor" >}}), [`shapetransform()`]({{< ref "/library/frameworks/turtle#turtle.shapetransform" >}}) 和 [`get_shapepoly()`]({{< ref "/library/frameworks/turtle#turtle.get_shapepoly" >}})。 这样就可以使用所有的常规线性变换来改变海龟形状。 [`tiltangle()`]({{< ref "/library/frameworks/turtle#turtle.tiltangle" >}}) 的功能已得到加强：现在它可以被用来获取或设置倾斜角度。
+- 增加了 [`Screen`]({{< ref "/library/frameworks/turtle#turtle.Screen" >}}) 方法 [`onkeypress()`]({{< ref "/library/frameworks/turtle#turtle.onkeypress" >}}) 作为 [`onkey()`]({{< ref "/library/frameworks/turtle#turtle.onkey" >}}) 的补充。 当后者将动作绑定到松开按键事件时，还将为它添加一个别名: [`onkeyrelease()`]({{< ref "/library/frameworks/turtle#turtle.onkeyrelease" >}})。
+- 增加了 [`Screen.mainloop`]({{< ref "/library/frameworks/turtle#turtle.mainloop" >}}) 方法，这样在操作 [`Screen`]({{< ref "/library/frameworks/turtle#turtle.Screen" >}}) 和 [`Turtle`]({{< ref "/library/frameworks/turtle#turtle.Turtle" >}}) 对象时就无需再使用单独的 [`mainloop()`]({{< ref "/library/frameworks/turtle#turtle.mainloop" >}}) 函数。
+- 增加了两个输入方法: [`Screen.textinput`]({{< ref "/library/frameworks/turtle#turtle.textinput" >}}) 和 [`Screen.numinput`]({{< ref "/library/frameworks/turtle#turtle.numinput" >}})。 这两个方法会弹出输入对话框接受输入并分别返回字符串和数字。 These pop up input dialogs and return strings and numbers respectively.
 - 两个新的示例脚本 `tdemo_nim.py` 和 `tdemo_round_dance.py` 被加入到 `Lib/turtledemo` 目录中。

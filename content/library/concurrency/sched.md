@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/sched.html](https://docs.python.org/zh-cn/3.13/library/sched.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/sched.html](https://docs.python.org/zh-cn/3.13/library/sched.html)
 >
 > 收录该文档的时间：`2024-11-15T12:21:05+08:00`
 
@@ -18,15 +18,15 @@ draft = false
 
 ------
 
-[`sched`](https://docs.python.org/zh-cn/3.13/library/sched.html#module-sched) 模块定义了一个实现通用事件调度程序的类：
+[`sched`]({{< ref "/library/concurrency/sched#module-sched" >}}) 模块定义了一个实现通用事件调度程序的类：
 
 ## *class* sched.**scheduler**(*timefunc=time.monotonic*, *delayfunc=time.sleep*)
 
-[`scheduler`](https://docs.python.org/zh-cn/3.13/library/sched.html#sched.scheduler) 类定义了一个调度事件的通用接口。 它需要两个函数来实际处理“外部世界” —— *timefunc* 应当不带参数地调用，并返回一个数字（“时间”，可以为任意单位）。 *delayfunc* 函数应当带一个参数调用，与 *timefunc* 的输出相兼容，并且应当延迟其所指定的时间单位。 每个事件运行后还将调用 *delayfunc* 并传入参数 `0` 以允许其他线程有机会在多线程应用中运行。
+[`scheduler`]({{< ref "/library/concurrency/sched#sched.scheduler" >}}) 类定义了一个调度事件的通用接口。 它需要两个函数来实际处理“外部世界” —— *timefunc* 应当不带参数地调用，并返回一个数字（“时间”，可以为任意单位）。 *delayfunc* 函数应当带一个参数调用，与 *timefunc* 的输出相兼容，并且应当延迟其所指定的时间单位。 每个事件运行后还将调用 *delayfunc* 并传入参数 `0` 以允许其他线程有机会在多线程应用中运行。
 
-*在 3.3 版本发生变更:* *timefunc* 和 *delayfunc* 参数是可选的。
+> 在 3.3 版本发生变更: *timefunc* 和 *delayfunc* 参数是可选的。
 
-*在 3.3 版本发生变更:* [`scheduler`](https://docs.python.org/zh-cn/3.13/library/sched.html#sched.scheduler) 类可以安全的在多线程环境中使用。
+> 在 3.3 版本发生变更: [`scheduler`]({{< ref "/library/concurrency/sched#sched.scheduler" >}}) 类可以安全的在多线程环境中使用。
 
 ​	示例:
 
@@ -63,7 +63,7 @@ From print_time 1652342840.369612 default
 
 ## 调度器对象
 
-[`scheduler`](https://docs.python.org/zh-cn/3.13/library/sched.html#sched.scheduler) 实例拥有以下方法和属性：
+[`scheduler`]({{< ref "/library/concurrency/sched#sched.scheduler" >}}) 实例拥有以下方法和属性：
 
 ## scheduler.**enterabs**(*time*, *priority*, *action*, *argument=()*, *kwargs={}*)
 
@@ -71,23 +71,23 @@ From print_time 1652342840.369612 default
 
 ​	执行事件意为执行 `action(*argument, **kwargs)`。 *argument* 是包含有 *action* 的位置参数的序列。 *kwargs* 是包含 *action* 的关键字参数的字典。
 
-​	返回值是一个事件，可用于以后取消事件（ 参见 [`cancel()`](https://docs.python.org/zh-cn/3.13/library/sched.html#sched.scheduler.cancel) ）。
+​	返回值是一个事件，可用于以后取消事件（ 参见 [`cancel()`]({{< ref "/library/concurrency/sched#sched.scheduler.cancel" >}}) ）。
 
-*在 3.3 版本发生变更:* *argument* 参数是可选的。
+> 在 3.3 版本发生变更: *argument* 参数是可选的。
 
-*在 3.3 版本发生变更:* 添加了 *kwargs* 形参。
+> 在 3.3 版本发生变更: 添加了 *kwargs* 形参。
 
 ## scheduler.**enter**(*delay*, *priority*, *action*, *argument=()*, *kwargs={}*)
 
-​	安排延后 *delay* 时间单位的事件。 除了时间是相对的，其他参数、效果和返回值与 [`enterabs()`](https://docs.python.org/zh-cn/3.13/library/sched.html#sched.scheduler.enterabs) 相同。
+​	安排延后 *delay* 时间单位的事件。 除了时间是相对的，其他参数、效果和返回值与 [`enterabs()`]({{< ref "/library/concurrency/sched#sched.scheduler.enterabs" >}}) 相同。
 
-*在 3.3 版本发生变更:* *argument* 参数是可选的。
+> 在 3.3 版本发生变更: *argument* 参数是可选的。
 
-*在 3.3 版本发生变更:* 添加了 *kwargs* 形参。
+> 在 3.3 版本发生变更: 添加了 *kwargs* 形参。
 
 ## scheduler.**cancel**(*event*)
 
-​	从队列中删除事件。 如果 *event* 不是当前队列中的事件，则此方法将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	从队列中删除事件。 如果 *event* 不是当前队列中的事件，则此方法将引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 ## scheduler.**empty**()
 
@@ -99,12 +99,12 @@ From print_time 1652342840.369612 default
 
 ​	如果 *blocking* 为false，则执行最快到期（如果有）的预定事件，然后在调度程序中返回下一个预定调用的截止时间（如果有）。
 
-*action* 或 *delayfunc* 都可以引发异常。 在任何一种情况下，调度程序都将保持一致状态并传播异常。 如果 *action* 引发异常，则在将来调用 [`run()`](https://docs.python.org/zh-cn/3.13/library/sched.html#sched.scheduler.run) 时不会尝试该事件。
+*action* 或 *delayfunc* 都可以引发异常。 在任何一种情况下，调度程序都将保持一致状态并传播异常。 如果 *action* 引发异常，则在将来调用 [`run()`]({{< ref "/library/concurrency/sched#sched.scheduler.run" >}}) 时不会尝试该事件。
 
 ​	如果一系列事件的运行时间大于下一个事件发生前的可用时间，那么调度程序只会保持落后。 没有事件会被丢弃；调用代码负责取消不再相关的事件。
 
-*在 3.3 版本发生变更:* 添加了 *blocking* 形参。
+> 在 3.3 版本发生变更: 添加了 *blocking* 形参。
 
 ## scheduler.**queue**
 
-​	只读属性，按照计划运行的顺序返回即将发生的事件列表。 每个事件都显示为 [named tuple](https://docs.python.org/zh-cn/3.13/glossary.html#term-named-tuple) ，包含以下字段：time、priority、action、argument、kwargs。
+​	只读属性，按照计划运行的顺序返回即将发生的事件列表。 每个事件都显示为 [named tuple]({{< ref "/glossary/idx#term-named-tuple" >}}) ，包含以下字段：time、priority、action、argument、kwargs。

@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/using/mac.html](https://docs.python.org/zh-cn/3.13/using/mac.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/using/mac.html](https://docs.python.org/zh-cn/3.13/using/mac.html)
 >
 > 收录该文档的时间：`2024-11-14T22:13:29+08:00`
 
@@ -16,7 +16,7 @@ draft = false
 
 ​	This document aims to give an overview of macOS-specific behavior you should know about to get started with Python on Mac computers. Python on a Mac running macOS is very similar to Python on other Unix-derived platforms, but there are some differences in installation and some features.
 
-​	There are various ways to obtain and install Python for macOS. Pre-built versions of the most recent versions of Python are available from a number of distributors. Much of this document describes use of the Pythons provided by the CPython release team for download from the [python.org website](https://www.python.org/downloads/). See [Alternative Distributions](https://docs.python.org/zh-cn/3.13/using/mac.html#alternative-bundles) for some other options.
+​	There are various ways to obtain and install Python for macOS. Pre-built versions of the most recent versions of Python are available from a number of distributors. Much of this document describes use of the Pythons provided by the CPython release team for download from the [python.org website](https://www.python.org/downloads/). See [Alternative Distributions]({{< ref "/using/mac#alternative-bundles" >}}) for some other options.
 
 
 
@@ -44,7 +44,7 @@ draft = false
 
 ![../_images/mac_installer_04_installation_type.png](https://docs.python.org/zh-cn/3.13/_images/mac_installer_04_installation_type.png)
 
-​	By pressing the **Customize** button, you can choose to omit or select certain package components of the installer. Click on each package name to see a description of what it installs. To also install support for the optional experimental free-threaded feature, see [安装自由线程二进制文件](https://docs.python.org/zh-cn/3.13/using/mac.html#install-freethreaded-macos).
+​	By pressing the **Customize** button, you can choose to omit or select certain package components of the installer. Click on each package name to see a description of what it installs. To also install support for the optional experimental free-threaded feature, see [安装自由线程二进制文件]({{< ref "/using/mac#install-freethreaded-macos" >}}).
 
 ![../_images/mac_installer_05_custom_install.png](https://docs.python.org/zh-cn/3.13/_images/mac_installer_05_custom_install.png)
 
@@ -69,19 +69,18 @@ draft = false
 - A `Python 3.13` folder in your `Applications` folder. In here you find **IDLE**, the development environment that is a standard part of official Python distributions; and **Python Launcher**, which handles double-clicking Python scripts from the macOS [Finder](https://support.apple.com/en-us/HT201732).
 - A framework `/Library/Frameworks/Python.framework`, which includes the Python executable and libraries. The installer adds this location to your shell path. To uninstall Python, you can remove these three things. Symlinks to the Python executable are placed in `/usr/local/bin/`.
 
-​	备注
+备注
 
- 
 
 ​	Recent versions of macOS include a **python3** command in `/usr/bin/python3` that links to a usually older and incomplete version of Python provided by and for use by the Apple development tools, **Xcode** or the **Command Line Tools for Xcode**. You should never modify or attempt to delete this installation, as it is Apple-controlled and is used by Apple-provided or third-party software. If you choose to install a newer Python version from `python.org`, you will have two different but functional Python installations on your computer that can co-exist. The default installer options should ensure that its **python3** will be used instead of the system **python3**.
 
 ### 5.1.2. 如何运行 Python 脚本
 
-​	There are two ways to invoke the Python interpreter. If you are familiar with using a Unix shell in a terminal window, you can invoke `python3.13` or `python3` optionally followed by one or more command line options (described in [命令行与环境](https://docs.python.org/zh-cn/3.13/using/cmdline.html#using-on-general)). The Python tutorial also has a useful section on [using Python interactively from a shell](https://docs.python.org/zh-cn/3.13/tutorial/appendix.html#tut-interac).
+​	There are two ways to invoke the Python interpreter. If you are familiar with using a Unix shell in a terminal window, you can invoke `python3.13` or `python3` optionally followed by one or more command line options (described in [命令行与环境]({{< ref "/using/cmdline#using-on-general" >}})). The Python tutorial also has a useful section on [using Python interactively from a shell]({{< ref "/tutorial/appendix#tut-interac" >}}).
 
-​	You can also invoke the interpreter through an integrated development environment. [IDLE](https://docs.python.org/zh-cn/3.13/library/idle.html#idle) is a basic editor and interpreter environment which is included with the standard distribution of Python. **IDLE** includes a Help menu that allows you to access Python documentation. If you are completely new to Python, you can read the tutorial introduction in that document.
+​	You can also invoke the interpreter through an integrated development environment. [IDLE]({{< ref "/library/tk/idle#idle" >}}) is a basic editor and interpreter environment which is included with the standard distribution of Python. **IDLE** includes a Help menu that allows you to access Python documentation. If you are completely new to Python, you can read the tutorial introduction in that document.
 
-​	There are many other editors and IDEs available, see [编辑器和集成开发环境](https://docs.python.org/zh-cn/3.13/using/editors.html#editors) for more information.
+​	There are many other editors and IDEs available, see [编辑器和集成开发环境]({{< ref "/using/editors#editors" >}}) for more information.
 
 ​	To run a Python script file from the terminal window, you can invoke the interpreter with the name of the script file:
 
@@ -102,19 +101,19 @@ draft = false
 
 ​	Besides the standard `python.org` for macOS installer, there are third-party distributions for macOS that may include additional functionality. Some popular distributions and their key features:
 
-## [ActivePython](https://www.activestate.com/products/python/)
+[ActivePython](https://www.activestate.com/products/python/)
 
 ​	具有多平台兼容性的安装器，文档
 
-## [Anaconda](https://www.anaconda.com/download/)
+[Anaconda](https://www.anaconda.com/download/)
 
 ​	Popular scientific modules (such as numpy, scipy, and pandas) and the `conda` package manager.
 
-## [Homebrew](https://brew.sh/)
+[Homebrew](https://brew.sh/)
 
 ​	Package manager for macOS including multiple versions of Python and many third-party Python-based packages (including numpy, scipy, and pandas).
 
-## [MacPorts](https://www.macports.org/)
+[MacPorts](https://www.macports.org/)
 
 ​	Another package manager for macOS including multiple versions of Python and many third-party Python-based packages. May include pre-built versions of Python and many packages for older versions of macOS.
 
@@ -132,7 +131,7 @@ draft = false
 
 ​	使用 Python 在 Mac 上构建 GUI 应用程序有多种选择。
 
-​	The standard Python GUI toolkit is [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter), based on the cross-platform Tk toolkit ([https://www.tcl.tk](https://www.tcl.tk/)). A macOS-native version of Tk is included with the installer.
+​	The standard Python GUI toolkit is [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}), based on the cross-platform Tk toolkit ([https://www.tcl.tk](https://www.tcl.tk/)). A macOS-native version of Tk is included with the installer.
 
 *PyObjC* is a Python binding to Apple's Objective-C/Cocoa framework. Information on PyObjC is available from [pyobjc](https://pypi.org/project/pyobjc/).
 
@@ -153,13 +152,12 @@ draft = false
 > Added in version 3.13:
 > （试验性功能）
 
-​	备注
+备注
 
- 
 
 ​	本节中描述的所有内容都是试验性的，它们预计会在未来的发布版中发生改变。
 
-​	The `python.org` [Python for macOS](https://docs.python.org/zh-cn/3.13/using/mac.html#getting-and-installing-macpython) installer package can optionally install an additional build of Python 3.13 that supports [**PEP 703**](https://peps.python.org/pep-0703/), the experimental free-threading feature (running with the [global interpreter lock](https://docs.python.org/zh-cn/3.13/glossary.html#term-global-interpreter-lock) disabled). Check the release page on `python.org` for possible updated information.
+​	The `python.org` [Python for macOS]({{< ref "/using/mac#getting-and-installing-macpython" >}}) installer package can optionally install an additional build of Python 3.13 that supports [**PEP 703**](https://peps.python.org/pep-0703/), the experimental free-threading feature (running with the [global interpreter lock]({{< ref "/glossary/idx#term-global-interpreter-lock" >}}) disabled). Check the release page on `python.org` for possible updated information.
 
 ​	Because this feature is still considered experimental, the support for it is not installed by default. It is packaged as a separate install option, available by clicking the **Customize** button on the **Installation Type** step of the installer as described above.
 
@@ -179,7 +177,7 @@ draft = false
 
     > `python3.13t` `-m pip install <package_name>`
 
-- When working with multiple Python environments, it is usually safest and easiest to [create and use virtual environments](https://docs.python.org/zh-cn/3.13/tutorial/venv.html#tut-venv). This can avoid possible command name conflicts and confusion about which Python is in use:
+- When working with multiple Python environments, it is usually safest and easiest to [create and use virtual environments]({{< ref "/tutorial/venv#tut-venv" >}}). This can avoid possible command name conflicts and confusion about which Python is in use:
 
   > `python3.13t` `-m venv <venv_name>`
 
@@ -189,7 +187,7 @@ draft = false
 
   > `python3.13t` `-m idlelib`
 
-- The interpreters in both builds respond to the same [PYTHON environment variables](https://docs.python.org/zh-cn/3.13/using/cmdline.html#using-on-envvars) which may have unexpected results, for example, if you have `PYTHONPATH` set in a shell profile. If necessary, there are [command line options](https://docs.python.org/zh-cn/3.13/using/cmdline.html#using-on-interface-options) like `-E` to ignore these environment variables.
+- The interpreters in both builds respond to the same [PYTHON environment variables]({{< ref "/using/cmdline#using-on-envvars" >}}) which may have unexpected results, for example, if you have `PYTHONPATH` set in a shell profile. If necessary, there are [command line options]({{< ref "/using/cmdline#using-on-interface-options" >}}) like `-E` to ignore these environment variables.
 
 - The free-threaded build links to the third-party shared libraries, such as `OpenSSL` and `Tk`, installed in the traditional framework. This means that both builds also share one set of trust certificates as installed by the **Install Certificates.command** script, thus it only needs to be run once.
 
@@ -255,9 +253,8 @@ $ python3.13 -VV
 Python 3.13.0b2 (v3.13.0b2:3a83b172af, Jun  5 2024, 12:50:24) [Clang 15.0.0 (clang-1500.3.9.4)]
 ```
 
-​	备注
+备注
 
- 
 
 ​	当前的 `python.org` 安装器只会安装到固定位置如 `/Library/Frameworks/`, `/Applications` 和 `/usr/local/bin`。 你不能使用 **installer** `-domain` 选项来安装到其他位置。
 
@@ -277,7 +274,7 @@ Python 3.13.0b2 (v3.13.0b2:3a83b172af, Jun  5 2024, 12:50:24) [Clang 15.0.0 (cla
 
 ​	Python 标准库包含了一些已知会违反这些自动规则的代码。 虽然这些违规情况看来是属于误报，但 Apple 的审核规则是不可挑战的。 因此，有必要修改 Python 标准库以便 app 能够通过 App Store 的审核。
 
-​	Python 源代码树包含 [一个补丁文件](https://github.com/python/cpython/tree/3.13/Mac/Resources/app-store-compliance.patch) 可移除所有已知的会导致 App Store 审核过程出现问题的代码。 这个补丁会在 CPython 配置了 [`--with-app-store-compliance`](https://docs.python.org/zh-cn/3.13/using/configure.html#cmdoption-with-app-store-compliance) 选项时自动应用。
+​	Python 源代码树包含 [一个补丁文件](https://github.com/python/cpython/tree/3.13/Mac/Resources/app-store-compliance.patch) 可移除所有已知的会导致 App Store 审核过程出现问题的代码。 这个补丁会在 CPython 配置了 [`--with-app-store-compliance`]({{< ref "/using/configure#cmdoption-with-app-store-compliance" >}}) 选项时自动应用。
 
 ​	这个补丁对于在 Mac 上使用 CPython 并不是必需的；如果你是在 macOS App Store *以外* 的地方发布 app 它也不是必需的。 它 *只有* 在你使用 macOS App Store 作为发布渠道时才是必需的。
 

@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/token.html](https://docs.python.org/zh-cn/3.13/library/token.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/token.html](https://docs.python.org/zh-cn/3.13/library/token.html)
 >
 > 收录该文档的时间：`2024-11-15T21:23:55+08:00`
 
@@ -270,7 +270,7 @@ draft = false
 
 ## token.**NT_OFFSET**
 
-​	C 形符生成器不使用以下形符类型值，但 [`tokenize`](https://docs.python.org/zh-cn/3.13/library/tokenize.html#module-tokenize) 模块需要它们。
+​	C 形符生成器不使用以下形符类型值，但 [`tokenize`]({{< ref "/library/language/tokenize#module-tokenize" >}}) 模块需要它们。
 
 ## token.**COMMENT**
 
@@ -278,22 +278,22 @@ draft = false
 
 ## token.**NL**
 
-​	形符值用于表示非终止换行符。 [`NEWLINE`](https://docs.python.org/zh-cn/3.13/library/token.html#token.NEWLINE) 形符表示 Python 代码逻辑行的结束；当在多条物理线路上继续执行逻辑代码行时，会生成 `NL` 形符。
+​	形符值用于表示非终止换行符。 [`NEWLINE`]({{< ref "/library/language/token#token.NEWLINE" >}}) 形符表示 Python 代码逻辑行的结束；当在多条物理线路上继续执行逻辑代码行时，会生成 `NL` 形符。
 
 ## token.**ENCODING**
 
-​	指示用于将源字节解码为文本的编码的形符值。 [`tokenize.tokenize()`](https://docs.python.org/zh-cn/3.13/library/tokenize.html#tokenize.tokenize) 返回的第一个形符将始终是一个 `ENCODING` 形符。
+​	指示用于将源字节解码为文本的编码的形符值。 [`tokenize.tokenize()`]({{< ref "/library/language/tokenize#tokenize.tokenize" >}}) 返回的第一个形符将始终是一个 `ENCODING` 形符。
 
 ## token.**TYPE_COMMENT**
 
-​	指明类型注释已被识别的形符值。 此种形符仅在 [`ast.parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 附带 `type_comments=True` 被发起调用时才会产生。
+​	指明类型注释已被识别的形符值。 此种形符仅在 [`ast.parse()`]({{< ref "/library/language/ast#ast.parse" >}}) 附带 `type_comments=True` 被发起调用时才会产生。
 
-*在 3.5 版本发生变更:* 增加了 `AWAIT` 和 `ASYNC` 形符。
+> 在 3.5 版本发生变更: 增加了 `AWAIT` 和 `ASYNC` 形符。
 
-*在 3.7 版本发生变更:* 形符 [`COMMENT`](https://docs.python.org/zh-cn/3.13/library/token.html#token.COMMENT)、 [`NL`](https://docs.python.org/zh-cn/3.13/library/token.html#token.NL) 和 [`ENCODING`](https://docs.python.org/zh-cn/3.13/library/token.html#token.ENCODING) 形符。
+> 在 3.7 版本发生变更: 形符 [`COMMENT`]({{< ref "/library/language/token#token.COMMENT" >}})、 [`NL`]({{< ref "/library/language/token#token.NL" >}}) 和 [`ENCODING`]({{< ref "/library/language/token#token.ENCODING" >}}) 形符。
 
-*在 3.7 版本发生变更:* 移除了 `AWAIT` 和 `ASYNC` 形符。 "async" 和 "await" 被形符化为 [`NAME`](https://docs.python.org/zh-cn/3.13/library/token.html#token.NAME) 形符。
+> 在 3.7 版本发生变更: 移除了 `AWAIT` 和 `ASYNC` 形符。 "async" 和 "await" 被形符化为 [`NAME`]({{< ref "/library/language/token#token.NAME" >}}) 形符。
 
-*在 3.8 版本发生变更:* 增加了 [`TYPE_COMMENT`](https://docs.python.org/zh-cn/3.13/library/token.html#token.TYPE_COMMENT), [`TYPE_IGNORE`](https://docs.python.org/zh-cn/3.13/library/token.html#token.TYPE_IGNORE), [`COLONEQUAL`](https://docs.python.org/zh-cn/3.13/library/token.html#token.COLONEQUAL)。 重新增加了 `AWAIT` 和 `ASYNC` 形符（需要用它们来支持解析 [`ast.parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 的 `feature_version` 设为 6 或更低的较旧 Python 版本）。
+> 在 3.8 版本发生变更: 增加了 [`TYPE_COMMENT`]({{< ref "/library/language/token#token.TYPE_COMMENT" >}}), [`TYPE_IGNORE`]({{< ref "/library/language/token#token.TYPE_IGNORE" >}}), [`COLONEQUAL`]({{< ref "/library/language/token#token.COLONEQUAL" >}})。 重新增加了 `AWAIT` 和 `ASYNC` 形符（需要用它们来支持解析 [`ast.parse()`]({{< ref "/library/language/ast#ast.parse" >}}) 的 `feature_version` 设为 6 或更低的较旧 Python 版本）。
 
-*在 3.13 版本发生变更:* 重新移除了 `AWAIT` 和 `ASYNC` 形符。
+> 在 3.13 版本发生变更: 重新移除了 `AWAIT` 和 `ASYNC` 形符。

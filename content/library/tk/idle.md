@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/idle.html](https://docs.python.org/zh-cn/3.13/library/idle.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/idle.html](https://docs.python.org/zh-cn/3.13/library/idle.html)
 >
 > 收录该文档的时间：`2024-11-15T20:56:44+08:00`
 
@@ -141,7 +141,7 @@ draft = false
 
 ## 显示补全信息
 
-​	打开一个可滚动列表以允许选择现有的名称。 请参阅下面编辑与导航一节中的 [自动补全](https://docs.python.org/zh-cn/3.13/library/idle.html#completions)。
+​	打开一个可滚动列表以允许选择现有的名称。 请参阅下面编辑与导航一节中的 [自动补全]({{< ref "/library/tk/idle#completions" >}})。
 
 ## 展开文本
 
@@ -149,7 +149,7 @@ draft = false
 
 ## 显示调用提示
 
-​	在函数的右括号后，打开一个带有函数参数提示的小窗口。 请参阅下面的“编辑和导航”部分中的 [调用提示](https://docs.python.org/zh-cn/3.13/library/idle.html#calltips)。
+​	在函数的右括号后，打开一个带有函数参数提示的小窗口。 请参阅下面的“编辑和导航”部分中的 [调用提示]({{< ref "/library/tk/idle#calltips" >}})。
 
 ## 显示周围括号
 
@@ -205,11 +205,11 @@ draft = false
 
 ## 运行模块
 
-​	执行 [检查模块](https://docs.python.org/zh-cn/3.13/library/idle.html#check-module) 。如果没有错误，重新启动 shell 以清理环境，然后执行模块。输出显示在 shell 窗口中。请注意，输出需要使用 “打印” 或 “写入”。执行完成后，Shell 将保留焦点并显示提示。此时，可以交互地探索执行的结果。这类似于在命令行执行带有 `python -i file` 的文件。
+​	执行 [检查模块]({{< ref "/library/tk/idle#check-module" >}}) 。如果没有错误，重新启动 shell 以清理环境，然后执行模块。输出显示在 shell 窗口中。请注意，输出需要使用 “打印” 或 “写入”。执行完成后，Shell 将保留焦点并显示提示。此时，可以交互地探索执行的结果。这类似于在命令行执行带有 `python -i file` 的文件。
 
 ## 运行... 定制
 
-​	与 [运行模块](https://docs.python.org/zh-cn/3.13/library/idle.html#run-module) 相同，但使用自定义设置运行该模块。*命令行参数* 扩展 [`sys.argv`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.argv) ，就像在命令行上传递一样。该模块可以在命令行管理程序中运行，而无需重新启动。
+​	与 [运行模块]({{< ref "/library/tk/idle#run-module" >}}) 相同，但使用自定义设置运行该模块。*命令行参数* 扩展 [`sys.argv`]({{< ref "/library/python/sys#sys.argv" >}}) ，就像在命令行上传递一样。该模块可以在命令行管理程序中运行，而无需重新启动。
 
 ## 检查模块
 
@@ -263,17 +263,17 @@ draft = false
 
 ## 配置 IDLE
 
-​	打开配置对话框并更改以下各项的首选项：字体、缩进、键绑定、文本颜色主题、启动窗口和大小、其他帮助源和扩展名。在MacOS上，通过在应用程序菜单中选择首选项来打开配置对话框。有关详细信息，请参阅：帮助和首选项下的 [首选项设置](https://docs.python.org/zh-cn/3.13/library/idle.html#preferences)。
+​	打开配置对话框并更改以下各项的首选项：字体、缩进、键绑定、文本颜色主题、启动窗口和大小、其他帮助源和扩展名。在MacOS上，通过在应用程序菜单中选择首选项来打开配置对话框。有关详细信息，请参阅：帮助和首选项下的 [首选项设置]({{< ref "/library/tk/idle#preferences" >}})。
 
 ​	大多数配置选项适用于所有窗口或将来的所有窗口。以下选项仅适用于活动窗口。
 
 ## 显示/隐藏代码上下文（仅限编辑器窗口）
 
-​	在编辑窗口顶部打开一个面板来显示在窗口顶部滚动的代码块上下文。 请参阅下文“编辑与导航”章节中的 [代码上下文](https://docs.python.org/zh-cn/3.13/library/idle.html#code-context)。
+​	在编辑窗口顶部打开一个面板来显示在窗口顶部滚动的代码块上下文。 请参阅下文“编辑与导航”章节中的 [代码上下文]({{< ref "/library/tk/idle#code-context" >}})。
 
 ## 显示/隐藏行号（仅限 Editor 窗口）
 
-​	在编辑窗口左侧打开一个显示代码文本行编号的列。 默认为关闭显示，这可以在首选项中修改 (参见 [设置首选项](https://docs.python.org/zh-cn/3.13/library/idle.html#preferences))。
+​	在编辑窗口左侧打开一个显示代码文本行编号的列。 默认为关闭显示，这可以在首选项中修改 (参见 [设置首选项]({{< ref "/library/tk/idle#preferences" >}}))。
 
 ## 缩放/还原高度
 
@@ -301,7 +301,7 @@ draft = false
 
 ​	使用示例 Python 代码运行 turtledemo 模块和海龟绘图
 
-​	可以在 “常规” 选项卡下的 “配置IDLE” 对话框中添加其他帮助源。有关“帮助”菜单选项的更多信息，请参见下面的 [帮助源](https://docs.python.org/zh-cn/3.13/library/idle.html#help-sources) 小节。
+​	可以在 “常规” 选项卡下的 “配置IDLE” 对话框中添加其他帮助源。有关“帮助”菜单选项的更多信息，请参见下面的 [帮助源]({{< ref "/library/tk/idle#help-sources" >}}) 小节。
 
 
 
@@ -376,7 +376,7 @@ draft = false
 
 ​	在一个代码块开头的语句之后，下一行会缩进 4 个空格符（在 Python Shell 窗口中是一个制表符）。 在特定关键字之后（break, return 等），下一行将不再缩进。 在开头的缩进中，按 Backspace 将会删除 4 个空格符。 Tab 则会插入空格符（在 Python Shell 窗口中是一个制表符），具体数量取决于缩进宽度。 目前，Tab 键按照 Tcl/Tk 的规定设置为四个空格符。
 
-​	另请参阅 [Format 菜单](https://docs.python.org/zh-cn/3.13/library/idle.html#format-menu) 的缩进/取消缩进区的命令。
+​	另请参阅 [Format 菜单]({{< ref "/library/tk/idle#format-menu" >}}) 的缩进/取消缩进区的命令。
 
 ### 搜索和替换
 
@@ -388,7 +388,7 @@ draft = false
 
 ​	当被请求并且可用时，将为模块名、类属性、函数或文件名提供补全。 每次请求方法将显示包含现有名称的补全提示框。 （例外情况参见下文的 Tab 补全。） 对于任意提示框，要改变被补全的名称和提示框中被高亮的条目，可以通过输入和删除字符、按 Up, Down, PageUp, PageDown, Home 和 End 键；或是在提示框中单击。 要关闭补全提示框可以通过 Escape, Enter 或按两次 Tab 键或是在提示框外单击。 在提示框内双击则将执行选择并关闭。
 
-​	有一种打开提示框的方式是输入一个关键字符并等待预设的一段间隔。 此间隔默认为 2 秒；这可以在设置对话框中定制。 （要防止自动弹出，可将时延设为一个很大的豪秒数值，例如 100000000。） 对于导入的模块名或者类和函数属性，请输入 '.'。 对于根目录下的文件名，请在开头引号之后立即输入 [`os.sep`](https://docs.python.org/zh-cn/3.13/library/os.html#os.sep) 或 [`os.altsep`](https://docs.python.org/zh-cn/3.13/library/os.html#os.altsep)。 （在 Windows 下，可以先指定一个驱动器。） 可通过输入目录名和分隔符来进入子目录。
+​	有一种打开提示框的方式是输入一个关键字符并等待预设的一段间隔。 此间隔默认为 2 秒；这可以在设置对话框中定制。 （要防止自动弹出，可将时延设为一个很大的豪秒数值，例如 100000000。） 对于导入的模块名或者类和函数属性，请输入 '.'。 对于根目录下的文件名，请在开头引号之后立即输入 [`os.sep`]({{< ref "/library/allos/os#os.sep" >}}) 或 [`os.altsep`]({{< ref "/library/allos/os#os.altsep" >}})。 （在 Windows 下，可以先指定一个驱动器。） 可通过输入目录名和分隔符来进入子目录。
 
 ​	除了等待，或是在提示框关闭之后，可以使用 Edit 菜单的 Show Completions 来立即打开一个补全提示框。 默认的热键是 C-space。 如果在打开提示框之前输入一某个名称的前缀，则将显示第一个匹配项或最接近的项。 结果将与在提示框已显示之后输入前缀时相同。 在一个引号之后执行 Show Completions 将会实例当前目录下的文件名而不是根目录下的。
 
@@ -428,7 +428,7 @@ draft = false
 
 ​	在光标位于行内任意位置的情况下按 Return 键来将单行语句提交执行。 如果带有强制换行的反斜杠 (\)，则光标必须位于最后一个物理行。 对于包含多行的复合语句要通过在语句之后额外输入一个空行来提交执行。
 
-​	当将代码粘贴到 Shell 中时，它并不会被编译并执行除非如上所述地再按下 Return 键。 可以先对粘贴的代码进行编辑。 如果将多条语句粘贴到 Shell 中，则多条语句被当作一条语句来编译并引发 [`SyntaxError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxError)。
+​	当将代码粘贴到 Shell 中时，它并不会被编译并执行除非如上所述地再按下 Return 键。 可以先对粘贴的代码进行编辑。 如果将多条语句粘贴到 Shell 中，则多条语句被当作一条语句来编译并引发 [`SyntaxError`]({{< ref "/library/exceptions#SyntaxError" >}})。
 
 ​	包含 `RESTART` 的行表明用户执行进程已被重启。 这种情况会在用户执行进程崩溃、在 Shell 菜单中选择重启，或在编辑器窗口中运行代码时发生。
 
@@ -443,13 +443,13 @@ draft = false
 
 ​	IDLE 文本默认为白底黑字，但有特殊含义的文本将以彩色显示。 对于 Shell 来说包括 Shell 输出，Shell 错误，用户输出和用户错误。 对于 Shell 提示符下或编辑器中的 Python 代码来说则包括关键字，内置类和函数名称，`class` 和 `def` 之后的名称，字符串和注释等。 对于任意文本窗口来说则包括光标（如果存在）、找到的文本（如果可能）和选定的文本。
 
-​	IDLE 还会高亮显示模式匹配语句中的 [软关键字](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#soft-keywords) [`match`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#match), [`case`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#match) 和 [`_`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#wildcard-patterns)。 但是，这种高亮显示并不完美，在某些极端情况下还会出现错误，包括 `_` 在 `case` 模式中出现的时候。
+​	IDLE 还会高亮显示模式匹配语句中的 [软关键字]({{< ref "/reference/lexical_analysis#soft-keywords" >}}) [`match`]({{< ref "/reference/compound_stmts#match" >}}), [`case`]({{< ref "/reference/compound_stmts#match" >}}) 和 [`_`]({{< ref "/reference/compound_stmts#wildcard-patterns" >}})。 但是，这种高亮显示并不完美，在某些极端情况下还会出现错误，包括 `_` 在 `case` 模式中出现的时候。
 
 ​	广西着色是在背景上完成的，因此有时会看到非着色的文本。 要改变颜色方案，请使用配置 IDLE 对话框的高亮选项卡。 编辑器中的调试器断点行标记和弹出面板和对话框中的文本则是用户不可配置的。
 
 ## 启动和代码执行
 
-​	在附带 `-s` 选项启用的情况下，IDLE 将会执行环境变量 `IDLESTARTUP` 或 [`PYTHONSTARTUP`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONSTARTUP) 所引用的文件。 IDLE 会先检查 `IDLESTARTUP`；如果 `IDLESTARTUP` 存在则会运行被引用的文件。 如果 `IDLESTARTUP` 不存在，则 IDLE 会检查 `PYTHONSTARTUP`。 这些环境变量所引用的文件是存放经常被 IDLE Shell 所使用的函数，或者执行导入常用模块的 import 语句的便捷场所。
+​	在附带 `-s` 选项启用的情况下，IDLE 将会执行环境变量 `IDLESTARTUP` 或 [`PYTHONSTARTUP`]({{< ref "/using/cmdline#envvar-PYTHONSTARTUP" >}}) 所引用的文件。 IDLE 会先检查 `IDLESTARTUP`；如果 `IDLESTARTUP` 存在则会运行被引用的文件。 如果 `IDLESTARTUP` 不存在，则 IDLE 会检查 `PYTHONSTARTUP`。 这些环境变量所引用的文件是存放经常被 IDLE Shell 所使用的函数，或者执行导入常用模块的 import 语句的便捷场所。
 
 ​	此外，`Tk` 也会在存在启动文件时加载它。 请注意 Tk 文件会被无条件地加载。 此附加文件名为 `.Idle.py` 并且会在用户的家目录下查找。 此文件中的语句将在 Tk 的命名空间中执行，所以此文件不适用于导入要在 IDLE 的 Python Shell 中使用的函数。
 
@@ -500,7 +500,7 @@ idle.py [-c command] [-d] [-e] [-h] [-i] [-r file] [-s] [-t title] [-] [arg] ...
 
 ​	在默认情况下，IDLE 会在单独的 OS 进程中运行用户代码而不是在运行 Shell 和编辑器的用户界面进程中运行。 在执行进程中，它会将 `sys.stdin`, `sys.stdout` 和 `sys.stderr` 替换为从 Shell 窗口获取输入并向其发送输出的对象。 保存在 `sys.__stdin__`, `sys.__stdout__` 和 `sys.__stderr__` 中的原始值不会被改变，但可能会为 `None`。
 
-​	将打印输出从一个进程发送到另一个进程中的文本部件要比打印到同一个进程中的系统终端慢。 这在打印多个参数时将有更明显的影响，因为每个参数、每个分隔符和换行符对应的字符串都要单独发送。 在开发中，这通常不算是问题，但如果希望能在 IDLE 中更快地打印，可以将想要显示的所有内容先格式化并拼接到一起然后打印单个字符串。 格式字符串和 [`str.join()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.join) 都可以被用于合并字段和文本行。
+​	将打印输出从一个进程发送到另一个进程中的文本部件要比打印到同一个进程中的系统终端慢。 这在打印多个参数时将有更明显的影响，因为每个参数、每个分隔符和换行符对应的字符串都要单独发送。 在开发中，这通常不算是问题，但如果希望能在 IDLE 中更快地打印，可以将想要显示的所有内容先格式化并拼接到一起然后打印单个字符串。 格式字符串和 [`str.join()`]({{< ref "/library/stdtypes#str.join" >}}) 都可以被用于合并字段和文本行。
 
 ​	IDLE 的标准流替换不会被执行进程中创建的子进程所继承，不论它是由用户代码直接创建还是由 multiprocessing 之类的模块创建的。 如果这样的子进程使用了 `input` 从 sys.stdin 输入或者使用了 `print` 或 `write` 向 sys.stdout 或 sys.stderr 输出，则应当在命令行窗口中启动 IDLE。 （在 Windows 中，要使用 `python` 或 `py` 而不是 `pythonw` 或 `pyw`。） 这样二级子进程将会被附加到该窗口进行输入和输出。
 

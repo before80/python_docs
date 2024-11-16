@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/isolating-extensions.html](https://docs.python.org/zh-cn/3.13/howto/isolating-extensions.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/isolating-extensions.html](https://docs.python.org/zh-cn/3.13/howto/isolating-extensions.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -30,8 +30,8 @@ draft = false
 
 ​	Python 支持在一个进程中运行多个解释器。 这里有两种情况需要考虑 — 用户可能会以下列方式运行解释器:
 
-- 串行，使用多个 [`Py_InitializeEx()`](https://docs.python.org/zh-cn/3.13/c-api/init.html#c.Py_InitializeEx)/[`Py_FinalizeEx()`](https://docs.python.org/zh-cn/3.13/c-api/init.html#c.Py_FinalizeEx) 循环，以及
-- 并行，使用 [`Py_NewInterpreter()`](https://docs.python.org/zh-cn/3.13/c-api/init.html#c.Py_NewInterpreter)/[`Py_EndInterpreter()`](https://docs.python.org/zh-cn/3.13/c-api/init.html#c.Py_EndInterpreter) 管理多个“子解释器”。
+- 串行，使用多个 [`Py_InitializeEx()`]({{< ref "/c_api/init#c.Py_InitializeEx" >}})/[`Py_FinalizeEx()`]({{< ref "/c_api/init#c.Py_FinalizeEx" >}}) 循环，以及
+- 并行，使用 [`Py_NewInterpreter()`]({{< ref "/c_api/init#c.Py_NewInterpreter" >}})/[`Py_EndInterpreter()`]({{< ref "/c_api/init#c.Py_EndInterpreter" >}}) 管理多个“子解释器”。
 
 ​	这两种情况（以及它们的组合）最适用于将 Python 嵌入到某个库中。 库通常不应假定使用它们的应用程序，这包括假定存在一个进程级的“主 Python 解释器”。
 
@@ -63,13 +63,13 @@ draft = false
 False
 ```
 
-​	作为经验法则，这两个模块应该是完全独立的。 模块专属的所有对象和状态应该被封装在模块对象内部，不与其他模块对象共享，并在模块对象被释放时进行清理。 由于这只是一个经验法则，例外情况也是可能的（参见 [Managing Global State](https://docs.python.org/zh-cn/3.13/howto/isolating-extensions.html#managing-global-state))，但这将需要更多的考虑并注意边界情况。
+​	作为经验法则，这两个模块应该是完全独立的。 模块专属的所有对象和状态应该被封装在模块对象内部，不与其他模块对象共享，并在模块对象被释放时进行清理。 由于这只是一个经验法则，例外情况也是可能的（参见 [Managing Global State]({{< ref "/howto/isolating-extensions#managing-global-state" >}}))，但这将需要更多的考虑并注意边界情况。
 
 ​	虽然有些模块不用太多的严格限制，但是隔离的模块使得更容易制定适合各种应用场景的明确期望和指南。
 
 ### 令人惊讶的边界情况
 
-​	请注意隔离的模块会创造一些令人惊讶的边界情况。 最明显的一点，每个模块对象通常都不会与其他类似模块共享它的类和异常。 继续 [上面的例子](https://docs.python.org/zh-cn/3.13/howto/isolating-extensions.html#isolated-module-objects)，请注意 `old_binascii.Error` 和 `binascii.Error` 是单独的对象。 在下面的代码中，异常 *不会* 被捕获:
+​	请注意隔离的模块会创造一些令人惊讶的边界情况。 最明显的一点，每个模块对象通常都不会与其他类似模块共享它的类和异常。 继续 [上面的例子]({{< ref "/howto/isolating-extensions#isolated-module-objects" >}})，请注意 `old_binascii.Error` 和 `binascii.Error` 是单独的对象。 在下面的代码中，异常 *不会* 被捕获:
 
 
 
@@ -101,16 +101,15 @@ binascii.Error: Non-hexadecimal digit found
 
 ​	在这些情况下，Python 模块应当提供对全局状态的 *访问*，而不是 *拥有* 它。 如果可能，编写模块时要让它的多个副本可以独立地访问全局状态（能配合其它的库，不论它们是使用 Python 还是其他语言）。 如果这无法做到，可考虑显式加锁。
 
-​	如果有必要使用进程级全局状态，避免多解释器相关问题的最简单的方式是显式地阻止模块在一个进程中被多次加载 — 参见 [回退选项：每个进程限一个模块对象](https://docs.python.org/zh-cn/3.13/howto/isolating-extensions.html#opt-out-limiting-to-one-module-object-per-process)。
+​	如果有必要使用进程级全局状态，避免多解释器相关问题的最简单的方式是显式地阻止模块在一个进程中被多次加载 — 参见 [回退选项：每个进程限一个模块对象]({{< ref "/howto/isolating-extensions#opt-out-limiting-to-one-module-object-per-process" >}})。
 
 ### 管理模块级状态
 
 ​	要使用模块级状态，请使用 [多阶段扩展模块初始化](https://docs.python.org/zh-cn/3.13/c-api/module.html#multi-phase-initialization)。 这将标示你的模块能正确地支持多解释器。
 
-​	将 `PyModuleDef.m_size` 设为一个正数来为模块请求指定字节的本地存储。 通常，这将被设为某个模块专属 `struct` 的大小，它可以保存模块的所有 C 层级状态。 特别地，它应当是你存放类指针（包括异常，但不包括静态类型）和 C 代码正常运作所需设置（如 `csv` 的 [`field_size_limit`](https://docs.python.org/zh-cn/3.13/library/csv.html#csv.field_size_limit) 等）的地方。
+​	将 `PyModuleDef.m_size` 设为一个正数来为模块请求指定字节的本地存储。 通常，这将被设为某个模块专属 `struct` 的大小，它可以保存模块的所有 C 层级状态。 特别地，它应当是你存放类指针（包括异常，但不包括静态类型）和 C 代码正常运作所需设置（如 `csv` 的 [`field_size_limit`]({{< ref "/library/fileformats/csv#csv.field_size_limit" >}}) 等）的地方。
 
-​	备注
-
+​备注
  
 
 ​	另一个选项是将状态保存在模块的 `__dict__` 中，但你必须避免当用户从 Python 代码中修改 `__dict__` 导致的程序崩溃。 这通常意味着要在 C 层级上进行错误和类型检查，很容易弄错又很难充分测试。
@@ -157,8 +156,7 @@ func(PyObject *module, PyObject *args)
 }
 ```
 
-​	备注
-
+​备注
  
 
 ​	如果模块状态不存在则 `PyModule_GetState` 可能返回 `NULL` 而不设置异常，即 `PyModuleDef.m_size` 为零。 在你自己的模块中，你可以任意控制 `m_size`，因此这很容易避免。
@@ -188,8 +186,7 @@ func(PyObject *module, PyObject *args)
 
 ​	堆类型可以通过填充 [`PyType_Spec`](https://docs.python.org/zh-cn/3.13/c-api/type.html#c.PyType_Spec) 结构体来创建，它是对于特定类的描述或“蓝图”，并调用 [`PyType_FromModuleAndSpec()`](https://docs.python.org/zh-cn/3.13/c-api/type.html#c.PyType_FromModuleAndSpec) 来构造新的类对象。to construct a new class object.
 
-​	备注
-
+​备注
  
 
 ​	其他的函数，如 [`PyType_FromSpec()`](https://docs.python.org/zh-cn/3.13/c-api/type.html#c.PyType_FromSpec)，也可以创建堆类型，但 [`PyType_FromModuleAndSpec()`](https://docs.python.org/zh-cn/3.13/c-api/type.html#c.PyType_FromModuleAndSpec) 会将模块关联到类，以允许从方法访问模块状态。
@@ -223,10 +220,10 @@ static int my_traverse(PyObject *self, visitproc visit, void *arg)
 }
 ```
 
-​	不幸的是，[`Py_Version`](https://docs.python.org/zh-cn/3.13/c-api/apiabiversion.html#c.Py_Version) 直到 Python 3.11 才被加入。 作为替代，请使用：
+​	不幸的是，[`Py_Version`]({{< ref "/c_api/apiabiversion#c.Py_Version" >}}) 直到 Python 3.11 才被加入。 作为替代，请使用：
 
-- [`PY_VERSION_HEX`](https://docs.python.org/zh-cn/3.13/c-api/apiabiversion.html#c.PY_VERSION_HEX)，如果不使用稳定 ABI 的话，或者
-- [`sys.version_info`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.version_info) (通过 [`PySys_GetObject()`](https://docs.python.org/zh-cn/3.13/c-api/sys.html#c.PySys_GetObject) 和 [`PyArg_ParseTuple()`](https://docs.python.org/zh-cn/3.13/c-api/arg.html#c.PyArg_ParseTuple))。
+- [`PY_VERSION_HEX`]({{< ref "/c_api/apiabiversion#c.PY_VERSION_HEX" >}})，如果不使用稳定 ABI 的话，或者
+- [`sys.version_info`]({{< ref "/library/python/sys#sys.version_info" >}}) (通过 [`PySys_GetObject()`](https://docs.python.org/zh-cn/3.13/c-api/sys.html#c.PySys_GetObject) 和 [`PyArg_ParseTuple()`](https://docs.python.org/zh-cn/3.13/c-api/arg.html#c.PyArg_ParseTuple))。
 
 #### 委托 `tp_traverse`
 
@@ -321,8 +318,7 @@ if (state == NULL) {
 
 ​	不要混淆定义的类和 `Py_TYPE(self)`。 如果方法是在你的类型的一个 *子类* 上被调用的，则 `Py_TYPE(self)` 将指向该子类，它可能是在另一个模块中定义的。
 
-​	备注
-
+​备注
  
 
 ​	下面的 Python 代码可以演示这一概念。 `Base.get_defining_class` 将返回 `Base`，即使 `type(self) == Sub`:
@@ -382,13 +378,12 @@ static PyMethodDef my_methods[] = {
 
 ### 槽位方法、读取方法和设置方法对模块状态的访问
 
-​	备注
-
+​备注
  
 
 ​	这是 Python 3.11 的新增特性。
 
-​	槽位方法 — 即特殊方法的 C 快速等价物，如 [`nb_add`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyNumberMethods.nb_add) 对应 [`__add__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__add__) 而 [`tp_new`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_new) 对应初始化方法 — 具有不允许传入定义类的非常简单的 API，这不同于 [`PyCMethod`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.PyCMethod)。 同样的机制也适用于通过 [`PyGetSetDef`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.PyGetSetDef) 定义的读取方法和设置方法。
+​	槽位方法 — 即特殊方法的 C 快速等价物，如 [`nb_add`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyNumberMethods.nb_add) 对应 [`__add__`]({{< ref "/reference/datamodel#object.__add__" >}}) 而 [`tp_new`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_new) 对应初始化方法 — 具有不允许传入定义类的非常简单的 API，这不同于 [`PyCMethod`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.PyCMethod)。 同样的机制也适用于通过 [`PyGetSetDef`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.PyGetSetDef) 定义的读取方法和设置方法。
 
 ​	要在这些场景下访问模块状态，请使用 [`PyType_GetModuleByDef()`](https://docs.python.org/zh-cn/3.13/c-api/type.html#c.PyType_GetModuleByDef) 函数，并传入模块定义。 一旦你得到该模块，即可调用 [`PyModule_GetState()`](https://docs.python.org/zh-cn/3.13/c-api/module.html#c.PyModule_GetState) 来获取状态:
 
@@ -400,10 +395,9 @@ if (state == NULL) {
 }
 ```
 
-`PyType_GetModuleByDef()` 的作用方式是通过搜索 [method resolution order](https://docs.python.org/zh-cn/3.13/glossary.html#term-method-resolution-order) (即所有超类) 来找到具有相应模块的第一个超类。
+`PyType_GetModuleByDef()` 的作用方式是通过搜索 [method resolution order]({{< ref "/glossary/idx#term-method-resolution-order" >}}) (即所有超类) 来找到具有相应模块的第一个超类。
 
-​	备注
-
+​备注
  
 
 ​	在非常特别的情况下（继承链跨越由同样定义创建的多个模块），`PyType_GetModuleByDef()` 可能不会返回真正定义方法的类。 但是，它总是会返回一个具有同样定义的模块，这将确保具有兼容的 C 内存布局。

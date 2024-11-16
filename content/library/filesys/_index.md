@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/filesys.html](https://docs.python.org/zh-cn/3.13/library/filesys.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/filesys.html](https://docs.python.org/zh-cn/3.13/library/filesys.html)
 >
 > 收录该文档的时间：`2024-11-14T22:00:25+08:00`
 
@@ -20,14 +20,14 @@ draft = false
 
 > 参见
 >
-> - 模块 [`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os)
+> - 模块 [`os`]({{< ref "/library/allos/os#module-os" >}})
 >
->   操作系统接口，包括处理比 Python [文件对象](https://docs.python.org/zh-cn/3.13/glossary.html#term-file-object) 更低级别文件的功能。
+>   操作系统接口，包括处理比 Python [文件对象]({{< ref "/glossary/idx#term-file-object" >}}) 更低级别文件的功能。
 >
-> - 模块 [`io`](https://docs.python.org/zh-cn/3.13/library/io.html#module-io)
+> - 模块 [`io`]({{< ref "/library/allos/io#module-io" >}})
 >
 >   Python的内置 I/O 库，包括抽象类和一些具体的类，如文件 I/O 。
 >
-> - 内置函数 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open)
+> - 内置函数 [`open()`]({{< ref "/library/functions#open" >}})
 >
 >   使用 Python 打开文件进行读写的标准方法。

@@ -8,39 +8,37 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/test.html](https://docs.python.org/zh-cn/3.13/library/test.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/test.html](https://docs.python.org/zh-cn/3.13/library/test.html)
 >
 > 收录该文档的时间：`2024-11-15T21:03:03+08:00`
 
 # `test` --- Python 回归测试包
 
-​	备注
-
+​备注
  
 
-[`test`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test) 包只供 Python 内部使用。它的记录是为了让 Python 的核心开发者受益。我们不鼓励在 Python 标准库之外使用这个包，因为这里提到的代码在 Python 的不同版本之间可能会改变或被删除而不另行通知。
+[`test`]({{< ref "/library/development/test#module-test" >}}) 包只供 Python 内部使用。它的记录是为了让 Python 的核心开发者受益。我们不鼓励在 Python 标准库之外使用这个包，因为这里提到的代码在 Python 的不同版本之间可能会改变或被删除而不另行通知。
 
 ------
 
-[`test`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test) 包包含了 Python 的所有回归测试，以及 [`test.support`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support) 和 [`test.regrtest`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.regrtest) 模块。 [`test.support`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support) 用于增强你的测试，而 [`test.regrtest`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.regrtest) 驱动测试套件。
+​	`test` 包包含了 Python 的所有回归测试，以及 [`test.support`]({{< ref "/library/development/test#module-test.support" >}}) 和 [`test.regrtest`]({{< ref "/library/development/test#module-test.regrtest" >}}) 模块。 [`test.support`]({{< ref "/library/development/test#module-test.support" >}}) 用于增强你的测试，而 [`test.regrtest`]({{< ref "/library/development/test#module-test.regrtest" >}}) 驱动测试套件。
 
-`test`包中每个名字以 ``test_`` 开头的模块都是一个特定模块或功能的测试套件。所有新的测试应该使用 [`unittest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#module-unittest) 或 [`doctest`](https://docs.python.org/zh-cn/3.13/library/doctest.html#module-doctest) 模块编写。一些旧的测试是使用“传统”的测试风格编写的，即比较打印出来的输出到 `sys.stdout`；这种测试风格被认为是过时的。
+`test`包中每个名字以 ``test_`` 开头的模块都是一个特定模块或功能的测试套件。所有新的测试应该使用 [`unittest`]({{< ref "/library/development/unittest#module-unittest" >}}) 或 [`doctest`]({{< ref "/library/development/doctest#module-doctest" >}}) 模块编写。一些旧的测试是使用“传统”的测试风格编写的，即比较打印出来的输出到 `sys.stdout`；这种测试风格被认为是过时的。
 
-​	参见
-
-## 模块 [`unittest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#module-unittest)
+​参见
+## 模块 [`unittest`]({{< ref "/library/development/unittest#module-unittest" >}})
 
 ​	编写 PyUnit 回归测试.
 
-## [`doctest`](https://docs.python.org/zh-cn/3.13/library/doctest.html#module-doctest) --- 文档测试模块
+## [`doctest`]({{< ref "/library/development/doctest#module-doctest" >}}) --- 文档测试模块
 
 ​	嵌入到文档字符串的测试。
 
 
 
-## 为 [`test`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test) 包编写单元测试
+## 为 [`test`]({{< ref "/library/development/test#module-test" >}}) 包编写单元测试
 
-​	使用 [`unittest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#module-unittest) 模块的测试最好是遵循一些准则。 其中一条是测试模块的名称要以 `test_` 打头并以被测试模块的名称结尾。 测试模块中的测试方法应当以 `test_` 打头并以该方法所测试的内容的说明结尾。 这很有必要因为这样测试驱动程序就会将这些方法识别为测试方法。 此外，该方法不应当包括任何文档字符串。 应当使用注释 (例如 `# Tests function returns only True or False`) 来为测试方法提供文档说明。 这样做是因为文档字符串如果存在则会被打印出来因此无法指明正在运行哪个测试。
+​	使用 [`unittest`]({{< ref "/library/development/unittest#module-unittest" >}}) 模块的测试最好是遵循一些准则。 其中一条是测试模块的名称要以 `test_` 打头并以被测试模块的名称结尾。 测试模块中的测试方法应当以 `test_` 打头并以该方法所测试的内容的说明结尾。 这很有必要因为这样测试驱动程序就会将这些方法识别为测试方法。 此外，该方法不应当包括任何文档字符串。 应当使用注释 (例如 `# Tests function returns only True or False`) 来为测试方法提供文档说明。 这样做是因为文档字符串如果存在则会被打印出来因此无法指明正在运行哪个测试。
 
 ​	有一个基本模板经常会被使用:
 
@@ -77,7 +75,7 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
-​	这种代码模式允许测试套件由 [`test.regrtest`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.regrtest) 运行，作为支持 [`unittest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#module-unittest) CLI 的脚本单独运行，或者通过 `python -m unittest` CLI 来运行。
+​	这种代码模式允许测试套件由 [`test.regrtest`]({{< ref "/library/development/test#module-test.regrtest" >}}) 运行，作为支持 [`unittest`]({{< ref "/library/development/unittest#module-unittest" >}}) CLI 的脚本单独运行，或者通过 `python -m unittest` CLI 来运行。
 
 ​	回归测试的目标是尝试破坏代码。 这引出了一些需要遵循的准则:
 
@@ -117,10 +115,9 @@ if __name__ == '__main__':
       arg = (1, 2, 3)
   ```
 
-  当使用这种模式时，请记住所有继承自 [`unittest.TestCase`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase) 的类都会作为测试来运行。 上面例子中的 `TestFuncAcceptsSequencesMixin` 类没有任何数据所以其本身是无法运行的，因此它不是继承自 [`unittest.TestCase`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase)。
+  当使用这种模式时，请记住所有继承自 [`unittest.TestCase`]({{< ref "/library/development/unittest#unittest.TestCase" >}}) 的类都会作为测试来运行。 上面例子中的 `TestFuncAcceptsSequencesMixin` 类没有任何数据所以其本身是无法运行的，因此它不是继承自 [`unittest.TestCase`]({{< ref "/library/development/unittest#unittest.TestCase" >}})。
 
-​	参见
-
+​参见
 ## 测试驱动的开发
 
 ​	Kent Beck 所著的阐述在实现代码之前编写驱动的书。
@@ -129,39 +126,38 @@ if __name__ == '__main__':
 
 ## 使用命令行界面运行测试
 
-​	通过使用 [`-m`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-m) 选项 [`test`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test) 包可以作为脚本运行以驱动 Python 的回归测试套件: **python -m test**。 在内部，它使用 [`test.regrtest`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.regrtest)；之前 Python 版本所使用的 **python -m test.regrtest** 调用仍然有效。 运行该脚本自身会自动开始运行 [`test`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test) 包中的所有回归测试。 它通过在包中查找所有名称以 `test_` 打头的模块，导入它们，并在有 `test_main()` 函数时执行它或是在没有 `test_main` 时通过 unittest.TestLoader.loadTestsFromModule 载入测试。 要执行的测试的名称也可以被传递给脚本。 指定一个单独的回归测试 (**python -m test test_spam**) 将使输出最小化并且只打印测试通过或失败的消息。
+​	通过使用 [`-m`]({{< ref "/using/cmdline#cmdoption-m" >}}) 选项 [`test`]({{< ref "/library/development/test#module-test" >}}) 包可以作为脚本运行以驱动 Python 的回归测试套件: **python -m test**。 在内部，它使用 [`test.regrtest`]({{< ref "/library/development/test#module-test.regrtest" >}})；之前 Python 版本所使用的 **python -m test.regrtest** 调用仍然有效。 运行该脚本自身会自动开始运行 [`test`]({{< ref "/library/development/test#module-test" >}}) 包中的所有回归测试。 它通过在包中查找所有名称以 `test_` 打头的模块，导入它们，并在有 `test_main()` 函数时执行它或是在没有 `test_main` 时通过 unittest.TestLoader.loadTestsFromModule 载入测试。 要执行的测试的名称也可以被传递给脚本。 指定一个单独的回归测试 (**python -m test test_spam**) 将使输出最小化并且只打印测试通过或失败的消息。
 
-​	直接运行 [`test`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test) 将允许设置哪些资源可供测试使用。 你可以通过使用 `-u` 命令行选项来做到这一点。 指定 `all` 作为 `-u` 选项的值将启用所有可能的资源: **python -m test -uall**。 如果只需要一项资源（这是更为常见的情况），可以在 `all` 之后加一个以逗号分隔的列表来指明不需要的资源。 命令 **python -m test -uall,-audio,-largefile** 将运行 [`test`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test) 并使用除 `audio` 和 `largefile` 资源之外的所有资源。 要查看所有资源的列表和更多的命令行选项，请运行 **python -m test -h**。
+​	直接运行 [`test`]({{< ref "/library/development/test#module-test" >}}) 将允许设置哪些资源可供测试使用。 你可以通过使用 `-u` 命令行选项来做到这一点。 指定 `all` 作为 `-u` 选项的值将启用所有可能的资源: **python -m test -uall**。 如果只需要一项资源（这是更为常见的情况），可以在 `all` 之后加一个以逗号分隔的列表来指明不需要的资源。 命令 **python -m test -uall,-audio,-largefile** 将运行 [`test`]({{< ref "/library/development/test#module-test" >}}) 并使用除 `audio` 和 `largefile` 资源之外的所有资源。 要查看所有资源的列表和更多的命令行选项，请运行 **python -m test -h**。
 
 ​	另外一些执行回归测试的方式依赖于执行测试所在的系统平台。 在 Unix 上，你可以在构建 Python 的最高层级目录中运行 **make test**。 在 Windows 上，在你的 `PCbuild` 目录中执行 **rt.bat** 将运行所有的回归测试。
 
 
 
-# [`test.support`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support) --- 针对 Python 测试套件的工具
+# `test.support` --- 针对 Python 测试套件的工具
 
-[`test.support`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support) 模块提供了对 Python 的回归测试套件的支持。
+[`test.support`]({{< ref "/library/development/test#module-test.support" >}}) 模块提供了对 Python 的回归测试套件的支持。
 
-​	备注
-
+​备注
  
 
-[`test.support`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support) 不是一个公用模块。 这篇文档是为了帮助 Python 开发者编写测试。 此模块的 API 可能被改变而不顾及发行版本之间的向下兼容性问题。
+[`test.support`]({{< ref "/library/development/test#module-test.support" >}}) 不是一个公用模块。 这篇文档是为了帮助 Python 开发者编写测试。 此模块的 API 可能被改变而不顾及发行版本之间的向下兼容性问题。
 
 ​	此模块定义了以下异常:
 
 ## *exception* test.support.**TestFailed**
 
-​	当一个测试失败时将被引发的异常。 此异常已被弃用而应改用基于 [`unittest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#module-unittest) 的测试以及 [`unittest.TestCase`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase) 的断言方法。
+​	当一个测试失败时将被引发的异常。 此异常已被弃用而应改用基于 [`unittest`]({{< ref "/library/development/unittest#module-unittest" >}}) 的测试以及 [`unittest.TestCase`]({{< ref "/library/development/unittest#unittest.TestCase" >}}) 的断言方法。
 
 ## *exception* test.support.**ResourceDenied**
 
-[`unittest.SkipTest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.SkipTest) 的子类。 当一个资源（例如网络连接）不可用时将被引发。 由 [`requires()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.requires) 函数所引发。
+[`unittest.SkipTest`]({{< ref "/library/development/unittest#unittest.SkipTest" >}}) 的子类。 当一个资源（例如网络连接）不可用时将被引发。 由 [`requires()`]({{< ref "/library/development/test#test.support.requires" >}}) 函数所引发。
 
-[`test.support`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support) 模块定义了以下常量:
+[`test.support`]({{< ref "/library/development/test#module-test.support" >}}) 模块定义了以下常量:
 
 ## test.support.**verbose**
 
-​	当启用详细输出时为 `True`。 当需要有关运行中的测试的更详细信息时应当被选择。 *verbose* 是由 [`test.regrtest`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.regrtest) 来设置的。
+​	当启用详细输出时为 `True`。 当需要有关运行中的测试的更详细信息时应当被选择。 *verbose* 是由 [`test.regrtest`]({{< ref "/library/development/test#module-test.regrtest" >}}) 来设置的。
 
 ## test.support.**is_jython**
 
@@ -181,11 +177,11 @@ if __name__ == '__main__':
 
 ​	该超时长到足以防止测试失败：它要考虑客户端和服务器可能会在不同线程甚至不同进程中运行。
 
-​	该超时应当对于 [`socket.socket`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket) 的 [`connect()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.connect), [`recv()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.recv) 和 [`send()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.send) 方法都足够长。
+​	该超时应当对于 [`socket.socket`]({{< ref "/library/ipc/socket#socket.socket" >}}) 的 [`connect()`]({{< ref "/library/ipc/socket#socket.socket.connect" >}}), [`recv()`]({{< ref "/library/ipc/socket#socket.socket.recv" >}}) 和 [`send()`]({{< ref "/library/ipc/socket#socket.socket.send" >}}) 方法都足够长。
 
 ​	其默认值为5秒。
 
-​	参见 [`INTERNET_TIMEOUT`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.INTERNET_TIMEOUT)。
+​	参见 [`INTERNET_TIMEOUT`]({{< ref "/library/development/test#test.support.INTERNET_TIMEOUT" >}})。
 
 ## test.support.**INTERNET_TIMEOUT**
 
@@ -193,11 +189,11 @@ if __name__ == '__main__':
 
 ​	该超时短到足以避免测试在互联网请求因任何原因被阻止时等待太久。
 
-​	通常使用 [`INTERNET_TIMEOUT`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.INTERNET_TIMEOUT) 的超时不应该将测试标记为失败，而是跳过测试：参见 [`transient_internet()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.socket_helper.transient_internet)。
+​	通常使用 [`INTERNET_TIMEOUT`]({{< ref "/library/development/test#test.support.INTERNET_TIMEOUT" >}}) 的超时不应该将测试标记为失败，而是跳过测试：参见 [`transient_internet()`]({{< ref "/library/development/test#test.support.socket_helper.transient_internet" >}})。
 
 ​	其默认值是1分钟。
 
-​	参见 [`LOOPBACK_TIMEOUT`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.LOOPBACK_TIMEOUT)。
+​	参见 [`LOOPBACK_TIMEOUT`]({{< ref "/library/development/test#test.support.LOOPBACK_TIMEOUT" >}})。
 
 ## test.support.**SHORT_TIMEOUT**
 
@@ -205,7 +201,7 @@ if __name__ == '__main__':
 
 ​	该超时值取决于 regrtest `--timeout` 命令行选项。
 
-​	如果一个使用 [`SHORT_TIMEOUT`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.SHORT_TIMEOUT) 的测试在慢速 buildbots 上开始随机失败，请使用 [`LONG_TIMEOUT`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.LONG_TIMEOUT) 来代替。
+​	如果一个使用 [`SHORT_TIMEOUT`]({{< ref "/library/development/test#test.support.SHORT_TIMEOUT" >}}) 的测试在慢速 buildbots 上开始随机失败，请使用 [`LONG_TIMEOUT`]({{< ref "/library/development/test#test.support.LONG_TIMEOUT" >}}) 来代替。
 
 ​	其默认值为30秒。
 
@@ -217,7 +213,7 @@ if __name__ == '__main__':
 
 ​	其默认值为5分钟。
 
-​	另请参见 [`LOOPBACK_TIMEOUT`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.LOOPBACK_TIMEOUT), [`INTERNET_TIMEOUT`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.INTERNET_TIMEOUT) 和 [`SHORT_TIMEOUT`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.SHORT_TIMEOUT)。
+​	另请参见 [`LOOPBACK_TIMEOUT`]({{< ref "/library/development/test#test.support.LOOPBACK_TIMEOUT" >}}), [`INTERNET_TIMEOUT`]({{< ref "/library/development/test#test.support.INTERNET_TIMEOUT" >}}) 和 [`SHORT_TIMEOUT`]({{< ref "/library/development/test#test.support.SHORT_TIMEOUT" >}})。
 
 ## test.support.**PGO**
 
@@ -229,7 +225,7 @@ if __name__ == '__main__':
 
 ## test.support.**Py_DEBUG**
 
-​	如果 Python 编译时定义了 [`Py_DEBUG`](https://docs.python.org/zh-cn/3.13/c-api/intro.html#c.Py_DEBUG) 宏则为 `True`，也就是说，当 Python 是 [以调试模式编译](https://docs.python.org/zh-cn/3.13/using/configure.html#debug-build) 的时候。
+​	如果 Python 编译时定义了 [`Py_DEBUG`]({{< ref "/c_api/intro#c.Py_DEBUG" >}}) 宏则为 `True`，也就是说，当 Python 是 [以调试模式编译]({{< ref "/using/configure#debug-build" >}}) 的时候。
 
 > Added in version 3.12.
 >
@@ -240,7 +236,7 @@ if __name__ == '__main__':
 
 ## test.support.**TEST_SUPPORT_DIR**
 
-​	设为包含 [`test.support`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support) 的最高层级目录。
+​	设为包含 [`test.support`]({{< ref "/library/development/test#module-test.support" >}}) 的最高层级目录。
 
 ## test.support.**TEST_HOME_DIR**
 
@@ -252,27 +248,27 @@ if __name__ == '__main__':
 
 ## test.support.**MAX_Py_ssize_t**
 
-​	设为大内存测试的 [`sys.maxsize`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.maxsize)。
+​	设为大内存测试的 [`sys.maxsize`]({{< ref "/library/python/sys#sys.maxsize" >}})。
 
 ## test.support.**max_memuse**
 
-​	通过 [`set_memlimit()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.set_memlimit) 设为针对大内存测试的内存限制。 受 [`MAX_Py_ssize_t`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.MAX_Py_ssize_t) 的限制。
+​	通过 [`set_memlimit()`]({{< ref "/library/development/test#test.support.set_memlimit" >}}) 设为针对大内存测试的内存限制。 受 [`MAX_Py_ssize_t`]({{< ref "/library/development/test#test.support.MAX_Py_ssize_t" >}}) 的限制。
 
 ## test.support.**real_max_memuse**
 
-​	通过 [`set_memlimit()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.set_memlimit) 设为针对大内存测试的内存限制。 不受 [`MAX_Py_ssize_t`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.MAX_Py_ssize_t) 的限制。
+​	通过 [`set_memlimit()`]({{< ref "/library/development/test#test.support.set_memlimit" >}}) 设为针对大内存测试的内存限制。 不受 [`MAX_Py_ssize_t`]({{< ref "/library/development/test#test.support.MAX_Py_ssize_t" >}}) 的限制。
 
 ## test.support.**MISSING_C_DOCSTRINGS**
 
-​	如果 Python 编译时不带文档字符串（即未定义 `WITH_DOC_STRINGS` 宏）则设为 `True`。 参见 [`configure --without-doc-strings`](https://docs.python.org/zh-cn/3.13/using/configure.html#cmdoption-without-doc-strings) 选项。
+​	如果 Python 编译时不带文档字符串（即未定义 `WITH_DOC_STRINGS` 宏）则设为 `True`。 参见 [`configure --without-doc-strings`]({{< ref "/using/configure#cmdoption-without-doc-strings" >}}) 选项。
 
-​	另请参阅 [`HAVE_DOCSTRINGS`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.HAVE_DOCSTRINGS) 变量。
+​	另请参阅 [`HAVE_DOCSTRINGS`]({{< ref "/library/development/test#test.support.HAVE_DOCSTRINGS" >}}) 变量。
 
 ## test.support.**HAVE_DOCSTRINGS**
 
-​	如果函数带有文档字符串则设为 `True`。 参见 [`python -OO`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-O) 选项，该选项会去除在 Python 中实现的函数的文档字符串。
+​	如果函数带有文档字符串则设为 `True`。 参见 [`python -OO`]({{< ref "/using/cmdline#cmdoption-O" >}}) 选项，该选项会去除在 Python 中实现的函数的文档字符串。
 
-​	另请参阅 [`MISSING_C_DOCSTRINGS`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.MISSING_C_DOCSTRINGS) 变量。
+​	另请参阅 [`MISSING_C_DOCSTRINGS`]({{< ref "/library/development/test#test.support.MISSING_C_DOCSTRINGS" >}}) 变量。
 
 ## test.support.**TEST_HTTP_URL**
 
@@ -284,7 +280,7 @@ if __name__ == '__main__':
 
 ## test.support.**NEVER_EQ**
 
-​	不等于任何对象的对象 (即使是 [`ALWAYS_EQ`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.ALWAYS_EQ))。 用于测试混合类型比较。
+​	不等于任何对象的对象 (即使是 [`ALWAYS_EQ`]({{< ref "/library/development/test#test.support.ALWAYS_EQ" >}}))。 用于测试混合类型比较。
 
 ## test.support.**LARGEST**
 
@@ -294,13 +290,13 @@ if __name__ == '__main__':
 
 ​	小于任何对象的对象（除了其自身）。 用于测试混合类型比较。Used to test mixed type comparison.
 
-[`test.support`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support) 模块定义了以下函数:
+[`test.support`]({{< ref "/library/development/test#module-test.support" >}}) 模块定义了以下函数:
 
 ## test.support.**busy_retry**(*timeout*, *err_msg=None*, */*, ***, *error=True*)
 
 ​	运行循环体直到以 `break` 停止循环。
 
-​	在 *timeout* 秒后，如果 *error* 为真值则引发 [`AssertionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AssertionError)，或者如果 *error* 为假值则只停止循环。
+​	在 *timeout* 秒后，如果 *error* 为真值则引发 [`AssertionError`]({{< ref "/library/exceptions#AssertionError" >}})，或者如果 *error* 为假值则只停止循环。
 
 ​	示例：
 
@@ -326,7 +322,7 @@ else:
 
 ​	运行循环体直到以 `break` 停止循环。 在每次循环迭代时休眠，但第一次迭代时除外。 每次迭代的休眠延时都将加倍（至多 *max_delay* 秒）。
 
-​	请参阅 [`busy_retry()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.busy_retry) 文档了解相关形参的用法。
+​	请参阅 [`busy_retry()`]({{< ref "/library/development/test#test.support.busy_retry" >}}) 文档了解相关形参的用法。
 
 ​	在 SHORT_TIMEOUT 秒后引发异常的示例:
 
@@ -348,7 +344,7 @@ else:
 
 ## test.support.**is_resource_enabled**(*resource*)
 
-​	如果 *resource* 已启用并可用则返回 `True`。 可用资源列表只有当 [`test.regrtest`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.regrtest) 正在执行测试时才会被设置。
+​	如果 *resource* 已启用并可用则返回 `True`。 可用资源列表只有当 [`test.regrtest`]({{< ref "/library/development/test#module-test.regrtest" >}}) 正在执行测试时才会被设置。
 
 ## test.support.**python_is_optimized**()
 
@@ -360,7 +356,7 @@ else:
 
 ## test.support.**requires**(*resource*, *msg=None*)
 
-​	如果 *resource* 不可用则引发 [`ResourceDenied`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.ResourceDenied)。 如果该异常被引发则 *msg* 为传给 [`ResourceDenied`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.ResourceDenied) 的参数。 如果被 `__name__` 为 `'__main__'` 的函数调用则总是返回 `True`。 在测试由 [`test.regrtest`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.regrtest) 执行时使用。
+​	如果 *resource* 不可用则引发 [`ResourceDenied`]({{< ref "/library/development/test#test.support.ResourceDenied" >}})。 如果该异常被引发则 *msg* 为传给 [`ResourceDenied`]({{< ref "/library/development/test#test.support.ResourceDenied" >}}) 的参数。 如果被 `__name__` 为 `'__main__'` 的函数调用则总是返回 `True`。 在测试由 [`test.regrtest`]({{< ref "/library/development/test#module-test.regrtest" >}}) 执行时使用。
 
 ## test.support.**sortdict**(*dict*)
 
@@ -381,7 +377,7 @@ else:
 
 ## test.support.**setswitchinterval**(*interval*)
 
-​	将 [`sys.setswitchinterval()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.setswitchinterval) 设为给定的 *interval*。 请为 Android 系统定义一个最小间隔以防止系统挂起。
+​	将 [`sys.setswitchinterval()`]({{< ref "/library/python/sys#sys.setswitchinterval" >}}) 设为给定的 *interval*。 请为 Android 系统定义一个最小间隔以防止系统挂起。
 
 ## test.support.**check_impl_detail**(***guards*)
 
@@ -395,7 +391,7 @@ check_impl_detail(cpython=False)  # 除 CPython 以外的任何地方。
 
 ## test.support.**set_memlimit**(*limit*)
 
-​	针对大内存测试设置 [`max_memuse`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.max_memuse) 和 [`real_max_memuse`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.real_max_memuse) 的值。
+​	针对大内存测试设置 [`max_memuse`]({{< ref "/library/development/test#test.support.max_memuse" >}}) 和 [`real_max_memuse`]({{< ref "/library/development/test#test.support.real_max_memuse" >}}) 的值。
 
 ## test.support.**record_original_stdout**(*stdout*)
 
@@ -403,7 +399,7 @@ check_impl_detail(cpython=False)  # 除 CPython 以外的任何地方。
 
 ## test.support.**get_original_stdout**()
 
-​	返回 [`record_original_stdout()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.record_original_stdout) 所设置的原始 stdout 或者如果未设置则为 `sys.stdout`。
+​	返回 [`record_original_stdout()`]({{< ref "/library/development/test#test.support.record_original_stdout" >}}) 所设置的原始 stdout 或者如果未设置则为 `sys.stdout`。
 
 ## test.support.**args_from_interpreter_flags**()
 
@@ -419,7 +415,7 @@ check_impl_detail(cpython=False)  # 除 CPython 以外的任何地方。
 
 ## test.support.**captured_stderr**()
 
-​	使用 [`io.StringIO`](https://docs.python.org/zh-cn/3.13/library/io.html#io.StringIO) 对象临时替换指定流的上下文管理器。
+​	使用 [`io.StringIO`]({{< ref "/library/allos/io#io.StringIO" >}}) 对象临时替换指定流的上下文管理器。
 
 ​	使用输出流的示例:
 
@@ -444,7 +440,7 @@ self.assertEqual(captured, "hello")
 
 ## test.support.**disable_faulthandler**()
 
-​	临时禁用 [`faulthandler`](https://docs.python.org/zh-cn/3.13/library/faulthandler.html#module-faulthandler) 的上下文管理器。
+​	临时禁用 [`faulthandler`]({{< ref "/library/debug/faulthandler#module-faulthandler" >}}) 的上下文管理器。
 
 ## test.support.**gc_collect**()
 
@@ -486,14 +482,14 @@ with swap_item(obj, "item", 5):
 
 ## test.support.**flush_std_streams**()
 
-​	在 [`sys.stdout`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.stdout) 然后又在 [`sys.stderr`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.stderr) 上调用 `flush()` 方法。 它可被用来确保日志顺序在写入到 stderr 之前的一致性。
+​	在 [`sys.stdout`]({{< ref "/library/python/sys#sys.stdout" >}}) 然后又在 [`sys.stderr`]({{< ref "/library/python/sys#sys.stderr" >}}) 上调用 `flush()` 方法。 它可被用来确保日志顺序在写入到 stderr 之前的一致性。
 
 > Added in version 3.11.
 >
 
 ## test.support.**print_warning**(*msg*)
 
-​	打印一个警告到 [`sys.__stderr__`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.__stderr__)。 将消息格式化为: `f"Warning -- {msg}"`。 如果 *msg* 包含多行，则为每行添加 `"Warning -- "` 前缀。
+​	打印一个警告到 [`sys.__stderr__`]({{< ref "/library/python/sys#sys.__stderr__" >}})。 将消息格式化为: `f"Warning -- {msg}"`。 如果 *msg* 包含多行，则为每行添加 `"Warning -- "` 前缀。
 
 > Added in version 3.9.
 >
@@ -502,9 +498,9 @@ with swap_item(obj, "item", 5):
 
 ​	等待直到进程 *pid* 结束并检查进程退出代码是否为 *exitcode*。
 
-​	如果进程退出代码不等于 *exitcode* 则引发 [`AssertionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AssertionError)。
+​	如果进程退出代码不等于 *exitcode* 则引发 [`AssertionError`]({{< ref "/library/exceptions#AssertionError" >}})。
 
-​	如果进程运行时长超过 *timeout* 秒 (默认为 [`SHORT_TIMEOUT`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.SHORT_TIMEOUT))，则杀死进程并引发 [`AssertionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AssertionError)。 超时特性在 Windows 上不可用。
+​	如果进程运行时长超过 *timeout* 秒 (默认为 [`SHORT_TIMEOUT`]({{< ref "/library/development/test#test.support.SHORT_TIMEOUT" >}}))，则杀死进程并引发 [`AssertionError`]({{< ref "/library/exceptions#AssertionError" >}})。 超时特性在 Windows 上不可用。
 
 > Added in version 3.9.
 >
@@ -523,7 +519,7 @@ with swap_item(obj, "item", 5):
 
 ## @test.support.**anticipate_failure**(*condition*)
 
-​	一个有条件地用 [`unittest.expectedFailure()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.expectedFailure) 来标记测试的装饰器。 任何对此装饰器的使用都应当具有标识相应追踪事项的有关联注释。
+​	一个有条件地用 [`unittest.expectedFailure()`]({{< ref "/library/development/unittest#unittest.expectedFailure" >}}) 来标记测试的装饰器。 任何对此装饰器的使用都应当具有标识相应追踪事项的有关联注释。
 
 ## test.support.**system_must_validate_cert**(*f*)
 
@@ -551,7 +547,7 @@ with swap_item(obj, "item", 5):
 
 ## @test.support.**requires_gil_enabled**
 
-​	在自由线程编译版上跳过测试的装饰器。 如果禁用了 [GIL](https://docs.python.org/zh-cn/3.13/glossary.html#term-GIL)，测试将被跳过。
+​	在自由线程编译版上跳过测试的装饰器。 如果禁用了 [GIL]({{< ref "/glossary/idx#term-GIL" >}})，测试将被跳过。
 
 ## @test.support.**requires_IEEE_754**
 
@@ -559,19 +555,19 @@ with swap_item(obj, "item", 5):
 
 ## @test.support.**requires_zlib**
 
-​	用于当 [`zlib`](https://docs.python.org/zh-cn/3.13/library/zlib.html#module-zlib) 不存在时跳过测试的装饰器。
+​	用于当 [`zlib`]({{< ref "/library/archiving/zlib#module-zlib" >}}) 不存在时跳过测试的装饰器。
 
 ## @test.support.**requires_gzip**
 
-​	用于当 [`gzip`](https://docs.python.org/zh-cn/3.13/library/gzip.html#module-gzip) 不存在时跳过测试的装饰器。
+​	用于当 [`gzip`]({{< ref "/library/archiving/gzip#module-gzip" >}}) 不存在时跳过测试的装饰器。
 
 ## @test.support.**requires_bz2**
 
-​	用于当 [`bz2`](https://docs.python.org/zh-cn/3.13/library/bz2.html#module-bz2) 不存在时跳过测试的装饰器。
+​	用于当 [`bz2`]({{< ref "/library/archiving/bz2#module-bz2" >}}) 不存在时跳过测试的装饰器。
 
 ## @test.support.**requires_lzma**
 
-​	用于当 [`lzma`](https://docs.python.org/zh-cn/3.13/library/lzma.html#module-lzma) 不存在时跳过测试的装饰器。
+​	用于当 [`lzma`]({{< ref "/library/archiving/lzma#module-lzma" >}}) 不存在时跳过测试的装饰器。
 
 ## @test.support.**requires_resource**(*resource*)
 
@@ -579,11 +575,11 @@ with swap_item(obj, "item", 5):
 
 ## @test.support.**requires_docstrings**
 
-​	用于仅当 [`HAVE_DOCSTRINGS`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.HAVE_DOCSTRINGS) 时才运行测试的装饰器。
+​	用于仅当 [`HAVE_DOCSTRINGS`]({{< ref "/library/development/test#test.support.HAVE_DOCSTRINGS" >}}) 时才运行测试的装饰器。
 
 ## @test.support.**requires_limited_api**
 
-​	设置仅在 [受限 C API](https://docs.python.org/zh-cn/3.13/c-api/stable.html#limited-c-api) 可用时运行测试的装饰器。
+​	设置仅在 [受限 C API]({{< ref "/c_api/stable#limited-c-api" >}}) 可用时运行测试的装饰器。
 
 ## @test.support.**cpython_only**
 
@@ -591,7 +587,7 @@ with swap_item(obj, "item", 5):
 
 ## @test.support.**impl_detail**(*msg=None*, ***guards*)
 
-​	用于在 *guards* 上发起调用 [`check_impl_detail()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.check_impl_detail) 的装饰器。 如果调用返回 `False`，则使用 *msg* 作为跳过测试的原因。
+​	用于在 *guards* 上发起调用 [`check_impl_detail()`]({{< ref "/library/development/test#test.support.check_impl_detail" >}}) 的装饰器。 如果调用返回 `False`，则使用 *msg* 作为跳过测试的原因。
 
 ## @test.support.**no_tracing**
 
@@ -615,11 +611,11 @@ with swap_item(obj, "item", 5):
 
 ## test.support.**check_syntax_error**(*testcase*, *statement*, *errtext=''*, ***, *lineno=None*, *offset=None*)
 
-​	用于通过尝试编译 *statement* 来测试 *statement* 中的语法错误。 *testcase* 是测试的 [`unittest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#module-unittest) 实例。 *errtext* 是应当匹配所引发的 [`SyntaxError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxError) 的字符串表示形式的正则表达式。 如果 *lineno* 不为 `None`，则与异常所在的行进行比较。 如果 *offset* 不为 `None`，则与异常的偏移量进行比较。
+​	用于通过尝试编译 *statement* 来测试 *statement* 中的语法错误。 *testcase* 是测试的 [`unittest`]({{< ref "/library/development/unittest#module-unittest" >}}) 实例。 *errtext* 是应当匹配所引发的 [`SyntaxError`]({{< ref "/library/exceptions#SyntaxError" >}}) 的字符串表示形式的正则表达式。 如果 *lineno* 不为 `None`，则与异常所在的行进行比较。 如果 *offset* 不为 `None`，则与异常的偏移量进行比较。
 
 ## test.support.**open_urlresource**(*url*, **args*, ***kw*)
 
-​	打开 *url*。 如果打开失败，则引发 [`TestFailed`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.TestFailed)。
+​	打开 *url*。 如果打开失败，则引发 [`TestFailed`]({{< ref "/library/development/test#test.support.TestFailed" >}})。
 
 ## test.support.**reap_children**()
 
@@ -627,11 +623,11 @@ with swap_item(obj, "item", 5):
 
 ## test.support.**get_attribute**(*obj*, *name*)
 
-​	获取一个属性，如果引发了 [`AttributeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AttributeError) 则会引发 [`unittest.SkipTest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.SkipTest)。
+​	获取一个属性，如果引发了 [`AttributeError`]({{< ref "/library/exceptions#AttributeError" >}}) 则会引发 [`unittest.SkipTest`]({{< ref "/library/development/unittest#unittest.SkipTest" >}})。
 
 ## test.support.**catch_unraisable_exception**()
 
-​	使用 [`sys.unraisablehook()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.unraisablehook) 来捕获不可引发的异常的上下文管理器。
+​	使用 [`sys.unraisablehook()`]({{< ref "/library/python/sys#sys.unraisablehook" >}}) 来捕获不可引发的异常的上下文管理器。
 
 ​	存储异常值 (`cm.unraisable.exc_value`) 会创建一个引用循环。 引用循环将在上下文管理器退出时被显式地打破。
 
@@ -656,7 +652,7 @@ with support.catch_unraisable_exception() as cm:
 
 ## test.support.**load_package_tests**(*pkg_dir*, *loader*, *standard_tests*, *pattern*)
 
-​	在测试包中使用的 [`unittest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#module-unittest) `load_tests` 协议的通用实现。 *pkg_dir* 是包的根目录；*loader*, *standard_tests* 和 *pattern* 是 `load_tests` 所期望的参数。 在简单的情况下，测试包的 `__init__.py` 可以是下面这样的:
+​	在测试包中使用的 [`unittest`]({{< ref "/library/development/unittest#module-unittest" >}}) `load_tests` 协议的通用实现。 *pkg_dir* 是包的根目录；*loader*, *standard_tests* 和 *pattern* 是 `load_tests` 所期望的参数。 在简单的情况下，测试包的 `__init__.py` 可以是下面这样的:
 
 ```
 import os
@@ -681,7 +677,7 @@ def load_tests(*args):
 
 ## test.support.**run_in_subinterp**(*code*)
 
-​	在子解释器中运行 *code*。 如果启用了 [`tracemalloc`](https://docs.python.org/zh-cn/3.13/library/tracemalloc.html#module-tracemalloc) 则会引发 [`unittest.SkipTest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.SkipTest)。
+​	在子解释器中运行 *code*。 如果启用了 [`tracemalloc`]({{< ref "/library/debug/tracemalloc#module-tracemalloc" >}}) 则会引发 [`unittest.SkipTest`]({{< ref "/library/development/unittest#unittest.SkipTest" >}})。
 
 ## test.support.**check_free_after_iterating**(*test*, *iter*, *cls*, *args=()*)
 
@@ -699,7 +695,7 @@ def load_tests(*args):
 
 *name_of_module* 参数可以（用字符串或元组的形式）指定一个 API 可以被定义为什么模块以便被检测为一个公共 API。 一种这样的情况会在 *module* 从其他模块，可能是一个 C 后端 (如 `csv` 和它的 `_csv`) 导入其公共 API 的某一组成部分时发生。
 
-*extra* 参数可以是一个在其他情况下不会被自动检测为 "public" 的名称的集合，例如没有适当的 [`__module__`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#definition.__module__) 属性的对象。 如果提供该参数，它将被添加到被自动检测的对象中。
+*extra* 参数可以是一个在其他情况下不会被自动检测为 "public" 的名称的集合，例如没有适当的 [`__module__`]({{< ref "/library/stdtypes#definition.__module__" >}}) 属性的对象。 如果提供该参数，它将被添加到被自动检测的对象中。
 
 *not_exported* 参数可以是一个不可被当作公共 API 的一部分的名称集合，即使其名称没有显式指明这一点。
 
@@ -729,7 +725,7 @@ class OtherTestCase(unittest.TestCase):
 
 ## test.support.**skip_if_broken_multiprocessing_synchronize**()
 
-​	如果没有 `multiprocessing.synchronize` 模块，没有可用的 semaphore 实现，或者如果创建一个锁会引发 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 则跳过测试。
+​	如果没有 `multiprocessing.synchronize` 模块，没有可用的 semaphore 实现，或者如果创建一个锁会引发 [`OSError`]({{< ref "/library/exceptions#OSError" >}}) 则跳过测试。
 
 > Added in version 3.10.
 >
@@ -743,12 +739,12 @@ class OtherTestCase(unittest.TestCase):
 
 ## test.support.**adjust_int_max_str_digits**(*max_digits*)
 
-​	此函数返回一个将在上下文生效期间改变全局 [`sys.set_int_max_str_digits()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.set_int_max_str_digits) 设置的上下文管理器以便允许执行当在整数和字符串之间进行转换时需要对位数有不同限制的测试代码。
+​	此函数返回一个将在上下文生效期间改变全局 [`sys.set_int_max_str_digits()`]({{< ref "/library/python/sys#sys.set_int_max_str_digits" >}}) 设置的上下文管理器以便允许执行当在整数和字符串之间进行转换时需要对位数有不同限制的测试代码。
 
 > Added in version 3.11.
 >
 
-[`test.support`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support) 模块定义了以下的类:
+[`test.support`]({{< ref "/library/development/test#module-test.support" >}}) 模块定义了以下的类:
 
 ## *class* test.support.**SuppressCrashReport**
 
@@ -756,9 +752,9 @@ class OtherTestCase(unittest.TestCase):
 
 ​	在 Windows 上，它会使用 [SetErrorMode](https://msdn.microsoft.com/en-us/library/windows/desktop/ms680621.aspx) 来禁用 Windows 错误报告对话框。
 
-​	在 UNIX 上，会使用 [`resource.setrlimit()`](https://docs.python.org/zh-cn/3.13/library/resource.html#resource.setrlimit) 来将 [`resource.RLIMIT_CORE`](https://docs.python.org/zh-cn/3.13/library/resource.html#resource.RLIMIT_CORE) 的软限制设为 0 以防止创建核心转储文件。
+​	在 UNIX 上，会使用 [`resource.setrlimit()`]({{< ref "/library/unix/resource#resource.setrlimit" >}}) 来将 [`resource.RLIMIT_CORE`]({{< ref "/library/unix/resource#resource.RLIMIT_CORE" >}}) 的软限制设为 0 以防止创建核心转储文件。
 
-​	在这两个平台上，旧值都可通过 [`__exit__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__exit__) 恢复。
+​	在这两个平台上，旧值都可通过 [`__exit__()`]({{< ref "/reference/datamodel#object.__exit__" >}}) 恢复。
 
 ## *class* test.support.**SaveSignals**
 
@@ -770,7 +766,7 @@ class OtherTestCase(unittest.TestCase):
 
 ## **restore**(*self*)
 
-​	将来自 [`save()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.SaveSignals.save) 字典的信号编号设置到已保存的处理器上。
+​	将来自 [`save()`]({{< ref "/library/development/test#test.support.SaveSignals.save" >}}) 字典的信号编号设置到已保存的处理器上。
 
 ## *class* test.support.**Matcher**
 
@@ -784,9 +780,9 @@ class OtherTestCase(unittest.TestCase):
 
 
 
-# [`test.support.socket_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.socket_helper) --- 用于套接字测试的工具
+# [`test.support.socket_helper`]({{< ref "/library/development/test#module-test.support.socket_helper" >}}) --- 用于套接字测试的工具
 
-[`test.support.socket_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.socket_helper) 模块提供了对套接字测试的支持。
+[`test.support.socket_helper`]({{< ref "/library/development/test#module-test.support.socket_helper" >}}) 模块提供了对套接字测试的支持。
 
 > Added in version 3.9.
 >
@@ -797,19 +793,19 @@ class OtherTestCase(unittest.TestCase):
 
 ## test.support.socket_helper.**find_unused_port**(*family=socket.AF_INET*, *socktype=socket.SOCK_STREAM*)
 
-​	返回一个应当适合绑定的未使用端口。 这是通过创建一个与 `sock` 形参相同协议族和类型的临时套接字来达成的 (默认为 [`AF_INET`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.AF_INET), [`SOCK_STREAM`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.SOCK_STREAM))，并将其绑定到指定的主机地址 (默认为 `0.0.0.0`) 并将端口设为 0，以从 OS 引出一个未使用的瞬时端口。 这个临时套接字随后将被关闭并删除，然后返回该瞬时端口。
+​	返回一个应当适合绑定的未使用端口。 这是通过创建一个与 `sock` 形参相同协议族和类型的临时套接字来达成的 (默认为 [`AF_INET`]({{< ref "/library/ipc/socket#socket.AF_INET" >}}), [`SOCK_STREAM`]({{< ref "/library/ipc/socket#socket.SOCK_STREAM" >}}))，并将其绑定到指定的主机地址 (默认为 `0.0.0.0`) 并将端口设为 0，以从 OS 引出一个未使用的瞬时端口。 这个临时套接字随后将被关闭并删除，然后返回该瞬时端口。
 
-​	这个方法或 [`bind_port()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.socket_helper.bind_port) 应当被用于任何在测试期间需要绑定到特定端口的测试。 具体使用哪个取决于调用方代码是否会创建 Python 套接字，或者是否需要在构造器中提供或向外部程序提供未使用的端口（例如传给 openssl 的 s_server 模式的 `-accept` 参数）。 在可能的情况下将总是优先使用 [`bind_port()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.socket_helper.bind_port) 而非 [`find_unused_port()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.socket_helper.find_unused_port)。 不建议使用硬编码的端口因为将使测试的多个实例无法同时运行，这对 buildbot 来说是个问题。
+​	这个方法或 [`bind_port()`]({{< ref "/library/development/test#test.support.socket_helper.bind_port" >}}) 应当被用于任何在测试期间需要绑定到特定端口的测试。 具体使用哪个取决于调用方代码是否会创建 Python 套接字，或者是否需要在构造器中提供或向外部程序提供未使用的端口（例如传给 openssl 的 s_server 模式的 `-accept` 参数）。 在可能的情况下将总是优先使用 [`bind_port()`]({{< ref "/library/development/test#test.support.socket_helper.bind_port" >}}) 而非 [`find_unused_port()`]({{< ref "/library/development/test#test.support.socket_helper.find_unused_port" >}})。 不建议使用硬编码的端口因为将使测试的多个实例无法同时运行，这对 buildbot 来说是个问题。
 
 ## test.support.socket_helper.**bind_port**(*sock*, *host=HOST*)
 
-​	将套接字绑定到一个空闲端口并返回端口号。 这依赖于瞬时端口以确保我们能使用一个未绑定端口。 这很重要因为可能会有许多测试同时运行，特别是在 buildbot 环境中。 如果 `sock.family` 为 [`AF_INET`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.AF_INET) 而 `sock.type` 为 [`SOCK_STREAM`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.SOCK_STREAM)，并且套接字上设置了 `SO_REUSEADDR` 或 `SO_REUSEPORT` 则此方法将引发异常。 测试绝不应该为 TCP/IP 套接字设置这些套接字选项。 唯一需要设置这些选项的情况是通过多个 UDP 套接字来测试组播。
+​	将套接字绑定到一个空闲端口并返回端口号。 这依赖于瞬时端口以确保我们能使用一个未绑定端口。 这很重要因为可能会有许多测试同时运行，特别是在 buildbot 环境中。 如果 `sock.family` 为 [`AF_INET`]({{< ref "/library/ipc/socket#socket.AF_INET" >}}) 而 `sock.type` 为 [`SOCK_STREAM`]({{< ref "/library/ipc/socket#socket.SOCK_STREAM" >}})，并且套接字上设置了 `SO_REUSEADDR` 或 `SO_REUSEPORT` 则此方法将引发异常。 测试绝不应该为 TCP/IP 套接字设置这些套接字选项。 唯一需要设置这些选项的情况是通过多个 UDP 套接字来测试组播。
 
 ​	此外，如果 `SO_EXCLUSIVEADDRUSE` 套接字选项是可用的（例如在 Windows 上），它将在套接字上被设置。 这将阻止其他任何人在测试期间绑定到我们的主机/端口。
 
 ## test.support.socket_helper.**bind_unix_socket**(*sock*, *addr*)
 
-​	绑定一个 Unix 套接字，如果 [`PermissionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#PermissionError) 被引发则会引发 [`unittest.SkipTest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.SkipTest)。
+​	绑定一个 Unix 套接字，如果 [`PermissionError`]({{< ref "/library/exceptions#PermissionError" >}}) 被引发则会引发 [`unittest.SkipTest`]({{< ref "/library/development/unittest#unittest.SkipTest" >}})。
 
 ## @test.support.socket_helper.**skip_unless_bind_unix_socket**
 
@@ -817,13 +813,13 @@ class OtherTestCase(unittest.TestCase):
 
 ## test.support.socket_helper.**transient_internet**(*resource_name*, ***, *timeout=30.0*, *errnos=()*)
 
-​	一个在互联网连接的各种问题以异常的形式表现出来时会引发 [`ResourceDenied`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.ResourceDenied) 的上下文管理器。
+​	一个在互联网连接的各种问题以异常的形式表现出来时会引发 [`ResourceDenied`]({{< ref "/library/development/test#test.support.ResourceDenied" >}}) 的上下文管理器。
 
 
 
-# [`test.support.script_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.script_helper) --- 用于 Python 执行测试工具
+# [`test.support.script_helper`]({{< ref "/library/development/test#module-test.support.script_helper" >}}) --- 用于 Python 执行测试工具
 
-[`test.support.script_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.script_helper) 模块提供了对 Python 的脚本执行测试的支持。
+[`test.support.script_helper`]({{< ref "/library/development/test#module-test.support.script_helper" >}}) 模块提供了对 Python 的脚本执行测试的支持。
 
 ## test.support.script_helper.**interpreter_requires_environment**()
 
@@ -833,13 +829,13 @@ class OtherTestCase(unittest.TestCase):
 
 ​	正常的编译和测试运行不会进入这种状况但它在尝试从一个使用 Python 的当前家目录查找逻辑找不到明确的家目录的解释器运行标准库测试套件时有可能发生。
 
-​	设置 [`PYTHONHOME`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONHOME) 是一种能让大多数测试套件在这种情况下运行的办法。 [`PYTHONPATH`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONPATH) 或 `PYTHONUSERSITE` 是另外两个可影响解释器是否能启动的常见环境变量。
+​	设置 [`PYTHONHOME`]({{< ref "/using/cmdline#envvar-PYTHONHOME" >}}) 是一种能让大多数测试套件在这种情况下运行的办法。 [`PYTHONPATH`]({{< ref "/using/cmdline#envvar-PYTHONPATH" >}}) 或 `PYTHONUSERSITE` 是另外两个可影响解释器是否能启动的常见环境变量。
 
 ## test.support.script_helper.**run_python_until_end**(**args*, ***env_vars*)
 
 ​	基于 *env_vars* 设置环境以便在子进程中运行解释器。 它的值可以包括 `__isolated`, `__cleanenv`, `__cwd`, and `TERM`。
 
-*在 3.9 版本发生变更:* 此函数不会再从 *stderr* 去除空格符。
+> 在 3.9 版本发生变更: 此函数不会再从 *stderr* 去除空格符。
 
 ## test.support.script_helper.**assert_python_ok**(**args*, ***env_vars*)
 
@@ -849,25 +845,25 @@ class OtherTestCase(unittest.TestCase):
 
 ​	Python 是以隔离模式 (命令行选项 `-I`) 启动的，除非 *__isolated* 仅限关键字形参被设为 `False`。
 
-*在 3.9 版本发生变更:* 此函数不会再从 *stderr* 去除空格符。
+> 在 3.9 版本发生变更: 此函数不会再从 *stderr* 去除空格符。
 
 ## test.support.script_helper.**assert_python_failure**(**args*, ***env_vars*)
 
 ​	断言附带 *args* 和可选的环境变量 *env_vars* 运行解释器会失败 (`rc != 0`) 并返回一个 `(return code, stdout, stderr)` 元组。
 
-​	更多选项请参阅 [`assert_python_ok()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.script_helper.assert_python_ok)。
+​	更多选项请参阅 [`assert_python_ok()`]({{< ref "/library/development/test#test.support.script_helper.assert_python_ok" >}})。
 
-*在 3.9 版本发生变更:* 此函数不会再从 *stderr* 去除空格符。
+> 在 3.9 版本发生变更: 此函数不会再从 *stderr* 去除空格符。
 
 ## test.support.script_helper.**spawn_python**(**args*, *stdout=subprocess.PIPE*, *stderr=subprocess.STDOUT*, ***kw*)
 
 ​	使用给定的参数运行一个 Python 子进程。
 
-*kw* 是要传给 [`subprocess.Popen()`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) 的额外关键字参数。 返回一个 [`subprocess.Popen`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) 对象。
+*kw* 是要传给 [`subprocess.Popen()`]({{< ref "/library/concurrency/subprocess#subprocess.Popen" >}}) 的额外关键字参数。 返回一个 [`subprocess.Popen`]({{< ref "/library/concurrency/subprocess#subprocess.Popen" >}}) 对象。
 
 ## test.support.script_helper.**kill_python**(*p*)
 
-​	运行给定的 [`subprocess.Popen`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) 进程直至完成并返回 stdout。
+​	运行给定的 [`subprocess.Popen`]({{< ref "/library/concurrency/subprocess#subprocess.Popen" >}}) 进程直至完成并返回 stdout。
 
 ## test.support.script_helper.**make_script**(*script_dir*, *script_basename*, *source*, *omit_suffix=False*)
 
@@ -887,9 +883,9 @@ class OtherTestCase(unittest.TestCase):
 
 
 
-# [`test.support.bytecode_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.bytecode_helper) --- 用于测试正确字节码生成的支持工具
+# [`test.support.bytecode_helper`]({{< ref "/library/development/test#module-test.support.bytecode_helper" >}}) --- 用于测试正确字节码生成的支持工具
 
-[`test.support.bytecode_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.bytecode_helper) 模块提供了对测试和检查字节码生成的支持。
+[`test.support.bytecode_helper`]({{< ref "/library/development/test#module-test.support.bytecode_helper" >}}) 模块提供了对测试和检查字节码生成的支持。
 
 > Added in version 3.9.
 >
@@ -906,24 +902,24 @@ class OtherTestCase(unittest.TestCase):
 
 ## BytecodeTestCase.**assertInBytecode**(*x*, *opname*, *argval=_UNSPECIFIED*)
 
-​	如果找到 *opname* 则返回 instr，否则抛出 [`AssertionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AssertionError)。
+​	如果找到 *opname* 则返回 instr，否则抛出 [`AssertionError`]({{< ref "/library/exceptions#AssertionError" >}})。
 
 ## BytecodeTestCase.**assertNotInBytecode**(*x*, *opname*, *argval=_UNSPECIFIED*)
 
-​	如果找到 *opname* 则抛出 [`AssertionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AssertionError)。
+​	如果找到 *opname* 则抛出 [`AssertionError`]({{< ref "/library/exceptions#AssertionError" >}})。
 
 
 
-# [`test.support.threading_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.threading_helper) --- 用于线程测试的工具
+# [`test.support.threading_helper`]({{< ref "/library/development/test#module-test.support.threading_helper" >}}) --- 用于线程测试的工具
 
-[`test.support.threading_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.threading_helper) 模块提供了对线程测试的支持。
+[`test.support.threading_helper`]({{< ref "/library/development/test#module-test.support.threading_helper" >}}) 模块提供了对线程测试的支持。
 
 > Added in version 3.10.
 >
 
 ## test.support.threading_helper.**join_thread**(*thread*, *timeout=None*)
 
-​	在 *timeout* 秒之内合并一个 *thread*。 如果线程在 *timeout* 秒后仍然存活则引发 [`AssertionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AssertionError)。
+​	在 *timeout* 秒之内合并一个 *thread*。 如果线程在 *timeout* 秒后仍然存活则引发 [`AssertionError`]({{< ref "/library/exceptions#AssertionError" >}})。
 
 ## @test.support.threading_helper.**reap_threads**
 
@@ -931,7 +927,7 @@ class OtherTestCase(unittest.TestCase):
 
 ## test.support.threading_helper.**start_threads**(*threads*, *unlock=None*)
 
-​	启动 *threads* 的上下文管理器，该参数为一个线程序列。 *unlock* 是一个在所有线程启动之后被调用的函数，即使引发了异常也会执行；一个例子是 [`threading.Event.set()`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.Event.set)。 `start_threads` 将在退出时尝试合并已启动的线程。
+​	启动 *threads* 的上下文管理器，该参数为一个线程序列。 *unlock* 是一个在所有线程启动之后被调用的函数，即使引发了异常也会执行；一个例子是 [`threading.Event.set()`]({{< ref "/library/concurrency/threading#threading.Event.set" >}})。 `start_threads` 将在退出时尝试合并已启动的线程。
 
 ## test.support.threading_helper.**threading_cleanup**(**original_values*)
 
@@ -947,7 +943,7 @@ class OtherTestCase(unittest.TestCase):
 
 ## test.support.threading_helper.**catch_threading_exception**()
 
-​	使用 [`threading.excepthook()`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.excepthook) 来捕获 [`threading.Thread`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.Thread) 异常的上下文管理器。
+​	使用 [`threading.excepthook()`]({{< ref "/library/concurrency/threading#threading.excepthook" >}}) 来捕获 [`threading.Thread`]({{< ref "/library/concurrency/threading#threading.Thread" >}}) 异常的上下文管理器。
 
 ​	当异常被捕获时要设置的属性:
 
@@ -956,7 +952,7 @@ class OtherTestCase(unittest.TestCase):
 - `exc_traceback`
 - `thread`
 
-​	参见 [`threading.excepthook()`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.excepthook) 文档。
+​	参见 [`threading.excepthook()`]({{< ref "/library/concurrency/threading#threading.excepthook" >}}) 文档。
 
 ​	这些属性在上下文管理器退出时将被删除。
 
@@ -981,20 +977,20 @@ with threading_helper.catch_threading_exception() as cm:
 
 
 
-# [`test.support.os_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.os_helper) --- 用于操作系统测试的工具
+# [`test.support.os_helper`]({{< ref "/library/development/test#module-test.support.os_helper" >}}) --- 用于操作系统测试的工具
 
-[`test.support.os_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.os_helper) 模块提供了对操作系统测试的支持。
+[`test.support.os_helper`]({{< ref "/library/development/test#module-test.support.os_helper" >}}) 模块提供了对操作系统测试的支持。
 
 > Added in version 3.10.
 >
 
 ## test.support.os_helper.**FS_NONASCII**
 
-​	一个可通过 [`os.fsencode()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.fsencode) 编码的非 ASCII 字符。
+​	一个可通过 [`os.fsencode()`]({{< ref "/library/allos/os#os.fsencode" >}}) 编码的非 ASCII 字符。
 
 ## test.support.os_helper.**SAVEDCWD**
 
-​	设置为 [`os.getcwd()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.getcwd)。
+​	设置为 [`os.getcwd()`]({{< ref "/library/allos/os#os.getcwd" >}})。
 
 ## test.support.os_helper.**TESTFN**
 
@@ -1002,7 +998,7 @@ with threading_helper.catch_threading_exception() as cm:
 
 ## test.support.os_helper.**TESTFN_NONASCII**
 
-​	如果存在的话，设置为一个包含 [`FS_NONASCII`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.os_helper.FS_NONASCII) 字符的文件名。 这会确保当文件名存在时，它可使用默认文件系统编码格式来编码和解码。 这允许需要非 ASCII 文件名的测试在其不可用的平台上被方便地跳过。
+​	如果存在的话，设置为一个包含 [`FS_NONASCII`]({{< ref "/library/development/test#test.support.os_helper.FS_NONASCII" >}}) 字符的文件名。 这会确保当文件名存在时，它可使用默认文件系统编码格式来编码和解码。 这允许需要非 ASCII 文件名的测试在其不可用的平台上被方便地跳过。
 
 ## test.support.os_helper.**TESTFN_UNENCODABLE**
 
@@ -1020,11 +1016,11 @@ with threading_helper.catch_threading_exception() as cm:
 
 ​	用于临时性地设置或取消设置环境变量的类。 其实例可被用作上下文管理器并具有完整的字典接口用来查询/修改下层的 `os.environ`。 在从上下文管理器退出之后所有通过此实例对环境变量进行的修改都将被回滚。
 
-*在 3.1 版本发生变更:* 增加了字典接口。
+> 在 3.1 版本发生变更: 增加了字典接口。
 
 ## *class* test.support.os_helper.**FakePath**(*path*)
 
-​	简单的 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object)。 它实现了返回 *path* 参数的 [`__fspath__()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.PathLike.__fspath__) 方法。 如果 *path* 是一个异常，它将在 `__fspath__()` 中被引发。
+​	简单的 [path-like object]({{< ref "/glossary/idx#term-path-like-object" >}})。 它实现了返回 *path* 参数的 [`__fspath__()`]({{< ref "/library/allos/os#os.PathLike.__fspath__" >}}) 方法。 如果 *path* 是一个异常，它将在 `__fspath__()` 中被引发。
 
 ## EnvironmentVarGuard.**set**(*envvar*, *value*)
 
@@ -1066,11 +1062,11 @@ with threading_helper.catch_threading_exception() as cm:
 
 ## test.support.os_helper.**rmdir**(*filename*)
 
-​	在 *filename* 上调用 [`os.rmdir()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.rmdir)。 在 Windows 平台上，这将使用一个检测文件是否存在的等待循环来包装，需要这样做是因为反病毒程序会保持文件打开并阻止其被删除。
+​	在 *filename* 上调用 [`os.rmdir()`]({{< ref "/library/allos/os#os.rmdir" >}})。 在 Windows 平台上，这将使用一个检测文件是否存在的等待循环来包装，需要这样做是因为反病毒程序会保持文件打开并阻止其被删除。
 
 ## test.support.os_helper.**rmtree**(*path*)
 
-​	在 *path* 上调用 [`shutil.rmtree()`](https://docs.python.org/zh-cn/3.13/library/shutil.html#shutil.rmtree) 或者调用 [`os.lstat()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.lstat) 和 [`os.rmdir()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.rmdir) 来移除一个路径及其内容。 与 [`rmdir()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.os_helper.rmdir) 一样，在 Windows 平台上这将使用一个检测文件是否存在的等待循环来包装。
+​	在 *path* 上调用 [`shutil.rmtree()`]({{< ref "/library/filesys/shutil#shutil.rmtree" >}}) 或者调用 [`os.lstat()`]({{< ref "/library/allos/os#os.lstat" >}}) 和 [`os.rmdir()`]({{< ref "/library/allos/os#os.rmdir" >}}) 来移除一个路径及其内容。 与 [`rmdir()`]({{< ref "/library/development/test#test.support.os_helper.rmdir" >}}) 一样，在 Windows 平台上这将使用一个检测文件是否存在的等待循环来包装。
 
 ## @test.support.os_helper.**skip_unless_symlink**
 
@@ -1084,7 +1080,7 @@ with threading_helper.catch_threading_exception() as cm:
 
 ​	一个临时性地创建新目录并改变当前工作目录（CWD）的上下文管理器。
 
-​	临时性地改变当前工作目录之前此上下文管理器会在当前目录下创建一个名为 *name* 的临时目录。 如果 *name* 为 `None`，则会使用 [`tempfile.mkdtemp()`](https://docs.python.org/zh-cn/3.13/library/tempfile.html#tempfile.mkdtemp) 创建临时目录。
+​	临时性地改变当前工作目录之前此上下文管理器会在当前目录下创建一个名为 *name* 的临时目录。 如果 *name* 为 `None`，则会使用 [`tempfile.mkdtemp()`]({{< ref "/library/filesys/tempfile#tempfile.mkdtemp" >}}) 创建临时目录。
 
 ​	如果 *quiet* 为 `False` 并且无法创建或修改 CWD，则会引发一个错误。 在其他情况下，只会引发一个警告并使用原始 CWD。
 
@@ -1092,7 +1088,7 @@ with threading_helper.catch_threading_exception() as cm:
 
 ​	一个在 *path* 上创建临时目录并输出该目录的上下文管理器。
 
-​	如果 *path* 为 `None`，则会使用 [`tempfile.mkdtemp()`](https://docs.python.org/zh-cn/3.13/library/tempfile.html#tempfile.mkdtemp) 来创建临时目录。 如果 *quiet* 为 `False`，则该上下文管理器在发生错误时会引发一个异常。 在其他情况下，如果 *path* 已被指定并且无法创建，则只会发出一个警告。
+​	如果 *path* 为 `None`，则会使用 [`tempfile.mkdtemp()`]({{< ref "/library/filesys/tempfile#tempfile.mkdtemp" >}}) 来创建临时目录。 如果 *quiet* 为 `False`，则该上下文管理器在发生错误时会引发一个异常。 在其他情况下，如果 *path* 已被指定并且无法创建，则只会发出一个警告。
 
 ## test.support.os_helper.**temp_umask**(*umask*)
 
@@ -1100,13 +1096,13 @@ with threading_helper.catch_threading_exception() as cm:
 
 ## test.support.os_helper.**unlink**(*filename*)
 
-​	在 *filename* 上调用 [`os.unlink()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.unlink)。 与 [`rmdir()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.os_helper.rmdir) 一样，在 Windows 平台上这将使用一个检测文本是否存在的等待循环来包装。
+​	在 *filename* 上调用 [`os.unlink()`]({{< ref "/library/allos/os#os.unlink" >}})。 与 [`rmdir()`]({{< ref "/library/development/test#test.support.os_helper.rmdir" >}}) 一样，在 Windows 平台上这将使用一个检测文本是否存在的等待循环来包装。
 
 
 
-# [`test.support.import_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.import_helper) --- 用于导入测试的工具
+# [`test.support.import_helper`]({{< ref "/library/development/test#module-test.support.import_helper" >}}) --- 用于导入测试的工具
 
-[`test.support.import_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.import_helper) 模块提供了对导入测试的支持。
+[`test.support.import_helper`]({{< ref "/library/development/test#module-test.support.import_helper" >}}) 模块提供了对导入测试的支持。
 
 > Added in version 3.10.
 >
@@ -1121,13 +1117,13 @@ with threading_helper.catch_threading_exception() as cm:
 
 *fresh* 是包含在执行导入之前还要从 `sys.modules` 缓存中移除的附加模块名称的可迭代对象。
 
-*blocked* 是包含模块名称的可迭代对象，导入期间在模块缓存中它会被替换为 `None` 以确保尝试导入将引发 [`ImportError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ImportError)。
+*blocked* 是包含模块名称的可迭代对象，导入期间在模块缓存中它会被替换为 `None` 以确保尝试导入将引发 [`ImportError`]({{< ref "/library/exceptions#ImportError" >}})。
 
 ​	指定名称的模块以及任何在 *fresh* 和 *blocked* 形参中指明的模块会在开始导入之前被保存并在全新导入完成时被重新插入到 `sys.modules` 中。
 
 ​	如果 *deprecated* 为 `True` 则在此导入操作期间模块和包的弃用消息会被屏蔽。
 
-​	如果指定名称的模块无法被导入则此函数将引发 [`ImportError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ImportError)。
+​	如果指定名称的模块无法被导入则此函数将引发 [`ImportError`]({{< ref "/library/exceptions#ImportError" >}})。
 
 ​	用法示例:
 
@@ -1145,16 +1141,16 @@ c_warnings = import_fresh_module('warnings', fresh=['_warnings'])
 
 ## test.support.import_helper.**import_module**(*name*, *deprecated=False*, ***, *required_on=()*)
 
-​	此函数会导入并返回指定名称的模块。 不同于正常的导入，如果模块无法被导入则此函数将引发 [`unittest.SkipTest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.SkipTest)。
+​	此函数会导入并返回指定名称的模块。 不同于正常的导入，如果模块无法被导入则此函数将引发 [`unittest.SkipTest`]({{< ref "/library/development/unittest#unittest.SkipTest" >}})。
 
-​	如果 *deprecated* 为 `True` 则在此导入操作期间模块和包的弃用消息会被屏蔽。 如果某个模块在特定平台上是必需的而在其他平台上是可选的，请为包含平台前缀的可迭代对象设置 *required_on*，此对象将与 [`sys.platform`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.platform) 进行比对。
+​	如果 *deprecated* 为 `True` 则在此导入操作期间模块和包的弃用消息会被屏蔽。 如果某个模块在特定平台上是必需的而在其他平台上是可选的，请为包含平台前缀的可迭代对象设置 *required_on*，此对象将与 [`sys.platform`]({{< ref "/library/python/sys#sys.platform" >}}) 进行比对。
 
 > Added in version 3.1.
 >
 
 ## test.support.import_helper.**modules_setup**()
 
-​	返回 [`sys.modules`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.modules) 的副本。
+​	返回 [`sys.modules`]({{< ref "/library/python/sys#sys.modules" >}}) 的副本。
 
 ## test.support.import_helper.**modules_cleanup**(*oldmodules*)
 
@@ -1170,7 +1166,7 @@ c_warnings = import_fresh_module('warnings', fresh=['_warnings'])
 
 ## *class* test.support.import_helper.**CleanImport**(**module_names*)
 
-​	强制导入以返回一个新的模块引用的上下文管理器。 这适用于测试模块层级的行为，例如在导入时发出 [`DeprecationWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#DeprecationWarning)。 示例用法:
+​	强制导入以返回一个新的模块引用的上下文管理器。 这适用于测试模块层级的行为，例如在导入时发出 [`DeprecationWarning`]({{< ref "/library/exceptions#DeprecationWarning" >}})。 示例用法:
 
 ```
 with CleanImport('foo'):
@@ -1179,24 +1175,24 @@ with CleanImport('foo'):
 
 ## *class* test.support.import_helper.**DirsOnSysPath**(**paths*)
 
-​	一个临时性地向 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 添加目录的上下文管理器。
+​	一个临时性地向 [`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) 添加目录的上下文管理器。
 
-​	这将创建 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 的一个副本，添加作为位置参数传入的任何目录，然后在上下文结束时将 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 还原到副本的设置。
+​	这将创建 [`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) 的一个副本，添加作为位置参数传入的任何目录，然后在上下文结束时将 [`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) 还原到副本的设置。
 
-​	请注意该上下文管理器代码块中 *所有* 对 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 的修改，包括对象的替换，都将在代码块结束时被还原。
+​	请注意该上下文管理器代码块中 *所有* 对 [`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) 的修改，包括对象的替换，都将在代码块结束时被还原。
 
 
 
-# [`test.support.warnings_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.warnings_helper) --- 用于警告测试的工具
+# [`test.support.warnings_helper`]({{< ref "/library/development/test#module-test.support.warnings_helper" >}}) --- 用于警告测试的工具
 
-[`test.support.warnings_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.warnings_helper) 模块提供了对警告测试的支持。
+[`test.support.warnings_helper`]({{< ref "/library/development/test#module-test.support.warnings_helper" >}}) 模块提供了对警告测试的支持。
 
 > Added in version 3.10.
 >
 
 ## test.support.warnings_helper.**ignore_warnings**(***, *category*)
 
-​	抑制作为 *category* 实例的警告，它必须为 [`Warning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#Warning) 或其子类。 大致等价于 [`warnings.catch_warnings()`](https://docs.python.org/zh-cn/3.13/library/warnings.html#warnings.catch_warnings) 设置 [`warnings.simplefilter('ignore', category=category)`](https://docs.python.org/zh-cn/3.13/library/warnings.html#warnings.simplefilter)。 例如:
+​	抑制作为 *category* 实例的警告，它必须为 [`Warning`]({{< ref "/library/exceptions#Warning" >}}) 或其子类。 大致等价于 [`warnings.catch_warnings()`]({{< ref "/library/python/warnings#warnings.catch_warnings" >}}) 设置 [`warnings.simplefilter('ignore', category=category)`]({{< ref "/library/python/warnings#warnings.simplefilter" >}})。 例如:
 
 ```
 @warning_helper.ignore_warnings(category=DeprecationWarning)
@@ -1209,18 +1205,18 @@ def test_suppress_warning():
 
 ## test.support.warnings_helper.**check_no_resource_warning**(*testcase*)
 
-​	检测是否没有任何 [`ResourceWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ResourceWarning) 被引发的上下文管理器。 你必须在该上下文管理器结束之前移除可能发出 [`ResourceWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ResourceWarning) 的对象。
+​	检测是否没有任何 [`ResourceWarning`]({{< ref "/library/exceptions#ResourceWarning" >}}) 被引发的上下文管理器。 你必须在该上下文管理器结束之前移除可能发出 [`ResourceWarning`]({{< ref "/library/exceptions#ResourceWarning" >}}) 的对象。
 
 ## test.support.warnings_helper.**check_syntax_warning**(*testcase*, *statement*, *errtext=''*, ***, *lineno=1*, *offset=None*)
 
-​	用于通过尝试编译 *statement* 来测试 *statement* 中的语法警告。 还会测试 [`SyntaxWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxWarning) 是否只发出了一次，以及它在转成错误时是否将被转换为 [`SyntaxError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxError)。 *testcase* 是用于测试的 [`unittest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#module-unittest) 实例。 *errtext* 是应当匹配所发出的 [`SyntaxWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxWarning) 以及所引发的 [`SyntaxError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxError) 的字符串表示形式的正则表达式。 如果 *lineno* 不为 `None`，则与警告和异常所在的行进行比较。 如果 *offset* 不为 `None`，则与异常的偏移量进行比较。
+​	用于通过尝试编译 *statement* 来测试 *statement* 中的语法警告。 还会测试 [`SyntaxWarning`]({{< ref "/library/exceptions#SyntaxWarning" >}}) 是否只发出了一次，以及它在转成错误时是否将被转换为 [`SyntaxError`]({{< ref "/library/exceptions#SyntaxError" >}})。 *testcase* 是用于测试的 [`unittest`]({{< ref "/library/development/unittest#module-unittest" >}}) 实例。 *errtext* 是应当匹配所发出的 [`SyntaxWarning`]({{< ref "/library/exceptions#SyntaxWarning" >}}) 以及所引发的 [`SyntaxError`]({{< ref "/library/exceptions#SyntaxError" >}}) 的字符串表示形式的正则表达式。 如果 *lineno* 不为 `None`，则与警告和异常所在的行进行比较。 如果 *offset* 不为 `None`，则与异常的偏移量进行比较。
 
 > Added in version 3.8.
 >
 
 ## test.support.warnings_helper.**check_warnings**(**filters*, *quiet=True*)
 
-​	一个用于 [`warnings.catch_warnings()`](https://docs.python.org/zh-cn/3.13/library/warnings.html#warnings.catch_warnings) 以更容易地测试特定警告是否被正确引发的便捷包装器。 它大致等价于调用 `warnings.catch_warnings(record=True)` 并将 [`warnings.simplefilter()`](https://docs.python.org/zh-cn/3.13/library/warnings.html#warnings.simplefilter) 设为 `always` 并附带自动验证已记录结果的选项。
+​	一个用于 [`warnings.catch_warnings()`]({{< ref "/library/python/warnings#warnings.catch_warnings" >}}) 以更容易地测试特定警告是否被正确引发的便捷包装器。 它大致等价于调用 `warnings.catch_warnings(record=True)` 并将 [`warnings.simplefilter()`]({{< ref "/library/python/warnings#warnings.simplefilter" >}}) 设为 `always` 并附带自动验证已记录结果的选项。
 
 `check_warnings` 接受 `("message regexp", WarningCategory)` 形式的 2 元组作为位置参数。 如果提供了一个或多个 *filters*，或者如果可选的关键字参数 *quiet* 为 `False`，则它会检查确认警告是符合预期的：每个已指定的过滤器必须匹配至少一个被包围的代码或测试失败时引发的警告，并且如果有任何未能匹配已指定过滤器的警告被引发则测试将失败。 要禁用这些检查中的第一项，请将 *quiet* 设为 `True`。
 
@@ -1232,7 +1228,7 @@ check_warnings(("", Warning), quiet=True)
 
 ​	在此情况下所有警告都会被捕获而不会引发任何错误。
 
-​	在进入该上下文管理器时，将返回一个 `WarningRecorder` 实例。 来自 [`catch_warnings()`](https://docs.python.org/zh-cn/3.13/library/warnings.html#warnings.catch_warnings) 的下层警告列表可通过该记录器对象的 [`warnings`](https://docs.python.org/zh-cn/3.13/library/warnings.html#module-warnings) 属性来访问。 作为一个便捷方式，该对象中代表最近的警告的属性也可通过该记录器对象来直接访问（参见以下示例）。 如果未引发任何警告，则在其他情况下预期代表一个警告的任何对象属性都将返回 `None`。
+​	在进入该上下文管理器时，将返回一个 `WarningRecorder` 实例。 来自 [`catch_warnings()`]({{< ref "/library/python/warnings#warnings.catch_warnings" >}}) 的下层警告列表可通过该记录器对象的 [`warnings`]({{< ref "/library/python/warnings#module-warnings" >}}) 属性来访问。 作为一个便捷方式，该对象中代表最近的警告的属性也可通过该记录器对象来直接访问（参见以下示例）。 如果未引发任何警告，则在其他情况下预期代表一个警告的任何对象属性都将返回 `None`。
 
 ​	该记录器对象还有一个 `reset()` 方法，该方法会清空警告列表。
 
@@ -1245,7 +1241,7 @@ with check_warnings(("assertion is always true", SyntaxWarning),
     warnings.warn(UserWarning("Hide me!"))
 ```
 
-​	在此情况下如果两个警告都未被引发，或是引发了其他的警告，则 [`check_warnings()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.warnings_helper.check_warnings) 将会引发一个错误。
+​	在此情况下如果两个警告都未被引发，或是引发了其他的警告，则 [`check_warnings()`]({{< ref "/library/development/test#test.support.warnings_helper.check_warnings" >}}) 将会引发一个错误。
 
 ​	当一个测试需要更深入地查看这些警告，而不是仅仅检查它们是否发生时，可以使用这样的代码:
 
@@ -1263,8 +1259,8 @@ with check_warnings(quiet=True) as w:
 
 ​	在这里所有的警告都将被捕获，而测试代码会直接测试被捕获的警告。
 
-*在 3.2 版本发生变更:* 新增可选参数 *filters* 和 *quiet*。
+> 在 3.2 版本发生变更: 新增可选参数 *filters* 和 *quiet*。
 
 ## *class* test.support.warnings_helper.**WarningsRecorder**
 
-​	用于为单元测试记录警告的类。 请参阅以上 [`check_warnings()`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.warnings_helper.check_warnings) 的文档来了解详情。
+​	用于为单元测试记录警告的类。 请参阅以上 [`check_warnings()`]({{< ref "/library/development/test#test.support.warnings_helper.check_warnings" >}}) 的文档来了解详情。

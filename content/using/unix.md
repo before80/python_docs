@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/using/unix.html](https://docs.python.org/zh-cn/3.13/using/unix.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/using/unix.html](https://docs.python.org/zh-cn/3.13/using/unix.html)
 >
 > 收录该文档的时间：`2024-11-14T22:13:29+08:00`
 
@@ -22,23 +22,23 @@ draft = false
 
 ​	In the event that the latest version of Python doesn't come preinstalled and isn't in the repositories as well, you can make packages for your own distro. Have a look at the following links:
 
-​	参见
-
-https://www.debian.org/doc/manuals/maint-guide/first.en.html
-
-​	对于Debian用户
-
-https://en.opensuse.org/Portal:Packaging
-
-​	对于OpenSuse用户
-
-https://docs.fedoraproject.org/en-US/package-maintainers/Packaging_Tutorial_GNU_Hello/
-
-​	对于Fedora用户
-
-https://slackbook.org/html/package-management-making-packages.html
-
-​	对于Slackware用户
+> 参见
+> https://www.debian.org/doc/manuals/maint-guide/first.en.html
+>
+> ​	对于Debian用户
+>
+> https://en.opensuse.org/Portal:Packaging
+>
+> ​	对于OpenSuse用户
+>
+> https://docs.fedoraproject.org/en-US/package-maintainers/Packaging_Tutorial_GNU_Hello/
+>
+> ​	对于Fedora用户
+>
+> https://slackbook.org/html/package-management-making-packages.html
+>
+> ​	对于Slackware用户
+>
 
 ### 2.1.2. 在FreeBSD和OpenBSD上
 
@@ -76,7 +76,7 @@ make
 make install
 ```
 
-​	特定 Unix 平台的 [配置选项](https://docs.python.org/zh-cn/3.13/using/configure.html#configure-options) 和注意事项通常会详细地记录在 Python 源代码树的根目录下的 [README.rst](https://github.com/python/cpython/tree/3.13/README.rst) 文件中。
+​	特定 Unix 平台的 [配置选项]({{< ref "/using/configure#configure-options" >}}) 和注意事项通常会详细地记录在 Python 源代码树的根目录下的 [README.rst](https://github.com/python/cpython/tree/3.13/README.rst) 文件中。
 
 ​	警告
 
@@ -86,7 +86,7 @@ make install
 
 ## 2.3. 与Python相关的路径和文件
 
-​	这些取决于本机安装惯例的不同；[`prefix`](https://docs.python.org/zh-cn/3.13/using/configure.html#cmdoption-prefix) 和 [`exec_prefix`](https://docs.python.org/zh-cn/3.13/using/configure.html#cmdoption-exec-prefix) 依赖于具体安装并且应当被解读为针对 GNU 软件；它们可能具有相同的含义。
+​	这些取决于本机安装惯例的不同；[`prefix`]({{< ref "/using/configure#cmdoption-prefix" >}}) 和 [`exec_prefix`]({{< ref "/using/configure#cmdoption-exec-prefix" >}}) 依赖于具体安装并且应当被解读为针对 GNU 软件；它们可能具有相同的含义。
 
 ​	例如，在大多数Linux系统上，两者的默认值是 `/usr` 。
 
@@ -112,7 +112,7 @@ $ chmod +x script
 
 ​	将在整个 `PATH` 中搜索Python解释器。但是，某些Unix系统可能没有 **env** 命令，因此可能需要将 `/usr/bin/python3` 硬编码为解释器路径。
 
-​	要在Python脚本中使用shell命令，请查看 [`subprocess`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#module-subprocess) 模块。
+​	要在Python脚本中使用shell命令，请查看 [`subprocess`]({{< ref "/library/concurrency/subprocess#module-subprocess" >}}) 模块。
 
 
 
@@ -153,8 +153,7 @@ $ chmod +x script
    $ make altinstall
    ```
 
-​	备注
-
- 
-
-​	OpenSSL 的补丁发布版具有向下兼容的 ABI。 你不需要重新编译 Python 来更新 OpenSSL。 使用一个新的版本来替代自定义 OpenSSL 安装版就可以了。
+> 备注
+>
+>
+> ​	OpenSSL 的补丁发布版具有向下兼容的 ABI。 你不需要重新编译 Python 来更新 OpenSSL。 使用一个新的版本来替代自定义 OpenSSL 安装版就可以了。

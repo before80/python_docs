@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/ensurepip.html](https://docs.python.org/zh-cn/3.13/library/ensurepip.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/ensurepip.html](https://docs.python.org/zh-cn/3.13/library/ensurepip.html)
 >
 > 收录该文档的时间：`2024-11-15T21:09:42+08:00`
 
@@ -21,29 +21,27 @@ draft = false
 
 ------
 
-[`ensurepip`](https://docs.python.org/zh-cn/3.13/library/ensurepip.html#module-ensurepip) 包为在已有的Python安装实例或虚拟环境中引导 `pip` 安装器提供了支持。需要使用引导才能使用pip的这一事实也正好反映了 `pip` 是一个独立的项目，有其自己的发布周期，其最新版本随CPython解释器的维护版本和新特性版本一同捆绑。
+[`ensurepip`]({{< ref "/library/distribution/ensurepip#module-ensurepip" >}}) 包为在已有的Python安装实例或虚拟环境中引导 `pip` 安装器提供了支持。需要使用引导才能使用pip的这一事实也正好反映了 `pip` 是一个独立的项目，有其自己的发布周期，其最新版本随CPython解释器的维护版本和新特性版本一同捆绑。
 
 ​	在大多数情况下，Python的终端使用者不需要直接调用这个模块（ `pip` 默认应该已被引导），不过，如果在安装Python（或创建虚拟环境）之时跳过了安装 `pip` 步骤，或者日后特意卸载了 `pip` ，则需要使用这个模块。
 
-​	备注
-
+​备注
  
 
 ​	这个模块 *无需* 访问互联网。引导启动 `pip` 所需的全部组件均包含在包的内部。
 
-​	参见
-
-## [安装 Python 模块](https://docs.python.org/zh-cn/3.13/installing/index.html#installing-index)
+​参见
+## [安装 Python 模块]({{< ref "/other/installing#installing-index" >}})
 
 ​	安装Python包的终端使用者教程
 
-## [**PEP 453**](https://peps.python.org/pep-0453/): 在Python安装实例中显式引导启动pip
+[**PEP 453**](https://peps.python.org/pep-0453/): 在Python安装实例中显式引导启动pip
 
 ​	这个模块的原始缘由以及规范文档
 
-[Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): not Android, not iOS, not WASI.
+[Availability]({{< ref "/library/intro#availability" >}}): not Android, not iOS, not WASI.
 
-​	此模块在 [移动平台](https://docs.python.org/zh-cn/3.13/library/intro.html#mobile-availability) 或 [WebAssembly 平台](https://docs.python.org/zh-cn/3.13/library/intro.html#wasm-availability) 上不受支持。
+​	此模块在 [移动平台]({{< ref "/library/intro#mobile-availability" >}}) 或 [WebAssembly 平台]({{< ref "/library/intro#wasm-availability" >}}) 上不受支持。
 
 ## 命令行界面
 
@@ -75,7 +73,7 @@ python -m ensurepip --upgrade
 
 ## 模块 API
 
-[`ensurepip`](https://docs.python.org/zh-cn/3.13/library/ensurepip.html#module-ensurepip) 暴露了两个函数用于编程:
+[`ensurepip`]({{< ref "/library/distribution/ensurepip#module-ensurepip" >}}) 暴露了两个函数用于编程:
 
 ## ensurepip.**version**()
 
@@ -97,20 +95,18 @@ python -m ensurepip --upgrade
 
 ​	如果设置了 *default_pip*，则除了两个常规脚本外还将安装 `pip`。
 
-​	同时设置 *altinstall* 和 *default_pip* 将触发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	同时设置 *altinstall* 和 *default_pip* 将触发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
-*verbosity* 控制初始创建操作对 [`sys.stdout`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.stdout) 的输出信息级别。
+*verbosity* 控制初始创建操作对 [`sys.stdout`]({{< ref "/library/python/sys#sys.stdout" >}}) 的输出信息级别。
 
-​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `ensurepip.bootstrap` 并附带参数 `root`。
+​	引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `ensurepip.bootstrap` 并附带参数 `root`。
 
-​	备注
-
+​备注
  
 
 ​	创建创建过程对于 `sys.path` 和 `os.environ` 都会有附带影响。 改为在子进程中发起调用命令行接口可以避免这些附带影响。
 
-​	备注
-
+​备注
  
 
 ​	初始创建过程可能会安装 `pip` 所需的额外模块，但其他软件不应假定这些依赖将总是会默认存在（因为这些依赖可能会在未来的 `pip` 版本中被移除）。

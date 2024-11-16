@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/shlex.html](https://docs.python.org/zh-cn/3.13/library/shlex.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/shlex.html](https://docs.python.org/zh-cn/3.13/library/shlex.html)
 >
 > 收录该文档的时间：`2024-11-15T20:49:53+08:00`
 
@@ -18,19 +18,19 @@ draft = false
 
 ------
 
-[`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 类可用于编写类似 Unix shell 的简单词法分析程序。通常可用于编写“迷你语言”（如 Python 应用程序的运行控制文件）或解析带引号的字符串。
+[`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 类可用于编写类似 Unix shell 的简单词法分析程序。通常可用于编写“迷你语言”（如 Python 应用程序的运行控制文件）或解析带引号的字符串。
 
-[`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#module-shlex) 模块中定义了以下函数：
+[`shlex`]({{< ref "/library/frameworks/shlex#module-shlex" >}}) 模块中定义了以下函数：
 
 ## shlex.**split**(*s*, *comments=False*, *posix=True*)
 
-​	用类似 shell 的语法拆分字符串 *s*。如果 *comments* 为 [`False`](https://docs.python.org/zh-cn/3.13/library/constants.html#False) (默认值)，则不会解析给定字符串中的注释 ([`commenters`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.commenters) 属性的 [`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 实例设为空字符串)。 本函数默认工作于 POSIX 模式下，但若 *posix* 参数为 False，则采用非 POSIX 模式。
+​	用类似 shell 的语法拆分字符串 *s*。如果 *comments* 为 [`False`]({{< ref "/library/constants#False" >}}) (默认值)，则不会解析给定字符串中的注释 ([`commenters`]({{< ref "/library/frameworks/shlex#shlex.shlex.commenters" >}}) 属性的 [`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 实例设为空字符串)。 本函数默认工作于 POSIX 模式下，但若 *posix* 参数为 False，则采用非 POSIX 模式。
 
-*在 3.12 版本发生变更:* 传入 `None` 作为 *s* 参数现在会引发异常，而不是读取 [`sys.stdin`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.stdin)。
+> 在 3.12 版本发生变更: 传入 `None` 作为 *s* 参数现在会引发异常，而不是读取 [`sys.stdin`]({{< ref "/library/python/sys#sys.stdin" >}})。
 
 ## shlex.**join**(*split_command*)
 
-​	将列表 *split_command* 中的词法单元（token）串联起来，返回一个字符串。本函数是 [`split()`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.split) 的逆运算。
+​	将列表 *split_command* 中的词法单元（token）串联起来，返回一个字符串。本函数是 [`split()`]({{< ref "/library/frameworks/shlex#shlex.split" >}}) 的逆运算。
 
 
 
@@ -40,7 +40,7 @@ draft = false
 echo -n 'Multiple words'
 ```
 
-​	为防止注入漏洞，返回值是经过 shell 转义的（参见 [`quote()`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.quote) ）。
+​	为防止注入漏洞，返回值是经过 shell 转义的（参见 [`quote()`]({{< ref "/library/frameworks/shlex#shlex.quote" >}}) ）。
 
 > Added in version 3.8.
 >
@@ -55,9 +55,9 @@ echo -n 'Multiple words'
 
 `shlex` 模块 **仅适用于 Unix shell**。
 
-​	在不兼容 POSIX 的 shell 或其他操作系统（如Windows）的shell上，并不保证 [`quote()`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.quote) 函数能够正常使用。在这种 shell 中执行用本模块包装过的命令，有可能会存在命令注入漏洞。
+​	在不兼容 POSIX 的 shell 或其他操作系统（如Windows）的shell上，并不保证 [`quote()`]({{< ref "/library/frameworks/shlex#shlex.quote" >}}) 函数能够正常使用。在这种 shell 中执行用本模块包装过的命令，有可能会存在命令注入漏洞。
 
-​	请考虑采用命令参数以列表形式给出的函数，比如带了 `shell=False` 参数的 [`subprocess.run()`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.run) 。
+​	请考虑采用命令参数以列表形式给出的函数，比如带了 `shell=False` 参数的 [`subprocess.run()`]({{< ref "/library/concurrency/subprocess#subprocess.run" >}}) 。
 
 ​	以下用法是不安全的：
 
@@ -70,7 +70,7 @@ echo -n 'Multiple words'
 ls -l somefile; rm -rf ~
 ```
 
-​	用 [`quote()`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.quote) 可以堵住这种安全漏洞：
+​	用 [`quote()`]({{< ref "/library/frameworks/shlex#shlex.quote" >}}) 可以堵住这种安全漏洞：
 
 
 
@@ -84,7 +84,7 @@ ls -l 'somefile; rm -rf ~'
 ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 ```
 
-​	这种包装方式兼容于 UNIX shell 和 [`split()`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.split) 。
+​	这种包装方式兼容于 UNIX shell 和 [`split()`]({{< ref "/library/frameworks/shlex#shlex.split" >}}) 。
 
 
 
@@ -101,17 +101,16 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 > Added in version 3.3.
 >
 
-[`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#module-shlex) 模块中定义了以下类：
+[`shlex`]({{< ref "/library/frameworks/shlex#module-shlex" >}}) 模块中定义了以下类：
 
 ## *class* shlex.**shlex**(*instream=None*, *infile=None*, *posix=False*, *punctuation_chars=False*)
 
-[`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 及其子类的实例是一种词义分析器对象。 利用初始化参数可指定从哪里读取字符。 初始化参数必须是具备 [`read()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.TextIOBase.read) 和 [`readline()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.TextIOBase.readline) 方法的文件/流对象，或者是一个字符串。 如果没有给出初始化参数，则会从 `sys.stdin` 获取输入。 第二个可选参数是个文件名字符串，用于设置 [`infile`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.infile) 属性的初始值。 如果 *instream* 参数被省略或等于 `sys.stdin`，则第二个参数默认为 "stdin"。 *posix* 参数定义了操作的模式：若 *posix* 不为真值（默认），则 [`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 实例将工作于兼容模式。 若运行于 POSIX 模式下，则 [`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 会尽可能地应用 POSIX shell 解析规则。 *punctuation_chars* 参数提供了一种使行为更接近于真正的 shell 解析的方式。 该参数可接受多种值：默认值、`False`、保持 Python 3.5 及更早版本的行为。 如果设为 `True`，则会改变对字符 `();<>|&` 的解析方式：这些字符将作为独立的词法单元被返回（视作标点符号）。 如果设为非空字符串，则这些字符将被用作标点符号。 出现在 *punctuation_chars* 中的 [`wordchars`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.wordchars) 属性中的任何字符都会从 [`wordchars`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.wordchars) 中被删除。 请参阅 [改进的 shell 兼容性](https://docs.python.org/zh-cn/3.13/library/shlex.html#improved-shell-compatibility) 了解详情。 *punctuation_chars* 只能在创建 [`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 实例时设置，以后不能再作修改。
+[`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 及其子类的实例是一种词义分析器对象。 利用初始化参数可指定从哪里读取字符。 初始化参数必须是具备 [`read()`]({{< ref "/library/allos/io#io.TextIOBase.read" >}}) 和 [`readline()`]({{< ref "/library/allos/io#io.TextIOBase.readline" >}}) 方法的文件/流对象，或者是一个字符串。 如果没有给出初始化参数，则会从 `sys.stdin` 获取输入。 第二个可选参数是个文件名字符串，用于设置 [`infile`]({{< ref "/library/frameworks/shlex#shlex.shlex.infile" >}}) 属性的初始值。 如果 *instream* 参数被省略或等于 `sys.stdin`，则第二个参数默认为 "stdin"。 *posix* 参数定义了操作的模式：若 *posix* 不为真值（默认），则 [`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 实例将工作于兼容模式。 若运行于 POSIX 模式下，则 [`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 会尽可能地应用 POSIX shell 解析规则。 *punctuation_chars* 参数提供了一种使行为更接近于真正的 shell 解析的方式。 该参数可接受多种值：默认值、`False`、保持 Python 3.5 及更早版本的行为。 如果设为 `True`，则会改变对字符 `();<>|&` 的解析方式：这些字符将作为独立的词法单元被返回（视作标点符号）。 如果设为非空字符串，则这些字符将被用作标点符号。 出现在 *punctuation_chars* 中的 [`wordchars`]({{< ref "/library/frameworks/shlex#shlex.shlex.wordchars" >}}) 属性中的任何字符都会从 [`wordchars`]({{< ref "/library/frameworks/shlex#shlex.shlex.wordchars" >}}) 中被删除。 请参阅 [改进的 shell 兼容性]({{< ref "/library/frameworks/shlex#improved-shell-compatibility" >}}) 了解详情。 *punctuation_chars* 只能在创建 [`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 实例时设置，以后不能再作修改。
 
-*在 3.6 版本发生变更:* 加入 *punctuation_chars* 参数。
+> 在 3.6 版本发生变更: 加入 *punctuation_chars* 参数。
 
-​	参见
-
-## [`configparser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#module-configparser) 模块
+​参见
+## [`configparser`]({{< ref "/library/fileformats/configparser#module-configparser" >}}) 模块
 
 ​	配置文件解析器，类似于 Windows 的 `.ini` 文件。
 
@@ -119,11 +118,11 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 ## shlex 对象
 
-[`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 实例具备以下方法：
+[`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 实例具备以下方法：
 
 ## shlex.**get_token**()
 
-​	返回一个词法单元。如果所有单词已用 [`push_token()`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.push_token) 堆叠在一起了，则从堆栈中弹出一个词法单元。否则就从输入流中读取一个。如果读取时遇到文件结束符，则会返回 `eof`（在非 POSIX 模式下为空字符串 ``''`，在 POSIX 模式下为 ``None`）。
+​	返回一个词法单元。如果所有单词已用 [`push_token()`]({{< ref "/library/frameworks/shlex#shlex.shlex.push_token" >}}) 堆叠在一起了，则从堆栈中弹出一个词法单元。否则就从输入流中读取一个。如果读取时遇到文件结束符，则会返回 `eof`（在非 POSIX 模式下为空字符串 ``''`，在 POSIX 模式下为 ``None`）。
 
 ## shlex.**push_token**(*str*)
 
@@ -135,19 +134,19 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 ## shlex.**sourcehook**(*filename*)
 
-​	当 [`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 检测到源请求（见下面的 [`source`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.source)），以下词法单元可作为参数，并应返回一个由文件名和打开的文件对象组成的元组。
+​	当 [`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 检测到源请求（见下面的 [`source`]({{< ref "/library/frameworks/shlex#shlex.shlex.source" >}})），以下词法单元可作为参数，并应返回一个由文件名和打开的文件对象组成的元组。
 
 ​	通常本方法会先移除参数中的引号。如果结果为绝对路径名，或者之前没有有效的源请求，或者之前的源请求是一个流对象（比如 `sys.stdin`），那么结果将不做处理。否则，如果结果是相对路径名，那么前面将会加上目录部分，目录名来自于源堆栈中前一个文件名（类似于 C 预处理器对 `#include "file.h"` 的处理方式）。
 
-​	结果被视为一个文件名，并作为元组的第一部分返回，元组的第二部分以此为基础调用 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open) 获得。（注意：这与实例初始化过程中的参数顺序相反！)
+​	结果被视为一个文件名，并作为元组的第一部分返回，元组的第二部分以此为基础调用 [`open()`]({{< ref "/library/functions#open" >}}) 获得。（注意：这与实例初始化过程中的参数顺序相反！)
 
-​	此钩子函数是公开的，可用于实现路径搜索、添加文件扩展名或黑入其他命名空间。没有对应的“关闭”钩子函数，但 shlex 实例在返回 EOF 时会调用源输入流的 [`close()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.IOBase.close) 方法。
+​	此钩子函数是公开的，可用于实现路径搜索、添加文件扩展名或黑入其他命名空间。没有对应的“关闭”钩子函数，但 shlex 实例在返回 EOF 时会调用源输入流的 [`close()`]({{< ref "/library/allos/io#io.IOBase.close" >}}) 方法。
 
-​	若要更明确地控制源堆栈，请采用 [`push_source()`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.push_source) 和 [`pop_source()`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.pop_source) 方法。
+​	若要更明确地控制源堆栈，请采用 [`push_source()`]({{< ref "/library/frameworks/shlex#shlex.shlex.push_source" >}}) 和 [`pop_source()`]({{< ref "/library/frameworks/shlex#shlex.shlex.pop_source" >}}) 方法。
 
 ## shlex.**push_source**(*newstream*, *newfile=None*)
 
-​	将输入源流压入输入堆栈。如果指定了文件名参数，以后错误信息中将会用到。[`sourcehook()`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.sourcehook) 内部同样使用了本方法。
+​	将输入源流压入输入堆栈。如果指定了文件名参数，以后错误信息中将会用到。[`sourcehook()`]({{< ref "/library/frameworks/shlex#shlex.shlex.sourcehook" >}}) 内部同样使用了本方法。
 
 ## shlex.**pop_source**()
 
@@ -157,9 +156,9 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 ​	本方法生成一条错误信息的首部，以 Unix C 编译器错误标签的形式；格式为 `'"%s", line %d: '`，其中 `%s` 被替换为当前源文件的名称，`%d` 被替换为当前输入行号（可用可选参数覆盖）。
 
-​	这是个快捷函数，旨在鼓励 [`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#module-shlex) 用户以标准的、可解析的格式生成错误信息，以便 Emacs 和其他 Unix 工具理解。
+​	这是个快捷函数，旨在鼓励 [`shlex`]({{< ref "/library/frameworks/shlex#module-shlex" >}}) 用户以标准的、可解析的格式生成错误信息，以便 Emacs 和其他 Unix 工具理解。
 
-[`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 子类的实例有一些公共实例变量，这些变量可以控制词义分析，也可用于调试。
+[`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 子类的实例有一些公共实例变量，这些变量可以控制词义分析，也可用于调试。
 
 ## shlex.**commenters**
 
@@ -167,7 +166,7 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 ## shlex.**wordchars**
 
-​	可连成多字符词法单元的字符串。默认包含所有 ASCII 字母数字和下划线。在 POSIX 模式下，Latin-1 字符集的重音字符也被包括在内。如果 [`punctuation_chars`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.punctuation_chars) 不为空，则可出现在文件名规范和命令行参数中的 `~-./*?=` 字符也将包含在内，任何 `punctuation_chars` 中的字符将从 `wordchars` 中移除。如果 [`whitespace_split`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.whitespace_split) 设为 `True`，则本规则无效。
+​	可连成多字符词法单元的字符串。默认包含所有 ASCII 字母数字和下划线。在 POSIX 模式下，Latin-1 字符集的重音字符也被包括在内。如果 [`punctuation_chars`]({{< ref "/library/frameworks/shlex#shlex.shlex.punctuation_chars" >}}) 不为空，则可出现在文件名规范和命令行参数中的 `~-./*?=` 字符也将包含在内，任何 `punctuation_chars` 中的字符将从 `wordchars` 中移除。如果 [`whitespace_split`]({{< ref "/library/frameworks/shlex#shlex.shlex.whitespace_split" >}}) 设为 `True`，则本规则无效。
 
 ## shlex.**whitespace**
 
@@ -183,13 +182,13 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 ## shlex.**escapedquotes**
 
-[`quotes`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.quotes) 中的字符将会解析 [`escape`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.escape) 定义的转义字符。这只在 POSIX 模式下使用，默认只包含 `'"'`。
+[`quotes`]({{< ref "/library/frameworks/shlex#shlex.shlex.quotes" >}}) 中的字符将会解析 [`escape`]({{< ref "/library/frameworks/shlex#shlex.shlex.escape" >}}) 定义的转义字符。这只在 POSIX 模式下使用，默认只包含 `'"'`。
 
 ## shlex.**whitespace_split**
 
-​	若为 `True`，则只根据空白符拆分词法单元。这很有用，比如用 [`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 解析命令行，用类似 shell 参数的方式读取各个词法单元。当与 [`punctuation_chars`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.punctuation_chars) 一起使用时，将根据空白符和这些字符拆分词法单元。
+​	若为 `True`，则只根据空白符拆分词法单元。这很有用，比如用 [`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 解析命令行，用类似 shell 参数的方式读取各个词法单元。当与 [`punctuation_chars`]({{< ref "/library/frameworks/shlex#shlex.shlex.punctuation_chars" >}}) 一起使用时，将根据空白符和这些字符拆分词法单元。
 
-*在 3.8 版本发生变更:* [`punctuation_chars`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.punctuation_chars) 属性已与 [`whitespace_split`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.whitespace_split) 属性兼容。
+> 在 3.8 版本发生变更: [`punctuation_chars`]({{< ref "/library/frameworks/shlex#shlex.shlex.punctuation_chars" >}}) 属性已与 [`whitespace_split`]({{< ref "/library/frameworks/shlex#shlex.shlex.whitespace_split" >}}) 属性兼容。
 
 ## shlex.**infile**
 
@@ -197,15 +196,15 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 ## shlex.**instream**
 
-[`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 实例正从中读取字符的输入流。
+[`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 实例正从中读取字符的输入流。
 
 ## shlex.**source**
 
-​	本属性默认值为 `None`。 如果给定一个字符串，则会识别为包含请求，类似于各种 shell 中的 `source` 关键字。 也就是说，紧随其后的词法单元将作为文件名打开，作为输入流，直至遇到 EOF 后调用流的 [`close()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.IOBase.close) 方法，然后原输入流仍变回输入源。Source 请求可以在词义堆栈中嵌套任意深度。
+​	本属性默认值为 `None`。 如果给定一个字符串，则会识别为包含请求，类似于各种 shell 中的 `source` 关键字。 也就是说，紧随其后的词法单元将作为文件名打开，作为输入流，直至遇到 EOF 后调用流的 [`close()`]({{< ref "/library/allos/io#io.IOBase.close" >}}) 方法，然后原输入流仍变回输入源。Source 请求可以在词义堆栈中嵌套任意深度。
 
 ## shlex.**debug**
 
-​	如果本属性为大于 `1` 的数字，则 [`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 实例会把动作进度详细地输出出来。若需用到本属性，可阅读源代码来了解细节。
+​	如果本属性为大于 `1` 的数字，则 [`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 实例会把动作进度详细地输出出来。若需用到本属性，可阅读源代码来了解细节。
 
 ## shlex.**lineno**
 
@@ -230,23 +229,23 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 ## 解析规则
 
-​	在非 POSIX 模式下时，[`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 会试图遵守以下规则：
+​	在非 POSIX 模式下时，[`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 会试图遵守以下规则：
 
 - 不识别单词中的引号（`Do"Not"Separate` 解析为一个单词 `Do"Not"Separate`）；
 - 不识别转义字符；
 - 引号包裹的字符保留字面意思；
 - 成对的引号会将单词分离（`"Do"Separate` 解析为 `"Do"` 和 `Separate`）；
-- 如果 [`whitespace_split`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.whitespace_split) 为 `False`，则未声明为单词字符、空白或引号的字符将作为单字符的词法单元返回。若为 `True`， 则 [`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 只根据空白符拆分单词。
+- 如果 [`whitespace_split`]({{< ref "/library/frameworks/shlex#shlex.shlex.whitespace_split" >}}) 为 `False`，则未声明为单词字符、空白或引号的字符将作为单字符的词法单元返回。若为 `True`， 则 [`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 只根据空白符拆分单词。
 - EOF 用空字符串（`''`）表示；
 - 空字符串无法解析，即便是加了引号。
 
-​	在 POSIX 模式时，[`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 将尝试遵守以下解析规则：
+​	在 POSIX 模式时，[`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 将尝试遵守以下解析规则：
 
 - 引号会被剔除，且不会拆分单词（ `"Do"Not"Separate"` 将解析为单个单词 `DoNotSeparate`）；
 - 未加引号包裹的转义字符（如 `'\'` ）保留后一个字符的字面意思；
-- 引号中的字符不属于 [`escapedquotes`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.escapedquotes) （例如，`"'"`），则保留引号中所有字符的字面值；
-- 若引号包裹的字符属于 [`escapedquotes`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.escapedquotes) （例如 `'"'`），则保留引号中所有字符的字面意思，属于 [`escape`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.escape) 中的字符除外。仅当后跟后半个引号或转义字符本身时，转义字符才保留其特殊含义。否则，转义字符将视作普通字符；
-- EOF 用 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None) 表示；
+- 引号中的字符不属于 [`escapedquotes`]({{< ref "/library/frameworks/shlex#shlex.shlex.escapedquotes" >}}) （例如，`"'"`），则保留引号中所有字符的字面值；
+- 若引号包裹的字符属于 [`escapedquotes`]({{< ref "/library/frameworks/shlex#shlex.shlex.escapedquotes" >}}) （例如 `'"'`），则保留引号中所有字符的字面意思，属于 [`escape`]({{< ref "/library/frameworks/shlex#shlex.shlex.escape" >}}) 中的字符除外。仅当后跟后半个引号或转义字符本身时，转义字符才保留其特殊含义。否则，转义字符将视作普通字符；
+- EOF 用 [`None`]({{< ref "/library/constants#None" >}}) 表示；
 - 允许出现引号包裹的空字符串（`''`）。
 
 
@@ -256,7 +255,7 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 > Added in version 3.6.
 >
 
-[`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#module-shlex) 类提供了与常见 Unix shell（如 `bash`、 `dash` 和 `sh`）的解析兼容性。为了充分利用这种兼容性，请在构造函数中设定 `punctuation_chars` 参数。该参数默认为 `False`，维持 3.6 以下版本的行为。如果设为 `True`，则会改变对 `();<>|&` 字符的解析方式：这些字符都将视为单个的词法单元返回。虽然不算是完整的 shell 解析程序（考虑到 shell 的多样性，超出了标准库的范围），但确实能比其他方式更容易进行命令行的处理。以下代码段演示了两者的差异：
+[`shlex`]({{< ref "/library/frameworks/shlex#module-shlex" >}}) 类提供了与常见 Unix shell（如 `bash`、 `dash` 和 `sh`）的解析兼容性。为了充分利用这种兼容性，请在构造函数中设定 `punctuation_chars` 参数。该参数默认为 `False`，维持 3.6 以下版本的行为。如果设为 `True`，则会改变对 `();<>|&` 字符的解析方式：这些字符都将视为单个的词法单元返回。虽然不算是完整的 shell 解析程序（考虑到 shell 的多样性，超出了标准库的范围），但确实能比其他方式更容易进行命令行的处理。以下代码段演示了两者的差异：
 
 
 
@@ -287,11 +286,10 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 ['a', '&', '&', 'b', '||', 'c']
 ```
 
-​	备注
-
+​备注
  
 
-​	如果指定了 `punctuation_chars`，则 [`wordchars`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.wordchars) 属性的参数会是 `~-./*?=`。因为这些字符可以出现在文件名（包括通配符）和命令行参数中（如 `--color=auto`）。因此：
+​	如果指定了 `punctuation_chars`，则 [`wordchars`]({{< ref "/library/frameworks/shlex#shlex.shlex.wordchars" >}}) 属性的参数会是 `~-./*?=`。因为这些字符可以出现在文件名（包括通配符）和命令行参数中（如 `--color=auto`）。因此：
 
 
 
@@ -303,6 +301,6 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 ['~/a', '&&', 'b-c', '--color=auto', '||', 'd', '*.py?']
 ```
 
-​	不过为了尽可能接近于 shell ，建议在使用 [`punctuation_chars`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.punctuation_chars) 时始终使用 `posix` 和 [`whitespace_split`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.whitespace_split) ，这将完全否定 [`wordchars`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex.wordchars) 。
+​	不过为了尽可能接近于 shell ，建议在使用 [`punctuation_chars`]({{< ref "/library/frameworks/shlex#shlex.shlex.punctuation_chars" >}}) 时始终使用 `posix` 和 [`whitespace_split`]({{< ref "/library/frameworks/shlex#shlex.shlex.whitespace_split" >}}) ，这将完全否定 [`wordchars`]({{< ref "/library/frameworks/shlex#shlex.shlex.wordchars" >}}) 。
 
-​	为了达到最佳效果，`punctuation_chars` 应与 `posix=True` 一起设置。（注意 `posix=False` 是 [`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.shlex) 的默认设置)。
+​	为了达到最佳效果，`punctuation_chars` 应与 `posix=True` 一起设置。（注意 `posix=False` 是 [`shlex`]({{< ref "/library/frameworks/shlex#shlex.shlex" >}}) 的默认设置)。

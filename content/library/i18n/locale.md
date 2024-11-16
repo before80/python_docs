@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/locale.html](https://docs.python.org/zh-cn/3.13/library/locale.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/locale.html](https://docs.python.org/zh-cn/3.13/library/locale.html)
 >
 > 收录该文档的时间：`2024-11-15T20:47:51+08:00`
 
@@ -18,23 +18,23 @@ draft = false
 
 ------
 
-[`locale`](https://docs.python.org/zh-cn/3.13/library/locale.html#module-locale) 模块开通了 POSIX 本地化数据库和功能的访问。POSIX 本地化机制让程序员能够为应用程序处理某些本地化的问题，而不需要去了解运行软件的每个国家的全部语言习惯。
+[`locale`]({{< ref "/library/i18n/locale#module-locale" >}}) 模块开通了 POSIX 本地化数据库和功能的访问。POSIX 本地化机制让程序员能够为应用程序处理某些本地化的问题，而不需要去了解运行软件的每个国家的全部语言习惯。
 
-[`locale`](https://docs.python.org/zh-cn/3.13/library/locale.html#module-locale) 模块是在 `_locale` 模块之上实现的，后者又会在可能的情况下使用 ANSI C 语言区域实现。
+[`locale`]({{< ref "/library/i18n/locale#module-locale" >}}) 模块是在 `_locale` 模块之上实现的，后者又会在可能的情况下使用 ANSI C 语言区域实现。
 
-[`locale`](https://docs.python.org/zh-cn/3.13/library/locale.html#module-locale) 模块定义了以下异常和函数：
+[`locale`]({{< ref "/library/i18n/locale#module-locale" >}}) 模块定义了以下异常和函数：
 
 ## *exception* locale.**Error**
 
-​	当传给 [`setlocale()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.setlocale) 的 locale 无法识别时，会触发异常。
+​	当传给 [`setlocale()`]({{< ref "/library/i18n/locale#locale.setlocale" >}}) 的 locale 无法识别时，会触发异常。
 
 ## locale.**setlocale**(*category*, *locale=None*)
 
-​	如果给定了 *locale* 而不是 `None`，[`setlocale()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.setlocale) 会修改 *category* 的 locale 设置。可用的类别会在下面的数据描述中列出。*locale* 可以是一个字符串，也可以是两个字符串（语言代码和编码）组成的可迭代对象。若为可迭代对象，则会用地区别名引擎转换为一个地区名称。若为空字符串则指明采用用户的默认设置。如果 locale 设置修改失败，会触发 [`Error`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.Error) 异常。如果成功则返回新的 locale 设置。
+​	如果给定了 *locale* 而不是 `None`，[`setlocale()`]({{< ref "/library/i18n/locale#locale.setlocale" >}}) 会修改 *category* 的 locale 设置。可用的类别会在下面的数据描述中列出。*locale* 可以是一个字符串，也可以是两个字符串（语言代码和编码）组成的可迭代对象。若为可迭代对象，则会用地区别名引擎转换为一个地区名称。若为空字符串则指明采用用户的默认设置。如果 locale 设置修改失败，会触发 [`Error`]({{< ref "/library/i18n/locale#locale.Error" >}}) 异常。如果成功则返回新的 locale 设置。
 
 ​	如果省略 *locale* 或为 `None`，将返回 *category* 但当前设置。
 
-[`setlocale()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.setlocale) 在大多数系统上都不是线程安全的。应用程序通常会如下调用：
+[`setlocale()`]({{< ref "/library/i18n/locale#locale.setlocale" >}}) 在大多数系统上都不是线程安全的。应用程序通常会如下调用：
 
 ```
 import locale
@@ -49,10 +49,10 @@ locale.setlocale(locale.LC_ALL, '')
 
 | 类别                                                         | 键                                | 含意                                                         |
 | :----------------------------------------------------------- | :-------------------------------- | :----------------------------------------------------------- |
-| [`LC_NUMERIC`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_NUMERIC) | `'decimal_point'`                 | 小数点字符。                                                 |
-|                                                              | `'grouping'`                      | 数字列表，指定 `'thousands_sep'` 应该出现的位置。 如果列表以 [`CHAR_MAX`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.CHAR_MAX) 结束，则不会作分组。如果列表以 `0` 结束，则重复使用最后的分组大小。 |
+| [`LC_NUMERIC`]({{< ref "/library/i18n/locale#locale.LC_NUMERIC" >}}) | `'decimal_point'`                 | 小数点字符。                                                 |
+|                                                              | `'grouping'`                      | 数字列表，指定 `'thousands_sep'` 应该出现的位置。 如果列表以 [`CHAR_MAX`]({{< ref "/library/i18n/locale#locale.CHAR_MAX" >}}) 结束，则不会作分组。如果列表以 `0` 结束，则重复使用最后的分组大小。 |
 |                                                              | `'thousands_sep'`                 | 组之间使用的字符。                                           |
-| [`LC_MONETARY`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_MONETARY) | `'int_curr_symbol'`               | 国际货币符号。                                               |
+| [`LC_MONETARY`]({{< ref "/library/i18n/locale#locale.LC_MONETARY" >}}) | `'int_curr_symbol'`               | 国际货币符号。                                               |
 |                                                              | `'currency_symbol'`               | 当地货币符号。                                               |
 |                                                              | `'p_cs_precedes/n_cs_precedes'`   | 货币符号是否在值之前（对于正值或负值）。                     |
 |                                                              | `'p_sep_by_space/n_sep_by_space'` | 货币符号是否通过空格与值分隔（对于正值或负值）。             |
@@ -65,7 +65,7 @@ locale.setlocale(locale.LC_ALL, '')
 |                                                              | `'negative_sign'`                 | 用于注释负货币价值的符号。                                   |
 |                                                              | `'p_sign_posn/n_sign_posn'`       | 符号的位置（对于正值或负值），见下文。                       |
 
-​	可以将所有数值设置为 [`CHAR_MAX`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.CHAR_MAX) ，以指示本 locale 中未指定任何值。
+​	可以将所有数值设置为 [`CHAR_MAX`]({{< ref "/library/i18n/locale#locale.CHAR_MAX" >}}) ，以指示本 locale 中未指定任何值。
 
 ​	下面给出了 `'p_sign_posn'` 和 `'n_sign_posn'` 的可能值。
 
@@ -80,13 +80,13 @@ locale.setlocale(locale.LC_ALL, '')
 
 ​	此函数可临时性地将 `LC_CTYPE` 语言区域设为 `LC_NUMERIC` 语言区域或者如果语言区域不同且数字或货币字符串是非 ASCII 的则设为 `LC_MONETARY` 语言区域。 这个临时性地改变会影响到其他线程。
 
-*在 3.7 版本发生变更:* 现在此函数在某些情况下会临时性地将 `LC_CTYPE` 语言区域设为 `LC_NUMERIC` 语言区域。
+> 在 3.7 版本发生变更: 现在此函数在某些情况下会临时性地将 `LC_CTYPE` 语言区域设为 `LC_NUMERIC` 语言区域。
 
 ## locale.**nl_langinfo**(*option*)
 
 ​	Return some locale-specific information as a string. This function is not available on all systems, and the set of possible options might also vary across platforms. The possible argument values are numbers, for which symbolic constants are available in the locale module.
 
-[`nl_langinfo()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.nl_langinfo) 函数可接受以下值。大部分含义都取自 GNU C 库。
+[`nl_langinfo()`]({{< ref "/library/i18n/locale#locale.nl_langinfo" >}}) 函数可接受以下值。大部分含义都取自 GNU C 库。
 
 ## locale.**CODESET**
 
@@ -94,19 +94,19 @@ locale.setlocale(locale.LC_ALL, '')
 
 ## locale.**D_T_FMT**
 
-​	获取一个字符串，可用作 [`time.strftime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.strftime) 的格式串，以便以地区特定格式表示日期和时间。
+​	获取一个字符串，可用作 [`time.strftime()`]({{< ref "/library/allos/time#time.strftime" >}}) 的格式串，以便以地区特定格式表示日期和时间。
 
 ## locale.**D_FMT**
 
-​	获取一个字符串，可用作 [`time.strftime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.strftime) 的格式串，以便以地区特定格式表示日期。
+​	获取一个字符串，可用作 [`time.strftime()`]({{< ref "/library/allos/time#time.strftime" >}}) 的格式串，以便以地区特定格式表示日期。
 
 ## locale.**T_FMT**
 
-​	获取一个字符串，可用作 [`time.strftime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.strftime) 的格式串，以便以地区特定格式表示时间。
+​	获取一个字符串，可用作 [`time.strftime()`]({{< ref "/library/allos/time#time.strftime" >}}) 的格式串，以便以地区特定格式表示时间。
 
 ## locale.**T_FMT_AMPM**
 
-​	获取一个字符串，可用作 [`time.strftime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.strftime) 的格式串，以便以 am/pm 的格式表示时间。
+​	获取一个字符串，可用作 [`time.strftime()`]({{< ref "/library/allos/time#time.strftime" >}}) 的格式串，以便以 am/pm 的格式表示时间。
 
 ## locale.**DAY_1**
 
@@ -124,11 +124,10 @@ locale.setlocale(locale.LC_ALL, '')
 
 ​	获取一周中第 n 天的名称。
 
-​	备注
-
+​备注
  
 
-​	这里遵循美国惯例，即 [`DAY_1`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.DAY_1) 是星期天，而不是国际惯例（ISO 8601），即星期一是一周的第一天。
+​	这里遵循美国惯例，即 [`DAY_1`]({{< ref "/library/i18n/locale#locale.DAY_1" >}}) 是星期天，而不是国际惯例（ISO 8601），即星期一是一周的第一天。
 
 ## locale.**ABDAY_1**
 
@@ -214,11 +213,10 @@ locale.setlocale(locale.LC_ALL, '')
 
 ​	获取一个可供 `regex(3)` 函数使用的正则表达式以识别对于是/否型问题的否定回答。
 
-​	备注
-
+​备注
  
 
-​	针对 [`YESEXPR`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.YESEXPR) 和 [`NOEXPR`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.NOEXPR) 的正则表达式使用了适合来自 C 库的 `regex` 函数的语法，它与 [`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 中使用的语法会有所不同。
+​	针对 [`YESEXPR`]({{< ref "/library/i18n/locale#locale.YESEXPR" >}}) 和 [`NOEXPR`]({{< ref "/library/i18n/locale#locale.NOEXPR" >}}) 的正则表达式使用了适合来自 C 库的 `regex` 函数的语法，它与 [`re`]({{< ref "/library/text/re#module-re" >}}) 中使用的语法会有所不同。
 
 ## locale.**CRNCYSTR**
 
@@ -230,19 +228,19 @@ locale.setlocale(locale.LC_ALL, '')
 
 ​	大多数地区都没有定义该值。定义了该值的一个案例日本。日本传统的日期表示方法中，包含了当时天皇统治朝代的名称。
 
-​	通常没有必要直接使用该值。在格式串中指定 `E` 符号，会让 [`time.strftime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.strftime) 函数启用此信息。返回字符串的格式并没有定义，因此不得假定各个系统都能理解。
+​	通常没有必要直接使用该值。在格式串中指定 `E` 符号，会让 [`time.strftime()`]({{< ref "/library/allos/time#time.strftime" >}}) 函数启用此信息。返回字符串的格式并没有定义，因此不得假定各个系统都能理解。
 
 ## locale.**ERA_D_T_FMT**
 
-​	获取一个字符串，可用作 [`time.strftime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.strftime) 的格式串，以便以地区特定格式表示带纪元的日期和时间。
+​	获取一个字符串，可用作 [`time.strftime()`]({{< ref "/library/allos/time#time.strftime" >}}) 的格式串，以便以地区特定格式表示带纪元的日期和时间。
 
 ## locale.**ERA_D_FMT**
 
-​	获取一个字符串，可用作 [`time.strftime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.strftime) 的格式串，以便以地区特定格式表示带纪元的日期。
+​	获取一个字符串，可用作 [`time.strftime()`]({{< ref "/library/allos/time#time.strftime" >}}) 的格式串，以便以地区特定格式表示带纪元的日期。
 
 ## locale.**ERA_T_FMT**
 
-​	获取一个字符串，可用作 [`time.strftime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.strftime) 的格式串，以便以地区特定格式表示带纪元的时间。
+​	获取一个字符串，可用作 [`time.strftime()`]({{< ref "/library/allos/time#time.strftime" >}}) 的格式串，以便以地区特定格式表示带纪元的时间。
 
 ## locale.**ALT_DIGITS**
 
@@ -262,46 +260,46 @@ locale.setlocale(locale.LC_ALL, '')
 
 ## locale.**getlocale**(*category=LC_CTYPE*)
 
-​	以包含 *语言代码*, *编码格式* 的序列形式返回指定语言区域类别的当前设置。 *category* 可以是某个 `LC_*` 值但不能是 [`LC_ALL`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_ALL)。 默认值为 [`LC_CTYPE`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_CTYPE)。
+​	以包含 *语言代码*, *编码格式* 的序列形式返回指定语言区域类别的当前设置。 *category* 可以是某个 `LC_*` 值但不能是 [`LC_ALL`]({{< ref "/library/i18n/locale#locale.LC_ALL" >}})。 默认值为 [`LC_CTYPE`]({{< ref "/library/i18n/locale#locale.LC_CTYPE" >}})。
 
 ​	除了 `'C'` 之外，语言代码对应 [**RFC 1766**](https://datatracker.ietf.org/doc/html/rfc1766.html) 标准。若 *语言代码* 和 *编码* 无法确定，则可为 `None`。
 
 ## locale.**getpreferredencoding**(*do_setlocale=True*)
 
-​	根据用户的偏好，返回用于文本数据的 [locale encoding](https://docs.python.org/zh-cn/3.13/glossary.html#term-locale-encoding)。用户偏好在不同的系统上有不同的表达方式，而且在某些系统上可能无法以编程方式获取到，所以本函数只是返回猜测结果。
+​	根据用户的偏好，返回用于文本数据的 [locale encoding]({{< ref "/glossary/idx#term-locale-encoding" >}})。用户偏好在不同的系统上有不同的表达方式，而且在某些系统上可能无法以编程方式获取到，所以本函数只是返回猜测结果。
 
-​	某些系统必须调用 [`setlocale()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.setlocale) 才能获取用户偏好，所以本函数不是线程安全的。如果不需要或不希望调用 setlocale，*do_setlocale* 应设为 `False`。
+​	某些系统必须调用 [`setlocale()`]({{< ref "/library/i18n/locale#locale.setlocale" >}}) 才能获取用户偏好，所以本函数不是线程安全的。如果不需要或不希望调用 setlocale，*do_setlocale* 应设为 `False`。
 
-​	在 Android 上或者如果启用了 [Python UTF-8 模式](https://docs.python.org/zh-cn/3.13/library/os.html#utf8-mode)，则将始终返回 `'utf-8'`，[locale encoding](https://docs.python.org/zh-cn/3.13/glossary.html#term-locale-encoding) 和 *do_setlocale* 参数将被忽略。
+​	在 Android 上或者如果启用了 [Python UTF-8 模式]({{< ref "/library/allos/os#utf8-mode" >}})，则将始终返回 `'utf-8'`，[locale encoding]({{< ref "/glossary/idx#term-locale-encoding" >}}) 和 *do_setlocale* 参数将被忽略。
 
-[Python preinitialization](https://docs.python.org/zh-cn/3.13/c-api/init_config.html#c-preinit) 用于配置 LC_CTYPE 区域。还请参阅 [filesystem encoding and error handler](https://docs.python.org/zh-cn/3.13/glossary.html#term-filesystem-encoding-and-error-handler)。
+[Python preinitialization]({{< ref "/c_api/init_config#c-preinit" >}}) 用于配置 LC_CTYPE 区域。还请参阅 [filesystem encoding and error handler]({{< ref "/glossary/idx#term-filesystem-encoding-and-error-handler" >}})。
 
-*在 3.7 版本发生变更:* 目前在 Android 上或者如果启用了 [Python UTF-8 模式](https://docs.python.org/zh-cn/3.13/library/os.html#utf8-mode) 此函数将总是返回 `"utf-8"`。
+> 在 3.7 版本发生变更: 目前在 Android 上或者如果启用了 [Python UTF-8 模式]({{< ref "/library/allos/os#utf8-mode" >}}) 此函数将总是返回 `"utf-8"`。
 
 ## locale.**getencoding**()
 
-​	获取当前的 [locale encoding](https://docs.python.org/zh-cn/3.13/glossary.html#term-locale-encoding):
+​	获取当前的 [locale encoding]({{< ref "/glossary/idx#term-locale-encoding" >}}):
 
 - 在 Android 和 VxWorks 上，将返回 `"utf-8"`。
-- 在 Unix 上，将返回当前, return the encoding of the current [`LC_CTYPE`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_CTYPE) 语言区域的编码格式。 如果 `nl_langinfo(CODESET)` 返回空字符串则将返回 `"utf-8"`: 举例来说，如果当前 LC_CTYPE 语言区域不受支持的时候。
+- 在 Unix 上，将返回当前, return the encoding of the current [`LC_CTYPE`]({{< ref "/library/i18n/locale#locale.LC_CTYPE" >}}) 语言区域的编码格式。 如果 `nl_langinfo(CODESET)` 返回空字符串则将返回 `"utf-8"`: 举例来说，如果当前 LC_CTYPE 语言区域不受支持的时候。
 - 在 Windows 上，返回 ANSI 代码页。
 
-[Python preinitialization](https://docs.python.org/zh-cn/3.13/c-api/init_config.html#c-preinit) 用于配置 LC_CTYPE 区域。还请参阅 [filesystem encoding and error handler](https://docs.python.org/zh-cn/3.13/glossary.html#term-filesystem-encoding-and-error-handler)。
+[Python preinitialization]({{< ref "/c_api/init_config#c-preinit" >}}) 用于配置 LC_CTYPE 区域。还请参阅 [filesystem encoding and error handler]({{< ref "/glossary/idx#term-filesystem-encoding-and-error-handler" >}})。
 
-​	此函数类似于 [`getpreferredencoding(False)`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.getpreferredencoding)，区别是此函数会忽略 [Python UTF-8 模式](https://docs.python.org/zh-cn/3.13/library/os.html#utf8-mode)。
+​	此函数类似于 [`getpreferredencoding(False)`]({{< ref "/library/i18n/locale#locale.getpreferredencoding" >}})，区别是此函数会忽略 [Python UTF-8 模式]({{< ref "/library/allos/os#utf8-mode" >}})。
 
 > Added in version 3.11.
 >
 
 ## locale.**normalize**(*localename*)
 
-​	为给定的区域名称返回标准代码。返回的区域代码已经格式化，可供 [`setlocale()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.setlocale) 使用。 如果标准化操作失败，则返回原名称。
+​	为给定的区域名称返回标准代码。返回的区域代码已经格式化，可供 [`setlocale()`]({{< ref "/library/i18n/locale#locale.setlocale" >}}) 使用。 如果标准化操作失败，则返回原名称。
 
-​	如果给出的编码无法识别，则本函数默认采用区域代码的默认编码，这正类似于 [`setlocale()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.setlocale)。
+​	如果给出的编码无法识别，则本函数默认采用区域代码的默认编码，这正类似于 [`setlocale()`]({{< ref "/library/i18n/locale#locale.setlocale" >}})。
 
 ## locale.**strcoll**(*string1*, *string2*)
 
-​	根据当前的 [`LC_COLLATE`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_COLLATE) 设置，对两个字符串进行比较。与其他比较函数一样，根据 *string1* 位于 *string2* 之前、之后或是相同，返回负值、、正值或者 `0`。
+​	根据当前的 [`LC_COLLATE`]({{< ref "/library/i18n/locale#locale.LC_COLLATE" >}}) 设置，对两个字符串进行比较。与其他比较函数一样，根据 *string1* 位于 *string2* 之前、之后或是相同，返回负值、、正值或者 `0`。
 
 ## locale.**strxfrm**(*string*)
 
@@ -309,25 +307,24 @@ locale.setlocale(locale.LC_ALL, '')
 
 ## locale.**format_string**(*format*, *val*, *grouping=False*, *monetary=False*)
 
-​	根据当前的 [`LC_NUMERIC`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_NUMERIC) 设置对数字 *val* 进行格式化。 此格式将遵循 `%` 运算符的约定。 对于浮点数值，会根据具体情况修改小数点。 如果 *grouping* 为 `True`，还会将分组纳入考虑。
+​	根据当前的 [`LC_NUMERIC`]({{< ref "/library/i18n/locale#locale.LC_NUMERIC" >}}) 设置对数字 *val* 进行格式化。 此格式将遵循 `%` 运算符的约定。 对于浮点数值，会根据具体情况修改小数点。 如果 *grouping* 为 `True`，还会将分组纳入考虑。
 
 ​	若 *monetary* 为 True，则会用到货币千位分隔符和分组字符串。
 
 ​	格式化符的处理类似 `format % val` ，但会考虑到当前的区域设置。
 
-*在 3.7 版本发生变更:* 增加了关键字参数 *monetary* 。
+> 在 3.7 版本发生变更: 增加了关键字参数 *monetary* 。
 
 ## locale.**currency**(*val*, *symbol=True*, *grouping=False*, *international=False*)
 
-​	根据当前的 [`LC_MONETARY`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_MONETARY) 设置，对数字 *val* 进行格式化。
+​	根据当前的 [`LC_MONETARY`]({{< ref "/library/i18n/locale#locale.LC_MONETARY" >}}) 设置，对数字 *val* 进行格式化。
 
 ​	如果 *symbol* 为真值则返回的字符串将包括货币符号，该参数默认为真值。 如果 *grouping* 为 `True` (非默认值)，则会对值进行分组。 如果 *international* 为 `True` (非默认值)，则会使用国际货币符号。
 
-​	备注
-
+​备注
  
 
-​	此函数将不适用于 'C' 语言区域，所以你必须先通过 [`setlocale()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.setlocale) 设置一个语言区域。
+​	此函数将不适用于 'C' 语言区域，所以你必须先通过 [`setlocale()`]({{< ref "/library/i18n/locale#locale.setlocale" >}}) 设置一个语言区域。
 
 ## locale.**str**(*float*)
 
@@ -335,25 +332,25 @@ locale.setlocale(locale.LC_ALL, '')
 
 ## locale.**delocalize**(*string*)
 
-​	根据 [`LC_NUMERIC`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_NUMERIC) 的设置，将字符串转换为标准化的数字字符串。
+​	根据 [`LC_NUMERIC`]({{< ref "/library/i18n/locale#locale.LC_NUMERIC" >}}) 的设置，将字符串转换为标准化的数字字符串。
 
 > Added in version 3.5.
 >
 
 ## locale.**localize**(*string*, *grouping=False*, *monetary=False*)
 
-​	根据 [`LC_NUMERIC`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_NUMERIC) 的设置，将标准化的数字字符串转换为格式化的字符串。
+​	根据 [`LC_NUMERIC`]({{< ref "/library/i18n/locale#locale.LC_NUMERIC" >}}) 的设置，将标准化的数字字符串转换为格式化的字符串。
 
 > Added in version 3.10.
 >
 
 ## locale.**atof**(*string*, *func=float*)
 
-​	将一个字符串转换为数字，遵循 [`LC_NUMERIC`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_NUMERIC) 设置，通过在 *string* 上调用 [`delocalize()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.delocalize) 的结果上调用 *func* 来实现。
+​	将一个字符串转换为数字，遵循 [`LC_NUMERIC`]({{< ref "/library/i18n/locale#locale.LC_NUMERIC" >}}) 设置，通过在 *string* 上调用 [`delocalize()`]({{< ref "/library/i18n/locale#locale.delocalize" >}}) 的结果上调用 *func* 来实现。
 
 ## locale.**atoi**(*string*)
 
-​	按照 [`LC_NUMERIC`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_NUMERIC) 的约定，将字符串转换为整数。
+​	按照 [`LC_NUMERIC`]({{< ref "/library/i18n/locale#locale.LC_NUMERIC" >}}) 的约定，将字符串转换为整数。
 
 ## locale.**LC_CTYPE**
 
@@ -363,25 +360,25 @@ locale.setlocale(locale.LC_ALL, '')
 
 ## locale.**LC_COLLATE**
 
-​	字符串排序会用到的区域类别。 将会影响 [`locale`](https://docs.python.org/zh-cn/3.13/library/locale.html#module-locale) 模块的 [`strcoll()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.strcoll) 和 [`strxfrm()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.strxfrm) 函数。
+​	字符串排序会用到的区域类别。 将会影响 [`locale`]({{< ref "/library/i18n/locale#module-locale" >}}) 模块的 [`strcoll()`]({{< ref "/library/i18n/locale#locale.strcoll" >}}) 和 [`strxfrm()`]({{< ref "/library/i18n/locale#locale.strxfrm" >}}) 函数。
 
 ## locale.**LC_TIME**
 
-​	格式化时间时会用到的区域类别。 [`time.strftime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.strftime) 函数会参考这些约定。
+​	格式化时间时会用到的区域类别。 [`time.strftime()`]({{< ref "/library/allos/time#time.strftime" >}}) 函数会参考这些约定。
 
 ## locale.**LC_MONETARY**
 
-​	格式化货币值时会用到的区域类别。可用值可由 [`localeconv()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.localeconv) 函数获取。
+​	格式化货币值时会用到的区域类别。可用值可由 [`localeconv()`]({{< ref "/library/i18n/locale#locale.localeconv" >}}) 函数获取。
 
 ## locale.**LC_MESSAGES**
 
-​	显示消息时用到的区域类别。目前 Python 不支持应用定制的本地化消息。 由操作系统显示的消息，比如由 [`os.strerror()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.strerror) 返回的消息可能会受到该类别的影响。
+​	显示消息时用到的区域类别。目前 Python 不支持应用定制的本地化消息。 由操作系统显示的消息，比如由 [`os.strerror()`]({{< ref "/library/allos/os#os.strerror" >}}) 返回的消息可能会受到该类别的影响。
 
 ​	这个值在不符合 POSIX 标准的操作系统上可能不可用，最主要是指 Windows。
 
 ## locale.**LC_NUMERIC**
 
-​	用于格式化数字的语言区域类别。 [`locale`](https://docs.python.org/zh-cn/3.13/library/locale.html#module-locale) 模块的 [`format_string()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.format_string), [`atoi()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.atoi), [`atof()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.atof) 和 [`str()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.str) 等函数会受到该类别的影响。 其他所有数字格式化操作将不受影响。
+​	用于格式化数字的语言区域类别。 [`locale`]({{< ref "/library/i18n/locale#module-locale" >}}) 模块的 [`format_string()`]({{< ref "/library/i18n/locale#locale.format_string" >}}), [`atoi()`]({{< ref "/library/i18n/locale#locale.atoi" >}}), [`atof()`]({{< ref "/library/i18n/locale#locale.atof" >}}) 和 [`str()`]({{< ref "/library/i18n/locale#locale.str" >}}) 等函数会受到该类别的影响。 其他所有数字格式化操作将不受影响。
 
 ## locale.**LC_ALL**
 
@@ -389,7 +386,7 @@ locale.setlocale(locale.LC_ALL, '')
 
 ## locale.**CHAR_MAX**
 
-​	一个符号常量， [`localeconv()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.localeconv) 返回多个值时将会用到。
+​	一个符号常量， [`localeconv()`]({{< ref "/library/i18n/locale#locale.localeconv" >}}) 返回多个值时将会用到。
 
 ​	示例：
 
@@ -410,13 +407,13 @@ locale.setlocale(locale.LC_ALL, '')
 
 ​	C 语言标准将区域定义为程序级别的属性，修改的代价可能相对较高。此外，有某些实现代码写得不好，频繁改变区域可能会导致内核崩溃。于是要想正确使用区域就变得有些痛苦。
 
-​	当程序第一次启动时，无论用户偏好定义成什么，区域值都是 `C`。不过有一个例外，就是在启动时修改 [`LC_CTYPE`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_CTYPE) 类别，设置当前区域编码为用户偏好编码。程序必须调用 `setlocale(LC_ALL, '')` 明确表示用户偏好区域将设为其他类别。
+​	当程序第一次启动时，无论用户偏好定义成什么，区域值都是 `C`。不过有一个例外，就是在启动时修改 [`LC_CTYPE`]({{< ref "/library/i18n/locale#locale.LC_CTYPE" >}}) 类别，设置当前区域编码为用户偏好编码。程序必须调用 `setlocale(LC_ALL, '')` 明确表示用户偏好区域将设为其他类别。
 
-​	若要从库程序中调用 [`setlocale()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.setlocale) ，通常这不是个好主意，因为副作用是会影响整个程序。保存和恢复区域设置也几乎一样糟糕：不仅代价高昂，而且会影响到恢复之前运行的其他线程。
+​	若要从库程序中调用 [`setlocale()`]({{< ref "/library/i18n/locale#locale.setlocale" >}}) ，通常这不是个好主意，因为副作用是会影响整个程序。保存和恢复区域设置也几乎一样糟糕：不仅代价高昂，而且会影响到恢复之前运行的其他线程。
 
-​	如果是要编写通用模块，需要有一种不受区域设置影响的操作方式（比如某些用到 [`time.strftime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.strftime) 的格式），将不得不寻找一种不用标准库的方案。更好的办法是说服自己，可以采纳区域设置。只有在万不得已的情况下，才能用文档标注出模块与非 `C` 区域设置不兼容。
+​	如果是要编写通用模块，需要有一种不受区域设置影响的操作方式（比如某些用到 [`time.strftime()`]({{< ref "/library/allos/time#time.strftime" >}}) 的格式），将不得不寻找一种不用标准库的方案。更好的办法是说服自己，可以采纳区域设置。只有在万不得已的情况下，才能用文档标注出模块与非 `C` 区域设置不兼容。
 
-​	根据语言区域执行数字运算的唯一方式就是使用本模块所定义的特殊函数: [`atof()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.atof), [`atoi()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.atoi), [`format_string()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.format_string), [`str()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.str)。
+​	根据语言区域执行数字运算的唯一方式就是使用本模块所定义的特殊函数: [`atof()`]({{< ref "/library/i18n/locale#locale.atof" >}}), [`atoi()`]({{< ref "/library/i18n/locale#locale.atoi" >}}), [`format_string()`]({{< ref "/library/i18n/locale#locale.format_string" >}}), [`str()`]({{< ref "/library/i18n/locale#locale.str" >}})。
 
 ​	无法根据区域设置进行大小写转换和字符分类。对于（Unicode）文本字符串来说，这些操作都是根据字符值进行的；而对于字节符串来说，转换和分类则是根据字节的 ASCII 值进行的，高位被置位的字节（即非 ASCII 字节）永远不会被转换或被视作字母或空白符之类。
 
@@ -424,9 +421,9 @@ locale.setlocale(locale.LC_ALL, '')
 
 ## 针对扩展程序编写人员和嵌入Python 运行的程序
 
-​	除了要查询当前区域，扩展模块不应去调用 [`setlocale()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.setlocale)。但由于返回值只能用于恢复设置，所以也没什么用（也许只能用于确认是否为 `C`）。
+​	除了要查询当前区域，扩展模块不应去调用 [`setlocale()`]({{< ref "/library/i18n/locale#locale.setlocale" >}})。但由于返回值只能用于恢复设置，所以也没什么用（也许只能用于确认是否为 `C`）。
 
-​	当 Python 代码使用 [`locale`](https://docs.python.org/zh-cn/3.13/library/locale.html#module-locale) 模块来修改语言区域时，这也会影响到嵌入的应用程序。 如果嵌入的应用程序不希望发生这种情况，它应当从 `config.c` 文件的内置模块表中移除 `_locale` 扩展模块（所有工作都是由它完成的），以确保 `_locale` 模块不能作为共享库来访问。
+​	当 Python 代码使用 [`locale`]({{< ref "/library/i18n/locale#module-locale" >}}) 模块来修改语言区域时，这也会影响到嵌入的应用程序。 如果嵌入的应用程序不希望发生这种情况，它应当从 `config.c` 文件的内置模块表中移除 `_locale` 扩展模块（所有工作都是由它完成的），以确保 `_locale` 模块不能作为共享库来访问。
 
 
 
@@ -444,6 +441,6 @@ locale.setlocale(locale.LC_ALL, '')
 
 ## locale.**bind_textdomain_codeset**(*domain*, *codeset*)
 
-​	locale 模块在提供了 C 库的 gettext 接口的系统上对外公开该接口。 它由 [`gettext()`](https://docs.python.org/zh-cn/3.13/library/gettext.html#module-gettext), [`dgettext()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.dgettext), [`dcgettext()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.dcgettext), [`textdomain()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.textdomain), [`bindtextdomain()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.bindtextdomain) 和 [`bind_textdomain_codeset()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.bind_textdomain_codeset) 等函数组成。 它们与 [`gettext`](https://docs.python.org/zh-cn/3.13/library/gettext.html#module-gettext) 模块中的同名函数类似，但使用了 C 库的二进制格式来表示消息目录，并使用 C 库的搜索算法来查找消息目录。
+​	locale 模块在提供了 C 库的 gettext 接口的系统上对外公开该接口。 它由 [`gettext()`]({{< ref "/library/i18n/gettext#module-gettext" >}}), [`dgettext()`]({{< ref "/library/i18n/locale#locale.dgettext" >}}), [`dcgettext()`]({{< ref "/library/i18n/locale#locale.dcgettext" >}}), [`textdomain()`]({{< ref "/library/i18n/locale#locale.textdomain" >}}), [`bindtextdomain()`]({{< ref "/library/i18n/locale#locale.bindtextdomain" >}}) 和 [`bind_textdomain_codeset()`]({{< ref "/library/i18n/locale#locale.bind_textdomain_codeset" >}}) 等函数组成。 它们与 [`gettext`]({{< ref "/library/i18n/gettext#module-gettext" >}}) 模块中的同名函数类似，但使用了 C 库的二进制格式来表示消息目录，并使用 C 库的搜索算法来查找消息目录。
 
-​	Python 应用程序通常不需要发起调用这些函数，而应当改用 [`gettext`](https://docs.python.org/zh-cn/3.13/library/gettext.html#module-gettext)。 这条规则的一个已知例外是与附加 C 库相链接的应用程序，它们会在内部发起调用 C 函数 `gettext` 或 `dcgettext`。 对于这些应用程序，可能有必要绑定文本域，以便库能够正确地找到它们的消息目录。
+​	Python 应用程序通常不需要发起调用这些函数，而应当改用 [`gettext`]({{< ref "/library/i18n/gettext#module-gettext" >}})。 这条规则的一个已知例外是与附加 C 库相链接的应用程序，它们会在内部发起调用 C 函数 `gettext` 或 `dcgettext`。 对于这些应用程序，可能有必要绑定文本域，以便库能够正确地找到它们的消息目录。

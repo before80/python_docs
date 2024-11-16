@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/platform.html](https://docs.python.org/zh-cn/3.13/library/platform.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/platform.html](https://docs.python.org/zh-cn/3.13/library/platform.html)
 >
 > 收录该文档的时间：`2024-11-15T12:09:25+08:00`
 
@@ -18,8 +18,7 @@ draft = false
 
 ------
 
-​	备注
-
+​备注
  
 
 ​	特定平台按字母顺序排列，Linux 包括在 Unix 小节之中。
@@ -36,13 +35,12 @@ draft = false
 
 ​	此函数依赖于系统的 `file` 命令来执行实际的操作。 这在几乎所有 Unix 平台和某些非 Unix 平台上只有当可执行文件指向 Python 解释器时才可用。 当以上要求不满足时将会使用合理的默认值。
 
-​	备注
-
+​备注
  
 
 ​	在 macOS (也许还有其他平台) 上，可执行文件可能是包含多种架构的通用文件。
 
-​	要获取当前解释器的“64 位性”，更可靠的做法是查询 [`sys.maxsize`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.maxsize) 属性:
+​	要获取当前解释器的“64 位性”，更可靠的做法是查询 [`sys.maxsize`]({{< ref "/library/python/sys#sys.maxsize" >}}) 属性:
 
 ```
 is_64bits = sys.maxsize > 2**32
@@ -62,17 +60,17 @@ is_64bits = sys.maxsize > 2**32
 
 ​	输出信息的目标是“人类易读”而非机器易解析。 它在不同平台上可能看起来不一致，这是有意为之的。
 
-​	如果 *aliased* 为真值，此函数将使用各种平台不同与其通常名称的别名来报告系统名称，例如 SunOS 将被报告为 Solaris。 [`system_alias()`](https://docs.python.org/zh-cn/3.13/library/platform.html#platform.system_alias) 函数将被用于实现此功能。
+​	如果 *aliased* 为真值，此函数将使用各种平台不同与其通常名称的别名来报告系统名称，例如 SunOS 将被报告为 Solaris。 [`system_alias()`]({{< ref "/library/allos/platform#platform.system_alias" >}}) 函数将被用于实现此功能。
 
 ​	将 *terse* 设为真值将导致此函数只返回标识平台所必须的最小量信息。
 
-*在 3.8 版本发生变更:* 在 macOS 上，此函数现在会在 [`mac_ver()`](https://docs.python.org/zh-cn/3.13/library/platform.html#platform.mac_ver) 返回的发布版字符串非空时使用它，以便获取 macOS 版本而非 darwin 版本。
+> 在 3.8 版本发生变更: 在 macOS 上，此函数现在会在 [`mac_ver()`]({{< ref "/library/allos/platform#platform.mac_ver" >}}) 返回的发布版字符串非空时使用它，以便获取 macOS 版本而非 darwin 版本。
 
 ## platform.**processor**()
 
 ​	返回（真实的）处理器名称，例如 `'amdk6'`。
 
-​	如果该值无法确定则将返回空字符串。 请注意许多平台都不提供此信息或是简单地返回与 [`machine()`](https://docs.python.org/zh-cn/3.13/library/platform.html#platform.machine) 相同的值。 NetBSD 则会提供此信息。
+​	如果该值无法确定则将返回空字符串。 请注意许多平台都不提供此信息或是简单地返回与 [`machine()`]({{< ref "/library/allos/platform#platform.machine" >}}) 相同的值。 NetBSD 则会提供此信息。
 
 ## platform.**python_build**()
 
@@ -114,7 +112,7 @@ is_64bits = sys.maxsize > 2**32
 
 ​	返回系统平台/OS的名称，例如 `'Linux'`, `'Darwin'`, `'Java'`, `'Windows'`。 如果该值无法确定则将返回一个空字符串。
 
-​	在 iOS 和 Android 上，这将返回面向用户的 OS 名称 (即 `'iOS`, `'iPadOS'` 或 `'Android'`)。 要获取内核名称 (`'Darwin'` 或 `'Linux'`)，请使用 [`os.uname()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.uname)。
+​	在 iOS 和 Android 上，这将返回面向用户的 OS 名称 (即 `'iOS`, `'iPadOS'` 或 `'Android'`)。 要获取内核名称 (`'Darwin'` 或 `'Linux'`)，请使用 [`os.uname()`]({{< ref "/library/allos/os#os.uname" >}})。
 
 ## platform.**system_alias**(*system*, *release*, *version*)
 
@@ -124,21 +122,21 @@ is_64bits = sys.maxsize > 2**32
 
 ​	返回系统的发布版本信息，例如 `'#3 on degas'`。 如果该值无法确定则将返回一个空字符串。
 
-​	在 iOS 和 Android 上，这将是面向用户的 OS 版本号。 要获取 Darwin 或 Linux 内核版本号，请使用 [`os.uname()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.uname)。
+​	在 iOS 和 Android 上，这将是面向用户的 OS 版本号。 要获取 Darwin 或 Linux 内核版本号，请使用 [`os.uname()`]({{< ref "/library/allos/os#os.uname" >}})。
 
 ## platform.**uname**()
 
-​	具有高可移植性的 uname 接口。 返回包含六个属性的 [`namedtuple()`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.namedtuple): [`system`](https://docs.python.org/zh-cn/3.13/library/platform.html#platform.system), [`node`](https://docs.python.org/zh-cn/3.13/library/platform.html#platform.node), [`release`](https://docs.python.org/zh-cn/3.13/library/platform.html#platform.release), [`version`](https://docs.python.org/zh-cn/3.13/library/platform.html#platform.version), [`machine`](https://docs.python.org/zh-cn/3.13/library/platform.html#platform.machine) 和 [`processor`](https://docs.python.org/zh-cn/3.13/library/platform.html#platform.processor)。
+​	具有高可移植性的 uname 接口。 返回包含六个属性的 [`namedtuple()`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.namedtuple): [`system`]({{< ref "/library/allos/platform#platform.system" >}}), [`node`]({{< ref "/library/allos/platform#platform.node" >}}), [`release`]({{< ref "/library/allos/platform#platform.release" >}}), [`version`]({{< ref "/library/allos/platform#platform.version" >}}), [`machine`]({{< ref "/library/allos/platform#platform.machine" >}}) 和 [`processor`]({{< ref "/library/allos/platform#platform.processor" >}})。
 
-[`processor`](https://docs.python.org/zh-cn/3.13/library/platform.html#platform.processor) 将根据需要延后获取。
+[`processor`]({{< ref "/library/allos/platform#platform.processor" >}}) 将根据需要延后获取。
 
-​	注意：前两个属性名称与 [`os.uname()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.uname) 所提供的名称不同，后者是被命名为 `sysname` 和 `nodename`。
+​	注意：前两个属性名称与 [`os.uname()`]({{< ref "/library/allos/os#os.uname" >}}) 所提供的名称不同，后者是被命名为 `sysname` 和 `nodename`。
 
 ​	无法确定的条目会被设为 `''`。
 
-*在 3.3 版本发生变更:* 结果由元组改为 [`namedtuple()`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.namedtuple) 。
+> 在 3.3 版本发生变更: 结果由元组改为 [`namedtuple()`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.namedtuple) 。
 
-*在 3.9 版本发生变更:* [`processor`](https://docs.python.org/zh-cn/3.13/library/platform.html#platform.processor) 将延后而不是立即被获取。
+> 在 3.9 版本发生变更: [`processor`]({{< ref "/library/allos/platform#platform.processor" >}}) 将延后而不是立即被获取。
 
 ## Java平台
 
@@ -167,7 +165,7 @@ is_64bits = sys.maxsize > 2**32
 
 ## platform.**win32_is_iot**()
 
-​	如果 [`win32_edition()`](https://docs.python.org/zh-cn/3.13/library/platform.html#platform.win32_edition) 返回的 Windows 版本被识别为 IoT 版则返回 `True`。
+​	如果 [`win32_edition()`]({{< ref "/library/allos/platform#platform.win32_edition" >}}) 返回的 Windows 版本被识别为 IoT 版则返回 `True`。
 
 > Added in version 3.8.
 >
@@ -209,7 +207,7 @@ is_64bits = sys.maxsize > 2**32
 
 ​	从 `os-release` 文件获取操作系统标识并将其作为一个字典返回。 `os-release` 文件是 [freedesktop.org 标准](https://www.freedesktop.org/software/systemd/man/os-release.html) 并在大多数 Linux 发行版上可用。 一个重要的例外是 Android 和基于 Android 的发行版。
 
-​	当 `/etc/os-release` 或 `/usr/lib/os-release` 均无法读取时将引发 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 或其子类。
+​	当 `/etc/os-release` 或 `/usr/lib/os-release` 均无法读取时将引发 [`OSError`]({{< ref "/library/exceptions#OSError" >}}) 或其子类。
 
 ​	成功时，该函数将返回一个字典，其中键和值均为字符串。 值当中的特殊字符例如 `"` 和 `{TX-PL-LABEL}#x60;` 会被复原。 字段 `NAME`, `ID` 和 `PRETTY_NAME` 总是会按照标准来定义。 所有其他字段都是可选的。 厂商可能会包括额外的字段。
 
@@ -237,7 +235,7 @@ def get_like_distro():
 ​	获取 Android 设备信息。 返回一个具有下列属性的 [`namedtuple()`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.namedtuple)。 无法确定的值会被设为由形参给出的默认值 。
 
 - `release` - 为字符串形式的 Android 版本 (例如 `"14"`)。
-- `api_level` - 正在运行的设备的 API 级别，为整数形式 (例如 `34` 对应 Android 14)。 要获取构建 Python 所使用的 API 级别，参见 [`sys.getandroidapilevel()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.getandroidapilevel)。
+- `api_level` - 正在运行的设备的 API 级别，为整数形式 (例如 `34` 对应 Android 14)。 要获取构建 Python 所使用的 API 级别，参见 [`sys.getandroidapilevel()`]({{< ref "/library/python/sys#sys.getandroidapilevel" >}})。
 - `manufacturer` - [厂商名称](https://developer.android.com/reference/android/os/Build#MANUFACTURER)。
 - `model` - [型号名称](https://developer.android.com/reference/android/os/Build#MODEL) – 通常为商业名称或型号数字。
 - `device` - [设备名称](https://developer.android.com/reference/android/os/Build#DEVICE) – 通常为型号数字或代号名。

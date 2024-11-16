@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/posix.html](https://docs.python.org/zh-cn/3.13/library/posix.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/posix.html](https://docs.python.org/zh-cn/3.13/library/posix.html)
 >
 > 收录该文档的时间：`2024-11-15T21:30:54+08:00`
 
@@ -18,11 +18,11 @@ draft = false
 
 ​	此模块提供了对基于 C 标准和 POSIX 标准（一种稍加修改的 Unix 接口）进行标准化的系统功能的访问。
 
-[Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
+[Availability]({{< ref "/library/intro#availability" >}}): Unix.
 
-**请勿直接导入此模块。** 而应导入 [`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os) 模块，它提供了此接口的 *可移植* 版本。 在 Unix 上，[`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os) 模块提供了 [`posix`](https://docs.python.org/zh-cn/3.13/library/posix.html#module-posix) 接口的一个超集。 在非 Unix 操作系统上 [`posix`](https://docs.python.org/zh-cn/3.13/library/posix.html#module-posix) 模块将不可用，但会通过 [`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os) 接口提供它的一个可用子集。 一旦导入了 [`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os)，用它替代 [`posix`](https://docs.python.org/zh-cn/3.13/library/posix.html#module-posix) 时就 *没有* 性能惩罚。 此外，[`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os) 还提供了一些附加功能，例如在 `os.environ` 中的某个条目被修改时会自动调用 [`putenv()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.putenv)。
+**请勿直接导入此模块。** 而应导入 [`os`]({{< ref "/library/allos/os#module-os" >}}) 模块，它提供了此接口的 *可移植* 版本。 在 Unix 上，[`os`]({{< ref "/library/allos/os#module-os" >}}) 模块提供了 [`posix`]({{< ref "/library/unix/posix#module-posix" >}}) 接口的一个超集。 在非 Unix 操作系统上 [`posix`]({{< ref "/library/unix/posix#module-posix" >}}) 模块将不可用，但会通过 [`os`]({{< ref "/library/allos/os#module-os" >}}) 接口提供它的一个可用子集。 一旦导入了 [`os`]({{< ref "/library/allos/os#module-os" >}})，用它替代 [`posix`]({{< ref "/library/unix/posix#module-posix" >}}) 时就 *没有* 性能惩罚。 此外，[`os`]({{< ref "/library/allos/os#module-os" >}}) 还提供了一些附加功能，例如在 `os.environ` 中的某个条目被修改时会自动调用 [`putenv()`]({{< ref "/library/allos/os#os.putenv" >}})。
 
-​	错误将作为异常被报告；对于类型错误会给出普通异常，而系统调用所报告的异常则会引发 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError)。
+​	错误将作为异常被报告；对于类型错误会给出普通异常，而系统调用所报告的异常则会引发 [`OSError`]({{< ref "/library/exceptions#OSError" >}})。
 
 
 
@@ -48,18 +48,17 @@ CFLAGS='-D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64' OPT="-g -O2 $CFLAGS" \
 
 ## 重要的模块内容
 
-​	除了 [`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os) 模块文档已说明的许多函数，[`posix`](https://docs.python.org/zh-cn/3.13/library/posix.html#module-posix) 还定义了下列数据项:
+​	除了 [`os`]({{< ref "/library/allos/os#module-os" >}}) 模块文档已说明的许多函数，[`posix`]({{< ref "/library/unix/posix#module-posix" >}}) 还定义了下列数据项:
 
 ## posix.**environ**
 
 ​	一个表示解释器启动时间点的字符串环境的字典。 键和值的类型在Unix 上为 bytes 而在 Windows 上为 str。 例如，`environ[b'HOME']` (Windows 上的 `environ['HOME']`) 是你的家目录的路径名，等价于 C 中的 `getenv("HOME")`。
 
-​	修改此字典不会影响由 [`execv()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.execv), [`popen()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.popen) 或 [`system()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.system) 所传入的字符串环境；如果你需要修改环境，请将 `environ` 传给 [`execve()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.execve) 或者为 [`system()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.system) 或 [`popen()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.popen) 的命令字符串添加变量赋值和 export 语句。
+​	修改此字典不会影响由 [`execv()`]({{< ref "/library/allos/os#os.execv" >}}), [`popen()`]({{< ref "/library/allos/os#os.popen" >}}) 或 [`system()`]({{< ref "/library/allos/os#os.system" >}}) 所传入的字符串环境；如果你需要修改环境，请将 `environ` 传给 [`execve()`]({{< ref "/library/allos/os#os.execve" >}}) 或者为 [`system()`]({{< ref "/library/allos/os#os.system" >}}) 或 [`popen()`]({{< ref "/library/allos/os#os.popen" >}}) 的命令字符串添加变量赋值和 export 语句。
 
-*在 3.2 版本发生变更:* 在 Unix 上，键和值为 bytes 类型。
+> 在 3.2 版本发生变更: 在 Unix 上，键和值为 bytes 类型。
 
-​	备注
-
+​备注
  
 
-[`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os) 模块提供了对 `environ` 的替代实现，它会在被修改时更新环境。 还要注意更新 [`os.environ`](https://docs.python.org/zh-cn/3.13/library/os.html#os.environ) 将导致此字典失效。 推荐使用这个 [`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os) 模块版本而不是直接访问 [`posix`](https://docs.python.org/zh-cn/3.13/library/posix.html#module-posix) 模块。
+[`os`]({{< ref "/library/allos/os#module-os" >}}) 模块提供了对 `environ` 的替代实现，它会在被修改时更新环境。 还要注意更新 [`os.environ`]({{< ref "/library/allos/os#os.environ" >}}) 将导致此字典失效。 推荐使用这个 [`os`]({{< ref "/library/allos/os#module-os" >}}) 模块版本而不是直接访问 [`posix`]({{< ref "/library/unix/posix#module-posix" >}}) 模块。

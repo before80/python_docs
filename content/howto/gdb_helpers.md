@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/gdb_helpers.html](https://docs.python.org/zh-cn/3.13/howto/gdb_helpers.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/gdb_helpers.html](https://docs.python.org/zh-cn/3.13/howto/gdb_helpers.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -22,8 +22,7 @@ draft = false
 
 ​	开发 CPython 扩展或处理 CPython 中用 C 语言编写的部分的开发人员可以通过本文档学习如何将 `python-gdb.py` 扩展与 GDB 一起使用。
 
-​	备注
-
+​备注
  
 
 ​	本文档假定你已熟悉 GDB 和 CPython C API 的基础知识。 它对来自 [devguide](https://devguide.python.org/) 和 [Python wiki](https://wiki.python.org/moin/DebuggingWithGdb) 的内容进行了整合。
@@ -44,8 +43,7 @@ draft = false
 
 ​	要激活支持，你必须将包含 `python-gdb.py` 的目录添加到 GDB 的 "auto-load-safe-path" 中。如果你没有这样做，较新版本的 GDB 会打印一个警告来说明如何执行此操作。
 
-​	备注
-
+​备注
  
 
 ​	如果你没有看到针对你的 GDB 版本的说明，请将以下内容放到你的配置文件中 (`~/.gdbinit` 或 `~/.config/gdb/gdbinit`):
@@ -79,8 +77,8 @@ add-auto-load-safe-path /path/to/cpython
 
 ​	为了方便调试，你可能需要：
 
-- 使用 Python 的 [调试构建版](https://docs.python.org/zh-cn/3.13/using/configure.html#debug-build)。 （当从源代码构建时，使用 `configure --with-pydebug`。 在 Linux 发行版上，安装并运行 `python-debug` 或 `python-dbg` 之类的包，如果有的话。）
-- 使用运行时 [开发模式](https://docs.python.org/zh-cn/3.13/library/devmode.html#devmode) (`-X dev`)。
+- 使用 Python 的 [调试构建版]({{< ref "/using/configure#debug-build" >}})。 （当从源代码构建时，使用 `configure --with-pydebug`。 在 Linux 发行版上，安装并运行 `python-debug` 或 `python-dbg` 之类的包，如果有的话。）
+- 使用运行时 [开发模式]({{< ref "/library/development/devmode#devmode" >}}) (`-X dev`)。
 
 ​	两者都将启用额外的断言并禁用某些优化。 有时这会隐藏你想要查找的程序错误，但大多数情况下它们都能使调试过程更简单。
 

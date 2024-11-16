@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/sorting.html](https://docs.python.org/zh-cn/3.13/howto/sorting.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/sorting.html](https://docs.python.org/zh-cn/3.13/howto/sorting.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -18,13 +18,13 @@ draft = false
 
 ​	Andrew Dalke 与 Raymond Hettinger
 
-​	内置列表方法 [`list.sort()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list.sort) 原地修改列表，而内置函数 [`sorted()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 由可迭代对象新建有序列表。
+​	内置列表方法 [`list.sort()`]({{< ref "/library/stdtypes#list.sort" >}}) 原地修改列表，而内置函数 [`sorted()`]({{< ref "/library/functions#sorted" >}}) 由可迭代对象新建有序列表。
 
 ​	在本文档中，我们将探索使用 Python 对数据进行排序的各种技术。
 
 ## 排序的基础知识
 
-​	普通的升序排序非常容易：只需调用 [`sorted()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 函数。它返回新有序列表：
+​	普通的升序排序非常容易：只需调用 [`sorted()`]({{< ref "/library/functions#sorted" >}}) 函数。它返回新有序列表：
 
 
 
@@ -33,7 +33,7 @@ draft = false
 [1, 2, 3, 4, 5]
 ```
 
-​	亦可用 [`list.sort()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list.sort) 方法。它原地修改原列表（并返回 `None` 以避免混淆）。往往不如 [`sorted()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 方便——但若不需原列表，用它会略高效些。
+​	亦可用 [`list.sort()`]({{< ref "/library/stdtypes#list.sort" >}}) 方法。它原地修改原列表（并返回 `None` 以避免混淆）。往往不如 [`sorted()`]({{< ref "/library/functions#sorted" >}}) 方便——但若不需原列表，用它会略高效些。
 
 
 
@@ -44,7 +44,7 @@ draft = false
 [1, 2, 3, 4, 5]
 ```
 
-​	另一个区别是 [`list.sort()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list.sort) 方法只为列表定义，而 [`sorted()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 函数接受任何可迭代对象。
+​	另一个区别是 [`list.sort()`]({{< ref "/library/stdtypes#list.sort" >}}) 方法只为列表定义，而 [`sorted()`]({{< ref "/library/functions#sorted" >}}) 函数接受任何可迭代对象。
 
 
 
@@ -55,7 +55,7 @@ draft = false
 
 ## 键函数
 
-[`list.sort()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list.sort) 和 [`sorted()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 皆有 *key* 形参用以指定在比较前要对每个列表元素调用的函数（或其它可调用对象）。
+[`list.sort()`]({{< ref "/library/stdtypes#list.sort" >}}) 和 [`sorted()`]({{< ref "/library/functions#sorted" >}}) 皆有 *key* 形参用以指定在比较前要对每个列表元素调用的函数（或其它可调用对象）。
 
 ​	例如，这是个不区分大小写的字符串比较：
 
@@ -104,11 +104,11 @@ draft = false
 [('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
 ```
 
-​	有具名属性的对象可像上面这样用一个常规的类来创建，亦可是 [`dataclass`](https://docs.python.org/zh-cn/3.13/library/dataclasses.html#dataclasses.dataclass) 实例或 [named tuple](https://docs.python.org/zh-cn/3.13/glossary.html#term-named-tuple)。
+​	有具名属性的对象可像上面这样用一个常规的类来创建，亦可是 [`dataclass`]({{< ref "/library/python/dataclasses#dataclasses.dataclass" >}}) 实例或 [named tuple]({{< ref "/glossary/idx#term-named-tuple" >}})。
 
 ## 运算符模块的函数与函数的偏求值
 
-​	上述 [key function](https://docs.python.org/zh-cn/3.13/glossary.html#term-key-function) 模式相当常见，为了让访问器函数更加好写好用，Python 提供了一些便捷函数。[`operator`](https://docs.python.org/zh-cn/3.13/library/operator.html#module-operator) 模块里有 [`itemgetter()`](https://docs.python.org/zh-cn/3.13/library/operator.html#operator.itemgetter)、[`attrgetter()`](https://docs.python.org/zh-cn/3.13/library/operator.html#operator.attrgetter) 和 [`methodcaller()`](https://docs.python.org/zh-cn/3.13/library/operator.html#operator.methodcaller) 函数。
+​	上述 [key function]({{< ref "/glossary/idx#term-key-function" >}}) 模式相当常见，为了让访问器函数更加好写好用，Python 提供了一些便捷函数。[`operator`]({{< ref "/library/functional/operator#module-operator" >}}) 模块里有 [`itemgetter()`]({{< ref "/library/functional/operator#operator.itemgetter" >}})、[`attrgetter()`]({{< ref "/library/functional/operator#operator.attrgetter" >}}) 和 [`methodcaller()`]({{< ref "/library/functional/operator#operator.methodcaller" >}}) 函数。
 
 ​	用了那些函数之后，前面的示例变得更简单，运行起来也更快：
 
@@ -136,7 +136,7 @@ draft = false
 [('john', 'A', 15), ('dave', 'B', 10), ('jane', 'B', 12)]
 ```
 
-​	另一个有助于创建键函数的工具位于 [`functools`](https://docs.python.org/zh-cn/3.13/library/functools.html#module-functools) 模块。[`partial()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.partial) 函数可以降低多元函数的 [元数](https://en.wikipedia.org/wiki/Arity) 使之适合做键函数。
+​	另一个有助于创建键函数的工具位于 [`functools`]({{< ref "/library/functional/functools#module-functools" >}}) 模块。[`partial()`]({{< ref "/library/functional/functools#functools.partial" >}}) 函数可以降低多元函数的 [元数](https://en.wikipedia.org/wiki/Arity) 使之适合做键函数。
 
 
 
@@ -155,7 +155,7 @@ draft = false
 
 ## 升序与降序
 
-[`list.sort()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list.sort) 和 [`sorted()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 接受布尔形参 *reverse* 用于标记降序排序。例如，将学生数据按 *age* 倒序排序：
+[`list.sort()`]({{< ref "/library/stdtypes#list.sort" >}}) 和 [`sorted()`]({{< ref "/library/functions#sorted" >}}) 接受布尔形参 *reverse* 用于标记降序排序。例如，将学生数据按 *age* 倒序排序：
 
 
 
@@ -243,9 +243,9 @@ draft = false
 
 ​	例如，一个 [天平](https://upload.wikimedia.org/wikipedia/commons/1/17/Balance_à_tabac_1850.JPG) 会比较两个样本并给出一个相对排序：较轻、相等或较重。 类似地，一个比较函数如 `cmp(a, b)` 将返回一个负值表示小于，零表示相等，或是一个正值表示大于。
 
-​	当从其他语言转写算法时经常会遇到比较函数。 此外，某些库也提供了比较函数作为其 API 的组成部分。 例如，[`locale.strcoll()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.strcoll) 就是一个比较函数。
+​	当从其他语言转写算法时经常会遇到比较函数。 此外，某些库也提供了比较函数作为其 API 的组成部分。 例如，[`locale.strcoll()`]({{< ref "/library/i18n/locale#locale.strcoll" >}}) 就是一个比较函数。
 
-​	为了适应这些情况，Python 提供了 [`functools.cmp_to_key`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.cmp_to_key) 用来包装比较函数使其可以作为键函数来使用:
+​	为了适应这些情况，Python 提供了 [`functools.cmp_to_key`]({{< ref "/library/functional/functools#functools.cmp_to_key" >}}) 用来包装比较函数使其可以作为键函数来使用:
 
 ```
 sorted(words, key=cmp_to_key(strcoll))  # 基于地区的排序规则
@@ -253,9 +253,9 @@ sorted(words, key=cmp_to_key(strcoll))  # 基于地区的排序规则
 
 ## 杂项说明
 
-- 对于可感知语言区域的排序，请使用 [`locale.strxfrm()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.strxfrm) 作为键函数或使用 [`locale.strcoll()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.strcoll) 作为比较函数。 因为在不同语言中即便字母表相同“字母”排列顺序也可能不同所以这样做是必要的。
+- 对于可感知语言区域的排序，请使用 [`locale.strxfrm()`]({{< ref "/library/i18n/locale#locale.strxfrm" >}}) 作为键函数或使用 [`locale.strcoll()`]({{< ref "/library/i18n/locale#locale.strcoll" >}}) 作为比较函数。 因为在不同语言中即便字母表相同“字母”排列顺序也可能不同所以这样做是必要的。
 
-- *reverse* 参数仍然保持排序稳定性（因此具有相等键的记录保留原始顺序）。 有趣的是，通过使用内置的 [`reversed()`](https://docs.python.org/zh-cn/3.13/library/functions.html#reversed) 函数两次，可以在没有参数的情况下模拟该效果：
+- *reverse* 参数仍然保持排序稳定性（因此具有相等键的记录保留原始顺序）。 有趣的是，通过使用内置的 [`reversed()`]({{< ref "/library/functions#reversed" >}}) 函数两次，可以在没有参数的情况下模拟该效果：
 
   
 
@@ -268,7 +268,7 @@ sorted(words, key=cmp_to_key(strcoll))  # 基于地区的排序规则
   [('red', 1), ('red', 2), ('blue', 1), ('blue', 2)]
   ```
 
-- 排序例程在两个对象之间进行比较时使用 `<`。 因此，通过定义一个 [`__lt__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__lt__) 方法，就可以轻松地为类添加标准排序顺序:
+- 排序例程在两个对象之间进行比较时使用 `<`。 因此，通过定义一个 [`__lt__()`]({{< ref "/reference/datamodel#object.__lt__" >}}) 方法，就可以轻松地为类添加标准排序顺序:
 
   
 
@@ -278,7 +278,7 @@ sorted(words, key=cmp_to_key(strcoll))  # 基于地区的排序规则
   [('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
   ```
 
-  不过，请注意 `<` 在 [`__lt__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__lt__) 未被实现时可以回退为使用 [`__gt__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__gt__) (请参阅 [`object.__lt__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__lt__) 了解相关机制的细节)。 为避免意外，[**PEP 8**](https://peps.python.org/pep-0008/) 建议实现所有的六个比较方法。 [`total_ordering()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.total_ordering) 装饰器被提供用来令此任务更为容易。
+  不过，请注意 `<` 在 [`__lt__()`]({{< ref "/reference/datamodel#object.__lt__" >}}) 未被实现时可以回退为使用 [`__gt__()`]({{< ref "/reference/datamodel#object.__gt__" >}}) (请参阅 [`object.__lt__()`]({{< ref "/reference/datamodel#object.__lt__" >}}) 了解相关机制的细节)。 为避免意外，[**PEP 8**](https://peps.python.org/pep-0008/) 建议实现所有的六个比较方法。 [`total_ordering()`]({{< ref "/library/functional/functools#functools.total_ordering" >}}) 装饰器被提供用来令此任务更为容易。
 
 - 键函数不需要直接依赖于被排序的对象。键函数还可以访问外部资源。例如，如果学生成绩存储在字典中，则可以使用它们对单独的学生姓名列表进行排序：
 
@@ -295,6 +295,6 @@ sorted(words, key=cmp_to_key(strcoll))  # 基于地区的排序规则
 
 ​	有些应用程序只需要对部分数据进行排序。 标准库提供了几种工具可以执行比完整排序更轻量的任务：
 
-- [`min()`](https://docs.python.org/zh-cn/3.13/library/functions.html#min) 和 [`max()`](https://docs.python.org/zh-cn/3.13/library/functions.html#max) 可分别返回最小和最大值。 这两个函数只需逐一检查输入数据而几乎不需要任何额外的内存。
-- [`heapq.nsmallest()`](https://docs.python.org/zh-cn/3.13/library/heapq.html#heapq.nsmallest) 和 [`heapq.nlargest()`](https://docs.python.org/zh-cn/3.13/library/heapq.html#heapq.nlargest) 可分别返回 *n* 个最小和最大的值。 这两个函数每次只需逐一检查数据并仅需在内存中保留 *n* 个元素。 对于相对于输入总数来说较小的 *n* 值来说，这两个函数将进行远少于完整排序的比较。
-- [`heapq.heappush()`](https://docs.python.org/zh-cn/3.13/library/heapq.html#heapq.heappush) 和 [`heapq.heappop()`](https://docs.python.org/zh-cn/3.13/library/heapq.html#heapq.heappop) 会创建并维护一组部分排序的数据其中最小的元素将处在 `0` 位置上。 这两个函数很适合实现常用于任务调度的优先级队列。
+- [`min()`]({{< ref "/library/functions#min" >}}) 和 [`max()`]({{< ref "/library/functions#max" >}}) 可分别返回最小和最大值。 这两个函数只需逐一检查输入数据而几乎不需要任何额外的内存。
+- [`heapq.nsmallest()`]({{< ref "/library/datatypes/heapq#heapq.nsmallest" >}}) 和 [`heapq.nlargest()`]({{< ref "/library/datatypes/heapq#heapq.nlargest" >}}) 可分别返回 *n* 个最小和最大的值。 这两个函数每次只需逐一检查数据并仅需在内存中保留 *n* 个元素。 对于相对于输入总数来说较小的 *n* 值来说，这两个函数将进行远少于完整排序的比较。
+- [`heapq.heappush()`]({{< ref "/library/datatypes/heapq#heapq.heappush" >}}) 和 [`heapq.heappop()`]({{< ref "/library/datatypes/heapq#heapq.heappop" >}}) 会创建并维护一组部分排序的数据其中最小的元素将处在 `0` 位置上。 这两个函数很适合实现常用于任务调度的优先级队列。

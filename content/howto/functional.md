@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/functional.html](https://docs.python.org/zh-cn/3.13/howto/functional.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/functional.html](https://docs.python.org/zh-cn/3.13/howto/functional.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -22,11 +22,11 @@ draft = false
 
 ​	0.32
 
-​	本文档提供恰当的 Python 函数式编程范例，在函数式编程简单的介绍之后，将简单介绍Python中关于函数式编程的特性如 [iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterator) 和 [generator](https://docs.python.org/zh-cn/3.13/glossary.html#term-generator) 以及相关库模块如 [`itertools`](https://docs.python.org/zh-cn/3.13/library/itertools.html#module-itertools) 和 [`functools`](https://docs.python.org/zh-cn/3.13/library/functools.html#module-functools) 等。
+​	本文档提供恰当的 Python 函数式编程范例，在函数式编程简单的介绍之后，将简单介绍Python中关于函数式编程的特性如 [iterator]({{< ref "/glossary/idx#term-iterator" >}}) 和 [generator]({{< ref "/glossary/idx#term-generator" >}}) 以及相关库模块如 [`itertools`]({{< ref "/library/functional/itertools#module-itertools" >}}) 和 [`functools`]({{< ref "/library/functional/functools#module-functools" >}}) 等。
 
 ## 概述
 
-​	本章介绍函数式编程的基本概念。如您仅想学习 Python 语言的特性，可跳过本章直接查看 [迭代器](https://docs.python.org/zh-cn/3.13/howto/functional.html#functional-howto-iterators).
+​	本章介绍函数式编程的基本概念。如您仅想学习 Python 语言的特性，可跳过本章直接查看 [迭代器]({{< ref "/howto/functional#functional-howto-iterators" >}}).
 
 ​	编程语言支持通过以下几种方式来解构具体问题：
 
@@ -39,7 +39,7 @@ draft = false
 
 ​	在函数式程序里，输入会流经一系列函数。每个函数接受输入并输出结果。函数式风格反对使用带有副作用的函数，这些副作用会修改内部状态，或者引起一些无法体现在函数的返回值中的变化。完全不产生副作用的函数被称作“纯函数”。消除副作用意味着不能使用随程序运行而更新的数据结构；每个函数的输出必须只依赖于输入。
 
-​	有些语言对纯洁性要求非常严格，甚至没有诸如 `a=3` 或 `c = a + b` 之类的赋值语句，但很难避免所有的副作用，如打印到屏幕上或写到磁盘文件之类的副作用。另一个例子是调用 [`print()`](https://docs.python.org/zh-cn/3.13/library/functions.html#print) 或 [`time.sleep()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.sleep) 函数，它们都没有返回一个有用的值。这两个函数被调用只是为了它们的副作用，即向屏幕发送一些文本或暂停执行一秒钟。
+​	有些语言对纯洁性要求非常严格，甚至没有诸如 `a=3` 或 `c = a + b` 之类的赋值语句，但很难避免所有的副作用，如打印到屏幕上或写到磁盘文件之类的副作用。另一个例子是调用 [`print()`]({{< ref "/library/functions#print" >}}) 或 [`time.sleep()`]({{< ref "/library/allos/time#time.sleep" >}}) 函数，它们都没有返回一个有用的值。这两个函数被调用只是为了它们的副作用，即向屏幕发送一些文本或暂停执行一秒钟。
 
 ​	函数式风格的 Python 程序并不会极端到消除所有 I/O 或者赋值的程度；相反，他们会提供像函数式一样的接口，但会在内部使用非函数式的特性。比如，函数的实现仍然会使用局部变量，但不会修改全局变量或者有其他副作用。
 
@@ -88,9 +88,9 @@ draft = false
 
 ​	我会从 Python 的一个语言特性， 编写函数式风格程序的重要基石开始说起：迭代器。
 
-​	迭代器是一个表示数据流的对象；这个对象每次只返回一个元素。Python 迭代器必须支持 [`__next__()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#iterator.__next__) 方法；这个方法不接受参数，并总是返回数据流中的下一个元素。如果数据流中没有元素，[`__next__()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#iterator.__next__) 会抛出 [`StopIteration`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#StopIteration) 异常。迭代器未必是有限的；完全有理由构造一个输出无限数据流的迭代器。
+​	迭代器是一个表示数据流的对象；这个对象每次只返回一个元素。Python 迭代器必须支持 [`__next__()`]({{< ref "/library/stdtypes#iterator.__next__" >}}) 方法；这个方法不接受参数，并总是返回数据流中的下一个元素。如果数据流中没有元素，[`__next__()`]({{< ref "/library/stdtypes#iterator.__next__" >}}) 会抛出 [`StopIteration`]({{< ref "/library/exceptions#StopIteration" >}}) 异常。迭代器未必是有限的；完全有理由构造一个输出无限数据流的迭代器。
 
-​	内置的 [`iter()`](https://docs.python.org/zh-cn/3.13/library/functions.html#iter) 函数接受任意对象并试图返回一个迭代器来输出对象的内容或元素，并会在对象不支持迭代的时候抛出 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError) 异常。Python 有几种内置数据类型支持迭代，最常见的就是列表和字典。如果一个对象能生成迭代器，那么它就会被称作 [iterable](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterable)。
+​	内置的 [`iter()`]({{< ref "/library/functions#iter" >}}) 函数接受任意对象并试图返回一个迭代器来输出对象的内容或元素，并会在对象不支持迭代的时候抛出 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}}) 异常。Python 有几种内置数据类型支持迭代，最常见的就是列表和字典。如果一个对象能生成迭代器，那么它就会被称作 [iterable]({{< ref "/glossary/idx#term-iterable" >}})。
 
 ​	你可以手动试验迭代器的接口。
 
@@ -114,7 +114,7 @@ StopIteration
 >>>
 ```
 
-​	Python 有不少要求使用可迭代的对象的地方，其中最重要的就是 [`for`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#for) 表达式。在表达式 `for X in Y`，Y 要么自身是一个迭代器，要么能够由 [`iter()`](https://docs.python.org/zh-cn/3.13/library/functions.html#iter) 创建一个迭代器。以下两种表达是等价的:
+​	Python 有不少要求使用可迭代的对象的地方，其中最重要的就是 [`for`]({{< ref "/reference/compound_stmts#for" >}}) 表达式。在表达式 `for X in Y`，Y 要么自身是一个迭代器，要么能够由 [`iter()`]({{< ref "/library/functions#iter" >}}) 创建一个迭代器。以下两种表达是等价的:
 
 ```
 for i in iter(obj):
@@ -124,7 +124,7 @@ for i in obj:
     print(i)
 ```
 
-​	可以用 [`list()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 或 [`tuple()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#tuple) 这样的构造函数把迭代器具体化成列表或元组:
+​	可以用 [`list()`]({{< ref "/library/stdtypes#list" >}}) 或 [`tuple()`]({{< ref "/library/stdtypes#tuple" >}}) 这样的构造函数把迭代器具体化成列表或元组:
 
 
 
@@ -148,15 +148,15 @@ for i in obj:
 (1, 2, 3)
 ```
 
-​	像 [`max()`](https://docs.python.org/zh-cn/3.13/library/functions.html#max) 和 [`min()`](https://docs.python.org/zh-cn/3.13/library/functions.html#min) 这样的内置函数可以接受单个迭代器参数，然后返回其中最大或者最小的元素。 `"in"` 和 `"not in"` 操作也支持迭代器：如果能够在迭代器 iterator 返回的数据流中找到 X 的话，则 `X in iterator` 为真。很显然，如果迭代器是无限的，这么做你就会遇到问题；[`max()`](https://docs.python.org/zh-cn/3.13/library/functions.html#max) 和 [`min()`](https://docs.python.org/zh-cn/3.13/library/functions.html#min) 永远也不会返回；如果元素 X 也不出现在数据流中， `"in"` 和 `"not in"` 操作同样也永远不会返回。
+​	像 [`max()`]({{< ref "/library/functions#max" >}}) 和 [`min()`]({{< ref "/library/functions#min" >}}) 这样的内置函数可以接受单个迭代器参数，然后返回其中最大或者最小的元素。 `"in"` 和 `"not in"` 操作也支持迭代器：如果能够在迭代器 iterator 返回的数据流中找到 X 的话，则 `X in iterator` 为真。很显然，如果迭代器是无限的，这么做你就会遇到问题；[`max()`]({{< ref "/library/functions#max" >}}) 和 [`min()`]({{< ref "/library/functions#min" >}}) 永远也不会返回；如果元素 X 也不出现在数据流中， `"in"` 和 `"not in"` 操作同样也永远不会返回。
 
-​	注意你只能在迭代器中顺序前进；没有获取前一个元素的方法，除非重置迭代器，或者重新复制一份。迭代器对象可以提供这些额外的功能，但迭代器协议只明确了 [`__next__()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#iterator.__next__) 方法。函数可能因此而耗尽迭代器的输出，如果你要对同样的数据流做不同的操作，你必须重新创建一个迭代器。
+​	注意你只能在迭代器中顺序前进；没有获取前一个元素的方法，除非重置迭代器，或者重新复制一份。迭代器对象可以提供这些额外的功能，但迭代器协议只明确了 [`__next__()`]({{< ref "/library/stdtypes#iterator.__next__" >}}) 方法。函数可能因此而耗尽迭代器的输出，如果你要对同样的数据流做不同的操作，你必须重新创建一个迭代器。
 
 ### 支持迭代器的数据类型
 
 ​	我们已经知道列表和元组支持迭代器。实际上，Python 中的任何序列类型，比如字符串，都自动支持创建迭代器。
 
-​	对字典调用 [`iter()`](https://docs.python.org/zh-cn/3.13/library/functions.html#iter) 会返回一个遍历字典的键的迭代器:
+​	对字典调用 [`iter()`]({{< ref "/library/functions#iter" >}}) 会返回一个遍历字典的键的迭代器:
 
 
 
@@ -181,9 +181,9 @@ Dec 12
 
 ​	注意从 Python 3.7 开始，字典的遍历顺序一定和输入顺序一样。先前的版本并没有明确这一点，所以不同的实现可能不一致。
 
-​	对字典使用 [`iter()`](https://docs.python.org/zh-cn/3.13/library/functions.html#iter) 总是会遍历键，但字典也有返回其他迭代器的方法。如果你只遍历值或者键/值对，你可以明确地调用 [`values()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict.values) 或 [`items()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict.items) 方法得到合适的迭代器。
+​	对字典使用 [`iter()`]({{< ref "/library/functions#iter" >}}) 总是会遍历键，但字典也有返回其他迭代器的方法。如果你只遍历值或者键/值对，你可以明确地调用 [`values()`]({{< ref "/library/stdtypes#dict.values" >}}) 或 [`items()`]({{< ref "/library/stdtypes#dict.items" >}}) 方法得到合适的迭代器。
 
-[`dict()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 构造函数可以接受一个迭代器，然后返回一个有限的 `(key, value)` 元组的数据流:
+[`dict()`]({{< ref "/library/stdtypes#dict" >}}) 构造函数可以接受一个迭代器，然后返回一个有限的 `(key, value)` 元组的数据流:
 
 
 
@@ -193,7 +193,7 @@ Dec 12
 {'Italy': 'Rome', 'France': 'Paris', 'US': 'Washington DC'}
 ```
 
-​	文件也可以通过调用 [`readline()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.TextIOBase.readline) 来遍历，直到穷尽文件中所有的行。这意味着你可以像这样读取文件中的每一行:
+​	文件也可以通过调用 [`readline()`]({{< ref "/library/allos/io#io.TextIOBase.readline" >}}) 来遍历，直到穷尽文件中所有的行。这意味着你可以像这样读取文件中的每一行:
 
 ```
 for line in file:
@@ -328,9 +328,9 @@ for expr1 in sequence1:
 ...        yield i
 ```
 
-​	任何包含了 [`yield`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#yield) 关键字的函数都是生成器函数；Python 的 [bytecode](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytecode) 编译器会在编译的时候检测到并因此而特殊处理。
+​	任何包含了 [`yield`]({{< ref "/reference/simple_stmts#yield" >}}) 关键字的函数都是生成器函数；Python 的 [bytecode]({{< ref "/glossary/idx#term-bytecode" >}}) 编译器会在编译的时候检测到并因此而特殊处理。
 
-​	当你调用一个生成器函数，它并不会返回单独的值，而是返回一个支持生成器协议的生成器对象。当执行 `yield` 表达式时，生成器会输出 `i` 的值，就像 `return` 表达式一样。`yield` 和 `return` 最大的区别在于，到达 `yield` 的时候生成器的执行状态会挂起并保留局部变量。在下一次调用生成器 [`__next__()`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#generator.__next__) 方法的时候，函数会恢复执行。
+​	当你调用一个生成器函数，它并不会返回单独的值，而是返回一个支持生成器协议的生成器对象。当执行 `yield` 表达式时，生成器会输出 `i` 的值，就像 `return` 表达式一样。`yield` 和 `return` 最大的区别在于，到达 `yield` 的时候生成器的执行状态会挂起并保留局部变量。在下一次调用生成器 [`__next__()`]({{< ref "/reference/expressions#generator.__next__" >}}) 方法的时候，函数会恢复执行。
 
 ​	这里有一个 `generate_ints()` 生成器的示例:
 
@@ -355,7 +355,7 @@ StopIteration
 
 ​	同样，你可以写出 `for i in generate_ints(5)`，或者 `a, b, c = generate_ints(3)`。
 
-​	在生成器函数里面，`return value` 会触发从 [`__next__()`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#generator.__next__) 方法抛出 `StopIteration(value)` 异常。一旦抛出这个异常，或者函数结束，处理数据的过程就会停止，生成器也不会再生成新的值。
+​	在生成器函数里面，`return value` 会触发从 [`__next__()`]({{< ref "/reference/expressions#generator.__next__" >}}) 方法抛出 `StopIteration(value)` 异常。一旦抛出这个异常，或者函数结束，处理数据的过程就会停止，生成器也不会再生成新的值。
 
 ​	你可以手动编写自己的类来达到生成器的效果，把生成器的所有局部变量作为实例的成员变量存储起来。比如，可以这么返回一个整数列表：把 `self.count` 设为0，然后通过 `count`()`。然而，对于一个中等复杂程度的生成器，写出一个相应的类可能会相当繁杂。
 
@@ -380,7 +380,7 @@ def inorder(t):
 
 ​	在 Python 2.4 及之前的版本中，生成器只产生输出。一旦调用生成器的代码创建一个迭代器，就没有办法在函数恢复执行的时候向它传递新的信息。你可以设法实现这个功能，让生成器引用一个全局变量或者一个调用者可以修改的可变对象，但是这些方法都很繁杂。
 
-​	在 Python 2.5 里有一个简单的将值传递给生成器的方法。[`yield`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#yield) 变成了一个表达式，返回一个可以赋给变量或执行操作的值:
+​	在 Python 2.5 里有一个简单的将值传递给生成器的方法。[`yield`]({{< ref "/reference/simple_stmts#yield" >}}) 变成了一个表达式，返回一个可以赋给变量或执行操作的值:
 
 ```
 val = (yield i)
@@ -427,15 +427,15 @@ Traceback (most recent call last):
 StopIteration
 ```
 
-​	因为 `yield` 很多时候会返回 `None`，所以你应该总是检查这个情况。不要在表达式中使用 `yield` 的值，除非你确定 [`send()`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#generator.send) 是唯一的用来恢复你的生成器函数的方法。
+​	因为 `yield` 很多时候会返回 `None`，所以你应该总是检查这个情况。不要在表达式中使用 `yield` 的值，除非你确定 [`send()`]({{< ref "/reference/expressions#generator.send" >}}) 是唯一的用来恢复你的生成器函数的方法。
 
-​	除了 [`send()`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#generator.send) 之外，生成器还有两个其他的方法:
+​	除了 [`send()`]({{< ref "/reference/expressions#generator.send" >}}) 之外，生成器还有两个其他的方法:
 
-- [`throw(value)`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#generator.throw) 用于在生成器内部抛出异常；这个异常会在生成器暂停执行的时候由 `yield` 表达式抛出。
+- [`throw(value)`]({{< ref "/reference/expressions#generator.throw" >}}) 用于在生成器内部抛出异常；这个异常会在生成器暂停执行的时候由 `yield` 表达式抛出。
 
-- [`generator.close()`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#generator.close) 会在生成器内部抛出 [`GeneratorExit`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#GeneratorExit) 异常来结束迭代。当接收到这个异常时，生成器的代码会抛出 [`GeneratorExit`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#GeneratorExit) 或者 [`StopIteration`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#StopIteration)；捕捉这个异常作其他处理是非法的，并会出发 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError)。[`close()`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#generator.close) 也会在 Python 垃圾回收器回收生成器的时候调用。
+- [`generator.close()`]({{< ref "/reference/expressions#generator.close" >}}) 会在生成器内部抛出 [`GeneratorExit`]({{< ref "/library/exceptions#GeneratorExit" >}}) 异常来结束迭代。当接收到这个异常时，生成器的代码会抛出 [`GeneratorExit`]({{< ref "/library/exceptions#GeneratorExit" >}}) 或者 [`StopIteration`]({{< ref "/library/exceptions#StopIteration" >}})；捕捉这个异常作其他处理是非法的，并会出发 [`RuntimeError`]({{< ref "/library/exceptions#RuntimeError" >}})。[`close()`]({{< ref "/reference/expressions#generator.close" >}}) 也会在 Python 垃圾回收器回收生成器的时候调用。
 
-  如果你要在 [`GeneratorExit`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#GeneratorExit) 发生的时候清理代码，我建议使用 `try: ... finally:` 组合来代替 [`GeneratorExit`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#GeneratorExit)。
+  如果你要在 [`GeneratorExit`]({{< ref "/library/exceptions#GeneratorExit" >}}) 发生的时候清理代码，我建议使用 `try: ... finally:` 组合来代替 [`GeneratorExit`]({{< ref "/library/exceptions#GeneratorExit" >}})。
 
 ​	这些改变的累积效应是，让生成器从单向的信息生产者变成了既是生产者，又是消费者。
 
@@ -445,9 +445,9 @@ StopIteration
 
 ​	我们可以看看迭代器常常用到的函数的更多细节。
 
-​	Python 内置的两个函数 [`map()`](https://docs.python.org/zh-cn/3.13/library/functions.html#map) 和 [`filter()`](https://docs.python.org/zh-cn/3.13/library/functions.html#filter) 复制了生成器表达式的两个特性:
+​	Python 内置的两个函数 [`map()`]({{< ref "/library/functions#map" >}}) 和 [`filter()`]({{< ref "/library/functions#filter" >}}) 复制了生成器表达式的两个特性:
 
-## [`map(f, iterA, iterB, ...)`](https://docs.python.org/zh-cn/3.13/library/functions.html#map) 返回一个遍历序列的迭代器
+## [`map(f, iterA, iterB, ...)`]({{< ref "/library/functions#map" >}}) 返回一个遍历序列的迭代器
 
 `f(iterA[0], iterB[0]), f(iterA[1], iterB[1]), f(iterA[2], iterB[2]), ...`.
 
@@ -469,7 +469,7 @@ StopIteration
 
 ​	你当然也可以用列表推导式达到同样的效果。
 
-[`filter(predicate, iter)`](https://docs.python.org/zh-cn/3.13/library/functions.html#filter) 返回一个遍历序列中满足指定条件的元素的迭代器，和列表推导式的功能相似。 **predicate** （谓词）是一个在特定条件下返回真值的函数；要使用函数 [`filter()`](https://docs.python.org/zh-cn/3.13/library/functions.html#filter)，谓词函数必须只能接受一个参数。
+[`filter(predicate, iter)`]({{< ref "/library/functions#filter" >}}) 返回一个遍历序列中满足指定条件的元素的迭代器，和列表推导式的功能相似。 **predicate** （谓词）是一个在特定条件下返回真值的函数；要使用函数 [`filter()`]({{< ref "/library/functions#filter" >}})，谓词函数必须只能接受一个参数。
 
 
 
@@ -494,7 +494,7 @@ StopIteration
 [0, 2, 4, 6, 8]
 ```
 
-[`enumerate(iter, start=0)`](https://docs.python.org/zh-cn/3.13/library/functions.html#enumerate) 计数可迭代对象中的元素，然后返回包含每个计数（从 **start** 开始）和元素两个值的元组。:
+[`enumerate(iter, start=0)`]({{< ref "/library/functions#enumerate" >}}) 计数可迭代对象中的元素，然后返回包含每个计数（从 **start** 开始）和元素两个值的元组。:
 
 
 
@@ -506,7 +506,7 @@ StopIteration
 (2, 'object')
 ```
 
-[`enumerate()`](https://docs.python.org/zh-cn/3.13/library/functions.html#enumerate) 常常用于遍历列表并记录达到特定条件时的下标:
+[`enumerate()`]({{< ref "/library/functions#enumerate" >}}) 常常用于遍历列表并记录达到特定条件时的下标:
 
 ```
 f = open('data.txt', 'r')
@@ -515,7 +515,7 @@ for i, line in enumerate(f):
         print('Blank line at line #%i' % i)
 ```
 
-[`sorted(iterable, key=None, reverse=False)`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 会将 iterable 中的元素收集到一个列表中，然后排序并返回结果。其中 *key* 和 *reverse* 参数会传递给所创建列表的 [`sort()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list.sort) 方法。:
+[`sorted(iterable, key=None, reverse=False)`]({{< ref "/library/functions#sorted" >}}) 会将 iterable 中的元素收集到一个列表中，然后排序并返回结果。其中 *key* 和 *reverse* 参数会传递给所创建列表的 [`sort()`]({{< ref "/library/stdtypes#list.sort" >}}) 方法。:
 
 
 
@@ -531,9 +531,9 @@ for i, line in enumerate(f):
 [9878, 9828, 8442, 7953, 6431, 6213, 2207, 769]
 ```
 
-​	（对排序更详细的讨论可参见 [排序的技术](https://docs.python.org/zh-cn/3.13/howto/sorting.html#sortinghowto)。）
+​	（对排序更详细的讨论可参见 [排序的技术]({{< ref "/howto/sorting#sortinghowto" >}})。）
 
-​	内置函数 [`any(iter)`](https://docs.python.org/zh-cn/3.13/library/functions.html#any) 和 [`all(iter)`](https://docs.python.org/zh-cn/3.13/library/functions.html#all) 会查看一个可迭代对象内容的逻辑值。[`any()`](https://docs.python.org/zh-cn/3.13/library/functions.html#any) 在可迭代对象中任意一个元素为真时返回 `True`，而 [`all()`](https://docs.python.org/zh-cn/3.13/library/functions.html#all) 在所有元素为真时返回 `True`:
+​	内置函数 [`any(iter)`]({{< ref "/library/functions#any" >}}) 和 [`all(iter)`]({{< ref "/library/functions#all" >}}) 会查看一个可迭代对象内容的逻辑值。[`any()`]({{< ref "/library/functions#any" >}}) 在可迭代对象中任意一个元素为真时返回 `True`，而 [`all()`]({{< ref "/library/functions#all" >}}) 在所有元素为真时返回 `True`:
 
 
 
@@ -552,7 +552,7 @@ False
 True
 ```
 
-[`zip(iterA, iterB, ...)`](https://docs.python.org/zh-cn/3.13/library/functions.html#zip) 从每个可迭代对象中选取单个元素组成列表并返回:
+[`zip(iterA, iterB, ...)`]({{< ref "/library/functions#zip" >}}) 从每个可迭代对象中选取单个元素组成列表并返回:
 
 ```
 zip(['a', 'b', 'c'], (1, 2, 3)) =>
@@ -572,7 +572,7 @@ zip(['a', 'b'], (1, 2, 3)) =>
 
 ## itertools 模块
 
-[`itertools`](https://docs.python.org/zh-cn/3.13/library/itertools.html#module-itertools) 模块包含很多常用的迭代器以及用于组合多个迭代器的函数。 本节会用一些小例子来介绍这个模块的内容。
+[`itertools`]({{< ref "/library/functional/itertools#module-itertools" >}}) 模块包含很多常用的迭代器以及用于组合多个迭代器的函数。 本节会用一些小例子来介绍这个模块的内容。
 
 ​	这个模块里的函数大致可以分为几类：
 
@@ -583,7 +583,7 @@ zip(['a', 'b'], (1, 2, 3)) =>
 
 ### 创建新的迭代器
 
-[`itertools.count(start, step)`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.count) 返回一个等分的无限数据流。初始值默认为0，间隔默认为1，你也选择可以指定初始值和间隔:
+[`itertools.count(start, step)`]({{< ref "/library/functional/itertools#itertools.count" >}}) 返回一个等分的无限数据流。初始值默认为0，间隔默认为1，你也选择可以指定初始值和间隔:
 
 ```
 itertools.count() =>
@@ -594,14 +594,14 @@ itertools.count(10, 5) =>
   10, 15, 20, 25, 30, 35, 40, 45, 50, 55, ...
 ```
 
-[`itertools.cycle(iter)`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.cycle) 保存一份所提供的可迭代对象的副本，并返回一个能产生整个可迭代对象序列的新迭代器。新迭代器会无限重复这些元素。:
+[`itertools.cycle(iter)`]({{< ref "/library/functional/itertools#itertools.cycle" >}}) 保存一份所提供的可迭代对象的副本，并返回一个能产生整个可迭代对象序列的新迭代器。新迭代器会无限重复这些元素。:
 
 ```
 itertools.cycle([1, 2, 3, 4, 5]) =>
   1, 2, 3, 4, 5, 1, 2, 3, 4, 5, ...
 ```
 
-[`itertools.repeat(elem, [n\])`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.repeat) 返回 *n* 次所提供的元素，当 *n* 不存在时，返回无数次所提供的元素。
+[`itertools.repeat(elem, [n\])`]({{< ref "/library/functional/itertools#itertools.repeat" >}}) 返回 *n* 次所提供的元素，当 *n* 不存在时，返回无数次所提供的元素。
 
 ```
 itertools.repeat('abc') =>
@@ -610,14 +610,14 @@ itertools.repeat('abc', 5) =>
   abc, abc, abc, abc, abc
 ```
 
-[`itertools.chain(iterA, iterB, ...)`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.chain) 接受任意数量的可迭代对象作为输入，首先返回第一个迭代器的所有元素，然后是第二个的所有元素，如此一直进行下去，直到消耗掉所有输入的可迭代对象。
+[`itertools.chain(iterA, iterB, ...)`]({{< ref "/library/functional/itertools#itertools.chain" >}}) 接受任意数量的可迭代对象作为输入，首先返回第一个迭代器的所有元素，然后是第二个的所有元素，如此一直进行下去，直到消耗掉所有输入的可迭代对象。
 
 ```
 itertools.chain(['a', 'b', 'c'], (1, 2, 3)) =>
   a, b, c, 1, 2, 3
 ```
 
-[`itertools.islice(iter, [start\], stop, [step])`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.islice) 返回一个所输入的迭代器切片的数据流。如果只单独给定 *stop* 参数的话，它会返回从起始算起 *stop* 个数量的元素。如果你提供了起始下标 *start*，你会得到 *stop-start* 个元素；如果你给定了 *step* 参数，数据流会跳过相应的元素。和 Python 里的字符串和列表切片不同，你不能在 *start*, *stop* 或者 *step* 这些参数中使用负数。:
+[`itertools.islice(iter, [start\], stop, [step])`]({{< ref "/library/functional/itertools#itertools.islice" >}}) 返回一个所输入的迭代器切片的数据流。如果只单独给定 *stop* 参数的话，它会返回从起始算起 *stop* 个数量的元素。如果你提供了起始下标 *start*，你会得到 *stop-start* 个元素；如果你给定了 *step* 参数，数据流会跳过相应的元素。和 Python 里的字符串和列表切片不同，你不能在 *start*, *stop* 或者 *step* 这些参数中使用负数。:
 
 ```
 itertools.islice(range(10), 8) =>
@@ -628,7 +628,7 @@ itertools.islice(range(10), 2, 8, 2) =>
   2, 4, 6
 ```
 
-[`itertools.tee(iter, [n\])`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.tee) 可以复制一个迭代器；它返回 *n* 个能够返回源迭代器内容的独立迭代器。如果你不提供参数 *n*，默认值为 2。复制迭代器需要保存源迭代器的一部分内容，因此在源迭代器比较大的时候会显著地占用内存；同时，在所有新迭代器中，有一个迭代器会比其他迭代器占用更多的内存。
+[`itertools.tee(iter, [n\])`]({{< ref "/library/functional/itertools#itertools.tee" >}}) 可以复制一个迭代器；它返回 *n* 个能够返回源迭代器内容的独立迭代器。如果你不提供参数 *n*，默认值为 2。复制迭代器需要保存源迭代器的一部分内容，因此在源迭代器比较大的时候会显著地占用内存；同时，在所有新迭代器中，有一个迭代器会比其他迭代器占用更多的内存。
 
 ```
 itertools.tee( itertools.count() ) =>
@@ -643,9 +643,9 @@ and   iterB ->
 
 ### 对元素使用函数
 
-[`operator`](https://docs.python.org/zh-cn/3.13/library/operator.html#module-operator) 模块包含一组对应于 Python 操作符的函数。比如 [`operator.add(a, b)`](https://docs.python.org/zh-cn/3.13/library/operator.html#operator.add) （把两个数加起来），[`operator.ne(a, b)`](https://docs.python.org/zh-cn/3.13/library/operator.html#operator.ne) （和 `a != b` 相同），以及 [`operator.attrgetter('id')`](https://docs.python.org/zh-cn/3.13/library/operator.html#operator.attrgetter) （返回获取 `.id` 属性的可调用对象）。
+[`operator`]({{< ref "/library/functional/operator#module-operator" >}}) 模块包含一组对应于 Python 操作符的函数。比如 [`operator.add(a, b)`]({{< ref "/library/functional/operator#operator.add" >}}) （把两个数加起来），[`operator.ne(a, b)`]({{< ref "/library/functional/operator#operator.ne" >}}) （和 `a != b` 相同），以及 [`operator.attrgetter('id')`]({{< ref "/library/functional/operator#operator.attrgetter" >}}) （返回获取 `.id` 属性的可调用对象）。
 
-[`itertools.starmap(func, iter)`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.starmap) 假定可迭代对象能够返回一个元组的流，并且利用这些元组作为参数来调用 *func*:
+[`itertools.starmap(func, iter)`]({{< ref "/library/functional/itertools#itertools.starmap" >}}) 假定可迭代对象能够返回一个元组的流，并且利用这些元组作为参数来调用 *func*:
 
 ```
 itertools.starmap(os.path.join,
@@ -659,14 +659,14 @@ itertools.starmap(os.path.join,
 
 ​	另外一系列函数根据谓词选取一个迭代器中元素的子集。
 
-[`itertools.filterfalse(predicate, iter)`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.filterfalse) 和 [`filter()`](https://docs.python.org/zh-cn/3.13/library/functions.html#filter) 相反，返回所有让 predicate 返回 false 的元素:
+[`itertools.filterfalse(predicate, iter)`]({{< ref "/library/functional/itertools#itertools.filterfalse" >}}) 和 [`filter()`]({{< ref "/library/functions#filter" >}}) 相反，返回所有让 predicate 返回 false 的元素:
 
 ```
 itertools.filterfalse(is_even, itertools.count()) =>
   1, 3, 5, 7, 9, 11, 13, 15, ...
 ```
 
-[`itertools.takewhile(predicate, iter)`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.takewhile) 返回一直让 predicate 返回 true 的元素。一旦 predicate 返回 false，迭代器就会发出终止结果的信号。:
+[`itertools.takewhile(predicate, iter)`]({{< ref "/library/functional/itertools#itertools.takewhile" >}}) 返回一直让 predicate 返回 true 的元素。一旦 predicate 返回 false，迭代器就会发出终止结果的信号。:
 
 ```
 def less_than_10(x):
@@ -679,7 +679,7 @@ itertools.takewhile(is_even, itertools.count()) =>
   0
 ```
 
-[`itertools.dropwhile(predicate, iter)`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.dropwhile) 在 predicate 返回 true 的时候丢弃元素，并且返回可迭代对象的剩余结果。:
+[`itertools.dropwhile(predicate, iter)`]({{< ref "/library/functional/itertools#itertools.dropwhile" >}}) 在 predicate 返回 true 的时候丢弃元素，并且返回可迭代对象的剩余结果。:
 
 ```
 itertools.dropwhile(less_than_10, itertools.count()) =>
@@ -689,7 +689,7 @@ itertools.dropwhile(is_even, itertools.count()) =>
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ...
 ```
 
-[`itertools.compress(data, selectors)`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.compress) 接受两个迭代器，然后返回 *data* 中使相应地 *selector* 中的元素为真的元素；它会在任一个迭代器耗尽的时候停止:
+[`itertools.compress(data, selectors)`]({{< ref "/library/functional/itertools#itertools.compress" >}}) 接受两个迭代器，然后返回 *data* 中使相应地 *selector* 中的元素为真的元素；它会在任一个迭代器耗尽的时候停止:
 
 ```
 itertools.compress([1, 2, 3, 4, 5], [True, True, False, False, True]) =>
@@ -698,7 +698,7 @@ itertools.compress([1, 2, 3, 4, 5], [True, True, False, False, True]) =>
 
 ### 组合函数
 
-[`itertools.combinations(iterable, r)`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.combinations) 返回一个迭代器，它能给出输入迭代器中所包含的元素的所有可能的 *r* 元元组的组合。:
+[`itertools.combinations(iterable, r)`]({{< ref "/library/functional/itertools#itertools.combinations" >}}) 返回一个迭代器，它能给出输入迭代器中所包含的元素的所有可能的 *r* 元元组的组合。:
 
 ```
 itertools.combinations([1, 2, 3, 4, 5], 2) =>
@@ -713,7 +713,7 @@ itertools.combinations([1, 2, 3, 4, 5], 3) =>
   (3, 4, 5)
 ```
 
-​	每个元组中的元素保持着 *可迭代对象* 返回他们的顺序。例如，在上面的例子中数字 1 总是会在 2, 3, 4 或 5 前面。一个类似的函数，[`itertools.permutations(iterable, r=None)`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.permutations)，取消了保持顺序的限制，返回所有可能的长度为 *r* 的排列:
+​	每个元组中的元素保持着 *可迭代对象* 返回他们的顺序。例如，在上面的例子中数字 1 总是会在 2, 3, 4 或 5 前面。一个类似的函数，[`itertools.permutations(iterable, r=None)`]({{< ref "/library/functional/itertools#itertools.permutations" >}})，取消了保持顺序的限制，返回所有可能的长度为 *r* 的排列:
 
 ```
 itertools.permutations([1, 2, 3, 4, 5], 2) =>
@@ -741,7 +741,7 @@ itertools.permutations('aba', 3) =>
 
 ​	同一个元组 `('a', 'a', 'b')` 出现了两次，但是两个 'a' 字符来自不同的位置。
 
-[`itertools.combinations_with_replacement(iterable, r)`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.combinations_with_replacement) 函数放松了一个不同的限制：元组中的元素可以重复。从概念讲，为每个元组第一个位置选取一个元素，然后在选择第二个元素前替换掉它。:
+[`itertools.combinations_with_replacement(iterable, r)`]({{< ref "/library/functional/itertools#itertools.combinations_with_replacement" >}}) 函数放松了一个不同的限制：元组中的元素可以重复。从概念讲，为每个元组第一个位置选取一个元素，然后在选择第二个元素前替换掉它。:
 
 ```
 itertools.combinations_with_replacement([1, 2, 3, 4, 5], 2) =>
@@ -754,9 +754,9 @@ itertools.combinations_with_replacement([1, 2, 3, 4, 5], 2) =>
 
 ### 为元素分组
 
-​	我要讨论的最后一个函数，[`itertools.groupby(iter,key_func=None)`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.groupby)，是最复杂的函数。 `key_func(elem)` 是一个可以对迭代器返回的每个元素计算键值的函数。 如果你不提供这个键值函数，它就会简化成每个元素自身。
+​	我要讨论的最后一个函数，[`itertools.groupby(iter,key_func=None)`]({{< ref "/library/functional/itertools#itertools.groupby" >}})，是最复杂的函数。 `key_func(elem)` 是一个可以对迭代器返回的每个元素计算键值的函数。 如果你不提供这个键值函数，它就会简化成每个元素自身。
 
-[`groupby()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.groupby) 从所依据的可迭代对象中连续地收集具有相同值的元素，然后返回一个长度为2的元组的数据流, 每个元组包含键值以及对应这个键值的元素所组成的迭代器。
+[`groupby()`]({{< ref "/library/functional/itertools#itertools.groupby" >}}) 从所依据的可迭代对象中连续地收集具有相同值的元素，然后返回一个长度为2的元组的数据流, 每个元组包含键值以及对应这个键值的元素所组成的迭代器。
 
 ```
 city_list = [('Decatur', 'AL'), ('Huntsville', 'AL'), ('Selma', 'AL'),
@@ -782,15 +782,15 @@ iterator-3 =>
   ('Flagstaff', 'AZ'), ('Phoenix', 'AZ'), ('Tucson', 'AZ')
 ```
 
-[`groupby()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.groupby) 假定了所依据的可迭代对象的内容已经根据键值排序。注意，返回的迭代器也会使用所依据的可迭代对象，所以在请求迭代器 2和相应的键之前你必须先消耗迭代器 1 的结果。
+[`groupby()`]({{< ref "/library/functional/itertools#itertools.groupby" >}}) 假定了所依据的可迭代对象的内容已经根据键值排序。注意，返回的迭代器也会使用所依据的可迭代对象，所以在请求迭代器 2和相应的键之前你必须先消耗迭代器 1 的结果。
 
 ## functools 模块
 
-[`functools`](https://docs.python.org/zh-cn/3.13/library/functools.html#module-functools) 模块包含一些高阶函数。 **高阶函数** 接受一个或多个函数作为输入并返回一个新的函数。 这个模块中最有用的工具是 [`functools.partial()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.partial) 函数。
+[`functools`]({{< ref "/library/functional/functools#module-functools" >}}) 模块包含一些高阶函数。 **高阶函数** 接受一个或多个函数作为输入并返回一个新的函数。 这个模块中最有用的工具是 [`functools.partial()`]({{< ref "/library/functional/functools#functools.partial" >}}) 函数。
 
 ​	对于用函数式风格编写的程序，有时你会希望通过给定部分参数，将已有的函数构变形称新的函数。考虑一个 Python 函数 `f(a, b, c)`；你希望创建一个和 `f(1, b, c)` 等价的新函数 `g(b, c)`；也就是说你给定了 `f()` 的一个参数的值。这就是所谓的“部分函数应用”。
 
-[`partial()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.partial) 接受参数 `(function, arg1, arg2, ..., kwarg1=value1, kwarg2=value2)`。它会返回一个可调用的对象，所以你能够直接调用这个结果以使用给定参数的 `function`。
+[`partial()`]({{< ref "/library/functional/functools#functools.partial" >}}) 接受参数 `(function, arg1, arg2, ..., kwarg1=value1, kwarg2=value2)`。它会返回一个可调用的对象，所以你能够直接调用这个结果以使用给定参数的 `function`。
 
 ​	这里有一个很小但很现实的例子:
 
@@ -806,7 +806,7 @@ server_log = functools.partial(log, subsystem='server')
 server_log('Unable to open socket')
 ```
 
-[`functools.reduce(func, iter, [initial_value\])`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.reduce) 持续地在可迭代对象的所有元素上执行操作，因此它不能够用在无限的可迭代对象上。*func* 必须是一个接受两个元素并返回一个值的函数。[`functools.reduce()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.reduce) 接受迭代器返回的前两个元素 A 和 B 并计算 `func(A, B)` 。然后它会请求第三个元素，C，计算 `func(func(A, B), C)`，然后把这个结果再和第四个元素组合并返回，如此继续下去直到消耗整个可迭代对象。如果输入的可迭代对象完全不返回任何值，[`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError) 异常就会抛出。如果提供了初值(initial value)，它会被用作起始值，也就是先计算 `func(initial_value, A)` 。:
+[`functools.reduce(func, iter, [initial_value\])`]({{< ref "/library/functional/functools#functools.reduce" >}}) 持续地在可迭代对象的所有元素上执行操作，因此它不能够用在无限的可迭代对象上。*func* 必须是一个接受两个元素并返回一个值的函数。[`functools.reduce()`]({{< ref "/library/functional/functools#functools.reduce" >}}) 接受迭代器返回的前两个元素 A 和 B 并计算 `func(A, B)` 。然后它会请求第三个元素，C，计算 `func(func(A, B), C)`，然后把这个结果再和第四个元素组合并返回，如此继续下去直到消耗整个可迭代对象。如果输入的可迭代对象完全不返回任何值，[`TypeError`]({{< ref "/library/exceptions#TypeError" >}}) 异常就会抛出。如果提供了初值(initial value)，它会被用作起始值，也就是先计算 `func(initial_value, A)` 。:
 
 
 
@@ -824,7 +824,7 @@ TypeError: reduce() of empty sequence with no initial value
 1
 ```
 
-​	如果你在 [`functools.reduce()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.reduce) 中使用 [`operator.add()`](https://docs.python.org/zh-cn/3.13/library/operator.html#operator.add)，你就会把可迭代对象中的所有元素加起来.这种情况非常常见, 所以 Python 有一个特殊的内置函数 [`sum()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sum):
+​	如果你在 [`functools.reduce()`]({{< ref "/library/functional/functools#functools.reduce" >}}) 中使用 [`operator.add()`]({{< ref "/library/functional/operator#operator.add" >}})，你就会把可迭代对象中的所有元素加起来.这种情况非常常见, 所以 Python 有一个特殊的内置函数 [`sum()`]({{< ref "/library/functions#sum" >}}):
 
 
 
@@ -838,7 +838,7 @@ TypeError: reduce() of empty sequence with no initial value
 0
 ```
 
-​	不过, 对于很多使用 [`functools.reduce()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.reduce) 的情形, 使用明显的 [`for`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#for) 循环会更清晰:
+​	不过, 对于很多使用 [`functools.reduce()`]({{< ref "/library/functional/functools#functools.reduce" >}}) 的情形, 使用明显的 [`for`]({{< ref "/reference/compound_stmts#for" >}}) 循环会更清晰:
 
 ```
 import functools
@@ -851,7 +851,7 @@ for i in [1, 2, 3]:
     product *= i
 ```
 
-​	一个相关的函数是 [`itertools.accumulate(iterable, func=operator.add)`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.accumulate)。 它执行同样的计算，但 [`accumulate()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.accumulate) 不是仅仅返回最终结果，而是返回一个会产生每个部分结果的迭代器:
+​	一个相关的函数是 [`itertools.accumulate(iterable, func=operator.add)`]({{< ref "/library/functional/itertools#itertools.accumulate" >}})。 它执行同样的计算，但 [`accumulate()`]({{< ref "/library/functional/itertools#itertools.accumulate" >}}) 不是仅仅返回最终结果，而是返回一个会产生每个部分结果的迭代器:
 
 ```
 itertools.accumulate([1, 2, 3, 4, 5]) =>
@@ -863,7 +863,7 @@ itertools.accumulate([1, 2, 3, 4, 5], operator.mul) =>
 
 ### operator 模块
 
-​	前面已经提到了 [`operator`](https://docs.python.org/zh-cn/3.13/library/operator.html#module-operator) 模块。它包含一系列对应于 Python 操作符的函数。在函数式风格的代码中，这些函数通常很有用，可以帮你省下不少时间，避免写一些琐碎的仅仅执行一个简单操作的函数。
+​	前面已经提到了 [`operator`]({{< ref "/library/functional/operator#module-operator" >}}) 模块。它包含一系列对应于 Python 操作符的函数。在函数式风格的代码中，这些函数通常很有用，可以帮你省下不少时间，避免写一些琐碎的仅仅执行一个简单操作的函数。
 
 ​	这个模块里的一些函数：
 
@@ -886,7 +886,7 @@ stripped_lines = [line.strip() for line in lines]
 existing_files = filter(os.path.exists, file_list)
 ```
 
-​	如果不存在你需要的函数，你就必须自己编写。一个编写小函数的方式是使用 [`lambda`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#lambda) 表达式。`lambda` 接受一组参数以及组合这些参数的表达式，它会创建一个返回表达式值的匿名函数:
+​	如果不存在你需要的函数，你就必须自己编写。一个编写小函数的方式是使用 [`lambda`]({{< ref "/reference/expressions#lambda" >}}) 表达式。`lambda` 接受一组参数以及组合这些参数的表达式，它会创建一个返回表达式值的匿名函数:
 
 ```
 adder = lambda x, y: x+y
@@ -931,13 +931,13 @@ for a, b in items:
     total += b
 ```
 
-​	或者使用内置的 [`sum()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sum) 和一个生成器表达式:
+​	或者使用内置的 [`sum()`]({{< ref "/library/functions#sum" >}}) 和一个生成器表达式:
 
 ```
 total = sum(b for a, b in items)
 ```
 
-​	许多使用 [`functools.reduce()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.reduce) 的情形可以更清晰地写成 `for` 循环的形式。
+​	许多使用 [`functools.reduce()`]({{< ref "/library/functional/functools#functools.reduce" >}}) 的情形可以更清晰地写成 `for` 循环的形式。
 
 ​	Fredrik Lundh 曾经建议以下一组规则来重构 `lambda` 的使用:
 
@@ -987,11 +987,11 @@ https://gnosis.cx/TPiP/: David Mertz 书中的第一章 Text Processing in Pytho
 
 ### Python 文档
 
-[`itertools`](https://docs.python.org/zh-cn/3.13/library/itertools.html#module-itertools) 模块文档。
+[`itertools`]({{< ref "/library/functional/itertools#module-itertools" >}}) 模块文档。
 
-[`functools`](https://docs.python.org/zh-cn/3.13/library/functools.html#module-functools) 模块文档。
+[`functools`]({{< ref "/library/functional/functools#module-functools" >}}) 模块文档。
 
-[`operator`](https://docs.python.org/zh-cn/3.13/library/operator.html#module-operator) 模块文档。
+[`operator`]({{< ref "/library/functional/operator#module-operator" >}}) 模块文档。
 
 [**PEP 289**](https://peps.python.org/pep-0289/): "Generator Expressions"
 

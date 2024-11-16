@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/ast.html](https://docs.python.org/zh-cn/3.13/library/ast.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/ast.html](https://docs.python.org/zh-cn/3.13/library/ast.html)
 >
 > 收录该文档的时间：`2024-11-15T21:23:55+08:00`
 
@@ -18,9 +18,9 @@ draft = false
 
 ------
 
-[`ast`](https://docs.python.org/zh-cn/3.13/library/ast.html#module-ast) 模块帮助 Python 程序处理 Python 语法的抽象语法树。抽象语法或许会随着 Python 的更新版发行而改变；该模块能够帮助理解当前语法在编程层面的样貌。
+[`ast`]({{< ref "/library/language/ast#module-ast" >}}) 模块帮助 Python 程序处理 Python 语法的抽象语法树。抽象语法或许会随着 Python 的更新版发行而改变；该模块能够帮助理解当前语法在编程层面的样貌。
 
-​	抽象语法树可通过将 [`ast.PyCF_ONLY_AST`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.PyCF_ONLY_AST) 作为旗标传递给 [`compile()`](https://docs.python.org/zh-cn/3.13/library/functions.html#compile) 内置函数来生成，或是使用此模块中提供的 [`parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 辅助函数。返回结果将是一个由许多对象构成的树，这些对象所属的类都继承自 [`ast.AST`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST)。抽象语法树可被内置的 [`compile()`](https://docs.python.org/zh-cn/3.13/library/functions.html#compile) 函数编译为一个 Python 代码对象。
+​	抽象语法树可通过将 [`ast.PyCF_ONLY_AST`]({{< ref "/library/language/ast#ast.PyCF_ONLY_AST" >}}) 作为旗标传递给 [`compile()`]({{< ref "/library/functions#compile" >}}) 内置函数来生成，或是使用此模块中提供的 [`parse()`]({{< ref "/library/language/ast#ast.parse" >}}) 辅助函数。返回结果将是一个由许多对象构成的树，这些对象所属的类都继承自 [`ast.AST`]({{< ref "/library/language/ast#ast.AST" >}})。抽象语法树可被内置的 [`compile()`]({{< ref "/library/functions#compile" >}}) 函数编译为一个 Python 代码对象。
 
 
 
@@ -187,9 +187,9 @@ module Python
 
 ## *class* ast.**AST**
 
-​	这是所有 AST 节点类的基类。 实际的节点类都派生自 `Parser/Python.asdl` 文件，其完整内容 [如上所示](https://docs.python.org/zh-cn/3.13/library/ast.html#abstract-grammar)。 它们 `_ast` C 模块中定义并在 [`ast`](https://docs.python.org/zh-cn/3.13/library/ast.html#module-ast) 中重新导出。
+​	这是所有 AST 节点类的基类。 实际的节点类都派生自 `Parser/Python.asdl` 文件，其完整内容 [如上所示]({{< ref "/library/language/ast#abstract-grammar" >}})。 它们 `_ast` C 模块中定义并在 [`ast`]({{< ref "/library/language/ast#module-ast" >}}) 中重新导出。
 
-​	抽象文法中的每个等号左边的符号（比方说， `ast.stmt` 或者 `ast.expr`）定义了一个类。另外，在等号右边，对每一个构造器也定义了一个类；这些类继承自等号左边的类。比如，[`ast.BinOp`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.BinOp) 继承自 `ast.expr`。对于多分支产生式（也就是含有“ | ”的产生式），左边的类是抽象的；只有具体构造器类的实例能够被 compile 函数构造。
+​	抽象文法中的每个等号左边的符号（比方说， `ast.stmt` 或者 `ast.expr`）定义了一个类。另外，在等号右边，对每一个构造器也定义了一个类；这些类继承自等号左边的类。比如，[`ast.BinOp`]({{< ref "/library/language/ast#ast.BinOp" >}}) 继承自 `ast.expr`。对于多分支产生式（也就是含有“ | ”的产生式），左边的类是抽象的；只有具体构造器类的实例能够被 compile 函数构造。
 
 
 
@@ -197,13 +197,13 @@ module Python
 
 ​	每个实体类都具有属性 `_fields`，它给出了所有子节点的名字。
 
-​	每个具体类的实例为自己的每个子节点都准备了一个属性来引用该子节点，属性的类型就是文法中所定义的。比如，[`ast.BinOp`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.BinOp) 的实例有个属性 `left`，类型是 `ast.expr`。
+​	每个具体类的实例为自己的每个子节点都准备了一个属性来引用该子节点，属性的类型就是文法中所定义的。比如，[`ast.BinOp`]({{< ref "/library/language/ast#ast.BinOp" >}}) 的实例有个属性 `left`，类型是 `ast.expr`。
 
-​	如果这些属性在文法中标记为可选（用问号标记），对应值可能会是 `None`。如果这些属性可有零或多个值（用星号标记），对应值会用Python的列表来表示。在用 [`compile()`](https://docs.python.org/zh-cn/3.13/library/functions.html#compile) 将AST编译为可执行代码时，所有的属性必须已经被赋值为有效的值。
+​	如果这些属性在文法中标记为可选（用问号标记），对应值可能会是 `None`。如果这些属性可有零或多个值（用星号标记），对应值会用Python的列表来表示。在用 [`compile()`]({{< ref "/library/functions#compile" >}}) 将AST编译为可执行代码时，所有的属性必须已经被赋值为有效的值。
 
 ## **_field_types**
 
-​	每次个实体类上的 `_field_types` 属性都是一个将字段名（与在 [`_fields`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST._fields) 中列出的相同）) 映射到其类型的字典。
+​	每次个实体类上的 `_field_types` 属性都是一个将字段名（与在 [`_fields`]({{< ref "/library/language/ast#ast.AST._fields" >}}) 中列出的相同）) 映射到其类型的字典。
 
 
 
@@ -223,7 +223,7 @@ module Python
 
 ## **end_col_offset**
 
-`ast.expr` 和 `ast.stmt` 的子类的实例的属性包括 [`lineno`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.lineno)、[`col_offset`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.col_offset)、[`end_lineno`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.end_lineno) 和 [`end_col_offset`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.end_col_offset)。[`lineno`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.lineno) 和 [`end_lineno`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.end_lineno) 是源码中属于该节点的部分从哪一行开始，到哪一行结束（数字 1 指第一行，以此类推）；[`col_offset`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.col_offset) 和 [`end_col_offset`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.end_col_offset) 是第一个和最后一个属于该节点的 token 的 UTF-8 字节偏移量。记录 UTF-8 偏移量的原因是解析器内部使用 UTF-8。
+`ast.expr` 和 `ast.stmt` 的子类的实例的属性包括 [`lineno`]({{< ref "/library/language/ast#ast.AST.lineno" >}})、[`col_offset`]({{< ref "/library/language/ast#ast.AST.col_offset" >}})、[`end_lineno`]({{< ref "/library/language/ast#ast.AST.end_lineno" >}}) 和 [`end_col_offset`]({{< ref "/library/language/ast#ast.AST.end_col_offset" >}})。[`lineno`]({{< ref "/library/language/ast#ast.AST.lineno" >}}) 和 [`end_lineno`]({{< ref "/library/language/ast#ast.AST.end_lineno" >}}) 是源码中属于该节点的部分从哪一行开始，到哪一行结束（数字 1 指第一行，以此类推）；[`col_offset`]({{< ref "/library/language/ast#ast.AST.col_offset" >}}) 和 [`end_col_offset`]({{< ref "/library/language/ast#ast.AST.end_col_offset" >}}) 是第一个和最后一个属于该节点的 token 的 UTF-8 字节偏移量。记录 UTF-8 偏移量的原因是解析器内部使用 UTF-8。
 
 ​	注意编译器不需要结束位置，所以结束位置是可选的。结束偏移在最后一个符号 *之后* ，例如你可以通过 `source_line[node.col_offset : node.end_col_offset]` 获得一个单行表达式节点的源码片段。
 
@@ -232,27 +232,26 @@ module Python
 - 如果只用位置参数，参数的数量必须和 `T._fields` 中的项一样多；它们会按顺序赋值到这些属性上。
 - 如果有关键字参数，它们会为与其关键字同名的属性赋值。
 
-​	比方说，要创建和填充节点 [`ast.UnaryOp`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.UnaryOp)，你得用
+​	比方说，要创建和填充节点 [`ast.UnaryOp`]({{< ref "/library/language/ast#ast.UnaryOp" >}})，你得用
 
 ```
 node = ast.UnaryOp(ast.USub(), ast.Constant(5, lineno=0, col_offset=0),
                    lineno=0, col_offset=0)
 ```
 
-​	如果从构造器中省略一个在语法中可选的字段，则其默认值为 `None`。 如果省略一个列表字段，则其默认值为空列表。 如果省略一个 `ast.expr_context` 类型的字段，则其默认值 为 [`Load()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Load)。 如果省略任何其他字段，则会引发 [`DeprecationWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#DeprecationWarning) 并且 AST 节点将不包含此字段。 在 Python 3.15，这种情况将引发一个错误。
+​	如果从构造器中省略一个在语法中可选的字段，则其默认值为 `None`。 如果省略一个列表字段，则其默认值为空列表。 如果省略一个 `ast.expr_context` 类型的字段，则其默认值 为 [`Load()`]({{< ref "/library/language/ast#ast.Load" >}})。 如果省略任何其他字段，则会引发 [`DeprecationWarning`]({{< ref "/library/exceptions#DeprecationWarning" >}}) 并且 AST 节点将不包含此字段。 在 Python 3.15，这种情况将引发一个错误。
 
-*在 3.8 版本发生变更:* [`ast.Constant`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Constant) 类现在用于所有常量。
+> 在 3.8 版本发生变更: [`ast.Constant`]({{< ref "/library/language/ast#ast.Constant" >}}) 类现在用于所有常量。
 
-*在 3.9 版本发生变更:* 简单索引由它们的值表示，扩展切片表示为元组。
+> 在 3.9 版本发生变更: 简单索引由它们的值表示，扩展切片表示为元组。
 
-*自 3.8 版本弃用:* 原有的类 `ast.Num`, `ast.Str`, `ast.Bytes`, `ast.NameConstant` 和 `ast.Ellipsis` 仍然可用，但它们将在未来的 Python 发布版中被移除。 同时，实例化它们将返回其他某个类的实例。
+> 自 3.8 版本弃用: 原有的类 `ast.Num`, `ast.Str`, `ast.Bytes`, `ast.NameConstant` 和 `ast.Ellipsis` 仍然可用，但它们将在未来的 Python 发布版中被移除。 同时，实例化它们将返回其他某个类的实例。
 
-*自 3.9 版本弃用:* 原有的类 `ast.Index` and `ast.ExtSlice` 仍然可用，但它们将在未来的 Python 发布版中被移除。 同时，实例化它们将返回其他某个类的实例。
+> 自 3.9 版本弃用: 原有的类 `ast.Index` and `ast.ExtSlice` 仍然可用，但它们将在未来的 Python 发布版中被移除。 同时，实例化它们将返回其他某个类的实例。
 
 *Deprecated since version 3.13, will be removed in version 3.15:* 之前版本的 Python 允许创建缺少必需字段的 AST 节点。 类似地，AST 节点构造器也允许任意用于设置 AST 节点属性的关键字参数，即使它们不能匹配任何 AST 节点的字段。 此行为已被弃用并将在 Python 3.15 中移除。
 
-​	备注
-
+​备注
  
 
 ​	在此显示的特定节点类的描述最初是改编自杰出的 [Green Tree Snakes](https://greentreesnakes.readthedocs.io/en/latest/) 项目及其所有贡献者。
@@ -263,11 +262,11 @@ node = ast.UnaryOp(ast.USub(), ast.Constant(5, lineno=0, col_offset=0),
 
 ## *class* ast.**Module**(*body*, *type_ignores*)
 
-​	一个 Python 模块，用于 [文件输入](https://docs.python.org/zh-cn/3.13/reference/toplevel_components.html#file-input)。 由 [`ast.parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 以默认 `"exec"` *mode* 生成的节点类型。
+​	一个 Python 模块，用于 [文件输入]({{< ref "/reference/toplevel_components#file-input" >}})。 由 [`ast.parse()`]({{< ref "/library/language/ast#ast.parse" >}}) 以默认 `"exec"` *mode* 生成的节点类型。
 
-`body` 是由该模块的 [语句](https://docs.python.org/zh-cn/3.13/library/ast.html#ast-statements) 组成的 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list)。
+`body` 是由该模块的 [语句]({{< ref "/library/language/ast#ast-statements" >}}) 组成的 [`list`]({{< ref "/library/stdtypes#list" >}})。
 
-`type_ignores` 是由该模块的类型忽略注释组成的 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list)；请参阅 [`ast.parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 了解详情。
+`type_ignores` 是由该模块的类型忽略注释组成的 [`list`]({{< ref "/library/stdtypes#list" >}})；请参阅 [`ast.parse()`]({{< ref "/library/language/ast#ast.parse" >}}) 了解详情。
 
 
 
@@ -283,9 +282,9 @@ Module(
 
 ## *class* ast.**Expression**(*body*)
 
-​	单个 Python [表达式输入](https://docs.python.org/zh-cn/3.13/reference/toplevel_components.html#expression-input)。 当 *mode* 为 `"eval"` 时由 [`ast.parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 所生成的节点类型。
+​	单个 Python [表达式输入]({{< ref "/reference/toplevel_components#expression-input" >}})。 当 *mode* 为 `"eval"` 时由 [`ast.parse()`]({{< ref "/library/language/ast#ast.parse" >}}) 所生成的节点类型。
 
-`body` 为单独节点，是某一个 [表达式类型](https://docs.python.org/zh-cn/3.13/library/ast.html#ast-expressions)。
+`body` 为单独节点，是某一个 [表达式类型]({{< ref "/library/language/ast#ast-expressions" >}})。
 
 
 
@@ -297,9 +296,9 @@ Expression(
 
 ## *class* ast.**Interactive**(*body*)
 
-​	单个 [交互式输入](https://docs.python.org/zh-cn/3.13/reference/toplevel_components.html#interactive)，就像在 [交互模式](https://docs.python.org/zh-cn/3.13/tutorial/appendix.html#tut-interac) 中一样。 当 *mode* 为 `"single"` 时由 [`ast.parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 所生成的节点类型。
+​	单个 [交互式输入]({{< ref "/reference/toplevel_components#interactive" >}})，就像在 [交互模式]({{< ref "/tutorial/appendix#tut-interac" >}}) 中一样。 当 *mode* 为 `"single"` 时由 [`ast.parse()`]({{< ref "/library/language/ast#ast.parse" >}}) 所生成的节点类型。
 
-`body` 是由 [语句节点](https://docs.python.org/zh-cn/3.13/library/ast.html#ast-statements) 组成的 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list)。
+`body` 是由 [语句节点]({{< ref "/library/language/ast#ast-statements" >}}) 组成的 [`list`]({{< ref "/library/stdtypes#list" >}})。
 
 
 
@@ -319,7 +318,7 @@ Interactive(
 
 ## *class* ast.**FunctionType**(*argtypes*, *returns*)
 
-​	函数的旧风格类型注释表示形式，因为 Python 3.5 之前的版本不支持 [**PEP 484**](https://peps.python.org/pep-0484/) 标注。 当 *mode* 为 `"func_type"` 时由 [`ast.parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 所生成的节点类型。
+​	函数的旧风格类型注释表示形式，因为 Python 3.5 之前的版本不支持 [**PEP 484**](https://peps.python.org/pep-0484/) 标注。 当 *mode* 为 `"func_type"` 时由 [`ast.parse()`]({{< ref "/library/language/ast#ast.parse" >}}) 所生成的节点类型。
 
 ​	此种类型注释的形式是这样的:
 
@@ -329,9 +328,9 @@ def sum_two_number(a, b):
     return a + b
 ```
 
-`argtypes` 是由 [表达式节点](https://docs.python.org/zh-cn/3.13/library/ast.html#ast-expressions) 组成的 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list)。
+`argtypes` 是由 [表达式节点]({{< ref "/library/language/ast#ast-expressions" >}}) 组成的 [`list`]({{< ref "/library/stdtypes#list" >}})。
 
-`returns` 是单独的 [表达式节点](https://docs.python.org/zh-cn/3.13/library/ast.html#ast-expressions)。
+`returns` 是单独的 [表达式节点]({{< ref "/library/language/ast#ast-expressions" >}})。
 
 
 
@@ -366,7 +365,7 @@ Expression(
 
 ## *class* ast.**FormattedValue**(*value*, *conversion*, *format_spec*)
 
-​	节点是以一个 f-字符串形式的格式化字段来代表的。 如果该字符串只包含单个格式化字段而没有任何其他内容则节点可以被隔离，否则它将在 [`JoinedStr`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.JoinedStr) 中出现。
+​	节点是以一个 f-字符串形式的格式化字段来代表的。 如果该字符串只包含单个格式化字段而没有任何其他内容则节点可以被隔离，否则它将在 [`JoinedStr`]({{< ref "/library/language/ast#ast.JoinedStr" >}}) 中出现。
 
 - `value` 为任意的表达式节点（如一个字面值、变量或函数调用）。
 - `conversion` 是一个整数:
@@ -374,11 +373,11 @@ Expression(
   - 115: `!s` 字符串格式化
   - 114: `!r` repr 格式化
   - 97: `!a` ascii 格式化
-- `format_spec` 是一个代表值的格式化的 [`JoinedStr`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.JoinedStr) 节点，或者如果未指定格式则为 `None`。 `conversion` 和 `format_spec` 可以被同时设置。
+- `format_spec` 是一个代表值的格式化的 [`JoinedStr`]({{< ref "/library/language/ast#ast.JoinedStr" >}}) 节点，或者如果未指定格式则为 `None`。 `conversion` 和 `format_spec` 可以被同时设置。
 
 ## *class* ast.**JoinedStr**(*values*)
 
-​	一个 f-字符串，由一系列 [`FormattedValue`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.FormattedValue) 和 [`Constant`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Constant) 节点组成。
+​	一个 f-字符串，由一系列 [`FormattedValue`]({{< ref "/library/language/ast#ast.FormattedValue" >}}) 和 [`Constant`]({{< ref "/library/language/ast#ast.Constant" >}}) 节点组成。
 
 
 
@@ -407,7 +406,7 @@ Expression(
 
 ## *class* ast.**Tuple**(*elts*, *ctx*)
 
-​	一个列表或元组。 `elts` 保存一个代表元素的节点的列表。 `ctx` 在容器为赋值的目标时 (如 `(x,y)=something`) 是 [`Store`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Store)，否则是 [`Load`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Load)。
+​	一个列表或元组。 `elts` 保存一个代表元素的节点的列表。 `ctx` 在容器为赋值的目标时 (如 `(x,y)=something`) 是 [`Store`]({{< ref "/library/language/ast#ast.Store" >}})，否则是 [`Load`]({{< ref "/library/language/ast#ast.Load" >}})。
 
 
 
@@ -507,7 +506,7 @@ Module(
 
 ## *class* ast.**Starred**(*value*, *ctx*)
 
-​	一个 `*var` 变量引用。 `value` 保存变量，通常为一个 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name) 节点。 此类型必须在构建 [`Call`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Call) 节点并传入 `*args` 时被使用。
+​	一个 `*var` 变量引用。 `value` 保存变量，通常为一个 [`Name`]({{< ref "/library/language/ast#ast.Name" >}}) 节点。 此类型必须在构建 [`Call`]({{< ref "/library/language/ast#ast.Call" >}}) 节点并传入 `*args` 时被使用。
 
 
 
@@ -533,7 +532,7 @@ Module(
 
 ## *class* ast.**Expr**(*value*)
 
-​	当一个表达式，例如函数调用，本身作为一个语句出现并且其返回值未被使用或存储时，它会被包装在此容器中。 `value` 保存本节中的其他节点之一，一个 [`Constant`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Constant), [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name), [`Lambda`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Lambda), [`Yield`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Yield) 或者 [`YieldFrom`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.YieldFrom) 节点。
+​	当一个表达式，例如函数调用，本身作为一个语句出现并且其返回值未被使用或存储时，它会被包装在此容器中。 `value` 保存本节中的其他节点之一，一个 [`Constant`]({{< ref "/library/language/ast#ast.Constant" >}}), [`Name`]({{< ref "/library/language/ast#ast.Name" >}}), [`Lambda`]({{< ref "/library/language/ast#ast.Lambda" >}}), [`Yield`]({{< ref "/library/language/ast#ast.Yield" >}}) 或者 [`YieldFrom`]({{< ref "/library/language/ast#ast.YieldFrom" >}}) 节点。
 
 
 
@@ -559,7 +558,7 @@ Module(
 
 ## *class* ast.**Invert**
 
-​	单目运算符对应的形符。 [`Not`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Not) 是 `not` 关键字，[`Invert`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Invert) 是 `~` 运算符。
+​	单目运算符对应的形符。 [`Not`]({{< ref "/library/language/ast#ast.Not" >}}) 是 `not` 关键字，[`Invert`]({{< ref "/library/language/ast#ast.Invert" >}}) 是 `~` 运算符。
 
 
 
@@ -616,9 +615,9 @@ Expression(
 
 ## *class* ast.**BoolOp**(*op*, *values*)
 
-​	一个布尔运算，'or' 或者 'and'。 `op` 是 [`Or`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Or) 或者 [`And`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.And)。 `values` 是参与运算的值。 具有相同运算符的连续运算，如 `a or b or c`，会被折叠为具有多个值的单个节点。
+​	一个布尔运算，'or' 或者 'and'。 `op` 是 [`Or`]({{< ref "/library/language/ast#ast.Or" >}}) 或者 [`And`]({{< ref "/library/language/ast#ast.And" >}})。 `values` 是参与运算的值。 具有相同运算符的连续运算，如 `a or b or c`，会被折叠为具有多个值的单个节点。
 
-​	这不包括 `not`，它属于 [`UnaryOp`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.UnaryOp)。
+​	这不包括 `not`，它属于 [`UnaryOp`]({{< ref "/library/language/ast#ast.UnaryOp" >}})。
 
 
 
@@ -681,10 +680,10 @@ Expression(
 
 ## *class* ast.**Call**(*func*, *args*, *keywords*)
 
-​	一个函数调用。 `func` 是函数，它通常是一个 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name) 或 [`Attribute`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Attribute) 对象。 对于其参数:
+​	一个函数调用。 `func` 是函数，它通常是一个 [`Name`]({{< ref "/library/language/ast#ast.Name" >}}) 或 [`Attribute`]({{< ref "/library/language/ast#ast.Attribute" >}}) 对象。 对于其参数:
 
 - `args` 保存由按位置传入的参数组成的列表。
-- `keywords` 保存了一个代表以关键字传入的参数的 [`keyword`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.keyword) 对象的列表。
+- `keywords` 保存了一个代表以关键字传入的参数的 [`keyword`]({{< ref "/library/language/ast#ast.keyword" >}}) 对象的列表。
 
 `args` 和 `keywords` 参数是可选的并且默认为空列表。
 
@@ -714,7 +713,7 @@ Expression(
 
 ## *class* ast.**IfExp**(*test*, *body*, *orelse*)
 
-​	一个表达式例如 `a if b else c`。 每个字段保存一个单独节点，因而在下面的示例中，三个节点均为 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name) 节点。
+​	一个表达式例如 `a if b else c`。 每个字段保存一个单独节点，因而在下面的示例中，三个节点均为 [`Name`]({{< ref "/library/language/ast#ast.Name" >}}) 节点。
 
 
 
@@ -729,7 +728,7 @@ Expression(
 
 ## *class* ast.**Attribute**(*value*, *attr*, *ctx*)
 
-​	属性访问，例如 `d.keys`。 `value` 是一个节点，通常为 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name)。 `attr` 是一个给出属性名称的纯字符串，而 `ctx` 根据属性操作的方式可以为 [`Load`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Load), [`Store`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Store) 或 [`Del`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Del)。
+​	属性访问，例如 `d.keys`。 `value` 是一个节点，通常为 [`Name`]({{< ref "/library/language/ast#ast.Name" >}})。 `attr` 是一个给出属性名称的纯字符串，而 `ctx` 根据属性操作的方式可以为 [`Load`]({{< ref "/library/language/ast#ast.Load" >}}), [`Store`]({{< ref "/library/language/ast#ast.Store" >}}) 或 [`Del`]({{< ref "/library/language/ast#ast.Del" >}})。
 
 
 
@@ -744,7 +743,7 @@ Expression(
 
 ## *class* ast.**NamedExpr**(*target*, *value*)
 
-​	一个带名称的表达式。 此 AST 节点是由赋值表达式运算符（或称海象运算符）产生的。 与第一个参数可以有多个节点的 [`Assign`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Assign) 节点不同，在此情况下 `target` 和 `value` 都必须为单独节点。
+​	一个带名称的表达式。 此 AST 节点是由赋值表达式运算符（或称海象运算符）产生的。 与第一个参数可以有多个节点的 [`Assign`]({{< ref "/library/language/ast#ast.Assign" >}}) 节点不同，在此情况下 `target` 和 `value` 都必须为单独节点。
 
 
 
@@ -763,7 +762,7 @@ Expression(
 
 ## *class* ast.**Subscript**(*value*, *slice*, *ctx*)
 
-​	抽取操作，如 `l[1]`。 `value` 是被抽取的对象（通常为序列或映射）。 `slice` 是索引号、切片或键。 它可以是一个包含 [`Slice`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Slice) 的 [`Tuple`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Tuple)。 `ctx` 根据抽取所执行的操作可以为 [`Load`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Load), [`Store`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Store) 或 [`Del`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Del)。
+​	抽取操作，如 `l[1]`。 `value` 是被抽取的对象（通常为序列或映射）。 `slice` 是索引号、切片或键。 它可以是一个包含 [`Slice`]({{< ref "/library/language/ast#ast.Slice" >}}) 的 [`Tuple`]({{< ref "/library/language/ast#ast.Tuple" >}})。 `ctx` 根据抽取所执行的操作可以为 [`Load`]({{< ref "/library/language/ast#ast.Load" >}}), [`Store`]({{< ref "/library/language/ast#ast.Store" >}}) 或 [`Del`]({{< ref "/library/language/ast#ast.Del" >}})。
 
 
 
@@ -784,7 +783,7 @@ Expression(
 
 ## *class* ast.**Slice**(*lower*, *upper*, *step*)
 
-​	常规切片 (形式如 `lower:upper` 或 `lower:upper:step`)。 只能在 [`Subscript`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Subscript) 的 *slice* 字段内部出现，可以是直接切片对象或是作为 [`Tuple`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Tuple) 的元素。
+​	常规切片 (形式如 `lower:upper` 或 `lower:upper:step`)。 只能在 [`Subscript`]({{< ref "/library/language/ast#ast.Subscript" >}}) 的 *slice* 字段内部出现，可以是直接切片对象或是作为 [`Tuple`]({{< ref "/library/language/ast#ast.Tuple" >}}) 的元素。
 
 
 
@@ -811,7 +810,7 @@ Expression(
 
 ​	列表和集合推导式、生成器表达式以及字典推导式。 `elt` (或 `key` 和 `value`) 是一个代表将针对每个条目被求值的部分的单独节点。
 
-`generators` 是一个由 [`comprehension`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.comprehension) 节点组成的列表。
+`generators` 是一个由 [`comprehension`]({{< ref "/library/language/ast#ast.comprehension" >}}) 节点组成的列表。
 
 
 
@@ -860,7 +859,7 @@ Expression(
 
 ## *class* ast.**comprehension**(*target*, *iter*, *ifs*, *is_async*)
 
-​	推导式中的一个 `for` 子句。 `target` 是针对每个元素使用的引用 —— 通常为一个 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name) 或 [`Tuple`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Tuple) 节点。 `iter` 是要执行迭代的对象。 `ifs` 是一个由测试表达式组成的列表：每个 `for` 子句都可以拥有多个 `ifs`。
+​	推导式中的一个 `for` 子句。 `target` 是针对每个元素使用的引用 —— 通常为一个 [`Name`]({{< ref "/library/language/ast#ast.Name" >}}) 或 [`Tuple`]({{< ref "/library/language/ast#ast.Tuple" >}}) 节点。 `iter` 是要执行迭代的对象。 `ifs` 是一个由测试表达式组成的列表：每个 `for` 子句都可以拥有多个 `ifs`。
 
 `is_async` 表明推导式是异步的 (使用 `async for` 而不是 `for`)。 它的值是一个整数 (0 或 1)。
 
@@ -932,7 +931,7 @@ Expression(
 
 ​	一次赋值。 `targets` 是一个由节点组成的列表，而 `value` 是一个单独节点。
 
-`targets` 中有多个节点表示将同一个值赋给多个目标。 解包操作是通过在 `targets` 中放入一个 [`Tuple`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Tuple) 或 [`List`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.List) 来表示的。
+`targets` 中有多个节点表示将同一个值赋给多个目标。 解包操作是通过在 `targets` 中放入一个 [`Tuple`]({{< ref "/library/language/ast#ast.Tuple" >}}) 或 [`List`]({{< ref "/library/language/ast#ast.List" >}}) 来表示的。
 
 ## **type_comment**
 
@@ -965,9 +964,9 @@ Module(
 
 ## *class* ast.**AnnAssign**(*target*, *annotation*, *value*, *simple*)
 
-​	带有类型标注的赋值。 `target` 是单独的节点并可以是一个 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name), [`Attribute`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Attribute) 或 [`Subscript`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Subscript)。 `annotation` 是标注，例如一个 [`Constant`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Constant) 或 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name) 节点。 `value` 是单独的可选节点。
+​	带有类型标注的赋值。 `target` 是单独的节点并可以是一个 [`Name`]({{< ref "/library/language/ast#ast.Name" >}}), [`Attribute`]({{< ref "/library/language/ast#ast.Attribute" >}}) 或 [`Subscript`]({{< ref "/library/language/ast#ast.Subscript" >}})。 `annotation` 是标注，例如一个 [`Constant`]({{< ref "/library/language/ast#ast.Constant" >}}) 或 [`Name`]({{< ref "/library/language/ast#ast.Name" >}}) 节点。 `value` 是单独的可选节点。
 
-`simple` is always either 0 (indicating a "complex" target) or 1 (indicating a "simple" target). A "simple" target consists solely of a [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name) node that does not appear between parentheses; all other targets are considered complex. Only simple targets appear in the `__annotations__` dictionary of modules and classes.
+`simple` is always either 0 (indicating a "complex" target) or 1 (indicating a "simple" target). A "simple" target consists solely of a [`Name`]({{< ref "/library/language/ast#ast.Name" >}}) node that does not appear between parentheses; all other targets are considered complex. Only simple targets appear in the `__annotations__` dictionary of modules and classes.
 
 
 
@@ -1014,9 +1013,9 @@ Module(
 
 ## *class* ast.**AugAssign**(*target*, *op*, *value*)
 
-​	增强赋值，如 `a += 1`。 在下面的例子中，`target` 是一个针对 `x` (带有 [`Store`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Store) 上下文) 的 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name) 节点，`op` 为 [`Add`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Add)，而 `value` 是一个值为 1 的 [`Constant`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Constant)。
+​	增强赋值，如 `a += 1`。 在下面的例子中，`target` 是一个针对 `x` (带有 [`Store`]({{< ref "/library/language/ast#ast.Store" >}}) 上下文) 的 [`Name`]({{< ref "/library/language/ast#ast.Name" >}}) 节点，`op` 为 [`Add`]({{< ref "/library/language/ast#ast.Add" >}})，而 `value` 是一个值为 1 的 [`Constant`]({{< ref "/library/language/ast#ast.Constant" >}})。
 
-`target` 属性不可以是 [`Tuple`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Tuple) 或 [`List`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.List) 类，这与 [`Assign`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Assign) 的目标不同。
+`target` 属性不可以是 [`Tuple`]({{< ref "/library/language/ast#ast.Tuple" >}}) 或 [`List`]({{< ref "/library/language/ast#ast.List" >}}) 类，这与 [`Assign`]({{< ref "/library/language/ast#ast.Assign" >}}) 的目标不同。
 
 
 
@@ -1032,7 +1031,7 @@ Module(
 
 ## *class* ast.**Raise**(*exc*, *cause*)
 
-​	一条 `raise` 语句。 `exc` 是要引发的异常，对于一个单独的 `raise` 通常为 [`Call`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Call) 或 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name)，或者为 `None`。 `cause` 是针对 `raise x from y` 中 `y` 的可选部分。
+​	一条 `raise` 语句。 `exc` 是要引发的异常，对于一个单独的 `raise` 通常为 [`Call`]({{< ref "/library/language/ast#ast.Call" >}}) 或 [`Name`]({{< ref "/library/language/ast#ast.Name" >}})，或者为 `None`。 `cause` 是针对 `raise x from y` 中 `y` 的可选部分。
 
 
 
@@ -1047,7 +1046,7 @@ Module(
 
 ## *class* ast.**Assert**(*test*, *msg*)
 
-​	一条断言。 `test` 保存条件，例如为一个 [`Compare`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Compare) 节点。 `msg` 保存失败消息。
+​	一条断言。 `test` 保存条件，例如为一个 [`Compare`]({{< ref "/library/language/ast#ast.Compare" >}}) 节点。 `msg` 保存失败消息。
 
 
 
@@ -1062,7 +1061,7 @@ Module(
 
 ## *class* ast.**Delete**(*targets*)
 
-​	代表一条 `del` 语句。 `targets` 是一个由节点组成的列表，例如 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name), [`Attribute`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Attribute) 或 [`Subscript`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Subscript) 节点。
+​	代表一条 `del` 语句。 `targets` 是一个由节点组成的列表，例如 [`Name`]({{< ref "/library/language/ast#ast.Name" >}}), [`Attribute`]({{< ref "/library/language/ast#ast.Attribute" >}}) 或 [`Subscript`]({{< ref "/library/language/ast#ast.Subscript" >}}) 节点。
 
 
 
@@ -1092,7 +1091,7 @@ Module(
 
 ## *class* ast.**TypeAlias**(*name*, *type_params*, *value*)
 
-​	通过 [`type`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#type) 语句创建的 [类型别名](https://docs.python.org/zh-cn/3.13/library/typing.html#type-aliases)。 `name` 是别名的名称，`type_params` 是 [类型形参](https://docs.python.org/zh-cn/3.13/library/ast.html#ast-type-params) 的列表，而 `value` 是类型别名的值。
+​	通过 [`type`]({{< ref "/reference/simple_stmts#type" >}}) 语句创建的 [类型别名]({{< ref "/library/development/typing#type-aliases" >}})。 `name` 是别名的名称，`type_params` 是 [类型形参]({{< ref "/library/language/ast#ast-type-params" >}}) 的列表，而 `value` 是类型别名的值。
 
 
 
@@ -1114,7 +1113,7 @@ Module(
 
 ## *class* ast.**Import**(*names*)
 
-​	一条导入语句。 `names` 是一个由 [`alias`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.alias) 节点组成的列表。
+​	一条导入语句。 `names` 是一个由 [`alias`]({{< ref "/library/language/ast#ast.alias" >}}) 节点组成的列表。
 
 
 
@@ -1168,17 +1167,16 @@ Module(
 
 ### 控制流
 
-​	备注
-
+​备注
  
 
 ​	可选的子句如 `else` 如果不存在则会被存储为一个空列表。
 
 ## *class* ast.**If**(*test*, *body*, *orelse*)
 
-​	一条 `if` 语句。 `test` 保存一个单独节点，如一个 [`Compare`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Compare) 节点。 `body` 和 `orelse` 各自保存一个节点列表。
+​	一条 `if` 语句。 `test` 保存一个单独节点，如一个 [`Compare`]({{< ref "/library/language/ast#ast.Compare" >}}) 节点。 `body` 和 `orelse` 各自保存一个节点列表。
 
-`elif` 子句在 AST 中没有特别的表示形式，而是作为上文介绍的 `orelse` 部分之内的一个额外 [`If`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.If) 节点出现。
+`elif` 子句在 AST 中没有特别的表示形式，而是作为上文介绍的 `orelse` 部分之内的一个额外 [`If`]({{< ref "/library/language/ast#ast.If" >}}) 节点出现。
 
 
 
@@ -1211,7 +1209,7 @@ Module(
 
 ## *class* ast.**For**(*target*, *iter*, *body*, *orelse*, *type_comment*)
 
-​	一个 `for` 循环。 `target` 保存循环赋值的变量，是一个单独的 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name), [`Tuple`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Tuple), [`List`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.List), [`Attribute`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Attribute) 或 [`Subscript`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Subscript) 节点。 `iter` 保存要被循环的条目，同样也是一个单独节点。 `body` 和 `orelse` 包含要执行的节点列表。 `orelse` 中的语句会在循环正常结束时被执行，而不是通过 `break` 语句执行。
+​	一个 `for` 循环。 `target` 保存循环赋值的变量，是一个单独的 [`Name`]({{< ref "/library/language/ast#ast.Name" >}}), [`Tuple`]({{< ref "/library/language/ast#ast.Tuple" >}}), [`List`]({{< ref "/library/language/ast#ast.List" >}}), [`Attribute`]({{< ref "/library/language/ast#ast.Attribute" >}}) 或 [`Subscript`]({{< ref "/library/language/ast#ast.Subscript" >}}) 节点。 `iter` 保存要被循环的条目，同样也是一个单独节点。 `body` 和 `orelse` 包含要执行的节点列表。 `orelse` 中的语句会在循环正常结束时被执行，而不是通过 `break` 语句执行。
 
 ## **type_comment**
 
@@ -1241,7 +1239,7 @@ Module(
 
 ## *class* ast.**While**(*test*, *body*, *orelse*)
 
-​	一个 `while` 循环。 `test` 保存条件，如一个 [`Compare`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Compare) 节点。
+​	一个 `while` 循环。 `test` 保存条件，如一个 [`Compare`]({{< ref "/library/language/ast#ast.Compare" >}}) 节点。
 
 ```
 >> print(ast.dump(ast.parse("""
@@ -1300,7 +1298,7 @@ Module(
 
 ## *class* ast.**Try**(*body*, *handlers*, *orelse*, *finalbody*)
 
-`try` 代码块。 所有属性都是要执行的节点列表，除了 `handlers`，它是一个 [`ExceptHandler`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.ExceptHandler) 节点列表。
+`try` 代码块。 所有属性都是要执行的节点列表，除了 `handlers`，它是一个 [`ExceptHandler`]({{< ref "/library/language/ast#ast.ExceptHandler" >}}) 节点列表。
 
 
 
@@ -1345,7 +1343,7 @@ Module(
 
 ## *class* ast.**TryStar**(*body*, *handlers*, *orelse*, *finalbody*)
 
-`try` 代码块后带有 `except*` 子句。 包含的属性与 [`Try`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Try) 的相同但 [`ExceptHandler`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.ExceptHandler) 节点在 `handlers` 中会被解读为 `except*` 而不是 `except` 代码块。
+`try` 代码块后带有 `except*` 子句。 包含的属性与 [`Try`]({{< ref "/library/language/ast#ast.Try" >}}) 的相同但 [`ExceptHandler`]({{< ref "/library/language/ast#ast.ExceptHandler" >}}) 节点在 `handlers` 中会被解读为 `except*` 而不是 `except` 代码块。
 
 
 
@@ -1375,7 +1373,7 @@ Module(
 
 ## *class* ast.**ExceptHandler**(*type*, *name*, *body*)
 
-​	一个单独的 `except` 子句。 `type` 是它将匹配的异常，通常为一个 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name) 节点（或 `None` 表示捕获全部的 `except:` 子句）。 `name` 是一个用于存放异常的别名的原始字符串，或者如果子句没有 `as foo` 则为 `None`。 `body` 为一个节点列表。
+​	一个单独的 `except` 子句。 `type` 是它将匹配的异常，通常为一个 [`Name`]({{< ref "/library/language/ast#ast.Name" >}}) 节点（或 `None` 表示捕获全部的 `except:` 子句）。 `name` 是一个用于存放异常的别名的原始字符串，或者如果子句没有 `as foo` 则为 `None`。 `body` 为一个节点列表。
 
 
 
@@ -1404,7 +1402,7 @@ Module(
 
 ## *class* ast.**With**(*items*, *body*, *type_comment*)
 
-​	一个 `with` 代码块。 `items` 是一个代表上下文管理器的 [`withitem`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.withitem) 节点列表，而 `body` 是该上下文中的缩进代码块。
+​	一个 `with` 代码块。 `items` 是一个代表上下文管理器的 [`withitem`]({{< ref "/library/language/ast#ast.withitem" >}}) 节点列表，而 `body` 是该上下文中的缩进代码块。
 
 ## **type_comment**
 
@@ -1412,7 +1410,7 @@ Module(
 
 ## *class* ast.**withitem**(*context_expr*, *optional_vars*)
 
-​	一个 `with` 代码块中单独的上下文管理器。 `context_expr` 为上下文管理器，通常为一个 [`Call`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Call) 节点。 `optional_vars` 为一个针对 `as foo` 部分的 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name), [`Tuple`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Tuple) 或 [`List`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.List)，或者如果未使用别名则为 `None`。
+​	一个 `with` 代码块中单独的上下文管理器。 `context_expr` 为上下文管理器，通常为一个 [`Call`]({{< ref "/library/language/ast#ast.Call" >}}) 节点。 `optional_vars` 为一个针对 `as foo` 部分的 [`Name`]({{< ref "/library/language/ast#ast.Name" >}}), [`Tuple`]({{< ref "/library/language/ast#ast.Tuple" >}}) 或 [`List`]({{< ref "/library/language/ast#ast.List" >}})，或者如果未使用别名则为 `None`。
 
 
 
@@ -1444,14 +1442,14 @@ Module(
 
 ## *class* ast.**Match**(*subject*, *cases*)
 
-​	一条 `match` 语句。 `subject` 保存匹配的目标（与 cases 相匹配的对象）而 `cases` 包含一个由不同分支的 [`match_case`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.match_case) 节点组成的可迭代对象。
+​	一条 `match` 语句。 `subject` 保存匹配的目标（与 cases 相匹配的对象）而 `cases` 包含一个由不同分支的 [`match_case`]({{< ref "/library/language/ast#ast.match_case" >}}) 节点组成的可迭代对象。
 
 > Added in version 3.10.
 >
 
 ## *class* ast.**match_case**(*pattern*, *guard*, *body*)
 
-​	一个 `match` 语句中单独的 case 模式。 `pattern` 包含目标将要去匹配的匹配模式。 请注意针对模式所产生的 [`AST`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST) 节点不同于针对表达式所产生的节点，即使它们共享相同的语法。
+​	一个 `match` 语句中单独的 case 模式。 `pattern` 包含目标将要去匹配的匹配模式。 请注意针对模式所产生的 [`AST`]({{< ref "/library/language/ast#ast.AST" >}}) 节点不同于针对表达式所产生的节点，即使它们共享相同的语法。
 
 `guard` 属性包含一个当模式与目标相匹配时将被求值的表达式。
 
@@ -1799,11 +1797,11 @@ Module(
 
 ### 类型形参
 
-[类型形参](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#type-params) 可以存在于类、函数和类型别名中。
+[类型形参]({{< ref "/reference/compound_stmts#type-params" >}}) 可以存在于类、函数和类型别名中。
 
 ## *class* ast.**TypeVar**(*name*, *bound*, *default_value*)
 
-​	A [`typing.TypeVar`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeVar). `name` is the name of the type variable. `bound` is the bound or constraints, if any. If `bound` is a [`Tuple`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Tuple), it represents constraints; otherwise it represents the bound. `default_value` is the default value; if the `TypeVar` has no default, this attribute will be set to `None`.
+​	A [`typing.TypeVar`]({{< ref "/library/development/typing#typing.TypeVar" >}}). `name` is the name of the type variable. `bound` is the bound or constraints, if any. If `bound` is a [`Tuple`]({{< ref "/library/language/ast#ast.Tuple" >}}), it represents constraints; otherwise it represents the bound. `default_value` is the default value; if the `TypeVar` has no default, this attribute will be set to `None`.
 
 
 
@@ -1827,11 +1825,11 @@ Module(
 > Added in version 3.12.
 >
 
-*在 3.13 版本发生变更:* 增加了 *default_value* 形参。
+> 在 3.13 版本发生变更: 增加了 *default_value* 形参。
 
 ## *class* ast.**ParamSpec**(*name*, *default_value*)
 
-​	A [`typing.ParamSpec`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.ParamSpec). `name` is the name of the parameter specification. `default_value` is the default value; if the `ParamSpec` has no default, this attribute will be set to `None`.
+​	A [`typing.ParamSpec`]({{< ref "/library/development/typing#typing.ParamSpec" >}}). `name` is the name of the parameter specification. `default_value` is the default value; if the `ParamSpec` has no default, this attribute will be set to `None`.
 
 
 
@@ -1862,11 +1860,11 @@ Module(
 > Added in version 3.12.
 >
 
-*在 3.13 版本发生变更:* 增加了 *default_value* 形参。
+> 在 3.13 版本发生变更: 增加了 *default_value* 形参。
 
 ## *class* ast.**TypeVarTuple**(*name*, *default_value*)
 
-​	A [`typing.TypeVarTuple`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeVarTuple). `name` is the name of the type variable tuple. `default_value` is the default value; if the `TypeVarTuple` has no default, this attribute will be set to `None`.
+​	A [`typing.TypeVarTuple`]({{< ref "/library/development/typing#typing.TypeVarTuple" >}}). `name` is the name of the type variable tuple. `default_value` is the default value; if the `TypeVarTuple` has no default, this attribute will be set to `None`.
 
 
 
@@ -1894,7 +1892,7 @@ Module(
 > Added in version 3.12.
 >
 
-*在 3.13 版本发生变更:* 增加了 *default_value* 形参。
+> 在 3.13 版本发生变更: 增加了 *default_value* 形参。
 
 ### 函数与类定义
 
@@ -1903,21 +1901,21 @@ Module(
 ​	一个函数定义。
 
 - `name` 是函数名称的原始字符串。
-- `args` 是一个 [`arguments`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.arguments) 节点。
+- `args` 是一个 [`arguments`]({{< ref "/library/language/ast#ast.arguments" >}}) 节点。
 - `body` 是函数内部的节点列表。
 - `decorator_list` 是要应用的装饰器列表，最外层的最先保存（即列表中的第一项将最后被应用）。
 - `returns` 是返回标注。
-- `type_params` 是一个 [类型形参](https://docs.python.org/zh-cn/3.13/library/ast.html#ast-type-params) 的列表。
+- `type_params` 是一个 [类型形参]({{< ref "/library/language/ast#ast-type-params" >}}) 的列表。
 
 ## **type_comment**
 
 `type_comment` 是带有以注释表示的类型标注的可选的字符串。
 
-*在 3.12 版本发生变更:* 增加了 `type_params`。
+> 在 3.12 版本发生变更: 增加了 `type_params`。
 
 ## *class* ast.**Lambda**(*args*, *body*)
 
-`lambda` 是可在表达式内部使用的最小化函数定义。 不同于 [`FunctionDef`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.FunctionDef)，`body` 是保存一个单独节点。
+`lambda` 是可在表达式内部使用的最小化函数定义。 不同于 [`FunctionDef`]({{< ref "/library/language/ast#ast.FunctionDef" >}})，`body` 是保存一个单独节点。
 
 
 
@@ -1938,14 +1936,14 @@ Module(
 
 ​	函数的参数。
 
-- `posonlyargs`, `args` 和 `kwonlyargs` 均为 [`arg`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.arg) 节点的列表。
-- `vararg` 和 `kwarg` 均为单独的 [`arg`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.arg) 节点，指向 `*args, **kwargs` 形参。
+- `posonlyargs`, `args` 和 `kwonlyargs` 均为 [`arg`]({{< ref "/library/language/ast#ast.arg" >}}) 节点的列表。
+- `vararg` 和 `kwarg` 均为单独的 [`arg`]({{< ref "/library/language/ast#ast.arg" >}}) 节点，指向 `*args, **kwargs` 形参。
 - `kw_defaults` 是一个由仅限关键字参数默认值组成的列表。 如果有一个为 `None`，则对应的参数为必须的参数。
 - `defaults` 是一个由可按位置传入的参数的默认值组成的列表。 如果默认值个数少于参数个数，则它们将对应最后 n 个参数。
 
 ## *class* ast.**arg**(*arg*, *annotation*, *type_comment*)
 
-​	列表中的一个单独参数。 `arg` 为参数名称原始字符串；`annotation` 为其标，如一个 [`Name`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Name) 节点。
+​	列表中的一个单独参数。 `arg` 为参数名称原始字符串；`annotation` 为其标，如一个 [`Name`]({{< ref "/library/language/ast#ast.Name" >}}) 节点。
 
 ## **type_comment**
 
@@ -2008,7 +2006,7 @@ Module(
 
 ## *class* ast.**YieldFrom**(*value*)
 
-​	一个 `yield` 或 `yield from` 表达式。 因为这些属性表达式，所以如果发回的值未被使用则必须将它们包装在 [`Expr`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Expr) 节点中。
+​	一个 `yield` 或 `yield from` 表达式。 因为这些属性表达式，所以如果发回的值未被使用则必须将它们包装在 [`Expr`]({{< ref "/library/language/ast#ast.Expr" >}}) 节点中。
 
 
 
@@ -2062,10 +2060,10 @@ Module(
 
 - `name` 为类名称的原始字符串。
 - `bases` 为一个由显式指明的基类节点组成的列表。
-- `keywords` is a list of [`keyword`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.keyword) nodes, principally for 'metaclass'. Other keywords will be passed to the metaclass, as per [**PEP 3115**](https://peps.python.org/pep-3115/).
+- `keywords` is a list of [`keyword`]({{< ref "/library/language/ast#ast.keyword" >}}) nodes, principally for 'metaclass'. Other keywords will be passed to the metaclass, as per [**PEP 3115**](https://peps.python.org/pep-3115/).
 - `body` 是一个由代表类定义内部代码的节点组成的列表。
-- `decorator_list` 是一个节点的列表，与 [`FunctionDef`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.FunctionDef) 中的一致。
-- `type_params` 是一个 [类型形参](https://docs.python.org/zh-cn/3.13/library/ast.html#ast-type-params) 的列表。
+- `decorator_list` 是一个节点的列表，与 [`FunctionDef`]({{< ref "/library/language/ast#ast.FunctionDef" >}}) 中的一致。
+- `type_params` 是一个 [类型形参]({{< ref "/library/language/ast#ast-type-params" >}}) 的列表。
 
 
 
@@ -2094,19 +2092,19 @@ Module(
                 Name(id='decorator2', ctx=Load())])])
 ```
 
-*在 3.12 版本发生变更:* 增加了 `type_params`。
+> 在 3.12 版本发生变更: 增加了 `type_params`。
 
 ### async 与 await
 
 ## *class* ast.**AsyncFunctionDef**(*name*, *args*, *body*, *decorator_list*, *returns*, *type_comment*, *type_params*)
 
-​	一个 `async def` 函数定义。 具有与 [`FunctionDef`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.FunctionDef) 相同的字段。
+​	一个 `async def` 函数定义。 具有与 [`FunctionDef`]({{< ref "/library/language/ast#ast.FunctionDef" >}}) 相同的字段。
 
-*在 3.12 版本发生变更:* 增加了 `type_params`。
+> 在 3.12 版本发生变更: 增加了 `type_params`。
 
 ## *class* ast.**Await**(*value*)
 
-​	一个 `await` 表达式。 `value` 是它所等待的值。 仅在 [`AsyncFunctionDef`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AsyncFunctionDef) 的函数体内可用。
+​	一个 `await` 表达式。 `value` 是它所等待的值。 仅在 [`AsyncFunctionDef`]({{< ref "/library/language/ast#ast.AsyncFunctionDef" >}}) 的函数体内可用。
 
 
 
@@ -2131,37 +2129,36 @@ Module(
 
 ## *class* ast.**AsyncWith**(*items*, *body*, *type_comment*)
 
-`async for` 循环和 `async with` 上下文管理器。 它们分别具有与 [`For`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.For) 和 [`With`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.With) 相同的字段。 仅在 [`AsyncFunctionDef`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AsyncFunctionDef) 的函数体内可用。
+`async for` 循环和 `async with` 上下文管理器。 它们分别具有与 [`For`]({{< ref "/library/language/ast#ast.For" >}}) 和 [`With`]({{< ref "/library/language/ast#ast.With" >}}) 相同的字段。 仅在 [`AsyncFunctionDef`]({{< ref "/library/language/ast#ast.AsyncFunctionDef" >}}) 的函数体内可用。
 
-​	备注
-
+​备注
  
 
-​	当一个字符串由 [`ast.parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 来解析时，所返回的树中的运算符节点 (为 `ast.operator`, `ast.unaryop`, `ast.cmpop`, `ast.boolop` 和 `ast.expr_context` 的子类) 将均为单例对象。 对其中某一个 (例如 [`ast.Add`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Add)) 的修改将反映到同一个值所出现的其他位置上。
+​	当一个字符串由 [`ast.parse()`]({{< ref "/library/language/ast#ast.parse" >}}) 来解析时，所返回的树中的运算符节点 (为 `ast.operator`, `ast.unaryop`, `ast.cmpop`, `ast.boolop` 和 `ast.expr_context` 的子类) 将均为单例对象。 对其中某一个 (例如 [`ast.Add`]({{< ref "/library/language/ast#ast.Add" >}})) 的修改将反映到同一个值所出现的其他位置上。
 
-## [`ast`](https://docs.python.org/zh-cn/3.13/library/ast.html#module-ast) 中的辅助函数
+## [`ast`]({{< ref "/library/language/ast#module-ast" >}}) 中的辅助函数
 
-​	除了节点类， [`ast`](https://docs.python.org/zh-cn/3.13/library/ast.html#module-ast) 模块里为遍历抽象语法树定义了这些工具函数和类:
+​	除了节点类， [`ast`]({{< ref "/library/language/ast#module-ast" >}}) 模块里为遍历抽象语法树定义了这些工具函数和类:
 
 ## ast.**parse**(*source*, *filename='<unknown>'*, *mode='exec'*, ***, *type_comments=False*, *feature_version=None*, *optimize=-1*)
 
 ​	将 source 解析为一个 AST 节点。 等价于 `compile(source, filename, mode, flags=FLAGS_VALUE, optimize=optimize)`，其中当 `optimize <= 0` 时 `FLAGS_VALUE` 为 `ast.PyCF_ONLY_AST` 否则为 `ast.PyCF_OPTIMIZED_AST`。
 
-​	If `type_comments=True` is given, the parser is modified to check and return type comments as specified by [**PEP 484**](https://peps.python.org/pep-0484/) and [**PEP 526**](https://peps.python.org/pep-0526/). This is equivalent to adding [`ast.PyCF_TYPE_COMMENTS`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.PyCF_TYPE_COMMENTS) to the flags passed to [`compile()`](https://docs.python.org/zh-cn/3.13/library/functions.html#compile). This will report syntax errors for misplaced type comments. Without this flag, type comments will be ignored, and the `type_comment` field on selected AST nodes will always be `None`. In addition, the locations of `# type: ignore` comments will be returned as the `type_ignores` attribute of [`Module`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Module) (otherwise it is always an empty list).
+​	If `type_comments=True` is given, the parser is modified to check and return type comments as specified by [**PEP 484**](https://peps.python.org/pep-0484/) and [**PEP 526**](https://peps.python.org/pep-0526/). This is equivalent to adding [`ast.PyCF_TYPE_COMMENTS`]({{< ref "/library/language/ast#ast.PyCF_TYPE_COMMENTS" >}}) to the flags passed to [`compile()`]({{< ref "/library/functions#compile" >}}). This will report syntax errors for misplaced type comments. Without this flag, type comments will be ignored, and the `type_comment` field on selected AST nodes will always be `None`. In addition, the locations of `# type: ignore` comments will be returned as the `type_ignores` attribute of [`Module`]({{< ref "/library/language/ast#ast.Module" >}}) (otherwise it is always an empty list).
 
 ​	并且，如果 `mode` 为 `'func_type'`，则输入语法会进行与 [**PEP 484**](https://peps.python.org/pep-0484/) "签名类型注释" 对应的修改，例如 `(str, int) -> List[str]`。
 
-​	将 `feature_version` 设为元组 `(major, minor)` 将导致使用相应 Python 版本的语法来“尽力”尝试解析。 例如，设置 `feature_version=(3, 9)` 将尝试禁止解析 [`match`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#match) 语句。 目前 `major` 必须等于 `3`。 最低的受支持版本为 `(3, 7)` (并且这可能在未来的 Python 版本中增高)；最高版本为 `sys.version_info[0:2]`。 “尽力”尝试意味着不能保证解析（或解析成功）与在对应于 `feature_version` 的 Python 版本上运行时相同。
+​	将 `feature_version` 设为元组 `(major, minor)` 将导致使用相应 Python 版本的语法来“尽力”尝试解析。 例如，设置 `feature_version=(3, 9)` 将尝试禁止解析 [`match`]({{< ref "/reference/compound_stmts#match" >}}) 语句。 目前 `major` 必须等于 `3`。 最低的受支持版本为 `(3, 7)` (并且这可能在未来的 Python 版本中增高)；最高版本为 `sys.version_info[0:2]`。 “尽力”尝试意味着不能保证解析（或解析成功）与在对应于 `feature_version` 的 Python 版本上运行时相同。
 
-​	如果源包含一个空字符 (`\0`)，则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	如果源包含一个空字符 (`\0`)，则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 ​	警告
 
  
 
-​	请注意成功将源代码解析为 AST 对象并不能保证该源代码提供了可被执行的有效 Python 代码，因为编译步骤还可能引发其他的 [`SyntaxError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxError) 异常。 例如，对于源代码 `return 42` 可以生成一条有效的 return 语句 AST 节点，但它不能被单独编译（它必须位于一个函数节点之内）。
+​	请注意成功将源代码解析为 AST 对象并不能保证该源代码提供了可被执行的有效 Python 代码，因为编译步骤还可能引发其他的 [`SyntaxError`]({{< ref "/library/exceptions#SyntaxError" >}}) 异常。 例如，对于源代码 `return 42` 可以生成一条有效的 return 语句 AST 节点，但它不能被单独编译（它必须位于一个函数节点之内）。
 
-​	特别地，[`ast.parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 不会执行任何作用域检查，这是由编译步骤来做的。
+​	特别地，[`ast.parse()`]({{< ref "/library/language/ast#ast.parse" >}}) 不会执行任何作用域检查，这是由编译步骤来做的。
 
 ​	警告
 
@@ -2169,25 +2166,25 @@ Module(
 
 ​	足够复杂或是巨大的字符串可能导致Python解释器的崩溃，因为Python的AST编译器是有栈深限制的。
 
-*在 3.8 版本发生变更:* 增加了 `type_comments`, `mode='func_type'` 和 `feature_version`。
+> 在 3.8 版本发生变更: 增加了 `type_comments`, `mode='func_type'` 和 `feature_version`。
 
-*在 3.13 版本发生变更:* 现在最低的支持 `feature_version` 的版本为 `(3, 7)`。 增加了 `optimize` 参数。
+> 在 3.13 版本发生变更: 现在最低的支持 `feature_version` 的版本为 `(3, 7)`。 增加了 `optimize` 参数。
 
 ## ast.**unparse**(*ast_obj*)
 
-​	反向解析一个 [`ast.AST`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST) 对象并生成一个包含当再次使用 [`ast.parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 解析时将产生同样的 [`ast.AST`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST) 对象的代码的字符串。
+​	反向解析一个 [`ast.AST`]({{< ref "/library/language/ast#ast.AST" >}}) 对象并生成一个包含当再次使用 [`ast.parse()`]({{< ref "/library/language/ast#ast.parse" >}}) 解析时将产生同样的 [`ast.AST`]({{< ref "/library/language/ast#ast.AST" >}}) 对象的代码的字符串。
 
 ​	警告
 
  
 
-​	所产生的代码字符串将不一定与生成 [`ast.AST`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST) 对象的原始代码完全一致（不带任何编译器优化，例如常量元组/冻结集合等）。
+​	所产生的代码字符串将不一定与生成 [`ast.AST`]({{< ref "/library/language/ast#ast.AST" >}}) 对象的原始代码完全一致（不带任何编译器优化，例如常量元组/冻结集合等）。
 
 ​	警告
 
  
 
-​	尝试反向解析一个高度复杂的表达式可能会导致 [`RecursionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RecursionError)。
+​	尝试反向解析一个高度复杂的表达式可能会导致 [`RecursionError`]({{< ref "/library/exceptions#RecursionError" >}})。
 
 > Added in version 3.9.
 >
@@ -2198,7 +2195,7 @@ Module(
 
 ​	这可被用于对包含 Python 值的字符串进行求值而不必解析这些值本身。 它不能对任意的复杂表达式进行求值，例如涉及运算符或索引操作的表达式。
 
-​	此函数过去曾被描述为“安全”但并未定义其含义。 这是存在误导性的。 此函数被专门设计为不执行 Python 代码，这与更通用的 [`eval()`](https://docs.python.org/zh-cn/3.13/library/functions.html#eval) 不同。 它没有命名空间、没有名称查找或执行外部调用的能力。 但是它并不能完全避免攻击：一个相对较小的输入有可能导致内存耗尽或 C 栈耗尽，使得进程崩溃。 还可能在某些输入上出现过度消耗 CPU 的拒绝服务问题。 因此不建议在未被信任的数据上调用它。
+​	此函数过去曾被描述为“安全”但并未定义其含义。 这是存在误导性的。 此函数被专门设计为不执行 Python 代码，这与更通用的 [`eval()`]({{< ref "/library/functions#eval" >}}) 不同。 它没有命名空间、没有名称查找或执行外部调用的能力。 但是它并不能完全避免攻击：一个相对较小的输入有可能导致内存耗尽或 C 栈耗尽，使得进程崩溃。 还可能在某些输入上出现过度消耗 CPU 的拒绝服务问题。 因此不建议在未被信任的数据上调用它。
 
 ​	警告
 
@@ -2206,23 +2203,23 @@ Module(
 
 ​	有可能由于 Python 的 AST 编译器中的栈深度限制而导致 Python 解释器的崩溃。
 
-​	根据输入错误的具体形式它可能引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError), [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError), [`SyntaxError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxError), [`MemoryError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#MemoryError) 以及 [`RecursionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RecursionError)。
+​	根据输入错误的具体形式它可能引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}), [`TypeError`]({{< ref "/library/exceptions#TypeError" >}}), [`SyntaxError`]({{< ref "/library/exceptions#SyntaxError" >}}), [`MemoryError`]({{< ref "/library/exceptions#MemoryError" >}}) 以及 [`RecursionError`]({{< ref "/library/exceptions#RecursionError" >}})。
 
-*在 3.2 版本发生变更:* 目前支持字节和集合。
+> 在 3.2 版本发生变更: 目前支持字节和集合。
 
-*在 3.9 版本发生变更:* 现在支持通过 `'set()'` 创建空集合。
+> 在 3.9 版本发生变更: 现在支持通过 `'set()'` 创建空集合。
 
-*在 3.10 版本发生变更:* 对于字符串输入，打头的空格和制表符现在会被去除。
+> 在 3.10 版本发生变更: 对于字符串输入，打头的空格和制表符现在会被去除。
 
 ## ast.**get_docstring**(*node*, *clean=True*)
 
-​	返回给定 *node* (必须为 [`FunctionDef`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.FunctionDef), [`AsyncFunctionDef`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AsyncFunctionDef), [`ClassDef`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.ClassDef) 或 [`Module`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.Module) 节点) 的文档字符串，或者如果没有文档字符串则返回 `None`。 如果 *clean* 为真值，则通过 [`inspect.cleandoc()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.cleandoc) 清除文档字符串的缩进。
+​	返回给定 *node* (必须为 [`FunctionDef`]({{< ref "/library/language/ast#ast.FunctionDef" >}}), [`AsyncFunctionDef`]({{< ref "/library/language/ast#ast.AsyncFunctionDef" >}}), [`ClassDef`]({{< ref "/library/language/ast#ast.ClassDef" >}}) 或 [`Module`]({{< ref "/library/language/ast#ast.Module" >}}) 节点) 的文档字符串，或者如果没有文档字符串则返回 `None`。 如果 *clean* 为真值，则通过 [`inspect.cleandoc()`]({{< ref "/library/python/inspect#inspect.cleandoc" >}}) 清除文档字符串的缩进。
 
-*在 3.5 版本发生变更:* 目前支持 [`AsyncFunctionDef`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AsyncFunctionDef)
+> 在 3.5 版本发生变更: 目前支持 [`AsyncFunctionDef`]({{< ref "/library/language/ast#ast.AsyncFunctionDef" >}})
 
 ## ast.**get_source_segment**(*source*, *node*, ***, *padded=False*)
 
-​	获取生成 *node* 的 *source* 的源代码段。 如果丢失了某些位置信息 ([`lineno`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.lineno), [`end_lineno`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.end_lineno), [`col_offset`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.col_offset) 或 [`end_col_offset`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.end_col_offset))，则返回 `None`。
+​	获取生成 *node* 的 *source* 的源代码段。 如果丢失了某些位置信息 ([`lineno`]({{< ref "/library/language/ast#ast.AST.lineno" >}}), [`end_lineno`]({{< ref "/library/language/ast#ast.AST.end_lineno" >}}), [`col_offset`]({{< ref "/library/language/ast#ast.AST.col_offset" >}}) 或 [`end_col_offset`]({{< ref "/library/language/ast#ast.AST.end_col_offset" >}}))，则返回 `None`。
 
 ​	如果 *padded* 为 `True`，则多行语句的第一行将以与其初始位置相匹配的空格填充。
 
@@ -2231,7 +2228,7 @@ Module(
 
 ## ast.**fix_missing_locations**(*node*)
 
-​	当你使用 [`compile()`](https://docs.python.org/zh-cn/3.13/library/functions.html#compile) 来编译节点树时，编译器会接受每个支持 [`lineno`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.lineno) 和 [`col_offset`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.col_offset) 属性的节点的相应信息。 对于已生成的节点来说这是相当繁琐的，因此这个辅助工具会递归地为尚未设置这些属性的节点添加它们，具体做法是将其设为父节点的对应值。 它将从 *node* 开始递归地执行。
+​	当你使用 [`compile()`]({{< ref "/library/functions#compile" >}}) 来编译节点树时，编译器会接受每个支持 [`lineno`]({{< ref "/library/language/ast#ast.AST.lineno" >}}) 和 [`col_offset`]({{< ref "/library/language/ast#ast.AST.col_offset" >}}) 属性的节点的相应信息。 对于已生成的节点来说这是相当繁琐的，因此这个辅助工具会递归地为尚未设置这些属性的节点添加它们，具体做法是将其设为父节点的对应值。 它将从 *node* 开始递归地执行。
 
 ## ast.**increment_lineno**(*node*, *n=1*)
 
@@ -2239,7 +2236,7 @@ Module(
 
 ## ast.**copy_location**(*new_node*, *old_node*)
 
-​	在可能的情况下将源位置 ([`lineno`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.lineno), [`col_offset`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.col_offset), [`end_lineno`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.end_lineno) 和 [`end_col_offset`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.end_col_offset)) 从 *old_node* 拷贝到 *new_node*，并返回 *new_node*。
+​	在可能的情况下将源位置 ([`lineno`]({{< ref "/library/language/ast#ast.AST.lineno" >}}), [`col_offset`]({{< ref "/library/language/ast#ast.AST.col_offset" >}}), [`end_lineno`]({{< ref "/library/language/ast#ast.AST.end_lineno" >}}) 和 [`end_col_offset`]({{< ref "/library/language/ast#ast.AST.end_col_offset" >}})) 从 *old_node* 拷贝到 *new_node*，并返回 *new_node*。
 
 ## ast.**iter_fields**(*node*)
 
@@ -2255,33 +2252,33 @@ Module(
 
 ## *class* ast.**NodeVisitor**
 
-​	一个遍历抽象语法树并针对所找到的每个节点调用访问器函数的节点访问器基类。 该函数可能会返回一个由 [`visit()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.NodeVisitor.visit) 方法所提供的值。
+​	一个遍历抽象语法树并针对所找到的每个节点调用访问器函数的节点访问器基类。 该函数可能会返回一个由 [`visit()`]({{< ref "/library/language/ast#ast.NodeVisitor.visit" >}}) 方法所提供的值。
 
 ​	这个类应当被子类化，并由子类来添加访问器方法。
 
 ## **visit**(*node*)
 
-​	访问一个节点。 默认实现会调用名为 `self.visit_*classname*` 的方法其中 *classname* 为节点类的名称，或者如果该方法不存在则为 [`generic_visit()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.NodeVisitor.generic_visit)。
+​	访问一个节点。 默认实现会调用名为 `self.visit_*classname*` 的方法其中 *classname* 为节点类的名称，或者如果该方法不存在则为 [`generic_visit()`]({{< ref "/library/language/ast#ast.NodeVisitor.generic_visit" >}})。
 
 ## **generic_visit**(*node*)
 
-​	该访问器会在节点的所有子节点上调用 [`visit()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.NodeVisitor.visit)。
+​	该访问器会在节点的所有子节点上调用 [`visit()`]({{< ref "/library/language/ast#ast.NodeVisitor.visit" >}})。
 
-​	请注意所有包含自定义访问器方法的节点的子节点将不会被访问除非访问器调用了 [`generic_visit()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.NodeVisitor.generic_visit) 或是自行访问它们。
+​	请注意所有包含自定义访问器方法的节点的子节点将不会被访问除非访问器调用了 [`generic_visit()`]({{< ref "/library/language/ast#ast.NodeVisitor.generic_visit" >}}) 或是自行访问它们。
 
 ## **visit_Constant**(*node*)
 
 ​	处理所有常量节点。
 
-​	如果你想在遍历期间应用对节点的修改则请不要使用 [`NodeVisitor`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.NodeVisitor)。 对此目的可使用一个允许修改的特殊访问器 ([`NodeTransformer`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.NodeTransformer))。
+​	如果你想在遍历期间应用对节点的修改则请不要使用 [`NodeVisitor`]({{< ref "/library/language/ast#ast.NodeVisitor" >}})。 对此目的可使用一个允许修改的特殊访问器 ([`NodeTransformer`]({{< ref "/library/language/ast#ast.NodeTransformer" >}}))。
 
-*自 3.8 版本弃用:* `visit_Num()`, `visit_Str()`, `visit_Bytes()`, `visit_NameConstant()` 和 `visit_Ellipsis()` 等方法现在已被弃用并且在未来的 Python 版本中将不再被调用。 请添加 [`visit_Constant()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.NodeVisitor.visit_Constant) 方法来处理所有常量节点。
+> 自 3.8 版本弃用: `visit_Num()`, `visit_Str()`, `visit_Bytes()`, `visit_NameConstant()` 和 `visit_Ellipsis()` 等方法现在已被弃用并且在未来的 Python 版本中将不再被调用。 请添加 [`visit_Constant()`]({{< ref "/library/language/ast#ast.NodeVisitor.visit_Constant" >}}) 方法来处理所有常量节点。
 
 ## *class* ast.**NodeTransformer**
 
-​	子类 [`NodeVisitor`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.NodeVisitor) 用于遍历抽象语法树，并允许修改节点。
+​	子类 [`NodeVisitor`]({{< ref "/library/language/ast#ast.NodeVisitor" >}}) 用于遍历抽象语法树，并允许修改节点。
 
-[`NodeTransformer`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.NodeTransformer) 将遍历抽象语法树并使用visitor方法的返回值去替换或移除旧节点。如果visitor方法的返回值为 `None` , 则该节点将从其位置移除，否则将替换为返回值。当返回值是原始节点时，无需替换。
+[`NodeTransformer`]({{< ref "/library/language/ast#ast.NodeTransformer" >}}) 将遍历抽象语法树并使用visitor方法的返回值去替换或移除旧节点。如果visitor方法的返回值为 `None` , 则该节点将从其位置移除，否则将替换为返回值。当返回值是原始节点时，无需替换。
 
 ​	如下是一个转换器示例，它将所有出现的名称 (`foo`) 重写为 `data['foo']`:
 
@@ -2296,11 +2293,11 @@ class RewriteName(NodeTransformer):
         )
 ```
 
-​	请记住如果你正在操作的节点具有子节点，你必须先自行转换这些子节点或是为该节点调用 [`generic_visit()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.NodeVisitor.generic_visit) 方法。
+​	请记住如果你正在操作的节点具有子节点，你必须先自行转换这些子节点或是为该节点调用 [`generic_visit()`]({{< ref "/library/language/ast#ast.NodeVisitor.generic_visit" >}}) 方法。
 
 ​	对于属于语句集合（适用于所有语句节点）的节点，访问者还可以返回节点列表而不仅仅是单个节点。
 
-​	如果 [`NodeTransformer`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.NodeTransformer) 引入了新的（不属于原节点树的一部分的）节点而没有给出它们的位置信息（如 [`lineno`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.AST.lineno) 等），则应当调用 [`fix_missing_locations()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.fix_missing_locations) 并传入新的子节点树来重新计算位置信息:
+​	如果 [`NodeTransformer`]({{< ref "/library/language/ast#ast.NodeTransformer" >}}) 引入了新的（不属于原节点树的一部分的）节点而没有给出它们的位置信息（如 [`lineno`]({{< ref "/library/language/ast#ast.AST.lineno" >}}) 等），则应当调用 [`fix_missing_locations()`]({{< ref "/library/language/ast#ast.fix_missing_locations" >}}) 并传入新的子节点树来重新计算位置信息:
 
 ```
 tree = ast.parse('foo', mode='eval')
@@ -2321,9 +2318,9 @@ node = YourTransformer().visit(node)
 
 ​	如果 *show_empty* 为 `False` (默认值)，则空列表和值为 `None` 的字段将在输出中省略。
 
-*在 3.9 版本发生变更:* 添加了 *indent* 选项。
+> 在 3.9 版本发生变更: 添加了 *indent* 选项。
 
-*在 3.13 版本发生变更:* 增加了 *show_empty* 选项。
+> 在 3.13 版本发生变更: 增加了 *show_empty* 选项。
 
 
 
@@ -2358,7 +2355,7 @@ Module(
 
 ## 编译器旗标
 
-​	下列旗标可被传给 [`compile()`](https://docs.python.org/zh-cn/3.13/library/functions.html#compile) 用来改变程序编译的效果:
+​	下列旗标可被传给 [`compile()`]({{< ref "/library/functions#compile" >}}) 用来改变程序编译的效果:
 
 ## ast.**PyCF_ALLOW_TOP_LEVEL_AWAIT**
 
@@ -2373,7 +2370,7 @@ Module(
 
 ## ast.**PyCF_OPTIMIZED_AST**
 
-​	返回的 AST 已根据 [`compile()`](https://docs.python.org/zh-cn/3.13/library/functions.html#compile) 或 [`ast.parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 中的 *optimize* 参数进行了优化。
+​	返回的 AST 已根据 [`compile()`]({{< ref "/library/functions#compile" >}}) 或 [`ast.parse()`]({{< ref "/library/language/ast#ast.parse" >}}) 中的 *optimize* 参数进行了优化。
 
 > Added in version 3.13.
 >
@@ -2392,7 +2389,7 @@ Module(
 > Added in version 3.9.
 >
 
-[`ast`](https://docs.python.org/zh-cn/3.13/library/ast.html#module-ast) 模块可以在命令行下作为脚本来执行。 具体做法非常简单:
+[`ast`]({{< ref "/library/language/ast#module-ast" >}}) 模块可以在命令行下作为脚本来执行。 具体做法非常简单:
 
 ```
 python -m ast [-m <mode>] [-a] [infile]
@@ -2400,34 +2397,33 @@ python -m ast [-m <mode>] [-a] [infile]
 
 ​	可以接受以下选项：
 
-## **-h**, **--help**
+## **-h**, `--help`
 
 ​	显示帮助信息并退出。
 
 ## **-m** <mode>
 
-## **--mode** <mode>
+## `--mode` <mode>
 
-​	指明哪种代码必须被编译，相当于 [`parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 中的 *mode* 参数。
+​	指明哪种代码必须被编译，相当于 [`parse()`]({{< ref "/library/language/ast#ast.parse" >}}) 中的 *mode* 参数。
 
-## **--no-type-comments**
+## `--no-type-comments`
 
 ​	不要解析类型注释。
 
-## **-a**, **--include-attributes**
+## **-a**, `--include-attributes`
 
 ​	包括属性如行号和列偏移。
 
 ## **-i** <indent>
 
-## **--indent** <indent>
+## `--indent` <indent>
 
 ​	AST 中节点的缩进（空格数）。
 
 ​	如果指定了 `infile` 则其内容将被解析为 AST 并转储至 stdout。 在其他情况下，将从 stdin 读取内容。
 
-​	参见
-
+​参见
  
 
 [Green Tree Snakes](https://greentreesnakes.readthedocs.io/)，一个外部文档资源，包含处理 Python AST 的完整细节。

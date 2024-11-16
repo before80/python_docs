@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/tkinter.dnd.html](https://docs.python.org/zh-cn/3.13/library/tkinter.dnd.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/tkinter.dnd.html](https://docs.python.org/zh-cn/3.13/library/tkinter.dnd.html)
 >
 > 收录该文档的时间：`2024-11-15T20:56:44+08:00`
 
@@ -18,13 +18,12 @@ draft = false
 
 ------
 
-​	备注
-
+​备注
  
 
 ​	此模块是实验性的且在为 Tk DND 所替代后将被弃用。
 
-[`tkinter.dnd`](https://docs.python.org/zh-cn/3.13/library/tkinter.dnd.html#module-tkinter.dnd) 模块为单个应用内部的对象提供了在同一窗口中或多个窗口间的拖放操作支持。 要将对象设为可拖放，你必须为其创建启动拖放进程的事件绑定。 通常，你要将 ButtonPress 事件绑定到你所编写的回调函数 (参见 [绑定和事件](https://docs.python.org/zh-cn/3.13/library/tkinter.html#bindings-and-events))。 该函数应当调用 [`dnd_start()`](https://docs.python.org/zh-cn/3.13/library/tkinter.dnd.html#tkinter.dnd.dnd_start)，其中 'source' 为要拖动的对象，而 'event' 为发起调用的事件（你的回调函数的参数）。
+[`tkinter.dnd`]({{< ref "/library/tk/tkinter_dnd#module-tkinter.dnd" >}}) 模块为单个应用内部的对象提供了在同一窗口中或多个窗口间的拖放操作支持。 要将对象设为可拖放，你必须为其创建启动拖放进程的事件绑定。 通常，你要将 ButtonPress 事件绑定到你所编写的回调函数 (参见 [绑定和事件]({{< ref "/library/tk/tkinter#bindings-and-events" >}}))。 该函数应当调用 [`dnd_start()`]({{< ref "/library/tk/tkinter_dnd#tkinter.dnd.dnd_start" >}})，其中 'source' 为要拖动的对象，而 'event' 为发起调用的事件（你的回调函数的参数）。
 
 ​	目标对象的选择方式如下:
 
@@ -63,8 +62,7 @@ draft = false
 
 ​	用于拖放进程的工厂函数。
 
-​	参见
-
+​参见
  
 
-[绑定和事件](https://docs.python.org/zh-cn/3.13/library/tkinter.html#bindings-and-events)
+[绑定和事件]({{< ref "/library/tk/tkinter#bindings-and-events" >}})

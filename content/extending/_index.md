@@ -39,46 +39,46 @@ draft = false
 
 - 1. 使用 C 或 C++ 扩展 Python
 
-  - [1.1. 一个简单的例子](https://docs.python.org/zh-cn/3.13/extending/extending.html#a-simple-example)
-  - [1.2. 关于错误和异常](https://docs.python.org/zh-cn/3.13/extending/extending.html#intermezzo-errors-and-exceptions)
-  - [1.3. 回到例子](https://docs.python.org/zh-cn/3.13/extending/extending.html#back-to-the-example)
-  - [1.4. 模块方法表和初始化函数](https://docs.python.org/zh-cn/3.13/extending/extending.html#the-module-s-method-table-and-initialization-function)
-  - [1.5. 编译和链接](https://docs.python.org/zh-cn/3.13/extending/extending.html#compilation-and-linkage)
-  - [1.6. 在C中调用Python函数](https://docs.python.org/zh-cn/3.13/extending/extending.html#calling-python-functions-from-c)
-  - [1.7. 提取扩展函数的参数](https://docs.python.org/zh-cn/3.13/extending/extending.html#extracting-parameters-in-extension-functions)
-  - [1.8. 给扩展函数的关键字参数](https://docs.python.org/zh-cn/3.13/extending/extending.html#keyword-parameters-for-extension-functions)
-  - [1.9. 构造任意值](https://docs.python.org/zh-cn/3.13/extending/extending.html#building-arbitrary-values)
-  - [1.10. 引用计数](https://docs.python.org/zh-cn/3.13/extending/extending.html#reference-counts)
-  - [1.11. 在C++中编写扩展](https://docs.python.org/zh-cn/3.13/extending/extending.html#writing-extensions-in-c)
-  - [1.12. 给扩展模块提供C API](https://docs.python.org/zh-cn/3.13/extending/extending.html#providing-a-c-api-for-an-extension-module)
+  - [1.1. 一个简单的例子]({{< ref "/extending/extending#a-simple-example" >}})
+  - [1.2. 关于错误和异常]({{< ref "/extending/extending#intermezzo-errors-and-exceptions" >}})
+  - [1.3. 回到例子]({{< ref "/extending/extending#back-to-the-example" >}})
+  - [1.4. 模块方法表和初始化函数]({{< ref "/extending/extending#the-module-s-method-table-and-initialization-function" >}})
+  - [1.5. 编译和链接]({{< ref "/extending/extending#compilation-and-linkage" >}})
+  - [1.6. 在C中调用Python函数]({{< ref "/extending/extending#calling-python-functions-from-c" >}})
+  - [1.7. 提取扩展函数的参数]({{< ref "/extending/extending#extracting-parameters-in-extension-functions" >}})
+  - [1.8. 给扩展函数的关键字参数]({{< ref "/extending/extending#keyword-parameters-for-extension-functions" >}})
+  - [1.9. 构造任意值]({{< ref "/extending/extending#building-arbitrary-values" >}})
+  - [1.10. 引用计数]({{< ref "/extending/extending#reference-counts" >}})
+  - [1.11. 在C++中编写扩展]({{< ref "/extending/extending#writing-extensions-in-c" >}})
+  - [1.12. 给扩展模块提供C API]({{< ref "/extending/extending#providing-a-c-api-for-an-extension-module" >}})
 
 - 2. 自定义扩展类型：教程
 
-  - [2.1. 基础](https://docs.python.org/zh-cn/3.13/extending/newtypes_tutorial.html#the-basics)
-  - [2.2. 向基本示例添加数据和方法](https://docs.python.org/zh-cn/3.13/extending/newtypes_tutorial.html#adding-data-and-methods-to-the-basic-example)
-  - [2.3. 提供对于数据属性的更精细控制](https://docs.python.org/zh-cn/3.13/extending/newtypes_tutorial.html#providing-finer-control-over-data-attributes)
-  - [2.4. 支持循环垃圾回收](https://docs.python.org/zh-cn/3.13/extending/newtypes_tutorial.html#supporting-cyclic-garbage-collection)
-  - [2.5. 子类化其他类型](https://docs.python.org/zh-cn/3.13/extending/newtypes_tutorial.html#subclassing-other-types)
+  - [2.1. 基础]({{< ref "/extending/newtypes_tutorial#the-basics" >}})
+  - [2.2. 向基本示例添加数据和方法]({{< ref "/extending/newtypes_tutorial#adding-data-and-methods-to-the-basic-example" >}})
+  - [2.3. 提供对于数据属性的更精细控制]({{< ref "/extending/newtypes_tutorial#providing-finer-control-over-data-attributes" >}})
+  - [2.4. 支持循环垃圾回收]({{< ref "/extending/newtypes_tutorial#supporting-cyclic-garbage-collection" >}})
+  - [2.5. 子类化其他类型]({{< ref "/extending/newtypes_tutorial#subclassing-other-types" >}})
 
 - 3. 定义扩展类型：已分类主题
 
-  - [3.1. 终结和内存释放](https://docs.python.org/zh-cn/3.13/extending/newtypes.html#finalization-and-de-allocation)
-  - [3.2. 对象展示](https://docs.python.org/zh-cn/3.13/extending/newtypes.html#object-presentation)
-  - [3.3. 属性管理](https://docs.python.org/zh-cn/3.13/extending/newtypes.html#attribute-management)
-  - [3.4. 对象比较](https://docs.python.org/zh-cn/3.13/extending/newtypes.html#object-comparison)
-  - [3.5. 抽象协议支持](https://docs.python.org/zh-cn/3.13/extending/newtypes.html#abstract-protocol-support)
-  - [3.6. 弱引用支持](https://docs.python.org/zh-cn/3.13/extending/newtypes.html#weak-reference-support)
-  - [3.7. 更多建议](https://docs.python.org/zh-cn/3.13/extending/newtypes.html#more-suggestions)
+  - [3.1. 终结和内存释放]({{< ref "/extending/newtypes#finalization-and-de-allocation" >}})
+  - [3.2. 对象展示]({{< ref "/extending/newtypes#object-presentation" >}})
+  - [3.3. 属性管理]({{< ref "/extending/newtypes#attribute-management" >}})
+  - [3.4. 对象比较]({{< ref "/extending/newtypes#object-comparison" >}})
+  - [3.5. 抽象协议支持]({{< ref "/extending/newtypes#abstract-protocol-support" >}})
+  - [3.6. 弱引用支持]({{< ref "/extending/newtypes#weak-reference-support" >}})
+  - [3.7. 更多建议]({{< ref "/extending/newtypes#more-suggestions" >}})
 
 - 4. 构建C/C++扩展
 
-  - [4.1. 使用 setuptools 构建 C 和 C++ 扩展](https://docs.python.org/zh-cn/3.13/extending/building.html#building-c-and-c-extensions-with-setuptools)
+  - [4.1. 使用 setuptools 构建 C 和 C++ 扩展]({{< ref "/extending/building#building-c-and-c-extensions-with-setuptools" >}})
 
 - 5. 在 Windows 上构建 C 和 C++ 扩展
 
-  - [5.1. 菜谱式说明](https://docs.python.org/zh-cn/3.13/extending/windows.html#a-cookbook-approach)
-  - [5.2. Unix 和 Windows 之间的差异](https://docs.python.org/zh-cn/3.13/extending/windows.html#differences-between-unix-and-windows)
-  - [5.3. DLL 的实际使用](https://docs.python.org/zh-cn/3.13/extending/windows.html#using-dlls-in-practice)
+  - [5.1. 菜谱式说明]({{< ref "/extending/windows#a-cookbook-approach" >}})
+  - [5.2. Unix 和 Windows 之间的差异]({{< ref "/extending/windows#differences-between-unix-and-windows" >}})
+  - [5.3. DLL 的实际使用]({{< ref "/extending/windows#using-dlls-in-practice" >}})
 
 ## 在更大的应用程序中嵌入 CPython 运行时
 
@@ -86,9 +86,9 @@ draft = false
 
 - 1. 在其它应用程序嵌入 Python
 
-  - [1.1. 高层次的嵌入](https://docs.python.org/zh-cn/3.13/extending/embedding.html#very-high-level-embedding)
-  - [1.2. 突破高层次嵌入的限制：概述](https://docs.python.org/zh-cn/3.13/extending/embedding.html#beyond-very-high-level-embedding-an-overview)
-  - [1.3. 只做嵌入](https://docs.python.org/zh-cn/3.13/extending/embedding.html#pure-embedding)
-  - [1.4. 对嵌入 Python 功能进行扩展](https://docs.python.org/zh-cn/3.13/extending/embedding.html#extending-embedded-python)
-  - [1.5. 在 C++ 中嵌入 Python](https://docs.python.org/zh-cn/3.13/extending/embedding.html#embedding-python-in-c)
-  - [1.6. 在类 Unix 系统中编译和链接](https://docs.python.org/zh-cn/3.13/extending/embedding.html#compiling-and-linking-under-unix-like-systems)
+  - [1.1. 高层次的嵌入]({{< ref "/extending/embedding#very-high-level-embedding" >}})
+  - [1.2. 突破高层次嵌入的限制：概述]({{< ref "/extending/embedding#beyond-very-high-level-embedding-an-overview" >}})
+  - [1.3. 只做嵌入]({{< ref "/extending/embedding#pure-embedding" >}})
+  - [1.4. 对嵌入 Python 功能进行扩展]({{< ref "/extending/embedding#extending-embedded-python" >}})
+  - [1.5. 在 C++ 中嵌入 Python]({{< ref "/extending/embedding#embedding-python-in-c" >}})
+  - [1.6. 在类 Unix 系统中编译和链接]({{< ref "/extending/embedding#compiling-and-linking-under-unix-like-systems" >}})

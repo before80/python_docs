@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/xml.html](https://docs.python.org/zh-cn/3.13/library/xml.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/xml.html](https://docs.python.org/zh-cn/3.13/library/xml.html)
 >
 > 收录该文档的时间：`2024-11-15T15:24:42+08:00`
 
@@ -24,22 +24,22 @@ draft = false
 
  
 
-​	XML 模块对于错误或恶意构造的数据是不安全的。 如果你需要解析不受信任或未经身份验证的数据，请参阅 [XML 漏洞](https://docs.python.org/zh-cn/3.13/library/xml.html#xml-vulnerabilities) 和 [defusedxml 包](https://docs.python.org/zh-cn/3.13/library/xml.html#defusedxml-package) 部分。
+​	XML 模块对于错误或恶意构造的数据是不安全的。 如果你需要解析不受信任或未经身份验证的数据，请参阅 [XML 漏洞]({{< ref "/library/markup/xml#xml-vulnerabilities" >}}) 和 [defusedxml 包]({{< ref "/library/markup/xml#defusedxml-package" >}}) 部分。
 
-​	值得注意的是 [`xml`](https://docs.python.org/zh-cn/3.13/library/xml.html#module-xml) 包中的模块要求至少有一个 SAX 兼容的 XML 解析器可用。在 Python 中包含 Expat 解析器，因此 [`xml.parsers.expat`](https://docs.python.org/zh-cn/3.13/library/pyexpat.html#module-xml.parsers.expat) 模块将始终可用。
+​	值得注意的是 [`xml`]({{< ref "/library/markup/xml#module-xml" >}}) 包中的模块要求至少有一个 SAX 兼容的 XML 解析器可用。在 Python 中包含 Expat 解析器，因此 [`xml.parsers.expat`]({{< ref "/library/markup/pyexpat#module-xml.parsers.expat" >}}) 模块将始终可用。
 
-[`xml.dom`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#module-xml.dom) 和 [`xml.sax`](https://docs.python.org/zh-cn/3.13/library/xml.sax.html#module-xml.sax) 包的文档是 DOM 和 SAX 接口的 Python 绑定的定义。
+[`xml.dom`]({{< ref "/library/markup/xml_dom#module-xml.dom" >}}) 和 [`xml.sax`]({{< ref "/library/markup/xml_sax#module-xml.sax" >}}) 包的文档是 DOM 和 SAX 接口的 Python 绑定的定义。
 
 ​	XML 处理子模块包括:
 
-- [`xml.etree.ElementTree`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#module-xml.etree.ElementTree)： ElementTree API，一个简单而轻量级的XML处理器
+- [`xml.etree.ElementTree`]({{< ref "/library/markup/xml_etree_elementtree#module-xml.etree.ElementTree" >}})： ElementTree API，一个简单而轻量级的XML处理器
 
-- [`xml.dom`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#module-xml.dom)：DOM API 定义
-- [`xml.dom.minidom`](https://docs.python.org/zh-cn/3.13/library/xml.dom.minidom.html#module-xml.dom.minidom)：最小的 DOM 实现
-- [`xml.dom.pulldom`](https://docs.python.org/zh-cn/3.13/library/xml.dom.pulldom.html#module-xml.dom.pulldom)：支持构建部分 DOM 树
+- [`xml.dom`]({{< ref "/library/markup/xml_dom#module-xml.dom" >}})：DOM API 定义
+- [`xml.dom.minidom`]({{< ref "/library/markup/xml_dom_minidom#module-xml.dom.minidom" >}})：最小的 DOM 实现
+- [`xml.dom.pulldom`]({{< ref "/library/markup/xml_dom_pulldom#module-xml.dom.pulldom" >}})：支持构建部分 DOM 树
 
-- [`xml.sax`](https://docs.python.org/zh-cn/3.13/library/xml.sax.html#module-xml.sax)：SAX2 基类和便利函数
-- [`xml.parsers.expat`](https://docs.python.org/zh-cn/3.13/library/pyexpat.html#module-xml.parsers.expat)：Expat解析器绑定
+- [`xml.sax`]({{< ref "/library/markup/xml_sax#module-xml.sax" >}})：SAX2 基类和便利函数
+- [`xml.parsers.expat`]({{< ref "/library/markup/pyexpat#module-xml.parsers.expat" >}})：Expat解析器绑定
 
 
 
@@ -59,9 +59,9 @@ draft = false
 | 解析大量词元                                                 | **易受攻击** (6) | **易受攻击** (6) | **易受攻击** (6) | **易受攻击** (6) | **易受攻击** (6) |
 
 1. Expat 2.4.1 及更新的版本不易受 "billion laughs" 和 "quadratic blowup" 漏洞的影响。 因为可能要依赖系统提供的库而仍被列为易受攻击的项。 请检查 `pyexpat.EXPAT_VERSION`。
-2. [`xml.etree.ElementTree`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#module-xml.etree.ElementTree) 不会扩展外部实体并将在遇到实体时引发 [`ParseError`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.ParseError)。
-3. [`xml.dom.minidom`](https://docs.python.org/zh-cn/3.13/library/xml.dom.minidom.html#module-xml.dom.minidom) 不会扩展外部实体，只是简单地返回未扩展的实体。
-4. [`xmlrpc.client`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#module-xmlrpc.client) 不会扩展外部实体并将忽略它们。
+2. [`xml.etree.ElementTree`]({{< ref "/library/markup/xml_etree_elementtree#module-xml.etree.ElementTree" >}}) 不会扩展外部实体并将在遇到实体时引发 [`ParseError`]({{< ref "/library/markup/xml_etree_elementtree#xml.etree.ElementTree.ParseError" >}})。
+3. [`xml.dom.minidom`]({{< ref "/library/markup/xml_dom_minidom#module-xml.dom.minidom" >}}) 不会扩展外部实体，只是简单地返回未扩展的实体。
+4. [`xmlrpc.client`]({{< ref "/library/internet/xmlrpc_client#module-xmlrpc.client" >}}) 不会扩展外部实体并将忽略它们。
 5. 从 Python 3.7.1 开始，默认情况下不再处理外部通用实体。
 6. Expat 2.6.0 及更新的版本不易受到因解析大量词元而导致利用指数级运行时间的拒绝服务攻击。 由于对系统所提供的库的潜在依赖仍会有一些项目被列为易受攻击。 请检查 `pyexpat.EXPAT_VERSION`。
 
@@ -79,7 +79,7 @@ draft = false
 
 ## [DTD](https://en.wikipedia.org/wiki/Document_type_definition) retrieval
 
-​	Python 的一些 XML 库 [`xml.dom.pulldom`](https://docs.python.org/zh-cn/3.13/library/xml.dom.pulldom.html#module-xml.dom.pulldom) 从远程或本地位置检索文档类型定义。 该功能与外部实体扩展问题具有相似的含义。
+​	Python 的一些 XML 库 [`xml.dom.pulldom`]({{< ref "/library/markup/xml_dom_pulldom#module-xml.dom.pulldom" >}}) 从远程或本地位置检索文档类型定义。 该功能与外部实体扩展问题具有相似的含义。
 
 ## decompression bomb
 

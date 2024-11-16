@@ -8,56 +8,56 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/faq/general.html](https://docs.python.org/zh-cn/3.13/faq/general.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/faq/general.html](https://docs.python.org/zh-cn/3.13/faq/general.html)
 >
 > 收录该文档的时间：`2024-11-14T22:34:43+08:00`
 
-# [Python常见问题](https://docs.python.org/zh-cn/3.13/faq/general.html#id3)
+# [Python常见问题]({{< ref "/faq/general#id3" >}})
 
 ​	目录
 
-- [Python常见问题](https://docs.python.org/zh-cn/3.13/faq/general.html#general-python-faq)
-  - [一般信息](https://docs.python.org/zh-cn/3.13/faq/general.html#general-information)
-    - [什么是 Python？](https://docs.python.org/zh-cn/3.13/faq/general.html#what-is-python)
-    - [什么是 Python 软件基金会？](https://docs.python.org/zh-cn/3.13/faq/general.html#what-is-the-python-software-foundation)
-    - [使用 Python 是否存在版权限制？](https://docs.python.org/zh-cn/3.13/faq/general.html#are-there-copyright-restrictions-on-the-use-of-python)
-    - [创造 Python 的最初理由是什么？](https://docs.python.org/zh-cn/3.13/faq/general.html#why-was-python-created-in-the-first-place)
-    - [Python 适合做什么？](https://docs.python.org/zh-cn/3.13/faq/general.html#what-is-python-good-for)
-    - [Python 版本的编号形式是怎样的？](https://docs.python.org/zh-cn/3.13/faq/general.html#how-does-the-python-version-numbering-scheme-work)
-    - [我应如何获取一份 Python 源代码的副本？](https://docs.python.org/zh-cn/3.13/faq/general.html#how-do-i-obtain-a-copy-of-the-python-source)
-    - [我应如何获取 Python 的文档？](https://docs.python.org/zh-cn/3.13/faq/general.html#how-do-i-get-documentation-on-python)
-    - [我之前从未接触过编程。 哪里有 Python 的教程？](https://docs.python.org/zh-cn/3.13/faq/general.html#i-ve-never-programmed-before-is-there-a-python-tutorial)
-    - [是否有专门针对 Python 的新闻组或邮件列表？](https://docs.python.org/zh-cn/3.13/faq/general.html#is-there-a-newsgroup-or-mailing-list-devoted-to-python)
-    - [我应如何获取 Python 的公开测试版本？](https://docs.python.org/zh-cn/3.13/faq/general.html#how-do-i-get-a-beta-test-version-of-python)
-    - [我应如何为 Python 提交错误报告和补丁？](https://docs.python.org/zh-cn/3.13/faq/general.html#how-do-i-submit-bug-reports-and-patches-for-python)
-    - [是否有任何公开发表的 Python 相关文章可以供我参考引用？](https://docs.python.org/zh-cn/3.13/faq/general.html#are-there-any-published-articles-about-python-that-i-can-reference)
-    - [是否有任何 Python 相关的书籍？](https://docs.python.org/zh-cn/3.13/faq/general.html#are-there-any-books-on-python)
-    - [www.python.org 具体位于世界上的哪个地点？](https://docs.python.org/zh-cn/3.13/faq/general.html#where-in-the-world-is-www-python-org-located)
-    - [为何命名为 Python？](https://docs.python.org/zh-cn/3.13/faq/general.html#why-is-it-called-python)
-    - [我必须喜欢 "Monty Python 的飞行马戏团" 吗？](https://docs.python.org/zh-cn/3.13/faq/general.html#do-i-have-to-like-monty-python-s-flying-circus)
-  - [现实世界中的 Python](https://docs.python.org/zh-cn/3.13/faq/general.html#python-in-the-real-world)
-    - [Python 有多稳定？](https://docs.python.org/zh-cn/3.13/faq/general.html#how-stable-is-python)
-    - [有多少人在使用 Python？](https://docs.python.org/zh-cn/3.13/faq/general.html#how-many-people-are-using-python)
-    - [有哪些重要的项目是用 Python 开发的？](https://docs.python.org/zh-cn/3.13/faq/general.html#have-any-significant-projects-been-done-in-python)
-    - [在未来可以期待 Python 将有什么新进展？](https://docs.python.org/zh-cn/3.13/faq/general.html#what-new-developments-are-expected-for-python-in-the-future)
-    - [提议对 Python 加入不兼容的更改是否合理？](https://docs.python.org/zh-cn/3.13/faq/general.html#is-it-reasonable-to-propose-incompatible-changes-to-python)
-    - [Python 是一种对编程初学者友好的语言吗？](https://docs.python.org/zh-cn/3.13/faq/general.html#is-python-a-good-language-for-beginning-programmers)
+- [Python常见问题]({{< ref "/faq/general#general-python-faq" >}})
+  - [一般信息]({{< ref "/faq/general#general-information" >}})
+    - [什么是 Python？]({{< ref "/faq/general#what-is-python" >}})
+    - [什么是 Python 软件基金会？]({{< ref "/faq/general#what-is-the-python-software-foundation" >}})
+    - [使用 Python 是否存在版权限制？]({{< ref "/faq/general#are-there-copyright-restrictions-on-the-use-of-python" >}})
+    - [创造 Python 的最初理由是什么？]({{< ref "/faq/general#why-was-python-created-in-the-first-place" >}})
+    - [Python 适合做什么？]({{< ref "/faq/general#what-is-python-good-for" >}})
+    - [Python 版本的编号形式是怎样的？]({{< ref "/faq/general#how-does-the-python-version-numbering-scheme-work" >}})
+    - [我应如何获取一份 Python 源代码的副本？]({{< ref "/faq/general#how-do-i-obtain-a-copy-of-the-python-source" >}})
+    - [我应如何获取 Python 的文档？]({{< ref "/faq/general#how-do-i-get-documentation-on-python" >}})
+    - [我之前从未接触过编程。 哪里有 Python 的教程？]({{< ref "/faq/general#i-ve-never-programmed-before-is-there-a-python-tutorial" >}})
+    - [是否有专门针对 Python 的新闻组或邮件列表？]({{< ref "/faq/general#is-there-a-newsgroup-or-mailing-list-devoted-to-python" >}})
+    - [我应如何获取 Python 的公开测试版本？]({{< ref "/faq/general#how-do-i-get-a-beta-test-version-of-python" >}})
+    - [我应如何为 Python 提交错误报告和补丁？]({{< ref "/faq/general#how-do-i-submit-bug-reports-and-patches-for-python" >}})
+    - [是否有任何公开发表的 Python 相关文章可以供我参考引用？]({{< ref "/faq/general#are-there-any-published-articles-about-python-that-i-can-reference" >}})
+    - [是否有任何 Python 相关的书籍？]({{< ref "/faq/general#are-there-any-books-on-python" >}})
+    - [www.python.org 具体位于世界上的哪个地点？]({{< ref "/faq/general#where-in-the-world-is-www-python-org-located" >}})
+    - [为何命名为 Python？]({{< ref "/faq/general#why-is-it-called-python" >}})
+    - [我必须喜欢 "Monty Python 的飞行马戏团" 吗？]({{< ref "/faq/general#do-i-have-to-like-monty-python-s-flying-circus" >}})
+  - [现实世界中的 Python]({{< ref "/faq/general#python-in-the-real-world" >}})
+    - [Python 有多稳定？]({{< ref "/faq/general#how-stable-is-python" >}})
+    - [有多少人在使用 Python？]({{< ref "/faq/general#how-many-people-are-using-python" >}})
+    - [有哪些重要的项目是用 Python 开发的？]({{< ref "/faq/general#have-any-significant-projects-been-done-in-python" >}})
+    - [在未来可以期待 Python 将有什么新进展？]({{< ref "/faq/general#what-new-developments-are-expected-for-python-in-the-future" >}})
+    - [提议对 Python 加入不兼容的更改是否合理？]({{< ref "/faq/general#is-it-reasonable-to-propose-incompatible-changes-to-python" >}})
+    - [Python 是一种对编程初学者友好的语言吗？]({{< ref "/faq/general#is-python-a-good-language-for-beginning-programmers" >}})
 
-## [一般信息](https://docs.python.org/zh-cn/3.13/faq/general.html#id4)
+## [一般信息]({{< ref "/faq/general#id4" >}})
 
-### [什么是 Python？](https://docs.python.org/zh-cn/3.13/faq/general.html#id5)
+### [什么是 Python？]({{< ref "/faq/general#id5" >}})
 
 ​	Python 是一种解释型、交互式、面向对象的编程语言。 它包含了模块、异常、动态类型、高层级动态数据类型以及类等特性。 在面向对象编程以外它还支持多种编程范式，例如过程式和函数式编程等。 Python 结合了超强的功能和极清晰的语法。 它带有许多系统调用和库以及多种窗口系统的接口，并且能用 C 或 C++ 来进行扩展。 它还可用作需要可编程接口的应用程序的扩展语言。 最后，Python 非常易于移植：它可以在包括 Linux 和 macOS 在内的许多 Unix 变种以及 Windows 上运行。
 
 ​	要了解更多详情，请先查看 [Python 教程]({{< ref "/tutorial#tutorial-index" >}})。 [Python 新手指南](https://wiki.python.org/moin/BeginnersGuide) 提供了学习 Python 的其他入门教程及资源的链接。
 
-### [什么是 Python 软件基金会？](https://docs.python.org/zh-cn/3.13/faq/general.html#id6)
+### [什么是 Python 软件基金会？]({{< ref "/faq/general#id6" >}})
 
 ​	Python 软件基金会（Python Software Foundation，简称 PSF）是一个独立的非盈利组织，它拥有 Python 2.1 及以上各版本的版权。 PSF 的使命是推进与 Python 编程语言相关的开源技术，并推广 Python 的使用。 PSF 的主页是 https://www.python.org/psf/。
 
 ​	向 PSF 提供捐助在美国是免税的。 如果你在使用 Python 并且感觉它对你很有帮助，可以通过 [PSF 捐助页](https://www.python.org/psf/donations/) 进行捐助。
 
-### [使用 Python 是否存在版权限制？](https://docs.python.org/zh-cn/3.13/faq/general.html#id7)
+### [使用 Python 是否存在版权限制？]({{< ref "/faq/general#id7" >}})
 
 ​	你可以任意使用源码，只要你保留版权信息并在你基于 Python 的产品文档中显示该版权信息。 如果你遵守此版权规则，就可以将 Python 用于商业领域，以源码或二进制码的形式（不论是否经过修改）销售 Python 的副本，或是以某种形式包含了 Python 的产品。 当然，我们仍然希望获知所有对 Python 的商业使用。
 
@@ -65,7 +65,7 @@ draft = false
 
 ​	Python 的徽标是注册商标，在某些情况下需要获得允许方可使用。 请参阅 [商标使用政策](https://www.python.org/psf/trademarks/) 了解详情。
 
-### [创造 Python 的最初理由是什么？](https://docs.python.org/zh-cn/3.13/faq/general.html#id8)
+### [创造 Python 的最初理由是什么？]({{< ref "/faq/general#id8" >}})
 
 ​	以下是有关最初缘起的一份 *非常* 简短的摘要，由 Guido van Rossum 本人撰写:
 
@@ -81,7 +81,7 @@ draft = false
 >
 > ​	到 1991 年 2 月，经过一年多的开发，我决定将其发布到 USENET。 之后的事情就都可以在 `Misc/HISTORY` 文件里面看了。
 
-### [Python 适合做什么？](https://docs.python.org/zh-cn/3.13/faq/general.html#id9)
+### [Python 适合做什么？]({{< ref "/faq/general#id9" >}})
 
 ​	Python 是一种高层级的多用途编程语言，可用于解决许多不同门类的问题。
 
@@ -89,7 +89,7 @@ draft = false
 
 
 
-### [Python 版本的编号形式是怎样的？](https://docs.python.org/zh-cn/3.13/faq/general.html#id10)
+### [Python 版本的编号形式是怎样的？]({{< ref "/faq/general#id10" >}})
 
 ​	Python 版本的编号形式为 "A.B.C" 或 "A.B":
 
@@ -109,9 +109,9 @@ draft = false
 
 ​	你还可能看到带有“+”后缀的版本号，例如“2.2+”。 这表示未发布版本，直接基于 CPython 开发代码仓库构建。 在实际操作中，当一个小版本最终发布后，未发布版本号会递增到下一个小版本号，成为“a0”版本，例如“2.4a0”。
 
-​	请参阅 [Developer's Guide](https://devguide.python.org/developer-workflow/development-cycle/) 获取更多有关开发流程的信息，并参阅 [**PEP 387**](https://peps.python.org/pep-0387/) 了解更多有关 Python 的向下兼容策略的信息。 另请参阅有关 [`sys.version`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.version), [`sys.hexversion`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.hexversion) 和 [`sys.version_info`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.version_info) 的文档。
+​	请参阅 [Developer's Guide](https://devguide.python.org/developer-workflow/development-cycle/) 获取更多有关开发流程的信息，并参阅 [**PEP 387**](https://peps.python.org/pep-0387/) 了解更多有关 Python 的向下兼容策略的信息。 另请参阅有关 [`sys.version`]({{< ref "/library/python/sys#sys.version" >}}), [`sys.hexversion`]({{< ref "/library/python/sys#sys.hexversion" >}}) 和 [`sys.version_info`]({{< ref "/library/python/sys#sys.version_info" >}}) 的文档。
 
-### [我应如何获取一份 Python 源代码的副本？](https://docs.python.org/zh-cn/3.13/faq/general.html#id11)
+### [我应如何获取一份 Python 源代码的副本？]({{< ref "/faq/general#id11" >}})
 
 ​	最新的 Python 发布版源代码总能从 python.org 获取，下载页链接为 https://www.python.org/downloads/。 最新的开发版源代码可以在 https://github.com/python/cpython/ 获取。
 
@@ -119,19 +119,19 @@ draft = false
 
 ​	请参阅 [Python 开发者指南的初步上手部分](https://devguide.python.org/setup/) 了解有关获取源代码并进行编译的更多信息。
 
-### [我应如何获取 Python 的文档？](https://docs.python.org/zh-cn/3.13/faq/general.html#id12)
+### [我应如何获取 Python 的文档？]({{< ref "/faq/general#id12" >}})
 
 ​	当前的 Python 稳定版本的标准文档可在 https://docs.python.org/3/ 查看。 也可在 https://docs.python.org/3/download.html 获取PDF、纯文本以及可下载的 HTML 版本。
 
 ​	文档以 reStructuredText 格式撰写并使用 [Sphinx 文档工具](https://www.sphinx-doc.org/) 生成。 文档的 reStructuredText 源文件是 Python 源代码发布版的一部分。
 
-### [我之前从未接触过编程。 哪里有 Python 的教程？](https://docs.python.org/zh-cn/3.13/faq/general.html#id13)
+### [我之前从未接触过编程。 哪里有 Python 的教程？]({{< ref "/faq/general#id13" >}})
 
 ​	有许多可选择的教程和书籍。 标准文档中也包含有 [Python 教程]({{< ref "/tutorial#tutorial-index" >}})。
 
 ​	请参阅 [新手指南](https://wiki.python.org/moin/BeginnersGuide) 以获取针对 Python 编程初学者的信息，包括教程的清单。
 
-### [是否有专门针对 Python 的新闻组或邮件列表？](https://docs.python.org/zh-cn/3.13/faq/general.html#id14)
+### [是否有专门针对 Python 的新闻组或邮件列表？]({{< ref "/faq/general#id14" >}})
 
 ​	有一个新闻组 *comp.lang.python* 和一个邮件列表 [python-list](https://mail.python.org/mailman/listinfo/python-list)。 新闻组和邮件列表是彼此互通的 —— 如果你可以阅读新闻就不必再订阅邮件列表。 *comp.lang.python* 的流量很大，每天会收到数以百计的发帖，Usenet 使用者通常更擅长处理这样大的流量。
 
@@ -139,19 +139,19 @@ draft = false
 
 ​	有关其他邮件列表和新闻组的更多信息可以在 https://www.python.org/community/lists/ 找到。
 
-### [我应如何获取 Python 的公开测试版本？](https://docs.python.org/zh-cn/3.13/faq/general.html#id15)
+### [我应如何获取 Python 的公开测试版本？]({{< ref "/faq/general#id15" >}})
 
 ​	可以从 https://www.python.org/downloads/ 下载 alpha 和 beta 发布版。 所有发布版都会在 comp.lang.python 和 comp.lang.python.announce 新闻组以及 Python 主页 https://www.python.org/ 上进行公告；并会推送到 RSS 新闻源。
 
 ​	你还可以通过 Git 访问 Python 的开发版。 请参阅 [Python 开发者指南](https://devguide.python.org/) 了解详情。
 
-### [我应如何为 Python 提交错误报告和补丁？](https://docs.python.org/zh-cn/3.13/faq/general.html#id16)
+### [我应如何为 Python 提交错误报告和补丁？]({{< ref "/faq/general#id16" >}})
 
 ​	要报告问题或提交补丁，请使用位于 https://github.com/python/cpython/issues 的问题追踪器。
 
 ​	有关 Python 开发流程的更多信息，请参阅 [Python 开发者指南](https://devguide.python.org/)。
 
-### [是否有任何公开发表的 Python 相关文章可以供我参考引用？](https://docs.python.org/zh-cn/3.13/faq/general.html#id17)
+### [是否有任何公开发表的 Python 相关文章可以供我参考引用？]({{< ref "/faq/general#id17" >}})
 
 ​	可能作为参考文献的最好方式还是引用你喜欢的 Python 相关书籍。
 
@@ -159,27 +159,27 @@ draft = false
 
 > ​	Guido van Rossum 与 Jelke de Boer, "使用 Python 编程语言交互式地测试远程服务器", CWI 季刊, 第 4 卷, 第 4 期 (1991 年 12 月), 阿姆斯特丹, 第 283--303 页。
 
-### [是否有任何 Python 相关的书籍？](https://docs.python.org/zh-cn/3.13/faq/general.html#id18)
+### [是否有任何 Python 相关的书籍？]({{< ref "/faq/general#id18" >}})
 
 ​	是的，相关的书籍很多，还有更多即将发行。 请访问 python.org 的 wiki 页面 https://wiki.python.org/moin/PythonBooks 获取一份清单。
 
 ​	你也可以到各大在线书店搜索 "Python" 并过滤掉对 Monty Python 的引用；或者也可以搜索 "Python" 加 "language"。
 
-### [www.python.org 具体位于世界上的哪个地点？](https://docs.python.org/zh-cn/3.13/faq/general.html#id19)
+### [www.python.org 具体位于世界上的哪个地点？]({{< ref "/faq/general#id19" >}})
 
 ​	Python 项目的基础设施分布于世界各地并由 Python 基础设施团队负责管理。 相关细节请访问 [这里](https://infra.psf.io/)。
 
-### [为何命名为 Python？](https://docs.python.org/zh-cn/3.13/faq/general.html#id20)
+### [为何命名为 Python？]({{< ref "/faq/general#id20" >}})
 
 ​	在着手编写 Python 实现的时候，Guido van Rossum 同时还阅读了刚出版的 ["Monty Python 的飞行马戏团"](https://en.wikipedia.org/wiki/Monty_Python) 剧本，这是一部自 1970 年代开始播出的 BBC 系列喜剧。 Van Rossum 觉得他需要选择一个简短、独特而又略显神秘的名字，于是他决定将这个新语言命名为 Python。
 
-### [我必须喜欢 "Monty Python 的飞行马戏团" 吗？](https://docs.python.org/zh-cn/3.13/faq/general.html#id21)
+### [我必须喜欢 "Monty Python 的飞行马戏团" 吗？]({{< ref "/faq/general#id21" >}})
 
 ​	不必，但这对学习会有帮助。 :)
 
-## [现实世界中的 Python](https://docs.python.org/zh-cn/3.13/faq/general.html#id22)
+## [现实世界中的 Python]({{< ref "/faq/general#id22" >}})
 
-### [Python 有多稳定？](https://docs.python.org/zh-cn/3.13/faq/general.html#id23)
+### [Python 有多稳定？]({{< ref "/faq/general#id23" >}})
 
 ​	非常稳定。 自 1991 年起大约每隔 6 至 18 个月就会推出新的稳定发布版，这种状态看来还会持续下去。 从 3.9 版开始，Python 将会每隔 12 个月推出一个新增特征版本 ([**PEP 602**](https://peps.python.org/pep-0602/))。
 
@@ -187,7 +187,7 @@ draft = false
 
 ​	最新的稳定发布版总是可以在 [Python 下载页](https://www.python.org/downloads/) 中找到。 Python 3.x 是推荐的版本并被大多数广泛使用的库所支持。 Python 2.x [**已不再维护**](https://peps.python.org/pep-0373/)。
 
-### [有多少人在使用 Python？](https://docs.python.org/zh-cn/3.13/faq/general.html#id24)
+### [有多少人在使用 Python？]({{< ref "/faq/general#id24" >}})
 
 ​	使用者应该数以百万计，但很难获得一个精确的数字。
 
@@ -195,25 +195,25 @@ draft = false
 
 ​	comp.lang.python 新闻组非常活跃，但不是所有 Python 用户都会在新闻组发帖，许多人甚至不会阅读新闻组。
 
-### [有哪些重要的项目是用 Python 开发的？](https://docs.python.org/zh-cn/3.13/faq/general.html#id25)
+### [有哪些重要的项目是用 Python 开发的？]({{< ref "/faq/general#id25" >}})
 
 ​	请访问 https://www.python.org/about/success 查看使用了 Python 的项目列表。 阅览 [历次 Python 会议](https://www.python.org/community/workshops/) 的日程纪要可以看到许多不同公司和组织所做的贡献。
 
 ​	高水准的 Python 项目包括 [Mailman 邮件列表管理器](https://www.list.org/) 和 [Zope 应用服务器](https://www.zope.dev/)。 多个 Linux 发行版，其中最著名的是 [Red Hat](https://www.redhat.com/)，都使用 Python 来编写其部分或全部的安装器和系统管理软件。 在内部使用 Python 的公司包括了 Google, Yahoo 和 Lucasfilm 等等。
 
-### [在未来可以期待 Python 将有什么新进展？](https://docs.python.org/zh-cn/3.13/faq/general.html#id26)
+### [在未来可以期待 Python 将有什么新进展？]({{< ref "/faq/general#id26" >}})
 
 ​	请访问 https://peps.python.org/ 查看 Python 增强提议（PEP）。 PEP 是为 Python 加入某种新特性的提议进行描述的设计文档，其中会提供简明的技术规格说明与基本原理。 可查找标题为 "Python X.Y Release Schedule" 的 PEP，其中 X.Y 是某个尚未公开发布的版本。
 
 ​	新版本的开发会在 [python-dev 邮件列表](https://mail.python.org/mailman3/lists/python-dev.python.org/) 中进行讨论。
 
-### [提议对 Python 加入不兼容的更改是否合理？](https://docs.python.org/zh-cn/3.13/faq/general.html#id27)
+### [提议对 Python 加入不兼容的更改是否合理？]({{< ref "/faq/general#id27" >}})
 
 ​	通常来说是不合理的。 世界上已存在的 Python 代码数以亿计，因此，任何对该语言的更改即便仅会使得现有程序中极少的一部分失效也是难以令人接受的。 就算你可以提供一个转换程序，也仍然存在需要更新全部文档的问题；另外还有大量已出版的 Python 书籍，我们不希望让它们在一瞬间全部变成废纸。
 
 ​	如果必须更改某个特性，则应该提供渐进式的升级路径。 [**PEP 5**](https://peps.python.org/pep-0005/) 描述了引入向后不兼容的更改所需遵循的流程，以尽可能减少对用户的干扰。
 
-### [Python 是一种对编程初学者友好的语言吗？](https://docs.python.org/zh-cn/3.13/faq/general.html#id28)
+### [Python 是一种对编程初学者友好的语言吗？]({{< ref "/faq/general#id28" >}})
 
 ​	是的。
 

@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/itertools.html](https://docs.python.org/zh-cn/3.13/library/itertools.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/itertools.html](https://docs.python.org/zh-cn/3.13/library/itertools.html)
 >
 > 收录该文档的时间：`2024-11-15T11:50:11+08:00`
 
@@ -16,49 +16,49 @@ draft = false
 
 ------
 
-​	本模块实现一系列 [iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterator) ，这些迭代器受到APL，Haskell和SML的启发。为了适用于Python，它们都被重新写过。
+​	本模块实现一系列 [iterator]({{< ref "/glossary/idx#term-iterator" >}}) ，这些迭代器受到APL，Haskell和SML的启发。为了适用于Python，它们都被重新写过。
 
 ​	本模块标准化了一个快速、高效利用内存的核心工具集，这些工具本身或组合都很有用。它们一起形成了“迭代器代数”，这使得在纯Python中有可能创建简洁又高效的专用工具。
 
-​	例如，SML有一个制表工具： `tabulate(f)`，它可产生一个序列 `f(0), f(1), ...`。在Python中可以组合 [`map()`](https://docs.python.org/zh-cn/3.13/library/functions.html#map) 和 [`count()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.count) 实现： `map(f, count())`。
+​	例如，SML有一个制表工具： `tabulate(f)`，它可产生一个序列 `f(0), f(1), ...`。在Python中可以组合 [`map()`]({{< ref "/library/functions#map" >}}) 和 [`count()`]({{< ref "/library/functional/itertools#itertools.count" >}}) 实现： `map(f, count())`。
 
-​	这些工具及其内置对应物也能很好地配合 [`operator`](https://docs.python.org/zh-cn/3.13/library/operator.html#module-operator) 模块中的快速函数来使用。 例如，乘法运算符可以被映射到两个向量之间执行高效的点积: `sum(starmap(operator.mul, zip(vec1, vec2, strict=True)))`。
+​	这些工具及其内置对应物也能很好地配合 [`operator`]({{< ref "/library/functional/operator#module-operator" >}}) 模块中的快速函数来使用。 例如，乘法运算符可以被映射到两个向量之间执行高效的点积: `sum(starmap(operator.mul, zip(vec1, vec2, strict=True)))`。
 
 **无穷迭代器：**
 
 | 迭代器                                                       | 实参            | 结果                                  | 示例                                  |
 | :----------------------------------------------------------- | :-------------- | :------------------------------------ | :------------------------------------ |
-| [`count()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.count) | [start[, step]] | start, start+step, start+2*step, ...  | `count(10) → 10 11 12 13 14 ...`      |
-| [`cycle()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.cycle) | p               | p0, p1, ... plast, p0, p1, ...        | `cycle('ABCD') → A B C D A B C D ...` |
-| [`repeat()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.repeat) | elem [,n]       | elem, elem, elem, ... 重复无限次或n次 | `repeat(10, 3) → 10 10 10`            |
+| [`count()`]({{< ref "/library/functional/itertools#itertools.count" >}}) | [start[, step]] | start, start+step, start+2*step, ...  | `count(10) → 10 11 12 13 14 ...`      |
+| [`cycle()`]({{< ref "/library/functional/itertools#itertools.cycle" >}}) | p               | p0, p1, ... plast, p0, p1, ...        | `cycle('ABCD') → A B C D A B C D ...` |
+| [`repeat()`]({{< ref "/library/functional/itertools#itertools.repeat" >}}) | elem [,n]       | elem, elem, elem, ... 重复无限次或n次 | `repeat(10, 3) → 10 10 10`            |
 
 **根据最短输入序列长度停止的迭代器：**
 
 | 迭代器                                                       | 实参                        | 结果                                          | 示例                                                     |
 | :----------------------------------------------------------- | :-------------------------- | :-------------------------------------------- | :------------------------------------------------------- |
-| [`accumulate()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.accumulate) | p [,func]                   | p0, p0+p1, p0+p1+p2, ...                      | `accumulate([1,2,3,4,5]) → 1 3 6 10 15`                  |
-| [`batched()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.batched) | p, n                        | (p0, p1, ..., p_n-1), ...                     | `batched('ABCDEFG', n=3) → ABC DEF G`                    |
-| [`chain()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.chain) | p, q, ...                   | p0, p1, ... plast, q0, q1, ...                | `chain('ABC', 'DEF') → A B C D E F`                      |
-| [`chain.from_iterable()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.chain.from_iterable) | iterable -- 可迭代对象      | p0, p1, ... plast, q0, q1, ...                | `chain.from_iterable(['ABC', 'DEF']) → A B C D E F`      |
-| [`compress()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.compress) | data, selectors             | (d[0] if s[0]), (d[1] if s[1]), ...           | `compress('ABCDEF', [1,0,1,0,1,1]) → A C E F`            |
-| [`dropwhile()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.dropwhile) | predicate, seq              | seq[n], seq[n+1], 从 predicate 未通过时开始   | `dropwhile(lambda x: x<5, [1,4,6,3,8]) → 6 3 8`          |
-| [`filterfalse()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.filterfalse) | predicate, seq              | predicate(elem) 未通过的 seq 元素             | `filterfalse(lambda x: x<5, [1,4,6,3,8]) → 6 8`          |
-| [`groupby()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.groupby) | iterable[, key]             | 根据key(v)值分组的迭代器                      | `groupby(['A','B','DEF'], len) → (1, A B) (3, DEF)`      |
-| [`islice()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.islice) | seq, [start,] stop [, step] | seq[start:stop:step]中的元素                  | `islice('ABCDEFG', 2, None) → C D E F G`                 |
-| [`pairwise()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.pairwise) | iterable -- 可迭代对象      | (p[0], p[1]), (p[1], p[2])                    | `pairwise('ABCDEFG') → AB BC CD DE EF FG`                |
-| [`starmap()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.starmap) | func, seq                   | func(*seq[0]), func(*seq[1]), ...             | `starmap(pow, [(2,5), (3,2), (10,3)]) → 32 9 1000`       |
-| [`takewhile()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.takewhile) | predicate, seq              | seq[0], seq[1], 直到 predicate 未通过         | `takewhile(lambda x: x<5, [1,4,6,3,8]) → 1 4`            |
-| [`tee()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.tee) | it, n                       | it1, it2, ... itn 将一个迭代器拆分为n个迭代器 |                                                          |
-| [`zip_longest()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.zip_longest) | p, q, ...                   | (p[0], q[0]), (p[1], q[1]), ...               | `zip_longest('ABCD', 'xy', fillvalue='-') → Ax By C- D-` |
+| [`accumulate()`]({{< ref "/library/functional/itertools#itertools.accumulate" >}}) | p [,func]                   | p0, p0+p1, p0+p1+p2, ...                      | `accumulate([1,2,3,4,5]) → 1 3 6 10 15`                  |
+| [`batched()`]({{< ref "/library/functional/itertools#itertools.batched" >}}) | p, n                        | (p0, p1, ..., p_n-1), ...                     | `batched('ABCDEFG', n=3) → ABC DEF G`                    |
+| [`chain()`]({{< ref "/library/functional/itertools#itertools.chain" >}}) | p, q, ...                   | p0, p1, ... plast, q0, q1, ...                | `chain('ABC', 'DEF') → A B C D E F`                      |
+| [`chain.from_iterable()`]({{< ref "/library/functional/itertools#itertools.chain.from_iterable" >}}) | iterable -- 可迭代对象      | p0, p1, ... plast, q0, q1, ...                | `chain.from_iterable(['ABC', 'DEF']) → A B C D E F`      |
+| [`compress()`]({{< ref "/library/functional/itertools#itertools.compress" >}}) | data, selectors             | (d[0] if s[0]), (d[1] if s[1]), ...           | `compress('ABCDEF', [1,0,1,0,1,1]) → A C E F`            |
+| [`dropwhile()`]({{< ref "/library/functional/itertools#itertools.dropwhile" >}}) | predicate, seq              | seq[n], seq[n+1], 从 predicate 未通过时开始   | `dropwhile(lambda x: x<5, [1,4,6,3,8]) → 6 3 8`          |
+| [`filterfalse()`]({{< ref "/library/functional/itertools#itertools.filterfalse" >}}) | predicate, seq              | predicate(elem) 未通过的 seq 元素             | `filterfalse(lambda x: x<5, [1,4,6,3,8]) → 6 8`          |
+| [`groupby()`]({{< ref "/library/functional/itertools#itertools.groupby" >}}) | iterable[, key]             | 根据key(v)值分组的迭代器                      | `groupby(['A','B','DEF'], len) → (1, A B) (3, DEF)`      |
+| [`islice()`]({{< ref "/library/functional/itertools#itertools.islice" >}}) | seq, [start,] stop [, step] | seq[start:stop:step]中的元素                  | `islice('ABCDEFG', 2, None) → C D E F G`                 |
+| [`pairwise()`]({{< ref "/library/functional/itertools#itertools.pairwise" >}}) | iterable -- 可迭代对象      | (p[0], p[1]), (p[1], p[2])                    | `pairwise('ABCDEFG') → AB BC CD DE EF FG`                |
+| [`starmap()`]({{< ref "/library/functional/itertools#itertools.starmap" >}}) | func, seq                   | func(*seq[0]), func(*seq[1]), ...             | `starmap(pow, [(2,5), (3,2), (10,3)]) → 32 9 1000`       |
+| [`takewhile()`]({{< ref "/library/functional/itertools#itertools.takewhile" >}}) | predicate, seq              | seq[0], seq[1], 直到 predicate 未通过         | `takewhile(lambda x: x<5, [1,4,6,3,8]) → 1 4`            |
+| [`tee()`]({{< ref "/library/functional/itertools#itertools.tee" >}}) | it, n                       | it1, it2, ... itn 将一个迭代器拆分为n个迭代器 |                                                          |
+| [`zip_longest()`]({{< ref "/library/functional/itertools#itertools.zip_longest" >}}) | p, q, ...                   | (p[0], q[0]), (p[1], q[1]), ...               | `zip_longest('ABCD', 'xy', fillvalue='-') → Ax By C- D-` |
 
 **排列组合迭代器：**
 
 | 迭代器                                                       | 实参                 | 结果                                  |
 | :----------------------------------------------------------- | :------------------- | :------------------------------------ |
-| [`product()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.product) | p, q, ... [repeat=1] | 笛卡尔积，相当于嵌套的for循环         |
-| [`permutations()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.permutations) | p[, r]               | 长度r元组，所有可能的排列，无重复元素 |
-| [`combinations()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.combinations) | p, r                 | 长度r元组，有序，无重复元素           |
-| [`combinations_with_replacement()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.combinations_with_replacement) | p, r                 | 长度r元组，有序，元素可重复           |
+| [`product()`]({{< ref "/library/functional/itertools#itertools.product" >}}) | p, q, ... [repeat=1] | 笛卡尔积，相当于嵌套的for循环         |
+| [`permutations()`]({{< ref "/library/functional/itertools#itertools.permutations" >}}) | p[, r]               | 长度r元组，所有可能的排列，无重复元素 |
+| [`combinations()`]({{< ref "/library/functional/itertools#itertools.combinations" >}}) | p, r                 | 长度r元组，有序，无重复元素           |
+| [`combinations_with_replacement()`]({{< ref "/library/functional/itertools#itertools.combinations_with_replacement" >}}) | p, r                 | 长度r元组，有序，元素可重复           |
 
 | 例子                                       | 结果                                              |
 | :----------------------------------------- | :------------------------------------------------ |
@@ -104,7 +104,7 @@ def accumulate(iterable, function=operator.add, *, initial=None):
         yield total
 ```
 
-​	To compute a running minimum, set *function* to [`min()`](https://docs.python.org/zh-cn/3.13/library/functions.html#min). For a running maximum, set *function* to [`max()`](https://docs.python.org/zh-cn/3.13/library/functions.html#max). Or for a running product, set *function* to [`operator.mul()`](https://docs.python.org/zh-cn/3.13/library/operator.html#operator.mul). To build an [amortization table](https://www.ramseysolutions.com/real-estate/amortization-schedule), accumulate the interest and apply payments:
+​	To compute a running minimum, set *function* to [`min()`]({{< ref "/library/functions#min" >}}). For a running maximum, set *function* to [`max()`]({{< ref "/library/functions#max" >}}). Or for a running product, set *function* to [`operator.mul()`]({{< ref "/library/functional/operator#operator.mul" >}}). To build an [amortization table](https://www.ramseysolutions.com/real-estate/amortization-schedule), accumulate the interest and apply payments:
 
 
 
@@ -121,20 +121,20 @@ def accumulate(iterable, function=operator.add, *, initial=None):
 [1000, 960, 918, 874, 828, 779, 728, 674, 618, 559, 497]
 ```
 
-​	参考一个类似函数 [`functools.reduce()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.reduce) ，它只返回一个最终累积值。
+​	参考一个类似函数 [`functools.reduce()`]({{< ref "/library/functional/functools#functools.reduce" >}}) ，它只返回一个最终累积值。
 
 > Added in version 3.2.
 >
 
-*在 3.3 版本发生变更:* 添加了可选的 *function* 形参。
+> 在 3.3 版本发生变更: 添加了可选的 *function* 形参。
 
-*在 3.8 版本发生变更:* 添加了可选的 *initial* 形参。
+> 在 3.8 版本发生变更: 添加了可选的 *initial* 形参。
 
 ## itertools.**batched**(*iterable*, *n*, ***, *strict=False*)
 
 ​	来自 *iterable* 的长度为 *n* 元组形式的批次数据。 最后一个批次可能短于 *n*。
 
-​	如果 *strict* 为真值，将在最终的批次短于 *n* 时引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	如果 *strict* 为真值，将在最终的批次短于 *n* 时引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 ​	循环处理输入可迭代对象并将数据积累为长度至多为 *n* 的元组。 输入将被惰性地消耗，能填满一个批次即可。 结果将在批次填满或输入可迭代对象被耗尽时产生:
 
@@ -164,7 +164,7 @@ def batched(iterable, n, *, strict=False):
 > Added in version 3.12.
 >
 
-*在 3.13 版本发生变更:* 增加了 *strict* 选项。
+> 在 3.13 版本发生变更: 增加了 *strict* 选项。
 
 ## itertools.**chain**(**iterables*)
 
@@ -179,7 +179,7 @@ def chain(*iterables):
 
 ## *classmethod* chain.**from_iterable**(*iterable*)
 
-​	构建类似 [`chain()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.chain) 迭代器的另一个选择。从一个单独的可迭代参数中得到链式输入，该参数是延迟计算的。大致相当于：
+​	构建类似 [`chain()`]({{< ref "/library/functional/itertools#itertools.chain" >}}) 迭代器的另一个选择。从一个单独的可迭代参数中得到链式输入，该参数是延迟计算的。大致相当于：
 
 ```
 def from_iterable(iterables):
@@ -192,7 +192,7 @@ def from_iterable(iterables):
 
 ​	返回由输入 *iterable* 中元素组成长度为 *r* 的子序列。
 
-​	输出结果是 [`product()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.product) 的子序列其中只保留属于 *iterable* 的子序列的条目。 输出的长度由 [`math.comb()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.comb) 给出，该函数在 `0 ≤ r ≤ n` 时为计算 `n! / r! / (n - r)!` 而在 `r > n` 时为 0。
+​	输出结果是 [`product()`]({{< ref "/library/functional/itertools#itertools.product" >}}) 的子序列其中只保留属于 *iterable* 的子序列的条目。 输出的长度由 [`math.comb()`]({{< ref "/library/numeric/math#math.comb" >}}) 给出，该函数在 `0 ≤ r ≤ n` 时为计算 `n! / r! / (n - r)!` 而在 `r > n` 时为 0。
 
 ​	组合元组是根据输入的 *iterable* 的顺序以词典排序方式发出的。 如果输入的 *iterable* 是已排序的，则输出的元组将按排序后的顺序产生。
 
@@ -228,7 +228,7 @@ def combinations(iterable, r):
 
 ​	返回由输入 *iterable* 中元素组成的长度为 *r* 的子序列，允许每个元素可重复出现。
 
-​	输出是 [`product()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.product) 的子序列，其中仅保留也属于 *iterable* 的子序列的条目（可能有重复的元素）。 当 `n > 0` 时返回的子序列数量为 `(n + r - 1)! / r! / (n - 1)!`。
+​	输出是 [`product()`]({{< ref "/library/functional/itertools#itertools.product" >}}) 的子序列，其中仅保留也属于 *iterable* 的子序列的条目（可能有重复的元素）。 当 `n > 0` 时返回的子序列数量为 `(n + r - 1)! / r! / (n - 1)!`。
 
 ​	组合元组是根据输入的 *iterable* 的顺序以词典排序方式发出的。 如果输入的 *iterable* 是已排序的，则输出的元组将按已排序的顺序产生。
 
@@ -275,7 +275,7 @@ def compress(data, selectors):
 
 ## itertools.**count**(*start=0*, *step=1*)
 
-​	创建一个迭代器，它返回从 *start* 开始的均匀间隔的值。 可与 [`map()`](https://docs.python.org/zh-cn/3.13/library/functions.html#map) 配合使用以生成连续的数据点或与 [`zip()`](https://docs.python.org/zh-cn/3.13/library/functions.html#zip) 配合使用以添加序列数字。 大致相当于:
+​	创建一个迭代器，它返回从 *start* 开始的均匀间隔的值。 可与 [`map()`]({{< ref "/library/functions#map" >}}) 配合使用以生成连续的数据点或与 [`zip()`]({{< ref "/library/functions#zip" >}}) 配合使用以添加序列数字。 大致相当于:
 
 ```
 def count(start=0, step=1):
@@ -289,7 +289,7 @@ def count(start=0, step=1):
 
 ​	当对浮点数计数时，替换为乘法代码有时会有更高的精度，例如: `(start + step * i for i in count())`。
 
-*在 3.1 版本发生变更:* 增加参数 *step* ，允许非整型。
+> 在 3.1 版本发生变更: 增加参数 *step* ，允许非整型。
 
 ## itertools.**cycle**(*iterable*)
 
@@ -351,9 +351,9 @@ def filterfalse(predicate, iterable):
 
 ​	创建一个迭代器，返回 *iterable* 中连续的键和组。*key* 是一个计算元素键值函数。如果未指定或为 `None`，*key* 缺省为恒等函数（identity function），返回元素不变。一般来说，*iterable* 需用同一个键值函数预先排序。
 
-[`groupby()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.groupby) 操作类似于Unix中的 `uniq`。当每次 *key* 函数产生的键值改变时，迭代器会分组或生成一个新组（这就是为什么通常需要使用同一个键值函数先对数据进行排序）。这种行为与SQL的GROUP BY操作不同，SQL的操作会忽略输入的顺序将相同键值的元素分在同组中。
+[`groupby()`]({{< ref "/library/functional/itertools#itertools.groupby" >}}) 操作类似于Unix中的 `uniq`。当每次 *key* 函数产生的键值改变时，迭代器会分组或生成一个新组（这就是为什么通常需要使用同一个键值函数先对数据进行排序）。这种行为与SQL的GROUP BY操作不同，SQL的操作会忽略输入的顺序将相同键值的元素分在同组中。
 
-​	返回的组本身也是一个迭代器，它与 [`groupby()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.groupby) 共享底层的可迭代对象。因为源是共享的，当 [`groupby()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.groupby) 对象向后迭代时，前一个组将消失。因此如果稍后还需要返回结果，可保存为列表：
+​	返回的组本身也是一个迭代器，它与 [`groupby()`]({{< ref "/library/functional/itertools#itertools.groupby" >}}) 共享底层的可迭代对象。因为源是共享的，当 [`groupby()`]({{< ref "/library/functional/itertools#itertools.groupby" >}}) 对象向后迭代时，前一个组将消失。因此如果稍后还需要返回结果，可保存为列表：
 
 ```
 groups = []
@@ -364,7 +364,7 @@ for k, g in groupby(data, keyfunc):
     uniquekeys.append(k)
 ```
 
-[`groupby()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.groupby) 大致相当于：
+[`groupby()`]({{< ref "/library/functional/itertools#itertools.groupby" >}}) 大致相当于：
 
 ```
 def groupby(iterable, key=None):
@@ -467,7 +467,7 @@ def pairwise(iterable):
 
 ​	如果 *r* 未指定或为 `None` ，*r* 默认设置为 *iterable* 的长度，这种情况下，生成所有全长排列。
 
-​	输出结果是 [`product()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.product) 的子序列并已过滤掉其中的重复元素。 输出的长度由 [`math.perm()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.perm) 给出，它在 `0 ≤ r ≤ n` 时为计算 `n! / (n - r)!` 而在 `r > n` 时则为零。
+​	输出结果是 [`product()`]({{< ref "/library/functional/itertools#itertools.product" >}}) 的子序列并已过滤掉其中的重复元素。 输出的长度由 [`math.perm()`]({{< ref "/library/numeric/math#math.perm" >}}) 给出，它在 `0 ≤ r ≤ n` 时为计算 `n! / (n - r)!` 而在 `r > n` 时则为零。
 
 ​	排列元组是根据输入的 *iterable* 的顺序以词典排序的形式发出的。 如果输入的 *iterable* 是已排序的，则输出的元组将按已排序的顺序产生。
 
@@ -534,7 +534,7 @@ def product(*iterables, repeat=1):
         yield tuple(prod)
 ```
 
-​	在 [`product()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.product) 运行之前，它会完全耗尽输入的可迭代对象，在内存中保留值的临时池以生成结果积。 相应地，它只适用于有限的输入。
+​	在 [`product()`]({{< ref "/library/functional/itertools#itertools.product" >}}) 运行之前，它会完全耗尽输入的可迭代对象，在内存中保留值的临时池以生成结果积。 相应地，它只适用于有限的输入。
 
 ## itertools.**repeat**(*object*[, *times*])
 
@@ -564,9 +564,9 @@ def repeat(object, times=None):
 
 ## itertools.**starmap**(*function*, *iterable*)
 
-​	创建一个迭代器，它使用从 *iterable* 获取的参数来计算 *function*。 当参数形参已被“预先 zip”为元组时可代替 [`map()`](https://docs.python.org/zh-cn/3.13/library/functions.html#map) 来使用。
+​	创建一个迭代器，它使用从 *iterable* 获取的参数来计算 *function*。 当参数形参已被“预先 zip”为元组时可代替 [`map()`]({{< ref "/library/functions#map" >}}) 来使用。
 
-[`map()`](https://docs.python.org/zh-cn/3.13/library/functions.html#map) 和 [`starmap()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.starmap) 之间的区别类似于 `function(a,b)` 和 `function(*c)` 之间的差异。 大致相当于:
+[`map()`]({{< ref "/library/functions#map" >}}) 和 [`starmap()`]({{< ref "/library/functional/itertools#itertools.starmap" >}}) 之间的区别类似于 `function(a,b)` 和 `function(*c)` 之间的差异。 大致相当于:
 
 ```
 def starmap(function, iterable):
@@ -631,7 +631,7 @@ class _tee:
         return value
 ```
 
-​	When the input *iterable* is already a tee iterator object, all members of the return tuple are constructed as if they had been produced by the upstream [`tee()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.tee) call. This "flattening step" allows nested [`tee()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.tee) calls to share the same underlying data chain and to have a single update step rather than a chain of calls.
+​	When the input *iterable* is already a tee iterator object, all members of the return tuple are constructed as if they had been produced by the upstream [`tee()`]({{< ref "/library/functional/itertools#itertools.tee" >}}) call. This "flattening step" allows nested [`tee()`]({{< ref "/library/functional/itertools#itertools.tee" >}}) calls to share the same underlying data chain and to have a single update step rather than a chain of calls.
 
 ​	The flattening property makes tee iterators efficiently peekable:
 
@@ -655,9 +655,9 @@ def lookahead(tee_iterator):
 'b'
 ```
 
-`tee` 迭代器不是线程安全的。 当同时使用由同一个 [`tee()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.tee) 调用所返回的迭代器时可能引发 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError)，即使原本的 *iterable* 是线程安全的。is threadsafe.
+`tee` 迭代器不是线程安全的。 当同时使用由同一个 [`tee()`]({{< ref "/library/functional/itertools#itertools.tee" >}}) 调用所返回的迭代器时可能引发 [`RuntimeError`]({{< ref "/library/exceptions#RuntimeError" >}})，即使原本的 *iterable* 是线程安全的。is threadsafe.
 
-​	该迭代工具可能需要相当大的辅助存储空间（这取决于要保存多少临时数据）。通常，如果一个迭代器在另一个迭代器开始之前就要使用大部份或全部数据，使用 [`list()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 会比 [`tee()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.tee) 更快。
+​	该迭代工具可能需要相当大的辅助存储空间（这取决于要保存多少临时数据）。通常，如果一个迭代器在另一个迭代器开始之前就要使用大部份或全部数据，使用 [`list()`]({{< ref "/library/stdtypes#list" >}}) 会比 [`tee()`]({{< ref "/library/functional/itertools#itertools.tee" >}}) 更快。
 
 ## itertools.**zip_longest**(**iterables*, *fillvalue=None*)
 
@@ -693,7 +693,7 @@ def zip_longest(*iterables, fillvalue=None):
         yield tuple(values)
 ```
 
-​	如果 iterables 中的每一项可能有无限长度，则 [`zip_longest()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.zip_longest) 函数应当用限制调用次数的代码进行包装（例如 [`islice()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.islice) 或 [`takewhile()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.takewhile) 等）。
+​	如果 iterables 中的每一项可能有无限长度，则 [`zip_longest()`]({{< ref "/library/functional/itertools#itertools.zip_longest" >}}) 函数应当用限制调用次数的代码进行包装（例如 [`islice()`]({{< ref "/library/functional/itertools#itertools.islice" >}}) 或 [`takewhile()`]({{< ref "/library/functional/itertools#itertools.takewhile" >}}) 等）。
 
 
 
@@ -701,7 +701,7 @@ def zip_longest(*iterables, fillvalue=None):
 
 ​	本节将展示如何使用现有的 itertools 作为基础构件来创建扩展的工具集。
 
-​	这些 itertools 专题的主要目的是教学。 各个专题显示了对单个工具的各种思维方式 — 例如，`chain.from_iterable` 被关联到展平的概念。 这些专题还给出了有关这些工具的组合方式的想法 — 例如，`starmap()` 和 `repeat()` 应当如何一起工作。 这些专题还显示了 itertools 与 [`operator`](https://docs.python.org/zh-cn/3.13/library/operator.html#module-operator) 和 [`collections`](https://docs.python.org/zh-cn/3.13/library/collections.html#module-collections) 模块以及内置迭代工具如 `map()`, `filter()`, `reversed()` 和 `enumerate()` 相互配合的使用模式。
+​	这些 itertools 专题的主要目的是教学。 各个专题显示了对单个工具的各种思维方式 — 例如，`chain.from_iterable` 被关联到展平的概念。 这些专题还给出了有关这些工具的组合方式的想法 — 例如，`starmap()` 和 `repeat()` 应当如何一起工作。 这些专题还显示了 itertools 与 [`operator`]({{< ref "/library/functional/operator#module-operator" >}}) 和 [`collections`](https://docs.python.org/zh-cn/3.13/library/collections.html#module-collections) 模块以及内置迭代工具如 `map()`, `filter()`, `reversed()` 和 `enumerate()` 相互配合的使用模式。
 
 ​	这些例程的次要目的是作为一个孵化器使用。 `accumulate()`, `compress()` 和 `pairwise()` 等迭代工具最初就是作为例程引入的。 目前，`sliding_window()`, `iter_index()` 和 `sieve()` 例程正在被测试以确定它们是否堪当大任。
 
@@ -711,7 +711,7 @@ def zip_longest(*iterables, fillvalue=None):
 python -m pip install more-itertools
 ```
 
-​	许多例程提供了与底层工具集相当的高性能。 更好的内存效率是通过每次只处理一个元素而不是将整个可迭代对象放入内存来保证的。 代码量的精简是通过以 [函数式风格](https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf) 来链接工具来实现的。 运行的早速度是通过选择使用“矢量化”构件来取代会导致较大解释器开销的 for 循环和 [生成器](https://docs.python.org/zh-cn/3.13/glossary.html#term-generator) 来达成的。
+​	许多例程提供了与底层工具集相当的高性能。 更好的内存效率是通过每次只处理一个元素而不是将整个可迭代对象放入内存来保证的。 代码量的精简是通过以 [函数式风格](https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf) 来链接工具来实现的。 运行的早速度是通过选择使用“矢量化”构件来取代会导致较大解释器开销的 for 循环和 [生成器]({{< ref "/glossary/idx#term-generator" >}}) 来达成的。
 
 ```
 import collections

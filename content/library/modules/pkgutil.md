@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/pkgutil.html](https://docs.python.org/zh-cn/3.13/library/pkgutil.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/pkgutil.html](https://docs.python.org/zh-cn/3.13/library/pkgutil.html)
 >
 > 收录该文档的时间：`2024-11-15T21:19:20+08:00`
 
@@ -36,79 +36,78 @@ from pkgutil import extend_path
 __path__ = extend_path(__path__, __name__)
 ```
 
-​	对于For each directory on [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 中每个具有与该包名称相匹配的子目录的目录，将该子目录添加到包的 [`__path__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#module.__path__)。 这在需要将单个逻辑包的不同部分拆分为多个目录的情况下很有用处。
+​	对于For each directory on [`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) 中每个具有与该包名称相匹配的子目录的目录，将该子目录添加到包的 [`__path__`]({{< ref "/reference/datamodel#module.__path__" >}})。 这在需要将单个逻辑包的不同部分拆分为多个目录的情况下很有用处。
 
-​	它还会查找开头部分 `*` 匹配 *name* 参数的 `*.pkg` 文件。 此特性与 `*.pth` 文件类似（参阅 [`site`](https://docs.python.org/zh-cn/3.13/library/site.html#module-site) 模块了解更多信息），区别在于它不会区别对待以 `import` 开头的行。 `*.pkg` 文件将按外在值确定是否被信任：除了跳过空行和忽略注释，在 `*.pkg` 文件中找到的所有条目都会被添加到路径中，无论它们是否存在于文件系统中（这是个有意为之的特性）。
+​	它还会查找开头部分 `*` 匹配 *name* 参数的 `*.pkg` 文件。 此特性与 `*.pth` 文件类似（参阅 [`site`]({{< ref "/library/python/site#module-site" >}}) 模块了解更多信息），区别在于它不会区别对待以 `import` 开头的行。 `*.pkg` 文件将按外在值确定是否被信任：除了跳过空行和忽略注释，在 `*.pkg` 文件中找到的所有条目都会被添加到路径中，无论它们是否存在于文件系统中（这是个有意为之的特性）。
 
 ​	如果输入路径不是一个列表（已冻结包就是这种情况）则它将被原样返回。 输入路径不会被修改；将返回一个扩展的副本。 条目将被添加到副本的末尾。
 
-[`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 会被假定为一个序列。 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 中的条目如果不是指向现有目录的字符串则会被忽略。 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 上当用作文件名时会导致错误的 Unicode 条目可以会使得此函数引发异常（与 [`os.path.isdir()`](https://docs.python.org/zh-cn/3.13/library/os.path.html#os.path.isdir) 的行为一致）。
+[`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) 会被假定为一个序列。 [`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) 中的条目如果不是指向现有目录的字符串则会被忽略。 [`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) 上当用作文件名时会导致错误的 Unicode 条目可以会使得此函数引发异常（与 [`os.path.isdir()`]({{< ref "/library/filesys/os_path#os.path.isdir" >}}) 的行为一致）。
 
 ## pkgutil.**find_loader**(*fullname*)
 
-​	为给定的 *fullname* 获取一个模块 [loader](https://docs.python.org/zh-cn/3.13/glossary.html#term-loader)。
+​	为给定的 *fullname* 获取一个模块 [loader]({{< ref "/glossary/idx#term-loader" >}})。
 
-​	这是针对 [`importlib.util.find_spec()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.util.find_spec) 的向下兼容包装器，它将大多数失败转换为 [`ImportError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ImportError) 并且只返回加载器而不是完整的 [`importlib.machinery.ModuleSpec`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.ModuleSpec)。
+​	这是针对 [`importlib.util.find_spec()`]({{< ref "/library/modules/importlib#importlib.util.find_spec" >}}) 的向下兼容包装器，它将大多数失败转换为 [`ImportError`]({{< ref "/library/exceptions#ImportError" >}}) 并且只返回加载器而不是完整的 [`importlib.machinery.ModuleSpec`]({{< ref "/library/modules/importlib#importlib.machinery.ModuleSpec" >}})。
 
-*在 3.3 版本发生变更:* 更新为直接基于 [`importlib`](https://docs.python.org/zh-cn/3.13/library/importlib.html#module-importlib) 而不是依赖于包内部的 [**PEP 302**](https://peps.python.org/pep-0302/) 导入模拟。
+> 在 3.3 版本发生变更: 更新为直接基于 [`importlib`]({{< ref "/library/modules/importlib#module-importlib" >}}) 而不是依赖于包内部的 [**PEP 302**](https://peps.python.org/pep-0302/) 导入模拟。
 
-*在 3.4 版本发生变更:* 更新为基于 [**PEP 451**](https://peps.python.org/pep-0451/)
+> 在 3.4 版本发生变更: 更新为基于 [**PEP 451**](https://peps.python.org/pep-0451/)
 
-*Deprecated since version 3.12, will be removed in version 3.14:* 使用 [`importlib.util.find_spec()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.util.find_spec) 来代替。
+*Deprecated since version 3.12, will be removed in version 3.14:* 使用 [`importlib.util.find_spec()`]({{< ref "/library/modules/importlib#importlib.util.find_spec" >}}) 来代替。
 
 ## pkgutil.**get_importer**(*path_item*)
 
-​	为给定的 *path_item* 获取一个 [finder](https://docs.python.org/zh-cn/3.13/glossary.html#term-finder)。
+​	为给定的 *path_item* 获取一个 [finder]({{< ref "/glossary/idx#term-finder" >}})。
 
-​	返回的查找器如果是由一个路径钩子新建的则会被缓存至 [`sys.path_importer_cache`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path_importer_cache)。
+​	返回的查找器如果是由一个路径钩子新建的则会被缓存至 [`sys.path_importer_cache`]({{< ref "/library/python/sys#sys.path_importer_cache" >}})。
 
-​	如果需要重新扫描 [`sys.path_hooks`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path_hooks) 则缓存（或其一部分）可以被手动清空。
+​	如果需要重新扫描 [`sys.path_hooks`]({{< ref "/library/python/sys#sys.path_hooks" >}}) 则缓存（或其一部分）可以被手动清空。
 
-*在 3.3 版本发生变更:* 更新为直接基于 [`importlib`](https://docs.python.org/zh-cn/3.13/library/importlib.html#module-importlib) 而不是依赖于包内部的 [**PEP 302**](https://peps.python.org/pep-0302/) 导入模拟。
+> 在 3.3 版本发生变更: 更新为直接基于 [`importlib`]({{< ref "/library/modules/importlib#module-importlib" >}}) 而不是依赖于包内部的 [**PEP 302**](https://peps.python.org/pep-0302/) 导入模拟。
 
 ## pkgutil.**get_loader**(*module_or_name*)
 
-​	为 *module_or_name* 获取一个 [loader](https://docs.python.org/zh-cn/3.13/glossary.html#term-loader)。
+​	为 *module_or_name* 获取一个 [loader]({{< ref "/glossary/idx#term-loader" >}})。
 
 ​	如果模块或包可通过正常导入机制来访问，则会返回该机制相关部分的包装器。 如果模块无法找到或导入则返回 `None`。 如果指定的模块尚未被导入，则包含它的包（如果存在）会被导入，以便建立包 `__path__`。
 
-*在 3.3 版本发生变更:* 更新为直接基于 [`importlib`](https://docs.python.org/zh-cn/3.13/library/importlib.html#module-importlib) 而不是依赖于包内部的 [**PEP 302**](https://peps.python.org/pep-0302/) 导入模拟。
+> 在 3.3 版本发生变更: 更新为直接基于 [`importlib`]({{< ref "/library/modules/importlib#module-importlib" >}}) 而不是依赖于包内部的 [**PEP 302**](https://peps.python.org/pep-0302/) 导入模拟。
 
-*在 3.4 版本发生变更:* 更新为基于 [**PEP 451**](https://peps.python.org/pep-0451/)
+> 在 3.4 版本发生变更: 更新为基于 [**PEP 451**](https://peps.python.org/pep-0451/)
 
-*Deprecated since version 3.12, will be removed in version 3.14:* 使用 [`importlib.util.find_spec()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.util.find_spec) 来代替。
+*Deprecated since version 3.12, will be removed in version 3.14:* 使用 [`importlib.util.find_spec()`]({{< ref "/library/modules/importlib#importlib.util.find_spec" >}}) 来代替。
 
 ## pkgutil.**iter_importers**(*fullname=''*)
 
-​	为给定的模块名称产生 [finder](https://docs.python.org/zh-cn/3.13/glossary.html#term-finder) 对象。
+​	为给定的模块名称产生 [finder]({{< ref "/glossary/idx#term-finder" >}}) 对象。
 
-​	如果完整名称包含一个 `'.'`，查找器将针对包含该完整名称的包，否则它们将被注册为最高层级查找器（即同时用于 [`sys.meta_path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.meta_path) 和 [`sys.path_hooks`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path_hooks))。
+​	如果完整名称包含一个 `'.'`，查找器将针对包含该完整名称的包，否则它们将被注册为最高层级查找器（即同时用于 [`sys.meta_path`]({{< ref "/library/python/sys#sys.meta_path" >}}) 和 [`sys.path_hooks`]({{< ref "/library/python/sys#sys.path_hooks" >}}))。
 
 ​	如果指定的模块位于一个包内，则该包会作为发起调用此函数的附带影响被导入。
 
 ​	如果未指定模块名称，则会产生所有的最高层级查找器。
 
-*在 3.3 版本发生变更:* 更新为直接基于 [`importlib`](https://docs.python.org/zh-cn/3.13/library/importlib.html#module-importlib) 而不是依赖于包内部的 [**PEP 302**](https://peps.python.org/pep-0302/) 导入模拟。
+> 在 3.3 版本发生变更: 更新为直接基于 [`importlib`]({{< ref "/library/modules/importlib#module-importlib" >}}) 而不是依赖于包内部的 [**PEP 302**](https://peps.python.org/pep-0302/) 导入模拟。
 
 ## pkgutil.**iter_modules**(*path=None*, *prefix=''*)
 
-​	为 *path* 上的所有子模块产生 [`ModuleInfo`](https://docs.python.org/zh-cn/3.13/library/pkgutil.html#pkgutil.ModuleInfo)，或者如果 *path* 为 `None`，则为 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 上的所有最高层级模块产生。
+​	为 *path* 上的所有子模块产生 [`ModuleInfo`]({{< ref "/library/modules/pkgutil#pkgutil.ModuleInfo" >}})，或者如果 *path* 为 `None`，则为 [`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) 上的所有最高层级模块产生。
 
 *path* 应当为 `None` 或一个作为查找模块目标的路径的列表。
 
 *prefix* 是要在输出时输出到每个模块名称之前的字符串。
 
-​	备注
-
+​备注
  
 
-​	只适用于定义了 `iter_modules()` 方法的 [finder](https://docs.python.org/zh-cn/3.13/glossary.html#term-finder)。 该接口是非标准的，因此本模块还提供了针对 [`importlib.machinery.FileFinder`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.FileFinder) 和 [`zipimport.zipimporter`](https://docs.python.org/zh-cn/3.13/library/zipimport.html#zipimport.zipimporter) 的实现。
+​	只适用于定义了 `iter_modules()` 方法的 [finder]({{< ref "/glossary/idx#term-finder" >}})。 该接口是非标准的，因此本模块还提供了针对 [`importlib.machinery.FileFinder`]({{< ref "/library/modules/importlib#importlib.machinery.FileFinder" >}}) 和 [`zipimport.zipimporter`]({{< ref "/library/modules/zipimport#zipimport.zipimporter" >}}) 的实现。
 
-*在 3.3 版本发生变更:* 更新为直接基于 [`importlib`](https://docs.python.org/zh-cn/3.13/library/importlib.html#module-importlib) 而不是依赖于包内部的 [**PEP 302**](https://peps.python.org/pep-0302/) 导入模拟。
+> 在 3.3 版本发生变更: 更新为直接基于 [`importlib`]({{< ref "/library/modules/importlib#module-importlib" >}}) 而不是依赖于包内部的 [**PEP 302**](https://peps.python.org/pep-0302/) 导入模拟。
 
 ## pkgutil.**walk_packages**(*path=None*, *prefix=''*, *onerror=None*)
 
-​	在 *path* 上递归地为所有模块产生 [`ModuleInfo`](https://docs.python.org/zh-cn/3.13/library/pkgutil.html#pkgutil.ModuleInfo)，或者如果 *path* 为 `None`，则为所有可访问的模块产生。
+​	在 *path* 上递归地为所有模块产生 [`ModuleInfo`]({{< ref "/library/modules/pkgutil#pkgutil.ModuleInfo" >}})，或者如果 *path* 为 `None`，则为所有可访问的模块产生。
 
 *path* 应当为 `None` 或一个作为查找模块目标的路径的列表。
 
@@ -116,7 +115,7 @@ __path__ = extend_path(__path__, __name__)
 
 ​	请注意此函数必须导入给定 *path* 上所有的 *packages* (*而不是* 所有的模块！)，以便能访问 `__path__` 属性来查找子模块。
 
-*onerror* 是在当试图导入包如果发生任何异常则将附带一个参数（被导入的包的名称）被调用的函数。 如果没有提供 *onerror* 函数，则 [`ImportError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ImportError) 会被捕获并被忽略，而其他异常则会被传播，导致模块搜索的终结。
+*onerror* 是在当试图导入包如果发生任何异常则将附带一个参数（被导入的包的名称）被调用的函数。 如果没有提供 *onerror* 函数，则 [`ImportError`]({{< ref "/library/exceptions#ImportError" >}}) 会被捕获并被忽略，而其他异常则会被传播，导致模块搜索的终结。
 
 ​	示例:
 
@@ -128,19 +127,18 @@ walk_packages()
 walk_packages(ctypes.__path__, ctypes.__name__ + '.')
 ```
 
-​	备注
-
+​备注
  
 
-​	只适用于定义了 `iter_modules()` 方法的 [finder](https://docs.python.org/zh-cn/3.13/glossary.html#term-finder)。 该接口是非标准的，因此本模块还提供了针对 [`importlib.machinery.FileFinder`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.FileFinder) 和 [`zipimport.zipimporter`](https://docs.python.org/zh-cn/3.13/library/zipimport.html#zipimport.zipimporter) 的实现。
+​	只适用于定义了 `iter_modules()` 方法的 [finder]({{< ref "/glossary/idx#term-finder" >}})。 该接口是非标准的，因此本模块还提供了针对 [`importlib.machinery.FileFinder`]({{< ref "/library/modules/importlib#importlib.machinery.FileFinder" >}}) 和 [`zipimport.zipimporter`]({{< ref "/library/modules/zipimport#zipimport.zipimporter" >}}) 的实现。
 
-*在 3.3 版本发生变更:* 更新为直接基于 [`importlib`](https://docs.python.org/zh-cn/3.13/library/importlib.html#module-importlib) 而不是依赖于包内部的 [**PEP 302**](https://peps.python.org/pep-0302/) 导入模拟。
+> 在 3.3 版本发生变更: 更新为直接基于 [`importlib`]({{< ref "/library/modules/importlib#module-importlib" >}}) 而不是依赖于包内部的 [**PEP 302**](https://peps.python.org/pep-0302/) 导入模拟。
 
 ## pkgutil.**get_data**(*package*, *resource*)
 
 ​	从包中获取一个资源。
 
-​	这是一个针对 [loader](https://docs.python.org/zh-cn/3.13/glossary.html#term-loader) [`get_data`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.ResourceLoader.get_data) API 的包装器。 *package* 参数应为一个标准模块格式 (`foo.bar`) 的包名称。 *resource* 参数应为相对路径文件名的形式，使用 `/` 作为路径分隔符。 父目录名 `..`，以及根目录名 (以 `/` 打头) 均不允许使用。
+​	这是一个针对 [loader]({{< ref "/glossary/idx#term-loader" >}}) [`get_data`]({{< ref "/library/modules/importlib#importlib.abc.ResourceLoader.get_data" >}}) API 的包装器。 *package* 参数应为一个标准模块格式 (`foo.bar`) 的包名称。 *resource* 参数应为相对路径文件名的形式，使用 `/` 作为路径分隔符。 父目录名 `..`，以及根目录名 (以 `/` 打头) 均不允许使用。
 
 ​	返回指定资源内容的二进制串。
 
@@ -151,7 +149,7 @@ d = os.path.dirname(sys.modules[package].__file__)
 data = open(os.path.join(d, resource), 'rb').read()
 ```
 
-​	如果指定的包无法被定位或加载，或者如果它使用了不支持 [`get_data`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.ResourceLoader.get_data) 的 [loader](https://docs.python.org/zh-cn/3.13/glossary.html#term-loader)，则将返回 `None`。 特别地，针对 [命名空间包](https://docs.python.org/zh-cn/3.13/glossary.html#term-namespace-package) 的 [loader](https://docs.python.org/zh-cn/3.13/glossary.html#term-loader) 不支持 [`get_data`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.ResourceLoader.get_data)。
+​	如果指定的包无法被定位或加载，或者如果它使用了不支持 [`get_data`]({{< ref "/library/modules/importlib#importlib.abc.ResourceLoader.get_data" >}}) 的 [loader]({{< ref "/glossary/idx#term-loader" >}})，则将返回 `None`。 特别地，针对 [命名空间包]({{< ref "/glossary/idx#term-namespace-package" >}}) 的 [loader]({{< ref "/glossary/idx#term-loader" >}}) 不支持 [`get_data`]({{< ref "/library/modules/importlib#importlib.abc.ResourceLoader.get_data" >}})。
 
 ## pkgutil.**resolve_name**(*name*)
 
@@ -170,11 +168,11 @@ data = open(os.path.join(d, resource), 'rb').read()
 
 ​	此函数将返回一个对象（可能为模块），或是引发下列异常之一:
 
-[`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) -- 如果 *name* 不为可识别的格式。
+[`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) -- 如果 *name* 不为可识别的格式。
 
-[`ImportError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ImportError) -- 如果导入本应成功但却失败。
+[`ImportError`]({{< ref "/library/exceptions#ImportError" >}}) -- 如果导入本应成功但却失败。
 
-[`AttributeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AttributeError) -- 当在遍历所导入包的对象层级结构以获取想要的对象时遭遇失败。
+[`AttributeError`]({{< ref "/library/exceptions#AttributeError" >}}) -- 当在遍历所导入包的对象层级结构以获取想要的对象时遭遇失败。
 
 > Added in version 3.9.
 >

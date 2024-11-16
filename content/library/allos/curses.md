@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/curses.html](https://docs.python.org/zh-cn/3.13/library/curses.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/curses.html](https://docs.python.org/zh-cn/3.13/library/curses.html)
 >
 > 收录该文档的时间：`2024-11-15T12:09:25+08:00`
 
@@ -18,37 +18,35 @@ draft = false
 
 ------
 
-[`curses`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses) 模块提供了 curses 库的接口，这是可移植高级终端处理的事实标准。
+[`curses`]({{< ref "/library/allos/curses#module-curses" >}}) 模块提供了 curses 库的接口，这是可移植高级终端处理的事实标准。
 
 ​	虽然 curses 在 Unix 环境中使用最为广泛，但也有适用于 Windows，DOS 以及其他可能的系统的版本。此扩展模块旨在匹配 ncurses 的 API，这是一个部署在 Linux 和 Unix 的 BSD 变体上的开源 curses 库。
 
-[Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): not Android, not iOS, not WASI.
+[Availability]({{< ref "/library/intro#availability" >}}): not Android, not iOS, not WASI.
 
-​	此模块在 [移动平台](https://docs.python.org/zh-cn/3.13/library/intro.html#mobile-availability) 或 [WebAssembly 平台](https://docs.python.org/zh-cn/3.13/library/intro.html#wasm-availability) 上不受支持。
+​	此模块在 [移动平台]({{< ref "/library/intro#mobile-availability" >}}) 或 [WebAssembly 平台]({{< ref "/library/intro#wasm-availability" >}}) 上不受支持。
 
-​	备注
-
+​备注
  
 
 ​	每当文档提到 **字符** 时，它可以被指定为一个整数，一个单字符 Unicode 字符串或者一个单字节的字节字符串。
 
 ​	每当此文档提到 **字符串** 时，它可以被指定为一个 Unicode 字符串或者一个字节字符串。
 
-​	参见
-
-模块 [`curses.ascii`](https://docs.python.org/zh-cn/3.13/library/curses.ascii.html#module-curses.ascii)
+​参见
+模块 [`curses.ascii`]({{< ref "/library/allos/curses_ascii#module-curses.ascii" >}})
 
 ​	在 ASCII 字符上工作的工具，无论你的区域设置是什么。
 
-模块 [`curses.panel`](https://docs.python.org/zh-cn/3.13/library/curses.panel.html#module-curses.panel)
+模块 [`curses.panel`]({{< ref "/library/allos/curses_panel#module-curses.panel" >}})
 
 ​	为 curses 窗口添加深度的面板栈扩展。
 
-模块 [`curses.textpad`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses.textpad)
+模块 [`curses.textpad`]({{< ref "/library/allos/curses#module-curses.textpad" >}})
 
 ​	用于使 curses 支持 **Emacs** 式绑定的可编辑文本部件。
 
-[用 Python 进行 Curses 编程](https://docs.python.org/zh-cn/3.13/howto/curses.html#curses-howto)
+[用 Python 进行 Curses 编程]({{< ref "/howto/curses#curses-howto" >}})
 
 ​	关于配合 Python 使用 curses 的教学材料，由 Andrew Kuchling 和 Eric Raymond 撰写。
 
@@ -56,19 +54,18 @@ draft = false
 
 ## 函数
 
-[`curses`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses) 模块定义了以下异常：
+[`curses`]({{< ref "/library/allos/curses#module-curses" >}}) 模块定义了以下异常：
 
 ## *exception* curses.**error**
 
 ​	当 curses 库中函数返回一个错误时引发的异常。
 
-​	备注
-
+​备注
  
 
-​	只要一个函数或方法的 *x* 或 *y* 参数是可选项，它们会默认为当前光标位置。 而当 *attr* 是可选项时，它会默认为 [`A_NORMAL`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.A_NORMAL)。
+​	只要一个函数或方法的 *x* 或 *y* 参数是可选项，它们会默认为当前光标位置。 而当 *attr* 是可选项时，它会默认为 [`A_NORMAL`]({{< ref "/library/allos/curses#curses.A_NORMAL" >}})。
 
-[`curses`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses) 模块定义了以下函数：
+[`curses`]({{< ref "/library/allos/curses#module-curses" >}}) 模块定义了以下函数：
 
 ## curses.**baudrate**()
 
@@ -84,7 +81,7 @@ draft = false
 
 ## curses.**cbreak**()
 
-​	进入 cbreak 模式。 在 cbreak 模式（有时也称为“稀有”模式）通常的 tty 行缓冲会被关闭并且字符可以被一个一个地读取。 但是，与原始模式不同，特殊字符（中断、退出、挂起和流程控制）会在 tty 驱动和调用程序上保留其效果。 首先调用 [`raw()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.raw) 然后调用 [`cbreak()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.cbreak) 会将终端置于 cbreak 模式。
+​	进入 cbreak 模式。 在 cbreak 模式（有时也称为“稀有”模式）通常的 tty 行缓冲会被关闭并且字符可以被一个一个地读取。 但是，与原始模式不同，特殊字符（中断、退出、挂起和流程控制）会在 tty 驱动和调用程序上保留其效果。 首先调用 [`raw()`]({{< ref "/library/allos/curses#curses.raw" >}}) 然后调用 [`cbreak()`]({{< ref "/library/allos/curses#curses.cbreak" >}}) 会将终端置于 cbreak 模式。
 
 ## curses.**color_content**(*color_number*)
 
@@ -92,7 +89,7 @@ draft = false
 
 ## curses.**color_pair**(*pair_number*)
 
-​	返回用于以指定颜色对显示文本的属性值。 仅支持前 256 个颜色对。 该属性值可与 [`A_STANDOUT`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.A_STANDOUT), [`A_REVERSE`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.A_REVERSE) 以及其他 `A_*` 属性组合使用。 [`pair_number()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.pair_number) 是此函数的对应操作。
+​	返回用于以指定颜色对显示文本的属性值。 仅支持前 256 个颜色对。 该属性值可与 [`A_STANDOUT`]({{< ref "/library/allos/curses#curses.A_STANDOUT" >}}), [`A_REVERSE`]({{< ref "/library/allos/curses#curses.A_REVERSE" >}}) 以及其他 `A_*` 属性组合使用。 [`pair_number()`]({{< ref "/library/allos/curses#curses.pair_number" >}}) 是此函数的对应操作。
 
 ## curses.**curs_set**(*visibility*)
 
@@ -100,11 +97,11 @@ draft = false
 
 ## curses.**def_prog_mode**()
 
-​	将当前终端模式保存为 "program" 模式，即正在运行的程序使用 curses 的模式。 （与其相对的是 "shell" 模式，即程序不使用 curses。） 对 [`reset_prog_mode()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.reset_prog_mode) 的后续调用将恢复此模式。
+​	将当前终端模式保存为 "program" 模式，即正在运行的程序使用 curses 的模式。 （与其相对的是 "shell" 模式，即程序不使用 curses。） 对 [`reset_prog_mode()`]({{< ref "/library/allos/curses#curses.reset_prog_mode" >}}) 的后续调用将恢复此模式。
 
 ## curses.**def_shell_mode**()
 
-​	将当前终端模式保存为 "shell" 模式，即正在运行的程序不使用 curses 的模式。 （与其相对的是 "program" 模式，即程序使用 功能。） 对 [`reset_shell_mode()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.reset_shell_mode) 的后续调用将恢复此模式。
+​	将当前终端模式保存为 "shell" 模式，即正在运行的程序不使用 curses 的模式。 （与其相对的是 "program" 模式，即程序使用 功能。） 对 [`reset_shell_mode()`]({{< ref "/library/allos/curses#curses.reset_shell_mode" >}}) 的后续调用将恢复此模式。
 
 ## curses.**delay_output**(*ms*)
 
@@ -112,9 +109,9 @@ draft = false
 
 ## curses.**doupdate**()
 
-​	更新物理屏幕。 curses 库会保留两个数据结构，一个代表当前物理屏幕的内容以及一个虚拟屏幕代表需要的后续状态。 [`doupdate()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.doupdate) 整体更新物理屏幕以匹配虚拟屏幕。
+​	更新物理屏幕。 curses 库会保留两个数据结构，一个代表当前物理屏幕的内容以及一个虚拟屏幕代表需要的后续状态。 [`doupdate()`]({{< ref "/library/allos/curses#curses.doupdate" >}}) 整体更新物理屏幕以匹配虚拟屏幕。
 
-​	虚拟屏幕可以通过在写入操作例如在一个窗口上执行 [`addstr()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.addstr) 之后调用 [`noutrefresh()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.noutrefresh) 来刷新。 普通的 [`refresh()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.refresh) 调用只是简单的 `noutrefresh()` 加 `doupdate()`；如果你需要更新多个窗口，你可以通过在所有窗口上发出 `noutrefresh()` 调用再加单次 `doupdate()` 来提升性能并可减少屏幕闪烁。
+​	虚拟屏幕可以通过在写入操作例如在一个窗口上执行 [`addstr()`]({{< ref "/library/allos/curses#curses.window.addstr" >}}) 之后调用 [`noutrefresh()`]({{< ref "/library/allos/curses#curses.window.noutrefresh" >}}) 来刷新。 普通的 [`refresh()`]({{< ref "/library/allos/curses#curses.window.refresh" >}}) 调用只是简单的 `noutrefresh()` 加 `doupdate()`；如果你需要更新多个窗口，你可以通过在所有窗口上发出 `noutrefresh()` 调用再加单次 `doupdate()` 来提升性能并可减少屏幕闪烁。
 
 ## curses.**echo**()
 
@@ -130,11 +127,11 @@ draft = false
 
 ## curses.**filter**()
 
-​	如果要使用 [`filter()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.filter) 例程，它必须在调用 [`initscr()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.initscr) 之前被调用。 其效果是在这些调用期间，`LINES` 会被设为 `1`；`clear`, `cup`, `cud`, `cud1`, `cuu1`, `cuu`, `vpa` 等功能会被禁用；而 `home` 字符串会被设为 `cr` 的值。 其影响是光标会被限制在当前行内，屏幕刷新也是如此。 这可被用于启用单字符模式的行编辑而不触及屏幕的其余部分。
+​	如果要使用 [`filter()`]({{< ref "/library/allos/curses#curses.filter" >}}) 例程，它必须在调用 [`initscr()`]({{< ref "/library/allos/curses#curses.initscr" >}}) 之前被调用。 其效果是在这些调用期间，`LINES` 会被设为 `1`；`clear`, `cup`, `cud`, `cud1`, `cuu1`, `cuu`, `vpa` 等功能会被禁用；而 `home` 字符串会被设为 `cr` 的值。 其影响是光标会被限制在当前行内，屏幕刷新也是如此。 这可被用于启用单字符模式的行编辑而不触及屏幕的其余部分。
 
 ## curses.**flash**()
 
-​	闪烁屏幕。 也就是将其改为反显并在很短的时间内将其改回原状。 有些人更喜欢这样的‘视觉响铃’而非 [`beep()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.beep) 所产生的听觉提醒信号。
+​	闪烁屏幕。 也就是将其改为反显并在很短的时间内将其改回原状。 有些人更喜欢这样的‘视觉响铃’而非 [`beep()`]({{< ref "/library/allos/curses#curses.beep" >}}) 所产生的听觉提醒信号。
 
 ## curses.**flushinp**()
 
@@ -142,17 +139,17 @@ draft = false
 
 ## curses.**getmouse**()
 
-​	在 [`getch()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.getch) 返回 [`KEY_MOUSE`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_MOUSE) 以发出鼠标事件信号之后，应当调用此方法来获取加入队列的鼠标事件，事件以一个 5 元组 `(id, x, y, z, bstate)` 来表示。 其中 *id* 为用于区分多个设备的 ID 值，而 *x*, *y*, *z* 为事件的坐标。 (*z* 目前未被使用。) *bstate* 为一个整数值，其各个比特位将被设置用来表示事件的类型，并将为下列常量中的一个或多个按位 OR 的结果，其中 *n* 是以 1 到 5 表示的键号: [`BUTTONn_PRESSED`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.BUTTONn_PRESSED), [`BUTTONn_RELEASED`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.BUTTONn_RELEASED), [`BUTTONn_CLICKED`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.BUTTONn_CLICKED), [`BUTTONn_DOUBLE_CLICKED`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.BUTTONn_DOUBLE_CLICKED), [`BUTTONn_TRIPLE_CLICKED`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.BUTTONn_TRIPLE_CLICKED), [`BUTTON_SHIFT`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.BUTTON_SHIFT), [`BUTTON_CTRL`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.BUTTON_CTRL), [`BUTTON_ALT`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.BUTTON_ALT)。
+​	在 [`getch()`]({{< ref "/library/allos/curses#curses.window.getch" >}}) 返回 [`KEY_MOUSE`]({{< ref "/library/allos/curses#curses.KEY_MOUSE" >}}) 以发出鼠标事件信号之后，应当调用此方法来获取加入队列的鼠标事件，事件以一个 5 元组 `(id, x, y, z, bstate)` 来表示。 其中 *id* 为用于区分多个设备的 ID 值，而 *x*, *y*, *z* 为事件的坐标。 (*z* 目前未被使用。) *bstate* 为一个整数值，其各个比特位将被设置用来表示事件的类型，并将为下列常量中的一个或多个按位 OR 的结果，其中 *n* 是以 1 到 5 表示的键号: [`BUTTONn_PRESSED`]({{< ref "/library/allos/curses#curses.BUTTONn_PRESSED" >}}), [`BUTTONn_RELEASED`]({{< ref "/library/allos/curses#curses.BUTTONn_RELEASED" >}}), [`BUTTONn_CLICKED`]({{< ref "/library/allos/curses#curses.BUTTONn_CLICKED" >}}), [`BUTTONn_DOUBLE_CLICKED`]({{< ref "/library/allos/curses#curses.BUTTONn_DOUBLE_CLICKED" >}}), [`BUTTONn_TRIPLE_CLICKED`]({{< ref "/library/allos/curses#curses.BUTTONn_TRIPLE_CLICKED" >}}), [`BUTTON_SHIFT`]({{< ref "/library/allos/curses#curses.BUTTON_SHIFT" >}}), [`BUTTON_CTRL`]({{< ref "/library/allos/curses#curses.BUTTON_CTRL" >}}), [`BUTTON_ALT`]({{< ref "/library/allos/curses#curses.BUTTON_ALT" >}})。
 
-*在 3.10 版本发生变更:* 现在 `BUTTON5_*` 常量如果是由下层 curses 库提供的则会对外公开。
+> 在 3.10 版本发生变更: 现在 `BUTTON5_*` 常量如果是由下层 curses 库提供的则会对外公开。
 
 ## curses.**getsyx**()
 
-​	将当前虚拟屏幕光标的坐标作为元组 `(y, x)` 返回。 如果 [`leaveok`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.leaveok) 当前为 `True`，则返回 `(-1, -1)`。
+​	将当前虚拟屏幕光标的坐标作为元组 `(y, x)` 返回。 如果 [`leaveok`]({{< ref "/library/allos/curses#curses.window.leaveok" >}}) 当前为 `True`，则返回 `(-1, -1)`。
 
 ## curses.**getwin**(*file*)
 
-​	读取由之前的 [`window.putwin()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.putwin) 调用存储在文件中的窗口相关数据。 该例程随后将使用该数据创建并初始化一个新窗口，并返回这个新窗口对象。
+​	读取由之前的 [`window.putwin()`]({{< ref "/library/allos/curses#curses.window.putwin" >}}) 调用存储在文件中的窗口相关数据。 该例程随后将使用该数据创建并初始化一个新窗口，并返回这个新窗口对象。
 
 ## curses.**has_colors**()
 
@@ -181,33 +178,32 @@ draft = false
 
 ## curses.**halfdelay**(*tenths*)
 
-​	用于半延迟模式，与 cbreak 模式的类似之处是用户所键入的字符会立即对程序可用。 但是，在阻塞 *tenths* 个十分之一秒之后，如果还未输入任何内容则将引发异常。 *tenths* 值必须为 `1` 和 `255` 之间的数字。 使用 [`nocbreak()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.nocbreak) 可退出半延迟模式。
+​	用于半延迟模式，与 cbreak 模式的类似之处是用户所键入的字符会立即对程序可用。 但是，在阻塞 *tenths* 个十分之一秒之后，如果还未输入任何内容则将引发异常。 *tenths* 值必须为 `1` 和 `255` 之间的数字。 使用 [`nocbreak()`]({{< ref "/library/allos/curses#curses.nocbreak" >}}) 可退出半延迟模式。
 
 ## curses.**init_color**(*color_number*, *r*, *g*, *b*)
 
-​	更改某个颜色的定义，接受要更改的颜色编号以及三个 RGB 值（表示红绿蓝三个分量的强度）。 *color_number* 的值必须为 `0` 和 `COLORS - 1` 之间的数字。 每个 *r*, *g*, *b* 值必须为 `0` 和 `1000` 之间的数字。 当使用 [`init_color()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.init_color) 时，出现在屏幕上的对应颜色会立即按照定定义来更改。 此函数在大多数终端上都是无操作的；它仅会在 [`can_change_color()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.can_change_color) 返回 `True` 时生效。
+​	更改某个颜色的定义，接受要更改的颜色编号以及三个 RGB 值（表示红绿蓝三个分量的强度）。 *color_number* 的值必须为 `0` 和 `COLORS - 1` 之间的数字。 每个 *r*, *g*, *b* 值必须为 `0` 和 `1000` 之间的数字。 当使用 [`init_color()`]({{< ref "/library/allos/curses#curses.init_color" >}}) 时，出现在屏幕上的对应颜色会立即按照定定义来更改。 此函数在大多数终端上都是无操作的；它仅会在 [`can_change_color()`]({{< ref "/library/allos/curses#curses.can_change_color" >}}) 返回 `True` 时生效。
 
 ## curses.**init_pair**(*pair_number*, *fg*, *bg*)
 
-​	更改某个颜色对的定义。 它接受三个参数：要更改的颜色对编号，前景色编号和背景色编号。 *pair_number* 值必须为 `1` 和 `COLOR_PAIRS - 1` 之间的数字（并且 `0` 号颜色对固定为黑底白字而无法更改）。 *fg* 和 *bg* 参数必须为 `0` 和 `COLORS - 1` 之间的数字，或者在调用 [`use_default_colors()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.use_default_colors) 之后则为 `-1`。 如果颜色对之前已被初始化，则屏幕会被刷新使得出现在屏幕上的该颜色会立即按照新定义来更改。
+​	更改某个颜色对的定义。 它接受三个参数：要更改的颜色对编号，前景色编号和背景色编号。 *pair_number* 值必须为 `1` 和 `COLOR_PAIRS - 1` 之间的数字（并且 `0` 号颜色对固定为黑底白字而无法更改）。 *fg* 和 *bg* 参数必须为 `0` 和 `COLORS - 1` 之间的数字，或者在调用 [`use_default_colors()`]({{< ref "/library/allos/curses#curses.use_default_colors" >}}) 之后则为 `-1`。 如果颜色对之前已被初始化，则屏幕会被刷新使得出现在屏幕上的该颜色会立即按照新定义来更改。
 
 ## curses.**initscr**()
 
-​	初始化库。 返回代表整个屏幕的 [窗口](https://docs.python.org/zh-cn/3.13/library/curses.html#curses-window-objects) 对象。
+​	初始化库。 返回代表整个屏幕的 [窗口]({{< ref "/library/allos/curses#curses-window-objects" >}}) 对象。
 
-​	备注
-
+​备注
  
 
 ​	如果打开终端时发生错误，则下层的 curses 库可能会导致解释器退出。
 
 ## curses.**is_term_resized**(*nlines*, *ncols*)
 
-​	如果 [`resize_term()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.resize_term) 会修改窗口结构则返回 `True`，否则返回 `False`。
+​	如果 [`resize_term()`]({{< ref "/library/allos/curses#curses.resize_term" >}}) 会修改窗口结构则返回 `True`，否则返回 `False`。
 
 ## curses.**isendwin**()
 
-​	如果 [`endwin()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.endwin) 已经被调用（即 curses 库已经被撤销初始化则返回 `True`。
+​	如果 [`endwin()`]({{< ref "/library/allos/curses#curses.endwin" >}}) 已经被调用（即 curses 库已经被撤销初始化则返回 `True`。
 
 ## curses.**keyname**(*k*)
 
@@ -219,7 +215,7 @@ draft = false
 
 ## curses.**longname**()
 
-​	返回一个字节串对象，其中包含描述当前终端的 terminfo 长名称字段。 详细描述的最大长度为 128 个字符。 它仅在调用 [`initscr()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.initscr) 之后才会被定义。
+​	返回一个字节串对象，其中包含描述当前终端的 terminfo 长名称字段。 详细描述的最大长度为 128 个字符。 它仅在调用 [`initscr()`]({{< ref "/library/allos/curses#curses.initscr" >}}) 之后才会被定义。
 
 ## curses.**meta**(*flag*)
 
@@ -241,13 +237,13 @@ draft = false
 
 ​	创建并返回一个指向具有给定行数和列数新的面板数据结构的指针。 将面板作为窗口对象返回。
 
-​	面板类似于窗口，区别在于它不受屏幕大小的限制，并且不必与屏幕的特定部分相关联。 面板可以在需要使用大窗口时使用，并且每次只需将窗口的一部分放在屏幕上。 面板不会发生自动刷新（例如由于滚动或输入回显）。 面板的 [`refresh()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.refresh) 和 [`noutrefresh()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.noutrefresh) 方法需要 6 个参数来指定面板要显示的部分以及要用于显示的屏幕位置。 这些参数是 *pminrow*, *pmincol*, *sminrow*, *smincol*, *smaxrow*, *smaxcol*；*p* 参数表示要显示的面板区域的左上角而 *s* 参数定义了要显示的面板区域在屏幕上的剪切框。
+​	面板类似于窗口，区别在于它不受屏幕大小的限制，并且不必与屏幕的特定部分相关联。 面板可以在需要使用大窗口时使用，并且每次只需将窗口的一部分放在屏幕上。 面板不会发生自动刷新（例如由于滚动或输入回显）。 面板的 [`refresh()`]({{< ref "/library/allos/curses#curses.window.refresh" >}}) 和 [`noutrefresh()`]({{< ref "/library/allos/curses#curses.window.noutrefresh" >}}) 方法需要 6 个参数来指定面板要显示的部分以及要用于显示的屏幕位置。 这些参数是 *pminrow*, *pmincol*, *sminrow*, *smincol*, *smaxrow*, *smaxcol*；*p* 参数表示要显示的面板区域的左上角而 *s* 参数定义了要显示的面板区域在屏幕上的剪切框。
 
 ## curses.**newwin**(*nlines*, *ncols*)
 
 ## curses.**newwin**(*nlines*, *ncols*, *begin_y*, *begin_x*)
 
-​	返回一个新的 [窗口](https://docs.python.org/zh-cn/3.13/library/curses.html#curses-window-objects)，其左上角位于 `(begin_y, begin_x)`，并且其高度/宽度为 *nlines*/*ncols*。
+​	返回一个新的 [窗口]({{< ref "/library/allos/curses#curses-window-objects" >}})，其左上角位于 `(begin_y, begin_x)`，并且其高度/宽度为 *nlines*/*ncols*。
 
 ​	默认情况下，窗口将从指定位置扩展到屏幕的右下角。
 
@@ -281,15 +277,15 @@ draft = false
 
 ## curses.**pair_number**(*attr*)
 
-​	返回通过属性值 *attr* 所设置的颜色对的编号。 [`color_pair()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.color_pair) 是此函数的对应操作。
+​	返回通过属性值 *attr* 所设置的颜色对的编号。 [`color_pair()`]({{< ref "/library/allos/curses#curses.color_pair" >}}) 是此函数的对应操作。
 
 ## curses.**putp**(*str*)
 
-​	等价于 `tputs(str, 1, putchar)`；为当前终端发出指定 terminfo 功能的值。 请注意 [`putp()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.putp) 的输出总是前往标准输出。
+​	等价于 `tputs(str, 1, putchar)`；为当前终端发出指定 terminfo 功能的值。 请注意 [`putp()`]({{< ref "/library/allos/curses#curses.putp" >}}) 的输出总是前往标准输出。
 
 ## curses.**qiflush**([*flag*])
 
-​	如果 *flag* 为 `False`，则效果与调用 [`noqiflush()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.noqiflush) 相同。 如果 *flag* 为 `True` 或未提供参数，则在读取这些控制字符时队列将被刷新。
+​	如果 *flag* 为 `False`，则效果与调用 [`noqiflush()`]({{< ref "/library/allos/curses#curses.noqiflush" >}}) 相同。 如果 *flag* 为 `True` 或未提供参数，则在读取这些控制字符时队列将被刷新。
 
 ## curses.**raw**()
 
@@ -297,19 +293,19 @@ draft = false
 
 ## curses.**reset_prog_mode**()
 
-​	将终端恢复到 "program" 模式，如之前由 [`def_prog_mode()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.def_prog_mode) 所保存的一样。
+​	将终端恢复到 "program" 模式，如之前由 [`def_prog_mode()`]({{< ref "/library/allos/curses#curses.def_prog_mode" >}}) 所保存的一样。
 
 ## curses.**reset_shell_mode**()
 
-​	将终端恢复到 "shell" 模式，如之前由 [`def_shell_mode()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.def_shell_mode) 所保存的一样。
+​	将终端恢复到 "shell" 模式，如之前由 [`def_shell_mode()`]({{< ref "/library/allos/curses#curses.def_shell_mode" >}}) 所保存的一样。
 
 ## curses.**resetty**()
 
-​	将终端模式恢复到最后一次调用 [`savetty()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.savetty) 时的状态。
+​	将终端模式恢复到最后一次调用 [`savetty()`]({{< ref "/library/allos/curses#curses.savetty" >}}) 时的状态。
 
 ## curses.**resize_term**(*nlines*, *ncols*)
 
-​	由 [`resizeterm()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.resizeterm) 用来执行大部分工作的后端函数；当调整窗口大小时，[`resize_term()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.resize_term) 会以空白填充扩展区域。 调用方应用程序应当以适当的数据填充这些区域。 `resize_term()` 函数会尝试调整所有窗口的大小。 但是，由于面板的调用约定，在不与应用程序进行额外交互的情况下是无法调整其大小的。
+​	由 [`resizeterm()`]({{< ref "/library/allos/curses#curses.resizeterm" >}}) 用来执行大部分工作的后端函数；当调整窗口大小时，[`resize_term()`]({{< ref "/library/allos/curses#curses.resize_term" >}}) 会以空白填充扩展区域。 调用方应用程序应当以适当的数据填充这些区域。 `resize_term()` 函数会尝试调整所有窗口的大小。 但是，由于面板的调用约定，在不与应用程序进行额外交互的情况下是无法调整其大小的。
 
 ## curses.**resizeterm**(*nlines*, *ncols*)
 
@@ -317,11 +313,11 @@ draft = false
 
 ## curses.**savetty**()
 
-​	将终端模式的当前状态保存在缓冲区中，可供 [`resetty()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.resetty) 使用。
+​	将终端模式的当前状态保存在缓冲区中，可供 [`resetty()`]({{< ref "/library/allos/curses#curses.resetty" >}}) 使用。
 
 ## curses.**get_escdelay**()
 
-​	提取通过 [`set_escdelay()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.set_escdelay) 设置的值。
+​	提取通过 [`set_escdelay()`]({{< ref "/library/allos/curses#curses.set_escdelay" >}}) 设置的值。
 
 > Added in version 3.9.
 >
@@ -335,7 +331,7 @@ draft = false
 
 ## curses.**get_tabsize**()
 
-​	提取通过 [`set_tabsize()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.set_tabsize) 设置的值。
+​	提取通过 [`set_tabsize()`]({{< ref "/library/allos/curses#curses.set_tabsize" >}}) 设置的值。
 
 > Added in version 3.9.
 >
@@ -349,7 +345,7 @@ draft = false
 
 ## curses.**setsyx**(*y*, *x*)
 
-​	将虚拟屏幕光标设置到 *y*, *x*。 如果 *y* 和 *x* 均为 `-1`，则 [`leaveok`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.leaveok) 将设为 `True`。
+​	将虚拟屏幕光标设置到 *y*, *x*。 如果 *y* 和 *x* 均为 `-1`，则 [`leaveok`]({{< ref "/library/allos/curses#curses.window.leaveok" >}}) 将设为 `True`。
 
 ## curses.**setupterm**(*term=None*, *fd=-1*)
 
@@ -357,9 +353,9 @@ draft = false
 
 ## curses.**start_color**()
 
-​	如果程序员想要使用颜色，则必须在任何其他颜色操作例程被调用之前调用它。 在 [`initscr()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.initscr) 之后立即调用此例程是一个很好的做法。
+​	如果程序员想要使用颜色，则必须在任何其他颜色操作例程被调用之前调用它。 在 [`initscr()`]({{< ref "/library/allos/curses#curses.initscr" >}}) 之后立即调用此例程是一个很好的做法。
 
-[`start_color()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.start_color) 会初始化八种基本颜色（黑、红、绿、黄、蓝、品、青和白）以及 [`curses`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses) 模块中的两个全局变量 [`COLORS`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.COLORS) 和 [`COLOR_PAIRS`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.COLOR_PAIRS)，其中包含终端可支持的颜色和颜色对的最大数量。 它还会将终端中的颜色恢复为终端刚启动时的值。
+[`start_color()`]({{< ref "/library/allos/curses#curses.start_color" >}}) 会初始化八种基本颜色（黑、红、绿、黄、蓝、品、青和白）以及 [`curses`]({{< ref "/library/allos/curses#module-curses" >}}) 模块中的两个全局变量 [`COLORS`]({{< ref "/library/allos/curses#curses.COLORS" >}}) 和 [`COLOR_PAIRS`]({{< ref "/library/allos/curses#curses.COLOR_PAIRS" >}})，其中包含终端可支持的颜色和颜色对的最大数量。 它还会将终端中的颜色恢复为终端刚启动时的值。
 
 ## curses.**termattrs**()
 
@@ -397,27 +393,25 @@ draft = false
 
 ## curses.**ungetch**(*ch*)
 
-​	推送 *ch* 以便让下一个 [`getch()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.getch) 返回该字符。
+​	推送 *ch* 以便让下一个 [`getch()`]({{< ref "/library/allos/curses#curses.window.getch" >}}) 返回该字符。
 
-​	备注
-
+​备注
  
 
 ​	在 `getch()` 被调用之前只能推送一个 *ch*。
 
 ## curses.**update_lines_cols**()
 
-​	更新 [`LINES`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.LINES) 和 [`COLS`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.COLS) 模块变量。 适用于检测手动调整屏幕大小。
+​	更新 [`LINES`]({{< ref "/library/allos/curses#curses.LINES" >}}) 和 [`COLS`]({{< ref "/library/allos/curses#curses.COLS" >}}) 模块变量。 适用于检测手动调整屏幕大小。
 
 > Added in version 3.5.
 >
 
 ## curses.**unget_wch**(*ch*)
 
-​	推送 *ch* 以便让下一个 [`get_wch()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.get_wch) 返回该字符。
+​	推送 *ch* 以便让下一个 [`get_wch()`]({{< ref "/library/allos/curses#curses.window.get_wch" >}}) 返回该字符。
 
-​	备注
-
+​备注
  
 
 ​	在 `get_wch()` 被调用之前只能推送一个 *ch*。
@@ -427,11 +421,11 @@ draft = false
 
 ## curses.**ungetmouse**(*id*, *x*, *y*, *z*, *bstate*)
 
-​	将 [`KEY_MOUSE`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_MOUSE) 事件推送到输入队列，将其与给定的状态数据进行关联。
+​	将 [`KEY_MOUSE`]({{< ref "/library/allos/curses#curses.KEY_MOUSE" >}}) 事件推送到输入队列，将其与给定的状态数据进行关联。
 
 ## curses.**use_env**(*flag*)
 
-​	如果使用此函数，则应当在调用 [`initscr()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.initscr) 或 newterm 之前调用它。 当 *flag* 为 `False` 时，将会使用在 terminfo 数据库中指定的行和列的值，即使设置了环境变量 `LINES` 和 `COLUMNS` (默认使用)，或者如果 curses 是在窗口中运行（在此情况下如果未设置 `LINES` 和 `COLUMNS` 则默认行为将是使用窗口大小）。
+​	如果使用此函数，则应当在调用 [`initscr()`]({{< ref "/library/allos/curses#curses.initscr" >}}) 或 newterm 之前调用它。 当 *flag* 为 `False` 时，将会使用在 terminfo 数据库中指定的行和列的值，即使设置了环境变量 `LINES` 和 `COLUMNS` (默认使用)，或者如果 curses 是在窗口中运行（在此情况下如果未设置 `LINES` 和 `COLUMNS` 则默认行为将是使用窗口大小）。
 
 ## curses.**use_default_colors**()
 
@@ -445,7 +439,7 @@ draft = false
 
 ## Window 对象
 
-​	Window 对象会由上面的 [`initscr()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.initscr) 和 [`newwin()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.newwin) 返回，它具有以下方法和属性:
+​	Window 对象会由上面的 [`initscr()`]({{< ref "/library/allos/curses#curses.initscr" >}}) 和 [`newwin()`]({{< ref "/library/allos/curses#curses.newwin" >}}) 返回，它具有以下方法和属性:
 
 ## window.**addch**(*ch*[, *attr*])
 
@@ -453,11 +447,10 @@ draft = false
 
 ​	将带有属性 *attr* 的字符 *ch* 绘制到 `(y, x)`，覆盖之前在该位置上绘制的任何字符。 默认情况下，字符的位置和属性均为窗口对象的当前设置。
 
-​	备注
-
+​备注
  
 
-​	在窗口、子窗口或面板之外写入会引发 [`curses.error`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.error)。 尝试在窗口、子窗口或面板的右下角写入将在字符被打印之后导致异常被引发。
+​	在窗口、子窗口或面板之外写入会引发 [`curses.error`]({{< ref "/library/allos/curses#curses.error" >}})。 尝试在窗口、子窗口或面板的右下角写入将在字符被打印之后导致异常被引发。
 
 ## window.**addnstr**(*str*, *n*[, *attr*])
 
@@ -471,10 +464,9 @@ draft = false
 
 ​	将带有属性 *attr* 的字符串 *str* 绘制到 `(y, x)`，覆盖之前在屏幕上的任何内容。
 
-​	备注
-
-- 在窗口、子窗口或面板之外写入会引发 [`curses.error`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.error)。 尝试在窗口、子窗口或面板的右下角写入将在字符串被打印之后导致异常被引发。
-- 此 Python 模块的后端 [ncurses 中的一个缺陷](https://bugs.python.org/issue35924) 会在调整窗口大小时导致段错误。 此缺陷已在 ncurses-6.1-20190511 中被修复。 如果你必须使用较早版本的 ncurses，则你只要在调用 [`addstr()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.addstr) 时不传入嵌入了换行符的 *str* 即可避免触发此错误。 请为每一行分别调用 [`addstr()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.addstr)。
+​备注
+- 在窗口、子窗口或面板之外写入会引发 [`curses.error`]({{< ref "/library/allos/curses#curses.error" >}})。 尝试在窗口、子窗口或面板的右下角写入将在字符串被打印之后导致异常被引发。
+- 此 Python 模块的后端 [ncurses 中的一个缺陷](https://bugs.python.org/issue35924) 会在调整窗口大小时导致段错误。 此缺陷已在 ncurses-6.1-20190511 中被修复。 如果你必须使用较早版本的 ncurses，则你只要在调用 [`addstr()`]({{< ref "/library/allos/curses#curses.window.addstr" >}}) 时不传入嵌入了换行符的 *str* 即可避免触发此错误。 请为每一行分别调用 [`addstr()`]({{< ref "/library/allos/curses#curses.window.addstr" >}})。
 
 ## window.**attroff**(*attr*)
 
@@ -503,26 +495,25 @@ draft = false
 
 ​	在窗口边缘绘制边框。每个参数指定用于边界特定部分的字符;请参阅下表了解更多详情。
 
-​	备注
-
+​备注
  
 
 ​	任何形参的值为 `0` 都将导致该形参使用默认字符。 关键字形参 *不可* 被使用。 默认字符在下表中列出:
 
 | 参数 | 描述   | 默认值                                                       |
 | :--- | :----- | :----------------------------------------------------------- |
-| *ls* | 左侧   | [`ACS_VLINE`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.ACS_VLINE) |
-| *rs* | 右侧   | [`ACS_VLINE`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.ACS_VLINE) |
-| *ts* | 顶部   | [`ACS_HLINE`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.ACS_HLINE) |
-| *bs* | 底部   | [`ACS_HLINE`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.ACS_HLINE) |
-| *tl* | 左上角 | [`ACS_ULCORNER`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.ACS_ULCORNER) |
-| *tr* | 右上角 | [`ACS_URCORNER`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.ACS_URCORNER) |
-| *bl* | 左下角 | [`ACS_LLCORNER`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.ACS_LLCORNER) |
-| *br* | 右下角 | [`ACS_LRCORNER`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.ACS_LRCORNER) |
+| *ls* | 左侧   | [`ACS_VLINE`]({{< ref "/library/allos/curses#curses.ACS_VLINE" >}}) |
+| *rs* | 右侧   | [`ACS_VLINE`]({{< ref "/library/allos/curses#curses.ACS_VLINE" >}}) |
+| *ts* | 顶部   | [`ACS_HLINE`]({{< ref "/library/allos/curses#curses.ACS_HLINE" >}}) |
+| *bs* | 底部   | [`ACS_HLINE`]({{< ref "/library/allos/curses#curses.ACS_HLINE" >}}) |
+| *tl* | 左上角 | [`ACS_ULCORNER`]({{< ref "/library/allos/curses#curses.ACS_ULCORNER" >}}) |
+| *tr* | 右上角 | [`ACS_URCORNER`]({{< ref "/library/allos/curses#curses.ACS_URCORNER" >}}) |
+| *bl* | 左下角 | [`ACS_LLCORNER`]({{< ref "/library/allos/curses#curses.ACS_LLCORNER" >}}) |
+| *br* | 右下角 | [`ACS_LRCORNER`]({{< ref "/library/allos/curses#curses.ACS_LRCORNER" >}}) |
 
 ## window.**box**([*vertch*, *horch*])
 
-​	类似于 [`border()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.border)，但 *ls* 和 *rs* 均为 *vertch* 而 *ts* 和 *bs* 均为 *horch*。 此函数总是会使用默认的转角字符。
+​	类似于 [`border()`]({{< ref "/library/allos/curses#curses.window.border" >}})，但 *ls* 和 *rs* 均为 *vertch* 而 *ts* 和 *bs* 均为 *horch*。 此函数总是会使用默认的转角字符。
 
 ## window.**chgat**(*attr*)
 
@@ -532,19 +523,19 @@ draft = false
 
 ## window.**chgat**(*y*, *x*, *num*, *attr*)
 
-​	在当前光标位置或是在所提供的位置 `(y, x)` 设置 *num* 个字符的属性。 如果 *num* 未给出或为 `-1`，则将属性设置到所有字符上直至行尾。 如果提供了位置 `(y, x)` 则此函数会将光标移至该位置。 修改过的行将使用 [`touchline()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.touchline) 方法处理以便下次窗口刷新时内容会重新显示。
+​	在当前光标位置或是在所提供的位置 `(y, x)` 设置 *num* 个字符的属性。 如果 *num* 未给出或为 `-1`，则将属性设置到所有字符上直至行尾。 如果提供了位置 `(y, x)` 则此函数会将光标移至该位置。 修改过的行将使用 [`touchline()`]({{< ref "/library/allos/curses#curses.window.touchline" >}}) 方法处理以便下次窗口刷新时内容会重新显示。
 
 ## window.**clear**()
 
-​	类似于 [`erase()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.erase)，但还会导致在下次调用 [`refresh()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.refresh) 时整个窗口被重新绘制。
+​	类似于 [`erase()`]({{< ref "/library/allos/curses#curses.window.erase" >}})，但还会导致在下次调用 [`refresh()`]({{< ref "/library/allos/curses#curses.window.refresh" >}}) 时整个窗口被重新绘制。
 
 ## window.**clearok**(*flag*)
 
-​	如果 *flag* 为 `True`，则在下次调用 [`refresh()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.refresh) 时将完全清除窗口。
+​	如果 *flag* 为 `True`，则在下次调用 [`refresh()`]({{< ref "/library/allos/curses#curses.window.refresh" >}}) 时将完全清除窗口。
 
 ## window.**clrtobot**()
 
-​	从光标位置开始擦除直至窗口末端：光标以下的所有行都会被删除，然后会执行 [`clrtoeol()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.clrtoeol) 的等效操作。
+​	从光标位置开始擦除直至窗口末端：光标以下的所有行都会被删除，然后会执行 [`clrtoeol()`]({{< ref "/library/allos/curses#curses.window.clrtoeol" >}}) 的等效操作。
 
 ## window.**clrtoeol**()
 
@@ -566,21 +557,21 @@ draft = false
 
 ## window.**derwin**(*nlines*, *ncols*, *begin_y*, *begin_x*)
 
-​	"derive window" 的缩写，[`derwin()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.derwin) 与调用 [`subwin()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.subwin) 等效，不同之处在于 *begin_y* 和 *begin_x* 是想对于窗口的初始位置，而不是相对于整个屏幕。 返回代表所派生窗口的窗口对象。
+​	"derive window" 的缩写，[`derwin()`]({{< ref "/library/allos/curses#curses.window.derwin" >}}) 与调用 [`subwin()`]({{< ref "/library/allos/curses#curses.window.subwin" >}}) 等效，不同之处在于 *begin_y* 和 *begin_x* 是想对于窗口的初始位置，而不是相对于整个屏幕。 返回代表所派生窗口的窗口对象。
 
 ## window.**echochar**(*ch*[, *attr*])
 
-​	使用属性 *attr* 添加字符 *ch*，并立即在窗口上调用 [`refresh()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.refresh)。
+​	使用属性 *attr* 添加字符 *ch*，并立即在窗口上调用 [`refresh()`]({{< ref "/library/allos/curses#curses.window.refresh" >}})。
 
 ## window.**enclose**(*y*, *x*)
 
 ​	检测给定的相对屏幕的字符-单元格坐标是否被给定的窗口所包围，返回 `True` 或 `False`。 它适用于确定是哪个屏幕窗口子集包围着某个鼠标事件的位置。
 
-*在 3.10 版本发生变更:* 在之前版本中它会返回 `1` 或 `0` 而不是 `True` 或 `False`。
+> 在 3.10 版本发生变更: 在之前版本中它会返回 `1` 或 `0` 而不是 `True` 或 `False`。
 
 ## window.**encoding**
 
-​	用于编码方法参数（Unicode 字符串和字符）的编码格式。 encoding 属性是在创建子窗口时从父窗口继承的，例如通过 [`window.subwin()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.subwin)。 在默认情况下，会使用当前语言区域的编码格式（参见 [`locale.getencoding()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.getencoding) 文档）。
+​	用于编码方法参数（Unicode 字符串和字符）的编码格式。 encoding 属性是在创建子窗口时从父窗口继承的，例如通过 [`window.subwin()`]({{< ref "/library/allos/curses#curses.window.subwin" >}})。 在默认情况下，会使用当前语言区域的编码格式（参见 [`locale.getencoding()`]({{< ref "/library/i18n/locale#locale.getencoding" >}}) 文档）。
 
 > Added in version 3.3.
 >
@@ -610,7 +601,7 @@ draft = false
 
 ## window.**getkey**([*y*, *x*])
 
-​	获取一个字符，返回一个字符串而不是像 [`getch()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.getch) 那样返回一个整数。 功能键、小键盘键和其他特殊键则是返回一个包含键名的多字节字符串。 在无延迟模式下，如果没有输入则引发一个异常。
+​	获取一个字符，返回一个字符串而不是像 [`getch()`]({{< ref "/library/allos/curses#curses.window.getch" >}}) 那样返回一个整数。 功能键、小键盘键和其他特殊键则是返回一个包含键名的多字节字符串。 在无延迟模式下，如果没有输入则引发一个异常。
 
 ## window.**getmaxyx**()
 
@@ -646,11 +637,11 @@ draft = false
 
 ## window.**idlok**(*flag*)
 
-​	如果 *flag* 为 `True`，[`curses`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses) 将尝试使用硬件行编辑功能。 否则，行插入/删除会被禁用。
+​	如果 *flag* 为 `True`，[`curses`]({{< ref "/library/allos/curses#module-curses" >}}) 将尝试使用硬件行编辑功能。 否则，行插入/删除会被禁用。
 
 ## window.**immedok**(*flag*)
 
-​	如果 *flag* 为 `True`，窗口图像中的任何改变都会自动导致窗口被刷新；你不必再自己调用 [`refresh()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.refresh)。 但是，这可能会由于重复调用 wrefresh 而显著降低性能。 此选项默认被禁用。
+​	如果 *flag* 为 `True`，窗口图像中的任何改变都会自动导致窗口被刷新；你不必再自己调用 [`refresh()`]({{< ref "/library/allos/curses#curses.window.refresh" >}})。 但是，这可能会由于重复调用 wrefresh 而显著降低性能。 此选项默认被禁用。
 
 ## window.**inch**([*y*, *x*])
 
@@ -686,19 +677,19 @@ draft = false
 
 ## window.**instr**(*y*, *x*[, *n*])
 
-​	返回从窗口的当前光标位置，或者指定的 *y*, *x* 开始提取的字符所对应的字节串对象。 属性会从字符中去除。 如果指定了 *n*，[`instr()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.instr) 将返回长度至多为 *n* 个字符的字符串（不包括末尾的 NUL）。
+​	返回从窗口的当前光标位置，或者指定的 *y*, *x* 开始提取的字符所对应的字节串对象。 属性会从字符中去除。 如果指定了 *n*，[`instr()`]({{< ref "/library/allos/curses#curses.window.instr" >}}) 将返回长度至多为 *n* 个字符的字符串（不包括末尾的 NUL）。
 
 ## window.**is_linetouched**(*line*)
 
-​	如果指定的行自上次调用 [`refresh()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.refresh) 后发生了改变则返回 `True`；否则返回 `False`。 如果 *line* 对于给定的窗口不可用则会引发 [`curses.error`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.error) 异常。
+​	如果指定的行自上次调用 [`refresh()`]({{< ref "/library/allos/curses#curses.window.refresh" >}}) 后发生了改变则返回 `True`；否则返回 `False`。 如果 *line* 对于给定的窗口不可用则会引发 [`curses.error`]({{< ref "/library/allos/curses#curses.error" >}}) 异常。
 
 ## window.**is_wintouched**()
 
-​	如果指定的窗口自上次调用 [`refresh()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.refresh) 后发生了改变则返回 `True`；否则返回 `False`。
+​	如果指定的窗口自上次调用 [`refresh()`]({{< ref "/library/allos/curses#curses.window.refresh" >}}) 后发生了改变则返回 `True`；否则返回 `False`。
 
 ## window.**keypad**(*flag*)
 
-​	如果 *flag* 为 `True`，则某些键（小键盘键、功能键等）生成的转义序列将由 [`curses`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses) 来解析。 如果 *flag* 为 `False`，转义序列将保持在输入流中的原样。
+​	如果 *flag* 为 `True`，则某些键（小键盘键、功能键等）生成的转义序列将由 [`curses`]({{< ref "/library/allos/curses#module-curses" >}}) 来解析。 如果 *flag* 为 `False`，转义序列将保持在输入流中的原样。
 
 ## window.**leaveok**(*flag*)
 
@@ -720,7 +711,7 @@ draft = false
 
 ## window.**nodelay**(*flag*)
 
-​	如果 *flag* 为 `True`，则 [`getch()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.getch) 将为非阻塞的。
+​	如果 *flag* 为 `True`，则 [`getch()`]({{< ref "/library/allos/curses#curses.window.getch" >}}) 将为非阻塞的。
 
 ## window.**notimeout**(*flag*)
 
@@ -730,41 +721,41 @@ draft = false
 
 ## window.**noutrefresh**()
 
-​	标记为刷新但保持等待。 此函数会更新代表预期窗口状态的数据结构，但并不强制更新物理屏幕。 要完成后者，请调用 [`doupdate()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.doupdate)。
+​	标记为刷新但保持等待。 此函数会更新代表预期窗口状态的数据结构，但并不强制更新物理屏幕。 要完成后者，请调用 [`doupdate()`]({{< ref "/library/allos/curses#curses.doupdate" >}})。
 
 ## window.**overlay**(*destwin*[, *sminrow*, *smincol*, *dminrow*, *dmincol*, *dmaxrow*, *dmaxcol*])
 
 ​	将窗口覆盖在 *destwin* 上方。 窗口的大小不必相同，只有重叠的区域会被复制。 此复制是非破坏性的，这意味着当前背景字符不会覆盖掉 *destwin* 的旧内容。
 
-​	为了获得对被复制区域的细粒度控制，可以使用 [`overlay()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.overlay) 的第二种形式。 *sminrow* 和 *smincol* 是源窗口的左上角坐标，而其他变量则在目标窗口中标记出一个矩形。
+​	为了获得对被复制区域的细粒度控制，可以使用 [`overlay()`]({{< ref "/library/allos/curses#curses.window.overlay" >}}) 的第二种形式。 *sminrow* 和 *smincol* 是源窗口的左上角坐标，而其他变量则在目标窗口中标记出一个矩形。
 
 ## window.**overwrite**(*destwin*[, *sminrow*, *smincol*, *dminrow*, *dmincol*, *dmaxrow*, *dmaxcol*])
 
 ​	将窗口覆盖在 *destwin* 上方。 窗口的大小不必相同，此时只有重叠的区域会被复制。 此复制是破坏性的，这意味着当前背景字符会覆盖掉 *destwin* 的旧内容。
 
-​	为了获得对被复制区域的细粒度控制，可以使用 [`overwrite()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.overwrite) 的第二种形式。 *sminrow* 和 *smincol* 是源窗口的左上角坐标，而其他变量则在目标窗口中标记出一个矩形。
+​	为了获得对被复制区域的细粒度控制，可以使用 [`overwrite()`]({{< ref "/library/allos/curses#curses.window.overwrite" >}}) 的第二种形式。 *sminrow* 和 *smincol* 是源窗口的左上角坐标，而其他变量则在目标窗口中标记出一个矩形。
 
 ## window.**putwin**(*file*)
 
-​	将关联到窗口的所有数据写入到所提供的文件对象。 此信息可在以后使用 [`getwin()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.getwin) 函数来提取。
+​	将关联到窗口的所有数据写入到所提供的文件对象。 此信息可在以后使用 [`getwin()`]({{< ref "/library/allos/curses#curses.getwin" >}}) 函数来提取。
 
 ## window.**redrawln**(*beg*, *num*)
 
-​	指明从 *beg* 行开始的 *num* 个屏幕行已被破坏并且应当在下次 [`refresh()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.refresh) 调用时完全重绘。
+​	指明从 *beg* 行开始的 *num* 个屏幕行已被破坏并且应当在下次 [`refresh()`]({{< ref "/library/allos/curses#curses.window.refresh" >}}) 调用时完全重绘。
 
 ## window.**redrawwin**()
 
-​	触碰整个窗口，以使其在下次 [`refresh()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.refresh) 调用时完全重绘。
+​	触碰整个窗口，以使其在下次 [`refresh()`]({{< ref "/library/allos/curses#curses.window.refresh" >}}) 调用时完全重绘。
 
 ## window.**refresh**([*pminrow*, *pmincol*, *sminrow*, *smincol*, *smaxrow*, *smaxcol*])
 
 ​	立即更新显示（将实际屏幕与之前的绘制/删除方法进行同步）。
 
-​	6 个可选参数仅在窗口为使用 [`newpad()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.newpad) 创建的面板时可被指定。 需要额外的形参来指定所涉及到的是面板和屏幕的哪一部分。 *pminrow* 和 *pmincol* 指定要在面板中显示的矩形的左上角。 *sminrow*, *smincol*, *smaxrow* 和 *smaxcol* 指定要在屏幕中显示的矩形的边。 要在面板中显示的矩形的右下角是根据屏幕坐标计算出来的，由于矩形的大小必须相同。 两个矩形都必须完全包含在其各自的结构之内。 负的 *pminrow*, *pmincol*, *sminrow* 或 *smincol* 值会被视为将它们设为零值。
+​	6 个可选参数仅在窗口为使用 [`newpad()`]({{< ref "/library/allos/curses#curses.newpad" >}}) 创建的面板时可被指定。 需要额外的形参来指定所涉及到的是面板和屏幕的哪一部分。 *pminrow* 和 *pmincol* 指定要在面板中显示的矩形的左上角。 *sminrow*, *smincol*, *smaxrow* 和 *smaxcol* 指定要在屏幕中显示的矩形的边。 要在面板中显示的矩形的右下角是根据屏幕坐标计算出来的，由于矩形的大小必须相同。 两个矩形都必须完全包含在其各自的结构之内。 负的 *pminrow*, *pmincol*, *sminrow* 或 *smincol* 值会被视为将它们设为零值。
 
 ## window.**resize**(*nlines*, *ncols*)
 
-​	为 curses 窗口重新分配存储空间以将其尺寸调整为指定的值。 如果任一维度的尺寸大于当前值，则窗口的数据将以具有合并了当前背景渲染（由 [`bkgdset()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.bkgdset) 设置）的空白来填充。
+​	为 curses 窗口重新分配存储空间以将其尺寸调整为指定的值。 如果任一维度的尺寸大于当前值，则窗口的数据将以具有合并了当前背景渲染（由 [`bkgdset()`]({{< ref "/library/allos/curses#curses.window.bkgdset" >}}) 设置）的空白来填充。
 
 ## window.**scroll**([*lines=1*])
 
@@ -772,7 +763,7 @@ draft = false
 
 ## window.**scrollok**(*flag*)
 
-​	控制当一个窗口的光标移出窗口或滚动区域边缘时会发生什么，这可能是在底端行执行换行操作，或者在最后一行输入最后一个字符导致的结果。 如果 *flag* 为 `False`，光标会留在底端行。 如果 *flag* 为 `True`，窗口会向上滚动一行。 请注意为了在终端上获得实际的滚动效果，还需要调用 [`idlok()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.idlok)。
+​	控制当一个窗口的光标移出窗口或滚动区域边缘时会发生什么，这可能是在底端行执行换行操作，或者在最后一行输入最后一个字符导致的结果。 如果 *flag* 为 `False`，光标会留在底端行。 如果 *flag* 为 `True`，窗口会向上滚动一行。 请注意为了在终端上获得实际的滚动效果，还需要调用 [`idlok()`]({{< ref "/library/allos/curses#curses.window.idlok" >}})。
 
 ## window.**setscrreg**(*top*, *bottom*)
 
@@ -802,11 +793,11 @@ draft = false
 
 ## window.**syncdown**()
 
-​	触碰已在上级窗口上被触碰的每个位置。 此例程由 [`refresh()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.refresh) 调用，因此几乎从不需要手动调用。
+​	触碰已在上级窗口上被触碰的每个位置。 此例程由 [`refresh()`]({{< ref "/library/allos/curses#curses.window.refresh" >}}) 调用，因此几乎从不需要手动调用。
 
 ## window.**syncok**(*flag*)
 
-​	如果 *flag* 为 `True`，则 [`syncup()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.syncup) 会在窗口发生改变的任何时候自动被调用。
+​	如果 *flag* 为 `True`，则 [`syncup()`]({{< ref "/library/allos/curses#curses.window.syncup" >}}) 会在窗口发生改变的任何时候自动被调用。
 
 ## window.**syncup**()
 
@@ -814,7 +805,7 @@ draft = false
 
 ## window.**timeout**(*delay*)
 
-​	为窗口设置阻塞或非阻塞读取行为。 如果 *delay* 为负值，则会使用阻塞读取（这将无限期地等待输入）。 如果 *delay* 为零，则会使用非阻塞读取，并且当没有输入在等待时 [`getch()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.getch) 将返回 `-1`。 如果 *delay* 为正值，则 [`getch()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.getch) 将阻塞 *delay* 毫秒，并且当此延时结束时仍无输入将返回 `-1`。
+​	为窗口设置阻塞或非阻塞读取行为。 如果 *delay* 为负值，则会使用阻塞读取（这将无限期地等待输入）。 如果 *delay* 为零，则会使用非阻塞读取，并且当没有输入在等待时 [`getch()`]({{< ref "/library/allos/curses#curses.window.getch" >}}) 将返回 `-1`。 如果 *delay* 为正值，则 [`getch()`]({{< ref "/library/allos/curses#curses.window.getch" >}}) 将阻塞 *delay* 毫秒，并且当此延时结束时仍无输入将返回 `-1`。
 
 ## window.**touchline**(*start*, *count*[, *changed*])
 
@@ -826,7 +817,7 @@ draft = false
 
 ## window.**untouchwin**()
 
-​	将自上次调用 [`refresh()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.refresh) 以来窗口中的所有行标记为未改变。
+​	将自上次调用 [`refresh()`]({{< ref "/library/allos/curses#curses.window.refresh" >}}) 以来窗口中的所有行标记为未改变。
 
 ## window.**vline**(*ch*, *n*[, *attr*])
 
@@ -836,19 +827,19 @@ draft = false
 
 ## 常量
 
-[`curses`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses) 模块定义了以下数据成员:
+[`curses`]({{< ref "/library/allos/curses#module-curses" >}}) 模块定义了以下数据成员:
 
 ## curses.**ERR**
 
-​	一些返回整数的 curses 例程，例如 [`getch()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.getch)，在失败时将返回 [`ERR`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.ERR)。
+​	一些返回整数的 curses 例程，例如 [`getch()`]({{< ref "/library/allos/curses#curses.window.getch" >}})，在失败时将返回 [`ERR`]({{< ref "/library/allos/curses#curses.ERR" >}})。
 
 ## curses.**OK**
 
-​	一些返回整数的 curses 例程，例如 [`napms()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.napms)，在成功时将返回 [`OK`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.OK)。
+​	一些返回整数的 curses 例程，例如 [`napms()`]({{< ref "/library/allos/curses#curses.napms" >}})，在成功时将返回 [`OK`]({{< ref "/library/allos/curses#curses.OK" >}})。
 
 ## curses.**version**
 
-## curses.**__version__**
+## curses.`__version__`
 
 ​	一个代表模块当前版本的字节串对象。
 
@@ -863,19 +854,19 @@ draft = false
 
 ## curses.**COLORS**
 
-​	终端可支持的最大颜色数。 它只有在调用 [`start_color()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.start_color) 之后才会被定义。
+​	终端可支持的最大颜色数。 它只有在调用 [`start_color()`]({{< ref "/library/allos/curses#curses.start_color" >}}) 之后才会被定义。
 
 ## curses.**COLOR_PAIRS**
 
-​	终端可支持的最大颜色对数。 它只有在调用 [`start_color()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.start_color) 之后才会被定义。
+​	终端可支持的最大颜色对数。 它只有在调用 [`start_color()`]({{< ref "/library/allos/curses#curses.start_color" >}}) 之后才会被定义。
 
 ## curses.**COLS**
 
-​	屏幕的宽度，即列数。 它只有在调用 [`initscr()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.initscr) 之后才会被定义。 可被 [`update_lines_cols()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.update_lines_cols)、[`resizeterm()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.resizeterm) 和 [`resize_term()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.resize_term) 更新。
+​	屏幕的宽度，即列数。 它只有在调用 [`initscr()`]({{< ref "/library/allos/curses#curses.initscr" >}}) 之后才会被定义。 可被 [`update_lines_cols()`]({{< ref "/library/allos/curses#curses.update_lines_cols" >}})、[`resizeterm()`]({{< ref "/library/allos/curses#curses.resizeterm" >}}) 和 [`resize_term()`]({{< ref "/library/allos/curses#curses.resize_term" >}}) 更新。
 
 ## curses.**LINES**
 
-​	屏幕的高度，即行数。 它只有在调用 [`initscr()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.initscr) 之后才会被定义。 可被 [`update_lines_cols()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.update_lines_cols)、[`resizeterm()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.resizeterm) 和 [`resize_term()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.resize_term) 更新。
+​	屏幕的高度，即行数。 它只有在调用 [`initscr()`]({{< ref "/library/allos/curses#curses.initscr" >}}) 之后才会被定义。 可被 [`update_lines_cols()`]({{< ref "/library/allos/curses#curses.update_lines_cols" >}})、[`resizeterm()`]({{< ref "/library/allos/curses#curses.resizeterm" >}}) 和 [`resize_term()`]({{< ref "/library/allos/curses#curses.resize_term" >}}) 更新。
 
 ​	有些常量可用于指定字符单元属性。 实际可用的常量取决于具体的系统。
 
@@ -1009,7 +1000,7 @@ draft = false
 | curses.**KEY_RESIZE**    | 终端大小改变事件                |
 | curses.**KEY_MAX**       | 最大键值                        |
 
-​	在 VT100s 及其软件模拟器，如 X 终端模拟器上，通常至少有四个功能键 ([`KEY_F1`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_Fn), [`KEY_F2`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_Fn), [`KEY_F3`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_Fn), [`KEY_F4`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_Fn)) 可用，并且方向键将明确地映射到 [`KEY_UP`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_UP), [`KEY_DOWN`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_DOWN), [`KEY_LEFT`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_LEFT) 和 [`KEY_RIGHT`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_RIGHT)。 如果你的机器有一个 PC 键盘，则保证能使用方向键和十二个功能键 (老式的 PC 键盘可能只有十个功能键)；此外，还有以下的标准小键盘映射:
+​	在 VT100s 及其软件模拟器，如 X 终端模拟器上，通常至少有四个功能键 ([`KEY_F1`]({{< ref "/library/allos/curses#curses.KEY_Fn" >}}), [`KEY_F2`]({{< ref "/library/allos/curses#curses.KEY_Fn" >}}), [`KEY_F3`]({{< ref "/library/allos/curses#curses.KEY_Fn" >}}), [`KEY_F4`]({{< ref "/library/allos/curses#curses.KEY_Fn" >}})) 可用，并且方向键将明确地映射到 [`KEY_UP`]({{< ref "/library/allos/curses#curses.KEY_UP" >}}), [`KEY_DOWN`]({{< ref "/library/allos/curses#curses.KEY_DOWN" >}}), [`KEY_LEFT`]({{< ref "/library/allos/curses#curses.KEY_LEFT" >}}) 和 [`KEY_RIGHT`]({{< ref "/library/allos/curses#curses.KEY_RIGHT" >}})。 如果你的机器有一个 PC 键盘，则保证能使用方向键和十二个功能键 (老式的 PC 键盘可能只有十个功能键)；此外，还有以下的标准小键盘映射:
 
 | 键帽      | 常量      |
 | :-------- | :-------- |
@@ -1022,11 +1013,10 @@ draft = false
 
 ​	下表列出了替代字符集中的字符。 这些字符继承自 VT100 终端，在 X 终端等软件模拟器上通常均为可用。 当没有可用的图形时，curses 会回退为粗糙的可打印 ASCII 近似符号。
 
-​	备注
-
+​备注
  
 
-​	只有在调用 [`initscr()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.initscr) 之后才能使用它们
+​	只有在调用 [`initscr()`]({{< ref "/library/allos/curses#curses.initscr" >}}) 之后才能使用它们
 
 | ACS代码                 | 含意                   |
 | :---------------------- | :--------------------- |
@@ -1074,7 +1064,7 @@ draft = false
 | curses.**ACS_URCORNER** | 右上角                 |
 | curses.**ACS_VLINE**    | 垂线                   |
 
-​	下面列出了 [`getmouse()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.getmouse) 所使用的鼠标按键常量:
+​	下面列出了 [`getmouse()`]({{< ref "/library/allos/curses#curses.getmouse" >}}) 所使用的鼠标按键常量:
 
 | 鼠标按键常量                      | 含意                            |
 | :-------------------------------- | :------------------------------ |
@@ -1087,7 +1077,7 @@ draft = false
 | curses.**BUTTON_CTRL**            | 当按键状态改变时 Control 被按下 |
 | curses.**BUTTON_ALT**             | 当按键状态改变时 Control 被按下 |
 
-*在 3.10 版本发生变更:* 现在 `BUTTON5_*` 常量如果是由下层 curses 库提供的则会对外公开。
+> 在 3.10 版本发生变更: 现在 `BUTTON5_*` 常量如果是由下层 curses 库提供的则会对外公开。
 
 ​	下表列出了预定义的颜色：
 
@@ -1104,11 +1094,11 @@ draft = false
 
 
 
-# [`curses.textpad`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses.textpad) --- 用于 curses 程序的文本输入控件
+# [`curses.textpad`]({{< ref "/library/allos/curses#module-curses.textpad" >}}) --- 用于 curses 程序的文本输入控件
 
-[`curses.textpad`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses.textpad) 模块提供了一个 [`Textbox`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.textpad.Textbox) 类，该类在 curses 窗口中处理基本的文本编辑，支持一组与 Emacs 类似的键绑定（因此这也适用于 Netscape Navigator, BBedit 6.x, FrameMaker 和许多其他程序）。 该模块还提供了一个绘制矩形的函数，适用于容纳文本框或其他目的。
+[`curses.textpad`]({{< ref "/library/allos/curses#module-curses.textpad" >}}) 模块提供了一个 [`Textbox`]({{< ref "/library/allos/curses#curses.textpad.Textbox" >}}) 类，该类在 curses 窗口中处理基本的文本编辑，支持一组与 Emacs 类似的键绑定（因此这也适用于 Netscape Navigator, BBedit 6.x, FrameMaker 和许多其他程序）。 该模块还提供了一个绘制矩形的函数，适用于容纳文本框或其他目的。
 
-[`curses.textpad`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses.textpad) 模块定义了以下函数:
+[`curses.textpad`]({{< ref "/library/allos/curses#module-curses.textpad" >}}) 模块定义了以下函数:
 
 ## curses.textpad.**rectangle**(*win*, *uly*, *ulx*, *lry*, *lrx*)
 
@@ -1118,17 +1108,17 @@ draft = false
 
 ## 文本框对象
 
-​	你可以通过如下方式实例化一个 [`Textbox`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.textpad.Textbox):
+​	你可以通过如下方式实例化一个 [`Textbox`]({{< ref "/library/allos/curses#curses.textpad.Textbox" >}}):
 
 ## *class* curses.textpad.**Textbox**(*win*)
 
-​	返回一个文本框控件对象。 *win* 参数必须是一个 curses [窗口](https://docs.python.org/zh-cn/3.13/library/curses.html#curses-window-objects) 对象，文本框将被包含在其中。 文本框的编辑光标在初始时位于包含窗口的左上角，坐标值为 `(0, 0)`。 实例的 [`stripspaces`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.textpad.Textbox.stripspaces) 旗标初始时为启用。
+​	返回一个文本框控件对象。 *win* 参数必须是一个 curses [窗口]({{< ref "/library/allos/curses#curses-window-objects" >}}) 对象，文本框将被包含在其中。 文本框的编辑光标在初始时位于包含窗口的左上角，坐标值为 `(0, 0)`。 实例的 [`stripspaces`]({{< ref "/library/allos/curses#curses.textpad.Textbox.stripspaces" >}}) 旗标初始时为启用。
 
-[`Textbox`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.textpad.Textbox) 对象具有以下方法:
+[`Textbox`]({{< ref "/library/allos/curses#curses.textpad.Textbox" >}}) 对象具有以下方法:
 
 ## **edit**([*validator*])
 
-​	这是你通常将使用的入口点。 它接受编辑按键直到键入了一个终止按键。 如果提供了 *validator*，它必须是一个函数。 它将在每次按键时被调用并传入相应的按键作作为形参；命令发送将在结果上执行。 此方法会以字符串形式返回窗口内容；是否包括窗口中的空白将受到 [`stripspaces`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.textpad.Textbox.stripspaces) 属性的影响。
+​	这是你通常将使用的入口点。 它接受编辑按键直到键入了一个终止按键。 如果提供了 *validator*，它必须是一个函数。 它将在每次按键时被调用并传入相应的按键作作为形参；命令发送将在结果上执行。 此方法会以字符串形式返回窗口内容；是否包括窗口中的空白将受到 [`stripspaces`]({{< ref "/library/allos/curses#curses.textpad.Textbox.stripspaces" >}}) 属性的影响。
 
 ## **do_command**(*ch*)
 
@@ -1154,17 +1144,17 @@ draft = false
 
 | 常量                                                         | 按键      |
 | :----------------------------------------------------------- | :-------- |
-| [`KEY_LEFT`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_LEFT) | Control-B |
-| [`KEY_RIGHT`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_RIGHT) | Control-F |
-| [`KEY_UP`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_UP) | Control-P |
-| [`KEY_DOWN`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_DOWN) | Control-N |
-| [`KEY_BACKSPACE`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.KEY_BACKSPACE) | Control-h |
+| [`KEY_LEFT`]({{< ref "/library/allos/curses#curses.KEY_LEFT" >}}) | Control-B |
+| [`KEY_RIGHT`]({{< ref "/library/allos/curses#curses.KEY_RIGHT" >}}) | Control-F |
+| [`KEY_UP`]({{< ref "/library/allos/curses#curses.KEY_UP" >}}) | Control-P |
+| [`KEY_DOWN`]({{< ref "/library/allos/curses#curses.KEY_DOWN" >}}) | Control-N |
+| [`KEY_BACKSPACE`]({{< ref "/library/allos/curses#curses.KEY_BACKSPACE" >}}) | Control-h |
 
 ​	所有其他按键将被视为插入给定字符并右移的命令（带有自动折行）。
 
 ## **gather**()
 
-​	以字符串形式返回窗口内容；是否包括窗口中的空白将受到 [`stripspaces`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.textpad.Textbox.stripspaces) 成员的影响。
+​	以字符串形式返回窗口内容；是否包括窗口中的空白将受到 [`stripspaces`]({{< ref "/library/allos/curses#curses.textpad.Textbox.stripspaces" >}}) 成员的影响。
 
 ## **stripspaces**
 

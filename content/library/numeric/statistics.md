@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/statistics.html](https://docs.python.org/zh-cn/3.13/library/statistics.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/statistics.html](https://docs.python.org/zh-cn/3.13/library/statistics.html)
 >
 > 收录该文档的时间：`2024-11-15T11:42:26+08:00`
 
@@ -21,11 +21,11 @@ draft = false
 
 ------
 
-​	该模块提供了用于计算数字 ([`Real`](https://docs.python.org/zh-cn/3.13/library/numbers.html#numbers.Real)-valued) 数据的数理统计量的函数。
+​	该模块提供了用于计算数字 ([`Real`]({{< ref "/library/numeric/numbers#numbers.Real" >}})-valued) 数据的数理统计量的函数。
 
 ​	此模块并不是诸如 [NumPy](https://numpy.org/), [SciPy](https://scipy.org/) 等第三方库或者诸如 Minitab, SAS 和 Matlab 等针对专业统计学家的专有全功能统计软件包的竞品。 此模块针对图形和科学计算器的水平。
 
-​	除非明确注释，这些函数支持 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) ， [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) ， [`Decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal) 和 [`Fraction`](https://docs.python.org/zh-cn/3.13/library/fractions.html#fractions.Fraction) 。当前不支持同其他类型（是否在数字塔中）的行为。混合类型的集合也是未定义的，并且依赖于实现。如果你输入的数据由混合类型组成，你应该能够使用 [`map()`](https://docs.python.org/zh-cn/3.13/library/functions.html#map) 来确保一个一致的结果，比如： `map(float, input_data)` 。
+​	除非明确注释，这些函数支持 [`int`]({{< ref "/library/functions#int" >}}) ， [`float`]({{< ref "/library/functions#float" >}}) ， [`Decimal`]({{< ref "/library/numeric/decimal#decimal.Decimal" >}}) 和 [`Fraction`]({{< ref "/library/numeric/fractions#fractions.Fraction" >}}) 。当前不支持同其他类型（是否在数字塔中）的行为。混合类型的集合也是未定义的，并且依赖于实现。如果你输入的数据由混合类型组成，你应该能够使用 [`map()`]({{< ref "/library/functions#map" >}}) 来确保一个一致的结果，比如： `map(float, input_data)` 。
 
 ​	某些数据集合类型使用 `NaN` (not a number) 值来代表缺失的数据。 由于 NaN 具有特殊的比较语义，它们会在数据排序或计数等统计函数中产生怪异或未定义的行为。 受影响的函数有 `median()`, `median_low()`, `median_high()`, `median_grouped()`, `mode()`, `multimode()` 和 `quantiles()`。 `NaN` 值应当在调用这些函数之前被去除:
 
@@ -57,39 +57,39 @@ draft = false
 
 ​	这些函数用于计算一个总体或样本的平均值或者典型值。
 
-| [`mean()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.mean) | 数据的算术平均数（“平均数”）。                 |
+| [`mean()`]({{< ref "/library/numeric/statistics#statistics.mean" >}}) | 数据的算术平均数（“平均数”）。                 |
 | ------------------------------------------------------------ | ---------------------------------------------- |
-| [`fmean()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.fmean) | 快速的浮点算术平均值，带有可选的权重设置。     |
-| [`geometric_mean()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.geometric_mean) | 数据的几何平均数                               |
-| [`harmonic_mean()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.harmonic_mean) | 数据的调和均值                                 |
-| [`kde()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.kde) | 估算数据的概率密度分布。                       |
-| [`kde_random()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.kde_random) | 对由 kde() 生成的 PDF 进行随机采样。           |
-| [`median()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.median) | 数据的中位数（中间值）                         |
-| [`median_low()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.median_low) | 数据的低中位数                                 |
-| [`median_high()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.median_high) | 数据的高中位数                                 |
-| [`median_grouped()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.median_grouped) | 分组数据的中位数（即第 50 个百分点的位置）。   |
-| [`mode()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.mode) | 离散的或标称的数据的单个众数（出现最多的值）。 |
-| [`multimode()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.multimode) | 离散的或标称的数据的众数（出现最多的值）列表。 |
-| [`quantiles()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.quantiles) | 将数据以相等的概率分为多个间隔。               |
+| [`fmean()`]({{< ref "/library/numeric/statistics#statistics.fmean" >}}) | 快速的浮点算术平均值，带有可选的权重设置。     |
+| [`geometric_mean()`]({{< ref "/library/numeric/statistics#statistics.geometric_mean" >}}) | 数据的几何平均数                               |
+| [`harmonic_mean()`]({{< ref "/library/numeric/statistics#statistics.harmonic_mean" >}}) | 数据的调和均值                                 |
+| [`kde()`]({{< ref "/library/numeric/statistics#statistics.kde" >}}) | 估算数据的概率密度分布。                       |
+| [`kde_random()`]({{< ref "/library/numeric/statistics#statistics.kde_random" >}}) | 对由 kde() 生成的 PDF 进行随机采样。           |
+| [`median()`]({{< ref "/library/numeric/statistics#statistics.median" >}}) | 数据的中位数（中间值）                         |
+| [`median_low()`]({{< ref "/library/numeric/statistics#statistics.median_low" >}}) | 数据的低中位数                                 |
+| [`median_high()`]({{< ref "/library/numeric/statistics#statistics.median_high" >}}) | 数据的高中位数                                 |
+| [`median_grouped()`]({{< ref "/library/numeric/statistics#statistics.median_grouped" >}}) | 分组数据的中位数（即第 50 个百分点的位置）。   |
+| [`mode()`]({{< ref "/library/numeric/statistics#statistics.mode" >}}) | 离散的或标称的数据的单个众数（出现最多的值）。 |
+| [`multimode()`]({{< ref "/library/numeric/statistics#statistics.multimode" >}}) | 离散的或标称的数据的众数（出现最多的值）列表。 |
+| [`quantiles()`]({{< ref "/library/numeric/statistics#statistics.quantiles" >}}) | 将数据以相等的概率分为多个间隔。               |
 
 ## 对分散程度的评估
 
 ​	这些函数用于计算总体或样本与典型值或平均值的偏离程度。
 
-| [`pstdev()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.pstdev) | 数据的总体标准差 |
+| [`pstdev()`]({{< ref "/library/numeric/statistics#statistics.pstdev" >}}) | 数据的总体标准差 |
 | ------------------------------------------------------------ | ---------------- |
-| [`pvariance()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.pvariance) | 数据的总体方差   |
-| [`stdev()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.stdev) | 数据的样本标准差 |
-| [`variance()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.variance) | 数据的样本方差   |
+| [`pvariance()`]({{< ref "/library/numeric/statistics#statistics.pvariance" >}}) | 数据的总体方差   |
+| [`stdev()`]({{< ref "/library/numeric/statistics#statistics.stdev" >}}) | 数据的样本标准差 |
+| [`variance()`]({{< ref "/library/numeric/statistics#statistics.variance" >}}) | 数据的样本方差   |
 
 ## 对两个输入之间关系的统计
 
 ​	这些函数计算两个输入之间关系的统计值。
 
-| [`covariance()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.covariance) | 两个变量的样本协方差。     |
+| [`covariance()`]({{< ref "/library/numeric/statistics#statistics.covariance" >}}) | 两个变量的样本协方差。     |
 | ------------------------------------------------------------ | -------------------------- |
-| [`correlation()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.correlation) | 皮尔逊和斯皮尔曼相关系数。 |
-| [`linear_regression()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.linear_regression) | 简单线性回归的斜率和截距。 |
+| [`correlation()`]({{< ref "/library/numeric/statistics#statistics.correlation" >}}) | 皮尔逊和斯皮尔曼相关系数。 |
+| [`linear_regression()`]({{< ref "/library/numeric/statistics#statistics.linear_regression" >}}) | 简单线性回归的斜率和截距。 |
 
 ## 函数细节
 
@@ -101,7 +101,7 @@ draft = false
 
 ​	算术平均数是数据之和与数据点个数的商。通常称作“平均数”，尽管它指示诸多数学平均数之一。它是数据的中心位置的度量。
 
-​	若 *data* 为空，将会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+​	若 *data* 为空，将会引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
 ​	一些用法示例：
 
@@ -122,11 +122,10 @@ Fraction(13, 21)
 Decimal('0.5625')
 ```
 
-​	备注
-
+​备注
  
 
-​	平均数会受到 [异常值](https://en.wikipedia.org/wiki/Outlier) 的强烈影响因而不一定能作为数据点的典型样本。 想获得对于 [集中趋势](https://en.wikipedia.org/wiki/Central_tendency) 的更可靠的度量，可以参看 [`median()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.median)，但其效率要低一些。
+​	平均数会受到 [异常值](https://en.wikipedia.org/wiki/Outlier) 的强烈影响因而不一定能作为数据点的典型样本。 想获得对于 [集中趋势](https://en.wikipedia.org/wiki/Central_tendency) 的更可靠的度量，可以参看 [`median()`]({{< ref "/library/numeric/statistics#statistics.median" >}})，但其效率要低一些。
 
 ​	样本均值给出了一个无偏向的真实总体均值的估计，因此当平均抽取所有可能的样本， `mean(sample)` 收敛于整个总体的真实均值。如果 *data* 代表整个总体而不是样本，那么 `mean(data)` 等同于计算真实整体均值 μ 。
 
@@ -134,7 +133,7 @@ Decimal('0.5625')
 
 ​	将 *data* 转换成浮点数并且计算算术平均数。
 
-​	此函数的运行速度比 [`mean()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.mean) 函数快并且它总是返回一个 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float)。 *data* 可以为序列或可迭代对象。 如果输入数据集为空，则会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+​	此函数的运行速度比 [`mean()`]({{< ref "/library/numeric/statistics#statistics.mean" >}}) 函数快并且它总是返回一个 [`float`]({{< ref "/library/functions#float" >}})。 *data* 可以为序列或可迭代对象。 如果输入数据集为空，则会引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
 
 
@@ -154,12 +153,12 @@ Decimal('0.5625')
 87.6
 ```
 
-​	如果提供了 *weights*，它必须与 *data* 的长度相同否则将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	如果提供了 *weights*，它必须与 *data* 的长度相同否则将引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 > Added in version 3.8.
 >
 
-*在 3.11 版本发生变更:* 添加了对 *weights* 的支持。
+> 在 3.11 版本发生变更: 添加了对 *weights* 的支持。
 
 ## statistics.**geometric_mean**(*data*)
 
@@ -167,7 +166,7 @@ Decimal('0.5625')
 
 ​	几何平均值使用值的乘积表示 *数据* 的中心趋势或典型值（与使用它们的总和的算术平均值相反）。
 
-​	如果输入数据集为空、包含零或包含负值则将引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。 *data* 可以是序列或可迭代对象。
+​	如果输入数据集为空、包含零或包含负值则将引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。 *data* 可以是序列或可迭代对象。
 
 ​	无需做出特殊努力即可获得准确的结果。（但是，将来或许会修改。）
 
@@ -185,7 +184,7 @@ Decimal('0.5625')
 
 ​	返回包含实数的序列或可迭代对象 *data* 的调和平均值。 如果 *weights* 被省略或为 `None`，则会假定为相等权重。
 
-​	调和平均数是数据的倒数的算术平均值 [`mean()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.mean) 的倒数。 例如，三个数值 *a*, *b* 和 *c* 的调和平均数将等于 `3/(1/a + 1/b + 1/c)`。 如果其中一个值为零，则结果也将为零。
+​	调和平均数是数据的倒数的算术平均值 [`mean()`]({{< ref "/library/numeric/statistics#statistics.mean" >}}) 的倒数。 例如，三个数值 *a*, *b* 和 *c* 的调和平均数将等于 `3/(1/a + 1/b + 1/c)`。 如果其中一个值为零，则结果也将为零。
 
 ​	调和平均数是均值的一种，是对数据的中心位置的度量。 它通常适用于求比率和比例（如速度）的均值。
 
@@ -207,14 +206,14 @@ Decimal('0.5625')
 56.0
 ```
 
-​	如果 *data* 为空、任意元素小于零，或者加权汇总值不为正数则会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+​	如果 *data* 为空、任意元素小于零，或者加权汇总值不为正数则会引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
 ​	当前算法在输入中遇到零时会提前退出。这意味着不会测试后续输入的有效性。（此行为将来可能会更改。）
 
 > Added in version 3.6.
 >
 
-*在 3.10 版本发生变更:* 添加了对 *weights* 的支持。
+> 在 3.10 版本发生变更: 添加了对 *weights* 的支持。
 
 ## statistics.**kde**(*data*, *h*, *kernel='normal'*, ***, *cumulative=False*)
 
@@ -232,9 +231,9 @@ Decimal('0.5625')
 
 ​	如果 *cumulative* 为真值，将返回一个累积分布函数。
 
-​	如果 *data* 序列为空则会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+​	如果 *data* 序列为空则会引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
-​	在 [Wikipedia 提供的示例](https://en.wikipedia.org/wiki/Kernel_density_estimation#Example) 中我们可以使用 [`kde()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.kde) 来生成并绘制从小样本中估算出的概率密度函数：
+​	在 [Wikipedia 提供的示例](https://en.wikipedia.org/wiki/Kernel_density_estimation#Example) 中我们可以使用 [`kde()`]({{< ref "/library/numeric/statistics#statistics.kde" >}}) 来生成并绘制从小样本中估算出的概率密度函数：
 
 
 
@@ -258,9 +257,9 @@ Decimal('0.5625')
 
 ​	提供 *seed* 将允许可重现的选择。 在未来版本中，这些值可能因更精确的反向 CDF 估计的实现而略微修改。 seed 可以是一个整数、浮点数、字符串或字节串。
 
-​	如果 *data* 序列为空则会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+​	如果 *data* 序列为空则会引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
-​	继续 [`kde()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.kde) 的例子，我们可以使用 [`kde_random()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.kde_random) 从一个估计概率密度函数生成新的随机选择：
+​	继续 [`kde()`]({{< ref "/library/numeric/statistics#statistics.kde" >}}) 的例子，我们可以使用 [`kde_random()`]({{< ref "/library/numeric/statistics#statistics.kde_random" >}}) 从一个估计概率密度函数生成新的随机选择：
 
 
 
@@ -277,7 +276,7 @@ Decimal('0.5625')
 
 ## statistics.**median**(*data*)
 
-​	使用普通的“取中间两数平均值”方法返回数值数据的中位数（中间值）。 如果 *data* 为空，则将引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。 *data* 可以是序列或可迭代对象。
+​	使用普通的“取中间两数平均值”方法返回数值数据的中位数（中间值）。 如果 *data* 为空，则将引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。 *data* 可以是序列或可迭代对象。
 
 ​	中位数是衡量中间位置的可靠方式，并且较少受到极端值的影响。 当数据点的总数为奇数时，将返回中间数据点：
 
@@ -299,11 +298,11 @@ Decimal('0.5625')
 
 ​	这适用于当你的数据是离散的，并且你不介意中位数不是实际数据点的情况。
 
-​	如果数据是有序的（支持排序操作）但不是数字（不支持加法），请考虑改用 [`median_low()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.median_low) 或 [`median_high()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.median_high)。
+​	如果数据是有序的（支持排序操作）但不是数字（不支持加法），请考虑改用 [`median_low()`]({{< ref "/library/numeric/statistics#statistics.median_low" >}}) 或 [`median_high()`]({{< ref "/library/numeric/statistics#statistics.median_high" >}})。
 
 ## statistics.**median_low**(*data*)
 
-​	返回数值数据的低中位数。 如果 *data* 为空则将引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。 *data* 可以是序列或可迭代对象。
+​	返回数值数据的低中位数。 如果 *data* 为空则将引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。 *data* 可以是序列或可迭代对象。
 
 ​	低中位数一定是数据集的成员。 当数据点总数为奇数时，将返回中间值。 当其为偶数时，将返回两个中间值中较小的那个。
 
@@ -320,7 +319,7 @@ Decimal('0.5625')
 
 ## statistics.**median_high**(*data*)
 
-​	返回数据的高中位数。 如果 *data* 为空则将引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。 *data* 可以是序列或可迭代对象。
+​	返回数据的高中位数。 如果 *data* 为空则将引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。 *data* 可以是序列或可迭代对象。
 
 ​	高中位数一定是数据集的成员。 当数据点总数为奇数时，将返回中间值。 当其为偶数时，将返回两个中间值中较大的那个。
 
@@ -361,7 +360,7 @@ Decimal('0.5625')
 
 ​	第 50 个百分点位置（中位数）就是 1071 名成员中的第 536 人。 此人属于 30 至 40 岁年龄分组。
 
-​	常规的 [`median()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.median) 函数会假定三十至四十岁年龄组中的每个人都正好是 35 岁。 一个更站得住脚的假设则是该年龄组的 484 名成员均匀分布在 30 岁到 40 岁之间。 为此，我们会使用 [`median_grouped()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.median_grouped):
+​	常规的 [`median()`]({{< ref "/library/numeric/statistics#statistics.median" >}}) 函数会假定三十至四十岁年龄组中的每个人都正好是 35 岁。 一个更站得住脚的假设则是该年龄组的 484 名成员均匀分布在 30 岁到 40 岁之间。 为此，我们会使用 [`median_grouped()`]({{< ref "/library/numeric/statistics#statistics.median_grouped" >}}):
 
 
 
@@ -381,7 +380,7 @@ Decimal('0.5625')
 
 ​	从离散或标称的 *data* 返回单个出现最多的数据点。 此众数（如果存在）是最典型的值，并可用来度量中心的位置。
 
-​	如果存在具有相同频率的多个众数，则返回在 *data* 中遇到的第一个。 如果想要其中最小或最大的一个，请使用 `min(multimode(data))` 或 `max(multimode(data))`。 如果输入的 *data* 为空，则会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+​	如果存在具有相同频率的多个众数，则返回在 *data* 中遇到的第一个。 如果想要其中最小或最大的一个，请使用 `min(multimode(data))` 或 `max(multimode(data))`。 如果输入的 *data* 为空，则会引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
 `mode` 将假定是离散数据并返回一个单一的值。 这是通常的学校教学中标准的处理方式：
 
@@ -401,9 +400,9 @@ Decimal('0.5625')
 'red'
 ```
 
-​	仅支持输入可哈希对象。 要处理 [`set`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#set) 类型，可将其转换为 [`frozenset`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#frozenset)。 要处理 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 类型，可将其转换为 [`tuple`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#tuple)。 对于混合的或嵌套的输入，可使用这个仅依赖于相等性检测的速度较慢的二次方复杂度算法: `max(data, key=data.count)`。
+​	仅支持输入可哈希对象。 要处理 [`set`]({{< ref "/library/stdtypes#set" >}}) 类型，可将其转换为 [`frozenset`]({{< ref "/library/stdtypes#frozenset" >}})。 要处理 [`list`]({{< ref "/library/stdtypes#list" >}}) 类型，可将其转换为 [`tuple`]({{< ref "/library/stdtypes#tuple" >}})。 对于混合的或嵌套的输入，可使用这个仅依赖于相等性检测的速度较慢的二次方复杂度算法: `max(data, key=data.count)`。
 
-*在 3.8 版本发生变更:* 现在会通过返回所遇到的第一个众数来处理多模数据集。 之前它会在遇到超过一个的众数时引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+> 在 3.8 版本发生变更: 现在会通过返回所遇到的第一个众数来处理多模数据集。 之前它会在遇到超过一个的众数时引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
 ## statistics.**multimode**(*data*)
 
@@ -423,7 +422,7 @@ Decimal('0.5625')
 
 ## statistics.**pstdev**(*data*, *mu=None*)
 
-​	返回总体标准差（总体方差的平方根）。 请参阅 [`pvariance()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.pvariance) 了解参数和其他细节。
+​	返回总体标准差（总体方差的平方根）。 请参阅 [`pvariance()`]({{< ref "/library/numeric/statistics#statistics.pvariance" >}}) 了解参数和其他细节。
 
 
 
@@ -438,9 +437,9 @@ Decimal('0.5625')
 
 ​	如果给出了可选的第二个参数 *mu*，它应为 *data* 的 *众数* 均值。 它也可以被用来计算一个非均值点的二阶距。 如果该参数被省略或为 `None` (默认值)，则会自动进行算术均值计算。
 
-​	使用此函数可根据所有数值来计算方差。 要根据一个样本来估算方差，通常 [`variance()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.variance) 函数是更好的选择。
+​	使用此函数可根据所有数值来计算方差。 要根据一个样本来估算方差，通常 [`variance()`]({{< ref "/library/numeric/statistics#statistics.variance" >}}) 函数是更好的选择。
 
-​	如果 *data* 为空则会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+​	如果 *data* 为空则会引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
 ​	示例：
 
@@ -476,8 +475,7 @@ Decimal('24.815')
 Fraction(13, 72)
 ```
 
-​	备注
-
+​备注
  
 
 ​	当调用时附带完整的总体数据时，这将给出总体方差 σ²。 而当调用时只附带一个样本时，这将给出偏置样本方差 s²，也被称为带有 N 个自由度的方差。
@@ -486,7 +484,7 @@ Fraction(13, 72)
 
 ## statistics.**stdev**(*data*, *xbar=None*)
 
-​	返回样本标准差（样本方差的平方根）。 请参阅 [`variance()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.variance) 了解参数和其他细节。
+​	返回样本标准差（样本方差的平方根）。 请参阅 [`variance()`]({{< ref "/library/numeric/statistics#statistics.variance" >}}) 了解参数和其他细节。
 
 
 
@@ -501,9 +499,9 @@ Fraction(13, 72)
 
 ​	如果给出了可选的第二个参数 *xbar*，它应为 *data* 的 *样本* 均值。 如果该参数省略或为 `None` (默认值)，则会自动进行均值计算。
 
-​	当你的数据是总体数据的样本时请使用此函数。 要根据整个总体数据来计算方差，请参见 [`pvariance()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.pvariance)。
+​	当你的数据是总体数据的样本时请使用此函数。 要根据整个总体数据来计算方差，请参见 [`pvariance()`]({{< ref "/library/numeric/statistics#statistics.pvariance" >}})。
 
-​	如果 *data* 包含的值少于两个则会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+​	如果 *data* 包含的值少于两个则会引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
 ​	示例：
 
@@ -541,21 +539,20 @@ Decimal('31.01875')
 Fraction(67, 108)
 ```
 
-​	备注
-
+​备注
  
 
 ​	这是附带贝塞尔校正的样本方差 s²，也称为具有 N-1 自由度的方差。 假设数据点具有代表性（即为独立且均匀的分布），则结果应当是对总体方差的无偏估计。
 
-​	如果你通过某种方式知道了真实的总体平均值 μ 则应当调用 [`pvariance()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.pvariance) 函数并将该值作为 *mu* 形参传入以得到一个样本的方差。
+​	如果你通过某种方式知道了真实的总体平均值 μ 则应当调用 [`pvariance()`]({{< ref "/library/numeric/statistics#statistics.pvariance" >}}) 函数并将该值作为 *mu* 形参传入以得到一个样本的方差。
 
 ## statistics.**quantiles**(*data*, ***, *n=4*, *method='exclusive'*)
 
 ​	将 *data* 分隔为具有相等概率的 *n* 个连续区间。 返回分隔这些区间的 `n - 1` 个分隔点的列表。
 
-​	将 *n* 设为 4 以使用四分位（默认值）。 将 *n* 设为 10 以使用十分位。 将 *n* 设为 100 以使用百分位，即给出 99 个分隔点来将 *data* 分隔为 100 个大小相等的组。 如果 *n* 小于 1 则将引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+​	将 *n* 设为 4 以使用四分位（默认值）。 将 *n* 设为 10 以使用十分位。 将 *n* 设为 100 以使用百分位，即给出 99 个分隔点来将 *data* 分隔为 100 个大小相等的组。 如果 *n* 小于 1 则将引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
-*data* 可以是包含样本数据的任意可迭代对象。 为了获得有意义的结果，*data* 中数据点的数量应当大于 *n*。 如果连一个数据点都没有则会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+*data* 可以是包含样本数据的任意可迭代对象。 为了获得有意义的结果，*data* 中数据点的数量应当大于 *n*。 如果连一个数据点都没有则会引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
 ​	分隔点是通过对两个最接近的数据点进行线性插值得到的。 例如，如果一个分隔点落在两个样本值 `100` 和 `112` 之间距离三分之一的位置，则分隔点的取值将为 `104`。
 
@@ -581,13 +578,13 @@ Fraction(67, 108)
 > Added in version 3.8.
 >
 
-*在 3.13 版本发生变更:* 对于只有单个数据点的输入不会再引发异常。 这允许分位点估计以每次一个样本点的方式建立并随着每个新数据点逐渐变得更为精细。
+> 在 3.13 版本发生变更: 对于只有单个数据点的输入不会再引发异常。 这允许分位点估计以每次一个样本点的方式建立并随着每个新数据点逐渐变得更为精细。
 
 ## statistics.**covariance**(*x*, *y*, */*)
 
 ​	返回两个输入 *x* 和 *y* 的样本协方差。 样本协方差是对两个输入的同步变化性的度量。
 
-​	两个输入必须具有相同的长度（不少于两个元素），否则会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+​	两个输入必须具有相同的长度（不少于两个元素），否则会引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
 ​	示例：
 
@@ -616,7 +613,7 @@ Fraction(67, 108)
 
 ​	斯皮尔曼相关系数适用于有序数据或不满足皮尔逊相关系数的线性比例要求的连续数据。
 
-​	两个输入必须具有相同的长度（不少于两个元素），并且不必为常量，否则会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+​	两个输入必须具有相同的长度（不少于两个元素），并且不必为常量，否则会引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
 ​	使用 [开普勒行星运动定律](https://en.wikipedia.org/wiki/Kepler's_laws_of_planetary_motion) 的示例:
 
@@ -647,7 +644,7 @@ Fraction(67, 108)
 > Added in version 3.10.
 >
 
-*在 3.12 版本发生变更:* 增加了对斯皮尔曼等级相关系数的支持。
+> 在 3.12 版本发生变更: 增加了对斯皮尔曼等级相关系数的支持。
 
 ## statistics.**linear_regression**(*x*, *y*, */*, ***, *proportional=False*)
 
@@ -657,7 +654,7 @@ Fraction(67, 108)
 
 ​	其中 `slope` 和 `intercept` 是估计得到的回归参数，而 `noise` 代表不可由线性回归解释的数据变异性（它等于因变量的预测值和实际值之间的差异）。
 
-​	两个输入必须具有相同的长度（不少于两个元素），并且自变量 *x* 不可为常量；否则会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+​	两个输入必须具有相同的长度（不少于两个元素），并且自变量 *x* 不可为常量；否则会引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
 ​	例如，我们可以使用 [Monty Python 系列电影的发布日期](https://en.wikipedia.org/wiki/Monty_Python#Films) 在假定出品方保持现有步调的情况下预测到 2019 年时产出的 Monty Python 电影的累计数量。
 
@@ -675,7 +672,7 @@ Fraction(67, 108)
 
 > *y = slope \* x + noise*
 
-​	继续 [`correlation()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.correlation) 的例子，我们来看看基于大行星的模型是否能很好地预测矮行星的轨道距离：
+​	继续 [`correlation()`]({{< ref "/library/numeric/statistics#statistics.correlation" >}}) 的例子，我们来看看基于大行星的模型是否能很好地预测矮行星的轨道距离：
 
 
 
@@ -696,7 +693,7 @@ Fraction(67, 108)
 > Added in version 3.10.
 >
 
-*在 3.11 版本发生变更:* 添加了对 *proportional* 的支持。
+> 在 3.11 版本发生变更: 添加了对 *proportional* 的支持。
 
 ## 异常
 
@@ -704,11 +701,11 @@ Fraction(67, 108)
 
 ## *exception* statistics.**StatisticsError**
 
-[`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 的子类，表示统计相关的异常。
+[`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) 的子类，表示统计相关的异常。
 
-## [`NormalDist`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.NormalDist) 对象
+## [`NormalDist`]({{< ref "/library/numeric/statistics#statistics.NormalDist" >}}) 对象
 
-[`NormalDist`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.NormalDist) 工具可用于创建和操纵 [随机变量](http://www.stat.yale.edu/Courses/1997-98/101/ranvar.htm) 的正态分布。 这个类将数据度量值的平均值和标准差作为单一实体来处理。
+[`NormalDist`]({{< ref "/library/numeric/statistics#statistics.NormalDist" >}}) 工具可用于创建和操纵 [随机变量](http://www.stat.yale.edu/Courses/1997-98/101/ranvar.htm) 的正态分布。 这个类将数据度量值的平均值和标准差作为单一实体来处理。
 
 ​	正态分布的概念来自于 [中央极限定理](https://en.wikipedia.org/wiki/Central_limit_theorem) 并且在统计学中有广泛的应用。
 
@@ -716,7 +713,7 @@ Fraction(67, 108)
 
 ​	返回一个新的 *NormalDist* 对象，其中 *mu* 代表 [算术平均值](https://en.wikipedia.org/wiki/Arithmetic_mean) 而 *sigma* 代表 [标准差](https://en.wikipedia.org/wiki/Standard_deviation)。
 
-​	若 *sigma* 为负数，将会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)。
+​	若 *sigma* 为负数，将会引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})。
 
 ## **mean**
 
@@ -740,19 +737,19 @@ Fraction(67, 108)
 
 ## *classmethod* **from_samples**(*data*)
 
-​	传入使用 [`fmean()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.fmean) 和 [`stdev()`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.stdev) 基于 *data* 估算出的 *mu* 和 *sigma* 形参创建一个正态分布实例。
+​	传入使用 [`fmean()`]({{< ref "/library/numeric/statistics#statistics.fmean" >}}) 和 [`stdev()`]({{< ref "/library/numeric/statistics#statistics.stdev" >}}) 基于 *data* 估算出的 *mu* 和 *sigma* 形参创建一个正态分布实例。
 
-*data* 可以是任何 [iterable](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterable) 并且应当包含能被转换为 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) 类型的值。 如果 *data* 不包含至少两个元素，则会引发 [`StatisticsError`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.StatisticsError)，因为估算中心值至少需要一个点而估算分散度至少需要两个点。
+*data* 可以是任何 [iterable]({{< ref "/glossary/idx#term-iterable" >}}) 并且应当包含能被转换为 [`float`]({{< ref "/library/functions#float" >}}) 类型的值。 如果 *data* 不包含至少两个元素，则会引发 [`StatisticsError`]({{< ref "/library/numeric/statistics#statistics.StatisticsError" >}})，因为估算中心值至少需要一个点而估算分散度至少需要两个点。
 
 ## **samples**(*n*, ***, *seed=None*)
 
-​	对于给定的平均值和标准差生成 *n* 个随机样本。 返回一个由 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) 值组成的 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list)。
+​	对于给定的平均值和标准差生成 *n* 个随机样本。 返回一个由 [`float`]({{< ref "/library/functions#float" >}}) 值组成的 [`list`]({{< ref "/library/stdtypes#list" >}})。
 
 ​	当给定 *seed* 时，创建一个新的底层随机数生成器实例。 这适用于创建可重现的结果，即使对于多线程上下文也有效。
 
 *在 3.13 版本发生变更.*
 
-​	切换为更快速的算法。 要重新产生来自之前版本的样本，请使用 [`random.seed()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.seed) 和 [`random.gauss()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.gauss)。
+​	切换为更快速的算法。 要重新产生来自之前版本的样本，请使用 [`random.seed()`]({{< ref "/library/numeric/random#random.seed" >}}) 和 [`random.gauss()`]({{< ref "/library/numeric/random#random.gauss" >}})。
 
 ## **pdf**(*x*)
 
@@ -787,7 +784,7 @@ Fraction(67, 108)
 > Added in version 3.9.
 >
 
-[`NormalDist`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.NormalDist) 的实例支持加上、减去、乘以或除以一个常量。 这些运算被用于转换和缩放。 例如：
+[`NormalDist`]({{< ref "/library/numeric/statistics#statistics.NormalDist" >}}) 的实例支持加上、减去、乘以或除以一个常量。 这些运算被用于转换和缩放。 例如：
 
 
 
@@ -797,9 +794,9 @@ Fraction(67, 108)
 NormalDist(mu=41.0, sigma=4.5)
 ```
 
-​	不允许一个常量除以 [`NormalDist`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.NormalDist) 的实例，因为结果将不是正态分布。
+​	不允许一个常量除以 [`NormalDist`]({{< ref "/library/numeric/statistics#statistics.NormalDist" >}}) 的实例，因为结果将不是正态分布。
 
-​	由于正态分布是由独立变量的累加效应产生的，因此允许表示为 [`NormalDist`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.NormalDist) 实例的 [两组独立正态分布的随机变量相加和相减](https://en.wikipedia.org/wiki/Sum_of_normally_distributed_random_variables)。 例如：
+​	由于正态分布是由独立变量的累加效应产生的，因此允许表示为 [`NormalDist`]({{< ref "/library/numeric/statistics#statistics.NormalDist" >}}) 实例的 [两组独立正态分布的随机变量相加和相减](https://en.wikipedia.org/wiki/Sum_of_normally_distributed_random_variables)。 例如：
 
 
 
@@ -820,7 +817,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 ### 经典概率问题
 
-[`NormalDist`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.NormalDist) 适合用来解决经典概率问题。
+[`NormalDist`]({{< ref "/library/numeric/statistics#statistics.NormalDist" >}}) 适合用来解决经典概率问题。
 
 ​	举例来说，如果 [SAT 考试的历史数据](https://nces.ed.gov/programs/digest/d17/tables/dt17_226.40.asp) 显示分数呈平均值为 1060 且标准差为 195 的正态分布，则可以确定考试分数处于 1100 和 1200 之间的学生的百分比舍入到最接近的整数应为：
 
@@ -846,7 +843,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 ### 蒙特卡罗模拟输入
 
-​	为了估算一个不易获得解析解的模型分布，[`NormalDist`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.NormalDist) 可以生成用于 [蒙特卡洛模拟](https://en.wikipedia.org/wiki/Monte_Carlo_method) 的输入样本：
+​	为了估算一个不易获得解析解的模型分布，[`NormalDist`]({{< ref "/library/numeric/statistics#statistics.NormalDist" >}}) 可以生成用于 [蒙特卡洛模拟](https://en.wikipedia.org/wiki/Monte_Carlo_method) 的输入样本：
 
 
 
@@ -899,7 +896,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 ​	维基百科上有一个 [朴素贝叶斯分类器的良好样例](https://en.wikipedia.org/wiki/Naive_Bayes_classifier#Person_classification)。 要处理的问题是根据对多个分布的特征测量值包括身高、体重和足部尺码来预测一个人的性别。
 
-​	我们得到了由八个人的测量值组成的训练数据集。 假定这些测量值是正态分布的，因此我们用 [`NormalDist`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.NormalDist) 来总结数据：
+​	我们得到了由八个人的测量值组成的训练数据集。 假定这些测量值是正态分布的，因此我们用 [`NormalDist`]({{< ref "/library/numeric/statistics#statistics.NormalDist" >}}) 来总结数据：
 
 
 

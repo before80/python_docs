@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/tutorial/venv.html](https://docs.python.org/zh-cn/3.13/tutorial/venv.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/tutorial/venv.html](https://docs.python.org/zh-cn/3.13/tutorial/venv.html)
 >
 > 收录该文档的时间：`2024-11-14T22:01:54+08:00`
 
@@ -20,15 +20,15 @@ draft = false
 
 ​	这意味着一个Python安装可能无法满足每个应用程序的要求。如果应用程序A需要特定模块的1.0版本但应用程序B需要2.0版本，则需求存在冲突，安装版本1.0或2.0将导致某一个应用程序无法运行。
 
-​	这个问题的解决方案是创建一个 [virtual environment](https://docs.python.org/zh-cn/3.13/glossary.html#term-virtual-environment)，一个目录树，其中安装有特定Python版本，以及许多其他包。
+​	这个问题的解决方案是创建一个 [virtual environment]({{< ref "/glossary/idx#term-virtual-environment" >}})，一个目录树，其中安装有特定Python版本，以及许多其他包。
 
 ​	然后，不同的应用将可以使用不同的虚拟环境。 要解决先前需求相冲突的例子，应用程序 A 可以拥有自己的 安装了 1.0 版本的虚拟环境，而应用程序 B 则拥有安装了 2.0 版本的另一个虚拟环境。 如果应用程序 B 要求将某个库升级到 3.0 版本，也不会影响应用程序 A 的环境。
 
 ## 12.2. 创建虚拟环境
 
-​	用于创建和管理虚拟环境的模块是 [`venv`](https://docs.python.org/zh-cn/3.13/library/venv.html#module-venv)。 [`venv`](https://docs.python.org/zh-cn/3.13/library/venv.html#module-venv) 将安装运行命令所使用的 Python 版本（即 [`--version`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-version) 选项所报告的版本）。 例如，使用 `python3.12` 执行命令将会安装 3.12 版。
+​	用于创建和管理虚拟环境的模块是 [`venv`]({{< ref "/library/distribution/venv#module-venv" >}})。 [`venv`]({{< ref "/library/distribution/venv#module-venv" >}}) 将安装运行命令所使用的 Python 版本（即 [`--version`]({{< ref "/using/cmdline#cmdoption-version" >}}) 选项所报告的版本）。 例如，使用 `python3.12` 执行命令将会安装 3.12 版。
 
-​	要创建虚拟环境，请确定要放置它的目录，并将 [`venv`](https://docs.python.org/zh-cn/3.13/library/venv.html#module-venv) 模块作为脚本运行目录路径:
+​	要创建虚拟环境，请确定要放置它的目录，并将 [`venv`]({{< ref "/library/distribution/venv#module-venv" >}}) 模块作为脚本运行目录路径:
 
 ```
 python -m venv tutorial-env
@@ -80,7 +80,7 @@ deactivate
 
 ​	你可以使用一个名为 **pip** 的程序来安装、升级和移除软件包。 默认情况下 `pip` 将从 [Python Package Index](https://pypi.org/) 安装软件包。 你可以在你的 web 浏览器中查看 Python Package Index。
 
-`pip` 有许多子命令: "install", "uninstall", "freeze" 等等。 （请在 [安装 Python 模块](https://docs.python.org/zh-cn/3.13/installing/index.html#installing-index) 指南页查看完整的 `pip` 文档。）
+`pip` 有许多子命令: "install", "uninstall", "freeze" 等等。 （请在 [安装 Python 模块]({{< ref "/other/installing#installing-index" >}}) 指南页查看完整的 `pip` 文档。）
 
 ​	您可以通过指定包的名称来安装最新版本的包：
 
@@ -170,4 +170,4 @@ Installing collected packages: novas, numpy, requests
 Successfully installed novas-3.1.1.3 numpy-1.9.2 requests-2.7.0
 ```
 
-`pip` 有更多的选项。 有关 `pip` 的完整文档请查阅 [安装 Python 模块](https://docs.python.org/zh-cn/3.13/installing/index.html#installing-index) 指南。 当你编写了一个软件包并希望将其放在 Python Package Index 中时，请查阅 [Python packaging user guide](https://packaging.python.org/en/latest/tutorials/packaging-projects/)。
+`pip` 有更多的选项。 有关 `pip` 的完整文档请查阅 [安装 Python 模块]({{< ref "/other/installing#installing-index" >}}) 指南。 当你编写了一个软件包并希望将其放在 Python Package Index 中时，请查阅 [Python packaging user guide](https://packaging.python.org/en/latest/tutorials/packaging-projects/)。

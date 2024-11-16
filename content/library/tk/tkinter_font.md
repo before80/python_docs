@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/tkinter.font.html](https://docs.python.org/zh-cn/3.13/library/tkinter.font.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/tkinter.font.html](https://docs.python.org/zh-cn/3.13/library/tkinter.font.html)
 >
 > 收录该文档的时间：`2024-11-15T20:56:44+08:00`
 
@@ -18,7 +18,7 @@ draft = false
 
 ------
 
-[`tkinter.font`](https://docs.python.org/zh-cn/3.13/library/tkinter.font.html#module-tkinter.font) 模块提供用于创建和使用命名字体的 [`Font`](https://docs.python.org/zh-cn/3.13/library/tkinter.font.html#tkinter.font.Font) 类。
+[`tkinter.font`]({{< ref "/library/tk/tkinter_font#module-tkinter.font" >}}) 模块提供用于创建和使用命名字体的 [`Font`]({{< ref "/library/tk/tkinter_font#tkinter.font.Font" >}}) 类。
 
 ​	不同的字体粗细和倾斜是：
 
@@ -32,7 +32,7 @@ draft = false
 
 ## *class* tkinter.font.**Font**(*root=None*, *font=None*, *name=None*, *exists=False*, ***options*)
 
-[`Font`](https://docs.python.org/zh-cn/3.13/library/tkinter.font.html#tkinter.font.Font) 类表示命名字体。*Font* 实例具有唯一的名称，可以通过其族、大小和样式配置进行指定。命名字体是 Tk 将字体创建和标识为单个对象的方法，而不是通过每次出现时的属性来指定字体。
+[`Font`]({{< ref "/library/tk/tkinter_font#tkinter.font.Font" >}}) 类表示命名字体。*Font* 实例具有唯一的名称，可以通过其族、大小和样式配置进行指定。命名字体是 Tk 将字体创建和标识为单个对象的方法，而不是通过每次出现时的属性来指定字体。
 
 > ​	参数：
 >
@@ -110,6 +110,6 @@ draft = false
 
 ## tkinter.font.**nametofont**(*name*, *root=None*)
 
-​	返回一个 [`Font`](https://docs.python.org/zh-cn/3.13/library/tkinter.font.html#tkinter.font.Font) 类，代表一个 tk 命名的字体。
+​	返回一个 [`Font`]({{< ref "/library/tk/tkinter_font#tkinter.font.Font" >}}) 类，代表一个 tk 命名的字体。
 
-*在 3.10 版本发生变更:* 增加了 *root* 形参。
+> 在 3.10 版本发生变更: 增加了 *root* 形参。

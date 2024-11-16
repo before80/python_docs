@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html)
 >
 > 收录该文档的时间：`2024-11-15T20:56:44+08:00`
 
@@ -18,7 +18,7 @@ draft = false
 
 ------
 
-​	The [`tkinter.messagebox`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#module-tkinter.messagebox) 模块提供了一个模板基类以及多个常用配置的便捷方法。 消息框为模式窗口并将基于用户的选择返回 (`True`, `False`, `None`, [`OK`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.OK), [`CANCEL`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.CANCEL), [`YES`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.YES), [`NO`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.NO)) 的一个子集。 常用消息框风格和布局包括但不限于：
+​	The [`tkinter.messagebox`]({{< ref "/library/tk/tkinter_messagebox#module-tkinter.messagebox" >}}) 模块提供了一个模板基类以及多个常用配置的便捷方法。 消息框为模式窗口并将基于用户的选择返回 (`True`, `False`, `None`, [`OK`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.OK" >}}), [`CANCEL`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.CANCEL" >}}), [`YES`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.YES" >}}), [`NO`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.NO" >}})) 的一个子集。 常用消息框风格和布局包括但不限于：
 
 ![../_images/tk_msg.png](tkinter_messagebox_img/tk_msg.png)
 
@@ -34,7 +34,7 @@ draft = false
 >
 > ## *default*
 >
-> ​	指定消息窗口默认按钮的 [符号名称](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#messagebox-buttons) ([`OK`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.OK), [`CANCEL`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.CANCEL) 等等)。 如果未指定此选项，则对话框中的第一个按钮将成为默认。
+> ​	指定消息窗口默认按钮的 [符号名称]({{< ref "/library/tk/tkinter_messagebox#messagebox-buttons" >}}) ([`OK`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.OK" >}}), [`CANCEL`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.CANCEL" >}}) 等等)。 如果未指定此选项，则对话框中的第一个按钮将成为默认。
 >
 > ## *detail*
 >
@@ -42,7 +42,7 @@ draft = false
 >
 > ## *icon*
 >
-> ​	指定一个要显示的 [图标](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#messagebox-icons)。 如果未指定此选项，则将显示 [`INFO`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.INFO) 图标。
+> ​	指定一个要显示的 [图标]({{< ref "/library/tk/tkinter_messagebox#messagebox-icons" >}})。 如果未指定此选项，则将显示 [`INFO`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.INFO" >}}) 图标。
 >
 > ## *message*
 >
@@ -58,7 +58,7 @@ draft = false
 >
 > ## *type*
 >
-> ​	安排显示一个 [预定义的按钮集合](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#messagebox-types)。
+> ​	安排显示一个 [预定义的按钮集合]({{< ref "/library/tk/tkinter_messagebox#messagebox-types" >}})。
 
 ## **show**(***options*)
 
@@ -84,23 +84,23 @@ draft = false
 
 ## tkinter.messagebox.**askquestion**(*title=None*, *message=None*, ***, *type=YESNO*, ***options*)
 
-​	提出一个问题。 在默认情况下显示 [`YES`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.YES) 和 [`NO`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.NO) 按钮。 返回所选择按钮的符号名称。
+​	提出一个问题。 在默认情况下显示 [`YES`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.YES" >}}) 和 [`NO`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.NO" >}}) 按钮。 返回所选择按钮的符号名称。
 
 ## tkinter.messagebox.**askokcancel**(*title=None*, *message=None*, ***options*)
 
-​	询问操作是否要继续。 显示 [`OK`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.OK) 和 [`CANCEL`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.CANCEL) 按钮。 如果选择确定将返回 `True` 否则返回 `False`。
+​	询问操作是否要继续。 显示 [`OK`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.OK" >}}) 和 [`CANCEL`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.CANCEL" >}}) 按钮。 如果选择确定将返回 `True` 否则返回 `False`。
 
 ## tkinter.messagebox.**askretrycancel**(*title=None*, *message=None*, ***options*)
 
-​	询问操作是否要重试。 显示 [`RETRY`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.RETRY) 和 [`CANCEL`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.CANCEL)。 如果选择重试将返回 `True` 否则返回 `False`。
+​	询问操作是否要重试。 显示 [`RETRY`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.RETRY" >}}) 和 [`CANCEL`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.CANCEL" >}})。 如果选择重试将返回 `True` 否则返回 `False`。
 
 ## tkinter.messagebox.**askyesno**(*title=None*, *message=None*, ***options*)
 
-​	提出一个问题。 显示 [`YES`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.YES) 和 [`NO`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.NO) 按钮。 如果选择是则返回 `True` 否则返回 `False`。
+​	提出一个问题。 显示 [`YES`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.YES" >}}) 和 [`NO`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.NO" >}}) 按钮。 如果选择是则返回 `True` 否则返回 `False`。
 
 ## tkinter.messagebox.**askyesnocancel**(*title=None*, *message=None*, ***options*)
 
-​	提出一个问题。 显示 [`YES`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.YES), [`NO`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.NO) 和 [`CANCEL`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.CANCEL) 按钮。 如果选择是则返回 `True`，取消则返回 `None`，否则返回 `False`。
+​	提出一个问题。 显示 [`YES`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.YES" >}}), [`NO`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.NO" >}}) 和 [`CANCEL`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.CANCEL" >}}) 按钮。 如果选择是则返回 `True`，取消则返回 `None`，否则返回 `False`。
 
 ​	按钮的符号名称：
 
@@ -122,27 +122,27 @@ draft = false
 
 ## tkinter.messagebox.**ABORTRETRYIGNORE** *= 'abortretryignore'*
 
-​	显示符号名称为 [`ABORT`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.ABORT), [`RETRY`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.RETRY) 和 [`IGNORE`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.IGNORE) 的三个按钮。
+​	显示符号名称为 [`ABORT`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.ABORT" >}}), [`RETRY`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.RETRY" >}}) 和 [`IGNORE`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.IGNORE" >}}) 的三个按钮。
 
 ## tkinter.messagebox.**OK** *= 'ok'*
 
-​	显示符号名称为 [`OK`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.OK) 的一个按钮。
+​	显示符号名称为 [`OK`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.OK" >}}) 的一个按钮。
 
 ## tkinter.messagebox.**OKCANCEL** *= 'okcancel'*
 
-​	显示符号名称为 [`OK`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.OK) 和 [`CANCEL`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.CANCEL) 的两个按钮。
+​	显示符号名称为 [`OK`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.OK" >}}) 和 [`CANCEL`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.CANCEL" >}}) 的两个按钮。
 
 ## tkinter.messagebox.**RETRYCANCEL** *= 'retrycancel'*
 
-​	显示符号名称为 [`RETRY`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.RETRY) 和 [`CANCEL`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.CANCEL) 的两个按钮。
+​	显示符号名称为 [`RETRY`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.RETRY" >}}) 和 [`CANCEL`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.CANCEL" >}}) 的两个按钮。
 
 ## tkinter.messagebox.**YESNO** *= 'yesno'*
 
-​	显示符号名称为 [`YES`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.YES) 和 [`NO`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.NO) 的两个按钮。
+​	显示符号名称为 [`YES`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.YES" >}}) 和 [`NO`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.NO" >}}) 的两个按钮。
 
 ## tkinter.messagebox.**YESNOCANCEL** *= 'yesnocancel'*
 
-​	显示符号名称为 [`YES`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.YES), [`NO`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.NO) 和 [`CANCEL`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#tkinter.messagebox.CANCEL) 的三个按钮。
+​	显示符号名称为 [`YES`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.YES" >}}), [`NO`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.NO" >}}) 和 [`CANCEL`]({{< ref "/library/tk/tkinter_messagebox#tkinter.messagebox.CANCEL" >}}) 的三个按钮。
 
 ​	图标图像：
 

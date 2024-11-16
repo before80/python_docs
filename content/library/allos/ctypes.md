@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/ctypes.html](https://docs.python.org/zh-cn/3.13/library/ctypes.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/ctypes.html](https://docs.python.org/zh-cn/3.13/library/ctypes.html)
 >
 > 收录该文档的时间：`2024-11-15T12:09:25+08:00`
 
@@ -18,25 +18,25 @@ draft = false
 
 ------
 
-[`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 是 Python 的外部函数库。它提供了与 C 兼容的数据类型，并允许调用 DLL 或共享库中的函数。可使用该模块以纯 Python 形式对这些库进行封装。
+[`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 是 Python 的外部函数库。它提供了与 C 兼容的数据类型，并允许调用 DLL 或共享库中的函数。可使用该模块以纯 Python 形式对这些库进行封装。
 
 
 
 ## ctypes 教程
 
-​	注：本教程中的示例代码使用 [`doctest`](https://docs.python.org/zh-cn/3.13/library/doctest.html#module-doctest) 来保证它们能正确运行。 由于有些代码示例在 Linux, Windows 或 macOS 上的行为有所不同，它们在注释中包含了一些 doctest 指令。
+​	注：本教程中的示例代码使用 [`doctest`]({{< ref "/library/development/doctest#module-doctest" >}}) 来保证它们能正确运行。 由于有些代码示例在 Linux, Windows 或 macOS 上的行为有所不同，它们在注释中包含了一些 doctest 指令。
 
-​	注意：部分示例代码引用了 ctypes [`c_int`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_int) 类型。在 `sizeof(long) == sizeof(int)` 的平台上此类型是 [`c_long`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_long) 的一个别名。所以，在程序输出 [`c_long`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_long) 而不是你期望的 [`c_int`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_int) 时不必感到迷惑 --- 它们实际上是同一种类型。
+​	注意：部分示例代码引用了 ctypes [`c_int`]({{< ref "/library/allos/ctypes#ctypes.c_int" >}}) 类型。在 `sizeof(long) == sizeof(int)` 的平台上此类型是 [`c_long`]({{< ref "/library/allos/ctypes#ctypes.c_long" >}}) 的一个别名。所以，在程序输出 [`c_long`]({{< ref "/library/allos/ctypes#ctypes.c_long" >}}) 而不是你期望的 [`c_int`]({{< ref "/library/allos/ctypes#ctypes.c_int" >}}) 时不必感到迷惑 --- 它们实际上是同一种类型。
 
 
 
 ### 载入动态连接库
 
-[`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 导出了 *cdll* 对象，在 Windows 系统中还导出了 *windll* 和 *oledll* 对象用于载入动态连接库。
+[`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 导出了 *cdll* 对象，在 Windows 系统中还导出了 *windll* 和 *oledll* 对象用于载入动态连接库。
 
-​	您可以通过访问这些对象的属性来加载库。 *cdll* 加载使用标准 `cdecl` 调用约定导出函数的库，而 *windll* 库则使用 `stdcall` 调用约定调用函数。 *oledll* 也使用 `stdcall` 调用约定，并假定函数返回 Windows `HRESULT` 错误代码。 当函数调用失败时会使用错误代码自动引发 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 异常。
+​	您可以通过访问这些对象的属性来加载库。 *cdll* 加载使用标准 `cdecl` 调用约定导出函数的库，而 *windll* 库则使用 `stdcall` 调用约定调用函数。 *oledll* 也使用 `stdcall` 调用约定，并假定函数返回 Windows `HRESULT` 错误代码。 当函数调用失败时会使用错误代码自动引发 [`OSError`]({{< ref "/library/exceptions#OSError" >}}) 异常。
 
-*在 3.3 版本发生变更:* 原来在 Windows 下抛出的异常类型 [`WindowsError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#WindowsError) 现在是 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 的一个别名。
+> 在 3.3 版本发生变更: 原来在 Windows 下抛出的异常类型 [`WindowsError`]({{< ref "/library/exceptions#WindowsError" >}}) 现在是 [`OSError`]({{< ref "/library/exceptions#OSError" >}}) 的一个别名。
 
 ​	这是一些 Windows 下的例子。 请注意 `msvcrt` 是包含大部分 C 函数的 MS 标准 C 库，并会使用 `cdecl` 调用惯例:
 
@@ -54,13 +54,12 @@ draft = false
 
 ​	Windows 会自动添加通常的 `.dll` 文件扩展名。
 
-​	备注
-
+​备注
  
 
 ​	通过 `cdll.msvcrt` 调用的标准 C 函数，可能会导致调用一个过时的，与当前 Python 所不兼容的函数。因此，请尽量使用标准的 Python 函数，而不要使用 `msvcrt` 模块。
 
-​	在 Linux 中，要求指定文件名 *包括* 扩展名来加载库，因此不能使用属性访问的方式来加载库。 你应当使用 dll 加载器的 [`LoadLibrary()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.LibraryLoader.LoadLibrary) 方法，或是应当通过调用构造器创建 CDLL 的实例来加载库:
+​	在 Linux 中，要求指定文件名 *包括* 扩展名来加载库，因此不能使用属性访问的方式来加载库。 你应当使用 dll 加载器的 [`LoadLibrary()`]({{< ref "/library/allos/ctypes#ctypes.LibraryLoader.LoadLibrary" >}}) 方法，或是应当通过调用构造器创建 CDLL 的实例来加载库:
 
 
 
@@ -106,7 +105,7 @@ HMODULE GetModuleHandleW(LPCWSTR lpModuleName);
 
 *windll* 不会通过这样的魔法手段来帮你决定选择哪一种函数，你必须显式的调用 `GetModuleHandleA` 或 `GetModuleHandleW`，并分别使用字节对象或字符串对象作参数。
 
-​	有时候，dlls的导出的函数名不符合 Python 的标识符规范，比如 `"??2@YAPAXI@Z"`。此时，你必须使用 [`getattr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#getattr) 方法来获得该函数。
+​	有时候，dlls的导出的函数名不符合 Python 的标识符规范，比如 `"??2@YAPAXI@Z"`。此时，你必须使用 [`getattr()`]({{< ref "/library/functions#getattr" >}}) 方法来获得该函数。
 
 
 
@@ -155,7 +154,7 @@ AttributeError: function ordinal 0 not found
 >>>
 ```
 
-​	如果你用 `cdecl` 调用方式调用 `stdcall` 约定的函数，则会甩出一个异常 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。反之亦然。
+​	如果你用 `cdecl` 调用方式调用 `stdcall` 约定的函数，则会甩出一个异常 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。反之亦然。
 
 
 
@@ -175,7 +174,7 @@ ValueError: Procedure probably called with too many arguments (4 bytes in excess
 
 ​	你必须阅读这些库的头文件或说明文档来确定它们的正确的调用协议。
 
-​	在 Windows 中，[`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 使用 win32 结构化异常处理来防止由于在调用函数时使用非法参数导致的程序崩溃。
+​	在 Windows 中，[`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 使用 win32 结构化异常处理来防止由于在调用函数时使用非法参数导致的程序崩溃。
 
 
 
@@ -187,42 +186,42 @@ OSError: exception: access violation reading 0x00000020
 >>>
 ```
 
-​	然而，总有许多办法，通过调用 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 使得 Python 程序崩溃。因此，你必须小心使用。 [`faulthandler`](https://docs.python.org/zh-cn/3.13/library/faulthandler.html#module-faulthandler) 模块可以用于帮助诊断程序崩溃的原因。（比如由于错误的C库函数调用导致的段错误）。
+​	然而，总有许多办法，通过调用 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 使得 Python 程序崩溃。因此，你必须小心使用。 [`faulthandler`]({{< ref "/library/debug/faulthandler#module-faulthandler" >}}) 模块可以用于帮助诊断程序崩溃的原因。（比如由于错误的C库函数调用导致的段错误）。
 
 `None`、整数、字节串对象和（Unicode）字符串是仅有的可以直接作为这些函数调用的形参的原生 Python 对象。 `None` 将作为 C `NULL` 指针传入，字节串对象和字符串将作为指向包含其数据 (char* 或 wchar_t*) 的内存块的指针传入。 Python 整数将作为平台默认的 C int 类型传入，它们的值会被截断以适应 C 类型的长度。
 
-​	在我们开始调用函数前，我们必须先了解作为函数参数的 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 数据类型。
+​	在我们开始调用函数前，我们必须先了解作为函数参数的 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 数据类型。
 
 
 
 ### 基础数据类型
 
-[`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 定义了一些和C兼容的基本数据类型：
+[`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 定义了一些和C兼容的基本数据类型：
 
 | ctypes 类型                                                  | C 类型                                                       | Python 类型         |
 | :----------------------------------------------------------- | :----------------------------------------------------------- | :------------------ |
-| [`c_bool`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_bool) | _Bool                                                        | bool (1)            |
-| [`c_char`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_char) | char                                                         | 单字符字节串对象    |
-| [`c_wchar`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_wchar) | `wchar_t`                                                    | 单字符字符串        |
-| [`c_byte`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_byte) | char                                                         | int                 |
-| [`c_ubyte`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_ubyte) | unsigned char                                                | int                 |
-| [`c_short`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_short) | short                                                        | int                 |
-| [`c_ushort`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_ushort) | unsigned short                                               | int                 |
-| [`c_int`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_int) | int                                                          | int                 |
-| [`c_uint`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_uint) | unsigned int                                                 | int                 |
-| [`c_long`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_long) | long                                                         | int                 |
-| [`c_ulong`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_ulong) | unsigned long                                                | int                 |
-| [`c_longlong`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_longlong) | __int64 或 long long                                         | int                 |
-| [`c_ulonglong`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_ulonglong) | unsigned __int64 或 unsigned long long                       | int                 |
-| [`c_size_t`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_size_t) | `size_t`                                                     | int                 |
-| [`c_ssize_t`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_ssize_t) | `ssize_t` 或 [Py_ssize_t](https://docs.python.org/zh-cn/3.13/c-api/intro.html#c.Py_ssize_t) | int                 |
-| [`c_time_t`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_time_t) | `time_t`                                                     | int                 |
-| [`c_float`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_float) | float                                                        | float               |
-| [`c_double`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_double) | double                                                       | float               |
-| [`c_longdouble`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_longdouble) | long double                                                  | float               |
-| [`c_char_p`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_char_p) | char* (以 NUL 结尾)                                          | 字节串对象或 `None` |
-| [`c_wchar_p`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_wchar_p) | wchar_t* (以 NUL 结尾)                                       | 字符串或 `None`     |
-| [`c_void_p`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_void_p) | void*                                                        | int 或 `None`       |
+| [`c_bool`]({{< ref "/library/allos/ctypes#ctypes.c_bool" >}}) | _Bool                                                        | bool (1)            |
+| [`c_char`]({{< ref "/library/allos/ctypes#ctypes.c_char" >}}) | char                                                         | 单字符字节串对象    |
+| [`c_wchar`]({{< ref "/library/allos/ctypes#ctypes.c_wchar" >}}) | `wchar_t`                                                    | 单字符字符串        |
+| [`c_byte`]({{< ref "/library/allos/ctypes#ctypes.c_byte" >}}) | char                                                         | int                 |
+| [`c_ubyte`]({{< ref "/library/allos/ctypes#ctypes.c_ubyte" >}}) | unsigned char                                                | int                 |
+| [`c_short`]({{< ref "/library/allos/ctypes#ctypes.c_short" >}}) | short                                                        | int                 |
+| [`c_ushort`]({{< ref "/library/allos/ctypes#ctypes.c_ushort" >}}) | unsigned short                                               | int                 |
+| [`c_int`]({{< ref "/library/allos/ctypes#ctypes.c_int" >}}) | int                                                          | int                 |
+| [`c_uint`]({{< ref "/library/allos/ctypes#ctypes.c_uint" >}}) | unsigned int                                                 | int                 |
+| [`c_long`]({{< ref "/library/allos/ctypes#ctypes.c_long" >}}) | long                                                         | int                 |
+| [`c_ulong`]({{< ref "/library/allos/ctypes#ctypes.c_ulong" >}}) | unsigned long                                                | int                 |
+| [`c_longlong`]({{< ref "/library/allos/ctypes#ctypes.c_longlong" >}}) | __int64 或 long long                                         | int                 |
+| [`c_ulonglong`]({{< ref "/library/allos/ctypes#ctypes.c_ulonglong" >}}) | unsigned __int64 或 unsigned long long                       | int                 |
+| [`c_size_t`]({{< ref "/library/allos/ctypes#ctypes.c_size_t" >}}) | `size_t`                                                     | int                 |
+| [`c_ssize_t`]({{< ref "/library/allos/ctypes#ctypes.c_ssize_t" >}}) | `ssize_t` 或 [Py_ssize_t]({{< ref "/c_api/intro#c.Py_ssize_t" >}}) | int                 |
+| [`c_time_t`]({{< ref "/library/allos/ctypes#ctypes.c_time_t" >}}) | `time_t`                                                     | int                 |
+| [`c_float`]({{< ref "/library/allos/ctypes#ctypes.c_float" >}}) | float                                                        | float               |
+| [`c_double`]({{< ref "/library/allos/ctypes#ctypes.c_double" >}}) | double                                                       | float               |
+| [`c_longdouble`]({{< ref "/library/allos/ctypes#ctypes.c_longdouble" >}}) | long double                                                  | float               |
+| [`c_char_p`]({{< ref "/library/allos/ctypes#ctypes.c_char_p" >}}) | char* (以 NUL 结尾)                                          | 字节串对象或 `None` |
+| [`c_wchar_p`]({{< ref "/library/allos/ctypes#ctypes.c_wchar_p" >}}) | wchar_t* (以 NUL 结尾)                                       | 字符串或 `None`     |
+| [`c_void_p`]({{< ref "/library/allos/ctypes#ctypes.c_void_p" >}}) | void*                                                        | int 或 `None`       |
 
 1. 构造函数接受任何具有真值的对象。
 
@@ -256,7 +255,7 @@ c_long(42)
 >>>
 ```
 
-​	当给指针类型的对象 [`c_char_p`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_char_p), [`c_wchar_p`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_wchar_p) 和 [`c_void_p`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_void_p) 等赋值时，将改变它们所指向的 *内存地址*，而 *不是* 它们所指向的内存区域的 *内容* (这是理所当然的，因为 Python 的 bytes 对象是不可变的):
+​	当给指针类型的对象 [`c_char_p`]({{< ref "/library/allos/ctypes#ctypes.c_char_p" >}}), [`c_wchar_p`]({{< ref "/library/allos/ctypes#ctypes.c_wchar_p" >}}) 和 [`c_void_p`]({{< ref "/library/allos/ctypes#ctypes.c_void_p" >}}) 等赋值时，将改变它们所指向的 *内存地址*，而 *不是* 它们所指向的内存区域的 *内容* (这是理所当然的，因为 Python 的 bytes 对象是不可变的):
 
 
 
@@ -277,7 +276,7 @@ Hello, World
 >>>
 ```
 
-​	但你要注意不能将它们传递给会改变指针所指内存的函数。如果你需要可改变的内存块，ctypes 提供了 [`create_string_buffer()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.create_string_buffer) 函数，它提供多种方式创建这种内存块。当前的内存块内容可以通过 `raw` 属性存取，如果你希望将它作为NUL结束的字符串，请使用 `value` 属性:
+​	但你要注意不能将它们传递给会改变指针所指内存的函数。如果你需要可改变的内存块，ctypes 提供了 [`create_string_buffer()`]({{< ref "/library/allos/ctypes#ctypes.create_string_buffer" >}}) 函数，它提供多种方式创建这种内存块。当前的内存块内容可以通过 `raw` 属性存取，如果你希望将它作为NUL结束的字符串，请使用 `value` 属性:
 
 
 
@@ -300,13 +299,13 @@ b'Hello'
 >>>
 ```
 
-[`create_string_buffer()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.create_string_buffer) 函数取代了旧了 `c_buffer()` 函数（后者仍可作为别名使用）。 要创建一个包含 C 类型 `wchar_t` 的 unicode 字符的可变内存块，请使用 [`create_unicode_buffer()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.create_unicode_buffer) 函数。
+[`create_string_buffer()`]({{< ref "/library/allos/ctypes#ctypes.create_string_buffer" >}}) 函数取代了旧了 `c_buffer()` 函数（后者仍可作为别名使用）。 要创建一个包含 C 类型 `wchar_t` 的 unicode 字符的可变内存块，请使用 [`create_unicode_buffer()`]({{< ref "/library/allos/ctypes#ctypes.create_unicode_buffer" >}}) 函数。
 
 
 
 ### 调用函数，继续
 
-​	注意 printf 将打印到真正标准输出设备，而*不是* [`sys.stdout`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.stdout)，因此这些实例只能在控制台提示符下工作，而不能在 *IDLE* 或 *PythonWin* 中运行。
+​	注意 printf 将打印到真正标准输出设备，而*不是* [`sys.stdout`]({{< ref "/library/python/sys#sys.stdout" >}})，因此这些实例只能在控制台提示符下工作，而不能在 *IDLE* 或 *PythonWin* 中运行。
 
 
 
@@ -328,7 +327,7 @@ ctypes.ArgumentError: argument 2: TypeError: Don't know how to convert parameter
 >>>
 ```
 
-​	正如前面所提到过的，除了整数、字符串以及字节串之外，所有的 Python 类型都必须使用它们对应的 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 类型包装，才能够被正确地转换为所需的C语言类型。
+​	正如前面所提到过的，除了整数、字符串以及字节串之外，所有的 Python 类型都必须使用它们对应的 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 类型包装，才能够被正确地转换为所需的C语言类型。
 
 
 
@@ -345,19 +344,19 @@ An int 1234, a double 3.140000
 
 ​	在许多平台上通过 ctypes 调用可变函数与调用带有固定数量形参的函数是完全一样的。 在某些平台，特别是针对 Apple 平台的 ARM64 上，可变函数的调用约定与常规函数则是不同的。
 
-​	On those platforms it is required to specify the [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes) attribute for the regular, non-variadic, function arguments:
+​	On those platforms it is required to specify the [`argtypes`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.argtypes" >}}) attribute for the regular, non-variadic, function arguments:
 
 ```
 libc.printf.argtypes = [ctypes.c_char_p]
 ```
 
-​	Because specifying the attribute does not inhibit portability it is advised to always specify [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes) for all variadic functions.
+​	Because specifying the attribute does not inhibit portability it is advised to always specify [`argtypes`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.argtypes" >}}) for all variadic functions.
 
 
 
 ### 使用自定义的数据类型调用函数
 
-​	您也可以通过自定义 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 参数转换方式来允许将你自己的类实例作为函数参数。 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 会寻找 `_as_parameter_` 属性并使用它作为函数参数。 属性必须是整数、字符串、字节串、[`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 实例或者带有 `_as_parameter_` 属性的对象:
+​	您也可以通过自定义 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 参数转换方式来允许将你自己的类实例作为函数参数。 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 会寻找 `_as_parameter_` 属性并使用它作为函数参数。 属性必须是整数、字符串、字节串、[`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 实例或者带有 `_as_parameter_` 属性的对象:
 
 
 
@@ -373,15 +372,15 @@ libc.printf.argtypes = [ctypes.c_char_p]
 >>>
 ```
 
-​	如果你不想将实例数据存储在 `_as_parameter_` 实例变量中，可以定义一个根据请求提供属性的 [`property`](https://docs.python.org/zh-cn/3.13/library/functions.html#property)。
+​	如果你不想将实例数据存储在 `_as_parameter_` 实例变量中，可以定义一个根据请求提供属性的 [`property`]({{< ref "/library/functions#property" >}})。
 
 
 
 ### 指定必选参数的类型(函数原型)
 
-​	It is possible to specify the required argument types of functions exported from DLLs by setting the [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes) attribute.
+​	It is possible to specify the required argument types of functions exported from DLLs by setting the [`argtypes`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.argtypes" >}}) attribute.
 
-[`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes) must be a sequence of C data types (the `printf()` function is probably not a good example here, because it takes a variable number and different types of parameters depending on the format string, on the other hand this is quite handy to experiment with this feature):
+[`argtypes`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.argtypes" >}}) must be a sequence of C data types (the `printf()` function is probably not a good example here, because it takes a variable number and different types of parameters depending on the format string, on the other hand this is quite handy to experiment with this feature):
 
 
 
@@ -408,13 +407,13 @@ X 2 3.000000
 >>>
 ```
 
-​	If you have defined your own classes which you pass to function calls, you have to implement a [`from_param()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CData.from_param) class method for them to be able to use them in the [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes) sequence. The [`from_param()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CData.from_param) class method receives the Python object passed to the function call, it should do a typecheck or whatever is needed to make sure this object is acceptable, and then return the object itself, its `_as_parameter_` attribute, or whatever you want to pass as the C function argument in this case. Again, the result should be an integer, string, bytes, a [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) instance, or an object with an `_as_parameter_` attribute.
+​	If you have defined your own classes which you pass to function calls, you have to implement a [`from_param()`]({{< ref "/library/allos/ctypes#ctypes._CData.from_param" >}}) class method for them to be able to use them in the [`argtypes`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.argtypes" >}}) sequence. The [`from_param()`]({{< ref "/library/allos/ctypes#ctypes._CData.from_param" >}}) class method receives the Python object passed to the function call, it should do a typecheck or whatever is needed to make sure this object is acceptable, and then return the object itself, its `_as_parameter_` attribute, or whatever you want to pass as the C function argument in this case. Again, the result should be an integer, string, bytes, a [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) instance, or an object with an `_as_parameter_` attribute.
 
 
 
 ### 返回类型
 
-​	By default functions are assumed to return the C int type. Other return types can be specified by setting the [`restype`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.restype) attribute of the function object.
+​	By default functions are assumed to return the C int type. Other return types can be specified by setting the [`restype`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.restype" >}}) attribute of the function object.
 
 `time()` 的 C 原型是 `time_t time(time_t *)`。 由于 `time_t` 的类型可能不同于默认返回类型 int，你应当指定 `restype` 属性:
 
@@ -424,7 +423,7 @@ X 2 3.000000
 >>> libc.time.restype = c_time_t
 ```
 
-​	The argument types can be specified using [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes):
+​	The argument types can be specified using [`argtypes`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.argtypes" >}}):
 
 
 
@@ -457,7 +456,7 @@ None
 >>>
 ```
 
-​	If you want to avoid the [`ord("x")`](https://docs.python.org/zh-cn/3.13/library/functions.html#ord) calls above, you can set the [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes) attribute, and the second argument will be converted from a single character Python bytes object into a C char:
+​	If you want to avoid the [`ord("x")`]({{< ref "/library/functions#ord" >}}) calls above, you can set the [`argtypes`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.argtypes" >}}) attribute, and the second argument will be converted from a single character Python bytes object into a C char:
 
 
 
@@ -476,7 +475,7 @@ b'def'
 >>>
 ```
 
-​	You can also use a callable Python object (a function or a class for example) as the [`restype`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.restype) attribute, if the foreign function returns an integer. The callable will be called with the *integer* the C function returns, and the result of this call will be used as the result of your function call. This is useful to check for error return values and automatically raise an exception:
+​	You can also use a callable Python object (a function or a class for example) as the [`restype`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.restype" >}}) attribute, if the foreign function returns an integer. The callable will be called with the *integer* the C function returns, and the result of this call will be used as the result of your function call. This is useful to check for error return values and automatically raise an exception:
 
 
 
@@ -499,9 +498,9 @@ OSError: [Errno 126] The specified module could not be found.
 >>>
 ```
 
-`WinError` 函数可以调用 Windows 的 `FormatMessage()` API 获取错误码的字符串说明，然后 *返回* 一个异常。 `WinError` 接收一个可选的错误码作为参数，如果没有的话，它将调用 [`GetLastError()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.GetLastError) 获取错误码。
+`WinError` 函数可以调用 Windows 的 `FormatMessage()` API 获取错误码的字符串说明，然后 *返回* 一个异常。 `WinError` 接收一个可选的错误码作为参数，如果没有的话，它将调用 [`GetLastError()`]({{< ref "/library/allos/ctypes#ctypes.GetLastError" >}}) 获取错误码。
 
-​	Please note that a much more powerful error checking mechanism is available through the [`errcheck`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.errcheck) attribute; see the reference manual for details.
+​	Please note that a much more powerful error checking mechanism is available through the [`errcheck`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.errcheck" >}}) attribute; see the reference manual for details.
 
 
 
@@ -509,7 +508,7 @@ OSError: [Errno 126] The specified module could not be found.
 
 ​	有时候 C 函数接口可能由于要往某个地址写入值，或者数据太大不适合作为值传递，从而希望接收一个 *指针* 作为数据参数类型。这和 *传递参数引用* 类似。
 
-[`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 暴露了 [`byref()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.byref) 函数用于通过引用传递参数，使用 [`pointer()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.pointer) 函数也能达到同样的效果，只不过 [`pointer()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.pointer) 需要更多步骤，因为它要先构造一个真实指针对象。所以在 Python 代码本身不需要使用这个指针对象的情况下，使用 [`byref()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.byref) 效率更高。
+[`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 暴露了 [`byref()`]({{< ref "/library/allos/ctypes#ctypes.byref" >}}) 函数用于通过引用传递参数，使用 [`pointer()`]({{< ref "/library/allos/ctypes#ctypes.pointer" >}}) 函数也能达到同样的效果，只不过 [`pointer()`]({{< ref "/library/allos/ctypes#ctypes.pointer" >}}) 需要更多步骤，因为它要先构造一个真实指针对象。所以在 Python 代码本身不需要使用这个指针对象的情况下，使用 [`byref()`]({{< ref "/library/allos/ctypes#ctypes.byref" >}}) 效率更高。
 
 
 
@@ -531,9 +530,9 @@ OSError: [Errno 126] The specified module could not be found.
 
 ### 结构体和联合
 
-​	结构体和联合必须派生自 [`Structure`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure) 和 [`Union`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Union) 基类，这两个基类是在 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 模块中定义的。 每个子类都必须定义 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_) 属性。 `_fields_` 必须是一个 *2元组* 的列表，其中包含一个 *字段名称* 和一个 *字段类型*。
+​	结构体和联合必须派生自 [`Structure`]({{< ref "/library/allos/ctypes#ctypes.Structure" >}}) 和 [`Union`]({{< ref "/library/allos/ctypes#ctypes.Union" >}}) 基类，这两个基类是在 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 模块中定义的。 每个子类都必须定义 [`_fields_`]({{< ref "/library/allos/ctypes#ctypes.Structure._fields_" >}}) 属性。 `_fields_` 必须是一个 *2元组* 的列表，其中包含一个 *字段名称* 和一个 *字段类型*。
 
-​	type 字段必须是一个 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 类型，比如 [`c_int`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_int)，或者其他 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 类型: 结构体、联合、数组、指针。
+​	type 字段必须是一个 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 类型，比如 [`c_int`]({{< ref "/library/allos/ctypes#ctypes.c_int" >}})，或者其他 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 类型: 结构体、联合、数组、指针。
 
 ​	这是一个简单的 POINT 结构体，它包含名称为 *x* 和 *y* 的两个变量，还展示了如何通过构造函数初始化结构体。
 
@@ -586,7 +585,7 @@ TypeError: too many initializers
 >>> r = RECT((1, 2), (3, 4))
 ```
 
-​	可以通过 *类* 获取字段 [descriptor](https://docs.python.org/zh-cn/3.13/glossary.html#term-descriptor) ，它能提供很多有用的调试信息。
+​	可以通过 *类* 获取字段 [descriptor]({{< ref "/glossary/idx#term-descriptor" >}}) ，它能提供很多有用的调试信息。
 
 
 
@@ -602,19 +601,19 @@ TypeError: too many initializers
 
  
 
-[`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 不支持带位域的结构体、联合以值的方式传给函数。这可能在 32 位 x86 平台上可以正常工作，但是对于一般情况，这种行为是未定义的。带位域的结构体、联合应该总是通过指针传递给函数。
+[`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 不支持带位域的结构体、联合以值的方式传给函数。这可能在 32 位 x86 平台上可以正常工作，但是对于一般情况，这种行为是未定义的。带位域的结构体、联合应该总是通过指针传递给函数。
 
 ### 结构体/联合字段对齐及字节顺序
 
-​	在默认情况下，Structure 和 Union 字段使用与 C 编译器一样的方式进行对齐。 可以通过在子类定义中指定 [`_pack_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._pack_) 类属性来覆盖此行为。 该属性必须设为一个正整数来指明字段对齐的最大值。 这也是 `#pragma pack(n)` 在 MSVC 所做的事情。 还可以使用与 `#pragma align(n)` 在 MSVC 中一样的方式来设置子类本身数据打包对齐的最小值。 这可以通过在子类定义中指定 :[`_align_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._align_) 类属性来实现。
+​	在默认情况下，Structure 和 Union 字段使用与 C 编译器一样的方式进行对齐。 可以通过在子类定义中指定 [`_pack_`]({{< ref "/library/allos/ctypes#ctypes.Structure._pack_" >}}) 类属性来覆盖此行为。 该属性必须设为一个正整数来指明字段对齐的最大值。 这也是 `#pragma pack(n)` 在 MSVC 所做的事情。 还可以使用与 `#pragma align(n)` 在 MSVC 中一样的方式来设置子类本身数据打包对齐的最小值。 这可以通过在子类定义中指定 :[`_align_`]({{< ref "/library/allos/ctypes#ctypes.Structure._align_" >}}) 类属性来实现。
 
-[`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 中的结构体和联合使用的是本地字节序。要使用非本地字节序，可以使用 [`BigEndianStructure`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.BigEndianStructure), [`LittleEndianStructure`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.LittleEndianStructure), [`BigEndianUnion`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.BigEndianUnion), and [`LittleEndianUnion`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.LittleEndianUnion) 作为基类。这些类不能包含指针字段。
+[`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 中的结构体和联合使用的是本地字节序。要使用非本地字节序，可以使用 [`BigEndianStructure`]({{< ref "/library/allos/ctypes#ctypes.BigEndianStructure" >}}), [`LittleEndianStructure`]({{< ref "/library/allos/ctypes#ctypes.LittleEndianStructure" >}}), [`BigEndianUnion`]({{< ref "/library/allos/ctypes#ctypes.BigEndianUnion" >}}), and [`LittleEndianUnion`]({{< ref "/library/allos/ctypes#ctypes.LittleEndianUnion" >}}) 作为基类。这些类不能包含指针字段。
 
 
 
 ### 结构体和联合中的位域
 
-​	可以创建包含位字段的结构体和联合。 位字段只适用于整数字段，位宽度是由 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_) 元组中的第三项来指定的:
+​	可以创建包含位字段的结构体和联合。 位字段只适用于整数字段，位宽度是由 [`_fields_`]({{< ref "/library/allos/ctypes#ctypes.Structure._fields_" >}}) 元组中的第三项来指定的:
 
 
 
@@ -691,7 +690,7 @@ for pt in arr:
 
 ### 指针
 
-​	可以将 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 类型数据传入 [`pointer()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.pointer) 函数创建指针:
+​	可以将 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 类型数据传入 [`pointer()`]({{< ref "/library/allos/ctypes#ctypes.pointer" >}}) 函数创建指针:
 
 
 
@@ -702,7 +701,7 @@ for pt in arr:
 >>>
 ```
 
-​	指针实例拥有 [`contents`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._Pointer.contents) 属性，它返回指针指向的真实对象，如上面的 `i` 对象:
+​	指针实例拥有 [`contents`]({{< ref "/library/allos/ctypes#ctypes._Pointer.contents" >}}) 属性，它返回指针指向的真实对象，如上面的 `i` 对象:
 
 
 
@@ -712,7 +711,7 @@ c_long(42)
 >>>
 ```
 
-​	注意 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 并没有 OOR （返回原始对象）, 每次访问这个属性时都会构造返回一个新的相同对象:
+​	注意 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 并没有 OOR （返回原始对象）, 每次访问这个属性时都会构造返回一个新的相同对象:
 
 
 
@@ -724,7 +723,7 @@ False
 >>>
 ```
 
-​	将这个指针的 contents 属性赋值为另一个 [`c_int`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_int) 实例将会导致该指针指向该实例的内存地址:
+​	将这个指针的 contents 属性赋值为另一个 [`c_int`]({{< ref "/library/allos/ctypes#ctypes.c_int" >}}) 实例将会导致该指针指向该实例的内存地址:
 
 
 
@@ -761,7 +760,7 @@ c_long(22)
 
 ​	使用 0 以外的索引也是合法的，但是你必须确保知道自己为什么这么做，就像 C 语言中: 你可以访问或者修改任意内存内容。 通常只会在函数接收指针是才会使用这种特性，而且你 *知道* 这个指针指向的是一个数组而不是单个值。
 
-​	内部细节, [`pointer()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.pointer) 函数不只是创建了一个指针实例，它首先创建了一个指针 *类型* 。这是通过调用 [`POINTER()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.POINTER) 函数实现的，它接收 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 类型为参数，返回一个新的类型:
+​	内部细节, [`pointer()`]({{< ref "/library/allos/ctypes#ctypes.pointer" >}}) 函数不只是创建了一个指针实例，它首先创建了一个指针 *类型* 。这是通过调用 [`POINTER()`]({{< ref "/library/allos/ctypes#ctypes.POINTER" >}}) 函数实现的，它接收 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 类型为参数，返回一个新的类型:
 
 
 
@@ -789,7 +788,7 @@ False
 >>>
 ```
 
-​	解引用指针的时候， [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 会帮你检测是否指针为 `NULL` (但是解引用无效的 非 `NULL` 指针仍会导致 Python 崩溃):
+​	解引用指针的时候， [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 会帮你检测是否指针为 `NULL` (但是解引用无效的 非 `NULL` 指针仍会导致 Python 崩溃):
 
 
 
@@ -811,7 +810,7 @@ ValueError: NULL pointer access
 
 ### 类型转换
 
-​	Usually, ctypes does strict type checking. This means, if you have `POINTER(c_int)` in the [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes) list of a function or as the type of a member field in a structure definition, only instances of exactly the same type are accepted. There are some exceptions to this rule, where ctypes accepts other objects. For example, you can pass compatible array instances instead of pointer types. So, for `POINTER(c_int)`, ctypes accepts an array of c_int:
+​	Usually, ctypes does strict type checking. This means, if you have `POINTER(c_int)` in the [`argtypes`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.argtypes" >}}) list of a function or as the type of a member field in a structure definition, only instances of exactly the same type are accepted. There are some exceptions to this rule, where ctypes accepts other objects. For example, you can pass compatible array instances instead of pointer types. So, for `POINTER(c_int)`, ctypes accepts an array of c_int:
 
 
 
@@ -831,7 +830,7 @@ ValueError: NULL pointer access
 >>>
 ```
 
-​	In addition, if a function argument is explicitly declared to be a pointer type (such as `POINTER(c_int)`) in [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes), an object of the pointed type (`c_int` in this case) can be passed to the function. ctypes will apply the required [`byref()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.byref) conversion in this case automatically.
+​	In addition, if a function argument is explicitly declared to be a pointer type (such as `POINTER(c_int)`) in [`argtypes`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.argtypes" >}}), an object of the pointed type (`c_int` in this case) can be passed to the function. ctypes will apply the required [`byref()`]({{< ref "/library/allos/ctypes#ctypes.byref" >}}) conversion in this case automatically.
 
 ​	可以给指针内容赋值为 None 将其设置为 `Null`
 
@@ -842,7 +841,7 @@ ValueError: NULL pointer access
 >>>
 ```
 
-​	有时候你拥有一个不兼容的类型。 在 C 中，你可以将一个类型强制转换为另一个。 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 中的 a [`cast()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.cast) 函数提供了相同的功能。 上面的结构体 `Bar` 的 `value` 字段接收 `POINTER(c_int)` 指针或者 [`c_int`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_int) 数组，但是不能接受其他类型的实例:
+​	有时候你拥有一个不兼容的类型。 在 C 中，你可以将一个类型强制转换为另一个。 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 中的 a [`cast()`]({{< ref "/library/allos/ctypes#ctypes.cast" >}}) 函数提供了相同的功能。 上面的结构体 `Bar` 的 `value` 字段接收 `POINTER(c_int)` 指针或者 [`c_int`]({{< ref "/library/allos/ctypes#ctypes.c_int" >}}) 数组，但是不能接受其他类型的实例:
 
 
 
@@ -854,9 +853,9 @@ TypeError: incompatible types, c_byte_Array_4 instance instead of LP_c_long inst
 >>>
 ```
 
-​	这种情况下, 需要手动使用 [`cast()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.cast) 函数。
+​	这种情况下, 需要手动使用 [`cast()`]({{< ref "/library/allos/ctypes#ctypes.cast" >}}) 函数。
 
-[`cast()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.cast) 函数可以将一个指针实例强制转换为另一种 ctypes 类型。 [`cast()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.cast) 接收两个参数，一个 ctypes 指针对象或者可以被转换为指针的其他类型对象，和一个 ctypes 指针类型。 返回第二个类型的一个实例，该返回实例和第一个参数指向同一片内存空间:
+[`cast()`]({{< ref "/library/allos/ctypes#ctypes.cast" >}}) 函数可以将一个指针实例强制转换为另一种 ctypes 类型。 [`cast()`]({{< ref "/library/allos/ctypes#ctypes.cast" >}}) 接收两个参数，一个 ctypes 指针对象或者可以被转换为指针的其他类型对象，和一个 ctypes 指针类型。 返回第二个类型的一个实例，该返回实例和第一个参数指向同一片内存空间:
 
 
 
@@ -867,7 +866,7 @@ TypeError: incompatible types, c_byte_Array_4 instance instead of LP_c_long inst
 >>>
 ```
 
-​	所以 [`cast()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.cast) 可以用来给结构体 `Bar` 的 `values` 字段赋值:
+​	所以 [`cast()`]({{< ref "/library/allos/ctypes#ctypes.cast" >}}) 可以用来给结构体 `Bar` 的 `values` 字段赋值:
 
 
 
@@ -910,7 +909,7 @@ NameError: name 'cell' is not defined
 >>>
 ```
 
-​	因为新的 `class cell` 在 class 语句本身中是不可用的。 在 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 中，我们可以定义 `cell` 类再在 class 语句之后设置 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_) 属性:
+​	因为新的 `class cell` 在 class 语句本身中是不可用的。 在 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 中，我们可以定义 `cell` 类再在 class 语句之后设置 [`_fields_`]({{< ref "/library/allos/ctypes#ctypes.Structure._fields_" >}}) 属性:
 
 
 
@@ -948,11 +947,11 @@ foo bar foo bar foo bar foo bar
 
 ### 回调函数
 
-[`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 允许创建一个指向 Python 可调用对象的 C 函数。它们有时候被称为 *回调函数* 。
+[`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 允许创建一个指向 Python 可调用对象的 C 函数。它们有时候被称为 *回调函数* 。
 
 ​	首先，你必须为回调函数创建一个类，这个类知道调用约定，包括返回值类型以及函数接收的参数类型及个数。
 
-[`CFUNCTYPE()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.CFUNCTYPE) 工厂函数使用 `cdecl` 调用约定创建回调函数类型。在 Windows 上， [`WINFUNCTYPE()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.WINFUNCTYPE) 工厂函数使用 `stdcall` 调用约定为回调函数创建类型。
+[`CFUNCTYPE()`]({{< ref "/library/allos/ctypes#ctypes.CFUNCTYPE" >}}) 工厂函数使用 `cdecl` 调用约定创建回调函数类型。在 Windows 上， [`WINFUNCTYPE()`]({{< ref "/library/allos/ctypes#ctypes.WINFUNCTYPE" >}}) 工厂函数使用 `stdcall` 调用约定为回调函数创建类型。
 
 ​	这些工厂函数的第一个参数是返回值类型，回调函数的参数类型作为剩余参数。
 
@@ -1055,21 +1054,20 @@ py_cmp_func 5 7
 >>>
 ```
 
-​	备注
-
+​备注
  
 
-​	请确保你维持的 [`CFUNCTYPE()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.CFUNCTYPE) 对象的引用周期与它们在 C 代码中的使用期一样长。 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 不会确保这一点，如果不这样做，它们可能会被垃圾回收，导致程序在执行回调函数时发生崩溃。
+​	请确保你维持的 [`CFUNCTYPE()`]({{< ref "/library/allos/ctypes#ctypes.CFUNCTYPE" >}}) 对象的引用周期与它们在 C 代码中的使用期一样长。 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 不会确保这一点，如果不这样做，它们可能会被垃圾回收，导致程序在执行回调函数时发生崩溃。
 
-​	注意，如果回调函数在Python之外的另外一个线程使用(比如，外部代码调用这个回调函数)， ctypes 会在每一次调用上创建一个虚拟 Python 线程。这个行为在大多数情况下是合理的，但也意味着如果有数据使用 [`threading.local`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.local) 方式存储，将无法访问，就算它们是在同一个 C 线程中调用的 。
+​	注意，如果回调函数在Python之外的另外一个线程使用(比如，外部代码调用这个回调函数)， ctypes 会在每一次调用上创建一个虚拟 Python 线程。这个行为在大多数情况下是合理的，但也意味着如果有数据使用 [`threading.local`]({{< ref "/library/concurrency/threading#threading.local" >}}) 方式存储，将无法访问，就算它们是在同一个 C 线程中调用的 。
 
 
 
 ### 访问 dll 的导出变量
 
-​	某些共享库不仅会导出函数，还会导出变量。 一个例子就是 Python 库本身的 [`Py_Version`](https://docs.python.org/zh-cn/3.13/c-api/apiabiversion.html#c.Py_Version)，Python 运行时版本号被编码为单个整数常量。
+​	某些共享库不仅会导出函数，还会导出变量。 一个例子就是 Python 库本身的 [`Py_Version`]({{< ref "/c_api/apiabiversion#c.Py_Version" >}})，Python 运行时版本号被编码为单个整数常量。
 
-[`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 可以通过类型的 [`in_dll()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CData.in_dll) 类方法访问这样的值。 *pythonapi* 是一个用于访问 Python C api 预定义符号:
+[`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 可以通过类型的 [`in_dll()`]({{< ref "/library/allos/ctypes#ctypes._CData.in_dll" >}}) 类方法访问这样的值。 *pythonapi* 是一个用于访问 Python C api 预定义符号:
 
 
 
@@ -1085,7 +1083,7 @@ py_cmp_func 5 7
 
 > ​	该指针被初始化为指向一个 [`_frozen`](https://docs.python.org/zh-cn/3.13/c-api/import.html#c._frozen) 记录的数组，以一个所有成员均为 `NULL` 或零的记录表示结束。 当一个冻结模块被导入时，它将在此表中被搜索。 第三方代码可以利用此方式来提供动态创建的冻结模块集。
 
-​	这足以证明修改这个指针是很有用的。为了让实例大小不至于太长，这里只展示如何使用 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 读取这个表:
+​	这足以证明修改这个指针是很有用的。为了让实例大小不至于太长，这里只展示如何使用 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 读取这个表:
 
 
 
@@ -1134,7 +1132,7 @@ zipimport 12345
 
 ### 意外
 
-[`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 也有自己的边界，有时候会发生一些意想不到的事情。
+[`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 也有自己的边界，有时候会发生一些意想不到的事情。
 
 ​	比如下面的例子:
 
@@ -1189,21 +1187,20 @@ False
 >>>
 ```
 
-​	备注
-
+​备注
  
 
-​	使用 [`c_char_p`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_char_p) 实例化的对象只能将其值设置为 bytes 或者整数。
+​	使用 [`c_char_p`]({{< ref "/library/allos/ctypes#ctypes.c_char_p" >}}) 实例化的对象只能将其值设置为 bytes 或者整数。
 
-​	为什么这里打印了 `False` ？ ctypes 实例是一些内存块加上一些用于访问这些内存块的 [descriptor](https://docs.python.org/zh-cn/3.13/glossary.html#term-descriptor) 组成。将 Python 对象存储在内存块并不会存储对象本身，而是存储了对象的 `内容` 。每次访问对象的内容都会构造一个新的 Python 对象。
+​	为什么这里打印了 `False` ？ ctypes 实例是一些内存块加上一些用于访问这些内存块的 [descriptor]({{< ref "/glossary/idx#term-descriptor" >}}) 组成。将 Python 对象存储在内存块并不会存储对象本身，而是存储了对象的 `内容` 。每次访问对象的内容都会构造一个新的 Python 对象。
 
 
 
 ### 变长数据类型
 
-[`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 对变长数组和结构体提供了一些支持 。
+[`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 对变长数组和结构体提供了一些支持 。
 
-​	The [`resize()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.resize) function can be used to resize the memory buffer of an existing ctypes object. The function takes the object as first argument, and the requested size in bytes as the second argument. The memory block cannot be made smaller than the natural memory block specified by the objects type, a [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) is raised if this is tried:
+​	The [`resize()`]({{< ref "/library/allos/ctypes#ctypes.resize" >}}) function can be used to resize the memory buffer of an existing ctypes object. The function takes the object as first argument, and the requested size in bytes as the second argument. The memory block cannot be made smaller than the natural memory block specified by the objects type, a [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) is raised if this is tried:
 
 
 
@@ -1237,7 +1234,7 @@ IndexError: invalid index
 >>>
 ```
 
-​	使用 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 访问变长数据类型的一个可行方法是利用 Python 的动态特性，根据具体情况，在知道这个数据的大小后，(重新)指定这个数据的类型。
+​	使用 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 访问变长数据类型的一个可行方法是利用 Python 的动态特性，根据具体情况，在知道这个数据的大小后，(重新)指定这个数据的类型。
 
 
 
@@ -1249,7 +1246,7 @@ IndexError: invalid index
 
 ​	在编译型语言中，动态链接库会在编译、链接或者程序运行时访问。
 
-[`find_library()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.util.find_library) 函数的目的是以类似于编译器或运行时加载器的方式来定位库（在有多个共享库版本的平台上应当加载最新的版本），而 ctypes 库加载器的行为类似于程序已经运行时直接调用运行时加载器。
+[`find_library()`]({{< ref "/library/allos/ctypes#ctypes.util.find_library" >}}) 函数的目的是以类似于编译器或运行时加载器的方式来定位库（在有多个共享库版本的平台上应当加载最新的版本），而 ctypes 库加载器的行为类似于程序已经运行时直接调用运行时加载器。
 
 `ctypes.util` 模块提供了一个函数，可以帮助确定要加载的库。
 
@@ -1259,9 +1256,9 @@ IndexError: invalid index
 
 ​	确切的功能取决于系统。
 
-​	在 Linux 中，[`find_library()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.util.find_library) 会尝试运行外部程序 (`/sbin/ldconfig`, `gcc`, `objdump` 和 `ld`) 来查找库文件。 它会返回库文件的文件名。
+​	在 Linux 中，[`find_library()`]({{< ref "/library/allos/ctypes#ctypes.util.find_library" >}}) 会尝试运行外部程序 (`/sbin/ldconfig`, `gcc`, `objdump` 和 `ld`) 来查找库文件。 它会返回库文件的文件名。
 
-*在 3.6 版本发生变更:* 在Linux 上，如果其他方式找不到的话，会使用环境变量 `LD_LIBRARY_PATH` 搜索动态链接库。
+> 在 3.6 版本发生变更: 在Linux 上，如果其他方式找不到的话，会使用环境变量 `LD_LIBRARY_PATH` 搜索动态链接库。
 
 ​	这是一些例子:
 
@@ -1278,7 +1275,7 @@ IndexError: invalid index
 >>>
 ```
 
-​	在 macOS 和 Android 上，[`find_library()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.util.find_library) 使用系统的标准命名方案和路径来定位库，并在成功时返回完整的路径名:
+​	在 macOS 和 Android 上，[`find_library()`]({{< ref "/library/allos/ctypes#ctypes.util.find_library" >}}) 使用系统的标准命名方案和路径来定位库，并在成功时返回完整的路径名:
 
 
 
@@ -1295,9 +1292,9 @@ IndexError: invalid index
 >>>
 ```
 
-​	在 Windows 中，[`find_library()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.util.find_library) 会沿着系统搜索路径进行搜索，并返回完整的路径名称，但由于没有预定义的命名方案因此像 `find_library("c")` 这样的调用会失败并返回 `None`。
+​	在 Windows 中，[`find_library()`]({{< ref "/library/allos/ctypes#ctypes.util.find_library" >}}) 会沿着系统搜索路径进行搜索，并返回完整的路径名称，但由于没有预定义的命名方案因此像 `find_library("c")` 这样的调用会失败并返回 `None`。
 
-​	如果使用 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 包装一个共享库，则更好的做法 *可能* 是开发时就确定好共享库的名称，并将其硬编码到包装模块中而不是在运行时使用 [`find_library()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.util.find_library) 来定位库。
+​	如果使用 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 包装一个共享库，则更好的做法 *可能* 是开发时就确定好共享库的名称，并将其硬编码到包装模块中而不是在运行时使用 [`find_library()`]({{< ref "/library/allos/ctypes#ctypes.util.find_library" >}}) 来定位库。
 
 
 
@@ -1309,53 +1306,52 @@ IndexError: invalid index
 
 ​	该类的实例代表已加载的共享库。 这些库中的函数使用标准的 C 调用约定，并被预期会返回 int。
 
-​	在 Windows 上创建 [`CDLL`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.CDLL) 实例可能会失败，即使 DLL 名称确实存在。 当某个被加载 DLL 所依赖的 DLL 未找到时，将引发 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 错误并附带消息 *"[WinError 126] The specified module could not be found".* 此错误消息不包含缺失 DLL 的名称，因为 Windows API 并不会返回此类信息，这使得此错误难以诊断。 要解决此错误并确定是哪一个 DLL 未找到，你需要找出所依赖的 DLL 列表并使用 Windows 调试与跟踪工具确定是哪一个未找到。
+​	在 Windows 上创建 [`CDLL`]({{< ref "/library/allos/ctypes#ctypes.CDLL" >}}) 实例可能会失败，即使 DLL 名称确实存在。 当某个被加载 DLL 所依赖的 DLL 未找到时，将引发 [`OSError`]({{< ref "/library/exceptions#OSError" >}}) 错误并附带消息 *"[WinError 126] The specified module could not be found".* 此错误消息不包含缺失 DLL 的名称，因为 Windows API 并不会返回此类信息，这使得此错误难以诊断。 要解决此错误并确定是哪一个 DLL 未找到，你需要找出所依赖的 DLL 列表并使用 Windows 调试与跟踪工具确定是哪一个未找到。
 
-*在 3.12 版本发生变更:* 现在 *name* 形参可以是一个 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object)。
+> 在 3.12 版本发生变更: 现在 *name* 形参可以是一个 [path-like object]({{< ref "/glossary/idx#term-path-like-object" >}})。
 
-​	参见
-
+​参见
  
 
 [Microsoft DUMPBIN 工具](https://docs.microsoft.com/cpp/build/reference/dependents) -- 一个用于查找 DLL 依赖的工具。
 
 ## *class* ctypes.**OleDLL**(*name*, *mode=DEFAULT_MODE*, *handle=None*, *use_errno=False*, *use_last_error=False*, *winmode=None*)
 
-​	仅 Windows : 此类的实例即加载好的动态链接库，其中的函数使用 `stdcall` 调用约定，并且假定返回 windows 指定的 [`HRESULT`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.HRESULT) 返回码。 [`HRESULT`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.HRESULT) 的值包含的信息说明函数调用成功还是失败，以及额外错误码。 如果返回值表示失败，会自动抛出 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 异常。
+​	仅 Windows : 此类的实例即加载好的动态链接库，其中的函数使用 `stdcall` 调用约定，并且假定返回 windows 指定的 [`HRESULT`]({{< ref "/library/allos/ctypes#ctypes.HRESULT" >}}) 返回码。 [`HRESULT`]({{< ref "/library/allos/ctypes#ctypes.HRESULT" >}}) 的值包含的信息说明函数调用成功还是失败，以及额外错误码。 如果返回值表示失败，会自动抛出 [`OSError`]({{< ref "/library/exceptions#OSError" >}}) 异常。
 
-*在 3.3 版本发生变更:* 过去会引发 [`WindowsError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#WindowsError)，现在它是 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 的别名。
+> 在 3.3 版本发生变更: 过去会引发 [`WindowsError`]({{< ref "/library/exceptions#WindowsError" >}})，现在它是 [`OSError`]({{< ref "/library/exceptions#OSError" >}}) 的别名。
 
-*在 3.12 版本发生变更:* 现在 *name* 形参可以是一个 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object)。
+> 在 3.12 版本发生变更: 现在 *name* 形参可以是一个 [path-like object]({{< ref "/glossary/idx#term-path-like-object" >}})。
 
 ## *class* ctypes.**WinDLL**(*name*, *mode=DEFAULT_MODE*, *handle=None*, *use_errno=False*, *use_last_error=False*, *winmode=None*)
 
 ​	仅限 Windows：该类的实例代表已加载的共享库，这些库中的函数使用 `stdcall` 调用约定，并被预期默认会返回 int。
 
-*在 3.12 版本发生变更:* 现在 *name* 形参可以是一个 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object)。
+> 在 3.12 版本发生变更: 现在 *name* 形参可以是一个 [path-like object]({{< ref "/glossary/idx#term-path-like-object" >}})。
 
-​	调用动态库导出的函数之前，Python会释放 [global interpreter lock](https://docs.python.org/zh-cn/3.13/glossary.html#term-global-interpreter-lock) ，并在调用后重新获取。
+​	调用动态库导出的函数之前，Python会释放 [global interpreter lock]({{< ref "/glossary/idx#term-global-interpreter-lock" >}}) ，并在调用后重新获取。
 
 ## *class* ctypes.**PyDLL**(*name*, *mode=DEFAULT_MODE*, *handle=None*)
 
-​	这个类实例的行为与 [`CDLL`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.CDLL) 类似，只不过 *不会* 在调用函数的时候释放 GIL 锁，且调用结束后会检查 Python 错误码。 如果错误码被设置，会抛出一个 Python 异常。
+​	这个类实例的行为与 [`CDLL`]({{< ref "/library/allos/ctypes#ctypes.CDLL" >}}) 类似，只不过 *不会* 在调用函数的时候释放 GIL 锁，且调用结束后会检查 Python 错误码。 如果错误码被设置，会抛出一个 Python 异常。
 
 ​	所以，它只在直接调用 Python C 接口函数的时候有用。
 
-*在 3.12 版本发生变更:* 现在 *name* 形参可以是一个 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object)。
+> 在 3.12 版本发生变更: 现在 *name* 形参可以是一个 [path-like object]({{< ref "/glossary/idx#term-path-like-object" >}})。
 
 ​	所有这些类均可通过附带至少一个参数即共享库的路径名来调用它们进行实例化。 如果你有一个对应已加载共享库的现有句柄，可以将其作为 `handle` 具名形参传入，否则会使用下层平台的 `dlopen()` 或 `LoadLibrary()` 函数将库加载到进程中，并获取对应的句柄。
 
 *mode* 可以指定库加载方式。详情请参见 *[dlopen(3)](https://manpages.debian.org/dlopen(3))* 手册页。 在 Windows 上， 会忽略 *mode* ，在 posix 系统上， 总是会加上 RTLD_NOW ，且无法配置。
 
-​	当 *use_errno* 形参被设为真值时，将启用以安全方式访问系统 [`errno`](https://docs.python.org/zh-cn/3.13/library/errno.html#module-errno) 错误号的 ctypes 机制。 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 将维护一份系统 [`errno`](https://docs.python.org/zh-cn/3.13/library/errno.html#module-errno) 变量的线程局部副本；如果你调用设置了 `use_errno=True` 的外部函数那么 [`errno`](https://docs.python.org/zh-cn/3.13/library/errno.html#module-errno) 将在函数调用之前与 ctypes 私有副本互换，同样的情况也会在函数调用之后立即发生。
+​	当 *use_errno* 形参被设为真值时，将启用以安全方式访问系统 [`errno`]({{< ref "/library/allos/errno#module-errno" >}}) 错误号的 ctypes 机制。 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 将维护一份系统 [`errno`]({{< ref "/library/allos/errno#module-errno" >}}) 变量的线程局部副本；如果你调用设置了 `use_errno=True` 的外部函数那么 [`errno`]({{< ref "/library/allos/errno#module-errno" >}}) 将在函数调用之前与 ctypes 私有副本互换，同样的情况也会在函数调用之后立即发生。
 
-​	The function [`ctypes.get_errno()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.get_errno) returns the value of the ctypes private copy, and the function [`ctypes.set_errno()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.set_errno) changes the ctypes private copy to a new value and returns the former value.
+​	The function [`ctypes.get_errno()`]({{< ref "/library/allos/ctypes#ctypes.get_errno" >}}) returns the value of the ctypes private copy, and the function [`ctypes.set_errno()`]({{< ref "/library/allos/ctypes#ctypes.set_errno" >}}) changes the ctypes private copy to a new value and returns the former value.
 
-​	当 *use_last_error* 形参设为真值时，为 Windows 错误代码也启用与由 [`GetLastError()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.GetLastError) 和 `SetLastError()` Windows API 函数管理相同的机制；[`ctypes.get_last_error()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.get_last_error) 和 [`ctypes.set_last_error()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.set_last_error) 会被用于请求和更改 Windows 错误代码的 ctypes 私有副本。
+​	当 *use_last_error* 形参设为真值时，为 Windows 错误代码也启用与由 [`GetLastError()`]({{< ref "/library/allos/ctypes#ctypes.GetLastError" >}}) 和 `SetLastError()` Windows API 函数管理相同的机制；[`ctypes.get_last_error()`]({{< ref "/library/allos/ctypes#ctypes.get_last_error" >}}) 和 [`ctypes.set_last_error()`]({{< ref "/library/allos/ctypes#ctypes.set_last_error" >}}) 会被用于请求和更改 Windows 错误代码的 ctypes 私有副本。
 
 *winmode* 形参用于在 Windows 上指定库的加载方式（因为 *mode* 会被忽略）。 它接受任何对 Win32 API `LoadLibraryEx` 旗标形参来说合法的值。 当被省略时，默认使用表示最安全的 DLL 加载的旗标，这将避免 DLL 劫持等问题。 传入 DLL 的完整路径是确保正确加载库及其依赖的最安全的方式。
 
-*在 3.8 版本发生变更:* 增加了 *winmode* 参数。
+> 在 3.8 版本发生变更: 增加了 *winmode* 参数。
 
 ## ctypes.**RTLD_GLOBAL**
 
@@ -1392,11 +1388,11 @@ False
 
 ​	传入构造函数的库名称。
 
-​	共享库也可以通过使用一个预制对象来加载，这种对象是 [`LibraryLoader`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.LibraryLoader) 类的实例，具体做法是调用 [`LoadLibrary()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.LibraryLoader.LoadLibrary) 方法，或是将库作为加载器实例的属性来提取。
+​	共享库也可以通过使用一个预制对象来加载，这种对象是 [`LibraryLoader`]({{< ref "/library/allos/ctypes#ctypes.LibraryLoader" >}}) 类的实例，具体做法是调用 [`LoadLibrary()`]({{< ref "/library/allos/ctypes#ctypes.LibraryLoader.LoadLibrary" >}}) 方法，或是将库作为加载器实例的属性来提取。
 
 ## *class* ctypes.**LibraryLoader**(*dlltype*)
 
-​	加载共享库的类。 *dlltype* 应当为 [`CDLL`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.CDLL), [`PyDLL`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.PyDLL), [`WinDLL`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.WinDLL) 或 [`OleDLL`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.OleDLL) 类型之一。
+​	加载共享库的类。 *dlltype* 应当为 [`CDLL`]({{< ref "/library/allos/ctypes#ctypes.CDLL" >}}), [`PyDLL`]({{< ref "/library/allos/ctypes#ctypes.PyDLL" >}}), [`WinDLL`]({{< ref "/library/allos/ctypes#ctypes.WinDLL" >}}) 或 [`OleDLL`]({{< ref "/library/allos/ctypes#ctypes.OleDLL" >}}) 类型之一。
 
 `__getattr__()` 具有特殊的行为：它允许通过一个作为库加载器实例的属性访问共享库来加载它。 访问结果会被缓存，因此每次重复的属性访问都会返回相同的库。
 
@@ -1408,27 +1404,27 @@ False
 
 ## ctypes.**cdll**
 
-​	创建 [`CDLL`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.CDLL) 实例。
+​	创建 [`CDLL`]({{< ref "/library/allos/ctypes#ctypes.CDLL" >}}) 实例。
 
 ## ctypes.**windll**
 
-​	仅限 Windows：创建 [`WinDLL`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.WinDLL) 实例.
+​	仅限 Windows：创建 [`WinDLL`]({{< ref "/library/allos/ctypes#ctypes.WinDLL" >}}) 实例.
 
 ## ctypes.**oledll**
 
-​	仅限 Windows：创建 [`OleDLL`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.OleDLL) 实例。
+​	仅限 Windows：创建 [`OleDLL`]({{< ref "/library/allos/ctypes#ctypes.OleDLL" >}}) 实例。
 
 ## ctypes.**pydll**
 
-​	创建 [`PyDLL`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.PyDLL) 实例。
+​	创建 [`PyDLL`]({{< ref "/library/allos/ctypes#ctypes.PyDLL" >}}) 实例。
 
 ​	要直接访问 C Python api，可以使用一个现成的 Python 共享库对象:
 
 ## ctypes.**pythonapi**
 
-​	一个将 Python C API 函数作为属性公开出来的 [`PyDLL`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.PyDLL) 实例。 请注意所有这些函数都应返回 C int，当然也并非总是如此，因此您必须分配正确的 `restype` 属性才能使用这些函数。
+​	一个将 Python C API 函数作为属性公开出来的 [`PyDLL`]({{< ref "/library/allos/ctypes#ctypes.PyDLL" >}}) 实例。 请注意所有这些函数都应返回 C int，当然也并非总是如此，因此您必须分配正确的 `restype` 属性才能使用这些函数。
 
-​	通过这些对象中的任何一个加载库都将引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `ctypes.dlopen` 并附带字符串参数 `name`，即用于加载库的名称。
+​	通过这些对象中的任何一个加载库都将引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `ctypes.dlopen` 并附带字符串参数 `name`，即用于加载库的名称。
 
 ​	在加载的库上访问一个函数将引发一个审计事件 `ctypes.dlsym` 并附带参数 `library` (库对象) 和 `name` (以字符串或整数表示的符号名称).
 
@@ -1440,7 +1436,7 @@ False
 
 ​	As explained in the previous section, foreign functions can be accessed as attributes of loaded shared libraries. The function objects created in this way by default accept any number of arguments, accept any ctypes data instances as arguments, and return the default result type specified by the library loader.
 
-​	They are instances of a private local class `_FuncPtr` (not exposed in `ctypes`) which inherits from the private [`_CFuncPtr`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr) class:
+​	They are instances of a private local class `_FuncPtr` (not exposed in `ctypes`) which inherits from the private [`_CFuncPtr`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr" >}}) class:
 
 
 
@@ -1465,15 +1461,15 @@ False
 
 ​	分配一个 ctypes 类型来指定外部函数的结果类型。 使用 `None` 来表示 void，即不返回任何结果的函数。
 
-​	赋值为一个非 ctypes 类型的可调用 Python 对象也是可以的，在这种情况下函数应返回 C int，并且该可调用对象将附带此整数被调用，以允许进一步的处理或错误检查。 这种用法已被弃用，为了更灵活地进行后续处理或错误检查请使用 ctypes 数据类型作为 `restype` 并将 [`errcheck`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.errcheck) 属性赋值为一个可调用对象。
+​	赋值为一个非 ctypes 类型的可调用 Python 对象也是可以的，在这种情况下函数应返回 C int，并且该可调用对象将附带此整数被调用，以允许进一步的处理或错误检查。 这种用法已被弃用，为了更灵活地进行后续处理或错误检查请使用 ctypes 数据类型作为 `restype` 并将 [`errcheck`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.errcheck" >}}) 属性赋值为一个可调用对象。
 
 ## **argtypes**
 
 ​	赋值为一个 ctypes 类型的元组来指定函数所接受的参数类型。 使用 `stdcall` 调用规范的函数只能附带与此元组长度相同数量的参数进行调用；使用 C 调用规范的函数还可接受额外的未指明参数。
 
-​	当调用外部函数时，每个实际参数都会被传给 [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes) 元组中条目的 [`from_param()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CData.from_param) 类方法，该方法允许将实际参数适配为此外部函数所接受的对象。 例如，[`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes) 元组中的 [`c_char_p`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_char_p) 条目将使用 ctypes 转换规则把作为参数传入的字符串转换为字节串对象。
+​	当调用外部函数时，每个实际参数都会被传给 [`argtypes`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.argtypes" >}}) 元组中条目的 [`from_param()`]({{< ref "/library/allos/ctypes#ctypes._CData.from_param" >}}) 类方法，该方法允许将实际参数适配为此外部函数所接受的对象。 例如，[`argtypes`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.argtypes" >}}) 元组中的 [`c_char_p`]({{< ref "/library/allos/ctypes#ctypes.c_char_p" >}}) 条目将使用 ctypes 转换规则把作为参数传入的字符串转换为字节串对象。
 
-​	新特性：现在可以在 argtypes 中放入非 ctypes 类型的条目，但每个条目必须具有 [`from_param()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CData.from_param) 方法用于返回一个可作为参数的值（整数、字符串、ctypes 实例）。 这样就允许定义可将将自定义对象适配为函数参数的适配器。
+​	新特性：现在可以在 argtypes 中放入非 ctypes 类型的条目，但每个条目必须具有 [`from_param()`]({{< ref "/library/allos/ctypes#ctypes._CData.from_param" >}}) 方法用于返回一个可作为参数的值（整数、字符串、ctypes 实例）。 这样就允许定义可将将自定义对象适配为函数参数的适配器。
 
 ## **errcheck**
 
@@ -1501,11 +1497,11 @@ False
 
 ### 函数原型
 
-​	外部函数也可通过实例化函数原型来创建。 函数原型类似于 C 中的函数原型；它们在不定义具体实现的情况下描述了一个函数（返回类型、参数类型、调用约定）。 工厂函数必须使用函数所需要的结果类型和参数类型来调用，并可被用作装饰器工厂函数，在此情况下可以通过 `@wrapper` 语法应用于函数。 请参阅 [回调函数](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes-callback-functions) 了解有关示例。
+​	外部函数也可通过实例化函数原型来创建。 函数原型类似于 C 中的函数原型；它们在不定义具体实现的情况下描述了一个函数（返回类型、参数类型、调用约定）。 工厂函数必须使用函数所需要的结果类型和参数类型来调用，并可被用作装饰器工厂函数，在此情况下可以通过 `@wrapper` 语法应用于函数。 请参阅 [回调函数]({{< ref "/library/allos/ctypes#ctypes-callback-functions" >}}) 了解有关示例。
 
 ## ctypes.**CFUNCTYPE**(*restype*, **argtypes*, *use_errno=False*, *use_last_error=False*)
 
-​	返回的函数原型会创建使用标准 C 调用约定的函数。 该函数在调用过程中将释放 GIL。 如果 *use_errno* 设为真值，则在调用之前和之后系统 [`errno`](https://docs.python.org/zh-cn/3.13/library/errno.html#module-errno) 变量的 ctypes 私有副本会与真正的 [`errno`](https://docs.python.org/zh-cn/3.13/library/errno.html#module-errno) 值进行交换；*use_last_error* 会为 Windows 错误码执行同样的操作。
+​	返回的函数原型会创建使用标准 C 调用约定的函数。 该函数在调用过程中将释放 GIL。 如果 *use_errno* 设为真值，则在调用之前和之后系统 [`errno`]({{< ref "/library/allos/errno#module-errno" >}}) 变量的 ctypes 私有副本会与真正的 [`errno`]({{< ref "/library/allos/errno#module-errno" >}}) 值进行交换；*use_last_error* 会为 Windows 错误码执行同样的操作。
 
 ## ctypes.**WINFUNCTYPE**(*restype*, **argtypes*, *use_errno=False*, *use_last_error=False*)
 
@@ -1537,7 +1533,7 @@ False
 
 ​	可选的 *paramflags* 形参会创建相比上述特性具有更多功能的外部函数包装器。
 
-*paramflags* must be a tuple of the same length as [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes).
+*paramflags* must be a tuple of the same length as [`argtypes`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.argtypes" >}}).
 
 ​	此元组中的每一项都包含有关形参的更多信息，它必须为包含一个、两个或更多条目的元组。
 
@@ -1570,7 +1566,7 @@ MessageBoxW(
     UINT uType);
 ```
 
-​	这是使用 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 的包装:
+​	这是使用 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 的包装:
 
 
 
@@ -1601,7 +1597,7 @@ GetWindowRect(
      LPRECT lpRect);
 ```
 
-​	这是使用 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 的包装:
+​	这是使用 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 的包装:
 
 
 
@@ -1616,7 +1612,7 @@ GetWindowRect(
 
 ​	带有输出形参的函数如果输出形参存在单一值则会自动返回该值，或是当输出形参存在多个值时返回包含这些值的元组，因此当 GetWindowRect 被调用时现在将返回一个 RECT 实例。
 
-​	Output parameters can be combined with the [`errcheck`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.errcheck) protocol to do further output processing and error checking. The win32 `GetWindowRect` api function returns a `BOOL` to signal success or failure, so this function could do the error checking, and raises an exception when the api call failed:
+​	Output parameters can be combined with the [`errcheck`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.errcheck" >}}) protocol to do further output processing and error checking. The win32 `GetWindowRect` api function returns a `BOOL` to signal success or failure, so this function could do the error checking, and raises an exception when the api call failed:
 
 
 
@@ -1630,7 +1626,7 @@ GetWindowRect(
 >>>
 ```
 
-​	If the [`errcheck`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.errcheck) function returns the argument tuple it receives unchanged, [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) continues the normal processing it does on the output parameters. If you want to return a tuple of window coordinates instead of a `RECT` instance, you can retrieve the fields in the function and return them instead, the normal processing will no longer take place:
+​	If the [`errcheck`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.errcheck" >}}) function returns the argument tuple it receives unchanged, [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) continues the normal processing it does on the output parameters. If you want to return a tuple of window coordinates instead of a `RECT` instance, you can retrieve the fields in the function and return them instead, the normal processing will no longer take place:
 
 
 
@@ -1653,7 +1649,7 @@ GetWindowRect(
 
 ​	以整数形式返回内存缓冲区地址。 *obj* 必须为一个 ctypes 类型的实例。
 
-​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `ctypes.addressof` 并附带参数 `obj`。
+​	引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `ctypes.addressof` 并附带参数 `obj`。
 
 ## ctypes.**alignment**(*obj_or_type*)
 
@@ -1677,23 +1673,23 @@ GetWindowRect(
 
 ## ctypes.**create_string_buffer**(*init_or_size*, *size=None*)
 
-​	此函数会创建一个可变的字符缓冲区。 返回的对象是一个 [`c_char`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_char) 的 ctypes 数组。
+​	此函数会创建一个可变的字符缓冲区。 返回的对象是一个 [`c_char`]({{< ref "/library/allos/ctypes#ctypes.c_char" >}}) 的 ctypes 数组。
 
 *init_or_size* 必须是一个指明数组大小的整数，或者是一个将被用来初始化数组条目的字节串对象。
 
 ​	如果将一个字节串对象指定为第一个参数，则将使缓冲区大小比其长度多一项以便数组的最后一项为一个 NUL 终结符。 可以传入一个整数作为第二个参数以允许在不使用字节串长度的情况下指定数组大小。
 
-​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `ctypes.create_string_buffer` 并附带参数 `init`, `size`。
+​	引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `ctypes.create_string_buffer` 并附带参数 `init`, `size`。
 
 ## ctypes.**create_unicode_buffer**(*init_or_size*, *size=None*)
 
-​	此函数会创建一个可变的 unicode 字符缓冲区。 返回的对象是一个 [`c_wchar`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_wchar) 的 ctypes 数组。
+​	此函数会创建一个可变的 unicode 字符缓冲区。 返回的对象是一个 [`c_wchar`]({{< ref "/library/allos/ctypes#ctypes.c_wchar" >}}) 的 ctypes 数组。
 
 *init_or_size* 必须是一个指明数组大小的整数，或者是一个将被用来初始化数组条目的字符串。
 
 ​	如果将一个字符串指定为第一个参数，则将使缓冲区大小比其长度多一项以便数组的最后一项为一个 NUL 终结符。 可以传入一个整数作为第二个参数以允许在不使用字符串长度的情况下指定数组大小。
 
-​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `ctypes.create_unicode_buffer` 并附带参数 `init`, `size`。
+​	引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `ctypes.create_unicode_buffer` 并附带参数 `init`, `size`。
 
 ## ctypes.**DllCanUnloadNow**()
 
@@ -1725,15 +1721,15 @@ GetWindowRect(
 
 ## ctypes.**get_errno**()
 
-​	返回调用线程中系统 [`errno`](https://docs.python.org/zh-cn/3.13/library/errno.html#module-errno) 变量的 ctypes 私有副本的当前值。
+​	返回调用线程中系统 [`errno`]({{< ref "/library/allos/errno#module-errno" >}}) 变量的 ctypes 私有副本的当前值。
 
-​	引发一个不带参数的 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `ctypes.get_errno`。
+​	引发一个不带参数的 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `ctypes.get_errno`。
 
 ## ctypes.**get_last_error**()
 
 ​	仅限 Windows：返回调用线程中系统 `LastError` 变量的 ctypes 私有副本的当前值。
 
-​	引发一个不带参数的 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `ctypes.get_last_error`。
+​	引发一个不带参数的 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `ctypes.get_last_error`。
 
 ## ctypes.**memmove**(*dst*, *src*, *count*)
 
@@ -1759,15 +1755,15 @@ GetWindowRect(
 
 ## ctypes.**set_errno**(*value*)
 
-​	设置调用线程中系统 [`errno`](https://docs.python.org/zh-cn/3.13/library/errno.html#module-errno) 变量的 ctypes 私有副本的当前值为 *value* 并返回原来的值。
+​	设置调用线程中系统 [`errno`]({{< ref "/library/allos/errno#module-errno" >}}) 变量的 ctypes 私有副本的当前值为 *value* 并返回原来的值。
 
-​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `ctypes.set_errno` 并附带参数 `errno`。
+​	引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `ctypes.set_errno` 并附带参数 `errno`。
 
 ## ctypes.**set_last_error**(*value*)
 
 ​	仅限 Windows：设置调用线程中系统 `LastError` 变量的 ctypes 私有副本的当前值为 *value* 并返回原来的值。
 
-​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `ctypes.set_last_error` 并附带参数 `error`。
+​	引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `ctypes.set_last_error` 并附带参数 `error`。
 
 ## ctypes.**sizeof**(*obj_or_type*)
 
@@ -1777,19 +1773,19 @@ GetWindowRect(
 
 ​	返回位于 *void \*ptr* 的字节串。 如果指定了 *size*，它将被用作字节串的大小，否则将假定字节串以零值结尾。
 
-​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `ctypes.string_at` 并附带参数 `ptr`, `size`。
+​	引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `ctypes.string_at` 并附带参数 `ptr`, `size`。
 
 ## ctypes.**WinError**(*code=None*, *descr=None*)
 
-​	仅限 Windows：此函数可能是 ctypes 中命名得最糟糕的。 它会创建一个 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 的实例。 如果未指定 *code*，则会调用 `GetLastError` 来确定错误码。 如果未指定 *descr*，则会调用 [`FormatError()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.FormatError) 来获取错误的文本描述。
+​	仅限 Windows：此函数可能是 ctypes 中命名得最糟糕的。 它会创建一个 [`OSError`]({{< ref "/library/exceptions#OSError" >}}) 的实例。 如果未指定 *code*，则会调用 `GetLastError` 来确定错误码。 如果未指定 *descr*，则会调用 [`FormatError()`]({{< ref "/library/allos/ctypes#ctypes.FormatError" >}}) 来获取错误的文本描述。
 
-*在 3.3 版本发生变更:* 过去会创建 [`WindowsError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#WindowsError) 的实例，现在它是 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 的别名。
+> 在 3.3 版本发生变更: 过去会创建 [`WindowsError`]({{< ref "/library/exceptions#WindowsError" >}}) 的实例，现在它是 [`OSError`]({{< ref "/library/exceptions#OSError" >}}) 的别名。
 
 ## ctypes.**wstring_at**(*ptr*, *size=-1*)
 
 ​	返回位于 *void \*ptr* 的宽字符串。 如果指定了 *size*，它将被用作字符串的字符数量，否则将假定字符串以零值结尾。
 
-​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `ctypes.wstring_at` 并附带参数 `ptr`, `size`。
+​	引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `ctypes.wstring_at` 并附带参数 `ptr`, `size`。
 
 
 
@@ -1797,31 +1793,31 @@ GetWindowRect(
 
 ## *class* ctypes.**_CData**
 
-​	这个非公有类是所有 ctypes 数据类型的共同基类。 另外，所有 ctypes 类型的实例都包含一个存放 C 兼容数据的内存块；该内存块的地址可由 [`addressof()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.addressof) 辅助函数返回。 还有一个实例变量被公开为 [`_objects`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CData._objects)；此变量包含其他在内存块包含指针的情况下需要保持存活的 Python 对象。
+​	这个非公有类是所有 ctypes 数据类型的共同基类。 另外，所有 ctypes 类型的实例都包含一个存放 C 兼容数据的内存块；该内存块的地址可由 [`addressof()`]({{< ref "/library/allos/ctypes#ctypes.addressof" >}}) 辅助函数返回。 还有一个实例变量被公开为 [`_objects`]({{< ref "/library/allos/ctypes#ctypes._CData._objects" >}})；此变量包含其他在内存块包含指针的情况下需要保持存活的 Python 对象。
 
-​	ctypes 数据类型的通用方法，它们都是类方法（严谨地说，它们是 [metaclass](https://docs.python.org/zh-cn/3.13/glossary.html#term-metaclass) 的方法）:
+​	ctypes 数据类型的通用方法，它们都是类方法（严谨地说，它们是 [metaclass]({{< ref "/glossary/idx#term-metaclass" >}}) 的方法）:
 
 ## **from_buffer**(*source*[, *offset*])
 
-​	此方法返回一个共享 *source* 对象缓冲区的 ctypes 实例。 *source* 对象必须支持可写缓冲区接口。 可选的 *offset* 形参指定以字节表示的源缓冲区内偏移量；默认值为零。 如果源缓冲区不够大则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	此方法返回一个共享 *source* 对象缓冲区的 ctypes 实例。 *source* 对象必须支持可写缓冲区接口。 可选的 *offset* 形参指定以字节表示的源缓冲区内偏移量；默认值为零。 如果源缓冲区不够大则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
-​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `ctypes.cdata/buffer` 并附带参数 `pointer`, `size`, `offset`。
+​	引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `ctypes.cdata/buffer` 并附带参数 `pointer`, `size`, `offset`。
 
 ## **from_buffer_copy**(*source*[, *offset*])
 
-​	此方法创建一个 ctypes 实例，从 *source* 对象缓冲区拷贝缓冲区，该对象必须是可读的。 可选的 *offset* 形参指定以字节表示的源缓冲区内偏移量；默认值为零。 如果源缓冲区不够大则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	此方法创建一个 ctypes 实例，从 *source* 对象缓冲区拷贝缓冲区，该对象必须是可读的。 可选的 *offset* 形参指定以字节表示的源缓冲区内偏移量；默认值为零。 如果源缓冲区不够大则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
-​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `ctypes.cdata/buffer` 并附带参数 `pointer`, `size`, `offset`。
+​	引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `ctypes.cdata/buffer` 并附带参数 `pointer`, `size`, `offset`。
 
 ## **from_address**(*address*)
 
 ​	此方法会使用 *address* 所指定的内存返回一个 ctypes 类型的实例，该参数必须为一个整数。
 
-​	这个方法以及其他间接调用了它的方法会引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `ctypes.cdata`，附带参数 `address`。
+​	这个方法以及其他间接调用了它的方法会引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `ctypes.cdata`，附带参数 `address`。
 
 ## **from_param**(*obj*)
 
-​	This method adapts *obj* to a ctypes type. It is called with the actual object used in a foreign function call when the type is present in the foreign function's [`argtypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.argtypes) tuple; it must return an object that can be used as a function call parameter.
+​	This method adapts *obj* to a ctypes type. It is called with the actual object used in a foreign function call when the type is present in the foreign function's [`argtypes`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.argtypes" >}}) tuple; it must return an object that can be used as a function call parameter.
 
 ​	所有 ctypes 数据类型都带有这个类方法的默认实现，它通常会返回 *obj*，如果该对象是此类型的实例的话。 某些类型也能接受其他对象。
 
@@ -1833,7 +1829,7 @@ GetWindowRect(
 
 ## **_b_base_**
 
-​	有时 ctypes 数据实例并不拥有它们所包含的内存块，它们只是共享了某个基对象的部分内存块。 [`_b_base_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CData._b_base_) 只读成员是拥有内存块的根 ctypes 对象。
+​	有时 ctypes 数据实例并不拥有它们所包含的内存块，它们只是共享了某个基对象的部分内存块。 [`_b_base_`]({{< ref "/library/allos/ctypes#ctypes._CData._b_base_" >}}) 只读成员是拥有内存块的根 ctypes 对象。
 
 ## **_b_needsfree_**
 
@@ -1849,7 +1845,7 @@ GetWindowRect(
 
 ## *class* ctypes.**_SimpleCData**
 
-​	这个非公有类是所有基本 ctypes 数据类型的基类。 它在这里被提及是因为它包含基本 ctypes 数据类型共有的属性。 [`_SimpleCData`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._SimpleCData) 是 [`_CData`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CData) 的子类，因此继承了其方法和属性。 非指针及不包含指针的 ctypes 数据类型现在将可以被封存。
+​	这个非公有类是所有基本 ctypes 数据类型的基类。 它在这里被提及是因为它包含基本 ctypes 数据类型共有的属性。 [`_SimpleCData`]({{< ref "/library/allos/ctypes#ctypes._SimpleCData" >}}) 是 [`_CData`]({{< ref "/library/allos/ctypes#ctypes._CData" >}}) 的子类，因此继承了其方法和属性。 非指针及不包含指针的 ctypes 数据类型现在将可以被封存。
 
 ​	实例拥有一个属性:
 
@@ -1857,11 +1853,11 @@ GetWindowRect(
 
 ​	这个属性包含实例的实际值。 对于整数和指针类型，它是一个整数，对于字符类型，它是一个单字符字符串对象或字符串，对于字符指针类型，它是一个 Python 字节串对象或字符串。
 
-​	当从 ctypes 实例提取 `value` 属性时，通常每次会返回一个新的对象。 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 并 *没有* 实现原始对象返回，它总是会构造一个新的对象。 所有其他 ctypes 对象实例也同样如此。
+​	当从 ctypes 实例提取 `value` 属性时，通常每次会返回一个新的对象。 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 并 *没有* 实现原始对象返回，它总是会构造一个新的对象。 所有其他 ctypes 对象实例也同样如此。
 
-​	Fundamental data types, when returned as foreign function call results, or, for example, by retrieving structure field members or array items, are transparently converted to native Python types. In other words, if a foreign function has a [`restype`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes._CFuncPtr.restype) of [`c_char_p`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_char_p), you will always receive a Python bytes object, *not* a [`c_char_p`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_char_p) instance.
+​	Fundamental data types, when returned as foreign function call results, or, for example, by retrieving structure field members or array items, are transparently converted to native Python types. In other words, if a foreign function has a [`restype`]({{< ref "/library/allos/ctypes#ctypes._CFuncPtr.restype" >}}) of [`c_char_p`]({{< ref "/library/allos/ctypes#ctypes.c_char_p" >}}), you will always receive a Python bytes object, *not* a [`c_char_p`]({{< ref "/library/allos/ctypes#ctypes.c_char_p" >}}) instance.
 
-​	基本数据类型的子类 *不会* 继承这种行为。 因此，如果一个外部函数的 `restype` 是 [`c_void_p`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_void_p) 的子类，则你将从函数调用得到一个该子类的实例。 当然，你可以通过访问 `value` 属性来获取指针的值。
+​	基本数据类型的子类 *不会* 继承这种行为。 因此，如果一个外部函数的 `restype` 是 [`c_void_p`]({{< ref "/library/allos/ctypes#ctypes.c_void_p" >}}) 的子类，则你将从函数调用得到一个该子类的实例。 当然，你可以通过访问 `value` 属性来获取指针的值。
 
 ​	这些是基本 ctypes 数据类型:
 
@@ -1883,7 +1879,7 @@ GetWindowRect(
 
 ## *class* ctypes.**c_longdouble**
 
-​	代表 C long double 数据类型。 该构造器接受一个可选的浮点数初始值。 在 `sizeof(long double) == sizeof(double)` 的平台上它是 [`c_double`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_double) 的一个别名。
+​	代表 C long double 数据类型。 该构造器接受一个可选的浮点数初始值。 在 `sizeof(long double) == sizeof(double)` 的平台上它是 [`c_double`]({{< ref "/library/allos/ctypes#ctypes.c_double" >}}) 的一个别名。
 
 ## *class* ctypes.**c_float**
 
@@ -1891,23 +1887,23 @@ GetWindowRect(
 
 ## *class* ctypes.**c_int**
 
-​	代表 C signed int 数据类型。 该构造器接受一个可选的整数初始值；不会执行溢出检查。 在 `sizeof(int) == sizeof(long)` 的平台上它是 [`c_long`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_long) 的一个别名。
+​	代表 C signed int 数据类型。 该构造器接受一个可选的整数初始值；不会执行溢出检查。 在 `sizeof(int) == sizeof(long)` 的平台上它是 [`c_long`]({{< ref "/library/allos/ctypes#ctypes.c_long" >}}) 的一个别名。
 
 ## *class* ctypes.**c_int8**
 
-​	代表 C 8 位 signed int 数据类型。 通常是 [`c_byte`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_byte) 的一个别名。
+​	代表 C 8 位 signed int 数据类型。 通常是 [`c_byte`]({{< ref "/library/allos/ctypes#ctypes.c_byte" >}}) 的一个别名。
 
 ## *class* ctypes.**c_int16**
 
-​	代表 C 16 位 signed int 数据类型。 通常是 [`c_short`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_short) 的一个别名。
+​	代表 C 16 位 signed int 数据类型。 通常是 [`c_short`]({{< ref "/library/allos/ctypes#ctypes.c_short" >}}) 的一个别名。
 
 ## *class* ctypes.**c_int32**
 
-​	代表 C 32 位 signed int 数据类型。 通常是 [`c_int`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_int) 的一个别名。
+​	代表 C 32 位 signed int 数据类型。 通常是 [`c_int`]({{< ref "/library/allos/ctypes#ctypes.c_int" >}}) 的一个别名。
 
 ## *class* ctypes.**c_int64**
 
-​	代表 C 64 位 signed int 数据类型。 通常是 [`c_longlong`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_longlong) 的一个别名。
+​	代表 C 64 位 signed int 数据类型。 通常是 [`c_longlong`]({{< ref "/library/allos/ctypes#ctypes.c_longlong" >}}) 的一个别名。
 
 ## *class* ctypes.**c_long**
 
@@ -1945,23 +1941,23 @@ GetWindowRect(
 
 ## *class* ctypes.**c_uint**
 
-​	代表 C unsigned int 数据类型。 该构造器接受一个可选的整数初始值；不会执行溢出检查。 在 `sizeof(int) == sizeof(long)` 的平台上它是 [`c_ulong`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_ulong) 的一个别名。
+​	代表 C unsigned int 数据类型。 该构造器接受一个可选的整数初始值；不会执行溢出检查。 在 `sizeof(int) == sizeof(long)` 的平台上它是 [`c_ulong`]({{< ref "/library/allos/ctypes#ctypes.c_ulong" >}}) 的一个别名。
 
 ## *class* ctypes.**c_uint8**
 
-​	代表 C 8 位 unsigned int 类型。 通常是 [`c_ubyte`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_ubyte) 的一个别名。.
+​	代表 C 8 位 unsigned int 类型。 通常是 [`c_ubyte`]({{< ref "/library/allos/ctypes#ctypes.c_ubyte" >}}) 的一个别名。.
 
 ## *class* ctypes.**c_uint16**
 
-​	代表 C 16 位 unsigned int 数据类型。 通常是 [`c_ushort`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_ushort) 的一个别名。.
+​	代表 C 16 位 unsigned int 数据类型。 通常是 [`c_ushort`]({{< ref "/library/allos/ctypes#ctypes.c_ushort" >}}) 的一个别名。.
 
 ## *class* ctypes.**c_uint32**
 
-​	代表 C 32 位 unsigned int 数据类型。 通常是 [`c_uint`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_uint) 的一个别名。
+​	代表 C 32 位 unsigned int 数据类型。 通常是 [`c_uint`]({{< ref "/library/allos/ctypes#ctypes.c_uint" >}}) 的一个别名。
 
 ## *class* ctypes.**c_uint64**
 
-​	代表 C 64 位 unsigned int 数据类型。 通常是 [`c_ulonglong`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_ulonglong) 的一个别名。
+​	代表 C 64 位 unsigned int 数据类型。 通常是 [`c_ulonglong`]({{< ref "/library/allos/ctypes#ctypes.c_ulonglong" >}}) 的一个别名。
 
 ## *class* ctypes.**c_ulong**
 
@@ -2037,17 +2033,17 @@ GetWindowRect(
 
 *本机* 字节序的结构体所对应的抽象基类。
 
-​	实际的结构体和联合类型必须通过子类化这些类型之一来创建，并且至少要定义一个 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_) 类变量。 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 将创建 [descriptor](https://docs.python.org/zh-cn/3.13/glossary.html#term-descriptor)，它允许通过直接属性访问来读取和写入字段。 这些是
+​	实际的结构体和联合类型必须通过子类化这些类型之一来创建，并且至少要定义一个 [`_fields_`]({{< ref "/library/allos/ctypes#ctypes.Structure._fields_" >}}) 类变量。 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 将创建 [descriptor]({{< ref "/glossary/idx#term-descriptor" >}})，它允许通过直接属性访问来读取和写入字段。 这些是
 
 ## **_fields_**
 
 ​	一个定义结构体字段的序列。 其中的条目必须为 2 元组或 3 元组。 元组的第一项是字段名称，第二项指明字段类型；它可以是任何 ctypes 数据类型。
 
-​	对于整数类型字段例如 [`c_int`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.c_int)，可以给定第三个可选项。 它必须是一个定义字段比特位宽度的小正整数。
+​	对于整数类型字段例如 [`c_int`]({{< ref "/library/allos/ctypes#ctypes.c_int" >}})，可以给定第三个可选项。 它必须是一个定义字段比特位宽度的小正整数。
 
 ​	字段名称在一个结构体或联合中必须唯一。 不会检查这个唯一性，但当名称出现重复时将只有一个字段可被访问。
 
-​	可以在定义 Structure 子类的类语句 *之后* 再定义 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_) 类变量，这将允许创建直接或间接引用其自身的数据类型:
+​	可以在定义 Structure 子类的类语句 *之后* 再定义 [`_fields_`]({{< ref "/library/allos/ctypes#ctypes.Structure._fields_" >}}) 类变量，这将允许创建直接或间接引用其自身的数据类型:
 
 ```
 class List(Structure):
@@ -2057,13 +2053,13 @@ List._fields_ = [("pnext", POINTER(List)),
                 ]
 ```
 
-​	但是，[`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_) 类变量必须在类型第一次被使用（创建实例，调用 [`sizeof()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.sizeof) 等等）之前进行定义。 在此之后对 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_) 类变量赋值将会引发 AttributeError。
+​	但是，[`_fields_`]({{< ref "/library/allos/ctypes#ctypes.Structure._fields_" >}}) 类变量必须在类型第一次被使用（创建实例，调用 [`sizeof()`]({{< ref "/library/allos/ctypes#ctypes.sizeof" >}}) 等等）之前进行定义。 在此之后对 [`_fields_`]({{< ref "/library/allos/ctypes#ctypes.Structure._fields_" >}}) 类变量赋值将会引发 AttributeError。
 
-​	可以定义结构体类型的子类，它们会继承基类的字段再加上在子类中定义的任何 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_)。
+​	可以定义结构体类型的子类，它们会继承基类的字段再加上在子类中定义的任何 [`_fields_`]({{< ref "/library/allos/ctypes#ctypes.Structure._fields_" >}})。
 
 ## **_pack_**
 
-​	一个可选的小整数，它允许覆盖实例中结构体字段的对齐方式。 当 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_) 被赋值时必须已经定义了 [`_pack_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._pack_)，否则它将没有效果。 将该属性设为 0 的效果与不设置它一样。
+​	一个可选的小整数，它允许覆盖实例中结构体字段的对齐方式。 当 [`_fields_`]({{< ref "/library/allos/ctypes#ctypes.Structure._fields_" >}}) 被赋值时必须已经定义了 [`_pack_`]({{< ref "/library/allos/ctypes#ctypes.Structure._pack_" >}})，否则它将没有效果。 将该属性设为 0 的效果与不设置它一样。
 
 ## **_align_**
 
@@ -2074,9 +2070,9 @@ List._fields_ = [("pnext", POINTER(List)),
 
 ## **_anonymous_**
 
-​	一个可选的序列，它会列出未命名（匿名）字段的名称。 当 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_) 被赋值时必须已经定义了 [`_anonymous_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._anonymous_)，否则它将没有效果。
+​	一个可选的序列，它会列出未命名（匿名）字段的名称。 当 [`_fields_`]({{< ref "/library/allos/ctypes#ctypes.Structure._fields_" >}}) 被赋值时必须已经定义了 [`_anonymous_`]({{< ref "/library/allos/ctypes#ctypes.Structure._anonymous_" >}})，否则它将没有效果。
 
-​	在此变量中列出的字段必须为结构体或联合类型字段。 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 将在结构体类型中创建描述器以允许直接访问嵌套字段，而无需创建对应的结构体或联合字段。
+​	在此变量中列出的字段必须为结构体或联合类型字段。 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 将在结构体类型中创建描述器以允许直接访问嵌套字段，而无需创建对应的结构体或联合字段。
 
 ​	以下是一个示例类型（Windows）:
 
@@ -2101,9 +2097,9 @@ td.lptdesc = POINTER(some_type)
 td.u.lptdesc = POINTER(some_type)
 ```
 
-​	可以定义结构体的子类，它们会继承基类的字段。 如果子类定义具有单独的 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_) 变量，在其中指定的字段会被添加到基类的字段中。
+​	可以定义结构体的子类，它们会继承基类的字段。 如果子类定义具有单独的 [`_fields_`]({{< ref "/library/allos/ctypes#ctypes.Structure._fields_" >}}) 变量，在其中指定的字段会被添加到基类的字段中。
 
-​	结构体和联合的构造器均可接受位置和关键字参数。 位置参数用于按照 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_) 中的出现顺序来初始化成员字段。 构造器中的关键字参数会被解读为属性赋值，因此它们将以相应的名称来初始化 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_)，或为不存在于 [`_fields_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Structure._fields_) 中的名称创建新的属性。
+​	结构体和联合的构造器均可接受位置和关键字参数。 位置参数用于按照 [`_fields_`]({{< ref "/library/allos/ctypes#ctypes.Structure._fields_" >}}) 中的出现顺序来初始化成员字段。 构造器中的关键字参数会被解读为属性赋值，因此它们将以相应的名称来初始化 [`_fields_`]({{< ref "/library/allos/ctypes#ctypes.Structure._fields_" >}})，或为不存在于 [`_fields_`]({{< ref "/library/allos/ctypes#ctypes.Structure._fields_" >}}) 中的名称创建新的属性。
 
 
 
@@ -2113,11 +2109,11 @@ td.u.lptdesc = POINTER(some_type)
 
 ​	数组的抽象基类。
 
-​	创建实体数组类型的推荐方式是通过将任意 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 数据类型与一个非负整数相乘。 作为替代方式，你也可以子类化这个类型并定义 [`_length_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Array._length_) 和 [`_type_`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Array._type_) 类变量。 数组元素可使用标准的抽取和切片操作来进行读写；对于切片读取，结果对象本身 *不是* 一个 [`Array`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.Array)。
+​	创建实体数组类型的推荐方式是通过将任意 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 数据类型与一个非负整数相乘。 作为替代方式，你也可以子类化这个类型并定义 [`_length_`]({{< ref "/library/allos/ctypes#ctypes.Array._length_" >}}) 和 [`_type_`]({{< ref "/library/allos/ctypes#ctypes.Array._type_" >}}) 类变量。 数组元素可使用标准的抽取和切片操作来进行读写；对于切片读取，结果对象本身 *不是* 一个 [`Array`]({{< ref "/library/allos/ctypes#ctypes.Array" >}})。
 
 ## **_length_**
 
-​	一个指明数组中元素数量的正整数。 超出范围的抽取会导致 [`IndexError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#IndexError)。 该值将由 [`len()`](https://docs.python.org/zh-cn/3.13/library/functions.html#len) 返回。
+​	一个指明数组中元素数量的正整数。 超出范围的抽取会导致 [`IndexError`]({{< ref "/library/exceptions#IndexError" >}})。 该值将由 [`len()`]({{< ref "/library/functions#len" >}}) 返回。
 
 ## **_type_**
 
@@ -2127,17 +2123,17 @@ td.u.lptdesc = POINTER(some_type)
 
 ## ctypes.**ARRAY**(*type*, *length*)
 
-​	创建一个数组。 等价于 `type * length`，其中 *type* 是一个 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 数据类型而 *length* 是一个整数。
+​	创建一个数组。 等价于 `type * length`，其中 *type* 是一个 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 数据类型而 *length* 是一个整数。
 
-​	该函数已被 [soft deprecated](https://docs.python.org/zh-cn/3.13/glossary.html#term-soft-deprecated) 而应改用乘法。 尚无移除它的计划。
+​	该函数已被 [soft deprecated]({{< ref "/glossary/idx#term-soft-deprecated" >}}) 而应改用乘法。 尚无移除它的计划。
 
 ## *class* ctypes.**_Pointer**
 
 ​	私有对象，指针的抽象基类。
 
-​	实际的指针类型是通过调用 [`POINTER()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.POINTER) 并附带其将指向的类型来创建的；这会由 [`pointer()`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#ctypes.pointer) 自动完成。
+​	实际的指针类型是通过调用 [`POINTER()`]({{< ref "/library/allos/ctypes#ctypes.POINTER" >}}) 并附带其将指向的类型来创建的；这会由 [`pointer()`]({{< ref "/library/allos/ctypes#ctypes.pointer" >}}) 自动完成。
 
-​	如果一个指针指向的是数组，则其元素可使用标准的抽取和切片方式来读写。 指针对象没有长度，因此 [`len()`](https://docs.python.org/zh-cn/3.13/library/functions.html#len) 将引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。 抽取负值将会从指针 *之前* 的内存中读取（与 C 一样），并且超出范围的抽取将可能因非法访问而导致崩溃（视你的运气而定）。
+​	如果一个指针指向的是数组，则其元素可使用标准的抽取和切片方式来读写。 指针对象没有长度，因此 [`len()`]({{< ref "/library/functions#len" >}}) 将引发 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}})。 抽取负值将会从指针 *之前* 的内存中读取（与 C 一样），并且超出范围的抽取将可能因非法访问而导致崩溃（视你的运气而定）。
 
 ## **_type_**
 

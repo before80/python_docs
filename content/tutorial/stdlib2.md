@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/tutorial/stdlib2.html](https://docs.python.org/zh-cn/3.13/tutorial/stdlib2.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/tutorial/stdlib2.html](https://docs.python.org/zh-cn/3.13/tutorial/stdlib2.html)
 >
 > 收录该文档的时间：`2024-11-14T22:01:54+08:00`
 
@@ -20,7 +20,7 @@ draft = false
 
 ## 11.1. 格式化输出
 
-[`reprlib`](https://docs.python.org/zh-cn/3.13/library/reprlib.html#module-reprlib) 模块提供了一个定制化版本的 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr) 函数，用于缩略显示大型或深层嵌套的容器对象:
+​	[`reprlib`]({{< ref "/library/datatypes/reprlib#module-reprlib" >}}) 模块提供了一个定制化版本的 [`repr()`]({{< ref "/library/functions#repr" >}}) 函数，用于缩略显示大型或深层嵌套的容器对象:
 
 
 
@@ -30,7 +30,7 @@ draft = false
 "{'a', 'c', 'd', 'e', 'f', 'g', ...}"
 ```
 
-[`pprint`](https://docs.python.org/zh-cn/3.13/library/pprint.html#module-pprint) 模块提供了更加复杂的打印控制，其输出的内置对象和用户自定义对象能够被解释器直接读取。当输出结果过长而需要折行时，“美化输出机制”会添加换行符和缩进，以更清楚地展示数据结构:
+​	[`pprint`]({{< ref "/library/datatypes/pprint#module-pprint" >}}) 模块提供了更加复杂的打印控制，其输出的内置对象和用户自定义对象能够被解释器直接读取。当输出结果过长而需要折行时，“美化输出机制”会添加换行符和缩进，以更清楚地展示数据结构:
 
 
 
@@ -47,7 +47,7 @@ draft = false
    'blue']]]
 ```
 
-[`textwrap`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#module-textwrap) 模块能够格式化文本段落，以适应给定的屏幕宽度:
+​	[`textwrap`]({{< ref "/library/text/textwrap#module-textwrap" >}}) 模块能够格式化文本段落，以适应给定的屏幕宽度:
 
 
 
@@ -64,7 +64,7 @@ instead of one big string with newlines
 to separate the wrapped lines.
 ```
 
-[`locale`](https://docs.python.org/zh-cn/3.13/library/locale.html#module-locale) 模块处理与特定地域文化相关的数据格式。locale 模块的 format 函数包含一个 grouping 属性，可直接将数字格式化为带有组分隔符的样式:
+​	[`locale`]({{< ref "/library/i18n/locale#module-locale" >}}) 模块处理与特定地域文化相关的数据格式。locale 模块的 format 函数包含一个 grouping 属性，可直接将数字格式化为带有组分隔符的样式:
 
 
 
@@ -85,7 +85,7 @@ to separate the wrapped lines.
 
 ## 11.2. 模板
 
-[`string`](https://docs.python.org/zh-cn/3.13/library/string.html#module-string) 模块包含一个通用的 [`Template`](https://docs.python.org/zh-cn/3.13/library/string.html#string.Template) 类，具有适用于最终用户的简化语法。它允许用户在不更改应用逻辑的情况下定制自己的应用。
+​	[`string`]({{< ref "/library/text/string#module-string" >}}) 模块包含一个通用的 [`Template`]({{< ref "/library/text/string#string.Template" >}}) 类，具有适用于最终用户的简化语法。它允许用户在不更改应用逻辑的情况下定制自己的应用。
 
 ​	上述格式化操作是通过占位符实现的，占位符由 `$` 加上合法的 Python 标识符（只能包含字母、数字和下划线）构成。一旦使用花括号将占位符括起来，就可以在后面直接跟上更多的字母和数字而无需空格分割。`$$` 将被转义成单个字符 `$`:
 
@@ -98,7 +98,7 @@ to separate the wrapped lines.
 'Nottinghamfolk send $10 to the ditch fund.'
 ```
 
-​	如果在字典或关键字参数中未提供某个占位符的值，那么 [`substitute()`](https://docs.python.org/zh-cn/3.13/library/string.html#string.Template.substitute) 方法将抛出 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError)。对于邮件合并类型的应用，用户提供的数据有可能是不完整的，此时使用 [`safe_substitute()`](https://docs.python.org/zh-cn/3.13/library/string.html#string.Template.safe_substitute) 方法更加合适 —— 如果数据缺失，它会直接将占位符原样保留。
+​	如果在字典或关键字参数中未提供某个占位符的值，那么 [`substitute()`]({{< ref "/library/text/string#string.Template.substitute" >}}) 方法将抛出 [`KeyError`]({{< ref "/library/exceptions#KeyError" >}})。对于邮件合并类型的应用，用户提供的数据有可能是不完整的，此时使用 [`safe_substitute()`]({{< ref "/library/text/string#string.Template.safe_substitute" >}}) 方法更加合适 —— 如果数据缺失，它会直接将占位符原样保留。
 
 
 
@@ -144,7 +144,7 @@ img_1077.jpg --> Ashley_2.jpg
 
 ## 11.3. 使用二进制数据记录格式
 
-[`struct`](https://docs.python.org/zh-cn/3.13/library/struct.html#module-struct) 模块提供了 [`pack()`](https://docs.python.org/zh-cn/3.13/library/struct.html#struct.pack) 和 [`unpack()`](https://docs.python.org/zh-cn/3.13/library/struct.html#struct.unpack) 函数，用于处理不定长度的二进制记录格式。下面的例子展示了在不使用 [`zipfile`](https://docs.python.org/zh-cn/3.13/library/zipfile.html#module-zipfile) 模块的情况下，如何循环遍历一个 ZIP 文件的所有头信息。Pack 代码 `"H"` 和 `"I"` 分别代表两字节和四字节无符号整数。`"<"` 代表它们是标准尺寸的小端字节序:
+​	[`struct`]({{< ref "/library/binary/struct#module-struct" >}}) 模块提供了 [`pack()`]({{< ref "/library/binary/struct#struct.pack" >}}) 和 [`unpack()`]({{< ref "/library/binary/struct#struct.unpack" >}}) 函数，用于处理不定长度的二进制记录格式。下面的例子展示了在不使用 [`zipfile`]({{< ref "/library/archiving/zipfile#module-zipfile" >}}) 模块的情况下，如何循环遍历一个 ZIP 文件的所有头信息。Pack 代码 `"H"` 和 `"I"` 分别代表两字节和四字节无符号整数。`"<"` 代表它们是标准尺寸的小端字节序:
 
 ```
 import struct
@@ -173,7 +173,7 @@ for i in range(3):                      # 显示前 3 个文件标头
 
 ​	线程是一种对于非顺序依赖的多个任务进行解耦的技术。多线程可以提高应用的响应效率，当接收用户输入的同时，保持其他任务在后台运行。一个有关的应用场景是，将 I/O 和计算运行在两个并行的线程中。
 
-​	以下代码展示了高阶的 [`threading`](https://docs.python.org/zh-cn/3.13/library/threading.html#module-threading) 模块如何在后台运行任务，且不影响主程序的继续运行:
+​	以下代码展示了高阶的 [`threading`]({{< ref "/library/concurrency/threading#module-threading" >}}) 模块如何在后台运行任务，且不影响主程序的继续运行:
 
 ```
 import threading, zipfile
@@ -200,13 +200,13 @@ print('Main program waited until background was done.')
 
 ​	多线程应用面临的主要挑战是，相互协调的多个线程之间需要共享数据或其他资源。为此，threading 模块提供了多个同步操作原语，包括线程锁、事件、条件变量和信号量。
 
-​	尽管这些工具非常强大，但微小的设计错误却可以导致一些难以复现的问题。因此，实现多任务协作的首选方法是将所有对资源的请求集中到一个线程中，然后使用 [`queue`](https://docs.python.org/zh-cn/3.13/library/queue.html#module-queue) 模块向该线程供应来自其他线程的请求。 应用程序使用 [`Queue`](https://docs.python.org/zh-cn/3.13/library/queue.html#queue.Queue) 对象进行线程间通信和协调，更易于设计，更易读，更可靠。
+​	尽管这些工具非常强大，但微小的设计错误却可以导致一些难以复现的问题。因此，实现多任务协作的首选方法是将所有对资源的请求集中到一个线程中，然后使用 [`queue`]({{< ref "/library/concurrency/queue#module-queue" >}}) 模块向该线程供应来自其他线程的请求。 应用程序使用 [`Queue`]({{< ref "/library/concurrency/queue#queue.Queue" >}}) 对象进行线程间通信和协调，更易于设计，更易读，更可靠。
 
 
 
 ## 11.5. 日志记录
 
-[`logging`](https://docs.python.org/zh-cn/3.13/library/logging.html#module-logging) 模块提供功能齐全且灵活的日志记录系统。在最简单的情况下，日志消息被发送到文件或 `sys.stderr`
+[`logging`]({{< ref "/library/allos/logging#module-logging" >}}) 模块提供功能齐全且灵活的日志记录系统。在最简单的情况下，日志消息被发送到文件或 `sys.stderr`
 
 ```
 import logging
@@ -225,7 +225,7 @@ ERROR:root:Error occurred
 CRITICAL:root:Critical error -- shutting down
 ```
 
-​	默认情况下，informational 和 debugging 消息被压制，输出会发送到标准错误流。其他输出选项包括将消息转发到电子邮件，数据报，套接字或 HTTP 服务器。新的过滤器可以根据消息优先级选择不同的路由方式：[`DEBUG`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.DEBUG)，[`INFO`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.INFO)，[`WARNING`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.WARNING)，[`ERROR`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.ERROR)，和 [`CRITICAL`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.CRITICAL)。
+​	默认情况下，informational 和 debugging 消息被压制，输出会发送到标准错误流。其他输出选项包括将消息转发到电子邮件，数据报，套接字或 HTTP 服务器。新的过滤器可以根据消息优先级选择不同的路由方式：[`DEBUG`]({{< ref "/library/allos/logging#logging.DEBUG" >}})，[`INFO`]({{< ref "/library/allos/logging#logging.INFO" >}})，[`WARNING`]({{< ref "/library/allos/logging#logging.WARNING" >}})，[`ERROR`]({{< ref "/library/allos/logging#logging.ERROR" >}})，和 [`CRITICAL`]({{< ref "/library/allos/logging#logging.CRITICAL" >}})。
 
 ​	日志系统可以直接从 Python 配置，也可以从用户配置文件加载，以便自定义日志记录而无需更改应用程序。
 
@@ -233,9 +233,9 @@ CRITICAL:root:Critical error -- shutting down
 
 ## 11.6. 弱引用
 
-​	Python 会自动进行内存管理（对大多数对象进行引用计数并使用 [garbage collection](https://docs.python.org/zh-cn/3.13/glossary.html#term-garbage-collection) 来清除循环引用）。 当某个对象的最后一个引用被移除后不久就会释放其所占用的内存。
+​	Python 会自动进行内存管理（对大多数对象进行引用计数并使用 [garbage collection]({{< ref "/glossary/idx#term-garbage-collection" >}}) 来清除循环引用）。 当某个对象的最后一个引用被移除后不久就会释放其所占用的内存。
 
-​	此方式对大多数应用来说都适用，但偶尔也必须在对象持续被其他对象所使用时跟踪它们。 不幸的是，跟踪它们将创建一个会令其永久化的引用。 [`weakref`](https://docs.python.org/zh-cn/3.13/library/weakref.html#module-weakref) 模块提供的工具可以不必创建引用就能跟踪对象。 当对象不再需要时，它将自动从一个弱引用表中被移除，并为弱引用对象触发一个回调。 典型应用包括对创建开销较大的对象进行缓存:
+​	此方式对大多数应用来说都适用，但偶尔也必须在对象持续被其他对象所使用时跟踪它们。 不幸的是，跟踪它们将创建一个会令其永久化的引用。 [`weakref`]({{< ref "/library/datatypes/weakref#module-weakref" >}}) 模块提供的工具可以不必创建引用就能跟踪对象。 当对象不再需要时，它将自动从一个弱引用表中被移除，并为弱引用对象触发一个回调。 典型应用包括对创建开销较大的对象进行缓存:
 
 
 
@@ -270,7 +270,7 @@ KeyError: 'primary'
 
 ​	许多对于数据结构的需求可以通过内置列表类型来满足。 但是，有时也会需要具有不同效费比的替代实现。
 
-[`array`](https://docs.python.org/zh-cn/3.13/library/array.html#module-array) 模块提供了一种 [`array`](https://docs.python.org/zh-cn/3.13/library/array.html#array.array) 对象，它类似于列表，但只能存储类型一致的数据且存储密度更高。 下面的例子显示了一个由存储为双字节无符号整数的数字 (类型码 `"H"`) 组成的元组，而不是常规 Python int 对象列表所采用的每个条目 16 字节:
+​	[`array`]({{< ref "/library/datatypes/array#module-array" >}}) 模块提供了一种 [`array`]({{< ref "/library/datatypes/array#array.array" >}}) 对象，它类似于列表，但只能存储类型一致的数据且存储密度更高。 下面的例子显示了一个由存储为双字节无符号整数的数字 (类型码 `"H"`) 组成的元组，而不是常规 Python int 对象列表所采用的每个条目 16 字节:
 
 
 
@@ -283,7 +283,7 @@ KeyError: 'primary'
 array('H', [10, 700])
 ```
 
-[`collections`](https://docs.python.org/zh-cn/3.13/library/collections.html#module-collections) 模块提供了一种 [`deque`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.deque) 对象，它类似于列表，但从左端添加和弹出的速度较快而在中间查找的速度较慢。 此种对象适用于实现队列和广度优先树搜索:
+​	[`collections`](https://docs.python.org/zh-cn/3.13/library/collections.html#module-collections) 模块提供了一种 [`deque`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.deque) 对象，它类似于列表，但从左端添加和弹出的速度较快而在中间查找的速度较慢。 此种对象适用于实现队列和广度优先树搜索:
 
 
 
@@ -302,7 +302,7 @@ def breadth_first_search(unsearched):
         unsearched.append(m)
 ```
 
-​	在替代的列表实现以外，标准库也提供了其他工具，例如 [`bisect`](https://docs.python.org/zh-cn/3.13/library/bisect.html#module-bisect) 模块具有用于操作有序列表的函数:
+​	在替代的列表实现以外，标准库也提供了其他工具，例如 [`bisect`]({{< ref "/library/datatypes/bisect#module-bisect" >}}) 模块具有用于操作有序列表的函数:
 
 
 
@@ -314,7 +314,7 @@ def breadth_first_search(unsearched):
 [(100, 'perl'), (200, 'tcl'), (300, 'ruby'), (400, 'lua'), (500, 'python')]
 ```
 
-[`heapq`](https://docs.python.org/zh-cn/3.13/library/heapq.html#module-heapq) 模块提供了基于常规列表来实现堆的函数。 最小值的条目总是保持在位置零。 这对于需要重复访问最小元素而不希望运行完整列表排序的应用来说非常有用:
+​	[`heapq`]({{< ref "/library/datatypes/heapq#module-heapq" >}}) 模块提供了基于常规列表来实现堆的函数。 最小值的条目总是保持在位置零。 这对于需要重复访问最小元素而不希望运行完整列表排序的应用来说非常有用:
 
 
 
@@ -331,7 +331,7 @@ def breadth_first_search(unsearched):
 
 ## 11.8. 十进制浮点运算
 
-[`decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#module-decimal) 模块提供了一种 [`Decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal) 数据类型用于十进制浮点运算。 相比内置的 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) 二进制浮点实现，该类特别适用于
+​	[`decimal`]({{< ref "/library/numeric/decimal#module-decimal" >}}) 模块提供了一种 [`Decimal`]({{< ref "/library/numeric/decimal#decimal.Decimal" >}}) 数据类型用于十进制浮点运算。 相比内置的 [`float`]({{< ref "/library/functions#float" >}}) 二进制浮点实现，该类特别适用于
 
 - 财务应用和其他需要精确十进制表示的用途，
 - 控制精度，
@@ -351,9 +351,9 @@ Decimal('0.74')
 0.73
 ```
 
-[`Decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal) 表示的结果会保留尾部的零，并根据具有两个有效位的被乘数自动推出四个有效位。 Decimal 可以模拟手工运算来避免当二进制浮点数无法精确表示十进制数时会导致的问题。
+​	[`Decimal`]({{< ref "/library/numeric/decimal#decimal.Decimal" >}}) 表示的结果会保留尾部的零，并根据具有两个有效位的被乘数自动推出四个有效位。 Decimal 可以模拟手工运算来避免当二进制浮点数无法精确表示十进制数时会导致的问题。
 
-​	精确表示特性使得 [`Decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal) 类能够执行对于二进制浮点数来说不适用的模运算和相等性检测:
+​	精确表示特性使得 [`Decimal`]({{< ref "/library/numeric/decimal#decimal.Decimal" >}}) 类能够执行对于二进制浮点数来说不适用的模运算和相等性检测:
 
 
 
@@ -369,7 +369,7 @@ True
 False
 ```
 
-[`decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#module-decimal) 模块提供了运算所需要的足够精度:
+​	[`decimal`]({{< ref "/library/numeric/decimal#module-decimal" >}}) 模块提供了运算所需要的足够精度:
 
 
 

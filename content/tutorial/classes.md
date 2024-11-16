@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/tutorial/classes.html](https://docs.python.org/zh-cn/3.13/tutorial/classes.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/tutorial/classes.html](https://docs.python.org/zh-cn/3.13/tutorial/classes.html)
 >
 > 收录该文档的时间：`2024-11-14T22:01:54+08:00`
 
@@ -18,7 +18,7 @@ draft = false
 
 ​	和其他编程语言相比，Python 的类只使用了很少的新语法和语义。Python 的类有点类似于 C++ 和 Modula-3 中类的结合体，而且支持面向对象编程（OOP）的所有标准特性：类的继承机制支持多个基类、派生的类能覆盖基类的方法、类的方法能调用基类中的同名方法。对象可包含任意数量和类型的数据。和模块一样，类也支持 Python 动态特性：在运行时创建，创建后还可以修改。
 
-​	如果用 C++ 术语来描述的话，类成员（包括数据成员）通常为 *public* （例外的情况见下文 [私有变量](https://docs.python.org/zh-cn/3.13/tutorial/classes.html#tut-private)），所有成员函数都为 *virtual* 。与 Modula-3 中一样，没有用于从对象的方法中引用本对象成员的简写形式：方法函数在声明时，有一个显式的第一个参数代表本对象，该参数由方法调用隐式提供。与在 Smalltalk 中一样，Python 的类也是对象，这为导入和重命名提供了语义支持。与 C++ 和 Modula-3 不同，Python 的内置类型可以用作基类，供用户扩展。此外，与 C++ 一样，具有特殊语法的内置运算符（算术运算符、下标等）都可以为类实例重新定义。
+​	如果用 C++ 术语来描述的话，类成员（包括数据成员）通常为 *public* （例外的情况见下文 [私有变量]({{< ref "/tutorial/classes#tut-private" >}})），所有成员函数都为 *virtual* 。与 Modula-3 中一样，没有用于从对象的方法中引用本对象成员的简写形式：方法函数在声明时，有一个显式的第一个参数代表本对象，该参数由方法调用隐式提供。与在 Smalltalk 中一样，Python 的类也是对象，这为导入和重命名提供了语义支持。与 C++ 和 Modula-3 不同，Python 的内置类型可以用作基类，供用户扩展。此外，与 C++ 一样，具有特殊语法的内置运算符（算术运算符、下标等）都可以为类实例重新定义。
 
 ​	由于缺乏关于类的公认术语，本章中偶尔会使用 Smalltalk 和 C++ 的术语。本章还会使用 Modula-3 的术语，Modula-3 的面向对象语义比 C++ 更接近 Python，但估计听说过这门语言的读者很少。
 
@@ -36,13 +36,13 @@ draft = false
 
 ​	接下来，我们先了解一些定义。
 
-*namespace* （命名空间）是从名称到对象的映射。现在，大多数命名空间都使用 Python 字典实现，但除非涉及到性能优化，我们一般不会关注这方面的事情，而且将来也可能会改变这种方式。命名空间的例子有：内置名称集合（包括 [`abs()`](https://docs.python.org/zh-cn/3.13/library/functions.html#abs) 函数以及内置异常的名称等）；一个模块的全局名称；一个函数调用中的局部名称。对象的属性集合也是命名空间的一种形式。关于命名空间的一个重要知识点是，不同命名空间中的名称之间绝对没有关系；例如，两个不同的模块都可以定义 `maximize` 函数，且不会造成混淆。用户使用函数时必须要在函数名前面加上模块名。
+*namespace* （命名空间）是从名称到对象的映射。现在，大多数命名空间都使用 Python 字典实现，但除非涉及到性能优化，我们一般不会关注这方面的事情，而且将来也可能会改变这种方式。命名空间的例子有：内置名称集合（包括 [`abs()`]({{< ref "/library/functions#abs" >}}) 函数以及内置异常的名称等）；一个模块的全局名称；一个函数调用中的局部名称。对象的属性集合也是命名空间的一种形式。关于命名空间的一个重要知识点是，不同命名空间中的名称之间绝对没有关系；例如，两个不同的模块都可以定义 `maximize` 函数，且不会造成混淆。用户使用函数时必须要在函数名前面加上模块名。
 
-​	点号之后的名称是 **属性**。例如，表达式 `z.real` 中，`real` 是对象 `z` 的属性。严格来说，对模块中名称的引用是属性引用：表达式 `modname.funcname` 中，`modname` 是模块对象，`funcname` 是模块的属性。模块属性和模块中定义的全局名称之间存在直接的映射：它们共享相同的命名空间！ [[1\]](https://docs.python.org/zh-cn/3.13/tutorial/classes.html#id2)
+​	点号之后的名称是 **属性**。例如，表达式 `z.real` 中，`real` 是对象 `z` 的属性。严格来说，对模块中名称的引用是属性引用：表达式 `modname.funcname` 中，`modname` 是模块对象，`funcname` 是模块的属性。模块属性和模块中定义的全局名称之间存在直接的映射：它们共享相同的命名空间！ [[1\]]({{< ref "/tutorial/classes#id2" >}})
 
-​	属性可以是只读的或者可写的。 在后一种情况下，可以对属性进行赋值。 模块属性是可写的：你可以写入 `modname.the_answer = 42` 。 也可以使用 [`del`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#del) 语句删除可写属性。 例如，`del modname.the_answer` 将从名为 `modname` 对象中移除属性 `the_answer`。
+​	属性可以是只读的或者可写的。 在后一种情况下，可以对属性进行赋值。 模块属性是可写的：你可以写入 `modname.the_answer = 42` 。 也可以使用 [`del`]({{< ref "/reference/simple_stmts#del" >}}) 语句删除可写属性。 例如，`del modname.the_answer` 将从名为 `modname` 对象中移除属性 `the_answer`。
 
-​	命名空间是在不同时刻创建的，且拥有不同的生命周期。内置名称的命名空间是在 Python 解释器启动时创建的，永远不会被删除。模块的全局命名空间在读取模块定义时创建；通常，模块的命名空间也会持续到解释器退出。从脚本文件读取或交互式读取的，由解释器顶层调用执行的语句是 [`__main__`](https://docs.python.org/zh-cn/3.13/library/__main__.html#module-__main__) 模块调用的一部分，也拥有自己的全局命名空间。内置名称实际上也在模块里，即 [`builtins`](https://docs.python.org/zh-cn/3.13/library/builtins.html#module-builtins) 。
+​	命名空间是在不同时刻创建的，且拥有不同的生命周期。内置名称的命名空间是在 Python 解释器启动时创建的，永远不会被删除。模块的全局命名空间在读取模块定义时创建；通常，模块的命名空间也会持续到解释器退出。从脚本文件读取或交互式读取的，由解释器顶层调用执行的语句是 [`__main__`]({{< ref "/library/python/__main__#module-__main__" >}}) 模块调用的一部分，也拥有自己的全局命名空间。内置名称实际上也在模块里，即 [`builtins`]({{< ref "/library/python/builtins#module-builtins" >}}) 。
 
 ​	函数的局部命名空间在函数被调用时被创建，并在函数返回或抛出未在函数内被处理的异常时，被删除。（实际上，用“遗忘”来描述实际发生的情况会更好一些。）当然，每次递归调用都有自己的局部命名空间。
 
@@ -55,21 +55,21 @@ draft = false
 - 倒数第二层作用域，包含当前模块的全局名称
 - 最外层（最后搜索）的作用域，是内置名称的命名空间
 
-​	如果一个名称被声明为全局，则所有引用和赋值都将直接指向“倒数第二层作用域”，即包含模块的全局名称的作用域。 要重新绑定在最内层作用域以外找到的变量，可以使用 [`nonlocal`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#nonlocal) 语句；如果未使用 nonlocal 声明，这些变量将为只读（尝试写入这样的变量将在最内层作用域中创建一个 *新的* 局部变量，而使得同名的外部变量保持不变）。
+​	如果一个名称被声明为全局，则所有引用和赋值都将直接指向“倒数第二层作用域”，即包含模块的全局名称的作用域。 要重新绑定在最内层作用域以外找到的变量，可以使用 [`nonlocal`]({{< ref "/reference/simple_stmts#nonlocal" >}}) 语句；如果未使用 nonlocal 声明，这些变量将为只读（尝试写入这样的变量将在最内层作用域中创建一个 *新的* 局部变量，而使得同名的外部变量保持不变）。
 
 ​	通常，当前局部作用域将（按字面文本）引用当前函数的局部名称。在函数之外，局部作用域引用与全局作用域一致的命名空间：模块的命名空间。 类定义在局部命名空间内再放置另一个命名空间。
 
 ​	划重点，作用域是按字面文本确定的：模块内定义的函数的全局作用域就是该模块的命名空间，无论该函数从什么地方或以什么别名被调用。另一方面，实际的名称搜索是在运行时动态完成的。但是，Python 正在朝着“编译时静态名称解析”的方向发展，因此不要过于依赖动态名称解析！（局部变量已经是被静态确定了。）
 
-​	Python 有一个特殊规定。如果不存在生效的 [`global`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#global) 或 [`nonlocal`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#nonlocal) 语句，则对名称的赋值总是会进入最内层作用域。赋值不会复制数据，只是将名称绑定到对象。删除也是如此：语句 `del x` 从局部作用域引用的命名空间中移除对 `x` 的绑定。所有引入新名称的操作都是使用局部作用域：尤其是 [`import`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#import) 语句和函数定义会在局部作用域中绑定模块或函数名称。
+​	Python 有一个特殊规定。如果不存在生效的 [`global`]({{< ref "/reference/simple_stmts#global" >}}) 或 [`nonlocal`]({{< ref "/reference/simple_stmts#nonlocal" >}}) 语句，则对名称的赋值总是会进入最内层作用域。赋值不会复制数据，只是将名称绑定到对象。删除也是如此：语句 `del x` 从局部作用域引用的命名空间中移除对 `x` 的绑定。所有引入新名称的操作都是使用局部作用域：尤其是 [`import`]({{< ref "/reference/simple_stmts#import" >}}) 语句和函数定义会在局部作用域中绑定模块或函数名称。
 
-[`global`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#global) 语句用于表明特定变量在全局作用域里，并应在全局作用域中重新绑定；[`nonlocal`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#nonlocal) 语句表明特定变量在外层作用域中，并应在外层作用域中重新绑定。
+​	[`global`]({{< ref "/reference/simple_stmts#global" >}}) 语句用于表明特定变量在全局作用域里，并应在全局作用域中重新绑定；[`nonlocal`]({{< ref "/reference/simple_stmts#nonlocal" >}}) 语句表明特定变量在外层作用域中，并应在外层作用域中重新绑定。
 
 
 
 ### 9.2.1. 作用域和命名空间示例
 
-​	下例演示了如何引用不同作用域和名称空间，以及 [`global`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#global) 和 [`nonlocal`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#nonlocal) 对变量绑定的影响：
+​	下例演示了如何引用不同作用域和名称空间，以及 [`global`]({{< ref "/reference/simple_stmts#global" >}}) 和 [`nonlocal`]({{< ref "/reference/simple_stmts#nonlocal" >}}) 对变量绑定的影响：
 
 ```
 def scope_test():
@@ -105,9 +105,9 @@ After global assignment: nonlocal spam
 In global scope: global spam
 ```
 
-​	注意，**局部** 赋值（这是默认状态）不会改变 *scope_test* 对 *spam* 的绑定。 [`nonlocal`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#nonlocal) 赋值会改变 *scope_test* 对 *spam* 的绑定，而 [`global`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#global) 赋值会改变模块层级的绑定。
+​	注意，**局部** 赋值（这是默认状态）不会改变 *scope_test* 对 *spam* 的绑定。 [`nonlocal`]({{< ref "/reference/simple_stmts#nonlocal" >}}) 赋值会改变 *scope_test* 对 *spam* 的绑定，而 [`global`]({{< ref "/reference/simple_stmts#global" >}}) 赋值会改变模块层级的绑定。
 
-​	而且，[`global`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#global) 赋值前没有 *spam* 的绑定。
+​	而且，[`global`]({{< ref "/reference/simple_stmts#global" >}}) 赋值前没有 *spam* 的绑定。
 
 
 
@@ -130,7 +130,7 @@ class ClassName:
     <语句-N>
 ```
 
-​	与函数定义 ([`def`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#def) 语句) 一样，类定义必须先执行才能生效。把类定义放在 [`if`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#if) 语句的分支里或函数内部试试。
+​	与函数定义 ([`def`]({{< ref "/reference/compound_stmts#def" >}}) 语句) 一样，类定义必须先执行才能生效。把类定义放在 [`if`]({{< ref "/reference/compound_stmts#if" >}}) 语句的分支里或函数内部试试。
 
 ​	在实践中，类定义内的语句通常都是函数定义，但也可以是其他语句。这部分内容稍后再讨论。类里的函数定义一般是特殊的参数列表，这是由方法调用的约定规范所指明的 --- 同样，稍后再解释。
 
@@ -155,7 +155,7 @@ class MyClass:
         return 'hello world'
 ```
 
-​	那么 `MyClass.i` 和 `MyClass.f` 就是有效的属性引用，将分别返回一个整数和一个函数对象。 类属性也可以被赋值，因此可以通过赋值来改变 `MyClass.i` 的值。 [`__doc__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#type.__doc__) 也是一个有效的属性，将返回所属类的文档字符串: `"A simple example class"`。
+​	那么 `MyClass.i` 和 `MyClass.f` 就是有效的属性引用，将分别返回一个整数和一个函数对象。 类属性也可以被赋值，因此可以通过赋值来改变 `MyClass.i` 的值。 [`__doc__`]({{< ref "/reference/datamodel#type.__doc__" >}}) 也是一个有效的属性，将返回所属类的文档字符串: `"A simple example class"`。
 
 ​	类的 *实例化* 使用函数表示法。 可以把类对象视为是返回该类的一个新实例的不带参数的函数。 举例来说（假设使用上述的类）:
 
@@ -165,20 +165,20 @@ x = MyClass()
 
 ​	创建类的新 *实例* 并将此对象分配给局部变量 `x`。
 
-​	实例化操作 (“调用”类对象) 会创建一个空对象。 许多类都希望创建的对象实例是根据特定初始状态定制的。 因此一个类可能会定义名为 [`__init__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__init__) 的特殊方法，就像这样:
+​	实例化操作 (“调用”类对象) 会创建一个空对象。 许多类都希望创建的对象实例是根据特定初始状态定制的。 因此一个类可能会定义名为 [`__init__()`]({{< ref "/reference/datamodel#object.__init__" >}}) 的特殊方法，就像这样:
 
 ```
 def __init__(self):
     self.data = []
 ```
 
-​	当一个类定义了 [`__init__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__init__) 方法时，类的实例化会自动为新创建的类实例发起调用 `__init__()`。 因此在这个例子中，可以通过以下语句获得一个已初始化的新实例:
+​	当一个类定义了 [`__init__()`]({{< ref "/reference/datamodel#object.__init__" >}}) 方法时，类的实例化会自动为新创建的类实例发起调用 `__init__()`。 因此在这个例子中，可以通过以下语句获得一个已初始化的新实例:
 
 ```
 x = MyClass()
 ```
 
-​	当然，[`__init__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__init__) 方法还有一些参数用于实现更高的灵活性。 在这种情况下，提供给类实例化运算符的参数将被传递给 `__init__()`。 例如，
+​	当然，[`__init__()`]({{< ref "/reference/datamodel#object.__init__" >}}) 方法还有一些参数用于实现更高的灵活性。 在这种情况下，提供给类实例化运算符的参数将被传递给 `__init__()`。 例如，
 
 
 
@@ -265,7 +265,7 @@ class Dog:
 'Buddy'
 ```
 
-​	正如 [名称和对象](https://docs.python.org/zh-cn/3.13/tutorial/classes.html#tut-object) 中已讨论过的，共享数据可能在涉及 [mutable](https://docs.python.org/zh-cn/3.13/glossary.html#term-mutable) 对象例如列表和字典的时候导致令人惊讶的结果。 例如以下代码中的 *tricks* 列表不应该被用作类变量，因为所有的 *Dog* 实例将只共享一个单独的列表:
+​	正如 [名称和对象]({{< ref "/tutorial/classes#tut-object" >}}) 中已讨论过的，共享数据可能在涉及 [mutable]({{< ref "/glossary/idx#term-mutable" >}}) 对象例如列表和字典的时候导致令人惊讶的结果。 例如以下代码中的 *tricks* 列表不应该被用作类变量，因为所有的 *Dog* 实例将只共享一个单独的列表:
 
 ```
 class Dog:
@@ -406,8 +406,8 @@ class DerivedClassName(modname.BaseClassName):
 
 ​	Python有两个内置函数可被用于继承机制：
 
-- 使用 [`isinstance()`](https://docs.python.org/zh-cn/3.13/library/functions.html#isinstance) 来检查一个实例的类型: `isinstance(obj, int)` 仅会在 `obj.__class__` 为 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 或某个派生自 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 的类时为 `True`。
-- 使用 [`issubclass()`](https://docs.python.org/zh-cn/3.13/library/functions.html#issubclass) 来检查类的继承关系: `issubclass(bool, int)` 为 `True`，因为 [`bool`](https://docs.python.org/zh-cn/3.13/library/functions.html#bool) 是 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 的子类。 但是，`issubclass(float, int)` 为 `False`，因为 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) 不是 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 的子类。
+- 使用 [`isinstance()`]({{< ref "/library/functions#isinstance" >}}) 来检查一个实例的类型: `isinstance(obj, int)` 仅会在 `obj.__class__` 为 [`int`]({{< ref "/library/functions#int" >}}) 或某个派生自 [`int`]({{< ref "/library/functions#int" >}}) 的类时为 `True`。
+- 使用 [`issubclass()`]({{< ref "/library/functions#issubclass" >}}) 来检查类的继承关系: `issubclass(bool, int)` 为 `True`，因为 [`bool`]({{< ref "/library/functions#bool" >}}) 是 [`int`]({{< ref "/library/functions#int" >}}) 的子类。 但是，`issubclass(float, int)` 为 `False`，因为 [`float`]({{< ref "/library/functions#float" >}}) 不是 [`int`]({{< ref "/library/functions#int" >}}) 的子类。
 
 
 
@@ -426,9 +426,9 @@ class DerivedClassName(Base1, Base2, Base3):
 
 ​	对于多数目的来说，在最简单的情况下，你可以认为搜索从父类所继承属性的操作是深度优先、从左到右的，当层次结构存在重叠时不会在同一个类中搜索两次。 因此，如果某个属性在 `DerivedClassName` 中找不到，就会在 `Base1` 中搜索它，然后（递归地）在 `Base1` 的基类中搜索，如果在那里也找不到，就将在 `Base2` 中搜索，依此类推。
 
-​	真实情况比这个更复杂一些；方法解析顺序会动态改变以支持对 [`super()`](https://docs.python.org/zh-cn/3.13/library/functions.html#super) 的协同调用。 这种方式在某些其他多重继承型语言中被称为后续方法调用，它比单继承型语言中的 super 调用更强大。
+​	真实情况比这个更复杂一些；方法解析顺序会动态改变以支持对 [`super()`]({{< ref "/library/functions#super" >}}) 的协同调用。 这种方式在某些其他多重继承型语言中被称为后续方法调用，它比单继承型语言中的 super 调用更强大。
 
-​	动态调整顺序是有必要的，因为所有多重继承的情况都会显示出一个或更多的菱形关联（即至少有一个上级类可通过多条路径被最底层的类所访问）。 例如，所有类都是继承自 [`object`](https://docs.python.org/zh-cn/3.13/library/functions.html#object)，因此任何多重继承的情况都提供了一条以上的路径可以通向 [`object`](https://docs.python.org/zh-cn/3.13/library/functions.html#object)。 为了确保基类不会被访问一次以上，动态算法会用一种特殊方式将搜索顺序线性化，保留每个类所指定的从左至右的顺序，只调用每个上级类一次，并且保持单调性（即一个类可以被子类化而不影响其父类的优先顺序）。 总而言之，这些特性使得设计具有多重继承的可靠且可扩展的类成为可能。 要了解更多细节，请参阅 [Python 2.3 方法解析顺序](https://docs.python.org/zh-cn/3.13/howto/mro.html#python-2-3-mro)。
+​	动态调整顺序是有必要的，因为所有多重继承的情况都会显示出一个或更多的菱形关联（即至少有一个上级类可通过多条路径被最底层的类所访问）。 例如，所有类都是继承自 [`object`]({{< ref "/library/functions#object" >}})，因此任何多重继承的情况都提供了一条以上的路径可以通向 [`object`]({{< ref "/library/functions#object" >}})。 为了确保基类不会被访问一次以上，动态算法会用一种特殊方式将搜索顺序线性化，保留每个类所指定的从左至右的顺序，只调用每个上级类一次，并且保持单调性（即一个类可以被子类化而不影响其父类的优先顺序）。 总而言之，这些特性使得设计具有多重继承的可靠且可扩展的类成为可能。 要了解更多细节，请参阅 [Python 2.3 方法解析顺序]({{< ref "/howto/mro#python-2-3-mro" >}})。
 
 
 
@@ -438,11 +438,9 @@ class DerivedClassName(Base1, Base2, Base3):
 
 ​	由于存在对于类私有成员的有效使用场景（例如避免名称与子类所定义的名称相冲突），因此存在对此种机制的有限支持，称为 *名称改写*。 任何形式为 `__spam` 的标识符（至少带有两个前缀下划线，至多一个后缀下划线）的文本将被替换为 `_classname__spam`，其中 `classname` 为去除了前缀下划线的当前类名称。 这种改写不考虑标识符的句法位置，只要它出现在类定义内部就会进行。
 
-​	参见
-
- 
-
-[私有名称调整规范说明](https://docs.python.org/zh-cn/3.13/reference/expressions.html#private-name-mangling) 了解相关详情和特例。
+> 参见
+>
+> [私有名称调整规范说明]({{< ref "/reference/expressions#private-name-mangling" >}}) 了解相关详情和特例。
 
 ​	名称改写有助于让子类重写方法而不破坏类内方法调用。例如:
 
@@ -477,7 +475,7 @@ class MappingSubclass(Mapping):
 
 ## 9.7. 杂项说明
 
-​	有时具有类似于 Pascal "record" 或 C "struct" 的数据类型是很有用的，将一些带名称的数据项捆绑在一起。 实现这一目标的理想方式是使用 [`dataclasses`](https://docs.python.org/zh-cn/3.13/library/dataclasses.html#module-dataclasses):
+​	有时具有类似于 Pascal "record" 或 C "struct" 的数据类型是很有用的，将一些带名称的数据项捆绑在一起。 实现这一目标的理想方式是使用 [`dataclasses`]({{< ref "/library/python/dataclasses#module-dataclasses" >}}):
 
 ```
 from dataclasses import dataclass
@@ -499,15 +497,15 @@ class Employee:
 1000
 ```
 
-​	一段期望使用特定抽象数据类型的 Python 代码通常可以通过传入一个模拟了该数据类型的方法的类作为替代。 例如，如果你有一个基于文件对象来格式化某些数据的函数，你可以定义一个带有 [`read()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.TextIOBase.read) 和 [`readline()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.TextIOBase.readline) 方法以便从字典串缓冲区获取数据的类，并将其作为参数传入。
+​	一段期望使用特定抽象数据类型的 Python 代码通常可以通过传入一个模拟了该数据类型的方法的类作为替代。 例如，如果你有一个基于文件对象来格式化某些数据的函数，你可以定义一个带有 [`read()`]({{< ref "/library/allos/io#io.TextIOBase.read" >}}) 和 [`readline()`]({{< ref "/library/allos/io#io.TextIOBase.readline" >}}) 方法以便从字典串缓冲区获取数据的类，并将其作为参数传入。
 
-[实例方法对象](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#instance-methods) 也具有属性: [`m.__self__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#method.__self__) 就是带有 `m()` 方法的实例对象，而 [`m.__func__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#method.__func__) 就是该方法所对应的 [函数对象](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#user-defined-funcs)。
+​	[实例方法对象]({{< ref "/reference/datamodel#instance-methods" >}}) 也具有属性: [`m.__self__`]({{< ref "/reference/datamodel#method.__self__" >}}) 就是带有 `m()` 方法的实例对象，而 [`m.__func__`]({{< ref "/reference/datamodel#method.__func__" >}}) 就是该方法所对应的 [函数对象]({{< ref "/reference/datamodel#user-defined-funcs" >}})。
 
 
 
 ## 9.8. 迭代器
 
-​	到目前为止，您可能已经注意到大多数容器对象都可以使用 [`for`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#for) 语句:
+​	到目前为止，您可能已经注意到大多数容器对象都可以使用 [`for`]({{< ref "/reference/compound_stmts#for" >}}) 语句:
 
 ```
 for element in [1, 2, 3]:
@@ -522,7 +520,7 @@ for line in open("myfile.txt"):
     print(line, end='')
 ```
 
-​	这种访问风格清晰、简洁又方便。 迭代器的使用非常普遍并使得 Python 成为一个统一的整体。 在幕后，[`for`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#for) 语句会在容器对象上调用 [`iter()`](https://docs.python.org/zh-cn/3.13/library/functions.html#iter)。 该函数返回一个定义了 [`__next__()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#iterator.__next__) 方法的迭代器对象，此方法将逐一访问容器中的元素。 当元素用尽时，[`__next__()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#iterator.__next__) 将引发 [`StopIteration`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#StopIteration) 异常来通知终止 `for` 循环。 你可以使用 [`next()`](https://docs.python.org/zh-cn/3.13/library/functions.html#next) 内置函数来调用 [`__next__()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#iterator.__next__) 方法；这个例子显示了它的运作方式:
+​	这种访问风格清晰、简洁又方便。 迭代器的使用非常普遍并使得 Python 成为一个统一的整体。 在幕后，[`for`]({{< ref "/reference/compound_stmts#for" >}}) 语句会在容器对象上调用 [`iter()`]({{< ref "/library/functions#iter" >}})。 该函数返回一个定义了 [`__next__()`]({{< ref "/library/stdtypes#iterator.__next__" >}}) 方法的迭代器对象，此方法将逐一访问容器中的元素。 当元素用尽时，[`__next__()`]({{< ref "/library/stdtypes#iterator.__next__" >}}) 将引发 [`StopIteration`]({{< ref "/library/exceptions#StopIteration" >}}) 异常来通知终止 `for` 循环。 你可以使用 [`next()`]({{< ref "/library/functions#next" >}}) 内置函数来调用 [`__next__()`]({{< ref "/library/stdtypes#iterator.__next__" >}}) 方法；这个例子显示了它的运作方式:
 
 
 
@@ -544,7 +542,7 @@ Traceback (most recent call last):
 StopIteration
 ```
 
-​	了解了迭代器协议背后的机制后，就可以轻松地为你的类添加迭代器行为了。 定义 [`__iter__()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#container.__iter__) 方法用于返回一个带有 [`__next__()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#iterator.__next__) 方法的对象。 如果类已定义了 `__next__()`，那么 `__iter__()` 可以简单地返回 `self`:
+​	了解了迭代器协议背后的机制后，就可以轻松地为你的类添加迭代器行为了。 定义 [`__iter__()`]({{< ref "/library/stdtypes#container.__iter__" >}}) 方法用于返回一个带有 [`__next__()`]({{< ref "/library/stdtypes#iterator.__next__" >}}) 方法的对象。 如果类已定义了 `__next__()`，那么 `__iter__()` 可以简单地返回 `self`:
 
 ```
 class Reverse:
@@ -582,7 +580,7 @@ s
 
 ## 9.9. 生成器
 
-[生成器](https://docs.python.org/zh-cn/3.13/glossary.html#term-generator) 是一个用于创建迭代器的简单而强大的工具。 它们的写法类似于标准的函数，但当它们要返回数据时会使用 [`yield`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#yield) 语句。 每次在生成器上调用 [`next()`](https://docs.python.org/zh-cn/3.13/library/functions.html#next) 时，它会从上次离开的位置恢复执行（它会记住上次执行语句时的所有数据值）。 一个显示如何非常容易地创建生成器的示例如下:
+​	[生成器]({{< ref "/glossary/idx#term-generator" >}}) 是一个用于创建迭代器的简单而强大的工具。 它们的写法类似于标准的函数，但当它们要返回数据时会使用 [`yield`]({{< ref "/reference/simple_stmts#yield" >}}) 语句。 每次在生成器上调用 [`next()`]({{< ref "/library/functions#next" >}}) 时，它会从上次离开的位置恢复执行（它会记住上次执行语句时的所有数据值）。 一个显示如何非常容易地创建生成器的示例如下:
 
 ```
 def reverse(data):
@@ -602,11 +600,11 @@ o
 g
 ```
 
-​	可以用生成器来完成的任何功能同样可以通用前一节所描述的基于类的迭代器来完成。 但生成器的写法更为紧凑，因为它会自动创建 [`__iter__()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#iterator.__iter__) 和 [`__next__()`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#generator.__next__) 方法。
+​	可以用生成器来完成的任何功能同样可以通用前一节所描述的基于类的迭代器来完成。 但生成器的写法更为紧凑，因为它会自动创建 [`__iter__()`]({{< ref "/library/stdtypes#iterator.__iter__" >}}) 和 [`__next__()`]({{< ref "/reference/expressions#generator.__next__" >}}) 方法。
 
 ​	另一个关键特性在于局部变量和执行状态会在每次调用之间自动保存。 这使得该函数相比使用 `self.index` 和 `self.data` 这种实例变量的方式更易编写且更为清晰。
 
-​	除了会自动创建方法和保存程序状态，当生成器终结时，它们还会自动引发 [`StopIteration`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#StopIteration)。 这些特性结合在一起，使得创建迭代器能与编写常规函数一样容易。
+​	除了会自动创建方法和保存程序状态，当生成器终结时，它们还会自动引发 [`StopIteration`]({{< ref "/library/exceptions#StopIteration" >}})。 这些特性结合在一起，使得创建迭代器能与编写常规函数一样容易。
 
 
 
@@ -636,8 +634,7 @@ g
 ['f', 'l', 'o', 'g']
 ```
 
-​	备注
-
-[[1](https://docs.python.org/zh-cn/3.13/tutorial/classes.html#id1)]
-
-​	存在一个例外。 模块对象有一个秘密的只读属性名为 [`__dict__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__dict__)，它返回用于实现模块命名空间的字典；名称 `__dict__` 是一个属性但不是全局名称。 显然，使用个将违反命名空间实现的抽象，应当仅限用于事后调试器之类的情况。
+> 备注
+> [[1]({{< ref "/tutorial/classes#id1" >}})]
+>
+> ​	存在一个例外。 模块对象有一个秘密的只读属性名为 [`__dict__`]({{< ref "/reference/datamodel#object.__dict__" >}})，它返回用于实现模块命名空间的字典；名称 `__dict__` 是一个属性但不是全局名称。 显然，使用个将违反命名空间实现的抽象，应当仅限用于事后调试器之类的情况。

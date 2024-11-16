@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html)
 >
 > 收录该文档的时间：`2024-11-15T21:12:39+08:00`
 
@@ -19,21 +19,20 @@ draft = false
 
 ------
 
-​	备注
-
+​备注
  
 
-[`sys.monitoring`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#module-sys.monitoring) 是 [`sys`](https://docs.python.org/zh-cn/3.13/library/sys.html#module-sys) 模块内部的一个命名空间，而不是一个独立模块，因此不需要 `import sys.monitoring`，只要简单地 `import sys` 然后使用 `sys.monitoring`。
+[`sys.monitoring`]({{< ref "/library/python/sys_monitoring#module-sys.monitoring" >}}) 是 [`sys`]({{< ref "/library/python/sys#module-sys" >}}) 模块内部的一个命名空间，而不是一个独立模块，因此不需要 `import sys.monitoring`，只要简单地 `import sys` 然后使用 `sys.monitoring`。
 
 ​	这个命名空间提供了对于激活和控制事件监控所需的函数和常量的访问。
 
-​	在程序执行过程中，会发生对于监控执行的工具来说值得关注的事件。 [`sys.monitoring`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#module-sys.monitoring) 命名空间提供了在相应事件发生时接收回调的操作方式。
+​	在程序执行过程中，会发生对于监控执行的工具来说值得关注的事件。 [`sys.monitoring`]({{< ref "/library/python/sys_monitoring#module-sys.monitoring" >}}) 命名空间提供了在相应事件发生时接收回调的操作方式。
 
 ​	monitoring API由三个部分组成：
 
-- [Tool identifiers](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#tool-identifiers)
-- [Events](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#events)
-- [回调](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#callbacks)
+- [Tool identifiers]({{< ref "/library/python/sys_monitoring#tool-identifiers" >}})
+- [Events]({{< ref "/library/python/sys_monitoring#events" >}})
+- [回调]({{< ref "/library/python/sys_monitoring#callbacks" >}})
 
 ## 工具标识符
 
@@ -43,21 +42,20 @@ draft = false
 
 ### 注册和使用工具
 
-## sys.monitoring.**use_tool_id**(*tool_id: [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)*, *name: [str](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str)*, */*) → [None](https://docs.python.org/zh-cn/3.13/library/constants.html#None)
+## sys.monitoring.**use_tool_id**(*tool_id: [int]({{< ref "/library/functions#int" >}})*, *name: [str]({{< ref "/library/stdtypes#str" >}})*, */*) → [None]({{< ref "/library/constants#None" >}})
 
-​	必须在 *tool_id* 可被使用之前调用。 *tool_id* 必须在 0 到 5 的开区间内。 如果 *tool_id* 已被使用则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	必须在 *tool_id* 可被使用之前调用。 *tool_id* 必须在 0 到 5 的开区间内。 如果 *tool_id* 已被使用则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
-## sys.monitoring.**free_tool_id**(*tool_id: [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)*, */*) → [None](https://docs.python.org/zh-cn/3.13/library/constants.html#None)
+## sys.monitoring.**free_tool_id**(*tool_id: [int]({{< ref "/library/functions#int" >}})*, */*) → [None]({{< ref "/library/constants#None" >}})
 
 ​	应当在一个工具不再需要 *tool_id* 时被调用。
 
-​	备注
-
+​备注
  
 
-[`free_tool_id()`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#sys.monitoring.free_tool_id) 将不会禁用关联到 *tool_id* 的全局或局部事件，也不会注销任何回调函数。 此函数仅被设计用来通知虚拟机特定的 *tool_id* 已不再被使用。
+[`free_tool_id()`]({{< ref "/library/python/sys_monitoring#sys.monitoring.free_tool_id" >}}) 将不会禁用关联到 *tool_id* 的全局或局部事件，也不会注销任何回调函数。 此函数仅被设计用来通知虚拟机特定的 *tool_id* 已不再被使用。
 
-## sys.monitoring.**get_tool**(*tool_id: [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)*, */*) → [str](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) | [None](https://docs.python.org/zh-cn/3.13/library/constants.html#None)
+## sys.monitoring.**get_tool**(*tool_id: [int]({{< ref "/library/functions#int" >}})*, */*) → [str]({{< ref "/library/stdtypes#str" >}}) | [None]({{< ref "/library/constants#None" >}})
 
 ​	如果 *tool_id* 已被使用则返回工具名称，否则返回 `None`。 *tool_id* 取值必须在 0 至 5 的开区间内。
 
@@ -132,19 +130,19 @@ sys.monitoring.OPTIMIZER_ID = 5
 
 ## sys.monitoring.events.**RAISE**
 
-​	一个异常被引发，导致 [`STOP_ITERATION`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-STOP_ITERATION) 事件的异常除外。
+​	一个异常被引发，导致 [`STOP_ITERATION`]({{< ref "/library/python/sys_monitoring#monitoring-event-STOP_ITERATION" >}}) 事件的异常除外。
 
 ## sys.monitoring.events.**RERAISE**
 
-​	一个异常被重新引发，例如在 [`finally`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#finally) 代码块结束的时候。
+​	一个异常被重新引发，例如在 [`finally`]({{< ref "/reference/compound_stmts#finally" >}}) 代码块结束的时候。
 
 ## sys.monitoring.events.**STOP_ITERATION**
 
-​	一个 [`StopIteration`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#StopIteration) 被人工引发；参见 [the STOP_ITERATION event](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#the-stop-iteration-event)。
+​	一个 [`StopIteration`]({{< ref "/library/exceptions#StopIteration" >}}) 被人工引发；参见 [the STOP_ITERATION event]({{< ref "/library/python/sys_monitoring#the-stop-iteration-event" >}})。
 
 ​	将来可能会添加更多事件。
 
-​	这些事件都是 `sys.monitoring.events` 命名空间的属性。 每个事件用整数常量的 2 次幂来表示。 要定义一组事件，只需对多个单独事件执行按位或运算即可。 例如，要同时指定 [`PY_RETURN`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-PY_RETURN) 和 [`PY_START`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-PY_START) 事件，则使用表达式 `PY_RETURN | PY_START`。
+​	这些事件都是 `sys.monitoring.events` 命名空间的属性。 每个事件用整数常量的 2 次幂来表示。 要定义一组事件，只需对多个单独事件执行按位或运算即可。 例如，要同时指定 [`PY_RETURN`]({{< ref "/library/python/sys_monitoring#monitoring-event-PY_RETURN" >}}) 和 [`PY_START`]({{< ref "/library/python/sys_monitoring#monitoring-event-PY_START" >}}) 事件，则使用表达式 `PY_RETURN | PY_START`。
 
 ## sys.monitoring.events.**NO_EVENTS**
 
@@ -161,25 +159,25 @@ if get_events(DEBUGGER_ID) == NO_EVENTS:
 
 ​	本地事件与程序的正常执行相关联并且发生在明确定义的位置上。 所有本地事件都可以被禁用。 本地事件包括：
 
-- [`PY_START`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-PY_START)
-- [`PY_RESUME`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-PY_RESUME)
-- [`PY_RETURN`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-PY_RETURN)
-- [`PY_YIELD`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-PY_YIELD)
-- [`CALL`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-CALL)
-- [`LINE`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-LINE)
-- [`INSTRUCTION`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-INSTRUCTION)
-- [`JUMP`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-JUMP)
-- [`BRANCH`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-BRANCH)
-- [`STOP_ITERATION`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-STOP_ITERATION)
+- [`PY_START`]({{< ref "/library/python/sys_monitoring#monitoring-event-PY_START" >}})
+- [`PY_RESUME`]({{< ref "/library/python/sys_monitoring#monitoring-event-PY_RESUME" >}})
+- [`PY_RETURN`]({{< ref "/library/python/sys_monitoring#monitoring-event-PY_RETURN" >}})
+- [`PY_YIELD`]({{< ref "/library/python/sys_monitoring#monitoring-event-PY_YIELD" >}})
+- [`CALL`]({{< ref "/library/python/sys_monitoring#monitoring-event-CALL" >}})
+- [`LINE`]({{< ref "/library/python/sys_monitoring#monitoring-event-LINE" >}})
+- [`INSTRUCTION`]({{< ref "/library/python/sys_monitoring#monitoring-event-INSTRUCTION" >}})
+- [`JUMP`]({{< ref "/library/python/sys_monitoring#monitoring-event-JUMP" >}})
+- [`BRANCH`]({{< ref "/library/python/sys_monitoring#monitoring-event-BRANCH" >}})
+- [`STOP_ITERATION`]({{< ref "/library/python/sys_monitoring#monitoring-event-STOP_ITERATION" >}})
 
 ### 辅助事件
 
 ​	辅助事件可以像其他事件一样被监视，但是由另一个事件来控制：
 
-- [`C_RAISE`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-C_RAISE)
-- [`C_RETURN`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-C_RETURN)
+- [`C_RAISE`]({{< ref "/library/python/sys_monitoring#monitoring-event-C_RAISE" >}})
+- [`C_RETURN`]({{< ref "/library/python/sys_monitoring#monitoring-event-C_RETURN" >}})
 
-[`C_RETURN`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-C_RETURN) 和 [`C_RAISE`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-C_RAISE) 事件是由 [`CALL`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-CALL) 事件控制的。 [`C_RETURN`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-C_RETURN) 和 [`C_RAISE`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-C_RAISE) 事件只会在相应的 [`CALL`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-CALL) 事件被监控时才能被看到。
+[`C_RETURN`]({{< ref "/library/python/sys_monitoring#monitoring-event-C_RETURN" >}}) 和 [`C_RAISE`]({{< ref "/library/python/sys_monitoring#monitoring-event-C_RAISE" >}}) 事件是由 [`CALL`]({{< ref "/library/python/sys_monitoring#monitoring-event-CALL" >}}) 事件控制的。 [`C_RETURN`]({{< ref "/library/python/sys_monitoring#monitoring-event-C_RETURN" >}}) 和 [`C_RAISE`]({{< ref "/library/python/sys_monitoring#monitoring-event-C_RAISE" >}}) 事件只会在相应的 [`CALL`]({{< ref "/library/python/sys_monitoring#monitoring-event-CALL" >}}) 事件被监控时才能被看到。
 
 ### 其他事件
 
@@ -187,16 +185,16 @@ if get_events(DEBUGGER_ID) == NO_EVENTS:
 
 ​	可以被监视的其他事件包括：
 
-- [`PY_THROW`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-PY_THROW)
-- [`PY_UNWIND`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-PY_UNWIND)
-- [`RAISE`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-RAISE)
-- [`EXCEPTION_HANDLED`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-EXCEPTION_HANDLED)
+- [`PY_THROW`]({{< ref "/library/python/sys_monitoring#monitoring-event-PY_THROW" >}})
+- [`PY_UNWIND`]({{< ref "/library/python/sys_monitoring#monitoring-event-PY_UNWIND" >}})
+- [`RAISE`]({{< ref "/library/python/sys_monitoring#monitoring-event-RAISE" >}})
+- [`EXCEPTION_HANDLED`]({{< ref "/library/python/sys_monitoring#monitoring-event-EXCEPTION_HANDLED" >}})
 
 ### STOP_ITERATION 事件
 
-[**PEP 380**](https://peps.python.org/pep-0380/#use-of-stopiteration-to-return-values) 规定了当从生成器或协程返回值时可引发 [`StopIteration`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#StopIteration) 异常。 不过，这是一种非常低效的返回值的方式，因此某些 Python 实现，比如 CPython 3.12+，只有在异常对其他代码可见时才会引发它。
+[**PEP 380**](https://peps.python.org/pep-0380/#use-of-stopiteration-to-return-values) 规定了当从生成器或协程返回值时可引发 [`StopIteration`]({{< ref "/library/exceptions#StopIteration" >}}) 异常。 不过，这是一种非常低效的返回值的方式，因此某些 Python 实现，比如 CPython 3.12+，只有在异常对其他代码可见时才会引发它。
 
-​	为允许工具监视真正的异常而不会拖慢生成器和协程的运行，解释器提供了 [`STOP_ITERATION`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-STOP_ITERATION) 事件。 [`STOP_ITERATION`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-STOP_ITERATION) 可以被局部禁用，这与 [`RAISE`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-RAISE) 不同。
+​	为允许工具监视真正的异常而不会拖慢生成器和协程的运行，解释器提供了 [`STOP_ITERATION`]({{< ref "/library/python/sys_monitoring#monitoring-event-STOP_ITERATION" >}}) 事件。 [`STOP_ITERATION`]({{< ref "/library/python/sys_monitoring#monitoring-event-STOP_ITERATION" >}}) 可以被局部禁用，这与 [`RAISE`]({{< ref "/library/python/sys_monitoring#monitoring-event-RAISE" >}}) 不同。
 
 ## 开启和关闭事件
 
@@ -206,27 +204,27 @@ if get_events(DEBUGGER_ID) == NO_EVENTS:
 
 ​	通过修改被监视的事件集可以对事件进行全局控制。
 
-## sys.monitoring.**get_events**(*tool_id: [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)*, */*) → [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)
+## sys.monitoring.**get_events**(*tool_id: [int]({{< ref "/library/functions#int" >}})*, */*) → [int]({{< ref "/library/functions#int" >}})
 
 ​	返回代表所有活动事件的 `int`。
 
-## sys.monitoring.**set_events**(*tool_id: [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)*, *event_set: [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)*, */*) → [None](https://docs.python.org/zh-cn/3.13/library/constants.html#None)
+## sys.monitoring.**set_events**(*tool_id: [int]({{< ref "/library/functions#int" >}})*, *event_set: [int]({{< ref "/library/functions#int" >}})*, */*) → [None]({{< ref "/library/constants#None" >}})
 
-​	激活在 *event_set* 中设置的所有事件。 如果 *tool_id* 未被使用则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	激活在 *event_set* 中设置的所有事件。 如果 *tool_id* 未被使用则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 ​	在默认情况下没有被激活的事件。
 
 ### 针对特定代码对象的事件
 
-​	事件也可以基于每个代码对象来控制。 下面定义的接受一个 [`types.CodeType`](https://docs.python.org/zh-cn/3.13/library/types.html#types.CodeType) 的函数应当准备好接受来自不是在 Python 中定义的类似对象 (参见 [监控 C API](https://docs.python.org/zh-cn/3.13/c-api/monitoring.html#c-api-monitoring))。
+​	事件也可以基于每个代码对象来控制。 下面定义的接受一个 [`types.CodeType`]({{< ref "/library/datatypes/types#types.CodeType" >}}) 的函数应当准备好接受来自不是在 Python 中定义的类似对象 (参见 [监控 C API]({{< ref "/c_api/monitoring#c-api-monitoring" >}}))。
 
-## sys.monitoring.**get_local_events**(*tool_id: [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)*, *code: [CodeType](https://docs.python.org/zh-cn/3.13/library/types.html#types.CodeType)*, */*) → [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)
+## sys.monitoring.**get_local_events**(*tool_id: [int]({{< ref "/library/functions#int" >}})*, *code: [CodeType]({{< ref "/library/datatypes/types#types.CodeType" >}})*, */*) → [int]({{< ref "/library/functions#int" >}})
 
 ​	返回 *code* 的所有局部事件
 
-## sys.monitoring.**set_local_events**(*tool_id: [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)*, *code: [CodeType](https://docs.python.org/zh-cn/3.13/library/types.html#types.CodeType)*, *event_set: [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)*, */*) → [None](https://docs.python.org/zh-cn/3.13/library/constants.html#None)
+## sys.monitoring.**set_local_events**(*tool_id: [int]({{< ref "/library/functions#int" >}})*, *code: [CodeType]({{< ref "/library/datatypes/types#types.CodeType" >}})*, *event_set: [int]({{< ref "/library/functions#int" >}})*, */*) → [None]({{< ref "/library/constants#None" >}})
 
-​	激活在 *event_set* 中设置的针对 *code* 的所有局部事件。 如果 *tool_id* 未被使用则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	激活在 *event_set* 中设置的针对 *code* 的所有局部事件。 如果 *tool_id* 未被使用则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 ​	局部事件将添加到全局事件中，但不会屏蔽全局事件。 换句话说，所有全局事件都会为代码对象触发，无论是否有局部事件。
 
@@ -236,13 +234,13 @@ if get_events(DEBUGGER_ID) == NO_EVENTS:
 
 ​	一个可从回调函数返回以禁用当前代码位置上的事件的特殊值。
 
-​	可从回调函数返回 [`sys.monitoring.DISABLE`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#sys.monitoring.DISABLE) 以禁用特定代码位置上的局部事件。 这不会改变已设置的事件，也不会改变同一事件的任何其他代码位置。
+​	可从回调函数返回 [`sys.monitoring.DISABLE`]({{< ref "/library/python/sys_monitoring#sys.monitoring.DISABLE" >}}) 以禁用特定代码位置上的局部事件。 这不会改变已设置的事件，也不会改变同一事件的任何其他代码位置。
 
 ​	禁用特定位置的事件对高性能的监控非常重要。 例如，如果调试器禁用了除几个断点外的所有监控那么程序在调试器下运行时就不会产生额外的开销。
 
-## sys.monitoring.**restart_events**() → [None](https://docs.python.org/zh-cn/3.13/library/constants.html#None)
+## sys.monitoring.**restart_events**() → [None]({{< ref "/library/constants#None" >}})
 
-​	启用 [`sys.monitoring.DISABLE`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#sys.monitoring.DISABLE) 针对所有工具禁用的所有事件。
+​	启用 [`sys.monitoring.DISABLE`]({{< ref "/library/python/sys_monitoring#sys.monitoring.DISABLE" >}}) 针对所有工具禁用的所有事件。
 
 
 
@@ -250,17 +248,17 @@ if get_events(DEBUGGER_ID) == NO_EVENTS:
 
 ​	要为事件注册一个可调用对象则要调用
 
-## sys.monitoring.**register_callback**(*tool_id: [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)*, *event: [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)*, *func: [Callable](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Callable) | [None](https://docs.python.org/zh-cn/3.13/library/constants.html#None)*, */*) → [Callable](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Callable) | [None](https://docs.python.org/zh-cn/3.13/library/constants.html#None)
+## sys.monitoring.**register_callback**(*tool_id: [int]({{< ref "/library/functions#int" >}})*, *event: [int]({{< ref "/library/functions#int" >}})*, *func: [Callable]({{< ref "/library/datatypes/collections_abc#collections.abc.Callable" >}}) | [None]({{< ref "/library/constants#None" >}})*, */*) → [Callable]({{< ref "/library/datatypes/collections_abc#collections.abc.Callable" >}}) | [None]({{< ref "/library/constants#None" >}})
 
 ​	使用给定的 *tool_id* 为 *event* 注册可调用对象 *func*
 
-​	如果已经为给定的 *tool_id* 和 *event* 注册了另一个回调，它将被注销并返回。 在其他情况下 [`register_callback()`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#sys.monitoring.register_callback) 将返回 `None`。
+​	如果已经为给定的 *tool_id* 和 *event* 注册了另一个回调，它将被注销并返回。 在其他情况下 [`register_callback()`]({{< ref "/library/python/sys_monitoring#sys.monitoring.register_callback" >}}) 将返回 `None`。
 
 ​	函数可以通过调用 `sys.monitoring.register_callback(tool_id, event, None)` 来注销。
 
 ​	回调函数可在任何时候被注册或注销。
 
-​	注册或注销回调函数将生成一个 [`sys.audit()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.audit) 事件。
+​	注册或注销回调函数将生成一个 [`sys.audit()`]({{< ref "/library/python/sys#sys.audit" >}}) 事件。
 
 ### 回调函数参数
 
@@ -270,39 +268,39 @@ if get_events(DEBUGGER_ID) == NO_EVENTS:
 
 ​	当一个激活的事件发生时，已注册的回调函数将被调用。 不同的事件将为回调函数提供不同的参数，如下所示：
 
-- [`PY_START`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-PY_START) 和 [`PY_RESUME`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-PY_RESUME):
+- [`PY_START`]({{< ref "/library/python/sys_monitoring#monitoring-event-PY_START" >}}) 和 [`PY_RESUME`]({{< ref "/library/python/sys_monitoring#monitoring-event-PY_RESUME" >}}):
 
   ```
   func(code: CodeType, instruction_offset: int) -> DISABLE | Any
   ```
 
-- [`PY_RETURN`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-PY_RETURN) 和 [`PY_YIELD`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-PY_YIELD):
+- [`PY_RETURN`]({{< ref "/library/python/sys_monitoring#monitoring-event-PY_RETURN" >}}) 和 [`PY_YIELD`]({{< ref "/library/python/sys_monitoring#monitoring-event-PY_YIELD" >}}):
 
   ```
   func(code: CodeType, instruction_offset: int, retval: object) -> DISABLE | Any
   ```
 
-- [`CALL`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-CALL), [`C_RAISE`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-C_RAISE) 和 [`C_RETURN`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-C_RETURN):
+- [`CALL`]({{< ref "/library/python/sys_monitoring#monitoring-event-CALL" >}}), [`C_RAISE`]({{< ref "/library/python/sys_monitoring#monitoring-event-C_RAISE" >}}) 和 [`C_RETURN`]({{< ref "/library/python/sys_monitoring#monitoring-event-C_RETURN" >}}):
 
   ```
   func(code: CodeType, instruction_offset: int, callable: object, arg0: object | MISSING) -> DISABLE | Any
   ```
 
-  如果没有任何参数，则 *arg0* 将被设为 [`sys.monitoring.MISSING`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#sys.monitoring.MISSING)。
+  如果没有任何参数，则 *arg0* 将被设为 [`sys.monitoring.MISSING`]({{< ref "/library/python/sys_monitoring#sys.monitoring.MISSING" >}})。
 
-- [`RAISE`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-RAISE), [`RERAISE`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-RERAISE), [`EXCEPTION_HANDLED`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-EXCEPTION_HANDLED), [`PY_UNWIND`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-PY_UNWIND), [`PY_THROW`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-PY_THROW) 和 [`STOP_ITERATION`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-STOP_ITERATION):
+- [`RAISE`]({{< ref "/library/python/sys_monitoring#monitoring-event-RAISE" >}}), [`RERAISE`]({{< ref "/library/python/sys_monitoring#monitoring-event-RERAISE" >}}), [`EXCEPTION_HANDLED`]({{< ref "/library/python/sys_monitoring#monitoring-event-EXCEPTION_HANDLED" >}}), [`PY_UNWIND`]({{< ref "/library/python/sys_monitoring#monitoring-event-PY_UNWIND" >}}), [`PY_THROW`]({{< ref "/library/python/sys_monitoring#monitoring-event-PY_THROW" >}}) 和 [`STOP_ITERATION`]({{< ref "/library/python/sys_monitoring#monitoring-event-STOP_ITERATION" >}}):
 
   ```
   func(code: CodeType, instruction_offset: int, exception: BaseException) -> DISABLE | Any
   ```
 
-- [`LINE`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-LINE):
+- [`LINE`]({{< ref "/library/python/sys_monitoring#monitoring-event-LINE" >}}):
 
   ```
   func(code: CodeType, line_number: int) -> DISABLE | Any
   ```
 
-- [`BRANCH`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-BRANCH) 和 [`JUMP`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-JUMP):
+- [`BRANCH`]({{< ref "/library/python/sys_monitoring#monitoring-event-BRANCH" >}}) 和 [`JUMP`]({{< ref "/library/python/sys_monitoring#monitoring-event-JUMP" >}}):
 
   ```
   func(code: CodeType, instruction_offset: int, destination_offset: int) -> DISABLE | Any
@@ -310,7 +308,7 @@ if get_events(DEBUGGER_ID) == NO_EVENTS:
 
   请注意 *destination_offset* 是代码下一次执行的位置。 对于未进入的分支这将为该分支之后的指令的偏移量。
 
-- [`INSTRUCTION`](https://docs.python.org/zh-cn/3.13/library/sys.monitoring.html#monitoring-event-INSTRUCTION):
+- [`INSTRUCTION`]({{< ref "/library/python/sys_monitoring#monitoring-event-INSTRUCTION" >}}):
 
   ```
   func(code: CodeType, instruction_offset: int) -> DISABLE | Any

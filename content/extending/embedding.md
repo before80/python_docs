@@ -9,7 +9,7 @@ draft = false
 
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/extending/embedding.html](https://docs.python.org/zh-cn/3.13/extending/embedding.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/extending/embedding.html](https://docs.python.org/zh-cn/3.13/extending/embedding.html)
 >
 > 收录该文档的时间：`2024-11-14T22:13:29+08:00`
 
@@ -19,12 +19,11 @@ draft = false
 
 ​	Python 的嵌入类似于扩展，但不完全相同。不同之处在于，扩展 Python 时应用程序的主程序仍然是 Python 解释器，而嵌入 Python 时的主程序可能与 Python 完全无关——而是应用程序的某些部分偶尔会调用 Python 解释器来运行一些 Python 代码。
 
-​	因此，若要嵌入 Python，就要提供自己的主程序。此主程序要做的事情之一就是初始化 Python 解释器。至少得调用函数 [`Py_Initialize()`](https://docs.python.org/zh-cn/3.13/c-api/init.html#c.Py_Initialize)。还有些可选的调用可向 Python 传递命令行参数。之后即可从应用程序的任何地方调用解释器了。
+​	因此，若要嵌入 Python，就要提供自己的主程序。此主程序要做的事情之一就是初始化 Python 解释器。至少得调用函数 [`Py_Initialize()`]({{< ref "/c_api/init#c.Py_Initialize" >}})。还有些可选的调用可向 Python 传递命令行参数。之后即可从应用程序的任何地方调用解释器了。
 
-​	调用解释器的方式有好几种：可向 [`PyRun_SimpleString()`](https://docs.python.org/zh-cn/3.13/c-api/veryhigh.html#c.PyRun_SimpleString) 传入一个包含 Python 语句的字符串，也可向 [`PyRun_SimpleFile()`](https://docs.python.org/zh-cn/3.13/c-api/veryhigh.html#c.PyRun_SimpleFile) 传入一个 stdio 文件指针和一个文件名（仅在错误信息中起到识别作用）。还可以调用前面介绍过的底层操作来构造并使用 Python 对象。
+​	调用解释器的方式有好几种：可向 [`PyRun_SimpleString()`]({{< ref "/c_api/veryhigh#c.PyRun_SimpleString" >}}) 传入一个包含 Python 语句的字符串，也可向 [`PyRun_SimpleFile()`]({{< ref "/c_api/veryhigh#c.PyRun_SimpleFile" >}}) 传入一个 stdio 文件指针和一个文件名（仅在错误信息中起到识别作用）。还可以调用前面介绍过的底层操作来构造并使用 Python 对象。
 
-​	参见
-
+​参见
 [Python/C API 参考手册]({{< ref "/capi#c-api-index" >}})
 
 ​	本文详细介绍了 Python 的 C 接口。这里有大量必要的信息。
@@ -71,13 +70,12 @@ main(int argc, char *argv[])
 }
 ```
 
-​	备注
-
+​备注
  
 
 `#define PY_SSIZE_T_CLEAN` 被用来指明 `Py_ssize_t` 应当在某些 API 中代替 `int` 使用。 它从 Python 3.13 起已不再需要，但我们保留它用于向下兼容。 请参阅 [字符串和缓存区](https://docs.python.org/zh-cn/3.13/c-api/arg.html#arg-parsing-string-and-buffers) 获取该宏的描述。
 
-​	设置 [`PyConfig.program_name`](https://docs.python.org/zh-cn/3.13/c-api/init_config.html#c.PyConfig.program_name) 应当在 [`Py_InitializeFromConfig()`](https://docs.python.org/zh-cn/3.13/c-api/init.html#c.Py_InitializeFromConfig) 之前被调用以便告知解释器 Python 运行时库的路径。 接下来，Python 解释器将使用 [`Py_Initialize()`](https://docs.python.org/zh-cn/3.13/c-api/init.html#c.Py_Initialize) 来初始化，然后执行硬编码的 Python 脚本打印出日期和时间。 在此之后，[`Py_FinalizeEx()`](https://docs.python.org/zh-cn/3.13/c-api/init.html#c.Py_FinalizeEx) 调用将关闭解释器，随即结束程序。 在真实的程序中，你可能需要从其他源获取 Python 脚本，或许是从文本编辑器例程、文件或者数据库等等。 使用 [`PyRun_SimpleFile()`](https://docs.python.org/zh-cn/3.13/c-api/veryhigh.html#c.PyRun_SimpleFile) 函数可以更好地从文件获取 Python 代码，这将为你省去分配内存空间和加载文件内容的麻烦。
+​	设置 [`PyConfig.program_name`]({{< ref "/c_api/init_config#c.PyConfig.program_name" >}}) 应当在 [`Py_InitializeFromConfig()`]({{< ref "/c_api/init#c.Py_InitializeFromConfig" >}}) 之前被调用以便告知解释器 Python 运行时库的路径。 接下来，Python 解释器将使用 [`Py_Initialize()`]({{< ref "/c_api/init#c.Py_Initialize" >}}) 来初始化，然后执行硬编码的 Python 脚本打印出日期和时间。 在此之后，[`Py_FinalizeEx()`]({{< ref "/c_api/init#c.Py_FinalizeEx" >}}) 调用将关闭解释器，随即结束程序。 在真实的程序中，你可能需要从其他源获取 Python 脚本，或许是从文本编辑器例程、文件或者数据库等等。 使用 [`PyRun_SimpleFile()`]({{< ref "/c_api/veryhigh#c.PyRun_SimpleFile" >}}) 函数可以更好地从文件获取 Python 代码，这将为你省去分配内存空间和加载文件内容的麻烦。
 
 
 
@@ -183,7 +181,7 @@ main(int argc, char *argv[])
 }
 ```
 
-​	上述代码先利用 `argv[1]` 加载 Python 脚本，再调用 `argv[2]` 指定的函数。函数的整数参数是 `argv` 数组中的其余值。如果 [编译并链接](https://docs.python.org/zh-cn/3.13/extending/embedding.html#compiling) 该程序（此处将最终的可执行程序称作 **call**）, 并用它执行一个 Python 脚本，例如：
+​	上述代码先利用 `argv[1]` 加载 Python 脚本，再调用 `argv[2]` 指定的函数。函数的整数参数是 `argv` 数组中的其余值。如果 [编译并链接]({{< ref "/extending/embedding#compiling" >}}) 该程序（此处将最终的可执行程序称作 **call**）, 并用它执行一个 Python 脚本，例如：
 
 ```
 def multiply(a,b):
@@ -267,7 +265,7 @@ PyInit_emb(void)
 }
 ```
 
-​	在 `main()` 函数之前插入上述代码。并在调用 [`Py_Initialize()`](https://docs.python.org/zh-cn/3.13/c-api/init.html#c.Py_Initialize) 之前插入以下两条语句：
+​	在 `main()` 函数之前插入上述代码。并在调用 [`Py_Initialize()`]({{< ref "/c_api/init#c.Py_Initialize" >}}) 之前插入以下两条语句：
 
 ```
 numargs = argc;
@@ -311,13 +309,12 @@ print("Number of arguments", emb.numargs())
   -L/opt/lib/python3.11/config-3.11-x86_64-linux-gnu -L/opt/lib -lpython3.11 -lpthread -ldl  -lutil -lm
   ```
 
-​	备注
-
+​备注
  
 
 ​	为了避免多个 Python 安装版本引发混乱（特别是在系统安装版本和自己编译版本之间），建议用 `python*X.Y*-config` 指定绝对路径，如上例所述。
 
-​	如果上述方案不起作用（不能保证对所有 Unix 类平台都生效；欢迎提出 [bug 报告](https://docs.python.org/zh-cn/3.13/bugs.html#reporting-bugs)），就得阅读系统关于动态链接的文档，并检查 Python 的 `Makefile` （用 [`sysconfig.get_makefile_filename()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_makefile_filename) 找到所在位置）和编译参数。这时 [`sysconfig`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#module-sysconfig) 模块会是个有用的工具，可用编程方式提取需组合在一起的配置值。比如：
+​	如果上述方案不起作用（不能保证对所有 Unix 类平台都生效；欢迎提出 [bug 报告](https://docs.python.org/zh-cn/3.13/bugs.html#reporting-bugs)），就得阅读系统关于动态链接的文档，并检查 Python 的 `Makefile` （用 [`sysconfig.get_makefile_filename()`]({{< ref "/library/python/sysconfig#sysconfig.get_makefile_filename" >}}) 找到所在位置）和编译参数。这时 [`sysconfig`]({{< ref "/library/python/sysconfig#module-sysconfig" >}}) 模块会是个有用的工具，可用编程方式提取需组合在一起的配置值。比如：
 
 \>>>
 

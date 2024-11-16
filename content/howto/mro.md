@@ -8,14 +8,13 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/mro.html](https://docs.python.org/zh-cn/3.13/howto/mro.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/mro.html](https://docs.python.org/zh-cn/3.13/howto/mro.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
 # Python 2.3 方法解析顺序
 
-​	备注
-
+​备注
  
 
 ​	这是一份历史性的文档，作为官方文档的附录提供。 这里所讨论的方法解析顺序在 Python 2.3 中 *被引入*，但在之后的版本中仍然被使用 -- 包括 Python 3。
@@ -38,7 +37,7 @@ draft = false
 
 > *Felix qui potuit rerum cognoscere causas* -- Virgilius
 
-​	事情开始于 Samuele Pedroni 在 Python 开发邮件列表上的一个帖子 [[1\]](https://docs.python.org/zh-cn/3.13/howto/mro.html#id4)。 在他的帖子里，Samuele 表示 Python 2.2 方法解析顺序不是单调的并提议用 C3 方法解析顺序来替代它。 Guido 认同他的意见因此现在 Python 2.3 使用了 C3。 C3 方法本身与 Python 没有关系，因为它由使用 Dylan 的人发明并在一篇针对 lisp 程序员的论文中描述 [[2\]](https://docs.python.org/zh-cn/3.13/howto/mro.html#id5)。 本文给出了面向希望理解这项改变的理由的 Python 使用者的（尽可能）易读的 C3 算法相关讨论。
+​	事情开始于 Samuele Pedroni 在 Python 开发邮件列表上的一个帖子 [[1\]]({{< ref "/howto/mro#id4" >}})。 在他的帖子里，Samuele 表示 Python 2.2 方法解析顺序不是单调的并提议用 C3 方法解析顺序来替代它。 Guido 认同他的意见因此现在 Python 2.3 使用了 C3。 C3 方法本身与 Python 没有关系，因为它由使用 Dylan 的人发明并在一篇针对 lisp 程序员的论文中描述 [[2\]]({{< ref "/howto/mro#id5" >}})。 本文给出了面向希望理解这项改变的理由的 Python 使用者的（尽可能）易读的 C3 算法相关讨论。
 
 ​	首先，我要指出我即将介绍的情况仅作用于在 Python 2.2 中引入的 *新式类*: *经典类* 将保持其原有的方法解析顺序，深度优先并且从左至右。 因此，不存在对经典类原有代码的破坏；而且虽然在原理上存在对 Python 2.2 新式类代码的破坏，但在实践中 C3 解析顺序与 Python 2.2 方法解析顺序存在不同的情况是如此稀少以至于不会真正破坏原有代码。 所以：
 
@@ -276,7 +275,7 @@ L[A] = A + merge(BDEO,CDFO,BC)
 
 ​	请注意处在层级结构第二层级的类 E，它先于处在层级结构第一层级的类 C，也就是说，E 比 C 更特化，即便它处在更高的层级。
 
-​	懒惰的程序员可以直接获取 Python 2.2 的 MRO，因为在这种情况下它会与 Python 2.3 的线程化恰好一致。 只需发起调用类 A 的 [`mro()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#type.mro) 方法就够了：
+​	懒惰的程序员可以直接获取 Python 2.2 的 MRO，因为在这种情况下它会与 Python 2.3 的线程化恰好一致。 只需发起调用类 A 的 [`mro()`]({{< ref "/reference/datamodel#type.mro" >}}) 方法就够了：
 
 
 
@@ -433,7 +432,7 @@ L[D,P21] = D A C B C  # B 在 C 之后  : C 的方法胜出!
 L[D] = D A B C
 ```
 
-​	Guido 在他的文章 [[3\]](https://docs.python.org/zh-cn/3.13/howto/mro.html#id6) 中指出经典的 MRO 在实践中并没有那么坏，因为人们通常可以避免经典类形成钻石形继承图。 但是所有新式类都继承自 `object`，因此钻石形继承图是不可避免的并且在每个多重继承图中都会出现不一致性。
+​	Guido 在他的文章 [[3\]]({{< ref "/howto/mro#id6" >}}) 中指出经典的 MRO 在实践中并没有那么坏，因为人们通常可以避免经典类形成钻石形继承图。 但是所有新式类都继承自 `object`，因此钻石形继承图是不可避免的并且在每个多重继承图中都会出现不一致性。
 
 ​	Python 2.2 的 MRO 使打破单调性变得困难，但并非不可能。 下面是最初由 Samuele Pedroni 提供的例子，显示 Python 2.2 的 MRO 是非单调的：
 
@@ -567,14 +566,14 @@ print_mro(ex_9.Z)
 
 ## 参考资源
 
-[[1](https://docs.python.org/zh-cn/3.13/howto/mro.html#id1)]
+[[1]({{< ref "/howto/mro#id1" >}})]
 
 ​	由 Samuele Pedroni 在 python-dev 发起的讨论: https://mail.python.org/pipermail/python-dev/2002-October/029035.html
 
-[[2](https://docs.python.org/zh-cn/3.13/howto/mro.html#id2)]
+[[2]({{< ref "/howto/mro#id2" >}})]
 
 ​	论文 *A Monotonic Superclass Linearization for Dylan*: https://doi.org/10.1145/236337.236343
 
-[[3](https://docs.python.org/zh-cn/3.13/howto/mro.html#id3)]
+[[3]({{< ref "/howto/mro#id3" >}})]
 
 ​	Guido van Rossum 的文章，*Unifying types and classes in Python 2.2*: https://web.archive.org/web/20140210194412/http://www.python.org/download/releases/2.2.2/descrintro

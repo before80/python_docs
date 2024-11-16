@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/cmath.html](https://docs.python.org/zh-cn/3.13/library/cmath.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/cmath.html](https://docs.python.org/zh-cn/3.13/library/cmath.html)
 >
 > 收录该文档的时间：`2024-11-15T11:42:26+08:00`
 
@@ -16,15 +16,14 @@ draft = false
 
 ------
 
-​	本模块提供了一些适用于复数的数学函数。 本模块中的函数接受整数、浮点数或复数作为参数。 它们也接受任意具有 [`__complex__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__complex__) 或 [`__float__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__float__) 方法的 Python 对象：这些方法分别用于将对象转换为复数或浮点数，然后再将函数应用于转换后的结果。
+​	本模块提供了一些适用于复数的数学函数。 本模块中的函数接受整数、浮点数或复数作为参数。 它们也接受任意具有 [`__complex__()`]({{< ref "/reference/datamodel#object.__complex__" >}}) 或 [`__float__()`]({{< ref "/reference/datamodel#object.__float__" >}}) 方法的 Python 对象：这些方法分别用于将对象转换为复数或浮点数，然后再将函数应用于转换后的结果。
 
-​	备注
-
+​备注
  
 
 ​	对于涉及分支切割的函数，我们会有确定如何在切割本身上定义这些函数的问题。 根据 Kahan 的论文 "Branch cuts for complex elementary functions"，以及 C99 的附录 G 和之后的 C 标准，我们使用零符号来区别分支切割的一侧和另一侧：对于沿实轴（一部分）的分支切割我们要看虚部的符号，而对于沿虚轴的分支切割我们则要看实部的符号。
 
-​	例如，[`cmath.sqrt()`](https://docs.python.org/zh-cn/3.13/library/cmath.html#cmath.sqrt) 函数有一个沿着负实轴的分支切割。 参数 `complex(-2.0, -0.0)` 会被当作位于切支切割的 *下方* 来处理，因而将给出一个负虚轴上的结果。
+​	例如，[`cmath.sqrt()`]({{< ref "/library/numeric/cmath#cmath.sqrt" >}}) 函数有一个沿着负实轴的分支切割。 参数 `complex(-2.0, -0.0)` 会被当作位于切支切割的 *下方* 来处理，因而将给出一个负虚轴上的结果。
 
 
 
@@ -63,11 +62,10 @@ draft = false
 -3.141592653589793
 ```
 
-​	备注
-
+​备注
  
 
-​	一个复数 *x* 的模数（绝对值）可以通过内置函数 [`abs()`](https://docs.python.org/zh-cn/3.13/library/functions.html#abs) 计算。没有单独的 [`cmath`](https://docs.python.org/zh-cn/3.13/library/cmath.html#module-cmath) 模块函数用于这个操作。
+​	一个复数 *x* 的模数（绝对值）可以通过内置函数 [`abs()`]({{< ref "/library/functions#abs" >}}) 计算。没有单独的 [`cmath`]({{< ref "/library/numeric/cmath#module-cmath" >}}) 模块函数用于这个操作。
 
 ## cmath.**polar**(*x*)
 
@@ -89,11 +87,11 @@ draft = false
 
 ## cmath.**log10**(*x*)
 
-​	返回底数为 10 的 *x* 的对数。它具有与 [`log()`](https://docs.python.org/zh-cn/3.13/library/cmath.html#cmath.log) 相同的支割线。
+​	返回底数为 10 的 *x* 的对数。它具有与 [`log()`]({{< ref "/library/numeric/cmath#cmath.log" >}}) 相同的支割线。
 
 ## cmath.**sqrt**(*x*)
 
-​	返回 *x* 的平方根。 它具有与 [`log()`](https://docs.python.org/zh-cn/3.13/library/cmath.html#cmath.log) 相同的支割线。
+​	返回 *x* 的平方根。 它具有与 [`log()`]({{< ref "/library/numeric/cmath#cmath.log" >}}) 相同的支割线。
 
 ## 三角函数
 
@@ -103,7 +101,7 @@ draft = false
 
 ## cmath.**asin**(*x*)
 
-​	返回 *x* 的反正弦。它与 [`acos()`](https://docs.python.org/zh-cn/3.13/library/cmath.html#cmath.acos) 有相同的支割线。
+​	返回 *x* 的反正弦。它与 [`acos()`]({{< ref "/library/numeric/cmath#cmath.acos" >}}) 有相同的支割线。
 
 ## cmath.**atan**(*x*)
 
@@ -179,8 +177,7 @@ draft = false
 > Added in version 3.5.
 >
 
-​	参见
-
+​参见
  
 
 [**PEP 485**](https://peps.python.org/pep-0485/) —— 用于测试近似相等的函数
@@ -230,12 +227,11 @@ draft = false
 > Added in version 3.6.
 >
 
-​	请注意，函数的选择与模块 [`math`](https://docs.python.org/zh-cn/3.13/library/math.html#module-math) 中的函数选择相似，但不完全相同。 拥有两个模块的原因是因为有些用户对复数不感兴趣，甚至根本不知道它们是什么。它们宁愿 `math.sqrt(-1)` 引发异常，也不想返回一个复数。 另请注意，被 [`cmath`](https://docs.python.org/zh-cn/3.13/library/cmath.html#module-cmath) 定义的函数始终会返回一个复数，尽管答案可以表示为一个实数（在这种情况下，复数的虚数部分为零）。
+​	请注意，函数的选择与模块 [`math`]({{< ref "/library/numeric/math#module-math" >}}) 中的函数选择相似，但不完全相同。 拥有两个模块的原因是因为有些用户对复数不感兴趣，甚至根本不知道它们是什么。它们宁愿 `math.sqrt(-1)` 引发异常，也不想返回一个复数。 另请注意，被 [`cmath`]({{< ref "/library/numeric/cmath#module-cmath" >}}) 定义的函数始终会返回一个复数，尽管答案可以表示为一个实数（在这种情况下，复数的虚数部分为零）。
 
 ​	关于支割线的注释：它们是沿着给定函数无法连续的曲线。它们是许多复变函数的必要特征。 假设您需要使用复变函数进行计算，您将会了解支割线的概念。 请参阅几乎所有关于复变函数的（不太基本）的书来获得启发。 对于如何正确地基于数值目的来选择支割线的相关信息，一个良好的参考如下：
 
-​	参见
-
+​参见
  
 
 ​	Kahan, W: Branch cuts for complex elementary functions; or, Much ado about nothing's sign bit. In Iserles, A., and Powell, M. (eds.), The state of the art in numerical analysis. Clarendon Press (1987) pp165--211.

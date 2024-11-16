@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html)
 >
 > 收录该文档的时间：`2024-11-15T15:24:42+08:00`
 
@@ -18,7 +18,7 @@ draft = false
 
 ------
 
-​	SAX API 定义了五种处理器：内容处理器、DTD 处理器、错误处理器、实体解析器以及词法处理器。 应用程序通常只需要实现他们感兴趣的事件对应的接口；他们可以在单个对象或多个对象中实现这些接口。 处理器的实现应当继承自 [`xml.sax.handler`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#module-xml.sax.handler) 模块所提供的基类，以便所有方法都能获得默认的实现。
+​	SAX API 定义了五种处理器：内容处理器、DTD 处理器、错误处理器、实体解析器以及词法处理器。 应用程序通常只需要实现他们感兴趣的事件对应的接口；他们可以在单个对象或多个对象中实现这些接口。 处理器的实现应当继承自 [`xml.sax.handler`]({{< ref "/library/markup/xml_sax_handler#module-xml.sax.handler" >}}) 模块所提供的基类，以便所有方法都能获得默认的实现。
 
 ## *class* xml.sax.handler.**ContentHandler**
 
@@ -42,7 +42,7 @@ draft = false
 
 ​	解析器用来代表低频度事件的接口，这些事件可能是许多应用程序都不感兴趣的。
 
-​	除了这些类，[`xml.sax.handler`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#module-xml.sax.handler) 还提供了表示特性和属性名称的符号常量。
+​	除了这些类，[`xml.sax.handler`]({{< ref "/library/markup/xml_sax_handler#module-xml.sax.handler" >}}) 还提供了表示特性和属性名称的符号常量。
 
 ## xml.sax.handler.**feature_namespaces**
 
@@ -156,7 +156,7 @@ access: (解析) 只读; (不解析) 读/写
 
 ## ContentHandler 对象
 
-​	用户应当子类化 [`ContentHandler`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler) 来支持他们的应用程序。 以下方法会由解析器在输入文档的适当事件上调用:
+​	用户应当子类化 [`ContentHandler`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler" >}}) 来支持他们的应用程序。 以下方法会由解析器在输入文档的适当事件上调用:
 
 ## ContentHandler.**setDocumentLocator**(*locator*)
 
@@ -172,7 +172,7 @@ access: (解析) 只读; (不解析) 读/写
 
 ​	接收一个文档开始的通知。
 
-​	SAX 解析器将只发起调用这个方法一次，并且会在调用这个接口或 DTDHandler 中的任何其他方法之前 ([`setDocumentLocator()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler.setDocumentLocator) 除外)。
+​	SAX 解析器将只发起调用这个方法一次，并且会在调用这个接口或 DTDHandler 中的任何其他方法之前 ([`setDocumentLocator()`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler.setDocumentLocator" >}}) 除外)。
 
 ## ContentHandler.**endDocument**()
 
@@ -186,33 +186,33 @@ access: (解析) 只读; (不解析) 读/写
 
 ​	来自此事件的信息对于一般命名空间处理来说是不必要的：当 `feature_namespaces` 特性被启用时（默认）SAX XML 读取器将自动为元素和属性名称替换前缀。
 
-​	但是也存在一些情况，当应用程序需要在字符数据或属性值中使用前缀，而它们无法被安全地自动扩展；[`startPrefixMapping()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler.startPrefixMapping) 和 [`endPrefixMapping()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler.endPrefixMapping) 事件会向应用程序提供信息以便在这些上下文内部扩展前缀，如果有必要的话。
+​	但是也存在一些情况，当应用程序需要在字符数据或属性值中使用前缀，而它们无法被安全地自动扩展；[`startPrefixMapping()`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler.startPrefixMapping" >}}) 和 [`endPrefixMapping()`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler.endPrefixMapping" >}}) 事件会向应用程序提供信息以便在这些上下文内部扩展前缀，如果有必要的话。
 
-​	请注意 [`startPrefixMapping()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler.startPrefixMapping) 和 [`endPrefixMapping()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler.endPrefixMapping) 事件并不保证能够相对彼此被正确地嵌套：所有 [`startPrefixMapping()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler.startPrefixMapping) 事件都将在对应的 [`startElement()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler.startElement) 事件之前发生，而所有 [`endPrefixMapping()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler.endPrefixMapping) 事件都将在对应的 [`endElement()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler.endElement) 事件之后发生，但它们的并不保证一致。
+​	请注意 [`startPrefixMapping()`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler.startPrefixMapping" >}}) 和 [`endPrefixMapping()`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler.endPrefixMapping" >}}) 事件并不保证能够相对彼此被正确地嵌套：所有 [`startPrefixMapping()`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler.startPrefixMapping" >}}) 事件都将在对应的 [`startElement()`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler.startElement" >}}) 事件之前发生，而所有 [`endPrefixMapping()`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler.endPrefixMapping" >}}) 事件都将在对应的 [`endElement()`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler.endElement" >}}) 事件之后发生，但它们的并不保证一致。
 
 ## ContentHandler.**endPrefixMapping**(*prefix*)
 
 ​	结束一个前缀 URI 映射的范围。
 
-​	请参看 [`startPrefixMapping()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler.startPrefixMapping) 了解详情。 此事件将总是会在对应的 [`endElement()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler.endElement) 事件之后发生，但 [`endPrefixMapping()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler.endPrefixMapping) 事件的顺序则并没有保证。
+​	请参看 [`startPrefixMapping()`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler.startPrefixMapping" >}}) 了解详情。 此事件将总是会在对应的 [`endElement()`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler.endElement" >}}) 事件之后发生，但 [`endPrefixMapping()`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler.endPrefixMapping" >}}) 事件的顺序则并没有保证。
 
 ## ContentHandler.**startElement**(*name*, *attrs*)
 
 ​	在非命令空间模式下指示一个元素的开始。
 
-*name* 形参包含字符串形式的元素类型原始 XML 1.0 名称而 *attrs* 形参存放包含元素属性的 `Attributes` 接口对象 (参见 [Attributes 接口](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#attributes-objects))。 作为 *attrs* 传入的对象可能被解析器所重用；维持一个对它的引用不是保持属性副本的可靠方式。 要保持这些属性的一个副本，请使用 *attrs* 对象的 [`copy()`](https://docs.python.org/zh-cn/3.13/library/copy.html#module-copy) 方法。
+*name* 形参包含字符串形式的元素类型原始 XML 1.0 名称而 *attrs* 形参存放包含元素属性的 `Attributes` 接口对象 (参见 [Attributes 接口]({{< ref "/library/markup/xml_sax_reader#attributes-objects" >}}))。 作为 *attrs* 传入的对象可能被解析器所重用；维持一个对它的引用不是保持属性副本的可靠方式。 要保持这些属性的一个副本，请使用 *attrs* 对象的 [`copy()`]({{< ref "/library/datatypes/copy#module-copy" >}}) 方法。
 
 ## ContentHandler.**endElement**(*name*)
 
 ​	在非命名空间模式下指示一个元素的结束。
 
-*name* 形参包含元素类型的名称，与 [`startElement()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler.startElement) 事件的一样。
+*name* 形参包含元素类型的名称，与 [`startElement()`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler.startElement" >}}) 事件的一样。
 
 ## ContentHandler.**startElementNS**(*name*, *qname*, *attrs*)
 
 ​	在命名空间模式下指示一个元素的开始。
 
-*name* 形参包含以 `(uri, localname)` 元组表示的元素类型名称，*qname* 形参包含源文档中使用的原始 XML 1.0 名称，而 *attrs* 形参存放包含元素属性的 `AttributesNS` 接口实例 (参见 [AttributesNS 接口](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#attributes-ns-objects))。 如果没有命名空间被关联到元素，则 *name* 的 *uri* 部分将为 `None`。 作为 *attrs* 传入的对象可能被解析器所重用；维持一个对它的引用不是保持属性副本的可靠方式。 要保持这些属性的一个副本，请使用 *attrs* 对象的 [`copy()`](https://docs.python.org/zh-cn/3.13/library/copy.html#module-copy) 方法。
+*name* 形参包含以 `(uri, localname)` 元组表示的元素类型名称，*qname* 形参包含源文档中使用的原始 XML 1.0 名称，而 *attrs* 形参存放包含元素属性的 `AttributesNS` 接口实例 (参见 [AttributesNS 接口]({{< ref "/library/markup/xml_sax_reader#attributes-ns-objects" >}}))。 如果没有命名空间被关联到元素，则 *name* 的 *uri* 部分将为 `None`。 作为 *attrs* 传入的对象可能被解析器所重用；维持一个对它的引用不是保持属性副本的可靠方式。 要保持这些属性的一个副本，请使用 *attrs* 对象的 [`copy()`]({{< ref "/library/datatypes/copy#module-copy" >}}) 方法。
 
 ​	解析器可将 *qname* 形参设为 `None`，除非 `feature_namespace_prefixes` 特性已被激活。
 
@@ -220,7 +220,7 @@ access: (解析) 只读; (不解析) 读/写
 
 ​	在命名空间模式下指示一个元素的结束。
 
-*name* 形参包含元素类型的名称，与 [`startElementNS()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler.startElementNS) 方法的一样，*qname* 形参也是类似的。
+*name* 形参包含元素类型的名称，与 [`startElementNS()`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler.startElementNS" >}}) 方法的一样，*qname* 形参也是类似的。
 
 ## ContentHandler.**characters**(*content*)
 
@@ -230,8 +230,7 @@ access: (解析) 只读; (不解析) 读/写
 
 *content* 可以是一个字符串或字节串实例；`expat` 读取器模块总是会产生字符串。
 
-​	备注
-
+​备注
  
 
 ​	Python XML 特别关注小组所提供的早期 SAX 1 接口针对此方法使用了一个更类似于 Java 的接口。 由于 Python 所使用的大多数解析器都没有利用老式的接口，因而选择了更简单的签名来替代它。 要将旧代码转换为新接口，请使用 *content* 而不要通过旧的 *offset* 和 *length* 形参来对内容进行切片。
@@ -262,7 +261,7 @@ access: (解析) 只读; (不解析) 读/写
 
 ## DTDHandler 对象
 
-[`DTDHandler`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.DTDHandler) 实例提供了下列方法:
+[`DTDHandler`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.DTDHandler" >}}) 实例提供了下列方法:
 
 ## DTDHandler.**notationDecl**(*name*, *publicId*, *systemId*)
 
@@ -284,7 +283,7 @@ access: (解析) 只读; (不解析) 读/写
 
 ## ErrorHandler 对象
 
-​	带有这个接口的对象被用于接收来自 [`XMLReader`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.XMLReader) 的错误和警告信息。 如果你创建了一个实现此接口的对象，然后用你的 [`XMLReader`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.XMLReader) 注册这个对象，则解析器将调用你的对象中的这个方法来报告所有的警告和错误。 有三个可用的错误级别：警告、（或许）可恢复的错误和不可恢复的错误。 所有方法都接受 [`SAXParseException`](https://docs.python.org/zh-cn/3.13/library/xml.sax.html#xml.sax.SAXParseException) 作为唯一的形参。 错误和警告可以通过引发所传入的异常对象来转换为异常。
+​	带有这个接口的对象被用于接收来自 [`XMLReader`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.XMLReader" >}}) 的错误和警告信息。 如果你创建了一个实现此接口的对象，然后用你的 [`XMLReader`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.XMLReader" >}}) 注册这个对象，则解析器将调用你的对象中的这个方法来报告所有的警告和错误。 有三个可用的错误级别：警告、（或许）可恢复的错误和不可恢复的错误。 所有方法都接受 [`SAXParseException`]({{< ref "/library/markup/xml_sax#xml.sax.SAXParseException" >}}) 作为唯一的形参。 错误和警告可以通过引发所传入的异常对象来转换为异常。
 
 ## ErrorHandler.**error**(*exception*)
 

@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/descriptor.html](https://docs.python.org/zh-cn/3.13/howto/descriptor.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/descriptor.html](https://docs.python.org/zh-cn/3.13/howto/descriptor.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -24,50 +24,50 @@ draft = false
 
 ​	目录
 
-- [描述器指南](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#descriptor-guide)
-  - [入门](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#primer)
-    - [简单示例：返回常量的描述器](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#simple-example-a-descriptor-that-returns-a-constant)
-    - [动态查找](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#dynamic-lookups)
-    - [托管属性](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#managed-attributes)
-    - [定制名称](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#customized-names)
-    - [结束语](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#closing-thoughts)
-  - [完整的实际例子](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#complete-practical-example)
-    - [验证器类](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#validator-class)
-    - [自定义验证器](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#custom-validators)
-    - [实际应用](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#practical-application)
-  - [技术教程](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#technical-tutorial)
-    - [摘要](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#abstract)
-    - [定义与介绍](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#definition-and-introduction)
-    - [描述器协议](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#descriptor-protocol)
-    - [描述器调用概述](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#overview-of-descriptor-invocation)
-    - [通过实例调用](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#invocation-from-an-instance)
-    - [通过类调用](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#invocation-from-a-class)
-    - [通过 super 调用](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#invocation-from-super)
-    - [调用逻辑总结](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#summary-of-invocation-logic)
-    - [自动名称通知](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#automatic-name-notification)
-    - [ORM （对象关系映射）示例](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#orm-example)
-  - [纯 Python 等价实现](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#pure-python-equivalents)
-    - [属性](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#properties)
-    - [函数和方法](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#functions-and-methods)
-    - [方法的种类](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#kinds-of-methods)
-    - [静态方法](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#static-methods)
-    - [类方法](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#class-methods)
-    - [成员对象和 __slots__](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#member-objects-and-slots)
+- [描述器指南]({{< ref "/howto/descriptor#descriptor-guide" >}})
+  - [入门]({{< ref "/howto/descriptor#primer" >}})
+    - [简单示例：返回常量的描述器]({{< ref "/howto/descriptor#simple-example-a-descriptor-that-returns-a-constant" >}})
+    - [动态查找]({{< ref "/howto/descriptor#dynamic-lookups" >}})
+    - [托管属性]({{< ref "/howto/descriptor#managed-attributes" >}})
+    - [定制名称]({{< ref "/howto/descriptor#customized-names" >}})
+    - [结束语]({{< ref "/howto/descriptor#closing-thoughts" >}})
+  - [完整的实际例子]({{< ref "/howto/descriptor#complete-practical-example" >}})
+    - [验证器类]({{< ref "/howto/descriptor#validator-class" >}})
+    - [自定义验证器]({{< ref "/howto/descriptor#custom-validators" >}})
+    - [实际应用]({{< ref "/howto/descriptor#practical-application" >}})
+  - [技术教程]({{< ref "/howto/descriptor#technical-tutorial" >}})
+    - [摘要]({{< ref "/howto/descriptor#abstract" >}})
+    - [定义与介绍]({{< ref "/howto/descriptor#definition-and-introduction" >}})
+    - [描述器协议]({{< ref "/howto/descriptor#descriptor-protocol" >}})
+    - [描述器调用概述]({{< ref "/howto/descriptor#overview-of-descriptor-invocation" >}})
+    - [通过实例调用]({{< ref "/howto/descriptor#invocation-from-an-instance" >}})
+    - [通过类调用]({{< ref "/howto/descriptor#invocation-from-a-class" >}})
+    - [通过 super 调用]({{< ref "/howto/descriptor#invocation-from-super" >}})
+    - [调用逻辑总结]({{< ref "/howto/descriptor#summary-of-invocation-logic" >}})
+    - [自动名称通知]({{< ref "/howto/descriptor#automatic-name-notification" >}})
+    - [ORM （对象关系映射）示例]({{< ref "/howto/descriptor#orm-example" >}})
+  - [纯 Python 等价实现]({{< ref "/howto/descriptor#pure-python-equivalents" >}})
+    - [属性]({{< ref "/howto/descriptor#properties" >}})
+    - [函数和方法]({{< ref "/howto/descriptor#functions-and-methods" >}})
+    - [方法的种类]({{< ref "/howto/descriptor#kinds-of-methods" >}})
+    - [静态方法]({{< ref "/howto/descriptor#static-methods" >}})
+    - [类方法]({{< ref "/howto/descriptor#class-methods" >}})
+    - [成员对象和 __slots__]({{< ref "/howto/descriptor#member-objects-and-slots" >}})
 
-[描述器](https://docs.python.org/zh-cn/3.13/glossary.html#term-descriptor) 让对象能够自定义属性查找、存储和删除的操作。
+[描述器]({{< ref "/glossary/idx#term-descriptor" >}}) 让对象能够自定义属性查找、存储和删除的操作。
 
 ​	本指南主要分为四个部分：
 
 1. “入门” 部分从简单的示例着手，逐步添加特性，从而给出基本的概述。如果你是刚接触到描述器，请从这里开始。
 2. 第二部分展示了完整的、实用的描述器示例。如果您已经掌握了基础知识，请从此处开始。
 3. 第三部分提供了更多技术教程，详细介绍了描述器如何工作。大多数人并不需要深入到这种程度。
-4. 最后一部分有对内置描述器（用 C 编写）的纯 Python 等价实现。如果您想了解函数如何变成绑定方法或对 [`classmethod()`](https://docs.python.org/zh-cn/3.13/library/functions.html#classmethod)， [`staticmethod()`](https://docs.python.org/zh-cn/3.13/library/functions.html#staticmethod)，[`property()`](https://docs.python.org/zh-cn/3.13/library/functions.html#property) 和 [__slots__](https://docs.python.org/zh-cn/3.13/glossary.html#term-__slots__) 这类常见工具的实现感兴趣，请阅读此部分。
+4. 最后一部分有对内置描述器（用 C 编写）的纯 Python 等价实现。如果您想了解函数如何变成绑定方法或对 [`classmethod()`]({{< ref "/library/functions#classmethod" >}})， [`staticmethod()`]({{< ref "/library/functions#staticmethod" >}})，[`property()`]({{< ref "/library/functions#property" >}}) 和 [__slots__]({{< ref "/glossary/idx#term-__slots__" >}}) 这类常见工具的实现感兴趣，请阅读此部分。
 
-## [入门](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id3)
+## [入门]({{< ref "/howto/descriptor#id3" >}})
 
 ​	现在，让我们从最基本的示例开始，然后逐步添加新功能。
 
-### [简单示例：返回常量的描述器](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id4)
+### [简单示例：返回常量的描述器]({{< ref "/howto/descriptor#id4" >}})
 
 `Ten` 类是一个描述器，其 `__get__()` 方法总是返回常量 `10`：
 
@@ -105,7 +105,7 @@ class A:
 
 ​	在下一节中，我们将创建更有用的东西，即动态查找。
 
-### [动态查找](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id5)
+### [动态查找]({{< ref "/howto/descriptor#id5" >}})
 
 ​	有趣的描述器通常运行计算而不是返回常量：
 
@@ -143,7 +143,7 @@ class Directory:
 
 ​	除了说明描述器如何运行计算，这个例子也揭示了 `__get__()` 参数的目的。形参 *self* 接收的实参是 *size*，即 *DirectorySize* 的一个实例。形参 *obj* 接收的实参是 *g* 或 *s*，即 *Directory* 的一个实例。而正是 *obj* 让 `__get__()` 方法获得了作为目标的目录。形参 *objtype* 接收的实参是 *Directory* 类。
 
-### [托管属性](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id6)
+### [托管属性]({{< ref "/howto/descriptor#id6" >}})
 
 ​	描述器的一种流行用法是托管对实例数据的访问。描述器被分配给类字典中的公开属性，而实际数据作为私有属性存储在实例字典中。当访问公开属性时，会触发描述器的 `__get__()` 和 `__set__()` 方法。
 
@@ -208,7 +208,7 @@ INFO:root:Accessing 'age' giving 40
 
 ​	此示例的一个主要问题是私有名称 *_age* 在类 *LoggedAgeAccess* 中是硬耦合的。这意味着每个实例只能有一个用于记录的属性，并且其名称不可更改。
 
-### [定制名称](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id7)
+### [定制名称]({{< ref "/howto/descriptor#id7" >}})
 
 ​	当一个类使用描述器时，它可以告知每个描述器使用了什么变量名。
 
@@ -247,7 +247,7 @@ class Person:
         self.age += 1
 ```
 
-​	交互交互式会话显示类 `Person` 调用了 `__set_name__()` 方法来记录字段的名称。在这里，我们调用 [`vars()`](https://docs.python.org/zh-cn/3.13/library/functions.html#vars) 来查找描述器而不触发它：
+​	交互交互式会话显示类 `Person` 调用了 `__set_name__()` 方法来记录字段的名称。在这里，我们调用 [`vars()`]({{< ref "/library/functions#vars" >}}) 来查找描述器而不触发它：
 
 
 
@@ -282,9 +282,9 @@ INFO:root:Updating 'age' to 20
 {'_name': 'Catherine C', '_age': 20}
 ```
 
-### [结束语](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id8)
+### [结束语]({{< ref "/howto/descriptor#id8" >}})
 
-[descriptor](https://docs.python.org/zh-cn/3.13/glossary.html#term-descriptor) 就是任何一个定义了 `__get__()`，`__set__()` 或 `__delete__()` 的对象。
+[descriptor]({{< ref "/glossary/idx#term-descriptor" >}}) 就是任何一个定义了 `__get__()`，`__set__()` 或 `__delete__()` 的对象。
 
 ​	可选地，描述器可以具有 `__set_name__()` 方法。这仅在描述器需要知道创建它的类或分配给它的类变量名称时使用。（即使该类不是描述器，只要此方法存在就会调用。）
 
@@ -296,17 +296,17 @@ INFO:root:Updating 'age' to 20
 
 ​	传统上，调用类控制查找过程中发生的事情。描述器反转了这种关系，并允许正在被查询的数据对此进行干涉。
 
-​	描述器的使用贯穿了整个语言。就是它让函数变成绑定方法。常见工具诸如 [`classmethod()`](https://docs.python.org/zh-cn/3.13/library/functions.html#classmethod)， [`staticmethod()`](https://docs.python.org/zh-cn/3.13/library/functions.html#staticmethod)，[`property()`](https://docs.python.org/zh-cn/3.13/library/functions.html#property) 和 [`functools.cached_property()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.cached_property) 都作为描述器实现。
+​	描述器的使用贯穿了整个语言。就是它让函数变成绑定方法。常见工具诸如 [`classmethod()`]({{< ref "/library/functions#classmethod" >}})， [`staticmethod()`]({{< ref "/library/functions#staticmethod" >}})，[`property()`]({{< ref "/library/functions#property" >}}) 和 [`functools.cached_property()`]({{< ref "/library/functional/functools#functools.cached_property" >}}) 都作为描述器实现。
 
-## [完整的实际例子](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id9)
+## [完整的实际例子]({{< ref "/howto/descriptor#id9" >}})
 
 ​	在此示例中，我们创建了一个实用而强大的工具来查找难以发现的数据损坏错误。
 
-### [验证器类](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id10)
+### [验证器类]({{< ref "/howto/descriptor#id10" >}})
 
 ​	验证器是一个用于托管属性访问的描述器。在存储任何数据之前，它会验证新值是否满足各种类型和范围限制。如果不满足这些限制，它将引发异常，从源头上防止数据损坏。
 
-​	这个 `Validator` 类既是一个 [abstract base class](https://docs.python.org/zh-cn/3.13/glossary.html#term-abstract-base-class) 也是一个托管属性描述器。
+​	这个 `Validator` 类既是一个 [abstract base class]({{< ref "/glossary/idx#term-abstract-base-class" >}}) 也是一个托管属性描述器。
 
 ```
 from abc import ABC, abstractmethod
@@ -330,13 +330,13 @@ class Validator(ABC):
 
 ​	自定义验证器需要从 `Validator` 继承，并且必须提供 `validate()` 方法以根据需要测试各种约束。
 
-### [自定义验证器](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id11)
+### [自定义验证器]({{< ref "/howto/descriptor#id11" >}})
 
 ​	这是三个实用的数据验证工具：
 
 1. `OneOf` 验证值是一组受约束的选项之一。
-2. `Number` 验证值是否为 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 或 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float)。根据可选参数，它还可以验证值在给定的最小值或最大值之间。
-3. `String` 验证值是否为 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str)。根据可选参数，它可以验证给定的最小或最大长度。它还可以验证用户定义的 [predicate](https://en.wikipedia.org/wiki/Predicate_(mathematical_logic))。
+2. `Number` 验证值是否为 [`int`]({{< ref "/library/functions#int" >}}) 或 [`float`]({{< ref "/library/functions#float" >}})。根据可选参数，它还可以验证值在给定的最小值或最大值之间。
+3. `String` 验证值是否为 [`str`]({{< ref "/library/stdtypes#str" >}})。根据可选参数，它可以验证给定的最小或最大长度。它还可以验证用户定义的 [predicate](https://en.wikipedia.org/wiki/Predicate_(mathematical_logic))。
 
 ```
 class OneOf(Validator):
@@ -392,7 +392,7 @@ class String(Validator):
             )
 ```
 
-### [实际应用](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id12)
+### [实际应用]({{< ref "/howto/descriptor#id12" >}})
 
 ​	这是在真实类中使用数据验证器的方法：
 
@@ -437,25 +437,25 @@ TypeError: Expected 'V' to be an int or float
 >>> c = Component('WIDGET', 'metal', 5)  # Allowed:  The inputs are valid
 ```
 
-## [技术教程](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id13)
+## [技术教程]({{< ref "/howto/descriptor#id13" >}})
 
 ​	接下来是专业性更强的技术教程，以及描述器工作原理的详细信息。
 
-### [摘要](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id14)
+### [摘要]({{< ref "/howto/descriptor#id14" >}})
 
 ​	定义描述器，总结协议，并说明如何调用描述器。提供一个展示对象关系映射如何工作的示例。
 
 ​	学习描述器不仅能提供接触到更多工具集的途径，还能更深地理解 Python 工作的原理。
 
-### [定义与介绍](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id15)
+### [定义与介绍]({{< ref "/howto/descriptor#id15" >}})
 
-​	一般而言，描述器是一个包含了描述器协议中的方法的属性值。 这些方法有 `__get__()`, `__set__()` 和 `__delete__()`。 如果为某个属性定义了这些方法中的任意一个，它就可以被称为 [descriptor](https://docs.python.org/zh-cn/3.13/glossary.html#term-descriptor)。
+​	一般而言，描述器是一个包含了描述器协议中的方法的属性值。 这些方法有 `__get__()`, `__set__()` 和 `__delete__()`。 如果为某个属性定义了这些方法中的任意一个，它就可以被称为 [descriptor]({{< ref "/glossary/idx#term-descriptor" >}})。
 
 ​	属性访问的默认行为是从一个对象的字典中获取、设置或删除属性。对于实例来说，`a.x` 的查找顺序会从 `a.__dict__['x']` 开始，然后是 `type(a).__dict__['x']`，接下来依次查找 `type(a)` 的方法解析顺序（MRO）。 如果找到的值是定义了某个描述器方法的对象，则 Python 可能会重写默认行为并转而发起调用描述器方法。这具体发生在优先级链的哪个环节则要根据所定义的描述器方法及其被调用的方式来决定。
 
-​	Descriptors are a powerful, general purpose protocol. They are the mechanism behind properties, methods, static methods, class methods, and [`super()`](https://docs.python.org/zh-cn/3.13/library/functions.html#super). They are used throughout Python itself. Descriptors simplify the underlying C code and offer a flexible set of new tools for everyday Python programs.
+​	Descriptors are a powerful, general purpose protocol. They are the mechanism behind properties, methods, static methods, class methods, and [`super()`]({{< ref "/library/functions#super" >}}). They are used throughout Python itself. Descriptors simplify the underlying C code and offer a flexible set of new tools for everyday Python programs.
 
-### [描述器协议](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id16)
+### [描述器协议]({{< ref "/howto/descriptor#id16" >}})
 
 ```
 descr.__get__(self, obj, type=None)
@@ -469,25 +469,25 @@ descr.__delete__(self, obj)
 
 ​	数据和非数据描述器的不同之处在于，如何计算实例字典中条目的替代值。如果实例的字典具有与数据描述器同名的条目，则数据描述器优先。如果实例的字典具有与非数据描述器同名的条目，则该字典条目优先。
 
-​	为了使数据描述器成为只读的，应该同时定义 `__get__()` 和 `__set__()` ，并在 `__set__()` 中引发 [`AttributeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AttributeError) 。用引发异常的占位符定义 `__set__()` 方法使其成为数据描述器。
+​	为了使数据描述器成为只读的，应该同时定义 `__get__()` 和 `__set__()` ，并在 `__set__()` 中引发 [`AttributeError`]({{< ref "/library/exceptions#AttributeError" >}}) 。用引发异常的占位符定义 `__set__()` 方法使其成为数据描述器。
 
-### [描述器调用概述](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id17)
+### [描述器调用概述]({{< ref "/howto/descriptor#id17" >}})
 
 ​	描述器可以通过 `d.__get__(obj)` 或 `desc.__get__(None, cls)` 直接调用。
 
 ​	但更常见的是通过属性访问自动调用描述器。
 
-​	The expression `obj.x` looks up the attribute `x` in the chain of namespaces for `obj`. If the search finds a descriptor outside of the instance [`__dict__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__dict__), its [`__get__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__get__) method is invoked according to the precedence rules listed below.
+​	The expression `obj.x` looks up the attribute `x` in the chain of namespaces for `obj`. If the search finds a descriptor outside of the instance [`__dict__`]({{< ref "/reference/datamodel#object.__dict__" >}}), its [`__get__()`]({{< ref "/reference/datamodel#object.__get__" >}}) method is invoked according to the precedence rules listed below.
 
 ​	调用的细节取决于 `obj` 是对象、类还是超类的实例。
 
-### [通过实例调用](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id18)
+### [通过实例调用]({{< ref "/howto/descriptor#id18" >}})
 
 ​	实例查找通过命名空间链进行扫描，数据描述器的优先级最高，其次是实例变量、非数据描述器、类变量，最后是 `__getattr__()` （如果存在的话）。
 
 ​	如果 `a.x` 找到了一个描述器，那么将通过 `desc.__get__(a, type(a))` 调用它。
 
-​	点运算符的查找逻辑在 [`object.__getattribute__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getattribute__) 中。这里是一个等价的纯 Python 实现：
+​	点运算符的查找逻辑在 [`object.__getattribute__()`]({{< ref "/reference/datamodel#object.__getattribute__" >}}) 中。这里是一个等价的纯 Python 实现：
 
 ```
 def find_name_in_mro(cls, name, default):
@@ -518,7 +518,7 @@ def object_getattribute(obj, name):
 
 ​	请注意，在 `__getattribute__()` 方法的代码中没有调用 `__getattr__()` 的钩子。这就是直接调用 `__getattribute__()` 或调用 `super().__getattribute__` 会彻底绕过 `__getattr__()` 的原因。
 
-​	相反，当 `__getattribute__()` 引发 [`AttributeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AttributeError) 时，点运算符和 [`getattr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#getattr) 函数负责调用 `__getattr__()`。它们的逻辑封装在一个辅助函数中：
+​	相反，当 `__getattribute__()` 引发 [`AttributeError`]({{< ref "/library/exceptions#AttributeError" >}}) 时，点运算符和 [`getattr()`]({{< ref "/library/functions#getattr" >}}) 函数负责调用 `__getattr__()`。它们的逻辑封装在一个辅助函数中：
 
 ```
 def getattr_hook(obj, name):
@@ -531,44 +531,44 @@ def getattr_hook(obj, name):
     return type(obj).__getattr__(obj, name)             # __getattr__
 ```
 
-### [通过类调用](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id19)
+### [通过类调用]({{< ref "/howto/descriptor#id19" >}})
 
-​	像 `A.x` 这样的点操作符查找的逻辑在 `type.__getattribute__()` 中。步骤与 [`object.__getattribute__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getattribute__) 相似，但是实例字典查找改为搜索类的 [method resolution order](https://docs.python.org/zh-cn/3.13/glossary.html#term-method-resolution-order)。
+​	像 `A.x` 这样的点操作符查找的逻辑在 `type.__getattribute__()` 中。步骤与 [`object.__getattribute__()`]({{< ref "/reference/datamodel#object.__getattribute__" >}}) 相似，但是实例字典查找改为搜索类的 [method resolution order]({{< ref "/glossary/idx#term-method-resolution-order" >}})。
 
 ​	如果找到了一个描述器，那么将通过 `desc.__get__(None, A)` 调用它。
 
 ​	完整的 C 实现可在 [Objects/typeobject.c](https://github.com/python/cpython/tree/3.13/Objects/typeobject.c) 里的 `type_getattro()` 和 `_PyType_Lookup()` 中找到。
 
-### [通过 super 调用](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id20)
+### [通过 super 调用]({{< ref "/howto/descriptor#id20" >}})
 
-​	super 的点操作符查找的逻辑在 [`super()`](https://docs.python.org/zh-cn/3.13/library/functions.html#super) 所返回对象的 `__getattribute__()` 方法中。
+​	super 的点操作符查找的逻辑在 [`super()`]({{< ref "/library/functions#super" >}}) 所返回对象的 `__getattribute__()` 方法中。
 
 ​	类似 `super(A, obj).m` 形式的点分查找将在 `obj.__class__.__mro__` 中搜索紧接在 `A` 之后的基类 `B`，然后返回 `B.__dict__['m'].__get__(obj, A)`。如果 `m` 不是描述器，则直接返回其值。
 
 ​	完整的 C 实现可在 [Objects/typeobject.c](https://github.com/python/cpython/tree/3.13/Objects/typeobject.c) 里的 `super_getattro()` 中找到。 纯 Python 的等价实现可在 [Guido 的教程](https://www.python.org/download/releases/2.2.3/descrintro/#cooperation) 中找到。
 
-### [调用逻辑总结](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id21)
+### [调用逻辑总结]({{< ref "/howto/descriptor#id21" >}})
 
-​	The mechanism for descriptors is embedded in the `__getattribute__()` methods for [`object`](https://docs.python.org/zh-cn/3.13/library/functions.html#object), [`type`](https://docs.python.org/zh-cn/3.13/library/functions.html#type), and [`super()`](https://docs.python.org/zh-cn/3.13/library/functions.html#super).
+​	The mechanism for descriptors is embedded in the `__getattribute__()` methods for [`object`]({{< ref "/library/functions#object" >}}), [`type`]({{< ref "/library/functions#type" >}}), and [`super()`]({{< ref "/library/functions#super" >}}).
 
 ​	要记住的重要点是：
 
 - 描述器由 `__getattribute__()` 方法调用。
-- 类从 [`object`](https://docs.python.org/zh-cn/3.13/library/functions.html#object)，[`type`](https://docs.python.org/zh-cn/3.13/library/functions.html#type) 或 [`super()`](https://docs.python.org/zh-cn/3.13/library/functions.html#super) 继承此机制。
+- 类从 [`object`]({{< ref "/library/functions#object" >}})，[`type`]({{< ref "/library/functions#type" >}}) 或 [`super()`]({{< ref "/library/functions#super" >}}) 继承此机制。
 - 由于描述器的逻辑在 `__getattribute__()` 中，因而重写该方法会阻止描述器的自动调用。
-- [`object.__getattribute__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getattribute__) 和 `type.__getattribute__()` 会用不同的方式调用 `__get__()`。前一个会传入实例，也可以包括类。后一个传入的实例为 `None` ，并且总是包括类。
+- [`object.__getattribute__()`]({{< ref "/reference/datamodel#object.__getattribute__" >}}) 和 `type.__getattribute__()` 会用不同的方式调用 `__get__()`。前一个会传入实例，也可以包括类。后一个传入的实例为 `None` ，并且总是包括类。
 - 数据描述器始终会覆盖实例字典。
 - 非数据描述器会被实例字典覆盖。
 
-### [自动名称通知](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id22)
+### [自动名称通知]({{< ref "/howto/descriptor#id22" >}})
 
-​	有时，描述器想知道它分配到的具体类变量名。创建新类时，元类 [`type`](https://docs.python.org/zh-cn/3.13/library/functions.html#type) 将扫描新类的字典。如果有描述器，并且它们定义了 `__set_name__()`，则使用两个参数调用该方法。*owner* 是使用描述器的类，*name* 是分配给描述器的类变量名。
+​	有时，描述器想知道它分配到的具体类变量名。创建新类时，元类 [`type`]({{< ref "/library/functions#type" >}}) 将扫描新类的字典。如果有描述器，并且它们定义了 `__set_name__()`，则使用两个参数调用该方法。*owner* 是使用描述器的类，*name* 是分配给描述器的类变量名。
 
 ​	实现的细节在 [Objects/typeobject.c](https://github.com/python/cpython/tree/3.13/Objects/typeobject.c) 里的 `type_new()` 和 `set_names()` 中。
 
 ​	由于更新逻辑在 `type.__new__()` 中，因此通知仅在创建类时发生。之后如果将描述器添加到类中，则需要手动调用 `__set_name__()` 。
 
-### [ORM （对象关系映射）示例](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id23)
+### [ORM （对象关系映射）示例]({{< ref "/howto/descriptor#id23" >}})
 
 ​	以下代码展示了如何使用数据描述器来实现简单的 [对象关系映射](https://en.wikipedia.org/wiki/Object–relational_mapping) 框架。
 
@@ -640,13 +640,13 @@ class Song:
 'J.J. Abrams'
 ```
 
-## [纯 Python 等价实现](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id24)
+## [纯 Python 等价实现]({{< ref "/howto/descriptor#id24" >}})
 
 ​	描述器协议很简单，但它提供了令人兴奋的可能性。有几个用例非常通用，以至于它们已预先打包到内置工具中。属性、绑定方法、静态方法、类方法和 __slots__ 均基于描述器协议。
 
-### [属性](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id25)
+### [属性]({{< ref "/howto/descriptor#id25" >}})
 
-​	调用 [`property()`](https://docs.python.org/zh-cn/3.13/library/functions.html#property) 是构建数据描述器的简洁方式，该数据描述器在访问属性时触发函数调用。它的签名是：
+​	调用 [`property()`]({{< ref "/library/functions#property" >}}) 是构建数据描述器的简洁方式，该数据描述器在访问属性时触发函数调用。它的签名是：
 
 ```
 property(fget=None, fset=None, fdel=None, doc=None) -> property
@@ -662,7 +662,7 @@ class C:
     x = property(getx, setx, delx, "I'm the 'x' property.")
 ```
 
-​	To see how [`property()`](https://docs.python.org/zh-cn/3.13/library/functions.html#property) is implemented in terms of the descriptor protocol, here is a pure Python equivalent that implements most of the core functionality:
+​	To see how [`property()`]({{< ref "/library/functions#property" >}}) is implemented in terms of the descriptor protocol, here is a pure Python equivalent that implements most of the core functionality:
 
 ```
 class Property:
@@ -706,7 +706,7 @@ class Property:
         return type(self)(self.fget, self.fset, fdel, self.__doc__)
 ```
 
-​	这个内置的 [`property()`](https://docs.python.org/zh-cn/3.13/library/functions.html#property) 每当用户访问属性时生效，随后的变化需要一个方法的参与。
+​	这个内置的 [`property()`]({{< ref "/library/functions#property" >}}) 每当用户访问属性时生效，随后的变化需要一个方法的参与。
 
 ​	例如，一个电子表格类可以通过 `Cell('b10').value` 授予对单元格值的访问权限。对程序的后续改进要求每次访问都要重新计算单元格；但是，程序员不希望影响直接访问该属性的现有客户端代码。解决方案是将对 value 属性的访问包装在属性数据描述器中:
 
@@ -721,15 +721,15 @@ class Cell:
         return self._value
 ```
 
-​	在此示例中，内置的 [`property()`](https://docs.python.org/zh-cn/3.13/library/functions.html#property) 或我们实现的的 `Property()` 均适用。
+​	在此示例中，内置的 [`property()`]({{< ref "/library/functions#property" >}}) 或我们实现的的 `Property()` 均适用。
 
-### [函数和方法](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id26)
+### [函数和方法]({{< ref "/howto/descriptor#id26" >}})
 
 ​	Python 的面向对象功能是在基于函数的环境构建的。通过使用非数据描述器，这两方面完成了无缝融合。
 
 ​	在调用时，存储在类词典中的函数将被转换为方法。方法与常规函数的不同之处仅在于对象实例被置于其他参数之前。方法与常规函数的不同之处仅在于第一个参数是为对象实例保留的。按照惯例，实例引用称为 *self* ，但也可以称为 *this* 或任何其他变量名称。
 
-​	可以使用 [`types.MethodType`](https://docs.python.org/zh-cn/3.13/library/types.html#types.MethodType) 手动创建方法，其行为基本等价于：
+​	可以使用 [`types.MethodType`]({{< ref "/library/datatypes/types#types.MethodType" >}}) 手动创建方法，其行为基本等价于：
 
 ```
 class MethodType:
@@ -783,7 +783,7 @@ class D2:
     pass
 ```
 
-​	该函数具有 [qualified name](https://docs.python.org/zh-cn/3.13/glossary.html#term-qualified-name) 属性以支持自省：
+​	该函数具有 [qualified name]({{< ref "/glossary/idx#term-qualified-name" >}}) 属性以支持自省：
 
 
 
@@ -834,7 +834,7 @@ class D2:
 
 ​	如果你曾好奇常规方法中的 *self* 或类方法中的 *cls* 是从什么地方来的，就是这里了！
 
-### [方法的种类](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id27)
+### [方法的种类]({{< ref "/howto/descriptor#id27" >}})
 
 ​	非数据描述器为把函数绑定为方法的通常模式提供了一种简单的机制。
 
@@ -848,7 +848,7 @@ class D2:
 > | 静态方法         | f(*args)            | f(*args)      |
 > | 类方法           | f(type(obj), *args) | f(cls, *args) |
 
-### [静态方法](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id28)
+### [静态方法]({{< ref "/howto/descriptor#id28" >}})
 
 ​	静态方法返回底层函数，不做任何更改。调用 `c.f` 或 `C.f` 等效于通过 `object.__getattribute__(c, "f")` 或 `object.__getattribute__(C, "f")` 查找。这样该函数就可以从对象或类中进行相同的访问。
 
@@ -874,7 +874,7 @@ class E:
 30
 ```
 
-​	使用非数据描述器，纯 Python 版本的 [`staticmethod()`](https://docs.python.org/zh-cn/3.13/library/functions.html#staticmethod) 如下所示：
+​	使用非数据描述器，纯 Python 版本的 [`staticmethod()`]({{< ref "/library/functions#staticmethod" >}}) 如下所示：
 
 ```
 import functools
@@ -893,9 +893,9 @@ class StaticMethod:
         return self.f(*args, **kwds)
 ```
 
-[`functools.update_wrapper()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.update_wrapper) 调用增加了一个指向下层函数的 `__wrapped__` 属性。 它还会向前传递必要的属性以使此包装器看起来像是被包装的函数: [`__name__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#function.__name__), [`__qualname__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#function.__qualname__), [`__doc__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#function.__doc__) 以及 [`__annotations__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#function.__annotations__)。
+[`functools.update_wrapper()`]({{< ref "/library/functional/functools#functools.update_wrapper" >}}) 调用增加了一个指向下层函数的 `__wrapped__` 属性。 它还会向前传递必要的属性以使此包装器看起来像是被包装的函数: [`__name__`]({{< ref "/reference/datamodel#function.__name__" >}}), [`__qualname__`]({{< ref "/reference/datamodel#function.__qualname__" >}}), [`__doc__`]({{< ref "/reference/datamodel#function.__doc__" >}}) 以及 [`__annotations__`]({{< ref "/reference/datamodel#function.__annotations__" >}})。
 
-### [类方法](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id29)
+### [类方法]({{< ref "/howto/descriptor#id29" >}})
 
 ​	与静态方法不同，类方法在调用函数之前将类引用放在参数列表的最前。无论调用方是对象还是类，此格式相同：
 
@@ -915,7 +915,7 @@ class F:
 ('F', 3)
 ```
 
-​	当方法仅需要具有类引用并且确实依赖于存储在特定实例中的数据时，此行为就很有用。类方法的一种用途是创建备用类构造函数。例如，类方法 [`dict.fromkeys()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict.fromkeys) 从键列表创建一个新字典。纯 Python 的等价实现是：
+​	当方法仅需要具有类引用并且确实依赖于存储在特定实例中的数据时，此行为就很有用。类方法的一种用途是创建备用类构造函数。例如，类方法 [`dict.fromkeys()`]({{< ref "/library/stdtypes#dict.fromkeys" >}}) 从键列表创建一个新字典。纯 Python 的等价实现是：
 
 ```
 class Dict(dict):
@@ -940,7 +940,7 @@ True
 {'a': None, 'b': None, 'r': None, 'c': None, 'd': None}
 ```
 
-​	使用非数据描述器协议，纯 Python 版本的 [`classmethod()`](https://docs.python.org/zh-cn/3.13/library/functions.html#classmethod) 如下：
+​	使用非数据描述器协议，纯 Python 版本的 [`classmethod()`]({{< ref "/library/functions#classmethod" >}}) 如下：
 
 ```
 import functools
@@ -958,9 +958,9 @@ class ClassMethod:
         return MethodType(self.f, cls)
 ```
 
-`ClassMethod` 中的 [`functools.update_wrapper()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.update_wrapper) 调用增加了一个指向下层函数的 `__wrapped__` 属性。 它还会向前传递必要的属性以使此包装器看起来像是被包装的函数: [`__name__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#function.__name__), [`__qualname__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#function.__qualname__), [`__doc__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#function.__doc__) 以及 [`__annotations__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#function.__annotations__)。
+`ClassMethod` 中的 [`functools.update_wrapper()`]({{< ref "/library/functional/functools#functools.update_wrapper" >}}) 调用增加了一个指向下层函数的 `__wrapped__` 属性。 它还会向前传递必要的属性以使此包装器看起来像是被包装的函数: [`__name__`]({{< ref "/reference/datamodel#function.__name__" >}}), [`__qualname__`]({{< ref "/reference/datamodel#function.__qualname__" >}}), [`__doc__`]({{< ref "/reference/datamodel#function.__doc__" >}}) 以及 [`__annotations__`]({{< ref "/reference/datamodel#function.__annotations__" >}})。
 
-### [成员对象和 __slots__](https://docs.python.org/zh-cn/3.13/howto/descriptor.html#id30)
+### [成员对象和 __slots__]({{< ref "/howto/descriptor#id30" >}})
 
 ​	当一个类定义了 `__slots__`，它会用一个固定长度的 slot 值数组来替换实例字典。 从用户的视角看，效果是这样的：
 
@@ -1021,7 +1021,7 @@ AttributeError: 'Immutable' object has no attribute 'location'
 
 ​	4. Improves speed. Reading instance variables is 35% faster with `__slots__` (as measured with Python 3.10 on an Apple M1 processor).
 
-​	5. Blocks tools like [`functools.cached_property()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.cached_property) which require an instance dictionary to function correctly:
+​	5. Blocks tools like [`functools.cached_property()`]({{< ref "/library/functional/functools#functools.cached_property" >}}) which require an instance dictionary to function correctly:
 
 ```
 from functools import cached_property
@@ -1099,7 +1099,7 @@ class Type(type):
         return type.__new__(mcls, clsname, bases, mapping, **kwargs)
 ```
 
-[`object.__new__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__new__) 方法负责创建具有 slot 而非实例字典的实例。 以下是一个纯 Python 的粗略模拟版：
+[`object.__new__()`]({{< ref "/reference/datamodel#object.__new__" >}}) 方法负责创建具有 slot 而非实例字典的实例。 以下是一个纯 Python 的粗略模拟版：
 
 ```
 class Object:
@@ -1132,7 +1132,7 @@ class Object:
         super().__delattr__(name)
 ```
 
-​	要在真实的类中使用这个模拟版，只需从 `Object` 继承并将 [metaclass](https://docs.python.org/zh-cn/3.13/glossary.html#term-metaclass) 设为 `Type`：
+​	要在真实的类中使用这个模拟版，只需从 `Object` 继承并将 [metaclass]({{< ref "/glossary/idx#term-metaclass" >}}) 设为 `Type`：
 
 ```
 class H(Object, metaclass=Type):

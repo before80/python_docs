@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/linecache.html](https://docs.python.org/zh-cn/3.13/library/linecache.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/linecache.html](https://docs.python.org/zh-cn/3.13/library/linecache.html)
 >
 > 收录该文档的时间：`2024-11-15T11:53:09+08:00`
 
@@ -18,11 +18,11 @@ draft = false
 
 ------
 
-[`linecache`](https://docs.python.org/zh-cn/3.13/library/linecache.html#module-linecache) 模块允许从一个 Python 源文件中获取任意的行，并会尝试使用缓存进行内部优化，常应用于从单个文件读取多行的场合。 此模块被 [`traceback`](https://docs.python.org/zh-cn/3.13/library/traceback.html#module-traceback) 模块用来提取源码行以便包含在格式化的回溯中。
+[`linecache`]({{< ref "/library/filesys/linecache#module-linecache" >}}) 模块允许从一个 Python 源文件中获取任意的行，并会尝试使用缓存进行内部优化，常应用于从单个文件读取多行的场合。 此模块被 [`traceback`]({{< ref "/library/python/traceback#module-traceback" >}}) 模块用来提取源码行以便包含在格式化的回溯中。
 
-[`tokenize.open()`](https://docs.python.org/zh-cn/3.13/library/tokenize.html#tokenize.open) 函数被用于打开文件。 此函数使用 [`tokenize.detect_encoding()`](https://docs.python.org/zh-cn/3.13/library/tokenize.html#tokenize.detect_encoding) 来获取文件的编码格式；如果未指明编码格式，则默认编码为 UTF-8。
+[`tokenize.open()`]({{< ref "/library/language/tokenize#tokenize.open" >}}) 函数被用于打开文件。 此函数使用 [`tokenize.detect_encoding()`]({{< ref "/library/language/tokenize#tokenize.detect_encoding" >}}) 来获取文件的编码格式；如果未指明编码格式，则默认编码为 UTF-8。
 
-[`linecache`](https://docs.python.org/zh-cn/3.13/library/linecache.html#module-linecache) 模块定义了下列函数：
+[`linecache`]({{< ref "/library/filesys/linecache#module-linecache" >}}) 模块定义了下列函数：
 
 ## linecache.**getline**(*filename*, *lineno*, *module_globals=None*)
 
@@ -32,7 +32,7 @@ draft = false
 
 ## linecache.**clearcache**()
 
-​	清空缓存。 如果你不再需要之前使用 [`getline()`](https://docs.python.org/zh-cn/3.13/library/linecache.html#linecache.getline) 从文件读取的行即可使用此函数。
+​	清空缓存。 如果你不再需要之前使用 [`getline()`]({{< ref "/library/filesys/linecache#linecache.getline" >}}) 从文件读取的行即可使用此函数。
 
 ## linecache.**checkcache**(*filename=None*)
 
@@ -40,7 +40,7 @@ draft = false
 
 ## linecache.**lazycache**(*filename*, *module_globals*)
 
-​	捕获有关某个非基于文件的模块的足够细节信息，以允许稍后再通过 [`getline()`](https://docs.python.org/zh-cn/3.13/library/linecache.html#linecache.getline) 来获取其中的行，即使当稍后调用时 *module_globals* 为 `None`。 这可以避免在实际需要读取行之前执行 I/O，也不必始终保持模块全局变量。
+​	捕获有关某个非基于文件的模块的足够细节信息，以允许稍后再通过 [`getline()`]({{< ref "/library/filesys/linecache#linecache.getline" >}}) 来获取其中的行，即使当稍后调用时 *module_globals* 为 `None`。 这可以避免在实际需要读取行之前执行 I/O，也不必始终保持模块全局变量。
 
 > Added in version 3.5.
 >

@@ -8,13 +8,13 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/tutorial/introduction.html](https://docs.python.org/zh-cn/3.13/tutorial/introduction.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/tutorial/introduction.html](https://docs.python.org/zh-cn/3.13/tutorial/introduction.html)
 >
 > 收录该文档的时间：`2024-11-14T22:01:54+08:00`
 
 # 3. Python 速览
 
-​	下面的例子以是否显示提示符（[>>>](https://docs.python.org/zh-cn/3.13/glossary.html#term-0) 与 [...](https://docs.python.org/zh-cn/3.13/glossary.html#term-...)）区分输入与输出：输入例子中的代码时，要键入以提示符开头的行中提示符后的所有内容；未以提示符开头的行是解释器的输出。注意，例子中的某行出现的第二个提示符是用来结束多行命令的，此时，要键入一个空白行。
+​	下面的例子以是否显示提示符（[>>>]({{< ref "/glossary/idx#term-0" >}}) 与 [...]({{< ref "/glossary/idx#term-..." >}})）区分输入与输出：输入例子中的代码时，要键入以提示符开头的行中提示符后的所有内容；未以提示符开头的行是解释器的输出。注意，例子中的某行出现的第二个提示符是用来结束多行命令的，此时，要键入一个空白行。
 
 ​	你可以通过在示例方块右上角的 `>>>` 上点击来切换显示提示符和输出。 如果你隐藏了一个示例的提示符和输出，那么你可以方便地将输入行复制并粘贴到你的解释器中。
 
@@ -54,9 +54,9 @@ text = "# 这不是注释因为它是在引号之内。"
 1.6
 ```
 
-​	整数（如，`2`、`4`、`20` ）的类型是 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int)，带小数（如，`5.0`、`1.6` ）的类型是 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float)。本教程后半部分将介绍更多数字类型。
+​	整数（如，`2`、`4`、`20` ）的类型是 [`int`]({{< ref "/library/functions#int" >}})，带小数（如，`5.0`、`1.6` ）的类型是 [`float`]({{< ref "/library/functions#float" >}})。本教程后半部分将介绍更多数字类型。
 
-​	除法运算 (`/`) 总是返回浮点数。 如果要做 [floor division](https://docs.python.org/zh-cn/3.13/glossary.html#term-floor-division) 得到一个整数结果你可以使用 `//` 运算符；要计算余数你可以使用 `%`:
+​	除法运算 (`/`) 总是返回浮点数。 如果要做 [floor division]({{< ref "/glossary/idx#term-floor-division" >}}) 得到一个整数结果你可以使用 `//` 运算符；要计算余数你可以使用 `%`:
 
 
 
@@ -72,7 +72,7 @@ text = "# 这不是注释因为它是在引号之内。"
 17
 ```
 
-​	Python 用 `**` 运算符计算乘方 [[1\]](https://docs.python.org/zh-cn/3.13/tutorial/introduction.html#id3)：
+​	Python 用 `**` 运算符计算乘方 [[1\]]({{< ref "/tutorial/introduction#id3" >}})：
 
 
 
@@ -131,13 +131,13 @@ NameError: name 'n' is not defined
 
 ​	最好把该变量当作只读类型。不要为它显式赋值，否则会创建一个同名独立局部变量，该变量会用它的魔法行为屏蔽内置变量。
 
-​	除了 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 和 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float)，Python 还支持其他数字类型，例如 [`Decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal) 或 [`Fraction`](https://docs.python.org/zh-cn/3.13/library/fractions.html#fractions.Fraction)。Python 还内置支持 [复数](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#typesnumeric)，后缀 `j` 或 `J` 用于表示虚数（例如 `3+5j` ）。
+​	除了 [`int`]({{< ref "/library/functions#int" >}}) 和 [`float`]({{< ref "/library/functions#float" >}})，Python 还支持其他数字类型，例如 [`Decimal`]({{< ref "/library/numeric/decimal#decimal.Decimal" >}}) 或 [`Fraction`]({{< ref "/library/numeric/fractions#fractions.Fraction" >}})。Python 还内置支持 [复数]({{< ref "/library/stdtypes#typesnumeric" >}})，后缀 `j` 或 `J` 用于表示虚数（例如 `3+5j` ）。
 
 
 
 ### 3.1.2. 文本
 
-​	除了数字 Python 还可以操作文本（由 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 类型表示，称为“字符串”）。 这包括字符 "`!`", 单词 "`rabbit`", 名称 "`Paris`", 句子 "`Got your back.`" 等等. "`Yay! :)`"。 它们可以用成对的单引号 (`'...'`) 或双引号 (`"..."`) 来标示，结果完全相同 [[2\]](https://docs.python.org/zh-cn/3.13/tutorial/introduction.html#id4)。
+​	除了数字 Python 还可以操作文本（由 [`str`]({{< ref "/library/stdtypes#str" >}}) 类型表示，称为“字符串”）。 这包括字符 "`!`", 单词 "`rabbit`", 名称 "`Paris`", 句子 "`Got your back.`" 等等. "`Yay! :)`"。 它们可以用成对的单引号 (`'...'`) 或双引号 (`"..."`) 来标示，结果完全相同 [[2\]]({{< ref "/tutorial/introduction#id4" >}})。
 
 
 
@@ -167,7 +167,7 @@ NameError: name 'n' is not defined
 '"Isn\'t," they said.'
 ```
 
-​	在 Python shell 中，字符串定义和输出字符串看起来可能不同。 [`print()`](https://docs.python.org/zh-cn/3.13/library/functions.html#print) 函数会略去标示用的引号，并打印经过转义的特殊字符，产生更为易读的输出:
+​	在 Python shell 中，字符串定义和输出字符串看起来可能不同。 [`print()`]({{< ref "/library/functions#print" >}}) 函数会略去标示用的引号，并打印经过转义的特殊字符，产生更为易读的输出:
 
 
 
@@ -192,7 +192,7 @@ ame
 C:\some\name
 ```
 
-​	原始字符串还有一个微妙的限制：一个原始字符串不能以奇数个 `\` 字符结束；请参阅 [此 FAQ 条目](https://docs.python.org/zh-cn/3.13/faq/programming.html#faq-programming-raw-string-backslash) 了解更多信息及绕过的办法。
+​	原始字符串还有一个微妙的限制：一个原始字符串不能以奇数个 `\` 字符结束；请参阅 [此 FAQ 条目]({{< ref "/faq/programming#faq-programming-raw-string-backslash" >}}) 了解更多信息及绕过的办法。
 
 ​	字符串文字可以跨越多行。一种方法是使用三重引号：`"""..."""` 或 `'''...'''` 。行尾会自动包含在字符串中，但可以通过在行尾添加 `\` 来避免这种情况。 在下面的示例中，不包含首行换行符：：
 
@@ -366,7 +366,7 @@ IndexError: string index out of range
 ''
 ```
 
-​	Python 字符串不能修改，是 [immutable](https://docs.python.org/zh-cn/3.13/glossary.html#term-immutable) 的。因此，为字符串中某个索引位置赋值会报错：
+​	Python 字符串不能修改，是 [immutable]({{< ref "/glossary/idx#term-immutable" >}}) 的。因此，为字符串中某个索引位置赋值会报错：
 
 
 
@@ -392,7 +392,7 @@ TypeError: 'str' object does not support item assignment
 'Pypy'
 ```
 
-​	内置函数 [`len()`](https://docs.python.org/zh-cn/3.13/library/functions.html#len) 返回字符串的长度：
+​	内置函数 [`len()`]({{< ref "/library/functions#len" >}}) 返回字符串的长度：
 
 
 
@@ -402,27 +402,28 @@ TypeError: 'str' object does not support item assignment
 34
 ```
 
-参见
-
-- [文本序列类型 --- str](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#textseq)
-
-  字符串是 *序列类型* ，支持序列类型的各种操作。
-
-- [字符串的方法](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#string-methods)
-
-  字符串支持很多变形与查找方法。
-
-- [f 字符串](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#f-strings)
-
-  内嵌表达式的字符串字面值。
-
-- [格式字符串语法](https://docs.python.org/zh-cn/3.13/library/string.html#formatstrings)
-
-  使用 [`str.format()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.format) 格式化字符串。
-
-- [printf 风格的字符串格式化](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#old-string-formatting)
-
-  这里详述了用 `%` 运算符格式化字符串的操作。
+> 参见
+>
+> - [文本序列类型 --- str]({{< ref "/library/stdtypes#textseq" >}})
+>
+>   字符串是 *序列类型* ，支持序列类型的各种操作。
+>
+> - [字符串的方法]({{< ref "/library/stdtypes#string-methods" >}})
+>
+>   字符串支持很多变形与查找方法。
+>
+> - [f 字符串]({{< ref "/reference/lexical_analysis#f-strings" >}})
+>
+>   内嵌表达式的字符串字面值。
+>
+> - [格式字符串语法]({{< ref "/library/text/string#formatstrings" >}})
+>
+>   使用 [`str.format()`]({{< ref "/library/stdtypes#str.format" >}}) 格式化字符串。
+>
+> - [printf 风格的字符串格式化]({{< ref "/library/stdtypes#old-string-formatting" >}})
+>
+>   这里详述了用 `%` 运算符格式化字符串的操作。
+>
 
 
 
@@ -438,7 +439,7 @@ TypeError: 'str' object does not support item assignment
 [1, 4, 9, 16, 25]
 ```
 
-​	和字符串（及其他内置 [sequence](https://docs.python.org/zh-cn/3.13/glossary.html#term-sequence) 类型）一样，列表也支持索引和切片：
+​	和字符串（及其他内置 [sequence]({{< ref "/glossary/idx#term-sequence" >}}) 类型）一样，列表也支持索引和切片：
 
 
 
@@ -460,7 +461,7 @@ TypeError: 'str' object does not support item assignment
 [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 ```
 
-​	与 [immutable](https://docs.python.org/zh-cn/3.13/glossary.html#term-immutable) 字符串不同, 列表是 [mutable](https://docs.python.org/zh-cn/3.13/glossary.html#term-mutable) 类型，其内容可以改变：
+​	与 [immutable]({{< ref "/glossary/idx#term-immutable" >}}) 字符串不同, 列表是 [mutable]({{< ref "/glossary/idx#term-mutable" >}}) 类型，其内容可以改变：
 
 
 
@@ -498,7 +499,7 @@ True
 ["Red", "Green", "Blue", "Alph"]
 ```
 
-​	切片操作返回包含请求元素的新列表。以下切片操作会返回列表的 [浅拷贝](https://docs.python.org/zh-cn/3.13/library/copy.html#shallow-vs-deep-copy)：
+​	切片操作返回包含请求元素的新列表。以下切片操作会返回列表的 [浅拷贝]({{< ref "/library/datatypes/copy#shallow-vs-deep-copy" >}})：
 
 
 
@@ -533,7 +534,7 @@ True
 []
 ```
 
-​	内置函数 [`len()`](https://docs.python.org/zh-cn/3.13/library/functions.html#len) 也支持列表：
+​	内置函数 [`len()`]({{< ref "/library/functions#len" >}}) 也支持列表：
 
 
 
@@ -588,11 +589,11 @@ True
 
 - 第一行中的 *多重赋值* ：变量 `a` 和 `b` 同时获得新值 0 和 1 。最后一行又用了一次多重赋值，体现了，等号右边的所有表达式的值，都是在这一语句对任何变量赋新值之前求出来的——求值顺序为从左到右。
 
-- [`while`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#while) 循环只要条件（这里是 `a < 10`）为真就会一直执行。Python 和 C 一样，任何非零整数都为真，零为假。这个条件也可以是字符串或列表类型的值，事实上，任何序列都可以：长度非零就为真，空序列则为假。示例中的判断只是最简单的比较。比较操作符的写法和 C 语言一样： `<` （小于）、 `>` （大于）、 `==` （等于）、 `<=` （小于等于)、 `>=` （大于等于）及 `!=` （不等于）。
+- [`while`]({{< ref "/reference/compound_stmts#while" >}}) 循环只要条件（这里是 `a < 10`）为真就会一直执行。Python 和 C 一样，任何非零整数都为真，零为假。这个条件也可以是字符串或列表类型的值，事实上，任何序列都可以：长度非零就为真，空序列则为假。示例中的判断只是最简单的比较。比较操作符的写法和 C 语言一样： `<` （小于）、 `>` （大于）、 `==` （等于）、 `<=` （小于等于)、 `>=` （大于等于）及 `!=` （不等于）。
 
 - *循环体* 是 *缩进的* ：缩进是 Python 组织语句的方式。在交互式命令行里，得为每个缩进的行输入空格（或制表符）。使用文本编辑器可以实现更复杂的输入方式；所有像样的文本编辑器都支持自动缩进。交互式输入复合语句时，要在最后输入空白行表示完成（因为解析器不知道哪一行代码是代码块的最后一行）。注意，同一块语句的每一行的缩进相同。
 
-- [`print()`](https://docs.python.org/zh-cn/3.13/library/functions.html#print) 函数输出给定参数的值。 除了可以以单一的表达式作为参数（比如，前面的计算器的例子），它还能处理多个参数，包括浮点数与字符串。 它输出的字符串不带引号，且各参数项之间会插入一个空格，这样可以实现更好的格式化操作，就像这样:
+- [`print()`]({{< ref "/library/functions#print" >}}) 函数输出给定参数的值。 除了可以以单一的表达式作为参数（比如，前面的计算器的例子），它还能处理多个参数，包括浮点数与字符串。 它输出的字符串不带引号，且各参数项之间会插入一个空格，这样可以实现更好的格式化操作，就像这样:
 
   
 
@@ -615,12 +616,12 @@ True
   0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,
   ```
 
-备注
-
-[[1](https://docs.python.org/zh-cn/3.13/tutorial/introduction.html#id1)]
-
-`**` 比 `-` 的优先级更高, 所以 `-3**2` 会被解释成 `-(3**2)` ，因此，结果是 `-9`。要避免这个问题，并且得到 `9`, 可以用 `(-3)**2`。
-
-[[2](https://docs.python.org/zh-cn/3.13/tutorial/introduction.html#id2)]
-
-与其他语言不同，特殊字符如 `\n` 在单引号（`'...'` ）和双引号（`"..."` ）里的意义一样。这两种引号唯一的区别是，不需要在单引号里转义双引号 `"` （但此时必须把单引号转义成 `\'` ），反之亦然。
+> 备注
+>
+> [[1]({{< ref "/tutorial/introduction#id1" >}})]
+>
+> `**` 比 `-` 的优先级更高, 所以 `-3**2` 会被解释成 `-(3**2)` ，因此，结果是 `-9`。要避免这个问题，并且得到 `9`, 可以用 `(-3)**2`。
+>
+> [[2]({{< ref "/tutorial/introduction#id2" >}})]
+>
+> 与其他语言不同，特殊字符如 `\n` 在单引号（`'...'` ）和双引号（`"..."` ）里的意义一样。这两种引号唯一的区别是，不需要在单引号里转义双引号 `"` （但此时必须把单引号转义成 `\'` ），反之亦然。

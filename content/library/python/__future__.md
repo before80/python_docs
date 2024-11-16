@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/__future__.html](https://docs.python.org/zh-cn/3.13/library/__future__.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/__future__.html](https://docs.python.org/zh-cn/3.13/library/__future__.html)
 >
 > 收录该文档的时间：`2024-11-15T21:12:39+08:00`
 
@@ -18,17 +18,17 @@ draft = false
 
 ------
 
-`from __future__ import feature` 形式的导入被称为 [future 语句](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#future)。 它们会被 Python 编译器当作特例，通过包含 future 语句来允许新的 Python 特性在该特性成为语言标准之前发布的模块中使用。
+`from __future__ import feature` 形式的导入被称为 [future 语句]({{< ref "/reference/simple_stmts#future" >}})。 它们会被 Python 编译器当作特例，通过包含 future 语句来允许新的 Python 特性在该特性成为语言标准之前发布的模块中使用。
 
-​	虽然这些future 语句被 Python 编译器赋予了额外的特殊含义，但它们仍然像会其他导入语句一样被执行，而 [`__future__`](https://docs.python.org/zh-cn/3.13/library/__future__.html#module-__future__) 的存在和被导入系统处理的方式与其他任何 Python 模块的相同。 这种设计有三个目的：
+​	虽然这些future 语句被 Python 编译器赋予了额外的特殊含义，但它们仍然像会其他导入语句一样被执行，而 [`__future__`]({{< ref "/library/python/__future__#module-__future__" >}}) 的存在和被导入系统处理的方式与其他任何 Python 模块的相同。 这种设计有三个目的：
 
 - 避免混淆已有的分析 import 语句并查找 import 的模块的工具。
-- 当引入不兼容的修改时，可以记录其引入的时间以及强制使用的时间。这是一种可执行的文档，并且可以通过 import [`__future__`](https://docs.python.org/zh-cn/3.13/library/__future__.html#module-__future__) 来做程序性的检查。
-- 确保 [future 语句](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#future) 在 Python 2.1 之前的发布版上运行时至少能抛出运行时异常（对 [`__future__`](https://docs.python.org/zh-cn/3.13/library/__future__.html#module-__future__) 的导入将失败，因为will fail, because there was no module of that name prior to 2.1 之前没有这个模块名称）。
+- 当引入不兼容的修改时，可以记录其引入的时间以及强制使用的时间。这是一种可执行的文档，并且可以通过 import [`__future__`]({{< ref "/library/python/__future__#module-__future__" >}}) 来做程序性的检查。
+- 确保 [future 语句]({{< ref "/reference/simple_stmts#future" >}}) 在 Python 2.1 之前的发布版上运行时至少能抛出运行时异常（对 [`__future__`]({{< ref "/library/python/__future__#module-__future__" >}}) 的导入将失败，因为will fail, because there was no module of that name prior to 2.1 之前没有这个模块名称）。
 
 ## 模块内容
 
-[`__future__`](https://docs.python.org/zh-cn/3.13/library/__future__.html#module-__future__) 中不会删除特性的描述。从 Python 2.1 中首次加入以来，通过这种方式引入了以下特性：
+[`__future__`]({{< ref "/library/python/__future__#module-__future__" >}}) 中不会删除特性的描述。从 Python 2.1 中首次加入以来，通过这种方式引入了以下特性：
 
 | 特性             | 可选版本 | 强制加入版本                                                 | 效果                                                         |
 | :--------------- | :------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -40,7 +40,7 @@ draft = false
 | print_function   | 2.6.0a2  | 3.0                                                          | [**PEP 3105**](https://peps.python.org/pep-3105/): *print 改为函数* |
 | unicode_literals | 2.6.0a2  | 3.0                                                          | [**PEP 3112**](https://peps.python.org/pep-3112/): *Python 3000 中的字节字面值* |
 | generator_stop   | 3.5.0b1  | 3.7                                                          | [**PEP 479**](https://peps.python.org/pep-0479/): *在生成器中处理 StopIteration* |
-| annotations      | 3.7.0b1  | TBD [[1\]](https://docs.python.org/zh-cn/3.13/library/__future__.html#id2) | [**PEP 563**](https://peps.python.org/pep-0563/): *Postponed evaluation of annotations* |
+| annotations      | 3.7.0b1  | TBD [[1\]]({{< ref "/library/python/__future__#id2" >}}) | [**PEP 563**](https://peps.python.org/pep-0563/): *Postponed evaluation of annotations* |
 
 ## *class* __future__.**_Feature**
 
@@ -51,7 +51,7 @@ FeatureName = _Feature(OptionalRelease, MandatoryRelease,
                        CompilerFlag)
 ```
 
-​	通常 *OptionalRelease* 要比 *MandatoryRelease* 小，并且都是和 [`sys.version_info`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.version_info) 格式一致的 5 元素元组。
+​	通常 *OptionalRelease* 要比 *MandatoryRelease* 小，并且都是和 [`sys.version_info`]({{< ref "/library/python/sys#sys.version_info" >}}) 格式一致的 5 元素元组。
 
 ```
 (PY_MAJOR_VERSION, # 2.1.0a3 中的 2; 一个整数
@@ -76,9 +76,9 @@ FeatureName = _Feature(OptionalRelease, MandatoryRelease,
 
 ## _Feature.**compiler_flag**
 
-*CompilerFlag* 是一个（位）旗标，对于动态编译的代码应当将其作为第四个参数传给内置函数 [`compile()`](https://docs.python.org/zh-cn/3.13/library/functions.html#compile) 以启用相应的特性。 该旗标存储在 [`_Feature`](https://docs.python.org/zh-cn/3.13/library/__future__.html#future__._Feature) 实例的 [`_Feature.compiler_flag`](https://docs.python.org/zh-cn/3.13/library/__future__.html#future__._Feature.compiler_flag) 属性中。
+*CompilerFlag* 是一个（位）旗标，对于动态编译的代码应当将其作为第四个参数传给内置函数 [`compile()`]({{< ref "/library/functions#compile" >}}) 以启用相应的特性。 该旗标存储在 [`_Feature`]({{< ref "/library/python/__future__#future__._Feature" >}}) 实例的 [`_Feature.compiler_flag`]({{< ref "/library/python/__future__#future__._Feature.compiler_flag" >}}) 属性中。
 
-[[1](https://docs.python.org/zh-cn/3.13/library/__future__.html#id1)]
+[[1]({{< ref "/library/python/__future__#id1" >}})]
 
 ​	先前计划在 Python 3.10 中强制使用 `from __future__ import annotations` ，但Python指导委员会两次决定推迟这一改变（ [Python 3.10 的公告](https://mail.python.org/archives/list/python-dev@python.org/message/CLVXXPQ2T2LQ5MP2Y53VVQFCXYWQJHKZ/) ； [Python 3.11 的公告](https://mail.python.org/archives/list/python-dev@python.org/message/VIZEBX5EYMSYIJNDBF6DMUMZOCWHARSO/) ）。目前还没有做出最终决定。参见 [**PEP 563**](https://peps.python.org/pep-0563/) 和 [**PEP 649**](https://peps.python.org/pep-0649/) 。
 
@@ -86,7 +86,7 @@ FeatureName = _Feature(OptionalRelease, MandatoryRelease,
 >
 > 
 >
-> - [future 语句](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#future)
+> - [future 语句]({{< ref "/reference/simple_stmts#future" >}})
 >
 >   编译器怎样处理 future import。
 >

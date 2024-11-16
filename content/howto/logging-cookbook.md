@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/logging-cookbook.html](https://docs.python.org/zh-cn/3.13/howto/logging-cookbook.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/logging-cookbook.html](https://docs.python.org/zh-cn/3.13/howto/logging-cookbook.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -18,7 +18,7 @@ draft = false
 
 ​	Vinay Sajip <vinay_sajip at red-dove dot com>
 
-​	本页面包含多个与日志相关的专题，历史证明它们是很有用的。教程和参考信息的链接另见 [其他资源](https://docs.python.org/zh-cn/3.13/howto/logging-cookbook.html#cookbook-ref-links)。
+​	本页面包含多个与日志相关的专题，历史证明它们是很有用的。教程和参考信息的链接另见 [其他资源]({{< ref "/howto/logging-cookbook#cookbook-ref-links" >}})。
 
 ## 在多模块中使用日志
 
@@ -161,7 +161,7 @@ if __name__ == '__main__':
 
 ## 多个 handler 和多种 formatter
 
-​	日志是个普通的 Python 对象。 [`addHandler()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Logger.addHandler) 方法可加入不限数量的日志 handler。有时候，应用程序需把严重错误信息记入文本文件，而将一般错误或其他级别的信息输出到控制台。若要进行这样的设定，只需多配置几个日志 handler 即可，应用程序的日志调用代码可以保持不变。下面对之前的分模块日志示例略做修改：
+​	日志是个普通的 Python 对象。 [`addHandler()`]({{< ref "/library/allos/logging#logging.Logger.addHandler" >}}) 方法可加入不限数量的日志 handler。有时候，应用程序需把严重错误信息记入文本文件，而将一般错误或其他级别的信息输出到控制台。若要进行这样的设定，只需多配置几个日志 handler 即可，应用程序的日志调用代码可以保持不变。下面对之前的分模块日志示例略做修改：
 
 ```
 import logging
@@ -514,13 +514,13 @@ print('complete')
 
 ​	有时你必须让日志记录处理程序的运行不会阻塞你要记录日志的线程。 这在 Web 应用程序中是很常见，当然在其他场景中也可能发生。
 
-​	有一种原因往往会让程序表现迟钝，这就是 [`SMTPHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.SMTPHandler)：由于很多因素是开发人员无法控制的（例如邮件或网络基础设施的性能不佳），发送电子邮件可能需要很长时间。不过几乎所有网络 handler 都可能会发生阻塞：即使是 [`SocketHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.SocketHandler) 操作也可能在后台执行 DNS 查询，而这种查询实在太慢了（并且 DNS 查询还可能在很底层的套接字库代码中，位于 Python 层之下，超出了可控范围）。
+​	有一种原因往往会让程序表现迟钝，这就是 [`SMTPHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.SMTPHandler" >}})：由于很多因素是开发人员无法控制的（例如邮件或网络基础设施的性能不佳），发送电子邮件可能需要很长时间。不过几乎所有网络 handler 都可能会发生阻塞：即使是 [`SocketHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.SocketHandler" >}}) 操作也可能在后台执行 DNS 查询，而这种查询实在太慢了（并且 DNS 查询还可能在很底层的套接字库代码中，位于 Python 层之下，超出了可控范围）。
 
-​	有一种解决方案是分成两部分实现。第一部分，针对那些对性能有要求的关键线程，只为日志对象连接一个 [`QueueHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueHandler)。日志对象只需简单地写入队列即可，可为队列设置足够大的容量，或者可以在初始化时不设置容量上限。尽管为以防万一，可能需要在代码中捕获 [`queue.Full`](https://docs.python.org/zh-cn/3.13/library/queue.html#queue.Full) 异常,不过队列写入操作通常会很快得以处理。如果要开发库代码，包含性能要求较高的线程，为了让使用该库的开发人员受益，请务必在开发文档中进行标明（包括建议仅连接 `QueueHandlers` ）。
+​	有一种解决方案是分成两部分实现。第一部分，针对那些对性能有要求的关键线程，只为日志对象连接一个 [`QueueHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.QueueHandler" >}})。日志对象只需简单地写入队列即可，可为队列设置足够大的容量，或者可以在初始化时不设置容量上限。尽管为以防万一，可能需要在代码中捕获 [`queue.Full`]({{< ref "/library/concurrency/queue#queue.Full" >}}) 异常,不过队列写入操作通常会很快得以处理。如果要开发库代码，包含性能要求较高的线程，为了让使用该库的开发人员受益，请务必在开发文档中进行标明（包括建议仅连接 `QueueHandlers` ）。
 
-​	解决方案的另一部分就是 [`QueueListener`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueListener)，它被设计为 [`QueueHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueHandler) 的对应部分。[`QueueListener`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueListener) 非常简单：传入一个队列和一些 handler，并启动一个内部线程，用于侦听 `QueueHandlers` （或其他 `LogRecords` 源）发送的 LogRecord 队列。`LogRecords` 会从队列中移除并传给 handler 处理。
+​	解决方案的另一部分就是 [`QueueListener`]({{< ref "/library/allos/logging_handlers#logging.handlers.QueueListener" >}})，它被设计为 [`QueueHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.QueueHandler" >}}) 的对应部分。[`QueueListener`]({{< ref "/library/allos/logging_handlers#logging.handlers.QueueListener" >}}) 非常简单：传入一个队列和一些 handler，并启动一个内部线程，用于侦听 `QueueHandlers` （或其他 `LogRecords` 源）发送的 LogRecord 队列。`LogRecords` 会从队列中移除并传给 handler 处理。
 
-[`QueueListener`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueListener) 作为单独的类，好处就是可以用同一个实例为多个 `QueueHandlers` 服务。这比把现有 handler 类线程化更加资源友好，后者会每个 handler 会占用一个线程，却没有特别的好处。
+[`QueueListener`]({{< ref "/library/allos/logging_handlers#logging.handlers.QueueListener" >}}) 作为单独的类，好处就是可以用同一个实例为多个 `QueueHandlers` 服务。这比把现有 handler 类线程化更加资源友好，后者会每个 handler 会占用一个线程，却没有特别的好处。
 
 ​	以下是这两个类的运用示例（省略了 import 语句）：
 
@@ -547,19 +547,18 @@ listener.stop()
 MainThread: Look out!
 ```
 
-​	备注
-
+​备注
  
 
-​	虽然前面的讨论没有专门提及异步代码，但需要注意当在异步代码中记录日志时，网络甚至文件处理器都可能会导致问题（阻塞事件循环）因为某些日志记录是在 [`asyncio`](https://docs.python.org/zh-cn/3.13/library/asyncio.html#module-asyncio) 内部完成的。 如果在应用程序中使用了任何异步代码，最好的做法是使用上面的日志记录方式，这样任何阻塞式代码都将只在 `QueueListener` 线程中运行。
+​	虽然前面的讨论没有专门提及异步代码，但需要注意当在异步代码中记录日志时，网络甚至文件处理器都可能会导致问题（阻塞事件循环）因为某些日志记录是在 [`asyncio`]({{< ref "/library/ipc/asyncio#module-asyncio" >}}) 内部完成的。 如果在应用程序中使用了任何异步代码，最好的做法是使用上面的日志记录方式，这样任何阻塞式代码都将只在 `QueueListener` 线程中运行。
 
-*在 3.5 版本发生变更:* 在 Python 3.5 之前，[`QueueListener`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueListener) 总会把由队列接收到的每条信息都传递给已初始化的每个处理程序。（因为这里假定级别过滤操作已在写入队列时完成了。）从 3.5 版开始，可以修改这种处理方式，只要将关键字参数 `respect_handler_level=True` 传给侦听器的构造函数即可。这样侦听器将会把每条信息的级别与 handler 的级别进行比较，只在适配时才会将信息传给 handler 。
+*在 3.5 版本发生变更:* 在 Python 3.5 之前，[`QueueListener`]({{< ref "/library/allos/logging_handlers#logging.handlers.QueueListener" >}}) 总会把由队列接收到的每条信息都传递给已初始化的每个处理程序。（因为这里假定级别过滤操作已在写入队列时完成了。）从 3.5 版开始，可以修改这种处理方式，只要将关键字参数 `respect_handler_level=True` 传给侦听器的构造函数即可。这样侦听器将会把每条信息的级别与 handler 的级别进行比较，只在适配时才会将信息传给 handler 。
 
 
 
 ## 通过网络收发日志事件
 
-​	假定现在要通过网络发送日志事件，并在接收端进行处理。有一种简单的方案，就是在发送端的根日志对象连接一个 [`SocketHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.SocketHandler) 实例：
+​	假定现在要通过网络发送日志事件，并在接收端进行处理。有一种简单的方案，就是在发送端的根日志对象连接一个 [`SocketHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.SocketHandler" >}}) 实例：
 
 ```
 import logging, logging.handlers
@@ -587,7 +586,7 @@ logger2.warning('Jail zesty vixen who grabbed pay from quack.')
 logger2.error('The five boxing wizards jump quickly.')
 ```
 
-​	在接收端，可以用 [`socketserver`](https://docs.python.org/zh-cn/3.13/library/socketserver.html#module-socketserver) 模块设置一个接收器。简要示例如下：
+​	在接收端，可以用 [`socketserver`]({{< ref "/library/internet/socketserver#module-socketserver" >}}) 模块设置一个接收器。简要示例如下：
 
 ```
 import pickle
@@ -687,7 +686,7 @@ About to start TCP server...
    69 myapp.area2     ERROR    The five boxing wizards jump quickly.
 ```
 
-​	请注意在某些情况下 pickle 会存在一些安全问题。 如果这些问题对你有影响，你可以换用自己的替代序列化方案，只要重写 [`makePickle()`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.SocketHandler.makePickle) 方法并在其中实现你的替代方案，并调整上述脚本以使用这个替代方案。
+​	请注意在某些情况下 pickle 会存在一些安全问题。 如果这些问题对你有影响，你可以换用自己的替代序列化方案，只要重写 [`makePickle()`]({{< ref "/library/allos/logging_handlers#logging.handlers.SocketHandler.makePickle" >}}) 方法并在其中实现你的替代方案，并调整上述脚本以使用这个替代方案。
 
 ### 在生产中运行日志套接字侦听器
 
@@ -721,13 +720,13 @@ About to start TCP server...
 
 ## 在自己的输出日志中添加上下文信息
 
-​	有时，除了调用日志对象时传入的参数之外，还希望日志输出中能包含上下文信息。 比如在网络应用程序中，可能需要在日志中记录某客户端的信息（如远程客户端的用户名或 IP 地址）。 这虽然可以用 *extra* 参数实现，但传递起来并不总是很方便。 虽然为每个网络连接都创建 [`Logger`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Logger) 实例貌似不错，但并不是个好主意，因为这些实例不会被垃圾回收。 虽然在实践中不是问题，但当 [`Logger`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Logger) 实例的数量取决于应用程序要采用的日志粒度时，如果 [`Logger`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Logger) 实例的数量实际上是无限的，则有可能难以管理。
+​	有时，除了调用日志对象时传入的参数之外，还希望日志输出中能包含上下文信息。 比如在网络应用程序中，可能需要在日志中记录某客户端的信息（如远程客户端的用户名或 IP 地址）。 这虽然可以用 *extra* 参数实现，但传递起来并不总是很方便。 虽然为每个网络连接都创建 [`Logger`]({{< ref "/library/allos/logging#logging.Logger" >}}) 实例貌似不错，但并不是个好主意，因为这些实例不会被垃圾回收。 虽然在实践中不是问题，但当 [`Logger`]({{< ref "/library/allos/logging#logging.Logger" >}}) 实例的数量取决于应用程序要采用的日志粒度时，如果 [`Logger`]({{< ref "/library/allos/logging#logging.Logger" >}}) 实例的数量实际上是无限的，则有可能难以管理。
 
 ### 利用 LoggerAdapter 传递上下文信息
 
-​	要传递上下文信息和日志事件信息，有一种简单方案是利用 [`LoggerAdapter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LoggerAdapter) 类。这个类设计得类似 [`Logger`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Logger)，所以可以直接调用 [`debug()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.debug)、[`info()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.info)、 [`warning()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.warning)、 [`error()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.error)、[`exception()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.exception)、 [`critical()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.critical) 和 [`log()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.log)。这些方法的签名与 [`Logger`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Logger) 对应的方法相同，所以这两类实例可以交换使用。
+​	要传递上下文信息和日志事件信息，有一种简单方案是利用 [`LoggerAdapter`]({{< ref "/library/allos/logging#logging.LoggerAdapter" >}}) 类。这个类设计得类似 [`Logger`]({{< ref "/library/allos/logging#logging.Logger" >}})，所以可以直接调用 [`debug()`]({{< ref "/library/allos/logging#logging.debug" >}})、[`info()`]({{< ref "/library/allos/logging#logging.info" >}})、 [`warning()`]({{< ref "/library/allos/logging#logging.warning" >}})、 [`error()`]({{< ref "/library/allos/logging#logging.error" >}})、[`exception()`]({{< ref "/library/allos/logging#logging.exception" >}})、 [`critical()`]({{< ref "/library/allos/logging#logging.critical" >}}) 和 [`log()`]({{< ref "/library/allos/logging#logging.log" >}})。这些方法的签名与 [`Logger`]({{< ref "/library/allos/logging#logging.Logger" >}}) 对应的方法相同，所以这两类实例可以交换使用。
 
-​	当你创建一个 [`LoggerAdapter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LoggerAdapter) 的实例时，你会传入一个 [`Logger`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Logger) 的实例和一个包含了上下文信息的字典对象。当你调用一个 [`LoggerAdapter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LoggerAdapter) 实例的方法时，它会把调用委托给内部的 [`Logger`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Logger) 的实例，并为其整理相关的上下文信息。这是 [`LoggerAdapter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LoggerAdapter) 的一个代码片段:
+​	当你创建一个 [`LoggerAdapter`]({{< ref "/library/allos/logging#logging.LoggerAdapter" >}}) 的实例时，你会传入一个 [`Logger`]({{< ref "/library/allos/logging#logging.Logger" >}}) 的实例和一个包含了上下文信息的字典对象。当你调用一个 [`LoggerAdapter`]({{< ref "/library/allos/logging#logging.LoggerAdapter" >}}) 实例的方法时，它会把调用委托给内部的 [`Logger`]({{< ref "/library/allos/logging#logging.Logger" >}}) 的实例，并为其整理相关的上下文信息。这是 [`LoggerAdapter`]({{< ref "/library/allos/logging#logging.LoggerAdapter" >}}) 的一个代码片段:
 
 ```
 def debug(self, msg, /, *args, **kwargs):
@@ -739,9 +738,9 @@ def debug(self, msg, /, *args, **kwargs):
     self.logger.debug(msg, *args, **kwargs)
 ```
 
-[`LoggerAdapter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LoggerAdapter) 的 [`process()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LoggerAdapter.process) 方法是将上下文信息添加到日志的输出中。 它传入日志消息和日志调用的关键字参数，并传回（隐式的）这些修改后的内容去调用底层的日志记录器。此方法的默认参数只是一个消息字段，但留有一个 'extra' 的字段作为关键字参数传给构造器。当然，如果你在调用适配器时传入了一个 'extra' 字段的参数，它会被静默覆盖。
+[`LoggerAdapter`]({{< ref "/library/allos/logging#logging.LoggerAdapter" >}}) 的 [`process()`]({{< ref "/library/allos/logging#logging.LoggerAdapter.process" >}}) 方法是将上下文信息添加到日志的输出中。 它传入日志消息和日志调用的关键字参数，并传回（隐式的）这些修改后的内容去调用底层的日志记录器。此方法的默认参数只是一个消息字段，但留有一个 'extra' 的字段作为关键字参数传给构造器。当然，如果你在调用适配器时传入了一个 'extra' 字段的参数，它会被静默覆盖。
 
-​	使用 'extra' 的优点是这些键值对会被传入 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 实例的 __dict__ 中，让你通过 [`Formatter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Formatter) 的实例直接使用定制的字符串，实例能找到这个字典类对象的键。 如果你需要一个其他的方法，比如说，想要在消息字符串前后增加上下文信息，你只需要创建一个 [`LoggerAdapter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LoggerAdapter) 的子类，并覆盖它的 [`process()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LoggerAdapter.process) 方法来做你想做的事情，以下是一个简单的示例:
+​	使用 'extra' 的优点是这些键值对会被传入 [`LogRecord`]({{< ref "/library/allos/logging#logging.LogRecord" >}}) 实例的 __dict__ 中，让你通过 [`Formatter`]({{< ref "/library/allos/logging#logging.Formatter" >}}) 的实例直接使用定制的字符串，实例能找到这个字典类对象的键。 如果你需要一个其他的方法，比如说，想要在消息字符串前后增加上下文信息，你只需要创建一个 [`LoggerAdapter`]({{< ref "/library/allos/logging#logging.LoggerAdapter" >}}) 的子类，并覆盖它的 [`process()`]({{< ref "/library/allos/logging#logging.LoggerAdapter.process" >}}) 方法来做你想做的事情，以下是一个简单的示例:
 
 ```
 class CustomAdapter(logging.LoggerAdapter):
@@ -764,15 +763,15 @@ adapter = CustomAdapter(logger, {'connid': some_conn_id})
 
 #### 使用除字典之外的其它对象传递上下文信息
 
-​	你不需要将一个实际的字典传递给 [`LoggerAdapter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LoggerAdapter)-你可以传入一个实现了 `__getitem__` 和 `__iter__` 的类的实例，这样它就像是一个字典。这对于你想动态生成值（而字典中的值往往是常量）将很有帮助。
+​	你不需要将一个实际的字典传递给 [`LoggerAdapter`]({{< ref "/library/allos/logging#logging.LoggerAdapter" >}})-你可以传入一个实现了 `__getitem__` 和 `__iter__` 的类的实例，这样它就像是一个字典。这对于你想动态生成值（而字典中的值往往是常量）将很有帮助。
 
 
 
 ### 使用过滤器传递上下文信息
 
-​	你也可以使用一个用户定义的类 [`Filter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Filter) 在日志输出中添加上下文信息。`Filter` 的实例是被允许修改传入的 `LogRecords`，包括添加其他的属性，然后可以使用合适的格式化字符串输出，或者可以使用一个自定义的类 [`Formatter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Formatter)。
+​	你也可以使用一个用户定义的类 [`Filter`]({{< ref "/library/allos/logging#logging.Filter" >}}) 在日志输出中添加上下文信息。`Filter` 的实例是被允许修改传入的 `LogRecords`，包括添加其他的属性，然后可以使用合适的格式化字符串输出，或者可以使用一个自定义的类 [`Formatter`]({{< ref "/library/allos/logging#logging.Formatter" >}})。
 
-​	例如，在一个web应用程序中，正在处理的请求（或者至少是请求的一部分），可以存储在一个线程本地 ([`threading.local`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.local)) 变量中，然后从 `Filter` 中去访问。请求中的信息，如IP地址和用户名将被存储在 `LogRecord` 中，使用上例 `LoggerAdapter` 中的 'ip' 和 'user' 属性名。在这种情况下，可以使用相同的格式化字符串来得到上例中类似的输出结果。这是一段示例代码:
+​	例如，在一个web应用程序中，正在处理的请求（或者至少是请求的一部分），可以存储在一个线程本地 ([`threading.local`]({{< ref "/library/concurrency/threading#threading.local" >}})) 变量中，然后从 `Filter` 中去访问。请求中的信息，如IP地址和用户名将被存储在 `LogRecord` 中，使用上例 `LoggerAdapter` 中的 'ip' 和 'user' 属性名。在这种情况下，可以使用相同的格式化字符串来得到上例中类似的输出结果。这是一段示例代码:
 
 ```
 import logging
@@ -832,7 +831,7 @@ if __name__ == '__main__':
 
 ## `contextvars` 的使用
 
-​	自 Python 3.7 起，[`contextvars`](https://docs.python.org/zh-cn/3.13/library/contextvars.html#module-contextvars) 模块提供了同时适用于 [`threading`](https://docs.python.org/zh-cn/3.13/library/threading.html#module-threading) 和 [`asyncio`](https://docs.python.org/zh-cn/3.13/library/asyncio.html#module-asyncio) 处理需求的上下文本地存储。 因此这种存储类型通常要比线程本地存储更好。 下面的例子演示了在多线程环境中日志如何用上下文信息来填充内容，例如 Web 应用程序所处理的请求属性。
+​	自 Python 3.7 起，[`contextvars`]({{< ref "/library/concurrency/contextvars#module-contextvars" >}}) 模块提供了同时适用于 [`threading`]({{< ref "/library/concurrency/threading#module-threading" >}}) 和 [`asyncio`]({{< ref "/library/ipc/asyncio#module-asyncio" >}}) 处理需求的上下文本地存储。 因此这种存储类型通常要比线程本地存储更好。 下面的例子演示了在多线程环境中日志如何用上下文信息来填充内容，例如 Web 应用程序所处理的请求属性。
 
 ​	出于说明的目的，比方说你有几个不同的 Web 应用程序，彼此都保持独立状态但运行在同一个 Python 进程中并且它们共同使用了某个库。 这些应用程序要如何拥有各自的日志记录，其中来自这个库的日志消息（以及其他请求处理代码）会发到对应的应用程序的日志文件，同时在日志中包括额外的上下文信息如客户端 IP、HTTP 请求方法和客户端用户名呢？
 
@@ -1036,7 +1035,7 @@ Thread-6 (process_request) app1 __main__  jim    192.168.3.21 POST Request proce
 
 ## 在处理器中传递上下文信息
 
-​	每个 [`Handler`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Handler) 都有自己的过滤器链。 如果你想向一个 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 添加上下文信息而不使其泄露给其它处理器，你可以使用一个返回新 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 而不是原地修改它的过滤器，如下面的脚本所示:
+​	每个 [`Handler`]({{< ref "/library/allos/logging#logging.Handler" >}}) 都有自己的过滤器链。 如果你想向一个 [`LogRecord`]({{< ref "/library/allos/logging#logging.LogRecord" >}}) 添加上下文信息而不使其泄露给其它处理器，你可以使用一个返回新 [`LogRecord`]({{< ref "/library/allos/logging#logging.LogRecord" >}}) 而不是原地修改它的过滤器，如下面的脚本所示:
 
 ```
 import copy
@@ -1063,11 +1062,11 @@ if __name__ == '__main__':
 
 ## 从多个进程记录至单个文件
 
-​	尽管 logging 是线程安全的，将单个进程中的多个线程日志记录至单个文件也 *是* 受支持的，但将 *多个进程* 中的日志记录至单个文件则 *不是* 受支持的，因为在 Python 中并没有在多个进程中实现对单个文件访问的序列化的标准方案。 如果你需要将多个进程中的日志记录至单个文件，有一个方案是让所有进程都将日志记录至一个 [`SocketHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.SocketHandler)，然后用一个实现了套接字服务器的单独进程一边从套接字中读取一边将日志记录至文件。 （如果愿意的话，你可以在一个现有进程中专门开一个线程来执行此项功能。） [这一部分](https://docs.python.org/zh-cn/3.13/howto/logging-cookbook.html#network-logging) 文档对此方式有更详细的介绍，并包含一个可用的套接字接收器，你自己的应用可以在此基础上进行适配。
+​	尽管 logging 是线程安全的，将单个进程中的多个线程日志记录至单个文件也 *是* 受支持的，但将 *多个进程* 中的日志记录至单个文件则 *不是* 受支持的，因为在 Python 中并没有在多个进程中实现对单个文件访问的序列化的标准方案。 如果你需要将多个进程中的日志记录至单个文件，有一个方案是让所有进程都将日志记录至一个 [`SocketHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.SocketHandler" >}})，然后用一个实现了套接字服务器的单独进程一边从套接字中读取一边将日志记录至文件。 （如果愿意的话，你可以在一个现有进程中专门开一个线程来执行此项功能。） [这一部分]({{< ref "/howto/logging-cookbook#network-logging" >}}) 文档对此方式有更详细的介绍，并包含一个可用的套接字接收器，你自己的应用可以在此基础上进行适配。
 
-​	You could also write your own handler which uses the [`Lock`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.Lock) class from the [`multiprocessing`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#module-multiprocessing) module to serialize access to the file from your processes. The stdlib [`FileHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.FileHandler) and subclasses do not make use of [`multiprocessing`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#module-multiprocessing).
+​	You could also write your own handler which uses the [`Lock`]({{< ref "/library/concurrency/multiprocessing#multiprocessing.Lock" >}}) class from the [`multiprocessing`]({{< ref "/library/concurrency/multiprocessing#module-multiprocessing" >}}) module to serialize access to the file from your processes. The stdlib [`FileHandler`]({{< ref "/library/allos/logging_handlers#logging.FileHandler" >}}) and subclasses do not make use of [`multiprocessing`]({{< ref "/library/concurrency/multiprocessing#module-multiprocessing" >}}).
 
-​	或者，你也可以使用 `Queue` 和 [`QueueHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueHandler) 将所有的日志事件发送至你的多进程应用的一个进程中。 以下示例脚本演示了如何执行此操作。 在示例中，一个单独的监听进程负责监听其他进程的日志事件，并根据自己的配置记录。 尽管示例只演示了这种方法（例如你可能希望使用单独的监听线程而非监听进程 —— 它们的实现是类似的），但你也可以在应用程序的监听进程和其他进程使用不同的配置，它可以作为满足你特定需求的一个基础:
+​	或者，你也可以使用 `Queue` 和 [`QueueHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.QueueHandler" >}}) 将所有的日志事件发送至你的多进程应用的一个进程中。 以下示例脚本演示了如何执行此操作。 在示例中，一个单独的监听进程负责监听其他进程的日志事件，并根据自己的配置记录。 尽管示例只演示了这种方法（例如你可能希望使用单独的监听线程而非监听进程 —— 它们的实现是类似的），但你也可以在应用程序的监听进程和其他进程使用不同的配置，它可以作为满足你特定需求的一个基础:
 
 ```
 # You'll need these imports in your own code
@@ -1276,7 +1275,7 @@ if __name__ == '__main__':
 
 ### concurrent.futures.ProcessPoolExecutor 的用法
 
-​	若要利用 [`concurrent.futures.ProcessPoolExecutor`](https://docs.python.org/zh-cn/3.13/library/concurrent.futures.html#concurrent.futures.ProcessPoolExecutor) 启动工作进程，创建队列的方式应稍有不同。不能是：
+​	若要利用 [`concurrent.futures.ProcessPoolExecutor`]({{< ref "/library/concurrency/future/concurrent_futures#concurrent.futures.ProcessPoolExecutor" >}}) 启动工作进程，创建队列的方式应稍有不同。不能是：
 
 ```
 queue = multiprocessing.Queue(-1)
@@ -1301,7 +1300,7 @@ for w in workers:
     w.join()
 ```
 
-​	改为 (记得要先导入 [`concurrent.futures`](https://docs.python.org/zh-cn/3.13/library/concurrent.futures.html#module-concurrent.futures)):
+​	改为 (记得要先导入 [`concurrent.futures`]({{< ref "/library/concurrency/future/concurrent_futures#module-concurrent.futures" >}})):
 
 ```
 with concurrent.futures.ProcessPoolExecutor(max_workers=10) as executor:
@@ -1311,11 +1310,11 @@ with concurrent.futures.ProcessPoolExecutor(max_workers=10) as executor:
 
 ### 使用 Gunicorn 和 uWSGI 来部署 Web 应用程序
 
-​	当使用 [Gunicorn](https://gunicorn.org/) 或 [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) (或其他类似工具) 来部署 Web 应用时，会创建多个工作进程来处理客户端请求。 在这种环境下，要避免在你的 Web 应用中直接创建基于文件的处理器。 而应改为使用一个 [`SocketHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.SocketHandler) 将来自 Web 应用的日志发送到在单独进程中运行的监听器。 这可以通过使用一个进程管理工具例如 Supervisor 来进行设置 —— 请参阅 [Running a logging socket listener in production](https://docs.python.org/zh-cn/3.13/howto/logging-cookbook.html#running-a-logging-socket-listener-in-production) 了解详情。
+​	当使用 [Gunicorn](https://gunicorn.org/) 或 [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) (或其他类似工具) 来部署 Web 应用时，会创建多个工作进程来处理客户端请求。 在这种环境下，要避免在你的 Web 应用中直接创建基于文件的处理器。 而应改为使用一个 [`SocketHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.SocketHandler" >}}) 将来自 Web 应用的日志发送到在单独进程中运行的监听器。 这可以通过使用一个进程管理工具例如 Supervisor 来进行设置 —— 请参阅 [Running a logging socket listener in production]({{< ref "/howto/logging-cookbook#running-a-logging-socket-listener-in-production" >}}) 了解详情。
 
 ## 轮换日志文件
 
-​	有时您会希望让日志文件增长到一定大小，然后打开一个新的接着记录日志。 您可能希望只保留一定数量的日志文件，当创建文件达到指定数量后将会轮换文件，从而使文件数量和文件大小都保持在一定范围之内。 对于这种使用模式，日志包提供了一个 [`RotatingFileHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.RotatingFileHandler):
+​	有时您会希望让日志文件增长到一定大小，然后打开一个新的接着记录日志。 您可能希望只保留一定数量的日志文件，当创建文件达到指定数量后将会轮换文件，从而使文件数量和文件大小都保持在一定范围之内。 对于这种使用模式，日志包提供了一个 [`RotatingFileHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.RotatingFileHandler" >}}):
 
 ```
 import glob
@@ -1364,9 +1363,9 @@ logging_rotatingfile_example.out.5
 
 ## 使用其他日志格式化方式
 
-​	当日志模块被添加至 Python 标准库时，只有一种格式化消息内容的方法即 %-formatting。 在那之后，Python 又增加了两种格式化方法: [`string.Template`](https://docs.python.org/zh-cn/3.13/library/string.html#string.Template) (在 Python 2.4 中新增) 和 [`str.format()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.format) (在 Python 2.6 中新增)。
+​	当日志模块被添加至 Python 标准库时，只有一种格式化消息内容的方法即 %-formatting。 在那之后，Python 又增加了两种格式化方法: [`string.Template`]({{< ref "/library/text/string#string.Template" >}}) (在 Python 2.4 中新增) 和 [`str.format()`]({{< ref "/library/stdtypes#str.format" >}}) (在 Python 2.6 中新增)。
 
-​	日志（从 3.2 开始）为这两种格式化方式提供了更多支持。[`Formatter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Formatter) 类可以添加一个额外的可选关键字参数 `style`。它的默认值是 `'%'`，其他的值 `'{'` 和 `'$'` 也支持，对应了其他两种格式化样式。其保持了向后兼容（如您所愿），但通过显示指定样式参数，你可以指定格式化字符串的方式是使用 [`str.format()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.format) 或 [`string.Template`](https://docs.python.org/zh-cn/3.13/library/string.html#string.Template)。 这里是一个控制台会话的示例，展示了这些方式：
+​	日志（从 3.2 开始）为这两种格式化方式提供了更多支持。[`Formatter`]({{< ref "/library/allos/logging#logging.Formatter" >}}) 类可以添加一个额外的可选关键字参数 `style`。它的默认值是 `'%'`，其他的值 `'{'` 和 `'$'` 也支持，对应了其他两种格式化样式。其保持了向后兼容（如您所愿），但通过显示指定样式参数，你可以指定格式化字符串的方式是使用 [`str.format()`]({{< ref "/library/stdtypes#str.format" >}}) 或 [`string.Template`]({{< ref "/library/text/string#string.Template" >}})。 这里是一个控制台会话的示例，展示了这些方式：
 
 
 
@@ -1404,7 +1403,7 @@ logging_rotatingfile_example.out.5
 >>>
 ```
 
-​	日志调用（`logger.debug()` 、`logger.info()` 等）接受的位置参数只会用于日志信息本身，而关键字参数仅用于日志调用的可选处理参数（如关键字参数 `exc_info` 表示应记录跟踪信息， `extra` 则标识了需要加入日志的额外上下文信息）。所以不能直接用 [`str.format()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.format) 或 [`string.Template`](https://docs.python.org/zh-cn/3.13/library/string.html#string.Template) 语法进行日志调用，因为日志包在内部使用 %-f 格式来合并格式串和参数变量。在保持向下兼容性时，这一点不会改变，因为已有代码中的所有日志调用都会使用%-f 格式串。
+​	日志调用（`logger.debug()` 、`logger.info()` 等）接受的位置参数只会用于日志信息本身，而关键字参数仅用于日志调用的可选处理参数（如关键字参数 `exc_info` 表示应记录跟踪信息， `extra` 则标识了需要加入日志的额外上下文信息）。所以不能直接用 [`str.format()`]({{< ref "/library/stdtypes#str.format" >}}) 或 [`string.Template`]({{< ref "/library/text/string#string.Template" >}}) 语法进行日志调用，因为日志包在内部使用 %-f 格式来合并格式串和参数变量。在保持向下兼容性时，这一点不会改变，因为已有代码中的所有日志调用都会使用%-f 格式串。
 
 ​	还有一种方法可以构建自己的日志信息，就是利用 {}- 和 $- 格式。回想一下，任意对象都可用为日志信息的格式串，日志包将会调用该对象的 `str()` 方法，以获取最终的格式串。不妨看下一下两个类：
 
@@ -1428,7 +1427,7 @@ class DollarMessage:
         return Template(self.fmt).substitute(**self.kwargs)
 ```
 
-​	上述两个类均可代替格式串，使得能用 {}- 或 $-formatting 构建最终的“日志信息”部分，这些信息将出现在格式化后的日志输出中，替换 %(message)s 或“{message}”或“$message”。每次写入日志时都要使用类名，有点不大实用，但如果用上 __ 之类的别名就相当合适了（双下划线 --- 不要与 _ 混淆，单下划线用作 [`gettext.gettext()`](https://docs.python.org/zh-cn/3.13/library/gettext.html#gettext.gettext) 或相关函数的同义词/别名 ）。
+​	上述两个类均可代替格式串，使得能用 {}- 或 $-formatting 构建最终的“日志信息”部分，这些信息将出现在格式化后的日志输出中，替换 %(message)s 或“{message}”或“$message”。每次写入日志时都要使用类名，有点不大实用，但如果用上 __ 之类的别名就相当合适了（双下划线 --- 不要与 _ 混淆，单下划线用作 [`gettext.gettext()`]({{< ref "/library/i18n/gettext#gettext.gettext" >}}) 或相关函数的同义词/别名 ）。
 
 ​	Python 并没有上述两个类，当然复制粘贴到自己的代码中也很容易。用法可如下所示（假定在名为 `wherever` 的模块中声明）：
 
@@ -1456,7 +1455,7 @@ Message with 2 placeholders
 
 ​	需要注意的是使用这种方式不会对性能造成明显影响：实际的格式化工作不是在日志记录调用时发生的，而是在（如果）处理器即将把日志消息输出到日志时发生的。 因此，唯一可能令人困惑的不寻常之处在于包裹在格式字符串和参数外面的圆括号，而不仅仅是格式字符串。 这是因为 __ 标记只是对 `*XXX*Message` 类的构造器的调用的语法糖。
 
-​	只要愿意，上述类似的效果即可用 [`LoggerAdapter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LoggerAdapter) 实现，如下例所示：
+​	只要愿意，上述类似的效果即可用 [`LoggerAdapter`]({{< ref "/library/allos/logging#logging.LoggerAdapter" >}}) 实现，如下例所示：
 
 ```
 import logging
@@ -1492,27 +1491,27 @@ if __name__ == '__main__':
 
 ## 自定义 `LogRecord`
 
-​	每条日志事件都由一个 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 实例表示。当某事件要记入日志并且没有被某级别过滤掉时，就会创建一个 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 对象，并将有关事件的信息填入，传给该日志对象的 handler（及其祖先，直至对象禁止向上传播为止）。在 Python 3.2 之前，只有两个地方会进行事件的创建：
+​	每条日志事件都由一个 [`LogRecord`]({{< ref "/library/allos/logging#logging.LogRecord" >}}) 实例表示。当某事件要记入日志并且没有被某级别过滤掉时，就会创建一个 [`LogRecord`]({{< ref "/library/allos/logging#logging.LogRecord" >}}) 对象，并将有关事件的信息填入，传给该日志对象的 handler（及其祖先，直至对象禁止向上传播为止）。在 Python 3.2 之前，只有两个地方会进行事件的创建：
 
-- [`Logger.makeRecord()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Logger.makeRecord)，在事件正常记入日志的过程中调用。这会直接调用 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 来创建一个实例。
-- [`makeLogRecord()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.makeLogRecord)，调用时会带上一个字典参数，其中存放着要加入 LogRecord 的属性。这通常在通过网络接收到合适的字典时调用（如通过 [`SocketHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.SocketHandler) 以 pickle 形式，或通过 [`HTTPHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.HTTPHandler) 以 JSON 形式）。
+- [`Logger.makeRecord()`]({{< ref "/library/allos/logging#logging.Logger.makeRecord" >}})，在事件正常记入日志的过程中调用。这会直接调用 [`LogRecord`]({{< ref "/library/allos/logging#logging.LogRecord" >}}) 来创建一个实例。
+- [`makeLogRecord()`]({{< ref "/library/allos/logging#logging.makeLogRecord" >}})，调用时会带上一个字典参数，其中存放着要加入 LogRecord 的属性。这通常在通过网络接收到合适的字典时调用（如通过 [`SocketHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.SocketHandler" >}}) 以 pickle 形式，或通过 [`HTTPHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.HTTPHandler" >}}) 以 JSON 形式）。
 
-​	于是这意味着若要对 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 进行定制，必须进行下述某种操作。
+​	于是这意味着若要对 [`LogRecord`]({{< ref "/library/allos/logging#logging.LogRecord" >}}) 进行定制，必须进行下述某种操作。
 
-- 创建 [`Logger`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Logger) 自定义子类，重写 [`Logger.makeRecord()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Logger.makeRecord)，并在实例化所需日志对象之前用 [`setLoggerClass()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.setLoggerClass) 进行设置。
-- 为日志对象添加 [`Filter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Filter) 或 handler，当其 [`filter()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Filter.filter) 方法被调用时，会执行必要的定制操作。
+- 创建 [`Logger`]({{< ref "/library/allos/logging#logging.Logger" >}}) 自定义子类，重写 [`Logger.makeRecord()`]({{< ref "/library/allos/logging#logging.Logger.makeRecord" >}})，并在实例化所需日志对象之前用 [`setLoggerClass()`]({{< ref "/library/allos/logging#logging.setLoggerClass" >}}) 进行设置。
+- 为日志对象添加 [`Filter`]({{< ref "/library/allos/logging#logging.Filter" >}}) 或 handler，当其 [`filter()`]({{< ref "/library/allos/logging#logging.Filter.filter" >}}) 方法被调用时，会执行必要的定制操作。
 
-​	比如说在有多个不同库要完成不同操作的场景下，第一种方式会有点笨拙。 每次都要尝试设置自己的 [`Logger`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Logger) 子类，而起作用的是最后一次尝试。
+​	比如说在有多个不同库要完成不同操作的场景下，第一种方式会有点笨拙。 每次都要尝试设置自己的 [`Logger`]({{< ref "/library/allos/logging#logging.Logger" >}}) 子类，而起作用的是最后一次尝试。
 
-​	第二种方式在多数情况下效果都比较良好，但不允许你使用特殊化的 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 子类。 库开发者可以为他们的日志记录器设置合适的过滤器，但他们应当要记得每次引入新的日志记录器时都需如此（他们只需通过添加新的包或模块并执行以下操作即可）:
+​	第二种方式在多数情况下效果都比较良好，但不允许你使用特殊化的 [`LogRecord`]({{< ref "/library/allos/logging#logging.LogRecord" >}}) 子类。 库开发者可以为他们的日志记录器设置合适的过滤器，但他们应当要记得每次引入新的日志记录器时都需如此（他们只需通过添加新的包或模块并执行以下操作即可）:
 
 ```
 logger = logging.getLogger(__name__)
 ```
 
-​	或许这样要顾及太多事情。开发人员还可以将过滤器附加到其顶级日志对象的 [`NullHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.NullHandler) 中，但如果应用程序开发人员将 handler 附加到较底层库的日志对象，则不会调用该过滤器 --- 所以 handler 输出的内容不会符合库开发人员的预期。
+​	或许这样要顾及太多事情。开发人员还可以将过滤器附加到其顶级日志对象的 [`NullHandler`]({{< ref "/library/allos/logging_handlers#logging.NullHandler" >}}) 中，但如果应用程序开发人员将 handler 附加到较底层库的日志对象，则不会调用该过滤器 --- 所以 handler 输出的内容不会符合库开发人员的预期。
 
-​	在 Python 3.2 以上版本中，[`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 的创建是通过工厂对象完成的，工厂对象可以指定。工厂对象只是一个可调用对象，可以用 [`setLogRecordFactory()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.setLogRecordFactory) 进行设置，并用 [`getLogRecordFactory()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.getLogRecordFactory) 进行查询。工厂对象的调用参数与 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 的构造函数相同，因为 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 是工厂对象的默认设置。
+​	在 Python 3.2 以上版本中，[`LogRecord`]({{< ref "/library/allos/logging#logging.LogRecord" >}}) 的创建是通过工厂对象完成的，工厂对象可以指定。工厂对象只是一个可调用对象，可以用 [`setLogRecordFactory()`]({{< ref "/library/allos/logging#logging.setLogRecordFactory" >}}) 进行设置，并用 [`getLogRecordFactory()`]({{< ref "/library/allos/logging#logging.getLogRecordFactory" >}}) 进行查询。工厂对象的调用参数与 [`LogRecord`]({{< ref "/library/allos/logging#logging.LogRecord" >}}) 的构造函数相同，因为 [`LogRecord`]({{< ref "/library/allos/logging#logging.LogRecord" >}}) 是工厂对象的默认设置。
 
 ​	这种方式可以让自定义工厂对象完全控制 LogRecord 的创建过程。比如可以返回一个子类，或者在创建的日志对象中加入一些额外的属性，使用方式如下所示：
 
@@ -1527,7 +1526,7 @@ def record_factory(*args, **kwargs):
 logging.setLogRecordFactory(record_factory)
 ```
 
-​	这种模式允许不同的库将多个工厂对象链在一起，只要不会覆盖彼此的属性或标准属性，就不会出现意外。但应记住，工厂链中的每个节点都会增加日志操作的运行开销，本技术仅在采用 [`Filter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Filter) 无法达到目标时才应使用。
+​	这种模式允许不同的库将多个工厂对象链在一起，只要不会覆盖彼此的属性或标准属性，就不会出现意外。但应记住，工厂链中的每个节点都会增加日志操作的运行开销，本技术仅在采用 [`Filter`]({{< ref "/library/allos/logging#logging.Filter" >}}) 无法达到目标时才应使用。
 
 
 
@@ -1535,7 +1534,7 @@ logging.setLogRecordFactory(record_factory)
 
 ### 子类 `QueueHandler`
 
-​	你可以使用 [`QueueHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueHandler) 子类将消息发送给其他类型的队列 ，比如 ZeroMQ 'publish' 套接字。 在以下示例中，套接字将单独创建并传给处理器 (作为它的 'queue'):
+​	你可以使用 [`QueueHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.QueueHandler" >}}) 子类将消息发送给其他类型的队列 ，比如 ZeroMQ 'publish' 套接字。 在以下示例中，套接字将单独创建并传给处理器 (作为它的 'queue'):
 
 ```
 import zmq   # 使用 pyzmq，这是 ZeroMQ 的 Python 绑定
@@ -1572,7 +1571,7 @@ class ZeroMQSocketHandler(QueueHandler):
 
 ### 子类 `QueueListener`
 
-​	你还可以子类化 [`QueueListener`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueListener) 来从其他类型的队列中获取消息，比如从 ZeroMQ 'subscribe' 套接字。 下面是一个例子:
+​	你还可以子类化 [`QueueListener`]({{< ref "/library/allos/logging_handlers#logging.handlers.QueueListener" >}}) 来从其他类型的队列中获取消息，比如从 ZeroMQ 'subscribe' 套接字。 下面是一个例子:
 
 ```
 class ZeroMQSocketListener(QueueListener):
@@ -1763,7 +1762,7 @@ DEBUG    myapp.lib1    657 Message no.     8
 
 ## 基于字典进行日志配置的示例
 
-​	以下是日志配置字典的一个示例——它取自 Django 项目的`文档<https://docs.djangoproject.com/en/stable/topics/logging/#configuring-logging>`_。此字典将被传给 [`dictConfig()`](https://docs.python.org/zh-cn/3.13/library/logging.config.html#logging.config.dictConfig) 以使配置生效:
+​	以下是日志配置字典的一个示例——它取自 Django 项目的`文档<https://docs.djangoproject.com/en/stable/topics/logging/#configuring-logging>`_。此字典将被传给 [`dictConfig()`]({{< ref "/library/allos/logging_config#logging.config.dictConfig" >}}) 以使配置生效:
 
 ```
 LOGGING = {
@@ -2087,11 +2086,11 @@ if __name__ == '__main__':
 
 [**RFC 5424**](https://datatracker.ietf.org/doc/html/rfc5424.html) 要求，Unicode 信息应采用字节流形式发送到系统 syslog 守护程序，字节流结构如下所示：可选的纯 ASCII部分，后跟 UTF-8 字节序标记（BOM），然后是采用 UTF-8 编码的 Unicode。（参见 [**相关规范**](https://datatracker.ietf.org/doc/html/rfc5424.html#section-6) 。）
 
-​	在 Python 3.1 的 [`SysLogHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.SysLogHandler) 中，已加入了在日志信息中插入 BOM 的代码，但不幸的是，代码并不正确，BOM 出现在了日志信息的开头，因此在它之前就不允许出现纯 ASCII 内容了。
+​	在 Python 3.1 的 [`SysLogHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.SysLogHandler" >}}) 中，已加入了在日志信息中插入 BOM 的代码，但不幸的是，代码并不正确，BOM 出现在了日志信息的开头，因此在它之前就不允许出现纯 ASCII 内容了。
 
 ​	由于无法正常工作， Python 3.2.4 以上版本已删除了出错的插入 BOM 代码。但已有版本的代码不会被替换，若要生成与 [**RFC 5424**](https://datatracker.ietf.org/doc/html/rfc5424.html) 兼容的日志信息，包括一个 BOM 符，前面有可选的纯 ASCII 字节流，后面为 UTF-8 编码的任意 Unicode，那么 需要执行以下操作：
 
-1. 为 [`SysLogHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.SysLogHandler) 实例串上一个 [`Formatter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Formatter) 实例，格式串可如下：
+1. 为 [`SysLogHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.SysLogHandler" >}}) 实例串上一个 [`Formatter`]({{< ref "/library/allos/logging#logging.Formatter" >}}) 实例，格式串可如下：
 
    ```
    'ASCII section\ufeffUnicode section'
@@ -2179,9 +2178,9 @@ message 1 >>> {"snowman": "\u2603", "set_value": [1, 2, 3]}
 
 
 
-## 利用 [`dictConfig()`](https://docs.python.org/zh-cn/3.13/library/logging.config.html#logging.config.dictConfig) 自定义 handler
+## 利用 [`dictConfig()`]({{< ref "/library/allos/logging_config#logging.config.dictConfig" >}}) 自定义 handler
 
-​	有时需要以特定方式自定义日志 handler，如果采用 [`dictConfig()`](https://docs.python.org/zh-cn/3.13/library/logging.config.html#logging.config.dictConfig)，可能无需生成子类就可以做到。比如要设置日志文件的所有权。在 POSIX 上，可以利用 [`shutil.chown()`](https://docs.python.org/zh-cn/3.13/library/shutil.html#shutil.chown) 轻松完成，但 stdlib 中的文件 handler 并不提供内置支持。于是可以用普通函数自定义 handler 的创建，例如：
+​	有时需要以特定方式自定义日志 handler，如果采用 [`dictConfig()`]({{< ref "/library/allos/logging_config#logging.config.dictConfig" >}})，可能无需生成子类就可以做到。比如要设置日志文件的所有权。在 POSIX 上，可以利用 [`shutil.chown()`]({{< ref "/library/filesys/shutil#shutil.chown" >}}) 轻松完成，但 stdlib 中的文件 handler 并不提供内置支持。于是可以用普通函数自定义 handler 的创建，例如：
 
 ```
 def owned_file_handler(filename, mode='a', encoding=None, owner=None):
@@ -2192,7 +2191,7 @@ def owned_file_handler(filename, mode='a', encoding=None, owner=None):
     return logging.FileHandler(filename, mode, encoding)
 ```
 
-​	然后，你可以在传给 [`dictConfig()`](https://docs.python.org/zh-cn/3.13/library/logging.config.html#logging.config.dictConfig) 的日志配置中指定通过调用此函数来创建日志处理程序:
+​	然后，你可以在传给 [`dictConfig()`]({{< ref "/library/allos/logging_config#logging.config.dictConfig" >}}) 的日志配置中指定通过调用此函数来创建日志处理程序:
 
 ```
 LOGGING = {
@@ -2283,7 +2282,7 @@ $ ls -l chowntest.log
 -rw-r--r-- 1 pulse pulse 55 2013-11-05 09:34 chowntest.log
 ```
 
-​	请注意此示例用的是 Python 3.3，因为 [`shutil.chown()`](https://docs.python.org/zh-cn/3.13/library/shutil.html#shutil.chown) 是从此版本开始出现的。 此方式应当适用于任何支持 [`dictConfig()`](https://docs.python.org/zh-cn/3.13/library/logging.config.html#logging.config.dictConfig) 的 Python 版本 —— 例如 Python 2.7, 3.2 或更新的版本。 对于 3.3 之前的版本，你应当使用 [`os.chown()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.chown) 之类的函数来实现实际的所有权修改。
+​	请注意此示例用的是 Python 3.3，因为 [`shutil.chown()`]({{< ref "/library/filesys/shutil#shutil.chown" >}}) 是从此版本开始出现的。 此方式应当适用于任何支持 [`dictConfig()`]({{< ref "/library/allos/logging_config#logging.config.dictConfig" >}}) 的 Python 版本 —— 例如 Python 2.7, 3.2 或更新的版本。 对于 3.3 之前的版本，你应当使用 [`os.chown()`]({{< ref "/library/allos/os#os.chown" >}}) 之类的函数来实现实际的所有权修改。
 
 ​	实际应用中，handler 的创建函数可能位于项目的工具模块中。以下配置：
 
@@ -2297,19 +2296,19 @@ $ ls -l chowntest.log
 '()': 'ext://project.util.owned_file_handler',
 ```
 
-​	这里的 `project.util` 可以换成函数所在包的实际名称。 在上述的可用脚本中，应该可以使用 `'ext://__main__.owned_file_handler'`。 在这里，实际的可调用对象是由 [`dictConfig()`](https://docs.python.org/zh-cn/3.13/library/logging.config.html#logging.config.dictConfig) 从 `ext://` 说明中解析出来的。
+​	这里的 `project.util` 可以换成函数所在包的实际名称。 在上述的可用脚本中，应该可以使用 `'ext://__main__.owned_file_handler'`。 在这里，实际的可调用对象是由 [`dictConfig()`]({{< ref "/library/allos/logging_config#logging.config.dictConfig" >}}) 从 `ext://` 说明中解析出来的。
 
-​	上述示例还指明了其他的文件修改类型的实现方案 —— 比如同样利用 [`os.chmod()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.chmod) 设置 POSIX 访问权限位。
+​	上述示例还指明了其他的文件修改类型的实现方案 —— 比如同样利用 [`os.chmod()`]({{< ref "/library/allos/os#os.chmod" >}}) 设置 POSIX 访问权限位。
 
-​	当然，以上做法也可以扩展到 [`FileHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.FileHandler) 之外的其他类型的 handler ——比如某个轮换文件 handler，或类型完全不同的其他 handler。
+​	当然，以上做法也可以扩展到 [`FileHandler`]({{< ref "/library/allos/logging_handlers#logging.FileHandler" >}}) 之外的其他类型的 handler ——比如某个轮换文件 handler，或类型完全不同的其他 handler。
 
 
 
 ## 生效于整个应用程序的格式化样式
 
-​	在 Python 3.2 中，[`Formatter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Formatter) 增加了一个 `style` 关键字形参，它默认为 `%` 以便向下兼容，但是允许采用 `{` 或 `$` 来支持 [`str.format()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.format) 和 [`string.Template`](https://docs.python.org/zh-cn/3.13/library/string.html#string.Template) 所支持的格式化方式。 请注意此形参控制着用用于最终输出到日志的日志消息格式，并且与单独日志消息的构造方式完全无关。
+​	在 Python 3.2 中，[`Formatter`]({{< ref "/library/allos/logging#logging.Formatter" >}}) 增加了一个 `style` 关键字形参，它默认为 `%` 以便向下兼容，但是允许采用 `{` 或 `$` 来支持 [`str.format()`]({{< ref "/library/stdtypes#str.format" >}}) 和 [`string.Template`]({{< ref "/library/text/string#string.Template" >}}) 所支持的格式化方式。 请注意此形参控制着用用于最终输出到日志的日志消息格式，并且与单独日志消息的构造方式完全无关。
 
-​	日志调用 ([`debug()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Logger.debug), [`info()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Logger.info) 等) 只接受包含实际日志消息自身的位置参数，而关键字参数仅用于确定如何处理日志调用的选项 (例如 `exc_info` 关键字参数表示应将回溯信息记入日志，而 `extra` 关键字参数则指定要添加到日志的额外上下文信息)。 所以你不能直接使用 [`str.format()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.format) 或 [`string.Template`](https://docs.python.org/zh-cn/3.13/library/string.html#string.Template) 语法来直接执行日志调用，因为 logging 包在内部是使用 % 格式符来合并格式字符串和可变参数的。 这一点不应被改变以保持向下兼容性，因为现有代码中所有的日志调用都将使用 % 格式化字符串。
+​	日志调用 ([`debug()`]({{< ref "/library/allos/logging#logging.Logger.debug" >}}), [`info()`]({{< ref "/library/allos/logging#logging.Logger.info" >}}) 等) 只接受包含实际日志消息自身的位置参数，而关键字参数仅用于确定如何处理日志调用的选项 (例如 `exc_info` 关键字参数表示应将回溯信息记入日志，而 `extra` 关键字参数则指定要添加到日志的额外上下文信息)。 所以你不能直接使用 [`str.format()`]({{< ref "/library/stdtypes#str.format" >}}) 或 [`string.Template`]({{< ref "/library/text/string#string.Template" >}}) 语法来直接执行日志调用，因为 logging 包在内部是使用 % 格式符来合并格式字符串和可变参数的。 这一点不应被改变以保持向下兼容性，因为现有代码中所有的日志调用都将使用 % 格式化字符串。
 
 ​	有人建议将格式化样式与特定的日志对象进行关联，但其实也会遇到向下兼容的问题，因为已有代码可能用到了某日志对象并采用了 %-f 格式串。
 
@@ -2317,13 +2316,13 @@ $ ls -l chowntest.log
 
 ### LogRecord 工厂的用法
 
-​	在 Python 3.2 中，伴随着 [`Formatter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Formatter) 的上述变化，logging 包增加了允许用户使用 [`setLogRecordFactory()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.setLogRecordFactory) 函数来。设置自己的 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 子类的功能。 你可以使用此功能来设置自己的 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 子类，它会通过重写 [`getMessage()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord.getMessage) 方法来完成适当的操作。 `msg % args` 格式化是在此方法的基类实现中进行的，你可以在那里用你自己的格式化操作来替换；但是，你应当注意要支持全部的格式化样式并允许将 %-formatting 作为默认样式，以确保与其他代码进行配合。 还应当注意调用 `str(self.msg)`，正如基类实现所做的一样。
+​	在 Python 3.2 中，伴随着 [`Formatter`]({{< ref "/library/allos/logging#logging.Formatter" >}}) 的上述变化，logging 包增加了允许用户使用 [`setLogRecordFactory()`]({{< ref "/library/allos/logging#logging.setLogRecordFactory" >}}) 函数来。设置自己的 [`LogRecord`]({{< ref "/library/allos/logging#logging.LogRecord" >}}) 子类的功能。 你可以使用此功能来设置自己的 [`LogRecord`]({{< ref "/library/allos/logging#logging.LogRecord" >}}) 子类，它会通过重写 [`getMessage()`]({{< ref "/library/allos/logging#logging.LogRecord.getMessage" >}}) 方法来完成适当的操作。 `msg % args` 格式化是在此方法的基类实现中进行的，你可以在那里用你自己的格式化操作来替换；但是，你应当注意要支持全部的格式化样式并允许将 %-formatting 作为默认样式，以确保与其他代码进行配合。 还应当注意调用 `str(self.msg)`，正如基类实现所做的一样。
 
-​	更多信息请参阅 [`setLogRecordFactory()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.setLogRecordFactory) 和 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 的参考文档。
+​	更多信息请参阅 [`setLogRecordFactory()`]({{< ref "/library/allos/logging#logging.setLogRecordFactory" >}}) 和 [`LogRecord`]({{< ref "/library/allos/logging#logging.LogRecord" >}}) 的参考文档。
 
 ### 自定义信息对象的使用
 
-​	另一种方案可能更为简单，可以利用 {}- 和 $- 格式构建自己的日志消息。大家或许还记得（来自 [使用任意对象作为消息](https://docs.python.org/zh-cn/3.13/howto/logging.html#arbitrary-object-messages)），可以用任意对象作为日志信息的格式串，日志包将调用该对象上 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 获取实际的格式串。看下以下两个类：
+​	另一种方案可能更为简单，可以利用 {}- 和 $- 格式构建自己的日志消息。大家或许还记得（来自 [使用任意对象作为消息]({{< ref "/howto/logging#arbitrary-object-messages" >}})），可以用任意对象作为日志信息的格式串，日志包将调用该对象上 [`str()`]({{< ref "/library/stdtypes#str" >}}) 获取实际的格式串。看下以下两个类：
 
 ```
 class BraceMessage:
@@ -2347,7 +2346,7 @@ class DollarMessage:
 
 ​	以上两个类均都可用于替代格式串，以便用 {}- 或 $-formatting 构建实际的“日志信息”部分，此部分将出现在格式化后的日志输出中，替换 %(message)s 、“{message}”或“$message”。每次要写入日志时都使用类名，如果觉得使用不便，可以采用 `M` 或 `_` 之类的别名（如果将 `_` 用于本地化操作，则可用 `__`）。
 
-​	下面给出示例。 首先用 [`str.format()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.format) 进行格式化：
+​	下面给出示例。 首先用 [`str.format()`]({{< ref "/library/stdtypes#str.format" >}}) 进行格式化：
 
 
 
@@ -2364,7 +2363,7 @@ Message with 2 placeholders
 Message with coordinates: (0.50, 0.50)
 ```
 
-​	然后，用 [`string.Template`](https://docs.python.org/zh-cn/3.13/library/string.html#string.Template) 格式化：
+​	然后，用 [`string.Template`]({{< ref "/library/text/string#string.Template" >}}) 格式化：
 
 
 
@@ -2379,9 +2378,9 @@ Message with 2 placeholders
 
 
 
-## 利用 [`dictConfig()`](https://docs.python.org/zh-cn/3.13/library/logging.config.html#logging.config.dictConfig) 定义过滤器
+## 利用 [`dictConfig()`]({{< ref "/library/allos/logging_config#logging.config.dictConfig" >}}) 定义过滤器
 
-​	用 [`dictConfig()`](https://docs.python.org/zh-cn/3.13/library/logging.config.html#logging.config.dictConfig) *可以* 对日志过滤器进行设置，尽管乍一看做法并不明显（所以才需要本秘籍）。 由于 [`Filter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Filter) 是标准库中唯一的日志过滤器类，不太可能满足众多的要求（它只是作为基类存在），通常需要定义自己的 [`Filter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Filter) 子类，并重写 [`filter()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Filter.filter) 方法。为此，请在过滤器的配置字典中设置 `()` 键，指定要用于创建过滤器的可调用对象（最明显可用的就是给出一个类，但也可以提供任何一个可调用对象，只要能返回 [`Filter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Filter) 实例即可）。下面是一个完整的例子：
+​	用 [`dictConfig()`]({{< ref "/library/allos/logging_config#logging.config.dictConfig" >}}) *可以* 对日志过滤器进行设置，尽管乍一看做法并不明显（所以才需要本秘籍）。 由于 [`Filter`]({{< ref "/library/allos/logging#logging.Filter" >}}) 是标准库中唯一的日志过滤器类，不太可能满足众多的要求（它只是作为基类存在），通常需要定义自己的 [`Filter`]({{< ref "/library/allos/logging#logging.Filter" >}}) 子类，并重写 [`filter()`]({{< ref "/library/allos/logging#logging.Filter.filter" >}}) 方法。为此，请在过滤器的配置字典中设置 `()` 键，指定要用于创建过滤器的可调用对象（最明显可用的就是给出一个类，但也可以提供任何一个可调用对象，只要能返回 [`Filter`]({{< ref "/library/allos/logging#logging.Filter" >}}) 实例即可）。下面是一个完整的例子：
 
 ```
 import logging
@@ -2437,8 +2436,8 @@ changed: hello
 
 ​	需要额外注意的地方：
 
-- 如果在配置中无法直接引用可调用对象（比如位于不同的模块中，并且不能在配置字典所在的位置直接导入），则可以采用 `ext://...` 的形式，正如 [访问外部对象](https://docs.python.org/zh-cn/3.13/library/logging.config.html#logging-config-dict-externalobj) 所述。例如，在上述示例中可以使用文本 `'ext://__main__.MyFilter'` 而不是 `MyFilter` 对象。
-- 与过滤器一样，上述技术还可用于配置自定义 handler 和格式化对象。有关如何在日志配置中使用用户自定义对象的更多信息，请参阅 [用户定义对象](https://docs.python.org/zh-cn/3.13/library/logging.config.html#logging-config-dict-userdef)，以及上述 [利用 dictConfig() 自定义 handler](https://docs.python.org/zh-cn/3.13/howto/logging-cookbook.html#custom-handlers) 的其他指南。
+- 如果在配置中无法直接引用可调用对象（比如位于不同的模块中，并且不能在配置字典所在的位置直接导入），则可以采用 `ext://...` 的形式，正如 [访问外部对象]({{< ref "/library/allos/logging_config#logging-config-dict-externalobj" >}}) 所述。例如，在上述示例中可以使用文本 `'ext://__main__.MyFilter'` 而不是 `MyFilter` 对象。
+- 与过滤器一样，上述技术还可用于配置自定义 handler 和格式化对象。有关如何在日志配置中使用用户自定义对象的更多信息，请参阅 [用户定义对象]({{< ref "/library/allos/logging_config#logging-config-dict-userdef" >}})，以及上述 [利用 dictConfig() 自定义 handler]({{< ref "/howto/logging-cookbook#custom-handlers" >}}) 的其他指南。
 
 
 
@@ -2491,13 +2490,13 @@ if __name__ == '__main__':
 28/01/2015 07:21:23|ERROR|ZeroDivisionError: integer division or modulo by zero|'Traceback (most recent call last):\n  File "logtest7.py", line 30, in main\n    x = 1 / 0\nZeroDivisionError: integer division or modulo by zero'|
 ```
 
-​	虽然上述处理方式很简单，但也给出了根据喜好对异常信息进行格式化输出的方案。或许 [`traceback`](https://docs.python.org/zh-cn/3.13/library/traceback.html#module-traceback) 模块能满足更专门的需求。
+​	虽然上述处理方式很简单，但也给出了根据喜好对异常信息进行格式化输出的方案。或许 [`traceback`]({{< ref "/library/python/traceback#module-traceback" >}}) 模块能满足更专门的需求。
 
 
 
 ## 语音播报日志信息
 
-​	有时可能需要以声音的形式呈现日志消息。如果系统自带了文本转语音 （TTS）功能，即便没与 Python 关联也很容易做到。大多数 TTS 系统都有一个可运行的命令行程序，在 handler 中可以用 [`subprocess`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#module-subprocess) 进行调用。这里假定 TTS 命令行程序不会与用户交互，或需要很长时间才会执行完毕，写入日志的信息也不会多到影响用户查看，并且可以接受每次播报一条信息，以下示例实现了等一条信息播完再处理下一条，可能会导致其他 handler 的等待。这个简短示例仅供演示，假定 `espeak` TTS 包已就绪：
+​	有时可能需要以声音的形式呈现日志消息。如果系统自带了文本转语音 （TTS）功能，即便没与 Python 关联也很容易做到。大多数 TTS 系统都有一个可运行的命令行程序，在 handler 中可以用 [`subprocess`]({{< ref "/library/concurrency/subprocess#module-subprocess" >}}) 进行调用。这里假定 TTS 命令行程序不会与用户交互，或需要很长时间才会执行完毕，写入日志的信息也不会多到影响用户查看，并且可以接受每次播报一条信息，以下示例实现了等一条信息播完再处理下一条，可能会导致其他 handler 的等待。这个简短示例仅供演示，假定 `espeak` TTS 包已就绪：
 
 ```
 import logging
@@ -2540,11 +2539,11 @@ if __name__ == '__main__':
 
 ​	在某些情况下，你可能希望在临时区域中记录日志消息，并且只在发生某种特定的情况下才输出它们。 例如，你可能希望起始在函数中记录调试事件，如果函数执行完成且没有错误，你不希望输出收集的调试信息以避免造成日志混乱，但如果出现错误，那么你希望所有调试以及错误消息被输出。
 
-​	下面是一个示例，展示如何在你的日志记录函数上使用装饰器以实现这一功能。该示例使用 [`logging.handlers.MemoryHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.MemoryHandler) ，它允许缓冲已记录的事件直到某些条件发生，缓冲的事件才会被刷新（`flushed`） - 传递给另一个处理程序（ `target` handler）进行处理。 默认情况下， `MemoryHandler` 在其缓冲区被填满时被刷新，或者看到一个级别大于或等于指定阈值的事件。 如果想要自定义刷新行为，你可以通过更专业的 `MemoryHandler` 子类来使用这个秘诀。
+​	下面是一个示例，展示如何在你的日志记录函数上使用装饰器以实现这一功能。该示例使用 [`logging.handlers.MemoryHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.MemoryHandler" >}}) ，它允许缓冲已记录的事件直到某些条件发生，缓冲的事件才会被刷新（`flushed`） - 传递给另一个处理程序（ `target` handler）进行处理。 默认情况下， `MemoryHandler` 在其缓冲区被填满时被刷新，或者看到一个级别大于或等于指定阈值的事件。 如果想要自定义刷新行为，你可以通过更专业的 `MemoryHandler` 子类来使用这个秘诀。
 
 ​	这个示例脚本有一个简单的函数 `foo` ，它只是在所有的日志级别中循环运行，写到 `sys.stderr` ，说明它要记录在哪个级别上，然后在这个级别上实际记录一个消息。你可以给 `foo` 传递一个参数，如果为 true ，它将在ERROR和CRITICAL级别记录，否则，它只在DEBUG、INFO和WARNING级别记录。
 
-​	脚本只是使用了一个装饰器来装饰 `foo`，这个装饰器将记录执行所需的条件。装饰器使用一个记录器作为参数，并在调用被装饰的函数期间附加一个内存处理程序。装饰器可以使用目标处理程序、记录级别和缓冲区的容量（缓冲记录的数量）来附加参数。这些参数分别默认为写入 `sys.stderr` 的 [`StreamHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.StreamHandler) ， `logging.ERROR` 和 `100`。
+​	脚本只是使用了一个装饰器来装饰 `foo`，这个装饰器将记录执行所需的条件。装饰器使用一个记录器作为参数，并在调用被装饰的函数期间附加一个内存处理程序。装饰器可以使用目标处理程序、记录级别和缓冲区的容量（缓冲记录的数量）来附加参数。这些参数分别默认为写入 `sys.stderr` 的 [`StreamHandler`]({{< ref "/library/allos/logging_handlers#logging.StreamHandler" >}}) ， `logging.ERROR` 和 `100`。
 
 ​	以下是脚本：
 
@@ -2655,7 +2654,7 @@ def foo(fail=False):
 
 ## 将日志消息发送至电子邮件，附带缓存支持
 
-​	为演示如何通过电子邮件发送日志消息，让每封电子邮件发送指定数量的日志消息，你可以子类化 [`BufferingHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.BufferingHandler)。 对于下面的例子，你可以继续调整以适合你自己的特定需求，它提供了简单的测试代码来允许你附带命令行参数运行该脚本来指定你需要通过 SMTP 发送的内容。 （请附带 `-h` 参数运行已下载的脚本来查看必须的和可选的参数。）
+​	为演示如何通过电子邮件发送日志消息，让每封电子邮件发送指定数量的日志消息，你可以子类化 [`BufferingHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.BufferingHandler" >}})。 对于下面的例子，你可以继续调整以适合你自己的特定需求，它提供了简单的测试代码来允许你附带命令行参数运行该脚本来指定你需要通过 SMTP 发送的内容。 （请附带 `-h` 参数运行已下载的脚本来查看必须的和可选的参数。）
 
 ```
 import logging
@@ -2737,7 +2736,7 @@ class UTCFormatter(logging.Formatter):
     converter = time.gmtime
 ```
 
-​	然后你可以在你的代码中使用 `UTCFormatter`，而不是 [`Formatter`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.Formatter)。 如果你想通过配置来实现这一功能，你可以使用 [`dictConfig()`](https://docs.python.org/zh-cn/3.13/library/logging.config.html#logging.config.dictConfig) API 来完成，该方法在以下完整示例中展示:
+​	然后你可以在你的代码中使用 `UTCFormatter`，而不是 [`Formatter`]({{< ref "/library/allos/logging#logging.Formatter" >}})。 如果你想通过配置来实现这一功能，你可以使用 [`dictConfig()`]({{< ref "/library/allos/logging_config#logging.config.dictConfig" >}}) API 来完成，该方法在以下完整示例中展示:
 
 ```
 import logging
@@ -3041,7 +3040,7 @@ $ python app.py --log-level WARNING restart foo bar baz
 
 ​	下面的例子演示了将日志写入 Qt GUI 程序的过程。这里引入了一个简单的 `QtHandler` 类，参数是一个可调用对象，其应为嵌入主线程某个“槽位”中运行的，因为GUI 的更新由主线程完成。这里还创建了一个工作线程，以便演示由 UI（通过人工点击日志按钮）和后台工作线程（此处只是记录级别和时间间隔均随机生成的日志信息）将日志写入 GUI 的过程。
 
-​	该工作线程是用 Qt 的 `QThread` 类实现的，而不是 [`threading`](https://docs.python.org/zh-cn/3.13/library/threading.html#module-threading) 模块，因为某些情况下只能采用 ``QThread`，它与其他 `Qt` 组件的集成性更好一些。
+​	该工作线程是用 Qt 的 `QThread` 类实现的，而不是 [`threading`]({{< ref "/library/concurrency/threading#module-threading" >}}) 模块，因为某些情况下只能采用 ``QThread`，它与其他 `Qt` 组件的集成性更好一些。
 
 ​	此代码应当适用于最新的 `PySide6`, `PyQt6`, `PySide2` 或 `PyQt5` 发布版。 你也可以将此做法适配到更早的 Qt 版本。 请参阅代码片段中的注释来获取更详细的信息。
 
@@ -3278,7 +3277,7 @@ if __name__=='__main__':
 
 ## 将日志记录到带有 RFC5424 支持的 syslog
 
-​	虽然 [**RFC 5424**](https://datatracker.ietf.org/doc/html/rfc5424.html) 在 2009 年就已发布，但大多数 syslog 服务器都默认被配置为使用更旧的 [**RFC 3164**](https://datatracker.ietf.org/doc/html/rfc3164.html)，它发布于 2001 年。 当 `logging` 在 2003 年被加入 Python 时，它支持了当时（唯一存在的）较早版本的协议。 自从 RFC5424 发布后，因为它还未被广泛部署到 syslog 服务器上，因此 [`SysLogHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.SysLogHandler) 的功能也没有被更新。
+​	虽然 [**RFC 5424**](https://datatracker.ietf.org/doc/html/rfc5424.html) 在 2009 年就已发布，但大多数 syslog 服务器都默认被配置为使用更旧的 [**RFC 3164**](https://datatracker.ietf.org/doc/html/rfc3164.html)，它发布于 2001 年。 当 `logging` 在 2003 年被加入 Python 时，它支持了当时（唯一存在的）较早版本的协议。 自从 RFC5424 发布后，因为它还未被广泛部署到 syslog 服务器上，因此 [`SysLogHandler`]({{< ref "/library/allos/logging_handlers#logging.handlers.SysLogHandler" >}}) 的功能也没有被更新。
 
 ​	RFC 5424 包括一些有用的特性例如对结构化数据的支持等，如果你想要能够将日志记录到带有该协议支持的 syslog 服务器上，你可以使用一个看起来像是这样的子类化处理器来实现:
 
@@ -3413,7 +3412,7 @@ sys.stdout = LoggerWriter(logger, logging.INFO)
 sys.stderr = LoggerWriter(logger, logging.WARNING)
 ```
 
-​	你应当在根据需要配置日志记录 *之后* 再这样做。 在上面的例子中，[`basicConfig()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.basicConfig) 调用执行了此操作（在 `sys.stderr` 被一个 `LoggerWriter` 实例覆盖 *之前* 使用它的值）。 然后，你将得到这样的结果:
+​	你应当在根据需要配置日志记录 *之后* 再这样做。 在上面的例子中，[`basicConfig()`]({{< ref "/library/allos/logging#logging.basicConfig" >}}) 调用执行了此操作（在 `sys.stderr` 被一个 `LoggerWriter` 实例覆盖 *之前* 使用它的值）。 然后，你将得到这样的结果:
 
 
 
@@ -3425,7 +3424,7 @@ WARNING:demo:Bar
 >>>
 ```
 
-​	当然，上面的例子是按照 [`basicConfig()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.basicConfig) 所使用的格式来显示输出的，但你也可以在配置日志记录时使用其他的格式。
+​	当然，上面的例子是按照 [`basicConfig()`]({{< ref "/library/allos/logging#logging.basicConfig" >}}) 所使用的格式来显示输出的，但你也可以在配置日志记录时使用其他的格式。
 
 ​	请注意当使用上面的预置方案时，你将在一定程度上受到你所拦截的写入调用的缓冲和顺序的控制。 例如，在使用上述 `LoggerWriter` 的定义的情况下，如果你使用代码段
 
@@ -3494,45 +3493,44 @@ WARNING:demo:ZeroDivisionError: division by zero
 
 - 多次添加指向同一文件的 handler（比如通过复制/粘贴，或忘记修改）。
 - 打开两个貌似不同（文件名不一样）的文件，但一个是另一个的符号链接，所以其实是同一个文件。
-- 进程 fork，然后父进程和子进程都有对同一文件的引用。 例如，这可能是通过使用 [`multiprocessing`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#module-multiprocessing) 模块实现的。
+- 进程 fork，然后父进程和子进程都有对同一文件的引用。 例如，这可能是通过使用 [`multiprocessing`]({{< ref "/library/concurrency/multiprocessing#module-multiprocessing" >}}) 模块实现的。
 
 ​	在大多数情况下，多次打开同一个文件 *貌似* 一切正常，但实际会导致很多问题。
 
 - 由于多个线程或进程会尝试写入同一个文件，日志输出可能会出现乱码。尽管日志对象可以防止多个线程同时使用同一个 handler 实例，但如果两个不同的线程使用不同的 handler 实例同时写入文件，而这两个 handler 又恰好指向同一个文件，那么就失去了这种防护。
 - 尝试删除文件（例如在轮换日志文件时）会静默地失败，因为存在另一个指向它的引用。 这可能导致混乱并浪费调试时间 —— 日志条目会出现在意想不到的地方，或者完全丢失。 或者会有应当移除的文件仍然保持存在，文件还会在已经设置了基于文件大小的轮换的情况下仍然增长到预料之外的大小。
 
-​	请用 [从多个进程记录至单个文件](https://docs.python.org/zh-cn/3.13/howto/logging-cookbook.html#multiple-processes) 中介绍的技术来避免上述问题。
+​	请用 [从多个进程记录至单个文件]({{< ref "/howto/logging-cookbook#multiple-processes" >}}) 中介绍的技术来避免上述问题。
 
 ### 将日志对象用作属性或传递参数
 
 ​	虽然特殊情况下可能有必要如此，但一般来说没有意义，因为日志是单实例对象。代码总是可以通过 `logging.getLogger(name)` 用名称访问一个已有的日志对象实例，因此将实例作为参数来传递，或作为属性留存，都是毫无意义的。请注意，在其他语言中，如 Java 和 C#，日志对象通常是静态类属性。但在 Python 中是没有意义的，因为软件拆分的单位是模块（而不是类）。
 
-### 为库中的日志记录器添加 [`NullHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.NullHandler) 以外的处理器
+### 为库中的日志记录器添加 [`NullHandler`]({{< ref "/library/allos/logging_handlers#logging.NullHandler" >}}) 以外的处理器
 
-​	通过添加 handler、formatter 和 filter 来配置日志，这是应用程序开发人员的责任，而不是库开发人员该做的。如果正在维护一个库，请确保不要向任何日志对象添加 [`NullHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.NullHandler) 实例以外的 handler。
+​	通过添加 handler、formatter 和 filter 来配置日志，这是应用程序开发人员的责任，而不是库开发人员该做的。如果正在维护一个库，请确保不要向任何日志对象添加 [`NullHandler`]({{< ref "/library/allos/logging_handlers#logging.NullHandler" >}}) 实例以外的 handler。
 
 ### 创建大量的日志对象
 
-​	日志是单实例对象，在代码执行过程中不会被释放，因此创建大量的日志对象会占用很多内存，而这些内存又不能被释放。与其为每个文件或网络连接创建一个日志，还不如利用 [已有机制](https://docs.python.org/zh-cn/3.13/howto/logging-cookbook.html#context-info) 将上下文信息传给自定义日志对象，并将创建的日志对象限制在应用程序内的指定区域（通常是模块，但偶尔会再精细些）使用。
+​	日志是单实例对象，在代码执行过程中不会被释放，因此创建大量的日志对象会占用很多内存，而这些内存又不能被释放。与其为每个文件或网络连接创建一个日志，还不如利用 [已有机制]({{< ref "/howto/logging-cookbook#context-info" >}}) 将上下文信息传给自定义日志对象，并将创建的日志对象限制在应用程序内的指定区域（通常是模块，但偶尔会再精细些）使用。
 
 
 
 ## 其他资源
 
-> ​	参见
->
-> 模块 [`logging`](https://docs.python.org/zh-cn/3.13/library/logging.html#module-logging)
+> ​参见>
+> 模块 [`logging`]({{< ref "/library/allos/logging#module-logging" >}})
 >
 > ​	日志记录模块的 API 参考。
 >
-> [`logging.config`](https://docs.python.org/zh-cn/3.13/library/logging.config.html#module-logging.config) 模块
+> [`logging.config`]({{< ref "/library/allos/logging_config#module-logging.config" >}}) 模块
 >
 > ​	日志记录模块的配置 API 。
 >
-> [`logging.handlers`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#module-logging.handlers) 模块
+> [`logging.handlers`]({{< ref "/library/allos/logging_handlers#module-logging.handlers" >}}) 模块
 >
 > ​	日志记录模块附带的有用处理器。
 >
-> [基础教程](https://docs.python.org/zh-cn/3.13/howto/logging.html#logging-basic-tutorial)
+> [基础教程]({{< ref "/howto/logging#logging-basic-tutorial" >}})
 >
-> [进阶教程](https://docs.python.org/zh-cn/3.13/howto/logging.html#logging-advanced-tutorial)
+> [进阶教程]({{< ref "/howto/logging#logging-advanced-tutorial" >}})

@@ -8,19 +8,19 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/tutorial/controlflow.html](https://docs.python.org/zh-cn/3.13/tutorial/controlflow.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/tutorial/controlflow.html](https://docs.python.org/zh-cn/3.13/tutorial/controlflow.html)
 >
 > 收录该文档的时间：`2024-11-14T22:01:54+08:00`
 
 # 4. 更多控制流工具
 
-​	除了刚介绍的 [`while`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#while) 语句，Python 还用了一些别的。我们将在本章中遇到它们。
+​	除了刚介绍的 [`while`]({{< ref "/reference/compound_stmts#while" >}}) 语句，Python 还用了一些别的。我们将在本章中遇到它们。
 
 
 
 ## 4.1. `if` 语句
 
-​	最让人耳熟能详的语句应当是 [`if`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#if) 语句：
+​	最让人耳熟能详的语句应当是 [`if`]({{< ref "/reference/compound_stmts#if" >}}) 语句：
 
 
 
@@ -40,15 +40,15 @@ Please enter an integer: 42
 更多
 ```
 
-​	可有零个或多个 [`elif`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#elif) 部分，[`else`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#else) 部分也是可选的。关键字 '`elif`' 是 'else if' 的缩写，用于避免过多的缩进。`if` ... `elif` ... `elif` ... 序列可以当作其它语言中 `switch` 或 `case` 语句的替代品。
+​	可有零个或多个 [`elif`]({{< ref "/reference/compound_stmts#elif" >}}) 部分，[`else`]({{< ref "/reference/compound_stmts#else" >}}) 部分也是可选的。关键字 '`elif`' 是 'else if' 的缩写，用于避免过多的缩进。`if` ... `elif` ... `elif` ... 序列可以当作其它语言中 `switch` 或 `case` 语句的替代品。
 
-​	如果是把一个值与多个常量进行比较，或者检查特定类型或属性，`match` 语句更有用。详见 [match 语句](https://docs.python.org/zh-cn/3.13/tutorial/controlflow.html#tut-match)。
+​	如果是把一个值与多个常量进行比较，或者检查特定类型或属性，`match` 语句更有用。详见 [match 语句]({{< ref "/tutorial/controlflow#tut-match" >}})。
 
 
 
 ## 4.2. `for` 语句
 
-​	Python 的 [`for`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#for) 语句与 C 或 Pascal 中的不同。Python 的 `for` 语句不迭代算术递增数值（如 Pascal），或是给予用户定义迭代步骤和结束条件的能力（如 C），而是在列表或字符串等任意序列的元素上迭代，按它们在序列中出现的顺序。 例如（这不是有意要暗指什么）：
+​	Python 的 [`for`]({{< ref "/reference/compound_stmts#for" >}}) 语句与 C 或 Pascal 中的不同。Python 的 `for` 语句不迭代算术递增数值（如 Pascal），或是给予用户定义迭代步骤和结束条件的能力（如 C），而是在列表或字符串等任意序列的元素上迭代，按它们在序列中出现的顺序。 例如（这不是有意要暗指什么）：
 
 
 
@@ -83,9 +83,9 @@ for user, status in users.items():
 
 
 
-## 4.3. [`range()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#range) 函数
+## 4.3. [`range()`]({{< ref "/library/stdtypes#range" >}}) 函数
 
-​	内置函数 [`range()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#range) 用于生成等差数列：
+​	内置函数 [`range()`]({{< ref "/library/stdtypes#range" >}}) 用于生成等差数列：
 
 
 
@@ -115,7 +115,7 @@ for user, status in users.items():
 [-10, -40, -70]
 ```
 
-​	要按索引迭代序列，可以组合使用 [`range()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#range) 和 [`len()`](https://docs.python.org/zh-cn/3.13/library/functions.html#len)：
+​	要按索引迭代序列，可以组合使用 [`range()`]({{< ref "/library/stdtypes#range" >}}) 和 [`len()`]({{< ref "/library/functions#len" >}})：
 
 
 
@@ -131,7 +131,7 @@ for user, status in users.items():
 4 lamb
 ```
 
-​	不过大多数情况下 [`enumerate()`](https://docs.python.org/zh-cn/3.13/library/functions.html#enumerate) 函数很方便，详见 [循环的技巧](https://docs.python.org/zh-cn/3.13/tutorial/datastructures.html#tut-loopidioms)。
+​	不过大多数情况下 [`enumerate()`]({{< ref "/library/functions#enumerate" >}}) 函数很方便，详见 [循环的技巧]({{< ref "/tutorial/datastructures#tut-loopidioms" >}})。
 
 ​	如果直接打印一个 range 会发生意想不到的事情：
 
@@ -142,9 +142,9 @@ for user, status in users.items():
 range(0, 10)
 ```
 
-[`range()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#range) 返回的对象在很多方面和列表的行为一样，但其实它和列表不一样。该对象只有在被迭代时才一个一个地返回所期望的列表项，并没有真正生成过一个含有全部项的列表，从而节省了空间。
+[`range()`]({{< ref "/library/stdtypes#range" >}}) 返回的对象在很多方面和列表的行为一样，但其实它和列表不一样。该对象只有在被迭代时才一个一个地返回所期望的列表项，并没有真正生成过一个含有全部项的列表，从而节省了空间。
 
-​	这种对象称为可迭代对象 [iterable](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterable)，适合作为需要获取一系列值的函数或程序构件的参数。[`for`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#for) 语句就是这样的程序构件；以可迭代对象作为参数的函数例如 [`sum()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sum)：
+​	这种对象称为可迭代对象 [iterable]({{< ref "/glossary/idx#term-iterable" >}})，适合作为需要获取一系列值的函数或程序构件的参数。[`for`]({{< ref "/reference/compound_stmts#for" >}}) 语句就是这样的程序构件；以可迭代对象作为参数的函数例如 [`sum()`]({{< ref "/library/functions#sum" >}})：
 
 
 
@@ -153,13 +153,13 @@ range(0, 10)
 6
 ```
 
-​	之后我们会看到更多返回可迭代对象，或以可迭代对象作为参数的函数。在 [数据结构](https://docs.python.org/zh-cn/3.13/tutorial/datastructures.html#tut-structures) 这一章中，我们将讨论 [`list()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 的更多细节。
+​	之后我们会看到更多返回可迭代对象，或以可迭代对象作为参数的函数。在 [数据结构]({{< ref "/tutorial/datastructures#tut-structures" >}}) 这一章中，我们将讨论 [`list()`]({{< ref "/library/stdtypes#list" >}}) 的更多细节。
 
 
 
 ## 4.4. `break` 和 `continue` 语句
 
-[`break`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#break) 语句将跳出最近的一层 [`for`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#for) 或 [`while`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#while) 循环:
+[`break`]({{< ref "/reference/simple_stmts#break" >}}) 语句将跳出最近的一层 [`for`]({{< ref "/reference/compound_stmts#for" >}}) 或 [`while`]({{< ref "/reference/compound_stmts#while" >}}) 循环:
 
 
 
@@ -176,7 +176,7 @@ range(0, 10)
 9 equals 3 * 3
 ```
 
-[`continue`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#continue) 语句将继续执行循环的下一次迭代:
+[`continue`]({{< ref "/reference/simple_stmts#continue" >}}) 语句将继续执行循环的下一次迭代:
 
 
 
@@ -203,11 +203,11 @@ Found an odd number 9
 
 ​	在 `for` 或 `while` 循环中 `break` 语句可能对应一个 `else` 子句。 如果循环在未执行 `break` 的情况下结束，`else` 子句将会执行。
 
-​	在 [`for`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#for) 循环中，`else` 子句会在循环结束其他最后一次迭代之后，即未执行 break 的情况下被执行。
+​	在 [`for`]({{< ref "/reference/compound_stmts#for" >}}) 循环中，`else` 子句会在循环结束其他最后一次迭代之后，即未执行 break 的情况下被执行。
 
-​	在 [`while`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#while) 循环中，它会在循环条件变为假值后执行。
+​	在 [`while`]({{< ref "/reference/compound_stmts#while" >}}) 循环中，它会在循环条件变为假值后执行。
 
-​	在这两类循环中，当在循环被 [`break`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#break) 终结时 `else` 子句 **不会** 被执行。 当然，其他提前结束循环的方式，如 [`return`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#return) 或是引发异常，也会跳过 [`else`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#else) 子句的执行。
+​	在这两类循环中，当在循环被 [`break`]({{< ref "/reference/simple_stmts#break" >}}) 终结时 `else` 子句 **不会** 被执行。 当然，其他提前结束循环的方式，如 [`return`]({{< ref "/reference/simple_stmts#return" >}}) 或是引发异常，也会跳过 [`else`]({{< ref "/reference/compound_stmts#else" >}}) 子句的执行。
 
 ​	下面的搜索质数的 `for` 循环就是一个例子：
 
@@ -237,13 +237,13 @@ Found an odd number 9
 
 ​	分析 else 子句的一种方式是想象它对应于循环内的 `if`。 当循环执行时，它将运行一系列的 if/if/if/else。 `if` 位于循环内部，会出现多次。 当出现条件为真的情况时，将发生 `break`。 如果条件一直不为真，则循环外的 `else` 子句将被执行。
 
-​	当配合循环使用时，`else` 子句更像是 [`try`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#try) 语句的 `else` 子句而不像 `if` 语句的相应子句：一个 `try` 语句的 `else` 子句会在未发生异常时运行，而一个循环的 `else` 子句会在未发生 `break` 时运行。 有关 `try` 语句和异常的详情，请参阅 [异常的处理](https://docs.python.org/zh-cn/3.13/tutorial/errors.html#tut-handling)。
+​	当配合循环使用时，`else` 子句更像是 [`try`]({{< ref "/reference/compound_stmts#try" >}}) 语句的 `else` 子句而不像 `if` 语句的相应子句：一个 `try` 语句的 `else` 子句会在未发生异常时运行，而一个循环的 `else` 子句会在未发生 `break` 时运行。 有关 `try` 语句和异常的详情，请参阅 [异常的处理]({{< ref "/tutorial/errors#tut-handling" >}})。
 
 
 
 ## 4.6. `pass` 语句
 
-[`pass`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#pass) 语句不执行任何动作。语法上需要一个语句，但程序毋需执行任何动作时，可以使用该语句。例如：
+[`pass`]({{< ref "/reference/simple_stmts#pass" >}}) 语句不执行任何动作。语法上需要一个语句，但程序毋需执行任何动作时，可以使用该语句。例如：
 
 
 
@@ -263,7 +263,7 @@ Found an odd number 9
 ...
 ```
 
-[`pass`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#pass) 还可用作函数或条件语句体的占位符，让你保持在更抽象的层次进行思考。`pass` 会被默默地忽略：
+[`pass`]({{< ref "/reference/simple_stmts#pass" >}}) 还可用作函数或条件语句体的占位符，让你保持在更抽象的层次进行思考。`pass` 会被默默地忽略：
 
 
 
@@ -277,7 +277,7 @@ Found an odd number 9
 
 ## 4.7. `match` 语句
 
-[`match`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#match) 语句接受一个表达式并把它的值与一个或多个 case 块给出的一系列模式进行比较。这表面上像 C、Java 或 JavaScript（以及许多其他程序设计语言）中的 switch 语句，但其实它更像 Rust 或 Haskell 中的模式匹配。只有第一个匹配的模式会被执行，并且它还可以提取值的组成部分（序列的元素或对象的属性）赋给变量。
+[`match`]({{< ref "/reference/compound_stmts#match" >}}) 语句接受一个表达式并把它的值与一个或多个 case 块给出的一系列模式进行比较。这表面上像 C、Java 或 JavaScript（以及许多其他程序设计语言）中的 switch 语句，但其实它更像 Rust 或 Haskell 中的模式匹配。只有第一个匹配的模式会被执行，并且它还可以提取值的组成部分（序列的元素或对象的属性）赋给变量。
 
 ​	最简单的形式是将一个主语值与一个或多个字面值进行比较：
 
@@ -449,13 +449,13 @@ match point:
 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
 ```
 
-*定义* 函数使用关键字 [`def`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#def)，后跟函数名与括号内的形参列表。函数语句从下一行开始，并且必须缩进。
+*定义* 函数使用关键字 [`def`]({{< ref "/reference/compound_stmts#def" >}})，后跟函数名与括号内的形参列表。函数语句从下一行开始，并且必须缩进。
 
-​	函数内的第一条语句是字符串时，该字符串就是文档字符串，也称为 *docstring*，详见 [文档字符串](https://docs.python.org/zh-cn/3.13/tutorial/controlflow.html#tut-docstrings)。利用文档字符串可以自动生成在线文档或打印版文档，还可以让开发者在浏览代码时直接查阅文档；Python 开发者最好养成在代码中加入文档字符串的好习惯。
+​	函数内的第一条语句是字符串时，该字符串就是文档字符串，也称为 *docstring*，详见 [文档字符串]({{< ref "/tutorial/controlflow#tut-docstrings" >}})。利用文档字符串可以自动生成在线文档或打印版文档，还可以让开发者在浏览代码时直接查阅文档；Python 开发者最好养成在代码中加入文档字符串的好习惯。
 
-​	函数在 *执行* 时使用函数局部变量符号表，所有函数变量赋值都存在局部符号表中；引用变量时，首先，在局部符号表里查找变量，然后，是外层函数局部符号表，再是全局符号表，最后是内置名称符号表。因此，尽管可以引用全局变量和外层函数的变量，但最好不要在函数内直接赋值（除非是 [`global`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#global) 语句定义的全局变量，或 [`nonlocal`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#nonlocal) 语句定义的外层函数变量）。
+​	函数在 *执行* 时使用函数局部变量符号表，所有函数变量赋值都存在局部符号表中；引用变量时，首先，在局部符号表里查找变量，然后，是外层函数局部符号表，再是全局符号表，最后是内置名称符号表。因此，尽管可以引用全局变量和外层函数的变量，但最好不要在函数内直接赋值（除非是 [`global`]({{< ref "/reference/simple_stmts#global" >}}) 语句定义的全局变量，或 [`nonlocal`]({{< ref "/reference/simple_stmts#nonlocal" >}}) 语句定义的外层函数变量）。
 
-​	在调用函数时会将实际参数（实参）引入到被调用函数的局部符号表中；因此，实参是使用 *按值调用* 来传递的（其中的 *值* 始终是对象的 *引用* 而不是对象的值）。 [[1\]](https://docs.python.org/zh-cn/3.13/tutorial/controlflow.html#id2) 当一个函数调用另外一个函数时，会为该调用创建一个新的局部符号表。
+​	在调用函数时会将实际参数（实参）引入到被调用函数的局部符号表中；因此，实参是使用 *按值调用* 来传递的（其中的 *值* 始终是对象的 *引用* 而不是对象的值）。 [[1\]]({{< ref "/tutorial/controlflow#id2" >}}) 当一个函数调用另外一个函数时，会为该调用创建一个新的局部符号表。
 
 ​	函数定义在当前符号表中把函数名与函数对象关联在一起。解释器把函数名指向的对象作为用户自定义函数。还可以使用其他名称指向同一个函数对象，并访问访该函数：
 
@@ -469,7 +469,7 @@ match point:
 0 1 1 2 3 5 8 13 21 34 55 89
 ```
 
-​	如果你用过其他语言，你可能会认为 `fib` 不是函数而是一个过程，因为它没有返回值。 事实上，即使没有 [`return`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#return) 语句的函数也有返回值，尽管这个值可能相当无聊。 这个值被称为 `None` (是一个内置名称)。 通常解释器会屏蔽单独的返回值 `None`。 如果你确有需要可以使用 [`print()`](https://docs.python.org/zh-cn/3.13/library/functions.html#print) 查看它:
+​	如果你用过其他语言，你可能会认为 `fib` 不是函数而是一个过程，因为它没有返回值。 事实上，即使没有 [`return`]({{< ref "/reference/simple_stmts#return" >}}) 语句的函数也有返回值，尽管这个值可能相当无聊。 这个值被称为 `None` (是一个内置名称)。 通常解释器会屏蔽单独的返回值 `None`。 如果你确有需要可以使用 [`print()`]({{< ref "/library/functions#print" >}}) 查看它:
 
 
 
@@ -500,8 +500,8 @@ None
 
 ​	本例也新引入了一些 Python 功能：
 
-- [`return`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#return) 语句返回函数的值。`return` 语句不带表达式参数时，返回 `None`。函数执行完毕退出也返回 `None`。
-- 语句 `result.append(a)` 调用了列表对象 `result` 的 *方法*。 方法是‘从属于’对象的函数，其名称为 `obj.methodname`，其中 `obj` 是某个对象（可以是一个表达式），`methodname` 是由对象的类型定义的方法名称。 不同的类型定义了不同的方法。 不同的类型的方法可以使用相同的名称而不会产生歧义。 （使用 *类* 可以定义自己的对象类型和方法，参见 [类](https://docs.python.org/zh-cn/3.13/tutorial/classes.html#tut-classes)。） 在示例中显示的方法 `append()` 是由列表对象定义的；它会在列表的末尾添加一个新元素。 在本例中它等同于 `result = result + [a]`，但效率更高。
+- [`return`]({{< ref "/reference/simple_stmts#return" >}}) 语句返回函数的值。`return` 语句不带表达式参数时，返回 `None`。函数执行完毕退出也返回 `None`。
+- 语句 `result.append(a)` 调用了列表对象 `result` 的 *方法*。 方法是‘从属于’对象的函数，其名称为 `obj.methodname`，其中 `obj` 是某个对象（可以是一个表达式），`methodname` 是由对象的类型定义的方法名称。 不同的类型定义了不同的方法。 不同的类型的方法可以使用相同的名称而不会产生歧义。 （使用 *类* 可以定义自己的对象类型和方法，参见 [类]({{< ref "/tutorial/classes#tut-classes" >}})。） 在示例中显示的方法 `append()` 是由列表对象定义的；它会在列表的末尾添加一个新元素。 在本例中它等同于 `result = result + [a]`，但效率更高。
 
 
 
@@ -535,7 +535,7 @@ def ask_ok(prompt, retries=4, reminder='Please try again!'):
 - 给出一个可选实参：`ask_ok('OK to overwrite the file?', 2)`
 - 给出所有实参：`ask_ok('OK to overwrite the file?', 2, 'Come on, only yes or no!')`
 
-​	本例还使用了关键字 [`in`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#in) ，用于确认序列中是否包含某个值。
+​	本例还使用了关键字 [`in`]({{< ref "/reference/expressions#in" >}}) ，用于确认序列中是否包含某个值。
 
 ​	默认值在 *定义* 作用域里的函数定义中求值，所以：
 
@@ -585,7 +585,7 @@ def f(a, L=None):
 
 ### 4.9.2. 关键字参数
 
-`kwarg=value` 形式的 [关键字参数](https://docs.python.org/zh-cn/3.13/glossary.html#term-keyword-argument) 也可以用于调用函数。函数示例如下：
+`kwarg=value` 形式的 [关键字参数]({{< ref "/glossary/idx#term-keyword-argument" >}}) 也可以用于调用函数。函数示例如下：
 
 ```
 def parrot(voltage, state='a stiff', action='voom', type='Norwegian Blue'):
@@ -629,7 +629,7 @@ Traceback (most recent call last):
 TypeError: function() got multiple values for argument 'a'
 ```
 
-​	最后一个形参为 `**name` 形式时，接收一个字典（详见 [映射类型 --- dict](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#typesmapping)），该字典包含与函数中已定义形参对应之外的所有关键字参数。`**name` 形参可以与 `*name` 形参（下一小节介绍）组合使用（`*name` 必须在 `**name` 前面）， `*name` 形参接收一个 [元组](https://docs.python.org/zh-cn/3.13/tutorial/datastructures.html#tut-tuples)，该元组包含形参列表之外的位置参数。例如，可以定义下面这样的函数：
+​	最后一个形参为 `**name` 形式时，接收一个字典（详见 [映射类型 --- dict]({{< ref "/library/stdtypes#typesmapping" >}})），该字典包含与函数中已定义形参对应之外的所有关键字参数。`**name` 形参可以与 `*name` 形参（下一小节介绍）组合使用（`*name` 必须在 `**name` 前面）， `*name` 形参接收一个 [元组]({{< ref "/tutorial/datastructures#tut-tuples" >}})，该元组包含形参列表之外的位置参数。例如，可以定义下面这样的函数：
 
 ```
 def cheeseshop(kind, *arguments, **keywords):
@@ -831,7 +831,7 @@ def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2):
 
 ### 4.9.4. 任意实参列表
 
-​	调用函数时，使用任意数量的实参是最少见的选项。这些实参包含在元组中（详见 [元组和序列](https://docs.python.org/zh-cn/3.13/tutorial/datastructures.html#tut-tuples) ）。在可变数量的实参之前，可能有若干个普通参数：
+​	调用函数时，使用任意数量的实参是最少见的选项。这些实参包含在元组中（详见 [元组和序列]({{< ref "/tutorial/datastructures#tut-tuples" >}}) ）。在可变数量的实参之前，可能有若干个普通参数：
 
 ```
 def write_multiple_items(file, separator, *args):
@@ -856,7 +856,7 @@ def write_multiple_items(file, separator, *args):
 
 ### 4.9.5. 解包实参列表
 
-​	函数调用要求独立的位置参数，但实参在列表或元组里时，要执行相反的操作。例如，内置的 [`range()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#range) 函数要求独立的 *start* 和 *stop* 实参。如果这些参数不是独立的，则要在调用函数时，用 `*` 操作符把实参从列表或元组解包出来：
+​	函数调用要求独立的位置参数，但实参在列表或元组里时，要执行相反的操作。例如，内置的 [`range()`]({{< ref "/library/stdtypes#range" >}}) 函数要求独立的 *start* 和 *stop* 实参。如果这些参数不是独立的，则要在调用函数时，用 `*` 操作符把实参从列表或元组解包出来：
 
 
 
@@ -887,7 +887,7 @@ def write_multiple_items(file, separator, *args):
 
 ### 4.9.6. Lambda 表达式
 
-[`lambda`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#lambda) 关键字用于创建小巧的匿名函数。`lambda a, b: a+b` 函数返回两个参数的和。Lambda 函数可用于任何需要函数对象的地方。在语法上，匿名函数只能是单个表达式。在语义上，它只是常规函数定义的语法糖。与嵌套函数定义一样，lambda 函数可以引用包含作用域中的变量：
+[`lambda`]({{< ref "/reference/expressions#lambda" >}}) 关键字用于创建小巧的匿名函数。`lambda a, b: a+b` 函数返回两个参数的和。Lambda 函数可用于任何需要函数对象的地方。在语法上，匿名函数只能是单个表达式。在语义上，它只是常规函数定义的语法糖。与嵌套函数定义一样，lambda 函数可以引用包含作用域中的变量：
 
 
 
@@ -947,9 +947,9 @@ Do nothing, but document it.
 
 ### 4.9.8. 函数注解
 
-[函数注解](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#function) 是可选的用户自定义函数类型的元数据完整信息（详见 [**PEP 3107**](https://peps.python.org/pep-3107/) 和 [**PEP 484**](https://peps.python.org/pep-0484/) ）。
+[函数注解]({{< ref "/reference/compound_stmts#function" >}}) 是可选的用户自定义函数类型的元数据完整信息（详见 [**PEP 3107**](https://peps.python.org/pep-3107/) 和 [**PEP 484**](https://peps.python.org/pep-0484/) ）。
 
-[标注](https://docs.python.org/zh-cn/3.13/glossary.html#term-function-annotation) 以字典的形式存放在函数的 `__annotations__` 属性中而对函数的其他部分没有影响。 形参标注的定义方式是在形参名后加冒号，后面跟一个会被求值为标注的值的表达式。 返回值标注的定义方式是加组合符号 `->`，后面跟一个表达式，这样的校注位于形参列表和表示 [`def`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#def) 语句结束的冒号。 下面的示例有一个必须的参数、一个可选的关键字参数以及返回值都带有相应的标注:
+[标注]({{< ref "/glossary/idx#term-function-annotation" >}}) 以字典的形式存放在函数的 `__annotations__` 属性中而对函数的其他部分没有影响。 形参标注的定义方式是在形参名后加冒号，后面跟一个会被求值为标注的值的表达式。 返回值标注的定义方式是加组合符号 `->`，后面跟一个表达式，这样的校注位于形参列表和表示 [`def`]({{< ref "/reference/compound_stmts#def" >}}) 语句结束的冒号。 下面的示例有一个必须的参数、一个可选的关键字参数以及返回值都带有相应的标注:
 
 
 
@@ -989,14 +989,13 @@ Arguments: spam eggs
 
 - 运算符前后、逗号后要用空格，但不要直接在括号内使用： `a = f(1, 2) + g(3, 4)`。
 
-- 类和函数的命名要一致；按惯例，命名类用 `UpperCamelCase`，命名函数与方法用 `lowercase_with_underscores`。命名方法中第一个参数总是用 `self` (类和方法详见 [初探类](https://docs.python.org/zh-cn/3.13/tutorial/classes.html#tut-firstclasses))。
+- 类和函数的命名要一致；按惯例，命名类用 `UpperCamelCase`，命名函数与方法用 `lowercase_with_underscores`。命名方法中第一个参数总是用 `self` (类和方法详见 [初探类]({{< ref "/tutorial/classes#tut-firstclasses" >}}))。
 
 - 编写用于国际多语环境的代码时，不要用生僻的编码。Python 默认的 UTF-8 或纯 ASCII 可以胜任各种情况。
 
 - 同理，就算多语阅读、维护代码的可能再小，也不要在标识符中使用非 ASCII 字符。
 
-​	备注
-
-[[1](https://docs.python.org/zh-cn/3.13/tutorial/controlflow.html#id1)]
-
-​	实际上，*对象引用调用* 这种说法更好，因为，传递的是可变对象时，调用者能发现被调者做出的任何更改（插入列表的元素）。
+> 备注
+> [[1]({{< ref "/tutorial/controlflow#id1" >}})]
+>
+> ​	实际上，*对象引用调用* 这种说法更好，因为，传递的是可变对象时，调用者能发现被调者做出的任何更改（插入列表的元素）。

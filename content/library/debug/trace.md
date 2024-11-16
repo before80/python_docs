@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/trace.html](https://docs.python.org/zh-cn/3.13/library/trace.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/trace.html](https://docs.python.org/zh-cn/3.13/library/trace.html)
 >
 > 收录该文档的时间：`2024-11-15T21:06:32+08:00`
 
@@ -18,10 +18,9 @@ draft = false
 
 ------
 
-​	模块 [`trace`](https://docs.python.org/zh-cn/3.13/library/trace.html#module-trace) 模块用于跟踪程序的执行过程，可生成带注释的语句覆盖率列表，打印调用/被调用关系，列出程序运行期间执行过的函数。该模块可在其他程序或命令行中使用。
+​	模块 [`trace`]({{< ref "/library/debug/trace#module-trace" >}}) 模块用于跟踪程序的执行过程，可生成带注释的语句覆盖率列表，打印调用/被调用关系，列出程序运行期间执行过的函数。该模块可在其他程序或命令行中使用。
 
-​	参见
-
+​参见
 [Coverage.py](https://coverage.readthedocs.io/)
 
 ​	流行的第三方代码覆盖工具，可输出 HTML ，并提供分支覆盖等高级功能。
@@ -30,7 +29,7 @@ draft = false
 
 ## 命令行用法
 
-[`trace`](https://docs.python.org/zh-cn/3.13/library/trace.html#module-trace) 模块可由命令行调用。用法如此简单：
+[`trace`]({{< ref "/library/debug/trace#module-trace" >}}) 模块可由命令行调用。用法如此简单：
 
 ```
 python -m trace --count -C . somefile.py ...
@@ -38,11 +37,11 @@ python -m trace --count -C . somefile.py ...
 
 ​	上述命令将执行 `somefile.py` ，并在当前目录生成执行期间所有已导入 Python 模块的带注解列表。
 
-## **--help**
+## `--help`
 
 ​	显示用法并退出。
 
-## **--version**
+## `--version`
 
 ​	显示模块版本并退出。
 
@@ -51,51 +50,51 @@ python -m trace --count -C . somefile.py ...
 
 ### 主要的可选参数
 
-​	在调用 [`trace`](https://docs.python.org/zh-cn/3.13/library/trace.html#module-trace) 时，至少须指定以下可选参数之一。 [`-listfuncs`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-l) 与 [`-trace`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-t) 、 [`-count`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-c) 相互排斥。如果给出 [`--listfuncs`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-l)，就再不会接受 [`--count`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-c) 和 [`--trace`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-t) ，反之亦然。
+​	在调用 [`trace`]({{< ref "/library/debug/trace#module-trace" >}}) 时，至少须指定以下可选参数之一。 [`-listfuncs`]({{< ref "/library/debug/trace#cmdoption-trace-l" >}}) 与 [`-trace`]({{< ref "/library/debug/trace#cmdoption-trace-t" >}}) 、 [`-count`]({{< ref "/library/debug/trace#cmdoption-trace-c" >}}) 相互排斥。如果给出 [`--listfuncs`]({{< ref "/library/debug/trace#cmdoption-trace-l" >}})，就再不会接受 [`--count`]({{< ref "/library/debug/trace#cmdoption-trace-c" >}}) 和 [`--trace`]({{< ref "/library/debug/trace#cmdoption-trace-t" >}}) ，反之亦然。
 
-## **-c**, **--count**
+## **-c**, `--count`
 
-​	在程序完成时生成一组带有注解的报表文件，显示每个语句被执行的次数。 参见下面的 [`-coverdir`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-C) 、[`-file`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-f) 和 [`-no-report`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-R)。
+​	在程序完成时生成一组带有注解的报表文件，显示每个语句被执行的次数。 参见下面的 [`-coverdir`]({{< ref "/library/debug/trace#cmdoption-trace-C" >}}) 、[`-file`]({{< ref "/library/debug/trace#cmdoption-trace-f" >}}) 和 [`-no-report`]({{< ref "/library/debug/trace#cmdoption-trace-R" >}})。
 
-## **-t**, **--trace**
+## **-t**, `--trace`
 
 ​	执行时显示每一行。
 
-## **-l**, **--listfuncs**
+## **-l**, `--listfuncs`
 
 ​	显示程序运行时执行到的函数。
 
-## **-r**, **--report**
+## **-r**, `--report`
 
-​	由之前用了 [`--count`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-c) 和 [`--file`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-f) 运行的程序产生一个带有注解的报表。 不会执行代码。
+​	由之前用了 [`--count`]({{< ref "/library/debug/trace#cmdoption-trace-c" >}}) 和 [`--file`]({{< ref "/library/debug/trace#cmdoption-trace-f" >}}) 运行的程序产生一个带有注解的报表。 不会执行代码。
 
-## **-T**, **--trackcalls**
+## **-T**, `--trackcalls`
 
 ​	显示程序运行时暴露出来的调用关系。
 
 ### 修饰器
 
-## **-f**, **--file**=<file>
+## **-f**, `--file`=<file>
 
-​	用于累计多次跟踪运行计数的文件名。应与 [`--count`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-c) 一起使用。
+​	用于累计多次跟踪运行计数的文件名。应与 [`--count`]({{< ref "/library/debug/trace#cmdoption-trace-c" >}}) 一起使用。
 
-## **-C**, **--coverdir**=<dir>
+## **-C**, `--coverdir`=<dir>
 
 ​	报表文件的所在目录。`package.module` 的覆盖率报表将被写入文件 `*dir*/*package*/*module*.cover`。
 
-## **-m**, **--missing**
+## **-m**, `--missing`
 
 ​	生成带注解的报表时，用 `>>>>>>` 标记未执行的行。
 
-## **-s**, **--summary**
+## **-s**, `--summary`
 
-​	在用到 [`--count`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-c) 或 [`--report`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-r) 时，将每个文件的简短摘要输出到 stdout。
+​	在用到 [`--count`]({{< ref "/library/debug/trace#cmdoption-trace-c" >}}) 或 [`--report`]({{< ref "/library/debug/trace#cmdoption-trace-r" >}}) 时，将每个文件的简短摘要输出到 stdout。
 
-## **-R**, **--no-report**
+## **-R**, `--no-report`
 
-​	不生成带注解的报表。如果打算用 [`--count`](https://docs.python.org/zh-cn/3.13/library/trace.html#cmdoption-trace-c) 执行多次运行，然后在最后产生一组带注解的报表，该选项就很有用。
+​	不生成带注解的报表。如果打算用 [`--count`]({{< ref "/library/debug/trace#cmdoption-trace-c" >}}) 执行多次运行，然后在最后产生一组带注解的报表，该选项就很有用。
 
-## **-g**, **--timing**
+## **-g**, `--timing`
 
 ​	在每一行前面加上时间，自程序运行算起。只在跟踪时有用。
 
@@ -103,13 +102,13 @@ python -m trace --count -C . somefile.py ...
 
 ​	以下参数可重复多次。
 
-## **--ignore-module**=<mod>
+## `--ignore-module`=<mod>
 
 ​	忽略给出的模块名及其子模块（若为包）。参数可为逗号分隔的名称列表。
 
-## **--ignore-dir**=<dir>
+## `--ignore-dir`=<dir>
 
-​	忽略指定目录及其子目录下的所有模块和包。参数可为 [`os.pathsep`](https://docs.python.org/zh-cn/3.13/library/os.html#os.pathsep) 分隔的目录列表。
+​	忽略指定目录及其子目录下的所有模块和包。参数可为 [`os.pathsep`]({{< ref "/library/allos/os#os.pathsep" >}}) 分隔的目录列表。
 
 
 
@@ -121,7 +120,7 @@ python -m trace --count -C . somefile.py ...
 
 ## **run**(*cmd*)
 
-​	执行命令，并根据当前跟踪参数从执行过程中收集统计数据。 *cmd* 必须为字符串或 code 对象，可供传入 [`exec()`](https://docs.python.org/zh-cn/3.13/library/functions.html#exec)。
+​	执行命令，并根据当前跟踪参数从执行过程中收集统计数据。 *cmd* 必须为字符串或 code 对象，可供传入 [`exec()`]({{< ref "/library/functions#exec" >}})。
 
 ## **runctx**(*cmd*, *globals=None*, *locals=None*)
 
@@ -129,27 +128,27 @@ python -m trace --count -C . somefile.py ...
 
 ## **runfunc**(*func*, */*, **args*, ***kwds*)
 
-​	在 [`Trace`](https://docs.python.org/zh-cn/3.13/library/trace.html#trace.Trace) 对象的控制下，用给定的参数调用 *func*，并采用当前的跟踪参数。
+​	在 [`Trace`]({{< ref "/library/debug/trace#trace.Trace" >}}) 对象的控制下，用给定的参数调用 *func*，并采用当前的跟踪参数。
 
 ## **results**()
 
-​	返回一个 [`CoverageResults`](https://docs.python.org/zh-cn/3.13/library/trace.html#trace.CoverageResults) 对象，包含之前对指定 [`Trace`](https://docs.python.org/zh-cn/3.13/library/trace.html#trace.Trace) 实例调用 `run`、`runctx` 和 `runfunc` 的累积结果。 累积的跟踪结果不会重置。
+​	返回一个 [`CoverageResults`]({{< ref "/library/debug/trace#trace.CoverageResults" >}}) 对象，包含之前对指定 [`Trace`]({{< ref "/library/debug/trace#trace.Trace" >}}) 实例调用 `run`、`runctx` 和 `runfunc` 的累积结果。 累积的跟踪结果不会重置。
 
 ## *class* trace.**CoverageResults**
 
-​	存放代码覆盖结果的容器，由 [`Trace.results()`](https://docs.python.org/zh-cn/3.13/library/trace.html#trace.Trace.results) 创建。用户不应直接去创建。
+​	存放代码覆盖结果的容器，由 [`Trace.results()`]({{< ref "/library/debug/trace#trace.Trace.results" >}}) 创建。用户不应直接去创建。
 
 ## **update**(*other*)
 
-​	从另一个 [`CoverageResults`](https://docs.python.org/zh-cn/3.13/library/trace.html#trace.CoverageResults) 对象中合并代码覆盖数据。
+​	从另一个 [`CoverageResults`]({{< ref "/library/debug/trace#trace.CoverageResults" >}}) 对象中合并代码覆盖数据。
 
 ## **write_results**(*show_missing=True*, *summary=False*, *coverdir=None*, ***, *ignore_missing_files=False*)
 
 ​	写入代码覆盖结果。设置 *show_missing* 可显示未命中的行。设置*summary* 可在输出中包含每个模块的覆盖率摘要信息。 *coverdir* 可指定覆盖率结果文件的输出目录，为 `None` 则结果将置于源文件所在目录中。
 
-​	如果 *ignore_missing_files* 为 `True`，则对于已不存在文件的覆盖计数将被静默地忽略。 在其他情况下，文件不存在将引发 [`FileNotFoundError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#FileNotFoundError)。
+​	如果 *ignore_missing_files* 为 `True`，则对于已不存在文件的覆盖计数将被静默地忽略。 在其他情况下，文件不存在将引发 [`FileNotFoundError`]({{< ref "/library/exceptions#FileNotFoundError" >}})。
 
-*在 3.13 版本发生变更:* 增加了 *ignore_missing_files* 形参。
+> 在 3.13 版本发生变更: 增加了 *ignore_missing_files* 形参。
 
 ​	以下例子简单演示了编程接口的用法：
 

@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html)
 >
 > 收录该文档的时间：`2024-11-15T20:56:44+08:00`
 
@@ -18,12 +18,11 @@ draft = false
 
 ------
 
-[`tkinter.ttk`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#module-tkinter.ttk) 模块自 Tk 8.5 开始引入，它提供了对 Tk 风格的部件集的访问。 它还带来了一些额外好处包括在 X11 下的反锯齿字体渲染和透明化窗口（需要有 X11 上的混合窗口管理器）。
+[`tkinter.ttk`]({{< ref "/library/tk/tkinter_ttk#module-tkinter.ttk" >}}) 模块自 Tk 8.5 开始引入，它提供了对 Tk 风格的部件集的访问。 它还带来了一些额外好处包括在 X11 下的反锯齿字体渲染和透明化窗口（需要有 X11 上的混合窗口管理器）。
 
-[`tkinter.ttk`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#module-tkinter.ttk) 的基本设计思路，就是尽可能地把控件的行为代码与实现其外观的代码分离开来。
+[`tkinter.ttk`]({{< ref "/library/tk/tkinter_ttk#module-tkinter.ttk" >}}) 的基本设计思路，就是尽可能地把控件的行为代码与实现其外观的代码分离开来。
 
-​	参见
-
+​参见
 [Tk 控件风格](https://core.tcl.tk/tips/doc/trunk/tip/48.md)
 
 ​	介绍 Tk 风格的文档
@@ -47,15 +46,14 @@ from tkinter.ttk import *
 
 ​	使用新控件的直接好处，是拥有更好的跨平台的外观，但新旧控件并不完全兼容。主要区别在于，Ttk 组件不再包含“fg”、“bg”等与样式相关的属性 。而是用 `ttk.Style` 类来定义更美观的样式效果。
 
-​	参见
-
+​参见
 [将现有应用程序转换为使用 Tile 部件](https://tktable.sourceforge.net/tile/doc/converting.txt)
 
 ​	此文介绍迁移为新控件时的常见差别（使用 Tcl ）。
 
 ## ttk 控件
 
-​	ttk 中有 18 种部件 ，其中 12 种在 tkinter 中已包含了： `Button` 、 `Checkbutton` 、`Entry` 、 `Frame` 、 `Label`, `LabelFrame` 、 `Menubutton` 、`PanedWindow` 、`Radiobutton` 、 `Scale` 、 `Scrollbar` 和 [`Spinbox`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Spinbox)。另有 6 种是新增的： [`Combobox`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Combobox) 、 [`Notebook`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Notebook) 、 [`Progressbar`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Progressbar) 、 `Separator` 、 `Sizegrip` 和 [`Treeview`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Treeview)。这些控件全都是 [`Widget`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Widget) 的子类。
+​	ttk 中有 18 种部件 ，其中 12 种在 tkinter 中已包含了： `Button` 、 `Checkbutton` 、`Entry` 、 `Frame` 、 `Label`, `LabelFrame` 、 `Menubutton` 、`PanedWindow` 、`Radiobutton` 、 `Scale` 、 `Scrollbar` 和 [`Spinbox`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Spinbox" >}})。另有 6 种是新增的： [`Combobox`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Combobox" >}}) 、 [`Notebook`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Notebook" >}}) 、 [`Progressbar`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Progressbar" >}}) 、 `Separator` 、 `Sizegrip` 和 [`Treeview`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Treeview" >}})。这些控件全都是 [`Widget`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Widget" >}}) 的子类。
 
 ​	ttk 控件可以改善应用程序的外观。如上所述，修改样式的代码与 tk 控件存在差异。
 
@@ -76,7 +74,7 @@ l1 = ttk.Label(text="Test", style="BW.TLabel")
 l2 = ttk.Label(text="Test", style="BW.TLabel")
 ```
 
-​	有关 [TtkStyling](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#ttkstyling) 的更多信息，请参阅 [`Style`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Style) 类文档。
+​	有关 [TtkStyling]({{< ref "/library/tk/tkinter_ttk#ttkstyling" >}}) 的更多信息，请参阅 [`Style`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Style" >}}) 类文档。
 
 ## 控件
 
@@ -111,7 +109,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 | text         | 指定显示在控件内的文本。                                     |
 | textvariable | 指定一个变量名，其值将用于设置 text 属性。                   |
 | underline    | 设置文本字符串中带下划线字符的索引（基于0）。下划线字符用于激活快捷键。 |
-| image        | 指定一个用于显示的图片。这是一个由1个或多个元素组成的列表。第一个元素是默认的图片名称。列表的其余部分是由 [`Style.map()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Style.map) 定义的“状态/值对”的序列，指定控件在某状态或状态组合时要采用的图片。列表中的所有图片应具备相同的尺寸。 |
+| image        | 指定一个用于显示的图片。这是一个由1个或多个元素组成的列表。第一个元素是默认的图片名称。列表的其余部分是由 [`Style.map()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Style.map" >}}) 定义的“状态/值对”的序列，指定控件在某状态或状态组合时要采用的图片。列表中的所有图片应具备相同的尺寸。 |
 | compound     | 指定同时存在 text 和 image 属性时，应如何显示文本和对应的图片。合法的值包括：text:：只显示文本image：只显示图片top、bottom、left、right：分别在文本的上、下、左、右显示图片。none：默认值。 如果给出了图片则显示，否则显示文本。 |
 | width        | 如果值大于零，指定文本标签留下多少空间，单位是字符数；如果值小于零，则指定最小宽度。如果等于零或未指定，则使用文本标签本身的宽度。 |
 
@@ -119,7 +117,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 
 | 属性  | 描述                                                         |
 | :---- | :----------------------------------------------------------- |
-| state | 可以设为“normal”或“disabled”，以便控制“禁用”状态标志位。本属性只允许写入：用以改变控件的状态，但 [`Widget.state()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Widget.state) 方法不影响本属性。 |
+| state | 可以设为“normal”或“disabled”，以便控制“禁用”状态标志位。本属性只允许写入：用以改变控件的状态，但 [`Widget.state()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Widget.state" >}}) 方法不影响本属性。 |
 
 ### 控件状态
 
@@ -165,7 +163,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 
 `ttk.Combobox` 控件是文本框和下拉列表的组合体。该控件是 `Entry` 的子类。
 
-​	除了从 [`Widget`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Widget) 继承的 `Widget.cget()` 、 `Widget.configure()` 、[`Widget.identify()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Widget.identify) 、[`Widget.instate()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Widget.instate) 和 [`Widget.state()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Widget.state) 方法，以及从 `Entry` 继承的 `Entry.bbox()` 、 `Entry.delete()` 、 `Entry.icursor()` 、`Entry.index()` 、 `Entry.insert()` 、 `Entry.selection()` 、 `Entry.xview()` 方法，控件还自带了其他几个方法，在 `ttk.Combobox` 中都有介绍。
+​	除了从 [`Widget`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Widget" >}}) 继承的 `Widget.cget()` 、 `Widget.configure()` 、[`Widget.identify()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Widget.identify" >}}) 、[`Widget.instate()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Widget.instate" >}}) 和 [`Widget.state()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Widget.state" >}}) 方法，以及从 `Entry` 继承的 `Entry.bbox()` 、 `Entry.delete()` 、 `Entry.icursor()` 、`Entry.index()` 、 `Entry.insert()` 、 `Entry.selection()` 、 `Entry.xview()` 方法，控件还自带了其他几个方法，在 `ttk.Combobox` 中都有介绍。
 
 ### 属性
 
@@ -206,7 +204,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 
 `ttk.Spinbox` 控件是 `ttk.Entry` 的扩展，带有递增和递减箭头。可用于数字或字符串列表。这是 `Entry` 的子类。
 
-​	除了从 [`Widget`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Widget) 继承的 `Widget.cget()` 、 `Widget.configure()` 、`Widget.identified()` 、 [`Widget.instate()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Widget.instate) 和 [`Widget.state()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Widget.state) 方法，以及从 `Entry` 继承的 `Entry. bbox()` 、 `Entry.delete()` 、 `Entry.icursor()` 、`Entry.index()` 、 `Entry.insert()` 、 `Entry.xview()` 方法，控件还自带了其他一些方法，在 `ttk.Spinbox` 中都有介绍。
+​	除了从 [`Widget`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Widget" >}}) 继承的 `Widget.cget()` 、 `Widget.configure()` 、`Widget.identified()` 、 [`Widget.instate()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Widget.instate" >}}) 和 [`Widget.state()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Widget.state" >}}) 方法，以及从 `Entry` 继承的 `Entry. bbox()` 、 `Entry.delete()` 、 `Entry.icursor()` 、`Entry.index()` 、 `Entry.insert()` 、 `Entry.xview()` 方法，控件还自带了其他一些方法，在 `ttk.Spinbox` 中都有介绍。
 
 ### 属性
 
@@ -262,9 +260,9 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 | sticky    | 指定子窗口在面板内的定位方式。应为包含零个或多个 n、s、e 、w 字符的字符串。每个字母表示子窗口应紧靠的方向（北、南、东或西），正如 `grid()` 位置管理器所述。 |
 | padding   | 指定控件和面板之间的留白空间。格式与本控件的 padding 属性相同。 |
 | text      | 指定显示在 tab 上的文本。                                    |
-| image     | 指定显示在 tab 上的图片。参见 [`Widget`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Widget) 的 image 属性。 |
-| compound  | 当文本和图片同时存在时，指定图片相对于文本的显示位置。合法的属性值参见 [Label Options](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#label-options) 。 |
-| underline | 指定下划线在文本字符串中的索引（基于0）。如果调用过了 [`Notebook.enable_traversal()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Notebook.enable_traversal)，带下划线的字符将用于激活快捷键。 |
+| image     | 指定显示在 tab 上的图片。参见 [`Widget`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Widget" >}}) 的 image 属性。 |
+| compound  | 当文本和图片同时存在时，指定图片相对于文本的显示位置。合法的属性值参见 [Label Options]({{< ref "/library/tk/tkinter_ttk#label-options" >}}) 。 |
+| underline | 指定下划线在文本字符串中的索引（基于0）。如果调用过了 [`Notebook.enable_traversal()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Notebook.enable_traversal" >}})，带下划线的字符将用于激活快捷键。 |
 
 ### Tab ID
 
@@ -274,7 +272,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 - 子窗口的名称。
 - 以“@x,y”形式给出的位置，唯一标识了 tab 页。
 - 字符串字面值 "current"，它标识当前被选中的选项卡
-- 字符串字面值 "end"，它返回标签页的数量 (仅适用于 [`Notebook.index()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Notebook.index))
+- 字符串字面值 "end"，它返回标签页的数量 (仅适用于 [`Notebook.index()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Notebook.index" >}}))
 
 ### 虚拟事件
 
@@ -290,7 +288,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 
 ​	如果窗口是由 Notebook 管理但处于隐藏状态，则会恢复到之前的位置。
 
-​	可用属性请参见 [Tab Options](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tab-options) 。
+​	可用属性请参见 [Tab Options]({{< ref "/library/tk/tkinter_ttk#tab-options" >}}) 。
 
 ## **forget**(*tab_id*)
 
@@ -300,7 +298,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 
 ​	隐藏 *tab_id* 指定的 tab 页。
 
-​	tab 页不会显示出来，但关联的窗口仍接受 Notebook 的管理，其配置属性会继续保留。隐藏的 tab 页可由 [`add()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Notebook.add) 恢复。
+​	tab 页不会显示出来，但关联的窗口仍接受 Notebook 的管理，其配置属性会继续保留。隐藏的 tab 页可由 [`add()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Notebook.add" >}}) 恢复。
 
 ## **identify**(*x*, *y*)
 
@@ -316,7 +314,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 
 *pos* 可为字符串“end” 、整数索引值或子窗口名称。如果 *child* 已由 Notebook 管理，则将其移至指定位置。
 
-​	可用属性请参见 [Tab Options](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tab-options) 。
+​	可用属性请参见 [Tab Options]({{< ref "/library/tk/tkinter_ttk#tab-options" >}}) 。
 
 ## **select**(*tab_id=None*)
 
@@ -370,7 +368,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 
 ## **start**(*interval=None*)
 
-​	开启自增模式：安排一个循环的定时器事件，每隔 *interval* 毫秒调用一次 [`Progressbar.step()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Progressbar.step)。*interval* 可省略，默认为 50毫秒。
+​	开启自增模式：安排一个循环的定时器事件，每隔 *interval* 毫秒调用一次 [`Progressbar.step()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Progressbar.step" >}})。*interval* 可省略，默认为 50毫秒。
 
 ## **step**(*amount=None*)
 
@@ -380,7 +378,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 
 ## **stop**()
 
-​	停止自增模式：取消所有由 [`Progressbar.start()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Progressbar.start) 启动的循环定时器事件。
+​	停止自增模式：取消所有由 [`Progressbar.start()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Progressbar.start" >}}) 启动的循环定时器事件。
 
 ## Separator
 
@@ -415,13 +413,13 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 
 `ttk.Treeview` 控件可将多项内容分层级显示。每个数据项都带有一个文本标签、一个可选的图片和一个可选的数据值列表。 这些数据值将在树标签后面分列显示。
 
-​	数据值的显示顺序可用属性 `displaycolumns` 进行控制。树控件还可以显示列标题。数据列可通过数字或名称进行访问，各列的名称在属性 columns 中列出。参阅 [Column Identifiers](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#column-identifiers)。
+​	数据值的显示顺序可用属性 `displaycolumns` 进行控制。树控件还可以显示列标题。数据列可通过数字或名称进行访问，各列的名称在属性 columns 中列出。参阅 [Column Identifiers]({{< ref "/library/tk/tkinter_ttk#column-identifiers" >}})。
 
 ​	每个数据项都由唯一名称进行标识。如果调用者未提供数据项的 ID，树控件会自动生成。根有且只有一个，名为 `{}`。根本身不会显示出来；其子项将显示在顶层。
 
 ​	每个数据项均带有一个 tag 列表，可用于绑定事件及控制外观。
 
-​	Treeview 组件支持水平和垂直滚动，滚动时会依据 [Scrollable Widget Options](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#scrollable-widget-options) 描述的属性和 [`Treeview.xview()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Treeview.xview) 和 [`Treeview.yview()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Treeview.yview) 方法。
+​	Treeview 组件支持水平和垂直滚动，滚动时会依据 [Scrollable Widget Options]({{< ref "/library/tk/tkinter_ttk#scrollable-widget-options" >}}) 描述的属性和 [`Treeview.xview()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Treeview.xview" >}}) 和 [`Treeview.yview()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Treeview.yview" >}}) 方法。
 
 ### 属性
 
@@ -484,7 +482,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 | <<TreeviewOpen>>   | 当焦点所在项的 open= True 之前立即生成。 |
 | <<TreeviewClose>>  | 当焦点所在项的 open= True 之后立即生成。 |
 
-[`Treeview.focus()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Treeview.focus) 和 [`Treeview.selection()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Treeview.selection) 方法可用于确认涉及的数据项。
+[`Treeview.focus()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Treeview.focus" >}}) 和 [`Treeview.selection()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Treeview.selection" >}}) 方法可用于确认涉及的数据项。
 
 ### ttk.Treeview
 
@@ -629,7 +627,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 
 *parent* 是父项的 ID，若要新建顶级项则为空字符串。 *index* 是整数或“end”，指明在父项的子项列表中的插入位置。如果 *index* 小于等于0，则在开头插入新节点；如果 *index* 大于或等于当前子节点数，则将其插入末尾。如果给出了 *iid*，则将其用作数据项 ID； *iid* 不得存在于树中。否则会新生成一个唯一 ID。
 
-​	可用的选项列表请参阅 [Item Options](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#item-options)。
+​	可用的选项列表请参阅 [Item Options]({{< ref "/library/tk/tkinter_ttk#item-options" >}})。
 
 ## **item**(*item*, *option=None*, ***kw*)
 
@@ -657,7 +655,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 
 ## **reattach**(*item*, *parent*, *index*)
 
-[`Treeview.move()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Treeview.move) 的别名。
+[`Treeview.move()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Treeview.move" >}}) 的别名。
 
 ## **see**(*item*)
 
@@ -669,31 +667,31 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 
 ​	返回由选中项构成的元组。
 
-*在 3.8 版本发生变更:* `selection()` 不再接受参数了。若要改变选中的状态，请使用下面介绍的方法。
+> 在 3.8 版本发生变更: `selection()` 不再接受参数了。若要改变选中的状态，请使用下面介绍的方法。
 
 ## **selection_set**(**items*)
 
 ​	让 *items* 成为新的选中项。
 
-*在 3.6 版本发生变更:* *items* 可作为多个单独的参数传递，而不只是作为一个元组。
+> 在 3.6 版本发生变更: *items* 可作为多个单独的参数传递，而不只是作为一个元组。
 
 ## **selection_add**(**items*)
 
 ​	将 *items* 加入选中项。
 
-*在 3.6 版本发生变更:* *items* 可作为多个单独的参数传递，而不只是作为一个元组。
+> 在 3.6 版本发生变更: *items* 可作为多个单独的参数传递，而不只是作为一个元组。
 
 ## **selection_remove**(**items*)
 
 ​	从选中项中移除 *items* 。
 
-*在 3.6 版本发生变更:* *items* 可作为多个单独的参数传递，而不只是作为一个元组。
+> 在 3.6 版本发生变更: *items* 可作为多个单独的参数传递，而不只是作为一个元组。
 
 ## **selection_toggle**(**items*)
 
 ​	切换 *items* 中各项的选中状态。
 
-*在 3.6 版本发生变更:* *items* 可作为多个单独的参数传递，而不只是作为一个元组。
+> 在 3.6 版本发生变更: *items* 可作为多个单独的参数传递，而不只是作为一个元组。
 
 ## **set**(*item*, *column=None*, *value=None*)
 
@@ -729,8 +727,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 
 `ttk` 的每种控件都赋有一个样式，指定了控件内的元素及其排列方式，以及元素属性的动态和默认设置。默认情况下，样式名与控件的类名相同，但可能会被控件的 style 属性覆盖。如果不知道控件的类名，可用 `Misc.winfo_class()` 方法获取（somewidget.winfo_class()）。
 
-​	参见
-
+​参见
 [Tcl'2004 会议报告](https://tktable.sourceforge.net/tile/tile-tcl2004.pdf)
 
 ​	文章解释了主题引擎的工作原理。
@@ -807,7 +804,7 @@ print(ttk.Style().lookup("TButton", "font"))
 
 ​	按照 *style* 定义控件布局。如果省略了 *layoutspec*，则返回该样式的布局属性。
 
-​	若给出了 *layoutspec*，则应为一个列表或其他的序列类型（不包括字符串），其中的数据项应为元组类型，第一项是布局名称，第二项的格式应符合 [Layouts](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#layouts) 的描述。
+​	若给出了 *layoutspec*，则应为一个列表或其他的序列类型（不包括字符串），其中的数据项应为元组类型，第一项是布局名称，第二项的格式应符合 [Layouts]({{< ref "/library/tk/tkinter_ttk#layouts" >}}) 的描述。
 
 ​	以下示例有助于理解这种格式（这里并没有实际意义）：
 
@@ -872,7 +869,7 @@ style.element_create('Button.button', 'image',
                      border=(2, 4), sticky='we')
 ```
 
-​	如果 *etype* 的值用了 from，则 [`element_create()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Style.element_create) 将复制一个现有的元素。 *args* 应包含主题名和可选的要复制的元素。若未给出要克隆的元素，则采用空元素。 *kw* 参数将被丢弃。
+​	如果 *etype* 的值用了 from，则 [`element_create()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Style.element_create" >}}) 将复制一个现有的元素。 *args* 应包含主题名和可选的要复制的元素。若未给出要克隆的元素，则采用空元素。 *kw* 参数将被丢弃。
 
 ​	示例:
 
@@ -881,7 +878,7 @@ style = ttk.Style(root)
 style.element_create('plain.background', 'from', 'default')
 ```
 
-​	如果使用 "vsapi" 作为 *etype* 的值，[`element_create()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Style.element_create) 将在当前主题中创建一个新元素，其视觉外观将使用负责处理 Windows XP 和 Vista 上带主题风格的 Microsoft Visual Styles API 来绘制。 *args* 应当包含 Microsoft 文档中给出的 Visual Styles 类和部件并带有由 ttk 状态及对应 Visual Styles API 状态值组成的元组的可选序列。 *kw* 可能具有下列选项：
+​	如果使用 "vsapi" 作为 *etype* 的值，[`element_create()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Style.element_create" >}}) 将在当前主题中创建一个新元素，其视觉外观将使用负责处理 Windows XP 和 Vista 上带主题风格的 Microsoft Visual Styles API 来绘制。 *args* 应当包含 Microsoft 文档中给出的 Visual Styles 类和部件并带有由 ttk 状态及对应 Visual Styles API 状态值组成的元组的可选序列。 *kw* 可能具有下列选项：
 
 ## padding=padding
 
@@ -916,7 +913,7 @@ pin = ttk.Checkbutton(style='Explorer.Pin')
 pin.pack(expand=True, fill='both')
 ```
 
-*在 3.13 版本发生变更:* 增加了对 "vsapi" 元素工厂的支持。
+> 在 3.13 版本发生变更: 增加了对 "vsapi" 元素工厂的支持。
 
 ## **element_names**()
 
@@ -930,13 +927,13 @@ pin.pack(expand=True, fill='both')
 
 ​	新建一个主题。
 
-​	如果 *themename* 已经存在，则会报错。如果给出了 *parent*，则新主题将从父主题继承样式、元素和布局。若给出了 *settings* ，则语法应与 [`theme_settings()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Style.theme_settings) 的相同。
+​	如果 *themename* 已经存在，则会报错。如果给出了 *parent*，则新主题将从父主题继承样式、元素和布局。若给出了 *settings* ，则语法应与 [`theme_settings()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Style.theme_settings" >}}) 的相同。
 
 ## **theme_settings**(*themename*, *settings*)
 
 ​	将当前主题临时设为 *themename*，并应用 *settings*，然后恢复之前的主题。
 
-*settings* 中的每个键都是一种样式而每个值可能包含 'configure', 'map', 'layout' 和 'element create' 等键并且它们被预期具有与分别由 [`Style.configure()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Style.configure), [`Style.map()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Style.map), [`Style.layout()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Style.layout) 和 [`Style.element_create()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Style.element_create) 方法所指定的相符的格式。
+*settings* 中的每个键都是一种样式而每个值可能包含 'configure', 'map', 'layout' 和 'element create' 等键并且它们被预期具有与分别由 [`Style.configure()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Style.configure" >}}), [`Style.map()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Style.map" >}}), [`Style.layout()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Style.layout" >}}) 和 [`Style.element_create()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Style.element_create" >}}) 方法所指定的相符的格式。
 
 ​	以下例子会对 Combobox 的默认主题稍作修改：
 
@@ -989,8 +986,8 @@ root.mainloop()
 
 ## *unit*: 0 或 1
 
-​	如果设为 1，则将元素及其所有后代均视作单个元素以供 [`Widget.identify()`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#tkinter.ttk.Widget.identify) 等使用。 它被用于滚动条之类带有控制柄的东西。
+​	如果设为 1，则将元素及其所有后代均视作单个元素以供 [`Widget.identify()`]({{< ref "/library/tk/tkinter_ttk#tkinter.ttk.Widget.identify" >}}) 等使用。 它被用于滚动条之类带有控制柄的东西。
 
 ## *children*: [子布局... ]
 
-​	指定要放置于元素内的元素列表。每个元素都是一个元组（或其他序列类型），其中第一项是布局名称，另一项是个 [Layout](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#layouts) 。
+​	指定要放置于元素内的元素列表。每个元素都是一个元组（或其他序列类型），其中第一项是布局名称，另一项是个 [Layout]({{< ref "/library/tk/tkinter_ttk#layouts" >}}) 。

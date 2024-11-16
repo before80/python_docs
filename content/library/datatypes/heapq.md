@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/heapq.html](https://docs.python.org/zh-cn/3.13/library/heapq.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/heapq.html](https://docs.python.org/zh-cn/3.13/library/heapq.html)
 >
 > 收录该文档的时间：`2024-11-15T11:18:41+08:00`
 
@@ -28,7 +28,7 @@ draft = false
 
 ​	基于这两方面，把堆看作原生的Python list也没什么奇怪的： `heap[0]` 表示最小的元素，同时 `heap.sort()` 维护了堆的不变性！
 
-​	要创建一个堆，可以新建一个空列表 `[]`，或者用函数 [`heapify()`](https://docs.python.org/zh-cn/3.13/library/heapq.html#heapq.heapify) 把一个非空列表变为堆。
+​	要创建一个堆，可以新建一个空列表 `[]`，或者用函数 [`heapify()`]({{< ref "/library/datatypes/heapq#heapq.heapify" >}}) 把一个非空列表变为堆。
 
 ​	定义了以下函数：
 
@@ -38,11 +38,11 @@ draft = false
 
 ## heapq.**heappop**(*heap*)
 
-​	弹出并返回 *heap* 的最小的元素，保持堆的不变性。如果堆为空，抛出 [`IndexError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#IndexError) 。使用 `heap[0]` ，可以只访问最小的元素而不弹出它。
+​	弹出并返回 *heap* 的最小的元素，保持堆的不变性。如果堆为空，抛出 [`IndexError`]({{< ref "/library/exceptions#IndexError" >}}) 。使用 `heap[0]` ，可以只访问最小的元素而不弹出它。
 
 ## heapq.**heappushpop**(*heap*, *item*)
 
-​	将 *item* 放入堆中，然后弹出并返回 *heap* 的最小元素。该组合操作比先调用 [`heappush()`](https://docs.python.org/zh-cn/3.13/library/heapq.html#heapq.heappush) 再调用 [`heappop()`](https://docs.python.org/zh-cn/3.13/library/heapq.html#heapq.heappop) 运行起来更有效率。
+​	将 *item* 放入堆中，然后弹出并返回 *heap* 的最小元素。该组合操作比先调用 [`heappush()`]({{< ref "/library/datatypes/heapq#heapq.heappush" >}}) 再调用 [`heappop()`]({{< ref "/library/datatypes/heapq#heapq.heappop" >}}) 运行起来更有效率。
 
 ## heapq.**heapify**(*x*)
 
@@ -50,27 +50,27 @@ draft = false
 
 ## heapq.**heapreplace**(*heap*, *item*)
 
-​	弹出并返回 *heap* 中最小的一项，同时推入新的 *item*。 堆的大小不变。 如果堆为空则引发 [`IndexError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#IndexError)。
+​	弹出并返回 *heap* 中最小的一项，同时推入新的 *item*。 堆的大小不变。 如果堆为空则引发 [`IndexError`]({{< ref "/library/exceptions#IndexError" >}})。
 
-​	这个单步骤操作比 [`heappop()`](https://docs.python.org/zh-cn/3.13/library/heapq.html#heapq.heappop) 加 [`heappush()`](https://docs.python.org/zh-cn/3.13/library/heapq.html#heapq.heappush) 更高效，并且在使用固定大小的堆时更为适宜。 pop/push 组合总是会从堆中返回一个元素并将其替换为 *item*。
+​	这个单步骤操作比 [`heappop()`]({{< ref "/library/datatypes/heapq#heapq.heappop" >}}) 加 [`heappush()`]({{< ref "/library/datatypes/heapq#heapq.heappush" >}}) 更高效，并且在使用固定大小的堆时更为适宜。 pop/push 组合总是会从堆中返回一个元素并将其替换为 *item*。
 
-​	返回的值可能会比新加入的值大。如果不希望如此，可改用 [`heappushpop()`](https://docs.python.org/zh-cn/3.13/library/heapq.html#heapq.heappushpop)。它的 push/pop 组合返回两个值中较小的一个，将较大的留在堆中。
+​	返回的值可能会比新加入的值大。如果不希望如此，可改用 [`heappushpop()`]({{< ref "/library/datatypes/heapq#heapq.heappushpop" >}})。它的 push/pop 组合返回两个值中较小的一个，将较大的留在堆中。
 
 ​	该模块还提供了三个基于堆的通用目的函数。
 
 ## heapq.**merge**(**iterables*, *key=None*, *reverse=False*)
 
-​	将多个已排序的输入合并为一个已排序的输出（例如，合并来自多个日志文件的带时间戳的条目）。 返回已排序值的 [iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterator)。
+​	将多个已排序的输入合并为一个已排序的输出（例如，合并来自多个日志文件的带时间戳的条目）。 返回已排序值的 [iterator]({{< ref "/glossary/idx#term-iterator" >}})。
 
 ​	类似于 `sorted(itertools.chain(*iterables))` 但返回一个可迭代对象，不会一次性地将数据全部放入内存，并假定每个输入流都是已排序的（从小到大）。
 
 ​	具有两个可选参数，它们都必须指定为关键字参数。
 
-*key* 指定带有单个参数的 [key function](https://docs.python.org/zh-cn/3.13/glossary.html#term-key-function)，用于从每个输入元素中提取比较键。 默认值为 `None` (直接比较元素)。
+*key* 指定带有单个参数的 [key function]({{< ref "/glossary/idx#term-key-function" >}})，用于从每个输入元素中提取比较键。 默认值为 `None` (直接比较元素)。
 
 *reverse* 为一个布尔值。 如果设为 `True`，则输入元素将按比较结果逆序进行合并。 要达成与 `sorted(itertools.chain(*iterables), reverse=True)` 类似的行为，所有可迭代对象必须是已从大到小排序的。
 
-*在 3.5 版本发生变更:* 添加了可选的 *key* 和 *reverse* 形参。
+> 在 3.5 版本发生变更: 添加了可选的 *key* 和 *reverse* 形参。
 
 ## heapq.**nlargest**(*n*, *iterable*, *key=None*)
 
@@ -80,7 +80,7 @@ draft = false
 
 ​	从 *iterable* 所定义的数据集中返回前 *n* 个最小元素组成的列表。 如果提供了 *key* 则其应指定一个单参数的函数，用于从 *iterable* 的每个元素中提取比较键 (例如 `key=str.lower`)。 等价于: `sorted(iterable, key=key)[:n]`。
 
-​	后两个函数在 *n* 值较小时性能最好。 对于更大的值，使用 [`sorted()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 函数会更有效率。 此外，当 `n==1` 时，使用内置的 [`min()`](https://docs.python.org/zh-cn/3.13/library/functions.html#min) 和 [`max()`](https://docs.python.org/zh-cn/3.13/library/functions.html#max) 函数会更有效率。 如果需要重复使用这些函数，请考虑将可迭代对象转为真正的堆。
+​	后两个函数在 *n* 值较小时性能最好。 对于更大的值，使用 [`sorted()`]({{< ref "/library/functions#sorted" >}}) 函数会更有效率。 此外，当 `n==1` 时，使用内置的 [`min()`]({{< ref "/library/functions#min" >}}) 和 [`max()`]({{< ref "/library/functions#max" >}}) 函数会更有效率。 如果需要重复使用这些函数，请考虑将可迭代对象转为真正的堆。
 
 ## 基本示例
 
@@ -99,7 +99,7 @@ draft = false
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-​	这类似于 `sorted(iterable)`，但与 [`sorted()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 不同的是这个实现是不稳定的。
+​	这类似于 `sorted(iterable)`，但与 [`sorted()`]({{< ref "/library/functions#sorted" >}}) 不同的是这个实现是不稳定的。
 
 ​	堆元素可以为元组。这有利于以下做法——在被跟踪的主记录旁边添一个额外的值（例如任务的优先级）用于互相比较：
 
@@ -198,14 +198,13 @@ def pop_task():
 
 ​	用于实现调度器的各种结构都得到了充分的研究，堆是非常适宜的一种，因为它们的速度相当快，并且几乎是恒定的，最坏的情况与平均情况没有太大差别。 虽然还存在其他总体而言更高效的实现方式，但其最坏的情况却可能非常糟糕。
 
-​	堆在大磁盘排序中也非常有用。 你应该已经了解大规模排序会有多个“运行轮次”（即预排序的序列，其大小通常与 CPU 内存容量相关），随后这些轮次会进入合并通道，轮次合并的组织往往非常巧妙 [[1\]](https://docs.python.org/zh-cn/3.13/library/heapq.html#id2)。 非常重要的一点是初始排序应产生尽可能长的运行轮次。 锦标赛模式是达成此目标的好办法。 如果你使用全部有用内存来进行锦标赛，替换和安排恰好适合当前运行轮次的条目，你将可以对于随机输入生成两倍于内存大小的运行轮次，对于模糊排序的输入还会有更好的效果。
+​	堆在大磁盘排序中也非常有用。 你应该已经了解大规模排序会有多个“运行轮次”（即预排序的序列，其大小通常与 CPU 内存容量相关），随后这些轮次会进入合并通道，轮次合并的组织往往非常巧妙 [[1\]]({{< ref "/library/datatypes/heapq#id2" >}})。 非常重要的一点是初始排序应产生尽可能长的运行轮次。 锦标赛模式是达成此目标的好办法。 如果你使用全部有用内存来进行锦标赛，替换和安排恰好适合当前运行轮次的条目，你将可以对于随机输入生成两倍于内存大小的运行轮次，对于模糊排序的输入还会有更好的效果。
 
 ​	另外，如果你输出磁盘上的第 0 个条目并获得一个可能不适合当前锦标赛的输入（因为其值要“胜过”上一个输出值），它无法被放入堆中，因此堆的尺寸将缩小。 被释放的内存可以被巧妙地立即重用以逐步构建第二个堆，其增长速度与第一个堆的缩减速度正好相同。 当第一个堆完全消失时，你可以切换新堆并启动新的运行轮次。 这样做既聪明又高效！
 
 ​	总之，堆是值得了解的有用内存结构。 我在一些应用中用到了它们，并且认为保留一个 'heap' 模块是很有意义的。 :-)
 
-​	备注
-
-[[1](https://docs.python.org/zh-cn/3.13/library/heapq.html#id1)]
+​备注
+[[1]({{< ref "/library/datatypes/heapq#id1" >}})]
 
 ​	当前时代的磁盘平衡算法与其说是巧妙，不如说是麻烦，这是由磁盘的寻址能力导致的结果。 在无法寻址的设备例如大型磁带机上，情况则相当不同，开发者必须非常聪明地（极为提前地）确保每次磁带转动都尽可能地高效（就是说能够最好地加入到合并“进程”中）。 有些磁带甚至能够反向读取，这也被用来避免倒带的耗时。 请相信我，真正优秀的磁带机排序看起来是极其壮观的，排序从来都是一门伟大的艺术！ :-)

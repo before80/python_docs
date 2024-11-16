@@ -9,7 +9,7 @@ draft = false
 
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/distributing/index.html](https://docs.python.org/zh-cn/3.13/distributing/index.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/distributing/index.html](https://docs.python.org/zh-cn/3.13/distributing/index.html)
 >
 > 收录该文档的时间：`2024-11-15T22:13:59+08:00`
 

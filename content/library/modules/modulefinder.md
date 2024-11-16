@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/modulefinder.html](https://docs.python.org/zh-cn/3.13/library/modulefinder.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/modulefinder.html](https://docs.python.org/zh-cn/3.13/library/modulefinder.html)
 >
 > 收录该文档的时间：`2024-11-15T21:19:20+08:00`
 
@@ -18,7 +18,7 @@ draft = false
 
 ------
 
-​	该模块提供了一个 [`ModuleFinder`](https://docs.python.org/zh-cn/3.13/library/modulefinder.html#modulefinder.ModuleFinder) 类，可用于确定脚本导入的模块集。 `modulefinder.py` 也可以作为脚本运行，给出 Python 脚本的文件名作为参数，之后将打印导入模块的报告。
+​	该模块提供了一个 [`ModuleFinder`]({{< ref "/library/modules/modulefinder#modulefinder.ModuleFinder" >}}) 类，可用于确定脚本导入的模块集。 `modulefinder.py` 也可以作为脚本运行，给出 Python 脚本的文件名作为参数，之后将打印导入模块的报告。
 
 ## modulefinder.**AddPackagePath**(*pkg_name*, *path*)
 
@@ -30,7 +30,7 @@ draft = false
 
 ## *class* modulefinder.**ModuleFinder**(*path=None*, *debug=0*, *excludes=[]*, *replace_paths=[]*)
 
-​	该类提供 [`run_script()`](https://docs.python.org/zh-cn/3.13/library/modulefinder.html#modulefinder.ModuleFinder.run_script) 和 [`report()`](https://docs.python.org/zh-cn/3.13/library/modulefinder.html#modulefinder.ModuleFinder.report) 方法，用于确定脚本导入的模块集。 *path* 可以是搜索模块的目录列表；如果没有指定，则使用 `sys.path` 。 *debug* 设置调试级别；更高的值使类打印调试消息，关于它正在做什么。 *excludes* 是要从分析中排除的模块名称列表。 *replace_paths* 是将在模块路径中替换的 `(oldpath, newpath)` 元组的列表。
+​	该类提供 [`run_script()`]({{< ref "/library/modules/modulefinder#modulefinder.ModuleFinder.run_script" >}}) 和 [`report()`]({{< ref "/library/modules/modulefinder#modulefinder.ModuleFinder.report" >}}) 方法，用于确定脚本导入的模块集。 *path* 可以是搜索模块的目录列表；如果没有指定，则使用 `sys.path` 。 *debug* 设置调试级别；更高的值使类打印调试消息，关于它正在做什么。 *excludes* 是要从分析中排除的模块名称列表。 *replace_paths* 是将在模块路径中替换的 `(oldpath, newpath)` 元组的列表。
 
 ## **report**()
 
@@ -42,11 +42,11 @@ draft = false
 
 ## **modules**
 
-​	一个将模块名称映射到模块的字典。 请参阅 [ModuleFinder 的示例用法](https://docs.python.org/zh-cn/3.13/library/modulefinder.html#modulefinder-example)。
+​	一个将模块名称映射到模块的字典。 请参阅 [ModuleFinder 的示例用法]({{< ref "/library/modules/modulefinder#modulefinder-example" >}})。
 
 
 
-## [`ModuleFinder`](https://docs.python.org/zh-cn/3.13/library/modulefinder.html#modulefinder.ModuleFinder) 的示例用法
+## [`ModuleFinder`]({{< ref "/library/modules/modulefinder#modulefinder.ModuleFinder" >}}) 的示例用法
 
 ​	稍后将分析的脚本（bacon.py）:
 

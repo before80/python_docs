@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/pydoc.html](https://docs.python.org/zh-cn/3.13/library/pydoc.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/pydoc.html](https://docs.python.org/zh-cn/3.13/library/pydoc.html)
 >
 > 收录该文档的时间：`2024-11-15T21:03:03+08:00`
 
@@ -20,18 +20,17 @@ draft = false
 
 `pydoc` 模块会根据 Python 模块自动生成文档。 生成的文档可在控制台中显示为文本页面，提供给 Web 浏览器或者保存为 HTML 文件。
 
-​	对于模块、类、函数和方法，显示的文档内容取自对象的文档字符串（即 the [`__doc__`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#definition.__doc__) 属性），并会递归地从其带有文档的成员中获取。 如果没有文档字符串，则 `pydoc` 会尝试从源文件中类、函数或方法的定义上方，或者模块最上方的注释行代码块获取描述文本（参见 [`inspect.getcomments()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.getcomments)。）
+​	对于模块、类、函数和方法，显示的文档内容取自对象的文档字符串（即 the [`__doc__`]({{< ref "/library/stdtypes#definition.__doc__" >}}) 属性），并会递归地从其带有文档的成员中获取。 如果没有文档字符串，则 `pydoc` 会尝试从源文件中类、函数或方法的定义上方，或者模块最上方的注释行代码块获取描述文本（参见 [`inspect.getcomments()`]({{< ref "/library/python/inspect#inspect.getcomments" >}})。）
 
-​	内置函数 [`help()`](https://docs.python.org/zh-cn/3.13/library/functions.html#help) 会发起调用交互式解释器的在线帮助系统，该系统使用 `pydoc` 在控制台上生成文本形式的文档内容。 同样的文本文档也可以在 Python 解释器以外通过在操作系统的命令提示符中以脚本方式运行 **pydoc** 来查看。 例如，运行
+​	内置函数 [`help()`]({{< ref "/library/functions#help" >}}) 会发起调用交互式解释器的在线帮助系统，该系统使用 `pydoc` 在控制台上生成文本形式的文档内容。 同样的文本文档也可以在 Python 解释器以外通过在操作系统的命令提示符中以脚本方式运行 **pydoc** 来查看。 例如，运行
 
 ```
 python -m pydoc sys
 ```
 
-​	在终端提示符下将通过 [`sys`](https://docs.python.org/zh-cn/3.13/library/sys.html#module-sys) 模块显示文档内容，其样式类似于 Unix **man** 命令所显示的指南页面。 **pydoc** 的参数可以为函数、模块、包，或带点号的对模块中的类、方法或函数以及包中的模块的引用。 如果传给 **pydoc** 的参数像是一个路径（即包含所在操作系统的路径分隔符，例如 Unix 的正斜杠），并且其指向一个现有的 Python 源文件，则会为该文件生成文档内容。
+​	在终端提示符下将通过 [`sys`]({{< ref "/library/python/sys#module-sys" >}}) 模块显示文档内容，其样式类似于 Unix **man** 命令所显示的指南页面。 **pydoc** 的参数可以为函数、模块、包，或带点号的对模块中的类、方法或函数以及包中的模块的引用。 如果传给 **pydoc** 的参数像是一个路径（即包含所在操作系统的路径分隔符，例如 Unix 的正斜杠），并且其指向一个现有的 Python 源文件，则会为该文件生成文档内容。
 
-​	备注
-
+​备注
  
 
 ​	为了找到对象及其文档的内容，`pydoc` 会导入文档所属的模块。 因而，在此情况下任何模块层级的代码都将被执行。 请使用 `if __name__ == '__main__':` 来确保特定代码仅在文件是作为脚本被发起调用而不是被导入时执行。
@@ -52,10 +51,10 @@ python -m pydoc sys
 
 ​	核心模块的模块文档应当位于 `https://docs.python.org/X.Y/library/` 其中 `X` 和 `Y` 是 Python 解释器的主要和次要版本号。 这可以通过将 `PYTHONDOCS` 环境变量设为不同的 URL 或包含标准库参考指南页面的本地目录来覆盖。
 
-*在 3.2 版本发生变更:* 添加 `-b` 选项。
+> 在 3.2 版本发生变更: 添加 `-b` 选项。
 
-*在 3.3 版本发生变更:* 命令行选项 `-g` 已经移除。
+> 在 3.3 版本发生变更: 命令行选项 `-g` 已经移除。
 
-*在 3.4 版本发生变更:* 现在 `pydoc` 会使用 [`inspect.signature()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.signature) 而不是 [`inspect.getfullargspec()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.getfullargspec) 来从可调用对象中提取签名信息。
+> 在 3.4 版本发生变更: 现在 `pydoc` 会使用 [`inspect.signature()`]({{< ref "/library/python/inspect#inspect.signature" >}}) 而不是 [`inspect.getfullargspec()`]({{< ref "/library/python/inspect#inspect.getfullargspec" >}}) 来从可调用对象中提取签名信息。
 
-*在 3.7 版本发生变更:* 添加 `-n` 选项。
+> 在 3.7 版本发生变更: 添加 `-n` 选项。

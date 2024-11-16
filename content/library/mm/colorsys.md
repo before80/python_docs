@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/colorsys.html](https://docs.python.org/zh-cn/3.13/library/colorsys.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/colorsys.html](https://docs.python.org/zh-cn/3.13/library/colorsys.html)
 >
 > 收录该文档的时间：`2024-11-15T20:46:14+08:00`
 
@@ -18,15 +18,14 @@ draft = false
 
 ------
 
-[`colorsys`](https://docs.python.org/zh-cn/3.13/library/colorsys.html#module-colorsys) 模块定义了计算机显示器所用的 RGB (Red Green Blue) 色彩空间与三种其他色彩坐标系统 YIQ, HLS (Hue Lightness Saturation) 和 HSV (Hue Saturation Value) 表示的颜色值之间的双向转换。 所有这些色彩空间的坐标都使用浮点数值来表示。 在 YIQ 空间中，Y 坐标取值为 0 和 1 之间，而 I 和 Q 坐标均可以为正数或负数。 在所有其他空间中，坐标取值均为 0 和 1 之间。
+[`colorsys`]({{< ref "/library/mm/colorsys#module-colorsys" >}}) 模块定义了计算机显示器所用的 RGB (Red Green Blue) 色彩空间与三种其他色彩坐标系统 YIQ, HLS (Hue Lightness Saturation) 和 HSV (Hue Saturation Value) 表示的颜色值之间的双向转换。 所有这些色彩空间的坐标都使用浮点数值来表示。 在 YIQ 空间中，Y 坐标取值为 0 和 1 之间，而 I 和 Q 坐标均可以为正数或负数。 在所有其他空间中，坐标取值均为 0 和 1 之间。
 
-​	参见
-
+​参见
  
 
 ​	有关色彩空间的更多信息可访问 https://poynton.ca/ColorFAQ.html 和 https://www.cambridgeincolour.com/tutorials/color-spaces.htm。
 
-[`colorsys`](https://docs.python.org/zh-cn/3.13/library/colorsys.html#module-colorsys) 模块定义了如下函数：
+[`colorsys`]({{< ref "/library/mm/colorsys#module-colorsys" >}}) 模块定义了如下函数：
 
 ## colorsys.**rgb_to_yiq**(*r*, *g*, *b*)
 

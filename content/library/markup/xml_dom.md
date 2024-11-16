@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/xml.dom.html](https://docs.python.org/zh-cn/3.13/library/xml.dom.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/xml.dom.html](https://docs.python.org/zh-cn/3.13/library/xml.dom.html)
 >
 > 收录该文档的时间：`2024-11-15T15:24:42+08:00`
 
@@ -26,21 +26,20 @@ draft = false
 
 ​	文档对象模型是由 W3C 分阶段定义的，在其术语中称为“层级”。 Python 中该 API 的映射大致是基于 DOM 第 2 层级的建议。
 
-​	DOM 应用程序通常从将某些 XML 解析为 DOM 开始。 此操作如何实现完全未被 DOM 第 1 层级所涉及，而第 2 层级也只提供了有限的改进：有一个 `DOMImplementation` 对象类，它提供对 `Document` 创建方法的访问，但却没有办法以不依赖具体实现的方式访问 XML 读取器/解析器/文档创建器。 也没有当不存在 `Document` 对象的情况下访问这些方法的定义良好的方式。 在 Python 中，每个 DOM 实现将提供一个函数 [`getDOMImplementation()`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.getDOMImplementation)。 DOM 第 3 层级增加了一个载入/存储规格说明，它定义了与读取器的接口，但这在 Python 标准库中尚不可用。
+​	DOM 应用程序通常从将某些 XML 解析为 DOM 开始。 此操作如何实现完全未被 DOM 第 1 层级所涉及，而第 2 层级也只提供了有限的改进：有一个 `DOMImplementation` 对象类，它提供对 `Document` 创建方法的访问，但却没有办法以不依赖具体实现的方式访问 XML 读取器/解析器/文档创建器。 也没有当不存在 `Document` 对象的情况下访问这些方法的定义良好的方式。 在 Python 中，每个 DOM 实现将提供一个函数 [`getDOMImplementation()`]({{< ref "/library/markup/xml_dom#xml.dom.getDOMImplementation" >}})。 DOM 第 3 层级增加了一个载入/存储规格说明，它定义了与读取器的接口，但这在 Python 标准库中尚不可用。
 
 ​	一旦你得到了 DOM 文档对象，你就可以通过 XML 文档的属性和方法访问它的各个部分。 这些属性定义在 DOM 规格说明当中；参考指南的这一部分描述了 Python 对此规格说明的解读。
 
-​	W3C 提供的规格说明定义了适用于 Java, ECMAScript 和 OMG IDL 的 DOM API。 这里定义的 Python 映射很大程度上是基于此规格说明的 IDL 版本，但并不要求严格映射（但具体实现可以自由地支持对 IDL 的严格映射）。 请参阅 [一致性](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#dom-conformance) 一节查看有关映射要求的详细讨论。
+​	W3C 提供的规格说明定义了适用于 Java, ECMAScript 和 OMG IDL 的 DOM API。 这里定义的 Python 映射很大程度上是基于此规格说明的 IDL 版本，但并不要求严格映射（但具体实现可以自由地支持对 IDL 的严格映射）。 请参阅 [一致性]({{< ref "/library/markup/xml_dom#dom-conformance" >}}) 一节查看有关映射要求的详细讨论。
 
-​	参见
-
+​参见
 ## [文档对象模型 (DOM) 第 2 层级规格说明](https://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/)
 
 ​	被 Python DOM API 作为基础的 W3C 建议。
 
 ## [文档对象模型 (DOM) 第 1 层级规格说明](https://www.w3.org/TR/REC-DOM-Level-1/)
 
-​	被 [`xml.dom.minidom`](https://docs.python.org/zh-cn/3.13/library/xml.dom.minidom.html#module-xml.dom.minidom) 所支持的 W3C 针对 DOM 的建议。
+​	被 [`xml.dom.minidom`]({{< ref "/library/markup/xml_dom_minidom#module-xml.dom.minidom" >}}) 所支持的 W3C 针对 DOM 的建议。
 
 ## [Python 语言映射规格说明](https://www.omg.org/spec/PYTH/1.2/PDF)
 
@@ -48,7 +47,7 @@ draft = false
 
 ## 模块内容
 
-[`xml.dom`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#module-xml.dom) 包含下列函数:
+[`xml.dom`]({{< ref "/library/markup/xml_dom#module-xml.dom" >}}) 包含下列函数:
 
 ## xml.dom.**registerDOMImplementation**(*name*, *factory*)
 
@@ -58,7 +57,7 @@ draft = false
 
 ​	返回一个适当的 DOM 实现。 *name* 是通用名称、DOM 实现的模块名称或者 `None`。 如果它不为 `None`，则会导入相应模块并在导入成功时返回一个 `DOMImplementation` 对象。 如果没有给出名称，并且如果设置了 `PYTHON_DOM` 环境变量，此变量会被用来查找相应的实现。
 
-​	如果未给出 name，此函数会检查可用的实现来查找具有所需特性集的一个。 如果找不到任何实现，则会引发 [`ImportError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ImportError)。 features 集必须是包含 `(feature, version)` 对的序列，它会被传给可用的 `DOMImplementation` 对象上的 `hasFeature()` 方法。
+​	如果未给出 name，此函数会检查可用的实现来查找具有所需特性集的一个。 如果找不到任何实现，则会引发 [`ImportError`]({{< ref "/library/exceptions#ImportError" >}})。 features 集必须是包含 `(feature, version)` 对的序列，它会被传给可用的 `DOMImplementation` 对象上的 `hasFeature()` 方法。
 
 ​	还提供了一些便捷常量:
 
@@ -78,7 +77,7 @@ draft = false
 
 ​	XHTML 命名空间的 URI，如 [XHTML 1.0: 扩展超文本标记语言](https://www.w3.org/TR/xhtml1/) (第 3.1.1 节) 所定义的。
 
-​	此外，[`xml.dom`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#module-xml.dom) 还包含一个基本 `Node` 类和一些 DOM 异常类。 此模块提供的 `Node` 类未实现 DOM 规格描述所定义的任何方法和属性；实际的 DOM 实现必须提供它们。 提供 `Node` 类作为此模块的一部分并没有提供用于实际的 `Node` 对象的 `nodeType` 属性的常量；它们是位于类内而不是位于模块层级以符合 DOM 规格描述。
+​	此外，[`xml.dom`]({{< ref "/library/markup/xml_dom#module-xml.dom" >}}) 还包含一个基本 `Node` 类和一些 DOM 异常类。 此模块提供的 `Node` 类未实现 DOM 规格描述所定义的任何方法和属性；实际的 DOM 实现必须提供它们。 提供 `Node` 类作为此模块的一部分并没有提供用于实际的 `Node` 对象的 `nodeType` 属性的常量；它们是位于类内而不是位于模块层级以符合 DOM 规格描述。
 
 
 
@@ -90,16 +89,16 @@ draft = false
 
 | 接口                    | 部件                                                         | 目的                         |
 | :---------------------- | :----------------------------------------------------------- | :--------------------------- |
-| `DOMImplementation`     | [DOMImplementation 对象](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#dom-implementation-objects) | 底层实现的接口。             |
-| `Node`                  | [节点对象](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#dom-node-objects) | 文档中大多数对象的基本接口。 |
-| `NodeList`              | [节点列表对象](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#dom-nodelist-objects) | 节点序列的接口。             |
-| `DocumentType`          | [文档类型对象](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#dom-documenttype-objects) | 有关处理文档所需声明的信息。 |
-| `Document`              | [Document 对象](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#dom-document-objects) | 表示整个文档的对象。         |
-| `Element`               | [元素对象](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#dom-element-objects) | 文档层次结构中的元素节点。   |
-| `Attr`                  | [Attr 对象](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#dom-attr-objects) | 元素节点上的属性值节点。     |
-| `Comment`               | [注释对象](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#dom-comment-objects) | 源文档中注释的表示形式。     |
-| `Text`                  | [Text 和 CDATASection 对象](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#dom-text-objects) | 包含文档中文本内容的节点。   |
-| `ProcessingInstruction` | [ProcessingInstruction 对象](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#dom-pi-objects) | 处理指令表示形式。           |
+| `DOMImplementation`     | [DOMImplementation 对象]({{< ref "/library/markup/xml_dom#dom-implementation-objects" >}}) | 底层实现的接口。             |
+| `Node`                  | [节点对象]({{< ref "/library/markup/xml_dom#dom-node-objects" >}}) | 文档中大多数对象的基本接口。 |
+| `NodeList`              | [节点列表对象]({{< ref "/library/markup/xml_dom#dom-nodelist-objects" >}}) | 节点序列的接口。             |
+| `DocumentType`          | [文档类型对象]({{< ref "/library/markup/xml_dom#dom-documenttype-objects" >}}) | 有关处理文档所需声明的信息。 |
+| `Document`              | [Document 对象]({{< ref "/library/markup/xml_dom#dom-document-objects" >}}) | 表示整个文档的对象。         |
+| `Element`               | [元素对象]({{< ref "/library/markup/xml_dom#dom-element-objects" >}}) | 文档层次结构中的元素节点。   |
+| `Attr`                  | [Attr 对象]({{< ref "/library/markup/xml_dom#dom-attr-objects" >}}) | 元素节点上的属性值节点。     |
+| `Comment`               | [注释对象]({{< ref "/library/markup/xml_dom#dom-comment-objects" >}}) | 源文档中注释的表示形式。     |
+| `Text`                  | [Text 和 CDATASection 对象]({{< ref "/library/markup/xml_dom#dom-text-objects" >}}) | 包含文档中文本内容的节点。   |
+| `ProcessingInstruction` | [ProcessingInstruction 对象]({{< ref "/library/markup/xml_dom#dom-pi-objects" >}}) | 处理指令表示形式。           |
 
 ​	描述在 Python 中使用 DOM 定义的异常的小节。
 
@@ -115,7 +114,7 @@ draft = false
 
 ## DOMImplementation.**createDocument**(*namespaceUri*, *qualifiedName*, *doctype*)
 
-​	返回一个新的 `Document` 对象 (DOM 的根节点)，包含一个具有给定 *namespaceUri* 和 *qualifiedName* 的下级 `Element` 对象。 *doctype* 必须为由 [`createDocumentType()`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.DOMImplementation.createDocumentType) 创建的 `DocumentType` 对象，或者为 `None`。 在 Python DOM API 中，前两个参数也可为 `None` 以表示不要创建任何下级 `Element`。
+​	返回一个新的 `Document` 对象 (DOM 的根节点)，包含一个具有给定 *namespaceUri* 和 *qualifiedName* 的下级 `Element` 对象。 *doctype* 必须为由 [`createDocumentType()`]({{< ref "/library/markup/xml_dom#xml.dom.DOMImplementation.createDocumentType" >}}) 创建的 `DocumentType` 对象，或者为 `None`。 在 Python DOM API 中，前两个参数也可为 `None` 以表示不要创建任何下级 `Element`。
 
 ## DOMImplementation.**createDocumentType**(*qualifiedName*, *publicId*, *systemId*)
 
@@ -145,7 +144,7 @@ draft = false
 
 ## Node.**nextSibling**
 
-​	在此节点之后具有相同上级的相邻节点。 另请参见 [`previousSibling`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.Node.previousSibling)。 如果此节点是上级的最后一个子节点，则该属性将为 `None`。 这是一个只读属性。
+​	在此节点之后具有相同上级的相邻节点。 另请参见 [`previousSibling`]({{< ref "/library/markup/xml_dom#xml.dom.Node.previousSibling" >}})。 如果此节点是上级的最后一个子节点，则该属性将为 `None`。 这是一个只读属性。
 
 ## Node.**childNodes**
 
@@ -177,7 +176,7 @@ draft = false
 
 ## Node.**nodeValue**
 
-​	这对于每种节点类型具有不同的含义；请查看 DOM 规格说明来了解详情。 具体情况与 [`nodeName`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.Node.nodeName) 的类似。 该值是一个字符串或为 `None`。
+​	这对于每种节点类型具有不同的含义；请查看 DOM 规格说明来了解详情。 具体情况与 [`nodeName`]({{< ref "/library/markup/xml_dom#xml.dom.Node.nodeName" >}}) 的类似。 该值是一个字符串或为 `None`。
 
 ## Node.**hasAttributes**()
 
@@ -191,8 +190,7 @@ draft = false
 
 ​	如果 *other* 指向的节点就是此节点则返回 `True`。 这对于使用了任何代理架构的 DOM 实现来说特别有用（因为多个对象可能指向相同节点）。
 
-​	备注
-
+​备注
  
 
 ​	这是基于已提议的 DOM 第 3 等级 API，目前尚处于“起草”阶段，但这个特定接口看来并不存在争议。 来自 W3C 的修改将不会影响 Python DOM 接口中的这个方法（不过针对它的任何新 W3C API 也将受到支持）。
@@ -203,15 +201,15 @@ draft = false
 
 ## Node.**insertBefore**(*newChild*, *refChild*)
 
-​	在现有的子节点之前插入一个新的子节点。 它必须属于 *refChild* 是这个节点的子节点的情况；如果不是，则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。*newChild* 会被返回。 如果 *refChild* 为 `None`，它会将 *newChild* 插入到子节点列表的末尾。
+​	在现有的子节点之前插入一个新的子节点。 它必须属于 *refChild* 是这个节点的子节点的情况；如果不是，则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。*newChild* 会被返回。 如果 *refChild* 为 `None`，它会将 *newChild* 插入到子节点列表的末尾。
 
 ## Node.**removeChild**(*oldChild*)
 
-​	移除一个子节点。 *oldChild* 必须是这个节点的子节点；如果不是，则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。 成功时 *oldChild* 会被返回。 如果 *oldChild* 将不再被继续使用，则将调用它的 `unlink()` 方法。
+​	移除一个子节点。 *oldChild* 必须是这个节点的子节点；如果不是，则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。 成功时 *oldChild* 会被返回。 如果 *oldChild* 将不再被继续使用，则将调用它的 `unlink()` 方法。
 
 ## Node.**replaceChild**(*newChild*, *oldChild*)
 
-​	将一个现有节点替换为新的节点。 这必须属于 *oldChild* 是该节点的子节点的情况；如果不是，则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	将一个现有节点替换为新的节点。 这必须属于 *oldChild* 是该节点的子节点的情况；如果不是，则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 ## Node.**normalize**()
 
@@ -237,9 +235,9 @@ draft = false
 
 ​	序列中的节点数量。
 
-​	此外，Python DOM 接口还要求提供一些额外支持来允许将 `NodeList` 对象用作 Python 序列。 所有 `NodeList` 实现都必须包括对 [`__len__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__len__) 和 [`__getitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getitem__) 的支持；这样 `NodeList` 就允许使用 [`for`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#for) 语句进行迭代并能正确地支持 [`len()`](https://docs.python.org/zh-cn/3.13/library/functions.html#len) 内置函数。
+​	此外，Python DOM 接口还要求提供一些额外支持来允许将 `NodeList` 对象用作 Python 序列。 所有 `NodeList` 实现都必须包括对 [`__len__()`]({{< ref "/reference/datamodel#object.__len__" >}}) 和 [`__getitem__()`]({{< ref "/reference/datamodel#object.__getitem__" >}}) 的支持；这样 `NodeList` 就允许使用 [`for`]({{< ref "/reference/compound_stmts#for" >}}) 语句进行迭代并能正确地支持 [`len()`]({{< ref "/library/functions#len" >}}) 内置函数。
 
-​	如果一个 DOM 实现支持文档的修改，则 `NodeList` 实现还必须支持 [`__setitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__setitem__) 和 [`__delitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__delitem__) 方法。
+​	如果一个 DOM 实现支持文档的修改，则 `NodeList` 实现还必须支持 [`__setitem__()`]({{< ref "/reference/datamodel#object.__setitem__" >}}) 和 [`__delitem__()`]({{< ref "/reference/datamodel#object.__delitem__" >}}) 方法。
 
 
 
@@ -363,11 +361,11 @@ draft = false
 
 ## Element.**removeAttribute**(*name*)
 
-​	移除指定名称的节点。 如果没有匹配的属性，则会引发 [`NotFoundErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.NotFoundErr)。
+​	移除指定名称的节点。 如果没有匹配的属性，则会引发 [`NotFoundErr`]({{< ref "/library/markup/xml_dom#xml.dom.NotFoundErr" >}})。
 
 ## Element.**removeAttributeNode**(*oldAttr*)
 
-​	从属性列表中移除并返回 *oldAttr*，如果该属性存在的话。 如果 *oldAttr* 不存在，则会引发 [`NotFoundErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.NotFoundErr)。
+​	从属性列表中移除并返回 *oldAttr*，如果该属性存在的话。 如果 *oldAttr* 不存在，则会引发 [`NotFoundErr`]({{< ref "/library/markup/xml_dom#xml.dom.NotFoundErr" >}})。
 
 ## Element.**removeAttributeNS**(*namespaceURI*, *localName*)
 
@@ -379,11 +377,11 @@ draft = false
 
 ## Element.**setAttributeNode**(*newAttr*)
 
-​	将一个新的属性节点添加到元素，当匹配到 `name` 属性时如有必要会替换现有的属性。 如果发生了替换，将返回原有属性节点。 如果 *newAttr* 已经被使用，则会引发 [`InuseAttributeErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.InuseAttributeErr)。
+​	将一个新的属性节点添加到元素，当匹配到 `name` 属性时如有必要会替换现有的属性。 如果发生了替换，将返回原有属性节点。 如果 *newAttr* 已经被使用，则会引发 [`InuseAttributeErr`]({{< ref "/library/markup/xml_dom#xml.dom.InuseAttributeErr" >}})。
 
 ## Element.**setAttributeNodeNS**(*newAttr*)
 
-​	将一个新的属性节点添加到元素，当匹配到 `namespaceURI` 和 `localName` 属性时如有必要会替换现有的属性。 如果发生了替换，将返回原有属性节点。 如果 *newAttr* 已经被使用，则会引发 [`InuseAttributeErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.InuseAttributeErr)。
+​	将一个新的属性节点添加到元素，当匹配到 `namespaceURI` 和 `localName` 属性时如有必要会替换现有的属性。 如果发生了替换，将返回原有属性节点。 如果 *newAttr* 已经被使用，则会引发 [`InuseAttributeErr`]({{< ref "/library/markup/xml_dom#xml.dom.InuseAttributeErr" >}})。
 
 ## Element.**setAttributeNS**(*namespaceURI*, *qname*, *value*)
 
@@ -449,8 +447,7 @@ draft = false
 
 ​	字符串形式的文本节点内容。
 
-​	备注
-
+​备注
  
 
 `CDATASection` 节点的使用并不表示该节点代表一个完整的 CDATA 标记节，只是表示该节点的内容是 CDATA 节的一部分。 单个 CDATA 节可以由文档树中的多个节点来表示。 没有什么办法能确定两个相邻的 `CDATASection` 节点是否代表不同的 CDATA 标记节。
@@ -473,9 +470,9 @@ draft = false
 
 ### 异常
 
-​	DOM 第 2 层级推荐定义一个异常 [`DOMException`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.DOMException)，以及多个变量用来允许应用程序确定发生了何种错误。 [`DOMException`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.DOMException) 实例带有 [`code`](https://docs.python.org/zh-cn/3.13/library/code.html#module-code) 属性用来提供特定异常所对应的值。
+​	DOM 第 2 层级推荐定义一个异常 [`DOMException`]({{< ref "/library/markup/xml_dom#xml.dom.DOMException" >}})，以及多个变量用来允许应用程序确定发生了何种错误。 [`DOMException`]({{< ref "/library/markup/xml_dom#xml.dom.DOMException" >}}) 实例带有 [`code`]({{< ref "/library/custominterp/code#module-code" >}}) 属性用来提供特定异常所对应的值。
 
-​	Python DOM 接口提供了一些常量，但还扩展了异常集以使 DOM 所定义的每个异常代码都存在特定的异常。 接口的具体实现必须引发正确的特定异常，它们各自带有正确的 [`code`](https://docs.python.org/zh-cn/3.13/library/code.html#module-code) 属性值。
+​	Python DOM 接口提供了一些常量，但还扩展了异常集以使 DOM 所定义的每个异常代码都存在特定的异常。 接口的具体实现必须引发正确的特定异常，它们各自带有正确的 [`code`]({{< ref "/library/custominterp/code#module-code" >}}) 属性值。
 
 ## *exception* xml.dom.**DOMException**
 
@@ -545,21 +542,21 @@ draft = false
 
 | 常量                          | 异常                                                         |
 | :---------------------------- | :----------------------------------------------------------- |
-| `DOMSTRING_SIZE_ERR`          | [`DomstringSizeErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.DomstringSizeErr) |
-| `HIERARCHY_REQUEST_ERR`       | [`HierarchyRequestErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.HierarchyRequestErr) |
-| `INDEX_SIZE_ERR`              | [`IndexSizeErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.IndexSizeErr) |
-| `INUSE_ATTRIBUTE_ERR`         | [`InuseAttributeErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.InuseAttributeErr) |
-| `INVALID_ACCESS_ERR`          | [`InvalidAccessErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.InvalidAccessErr) |
-| `INVALID_CHARACTER_ERR`       | [`InvalidCharacterErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.InvalidCharacterErr) |
-| `INVALID_MODIFICATION_ERR`    | [`InvalidModificationErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.InvalidModificationErr) |
-| `INVALID_STATE_ERR`           | [`InvalidStateErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.InvalidStateErr) |
-| `NAMESPACE_ERR`               | [`NamespaceErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.NamespaceErr) |
-| `NOT_FOUND_ERR`               | [`NotFoundErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.NotFoundErr) |
-| `NOT_SUPPORTED_ERR`           | [`NotSupportedErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.NotSupportedErr) |
-| `NO_DATA_ALLOWED_ERR`         | [`NoDataAllowedErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.NoDataAllowedErr) |
-| `NO_MODIFICATION_ALLOWED_ERR` | [`NoModificationAllowedErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.NoModificationAllowedErr) |
-| `SYNTAX_ERR`                  | [`SyntaxErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.SyntaxErr) |
-| `WRONG_DOCUMENT_ERR`          | [`WrongDocumentErr`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#xml.dom.WrongDocumentErr) |
+| `DOMSTRING_SIZE_ERR`          | [`DomstringSizeErr`]({{< ref "/library/markup/xml_dom#xml.dom.DomstringSizeErr" >}}) |
+| `HIERARCHY_REQUEST_ERR`       | [`HierarchyRequestErr`]({{< ref "/library/markup/xml_dom#xml.dom.HierarchyRequestErr" >}}) |
+| `INDEX_SIZE_ERR`              | [`IndexSizeErr`]({{< ref "/library/markup/xml_dom#xml.dom.IndexSizeErr" >}}) |
+| `INUSE_ATTRIBUTE_ERR`         | [`InuseAttributeErr`]({{< ref "/library/markup/xml_dom#xml.dom.InuseAttributeErr" >}}) |
+| `INVALID_ACCESS_ERR`          | [`InvalidAccessErr`]({{< ref "/library/markup/xml_dom#xml.dom.InvalidAccessErr" >}}) |
+| `INVALID_CHARACTER_ERR`       | [`InvalidCharacterErr`]({{< ref "/library/markup/xml_dom#xml.dom.InvalidCharacterErr" >}}) |
+| `INVALID_MODIFICATION_ERR`    | [`InvalidModificationErr`]({{< ref "/library/markup/xml_dom#xml.dom.InvalidModificationErr" >}}) |
+| `INVALID_STATE_ERR`           | [`InvalidStateErr`]({{< ref "/library/markup/xml_dom#xml.dom.InvalidStateErr" >}}) |
+| `NAMESPACE_ERR`               | [`NamespaceErr`]({{< ref "/library/markup/xml_dom#xml.dom.NamespaceErr" >}}) |
+| `NOT_FOUND_ERR`               | [`NotFoundErr`]({{< ref "/library/markup/xml_dom#xml.dom.NotFoundErr" >}}) |
+| `NOT_SUPPORTED_ERR`           | [`NotSupportedErr`]({{< ref "/library/markup/xml_dom#xml.dom.NotSupportedErr" >}}) |
+| `NO_DATA_ALLOWED_ERR`         | [`NoDataAllowedErr`]({{< ref "/library/markup/xml_dom#xml.dom.NoDataAllowedErr" >}}) |
+| `NO_MODIFICATION_ALLOWED_ERR` | [`NoModificationAllowedErr`]({{< ref "/library/markup/xml_dom#xml.dom.NoModificationAllowedErr" >}}) |
+| `SYNTAX_ERR`                  | [`SyntaxErr`]({{< ref "/library/markup/xml_dom#xml.dom.SyntaxErr" >}}) |
+| `WRONG_DOCUMENT_ERR`          | [`WrongDocumentErr`]({{< ref "/library/markup/xml_dom#xml.dom.WrongDocumentErr" >}}) |
 
 
 
@@ -593,7 +590,7 @@ readonly attribute string someValue;
          attribute string anotherValue;
 ```
 
-​	会产生三个访问器函数: `someValue` 的 "get" 方法 (`_get_someValue()`)，以及 `anotherValue` 的 "get" 和 "set" 方法 (`_get_anotherValue()` 和 `_set_anotherValue()`)。 特别地，该映射不要求 IDL 属性像普通 Python 属性那样可访问: `object.someValue` *并非* 必须可用，并可能引发 [`AttributeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AttributeError)。
+​	会产生三个访问器函数: `someValue` 的 "get" 方法 (`_get_someValue()`)，以及 `anotherValue` 的 "get" 和 "set" 方法 (`_get_anotherValue()` 和 `_set_anotherValue()`)。 特别地，该映射不要求 IDL 属性像普通 Python 属性那样可访问: `object.someValue` *并非* 必须可用，并可能引发 [`AttributeError`]({{< ref "/library/exceptions#AttributeError" >}})。
 
 ​	但是，Python DOM API 则 *确实* 要求普通属性访问可用。 这意味着由 Python IDL 解译器生成的典型代理有可能会不可用，如果 DOM 对象是通过 CORBA 来访问则在客户端可能需要有包装对象。 虽然这确实要求为 CORBA DOM 客户端进行额外的考虑，但具有从 Python 通过 CORBA 使用 DOM 经验的实现并不会认为这是个问题。 已经声明了 `readonly` 的属性不必在所有 DOM 实现中限制写入访问。
 

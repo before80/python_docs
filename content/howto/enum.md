@@ -8,13 +8,13 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/enum.html](https://docs.python.org/zh-cn/3.13/howto/enum.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/enum.html](https://docs.python.org/zh-cn/3.13/howto/enum.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
 # Enum 指南
 
-[`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 是一组绑定到唯一值的符号名称。 它们类似于全局变量，但提供了更好用的 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr)、分组、类型安全和一些其他特性。
+[`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 是一组绑定到唯一值的符号名称。 它们类似于全局变量，但提供了更好用的 [`repr()`]({{< ref "/library/functions#repr" >}})、分组、类型安全和一些其他特性。
 
 ​	它们最适用于当某个变量可选的值有限时。例如，从一周中选取一天：
 
@@ -44,10 +44,9 @@ draft = false
 ...     BLUE = 3
 ```
 
-​	正如你所见，创建一个 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 就是简单地写一个继承 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 的类。
+​	正如你所见，创建一个 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 就是简单地写一个继承 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 的类。
 
-​	备注
-
+​备注
  
 
 ​	枚举成员名的大小写
@@ -101,7 +100,7 @@ TUESDAY
 3
 ```
 
-​	很多语言只把枚举当作名称/值对，而 Python 则可以添加行为。比如 [`datetime.date`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.date) 有两个方法用于返回工作日：`weekday()` 和 `isoweekday()`。两者的区别是，一个是以 0-6 计数，另一个则是 1-7 计数。不用自行去作记录，只要在 `Weekday` 枚举中可添加一个方法，即可由 `date` 实例提取日期，并返回匹配的枚举成员:
+​	很多语言只把枚举当作名称/值对，而 Python 则可以添加行为。比如 [`datetime.date`]({{< ref "/library/datatypes/datetime#datetime.date" >}}) 有两个方法用于返回工作日：`weekday()` 和 `isoweekday()`。两者的区别是，一个是以 0-6 计数，另一个则是 1-7 计数。不用自行去作记录，只要在 `Weekday` 枚举中可添加一个方法，即可由 `date` 实例提取日期，并返回匹配的枚举成员:
 
 ```
 @classmethod
@@ -140,7 +139,7 @@ def from_date(cls, date):
 
 ​	当然，如果换个日子读到这篇文章，应该看到当天是周几。
 
-​	如果变量只需要存一天，这个 `Weekday` 枚举是不错，但如果需要好几天呢？比如要写个函数来描绘一周内的家务，并且不想用 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list)，则可以使用不同类型的 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum):
+​	如果变量只需要存一天，这个 `Weekday` 枚举是不错，但如果需要好几天呢？比如要写个函数来描绘一周内的家务，并且不想用 [`list`]({{< ref "/library/stdtypes#list" >}})，则可以使用不同类型的 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}):
 
 
 
@@ -156,7 +155,7 @@ def from_date(cls, date):
 ...     SUNDAY = 64
 ```
 
-​	这里做了两处改动：继承了 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag)，而且值都是2的幂。
+​	这里做了两处改动：继承了 [`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}})，而且值都是2的幂。
 
 ​	就像最开始的 `Weekday` 枚举一样，可以只用一种类型:
 
@@ -168,7 +167,7 @@ def from_date(cls, date):
 <Weekday.MONDAY: 1>
 ```
 
-​	但 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 也允许将几个成员并入一个变量:
+​	但 [`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}}) 也允许将几个成员并入一个变量:
 
 
 
@@ -178,7 +177,7 @@ def from_date(cls, date):
 <Weekday.SATURDAY|SUNDAY: 96>
 ```
 
-​	甚至可以在一个 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 变量上进行迭代:
+​	甚至可以在一个 [`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}}) 变量上进行迭代:
 
 
 
@@ -215,7 +214,7 @@ Weekday.SUNDAY
 answer SO questions
 ```
 
-​	对于成员的实际取值无关紧要的情况，你可以省事地使用 [`auto()`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.auto) 来设置值:
+​	对于成员的实际取值无关紧要的情况，你可以省事地使用 [`auto()`]({{< ref "/library/datatypes/enum#enum.auto" >}}) 来设置值:
 
 
 
@@ -305,15 +304,14 @@ TypeError: 'SQUARE' already defined as 2
 <Shape.SQUARE: 2>
 ```
 
-​	备注
-
+​备注
  
 
 ​	不允许创建与已定义属性（其他成员、方法等）同名的成员，也不支持创建与现有成员同名的属性。
 
 ## 确保枚举值唯一
 
-​	默认情况下，枚举允许多个名称作为同一个值的别名。若不想如此，可以使用 [`unique()`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.unique) 装饰器:
+​	默认情况下，枚举允许多个名称作为同一个值的别名。若不想如此，可以使用 [`unique()`]({{< ref "/library/datatypes/enum#enum.unique" >}}) 装饰器:
 
 
 
@@ -333,7 +331,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 
 ## 使用自动设定的值
 
-​	如果具体的枚举值无所谓是什么，可以使用 [`auto`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.auto):
+​	如果具体的枚举值无所谓是什么，可以使用 [`auto`]({{< ref "/library/datatypes/enum#enum.auto" >}}):
 
 
 
@@ -368,8 +366,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 ['NORTH', 'SOUTH', 'EAST', 'WEST']
 ```
 
-​	备注
-
+​备注
  
 
 `_generate_next_value_()` 方法的定义必须在任何其他成员之前。
@@ -412,8 +409,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 ['ALIAS_FOR_SQUARE']
 ```
 
-​	备注
-
+​备注
  
 
 ​	旗标的别名包括带有多个旗标设置的值，如 `3`，以及不设置任何旗标，即 `0`。
@@ -433,7 +429,7 @@ False
 True
 ```
 
-​	枚举值之间无法进行有序的比较。枚举的成员不是整数（另请参阅下文 [IntEnum](https://docs.python.org/zh-cn/3.13/howto/enum.html#intenum)）:
+​	枚举值之间无法进行有序的比较。枚举的成员不是整数（另请参阅下文 [IntEnum]({{< ref "/howto/enum#intenum" >}})）:
 
 
 
@@ -457,7 +453,7 @@ True
 True
 ```
 
-​	与非枚举值的比较将总是不等的（同样 [`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 有意设计为其他的做法，参见下文）:
+​	与非枚举值的比较将总是不等的（同样 [`IntEnum`]({{< ref "/library/datatypes/enum#enum.IntEnum" >}}) 有意设计为其他的做法，参见下文）:
 
 
 
@@ -474,7 +470,7 @@ False
 
 ## 合法的枚举成员和属性
 
-​	以上大多数示例都用了整数作为枚举值。使用整数确实简短方便（并且是 [Functional API](https://docs.python.org/zh-cn/3.13/howto/enum.html#functional-api) 默认提供的值），但并非强制要求。绝大多数情况下，人们并不关心枚举的实际值是什么。但如果值确实重要，可以使用任何值。
+​	以上大多数示例都用了整数作为枚举值。使用整数确实简短方便（并且是 [Functional API]({{< ref "/howto/enum#functional-api" >}}) 默认提供的值），但并非强制要求。绝大多数情况下，人们并不关心枚举的实际值是什么。但如果值确实重要，可以使用任何值。
 
 ​	枚举是 Python 的类，可带有普通方法和特殊方法。假设有如下枚举:
 
@@ -514,17 +510,16 @@ False
 
 ​	合法的规则如下：以单下划线开头和结尾的名称是保留值，不能使用；在枚举中定义的其他所有属性都将成为该枚举的成员，但特殊方法（`__str__()` 、`__add__()` 等）、描述符（方法也是描述符）和在 `_ignore_` 中列出的变量名除外。
 
-​	注意：如果你的枚举定义了 `__new__()` 和/或 `__init__()`，则给予枚举成员的任何值都将被传递给这些方法。 请参阅示例 [Planet](https://docs.python.org/zh-cn/3.13/howto/enum.html#planet)。
+​	注意：如果你的枚举定义了 `__new__()` 和/或 `__init__()`，则给予枚举成员的任何值都将被传递给这些方法。 请参阅示例 [Planet]({{< ref "/howto/enum#planet" >}})。
 
-​	备注
-
+​备注
  
 
-​	如果定义了 `__new__()` 方法，则它会在创建 Enum 成员时被使用；然后它将被 Enum 的 `__new__()` 所替换，该方法会在类创建后被用于查找现有成员。 详情参见 [何时使用 __new__() 与 __init__()](https://docs.python.org/zh-cn/3.13/howto/enum.html#new-vs-init)。
+​	如果定义了 `__new__()` 方法，则它会在创建 Enum 成员时被使用；然后它将被 Enum 的 `__new__()` 所替换，该方法会在类创建后被用于查找现有成员。 详情参见 [何时使用 __new__() 与 __init__()]({{< ref "/howto/enum#new-vs-init" >}})。
 
 ## 受限的 Enum 子类化
 
-​	新建的 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 类必须包含：一个枚举基类、至多一种数据类型和按需提供的基于 [`object`](https://docs.python.org/zh-cn/3.13/library/functions.html#object) 的混合类。这些基类的顺序如下:
+​	新建的 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 类必须包含：一个枚举基类、至多一种数据类型和按需提供的基于 [`object`]({{< ref "/library/functions#object" >}}) 的混合类。这些基类的顺序如下:
 
 ```
 class EnumName([mix-in, ...,] [data-type,] base-enum):
@@ -559,13 +554,13 @@ TypeError: <enum 'MoreColor'> cannot extend <enum 'Color'>
 ...
 ```
 
-​	如果定义了成员的枚举也能被子类化，则类型与实例的某些重要不可变规则将会被破坏。另一方面，一组枚举类共享某些操作也是合理的。（请参阅例程 [OrderedEnum](https://docs.python.org/zh-cn/3.13/howto/enum.html#orderedenum) ）
+​	如果定义了成员的枚举也能被子类化，则类型与实例的某些重要不可变规则将会被破坏。另一方面，一组枚举类共享某些操作也是合理的。（请参阅例程 [OrderedEnum]({{< ref "/howto/enum#orderedenum" >}}) ）
 
 
 
 ## 数据类支持
 
-​	当从 [`dataclass`](https://docs.python.org/zh-cn/3.13/library/dataclasses.html#dataclasses.dataclass) 继承时，[`__repr__()`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum.__repr__) 将忽略被继承类的名称。 例如:
+​	当从 [`dataclass`]({{< ref "/library/python/dataclasses#dataclasses.dataclass" >}}) 继承时，[`__repr__()`]({{< ref "/library/datatypes/enum#enum.Enum.__repr__" >}}) 将忽略被继承类的名称。 例如:
 
 
 
@@ -585,15 +580,14 @@ TypeError: <enum 'MoreColor'> cannot extend <enum 'Color'>
 <Creature.DOG: size='medium', legs=4>
 ```
 
-​	使用 [`dataclass()`](https://docs.python.org/zh-cn/3.13/library/dataclasses.html#dataclasses.dataclass) 参数 `repr=False` 来使用标准的 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr)。
+​	使用 [`dataclass()`]({{< ref "/library/python/dataclasses#dataclasses.dataclass" >}}) 参数 `repr=False` 来使用标准的 [`repr()`]({{< ref "/library/functions#repr" >}})。
 
 *在 3.12 版本发生变更:* 只有数据类字段会被显示在值区域中，而不会显示数据类的名称。Only the dataclass fields are shown in the value area, not the dataclass' name.
 
-​	备注
-
+​备注
  
 
-​	向 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 及其子类添加 [`dataclass()`](https://docs.python.org/zh-cn/3.13/library/dataclasses.html#dataclasses.dataclass) 装饰器是不受支持的。 它不会引发任何错误，但会在运行时产生非常怪异的结果，例如不同的成员彼此相等:
+​	向 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 及其子类添加 [`dataclass()`]({{< ref "/library/python/dataclasses#dataclasses.dataclass" >}}) 装饰器是不受支持的。 它不会引发任何错误，但会在运行时产生非常怪异的结果，例如不同的成员彼此相等:
 
 
 
@@ -624,8 +618,7 @@ True
 
 ​	打包的常规限制同样适用于枚举类型：必须在模块的最高层级定义，因为解包操作要求可从该模块导入。
 
-​	备注
-
+​备注
  
 
 ​	用 pickle 协议版本 4 可以轻松地将嵌入其他类中的枚举进行打包。
@@ -640,15 +633,14 @@ True
 ...     __reduce_ex__ = enum.pickle_by_enum_name
 ```
 
-​	备注
-
+​备注
  
 
 ​	不建议为旗标使用基于名称的方式，因为未命名的别名将无法解封。
 
 ## 函数式 API
 
-[`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 类可调用并提供了以下函数式 API：
+[`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 类可调用并提供了以下函数式 API：
 
 
 
@@ -662,9 +654,9 @@ True
 [<Animal.ANT: 1>, <Animal.BEE: 2>, <Animal.CAT: 3>, <Animal.DOG: 4>]
 ```
 
-​	该 API 的语义类似于 [`namedtuple`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.namedtuple)。调用 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 的第一个参数是枚举的名称。
+​	该 API 的语义类似于 [`namedtuple`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.namedtuple)。调用 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 的第一个参数是枚举的名称。
 
-​	第二个参数是枚举成员名称的 *来源*。可以是个用空格分隔的名称字符串、名称序列、表示键/值对的二元组的序列，或者名称到值的映射（如字典）。 最后两种可以为枚举赋任意值；其他类型则会自动赋成由 1 开始递增的整数值（利用 `start` 形参可指定为其他起始值）。返回值是一个派生自 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 的新类。换句话说，上述对 `Animal` 的赋值等价于:
+​	第二个参数是枚举成员名称的 *来源*。可以是个用空格分隔的名称字符串、名称序列、表示键/值对的二元组的序列，或者名称到值的映射（如字典）。 最后两种可以为枚举赋任意值；其他类型则会自动赋成由 1 开始递增的整数值（利用 `start` 形参可指定为其他起始值）。返回值是一个派生自 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 的新类。换句话说，上述对 `Animal` 的赋值等价于:
 
 
 
@@ -693,7 +685,7 @@ True
 
 ​	如果未提供 `module`，且 Enum 无法确定是哪个模块，新的 Enum 成员将不可被解封；为了让错误尽量靠近源头，封存将被禁用。
 
-​	The new pickle protocol 4 also, in some circumstances, relies on [`__qualname__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#type.__qualname__) being set to the location where pickle will be able to find the class. For example, if the class was made available in class SomeData in the global scope:
+​	The new pickle protocol 4 also, in some circumstances, relies on [`__qualname__`]({{< ref "/reference/datamodel#type.__qualname__" >}}) being set to the location where pickle will be able to find the class. For example, if the class was made available in class SomeData in the global scope:
 
 
 
@@ -755,7 +747,7 @@ Enum(
 
 ### IntEnum
 
-​	所提供的第一个变种 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 同时也是 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 的一个子类。 [`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 的成员可与整数进行比较；通过扩展，不同类型的整数枚举也可以相互进行比较:
+​	所提供的第一个变种 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 同时也是 [`int`]({{< ref "/library/functions#int" >}}) 的一个子类。 [`IntEnum`]({{< ref "/library/datatypes/enum#enum.IntEnum" >}}) 的成员可与整数进行比较；通过扩展，不同类型的整数枚举也可以相互进行比较:
 
 
 
@@ -777,7 +769,7 @@ True
 True
 ```
 
-​	不过，它们仍然不可与标准 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 枚举进行比较:
+​	不过，它们仍然不可与标准 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 枚举进行比较:
 
 
 
@@ -794,7 +786,7 @@ True
 False
 ```
 
-[`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 值在其他方面的行为都如你预期的一样类似于整数:
+[`IntEnum`]({{< ref "/library/datatypes/enum#enum.IntEnum" >}}) 值在其他方面的行为都如你预期的一样类似于整数:
 
 
 
@@ -809,29 +801,28 @@ False
 
 ### StrEnum
 
-​	所提供的第二种 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 变体同时也是 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 的一个子类。 [`StrEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.StrEnum) 的成员可与字符串进行比较；通过扩展，不同类型的字符串枚举也可以相互进行比较。
+​	所提供的第二种 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 变体同时也是 [`str`]({{< ref "/library/stdtypes#str" >}}) 的一个子类。 [`StrEnum`]({{< ref "/library/datatypes/enum#enum.StrEnum" >}}) 的成员可与字符串进行比较；通过扩展，不同类型的字符串枚举也可以相互进行比较。
 
 > Added in version 3.11.
 >
 
 ### IntFlag
 
-​	所提供的下一种 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 变体 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 也是基于 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 的。 不同之处在于 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员可以用位运算符 (&, |, ^, ~) 进行组合并且如果可能的话其结果仍将是 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员。 与 [`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 类似，[`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员也是整数并且可以用于任何使用 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 的地方。
+​	所提供的下一种 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 变体 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 也是基于 [`int`]({{< ref "/library/functions#int" >}}) 的。 不同之处在于 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 成员可以用位运算符 (&, |, ^, ~) 进行组合并且如果可能的话其结果仍将是 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 成员。 与 [`IntEnum`]({{< ref "/library/datatypes/enum#enum.IntEnum" >}}) 类似，[`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 成员也是整数并且可以用于任何使用 [`int`]({{< ref "/library/functions#int" >}}) 的地方。
 
-​	备注
-
+​备注
  
 
-​	除位操作外，其他所有对 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员的操作，都会失去 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员资格。
+​	除位操作外，其他所有对 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 成员的操作，都会失去 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 成员资格。
 
-​	导致 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 值无效的位操作将失去 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员资格。详见 [`FlagBoundary`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.FlagBoundary)。
+​	导致 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 值无效的位操作将失去 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 成员资格。详见 [`FlagBoundary`]({{< ref "/library/datatypes/enum#enum.FlagBoundary" >}})。
 
 > Added in version 3.6.
 >
 
 *在 3.11 版本发生变更.*
 
-​	示例 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 类:
+​	示例 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 类:
 
 
 
@@ -870,15 +861,14 @@ True
 <Perm.RWX: 7>
 ```
 
-​	备注
-
+​备注
  
 
 ​	命名的枚举组合被视作别名。别名在迭代过程中不会显示，但可以通过值查询返回。
 
 *在 3.11 版本发生变更.*
 
-[`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 和 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 的另一个重要区别在于如果没有设置任何旗标（值为 0），则其布尔值为 [`False`](https://docs.python.org/zh-cn/3.13/library/constants.html#False):
+[`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 和 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 的另一个重要区别在于如果没有设置任何旗标（值为 0），则其布尔值为 [`False`]({{< ref "/library/constants#False" >}}):
 
 
 
@@ -889,7 +879,7 @@ True
 False
 ```
 
-​	因为 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员也是 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 的子类，他们可以相互组合（但可能会失去 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员资格:
+​	因为 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 成员也是 [`int`]({{< ref "/library/functions#int" >}}) 的子类，他们可以相互组合（但可能会失去 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 成员资格:
 
 
 
@@ -901,11 +891,10 @@ False
 9
 ```
 
-​	备注
-
+​备注
  
 
-​	否运算符 `~`，始终会返回一个 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员的正值:
+​	否运算符 `~`，始终会返回一个 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 成员的正值:
 
 
 
@@ -914,7 +903,7 @@ False
 True
 ```
 
-[`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员也可被迭代遍历:
+[`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 成员也可被迭代遍历:
 
 
 
@@ -928,12 +917,12 @@ True
 
 ### 标志
 
-​	最后一个变体是 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag)。与 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 类似，[`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 成员可用按位运算符 (&, |, ^, ~) 组合。与 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 不同的是，它们不可与其它 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 枚举或 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 进行组合或比较。 虽然可以直接指定值，但推荐使用 [`auto`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.auto) 作为值来让 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 选择适当的值。
+​	最后一个变体是 [`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}})。与 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 类似，[`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}}) 成员可用按位运算符 (&, |, ^, ~) 组合。与 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 不同的是，它们不可与其它 [`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}}) 枚举或 [`int`]({{< ref "/library/functions#int" >}}) 进行组合或比较。 虽然可以直接指定值，但推荐使用 [`auto`]({{< ref "/library/datatypes/enum#enum.auto" >}}) 作为值来让 [`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}}) 选择适当的值。
 
 > Added in version 3.6.
 >
 
-​	与 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 类似，如果 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 成员的某种组合导致没有设置任何旗标，则其布尔值为 [`False`](https://docs.python.org/zh-cn/3.13/library/constants.html#False):
+​	与 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 类似，如果 [`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}}) 成员的某种组合导致没有设置任何旗标，则其布尔值为 [`False`]({{< ref "/library/constants#False" >}}):
 
 
 
@@ -982,7 +971,7 @@ False
 False
 ```
 
-[`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 成员也可被迭代遍历:
+[`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}}) 成员也可被迭代遍历:
 
 
 
@@ -995,44 +984,42 @@ False
 > Added in version 3.11.
 >
 
-​	备注
-
+​备注
  
 
-​	对于大多数新代码，强烈推荐使用 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 和 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag)，因为 [`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 和 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 打破了枚举的某些语义约定（例如可以同整数进行比较，并因而导致此行为被传递给其他无关的枚举）。 [`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 和 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 的使用应当仅限于 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 和 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 无法使用的场合；例如，当使用枚举替代整数常量时，或是与其他系统进行交互操作时。
+​	对于大多数新代码，强烈推荐使用 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 和 [`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}})，因为 [`IntEnum`]({{< ref "/library/datatypes/enum#enum.IntEnum" >}}) 和 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 打破了枚举的某些语义约定（例如可以同整数进行比较，并因而导致此行为被传递给其他无关的枚举）。 [`IntEnum`]({{< ref "/library/datatypes/enum#enum.IntEnum" >}}) 和 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 的使用应当仅限于 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 和 [`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}}) 无法使用的场合；例如，当使用枚举替代整数常量时，或是与其他系统进行交互操作时。
 
 ### 其他事项
 
-​	虽然 [`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 是 [`enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#module-enum) 模块的一部分，但要独立实现也应该相当容易:
+​	虽然 [`IntEnum`]({{< ref "/library/datatypes/enum#enum.IntEnum" >}}) 是 [`enum`]({{< ref "/library/datatypes/enum#module-enum" >}}) 模块的一部分，但要独立实现也应该相当容易:
 
 ```
 class IntEnum(int, ReprEnum):   # or Enum instead of ReprEnum
     pass
 ```
 
-​	这里演示了如何定义类似的派生枚举；例如一个混入了 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) 而不是 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 的 `FloatEnum`。
+​	这里演示了如何定义类似的派生枚举；例如一个混入了 [`float`]({{< ref "/library/functions#float" >}}) 而不是 [`int`]({{< ref "/library/functions#int" >}}) 的 `FloatEnum`。
 
 ​	几条规则：
 
-1. 当子类化 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 时，混入类型必须出现在基类序列中的 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 类本身之前，如以上 [`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 的例子所示。
-2. 混入类型必须是可子类化的。 例如，[`bool`](https://docs.python.org/zh-cn/3.13/library/functions.html#bool) 和 [`range`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#range) 是不可子类化的因而如果被用作混入类型就将在枚举创建期间抛出错误。
-3. 虽然 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 可以拥有任意类型的成员，不过一旦你混合了附加类型，则所有成员必须为相应类型的值，如在上面的例子中即为 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int)。 此限制不适用于仅添加方法而未指定另一数据类型的混合类。
+1. 当子类化 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 时，混入类型必须出现在基类序列中的 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 类本身之前，如以上 [`IntEnum`]({{< ref "/library/datatypes/enum#enum.IntEnum" >}}) 的例子所示。
+2. 混入类型必须是可子类化的。 例如，[`bool`]({{< ref "/library/functions#bool" >}}) 和 [`range`]({{< ref "/library/stdtypes#range" >}}) 是不可子类化的因而如果被用作混入类型就将在枚举创建期间抛出错误。
+3. 虽然 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 可以拥有任意类型的成员，不过一旦你混合了附加类型，则所有成员必须为相应类型的值，如在上面的例子中即为 [`int`]({{< ref "/library/functions#int" >}})。 此限制不适用于仅添加方法而未指定另一数据类型的混合类。
 4. 当混合了另一数据类型时，`value` 属性会 *不同于* 枚举成员自身，但它们仍保持等价且比较结果也相等。
-5. `data type` 是定义了 `__new__()` 的混入对象，或者是一个 [`dataclass`](https://docs.python.org/zh-cn/3.13/library/dataclasses.html#dataclasses.dataclass)
-6. % 形式的格式化: `%s` 和 `%r` 会分别调用 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 类的 `__str__()` 和 `__repr__()`；其他代码 (如 `%i` 或 `%h` 用于 IntEnum) 会将枚举成员视为对应的混入类型。
-7. [格式化字符串字面值](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#f-strings), [`str.format()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.format) 和 [`format()`](https://docs.python.org/zh-cn/3.13/library/functions.html#format) 将使用枚举的 `__str__()` 方法。
+5. `data type` 是定义了 `__new__()` 的混入对象，或者是一个 [`dataclass`]({{< ref "/library/python/dataclasses#dataclasses.dataclass" >}})
+6. % 形式的格式化: `%s` 和 `%r` 会分别调用 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 类的 `__str__()` 和 `__repr__()`；其他代码 (如 `%i` 或 `%h` 用于 IntEnum) 会将枚举成员视为对应的混入类型。
+7. [格式化字符串字面值]({{< ref "/reference/lexical_analysis#f-strings" >}}), [`str.format()`]({{< ref "/library/stdtypes#str.format" >}}) 和 [`format()`]({{< ref "/library/functions#format" >}}) 将使用枚举的 `__str__()` 方法。
 
-​	备注
-
+​备注
  
 
-​	因为 [`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum), [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 和 [`StrEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.StrEnum) 被设计为现有常量的原样替代，它们的 `__str__()` 方法已被重围为其数据类型的 `__str__()` 方法。
+​	因为 [`IntEnum`]({{< ref "/library/datatypes/enum#enum.IntEnum" >}}), [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 和 [`StrEnum`]({{< ref "/library/datatypes/enum#enum.StrEnum" >}}) 被设计为现有常量的原样替代，它们的 `__str__()` 方法已被重围为其数据类型的 `__str__()` 方法。
 
 
 
 ## 何时使用 `__new__()` 与 `__init__()`
 
-​	当你想要定制 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 成员的实际值时必须使用 `__new__()`。 任何其他修改可以用 `__new__()` 也可以用 `__init__()`，应优先使用 `__init__()`。
+​	当你想要定制 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 成员的实际值时必须使用 `__new__()`。 任何其他修改可以用 `__new__()` 也可以用 `__init__()`，应优先使用 `__init__()`。
 
 ​	举例来说，如果你要向构造器传入多个条目，但只希望将其中一个作为值:
 
@@ -1078,27 +1065,26 @@ Coordinate.VY
 
 #### 支持的 `_sunder_` 名称
 
-- [`_name_`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum._name_) -- 成员的名称
+- [`_name_`]({{< ref "/library/datatypes/enum#enum.Enum._name_" >}}) -- 成员的名称
 
-- [`_value_`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum._value_) -- 成员的值；可在 `__new__` 中设置
+- [`_value_`]({{< ref "/library/datatypes/enum#enum.Enum._value_" >}}) -- 成员的值；可在 `__new__` 中设置
 
-- [`_missing_()`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum._missing_) -- 当未找到某个值时所使用的查找函数；可被重写
+- [`_missing_()`]({{< ref "/library/datatypes/enum#enum.Enum._missing_" >}}) -- 当未找到某个值时所使用的查找函数；可被重写
 
-- [`_ignore_`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum._ignore_) -- 一个名称列表，可以为 [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 或 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str)，它不会被转化为成员，并将从最终类中移除
+- [`_ignore_`]({{< ref "/library/datatypes/enum#enum.Enum._ignore_" >}}) -- 一个名称列表，可以为 [`list`]({{< ref "/library/stdtypes#list" >}}) 或 [`str`]({{< ref "/library/stdtypes#str" >}})，它不会被转化为成员，并将从最终类中移除
 
-- [`_generate_next_value_()`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum._generate_next_value_) -- 用于为枚举成员获取适当的值；可被重写
+- [`_generate_next_value_()`]({{< ref "/library/datatypes/enum#enum.Enum._generate_next_value_" >}}) -- 用于为枚举成员获取适当的值；可被重写
 
 - `_add_alias_()` -- 添加一个新名称作为现有成员的别名。
 
-- `_add_value_alias_()` -- 添加一个新值作为现有成员的别名。 参见 [MultiValueEnum](https://docs.python.org/zh-cn/3.13/howto/enum.html#multivalueenum) 中的例子。
+- `_add_value_alias_()` -- 添加一个新值作为现有成员的别名。 参见 [MultiValueEnum]({{< ref "/howto/enum#multivalueenum" >}}) 中的例子。
 
-  ​	备注
-
+  ​备注
    
 
-  ​	对于标准的 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 类来说下一个被选择的值将是已有的最高值加一。
+  ​	对于标准的 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 类来说下一个被选择的值将是已有的最高值加一。
 
-  ​	对于 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 类来说下一个选择的值将是下一个最高的二的幂数。
+  ​	对于 [`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}}) 类来说下一个选择的值将是下一个最高的二的幂数。
 
   *在 3.13 版本发生变更:* 在之前版本中将会使用最近的值而不是最高的值。
 
@@ -1129,15 +1115,14 @@ TypeError: member order does not match _order_:
   ['RED', 'GREEN', 'BLUE']
 ```
 
-​	备注
-
+​备注
  
 
 ​	在 Python 2 代码中 `_order_` 属性是必须的，因为定义顺序在被记录之前就会丢失。
 
 #### _Private__names
 
-[私有名称](https://docs.python.org/zh-cn/3.13/reference/expressions.html#private-name-mangling) 不会被转换为枚举成员，而是保持为普通属性。
+[私有名称]({{< ref "/reference/expressions#private-name-mangling" >}}) 不会被转换为枚举成员，而是保持为普通属性。
 
 *在 3.11 版本发生变更.*
 
@@ -1149,7 +1134,7 @@ TypeError: member order does not match _order_:
 
 #### 创建与其他数据类型混合的成员
 
-​	当使用 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 来子类化其他数据类型，如 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 或 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 时，所有在 `=` 之后的值都会被传递给该数据类型的构造器。 例如:
+​	当使用 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 来子类化其他数据类型，如 [`int`]({{< ref "/library/functions#int" >}}) 或 [`str`]({{< ref "/library/stdtypes#str" >}}) 时，所有在 `=` 之后的值都会被传递给该数据类型的构造器。 例如:
 
 
 
@@ -1163,18 +1148,18 @@ TypeError: member order does not match _order_:
 
 #### `Enum` 类和成员的布尔值
 
-​	与非 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 类型（如 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int)、[`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 等）混合的枚举类会根据混合类型的规则进行计算；否则，所有成员都计算为 [`True`](https://docs.python.org/zh-cn/3.13/library/constants.html#True)。为了使你自己的枚举的布尔值取决于成员的值，请在你的类中添加以下内容:
+​	与非 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 类型（如 [`int`]({{< ref "/library/functions#int" >}})、[`str`]({{< ref "/library/stdtypes#str" >}}) 等）混合的枚举类会根据混合类型的规则进行计算；否则，所有成员都计算为 [`True`]({{< ref "/library/constants#True" >}})。为了使你自己的枚举的布尔值取决于成员的值，请在你的类中添加以下内容:
 
 ```
 def __bool__(self):
     return bool(self.value)
 ```
 
-​	普通的 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 类总是计算为 [`True`](https://docs.python.org/zh-cn/3.13/library/constants.html#True)。
+​	普通的 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 类总是计算为 [`True`]({{< ref "/library/constants#True" >}})。
 
 #### 带有方法的 `Enum` 类
 
-​	如果你给你的枚举子类提供了额外的方法，如下面的 [Planet](https://docs.python.org/zh-cn/3.13/howto/enum.html#planet) 类那样，这些方法将显示在成员的，而不是类的 [`dir()`](https://docs.python.org/zh-cn/3.13/library/functions.html#dir) 中:
+​	如果你给你的枚举子类提供了额外的方法，如下面的 [Planet]({{< ref "/howto/enum#planet" >}}) 类那样，这些方法将显示在成员的，而不是类的 [`dir()`]({{< ref "/library/functions#dir" >}}) 中:
 
 
 
@@ -1187,7 +1172,7 @@ def __bool__(self):
 
 #### 组合 `Flag` 的成员
 
-​	遍历 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 成员的组合将只返回由一个比特组成的成员:
+​	遍历 [`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}}) 成员的组合将只返回由一个比特组成的成员:
 
 
 
@@ -1319,23 +1304,23 @@ def __bool__(self):
 
 ## 枚举和旗标有何差异？
 
-​	Enum有一个自定义的元类，它影响到派生的 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 类和它们的实例（成员）的许多方面。
+​	Enum有一个自定义的元类，它影响到派生的 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 类和它们的实例（成员）的许多方面。
 
 ### 枚举类
 
-[`EnumType`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.EnumType) 元类负责提供 `__contains__()`, `__dir__()`, `__iter__()` 和其他方法来允许人们在 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 类上做一些在普通类上会失败的事情，比如 `list(Color)` 或 `some_enum_var in Color` 等。 [`EnumType`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.EnumType) 负责确保最终的 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 类上的各种其他方法是正确的（比如 `__new__()`, `__getnewargs__()`, `__str__()` 和 `__repr__()` 等）。
+[`EnumType`]({{< ref "/library/datatypes/enum#enum.EnumType" >}}) 元类负责提供 `__contains__()`, `__dir__()`, `__iter__()` 和其他方法来允许人们在 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 类上做一些在普通类上会失败的事情，比如 `list(Color)` 或 `some_enum_var in Color` 等。 [`EnumType`]({{< ref "/library/datatypes/enum#enum.EnumType" >}}) 负责确保最终的 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 类上的各种其他方法是正确的（比如 `__new__()`, `__getnewargs__()`, `__str__()` 和 `__repr__()` 等）。
 
 ### 旗标类
 
-​	旗标具有扩展的别名视图：为了符合规范，旗标的值必须为二的乘方，且名称不可重复。 因此，除了别名的定义 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 之外，没有值 (即 `0`) 或是几个二的乘方值之和 (如 `3`) 的旗标也会被视为别名。
+​	旗标具有扩展的别名视图：为了符合规范，旗标的值必须为二的乘方，且名称不可重复。 因此，除了别名的定义 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 之外，没有值 (即 `0`) 或是几个二的乘方值之和 (如 `3`) 的旗标也会被视为别名。
 
 ### 枚举成员（即实例）
 
-[`EnumType`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.EnumType) 在创建枚举类本身的时候，创建了所有的枚举类，然后把一个自定义的 `__new__()` 放在那里，通过只返回现有的成员实例来确保没有新的成员被实例化。
+[`EnumType`]({{< ref "/library/datatypes/enum#enum.EnumType" >}}) 在创建枚举类本身的时候，创建了所有的枚举类，然后把一个自定义的 `__new__()` 放在那里，通过只返回现有的成员实例来确保没有新的成员被实例化。
 
 ### 旗标成员
 
-​	旗标成员可以如 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 类一样被迭代，并且只有规范的成员会被返回。 例如:
+​	旗标成员可以如 [`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}}) 类一样被迭代，并且只有规范的成员会被返回。 例如:
 
 
 
@@ -1368,22 +1353,22 @@ def __bool__(self):
 
 ## 枚举指导手册
 
-​	虽然 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum), [`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum), [`StrEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.StrEnum), [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 和 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 有望能涵盖大多数的使用情况，但它们不能涵盖所有情况。 这里有一些不同类型的枚举的方法，可以直接使用，或者作为创建定制枚举的范例。
+​	虽然 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}), [`IntEnum`]({{< ref "/library/datatypes/enum#enum.IntEnum" >}}), [`StrEnum`]({{< ref "/library/datatypes/enum#enum.StrEnum" >}}), [`Flag`]({{< ref "/library/datatypes/enum#enum.Flag" >}}) 和 [`IntFlag`]({{< ref "/library/datatypes/enum#enum.IntFlag" >}}) 有望能涵盖大多数的使用情况，但它们不能涵盖所有情况。 这里有一些不同类型的枚举的方法，可以直接使用，或者作为创建定制枚举的范例。
 
 ### 省略值
 
 ​	在许多应用场景中，人们并不关心枚举的实际值是什么。 有几种方式可用来定义这种类型的简单枚举:
 
-- 使用 [`auto`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.auto) 的实例作为值
-- 使用 [`object`](https://docs.python.org/zh-cn/3.13/library/functions.html#object) 的实例作为值
+- 使用 [`auto`]({{< ref "/library/datatypes/enum#enum.auto" >}}) 的实例作为值
+- 使用 [`object`]({{< ref "/library/functions#object" >}}) 的实例作为值
 - 使用描述性的字符串作为值
-- 使用元组作为值并用自定义的 `__new__()` 以一个 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 值来替代该元组
+- 使用元组作为值并用自定义的 `__new__()` 以一个 [`int`]({{< ref "/library/functions#int" >}}) 值来替代该元组
 
 ​	使用以上任何一种方法均可向用户指明值并不重要，并且使人能够添加、移除或重排序成员而不必改变其余成员的数值。
 
-#### 使用 [`auto`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.auto)
+#### 使用 [`auto`]({{< ref "/library/datatypes/enum#enum.auto" >}})
 
-​	使用 [`auto`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.auto) 的形式如下:
+​	使用 [`auto`]({{< ref "/library/datatypes/enum#enum.auto" >}}) 的形式如下:
 
 
 
@@ -1397,9 +1382,9 @@ def __bool__(self):
 <Color.GREEN: 3>
 ```
 
-#### 使用 [`object`](https://docs.python.org/zh-cn/3.13/library/functions.html#object)
+#### 使用 [`object`]({{< ref "/library/functions#object" >}})
 
-​	使用 [`object`](https://docs.python.org/zh-cn/3.13/library/functions.html#object) 的形式如下:
+​	使用 [`object`]({{< ref "/library/functions#object" >}}) 的形式如下:
 
 
 
@@ -1502,8 +1487,7 @@ def __bool__(self):
 'unknown'
 ```
 
-​	备注
-
+​备注
  
 
 ​	如果定义了 `__new__()` 则它会在创建 Enum 成员期间被使用；随后它将被 Enum 的 `__new__()` 所替换，该方法会在类创建后被用来查找现有成员。
@@ -1520,7 +1504,7 @@ obj = int.__new__(cls, value)
 
 ### OrderedEnum
 
-​	一个有序枚举，它不是基于 [`IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum)，因此保持了正常的 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 不变特性（例如不可与其他枚举进行比较）:
+​	一个有序枚举，它不是基于 [`IntEnum`]({{< ref "/library/datatypes/enum#enum.IntEnum" >}})，因此保持了正常的 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 不变特性（例如不可与其他枚举进行比较）:
 
 
 
@@ -1582,11 +1566,10 @@ Traceback (most recent call last):
 ValueError: aliases not allowed in DuplicateFreeEnum:  'GRENE' --> 'GREEN'
 ```
 
-​	备注
-
+​备注
  
 
-​	这个例子适用于子类化 Enum 来添加或改变禁用别名以及其他行为。 如果需要的改变只是禁用别名，也可以选择使用 [`unique()`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.unique) 装饰器。
+​	这个例子适用于子类化 Enum 来添加或改变禁用别名以及其他行为。 如果需要的改变只是禁用别名，也可以选择使用 [`unique()`]({{< ref "/library/datatypes/enum#enum.unique" >}}) 装饰器。
 
 ### MultiValueEnum
 
@@ -1671,4 +1654,4 @@ ValueError: aliases not allowed in DuplicateFreeEnum:  'GRENE' --> 'GREEN'
 
 ## 子类化 EnumType
 
-​	虽然大多数枚举需求可以通过自定义 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 子类来满足，无论是用类装饰器还是自定义函数，[`EnumType`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.EnumType) 可以被子类化以提供不同的枚举体验。
+​	虽然大多数枚举需求可以通过自定义 [`Enum`]({{< ref "/library/datatypes/enum#enum.Enum" >}}) 子类来满足，无论是用类装饰器还是自定义函数，[`EnumType`]({{< ref "/library/datatypes/enum#enum.EnumType" >}}) 可以被子类化以提供不同的枚举体验。

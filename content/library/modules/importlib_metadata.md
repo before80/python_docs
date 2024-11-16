@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html)
 >
 > 收录该文档的时间：`2024-11-15T21:19:20+08:00`
 
@@ -17,11 +17,11 @@ draft = false
 > Added in version 3.8.
 >
 
-*在 3.10 版本发生变更:* `importlib.metadata` 不再是暂定的。
+> 在 3.10 版本发生变更: `importlib.metadata` 不再是暂定的。
 
 **源代码:** [Lib/importlib/metadata/__init__.py](https://github.com/python/cpython/tree/3.13/Lib/importlib/metadata/__init__.py)
 
-`importlib.metadata` 是一个提供对已安装的 [分发包](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package) 的元数据的访问的库，如其入口点或其顶层名称 ([导入包](https://packaging.python.org/en/latest/glossary/#term-Import-Package), 模块等，如果存在的话）。 这个库部分构建于 Python 的导入系统之上，其目标是取代 `pkg_resources` 的中的 [entry point API](https://setuptools.readthedocs.io/en/latest/pkg_resources.html#entry-points) 和 [metadata API](https://setuptools.readthedocs.io/en/latest/pkg_resources.html#metadata-api)。 配合 [`importlib.resources`](https://docs.python.org/zh-cn/3.13/library/importlib.resources.html#module-importlib.resources) ，这个包使得较老旧且低效的 `pkg_resources` 包不再必要。
+`importlib.metadata` 是一个提供对已安装的 [分发包](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package) 的元数据的访问的库，如其入口点或其顶层名称 ([导入包](https://packaging.python.org/en/latest/glossary/#term-Import-Package), 模块等，如果存在的话）。 这个库部分构建于 Python 的导入系统之上，其目标是取代 `pkg_resources` 的中的 [entry point API](https://setuptools.readthedocs.io/en/latest/pkg_resources.html#entry-points) 和 [metadata API](https://setuptools.readthedocs.io/en/latest/pkg_resources.html#metadata-api)。 配合 [`importlib.resources`]({{< ref "/library/modules/importlib_resources#module-importlib.resources" >}}) ，这个包使得较老旧且低效的 `pkg_resources` 包不再必要。
 
 `importlib.metadata` 对 [pip](https://pypi.org/project/pip/) 等工具安装到 Python 的 `site-packages` 目录的第三方 *分发包* 进行操作。 具体来说，适用的分发包应带有可发现的 `dist-info` 或 `egg-info` 目录，以及 [核心元数据规范说明](https://packaging.python.org/en/latest/specifications/core-metadata/#core-metadata) 定义的元数据。
 
@@ -29,12 +29,11 @@ draft = false
 
  
 
-​	它们 *不一定* 等同或 1:1 对应于可在 Python 代码中导入的顶层 *导入包* 名称。一个 *分发包* 可以包含多个 *导入包* (和单个模块)，如果是命名空间包，一个顶层 *导入包* 可以映射到多个 *分发包*。您可以使用 [packages_distributions()](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#package-distributions) 来获取它们之间的映射。
+​	它们 *不一定* 等同或 1:1 对应于可在 Python 代码中导入的顶层 *导入包* 名称。一个 *分发包* 可以包含多个 *导入包* (和单个模块)，如果是命名空间包，一个顶层 *导入包* 可以映射到多个 *分发包*。您可以使用 [packages_distributions()]({{< ref "/library/modules/importlib_metadata#package-distributions" >}}) 来获取它们之间的映射。
 
-​	分发包元数据默认可存在于 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 下的文件系统或 zip 归档文件中。通过一个扩展机制，元数据可以存在于几乎任何地方。
+​	分发包元数据默认可存在于 [`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) 下的文件系统或 zip 归档文件中。通过一个扩展机制，元数据可以存在于几乎任何地方。
 
-​	参见
-
+​参见
 ## https://importlib-metadata.readthedocs.io/
 
 `importlib_metadata` 的文档，它向下移植了 `importlib.metadata`。它包含该模块的类和函数的 [API 参考](https://importlib-metadata.readthedocs.io/en/latest/api.html)，以及针对 `pkg_resources` 现有用户的 [迁移指南](https://importlib-metadata.readthedocs.io/en/latest/migration.html)。
@@ -60,9 +59,9 @@ $ source example/bin/activate
 '0.32.3'
 ```
 
-​	你还能得到可通过 EntryPoint 的属性 (通常为 'group' 或 'name') 来选择的入口点多项集，比如 `console_scripts`, `distutils.commands`。 每个 group 包含一个由 [EntryPoint](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#entry-points) 对象组成的多项集。
+​	你还能得到可通过 EntryPoint 的属性 (通常为 'group' 或 'name') 来选择的入口点多项集，比如 `console_scripts`, `distutils.commands`。 每个 group 包含一个由 [EntryPoint]({{< ref "/library/modules/importlib_metadata#entry-points" >}}) 对象组成的多项集。
 
-​	你可以获得 [分发的元数据](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#metadata)：
+​	你可以获得 [分发的元数据]({{< ref "/library/modules/importlib_metadata#metadata" >}})：
 
 
 
@@ -71,11 +70,11 @@ $ source example/bin/activate
 ['Metadata-Version', 'Name', 'Version', 'Summary', 'Home-page', 'Author', 'Author-email', 'Maintainer', 'Maintainer-email', 'License', 'Project-URL', 'Project-URL', 'Project-URL', 'Keywords', 'Platform', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Requires-Python', 'Provides-Extra', 'Requires-Dist', 'Requires-Dist']
 ```
 
-​	你也可以获得 [分发包的版本号](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#version)，列出它的 [构成文件](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#files)，并且得到分发包的 [分发包的依赖](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#requirements) 列表。
+​	你也可以获得 [分发包的版本号]({{< ref "/library/modules/importlib_metadata#version" >}})，列出它的 [构成文件]({{< ref "/library/modules/importlib_metadata#files" >}})，并且得到分发包的 [分发包的依赖]({{< ref "/library/modules/importlib_metadata#requirements" >}}) 列表。
 
 ## *exception* importlib.metadata.**PackageNotFoundError**
 
-​	Subclass of [`ModuleNotFoundError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ModuleNotFoundError) raised by several functions in this module when queried for a distribution package which is not installed in the current Python environment.
+​	Subclass of [`ModuleNotFoundError`]({{< ref "/library/exceptions#ModuleNotFoundError" >}}) raised by several functions in this module when queried for a distribution package which is not installed in the current Python environment.
 
 ## 函数式 API
 
@@ -87,7 +86,7 @@ $ source example/bin/activate
 
 ## importlib.metadata.**entry_points**(***select_params*)
 
-​	Returns a [`EntryPoints`](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#importlib.metadata.EntryPoints) instance describing entry points for the current environment. Any given keyword parameters are passed to the `select()` method for comparison to the attributes of the individual entry point definitions.
+​	Returns a [`EntryPoints`]({{< ref "/library/modules/importlib_metadata#importlib.metadata.EntryPoints" >}}) instance describing entry points for the current environment. Any given keyword parameters are passed to the `select()` method for comparison to the attributes of the individual entry point definitions.
 
 ​	Note: it is not currently possible to query for entry points based on their `EntryPoint.dist` attribute (as different `Distribution` instances do not currently compare equal, even if they have the same attributes)
 
@@ -175,9 +174,9 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 `group` 和 `name` 是由包作者定义的任意值并且通常来说客户端会想要解析特定 group 的所有入口点。 请参阅 [the setuptools docs](https://setuptools.pypa.io/en/latest/userguide/entry_point.html) 了解有关入口点，其定义和用法的更多信息。
 
-*在 3.12 版本发生变更:* "selectable" 入口点是在 `importlib_metadata` 3.6 和 Python 3.10 中引入的。 在这项改变之前，`entry_points` 不接受任何形参并且总是返回一个由入口点组成的字典，字典的键为分组名。 在 `importlib_metadata` 5.0 和 Python 3.12 中，`entry_points` 总是返回一个 `EntryPoints` 对象。 请参阅 [backports.entry_points_selectable](https://pypi.org/project/backports.entry_points_selectable/) 了解相关兼容性选项。
+> 在 3.12 版本发生变更: "selectable" 入口点是在 `importlib_metadata` 3.6 和 Python 3.10 中引入的。 在这项改变之前，`entry_points` 不接受任何形参并且总是返回一个由入口点组成的字典，字典的键为分组名。 在 `importlib_metadata` 5.0 和 Python 3.12 中，`entry_points` 总是返回一个 `EntryPoints` 对象。 请参阅 [backports.entry_points_selectable](https://pypi.org/project/backports.entry_points_selectable/) 了解相关兼容性选项。
 
-*在 3.13 版本发生变更:* `EntryPoint` 对象不再提供类似于元组的接口（[`__getitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__getitem__)）。
+> 在 3.13 版本发生变更: `EntryPoint` 对象不再提供类似于元组的接口（[`__getitem__()`]({{< ref "/reference/datamodel#object.__getitem__" >}})）。
 
 
 
@@ -185,9 +184,9 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 ## importlib.metadata.**metadata**(*distribution_name*)
 
-​	Return the distribution metadata corresponding to the named distribution package as a [`PackageMetadata`](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#importlib.metadata.PackageMetadata) instance.
+​	Return the distribution metadata corresponding to the named distribution package as a [`PackageMetadata`]({{< ref "/library/modules/importlib_metadata#importlib.metadata.PackageMetadata" >}}) instance.
 
-​	Raises [`PackageNotFoundError`](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#importlib.metadata.PackageNotFoundError) if the named distribution package is not installed in the current Python environment.
+​	Raises [`PackageNotFoundError`]({{< ref "/library/modules/importlib_metadata#importlib.metadata.PackageNotFoundError" >}}) if the named distribution package is not installed in the current Python environment.
 
 ## *class* importlib.metadata.**PackageMetadata**
 
@@ -212,7 +211,7 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 '>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*'
 ```
 
-[`PackageMetadata`](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#importlib.metadata.PackageMetadata) also presents a `json` attribute that returns all the metadata in a JSON-compatible form per [**PEP 566**](https://peps.python.org/pep-0566/):
+[`PackageMetadata`]({{< ref "/library/modules/importlib_metadata#importlib.metadata.PackageMetadata" >}}) also presents a `json` attribute that returns all the metadata in a JSON-compatible form per [**PEP 566**](https://peps.python.org/pep-0566/):
 
 
 
@@ -223,7 +222,7 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 ​	The full set of available metadata is not described here. See the PyPA [Core metadata specification](https://packaging.python.org/en/latest/specifications/core-metadata/#core-metadata) for additional details.
 
-*在 3.10 版本发生变更:* 当有效载荷中包含时，`Description` 以去除续行符的形式被包含于元数据中。
+> 在 3.10 版本发生变更: 当有效载荷中包含时，`Description` 以去除续行符的形式被包含于元数据中。
 
 ​	添加了 `json` 属性。
 
@@ -235,7 +234,7 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 ​	返回指定分发包的已安装分发包版本。
 
-​	Raises [`PackageNotFoundError`](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#importlib.metadata.PackageNotFoundError) if the named distribution package is not installed in the current Python environment.
+​	Raises [`PackageNotFoundError`]({{< ref "/library/modules/importlib_metadata#importlib.metadata.PackageNotFoundError" >}}) if the named distribution package is not installed in the current Python environment.
 
 `version()` 函数是获取字符串形式的 [分发包](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package) 版本号的最快速方式:
 
@@ -254,15 +253,15 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 ​	返回包含在指定分发包内的完整文件集合。
 
-​	Raises [`PackageNotFoundError`](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#importlib.metadata.PackageNotFoundError) if the named distribution package is not installed in the current Python environment.
+​	Raises [`PackageNotFoundError`]({{< ref "/library/modules/importlib_metadata#importlib.metadata.PackageNotFoundError" >}}) if the named distribution package is not installed in the current Python environment.
 
-​	如果找到了分发包但未找到报告与分发包相关联的文件的安装数据库记录则返回 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None)。
+​	如果找到了分发包但未找到报告与分发包相关联的文件的安装数据库记录则返回 [`None`]({{< ref "/library/constants#None" >}})。
 
 ## *class* importlib.metadata.**PackagePath**
 
-​	A [`pathlib.PurePath`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PurePath) derived object with additional `dist`, `size`, and `hash` properties corresponding to the distribution package's installation metadata for that file.
+​	A [`pathlib.PurePath`]({{< ref "/library/filesys/pathlib#pathlib.PurePath" >}}) derived object with additional `dist`, `size`, and `hash` properties corresponding to the distribution package's installation metadata for that file.
 
-​	The `files()` function takes a [Distribution Package](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package) name and returns all of the files installed by this distribution. Each file is reported as a [`PackagePath`](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#importlib.metadata.PackagePath) instance. For example:
+​	The `files()` function takes a [Distribution Package](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package) name and returns all of the files installed by this distribution. Each file is reported as a [`PackagePath`]({{< ref "/library/modules/importlib_metadata#importlib.metadata.PackagePath" >}}) instance. For example:
 
 
 
@@ -302,7 +301,7 @@ def as_bytes(s):
 PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 ```
 
-​	In the case where the metadata file listing files (`RECORD` or `SOURCES.txt`) is missing, `files()` will return [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None). The caller may wish to wrap calls to `files()` in [always_iterable](https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.always_iterable) or otherwise guard against this condition if the target distribution is not known to have the metadata present.
+​	In the case where the metadata file listing files (`RECORD` or `SOURCES.txt`) is missing, `files()` will return [`None`]({{< ref "/library/constants#None" >}}). The caller may wish to wrap calls to `files()` in [always_iterable](https://more-itertools.readthedocs.io/en/stable/api.html#more_itertools.always_iterable) or otherwise guard against this condition if the target distribution is not known to have the metadata present.
 
 
 
@@ -312,7 +311,7 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 ​	Return the declared dependency specifiers for the named distribution package.
 
-​	Raises [`PackageNotFoundError`](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#importlib.metadata.PackageNotFoundError) if the named distribution package is not installed in the current Python environment.
+​	Raises [`PackageNotFoundError`]({{< ref "/library/modules/importlib_metadata#importlib.metadata.PackageNotFoundError" >}}) if the named distribution package is not installed in the current Python environment.
 
 ​	To get the full set of requirements for a [Distribution Package](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package), use the `requires()` function:
 
@@ -329,7 +328,7 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 ## importlib.metadata.**packages_distributions**()
 
-​	Return a mapping from the top level module and import package names found via [`sys.meta_path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.meta_path) to the names of the distribution packages (if any) that provide the corresponding files.
+​	Return a mapping from the top level module and import package names found via [`sys.meta_path`]({{< ref "/library/python/sys#sys.meta_path" >}}) to the names of the distribution packages (if any) that provide the corresponding files.
 
 ​	To allow for namespace packages (which may have members provided by multiple distribution packages), each top level import name maps to a list of distribution names rather than mapping directly to a single name.
 
@@ -353,9 +352,9 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 ## importlib.metadata.**distribution**(*distribution_name*)
 
-​	Return a [`Distribution`](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#importlib.metadata.Distribution) instance describing the named distribution package.
+​	Return a [`Distribution`]({{< ref "/library/modules/importlib_metadata#importlib.metadata.Distribution" >}}) instance describing the named distribution package.
 
-​	Raises [`PackageNotFoundError`](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#importlib.metadata.PackageNotFoundError) if the named distribution package is not installed in the current Python environment.
+​	Raises [`PackageNotFoundError`]({{< ref "/library/modules/importlib_metadata#importlib.metadata.PackageNotFoundError" >}}) if the named distribution package is not installed in the current Python environment.
 
 ## *class* importlib.metadata.**Distribution**
 
@@ -363,7 +362,7 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 ​	Note: different `Distribution` instances do not currently compare equal, even if they relate to the same installed distribution and accordingly have the same attributes.
 
-​	While the module level API described above is the most common and convenient usage, you can get all of that information from the `Distribution` class. `Distribution` is an abstract object that represents the metadata for a Python [Distribution Package](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package). You can get the concreate `Distribution` subclass instance for an installed distribution package by calling the [`distribution()`](https://docs.python.org/zh-cn/3.13/library/importlib.metadata.html#importlib.metadata.distribution) function:
+​	While the module level API described above is the most common and convenient usage, you can get all of that information from the `Distribution` class. `Distribution` is an abstract object that represents the metadata for a Python [Distribution Package](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package). You can get the concreate `Distribution` subclass instance for an installed distribution package by calling the [`distribution()`]({{< ref "/library/modules/importlib_metadata#importlib.metadata.distribution" >}}) function:
 
 
 
@@ -412,16 +411,16 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 ​	在默认情况下，这个包针对文件系统和 zip 文件 [分发包](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package) 的元数据发现提供了内置支持。 这个元数据查找器的搜索目标默认为 `sys.path`，但它对来自其他导入机制行为方式的解读会略有变化。 特别地:
 
-- `importlib.metadata` 不会识别 `sys.path` 上的 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 对象。
-- `importlib.metadata` 将顺带识别 `sys.path` 上的 [`pathlib.Path`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.Path) 对象，即使这些值会被导入操作所忽略。
+- `importlib.metadata` 不会识别 `sys.path` 上的 [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 对象。
+- `importlib.metadata` 将顺带识别 `sys.path` 上的 [`pathlib.Path`]({{< ref "/library/filesys/pathlib#pathlib.Path" >}}) 对象，即使这些值会被导入操作所忽略。
 
 ## 扩展搜索算法
 
-​	因为 [分发包](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package) 元数据不能通过 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 搜索，或是通过包加载器直接获得，一个分发包的元数据是通过导入系统的 [查找器](https://docs.python.org/zh-cn/3.13/reference/import.html#finders-and-loaders) 找到的。 要找到分发包的元数据，`importlib.metadata` 将在 [`sys.meta_path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.meta_path) 上查询 [元路径查找器](https://docs.python.org/zh-cn/3.13/glossary.html#term-meta-path-finder) 的列表。
+​	因为 [分发包](https://packaging.python.org/en/latest/glossary/#term-Distribution-Package) 元数据不能通过 [`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) 搜索，或是通过包加载器直接获得，一个分发包的元数据是通过导入系统的 [查找器]({{< ref "/reference/import#finders-and-loaders" >}}) 找到的。 要找到分发包的元数据，`importlib.metadata` 将在 [`sys.meta_path`]({{< ref "/library/python/sys#sys.meta_path" >}}) 上查询 [元路径查找器]({{< ref "/glossary/idx#term-meta-path-finder" >}}) 的列表。
 
 ​	在默认情况下 `importlib.metadata` 会安装在文件系统中找到的分发包的查找器。 这个查找器无法真正找出任何 *分发包*，但它能找到它们的元数据。
 
-​	抽象基类 [`importlib.abc.MetaPathFinder`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.MetaPathFinder) 定义了 Python 导入系统期望的查找器接口。 `importlib.metadata` 通过寻找 [`sys.meta_path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.meta_path) 上查找器可选的 `find_distributions` 可调用的属性扩展这个协议，并将这个扩展接口作为 `DistributionFinder` 抽象基类提供，它定义了这个抽象方法：
+​	抽象基类 [`importlib.abc.MetaPathFinder`]({{< ref "/library/modules/importlib#importlib.abc.MetaPathFinder" >}}) 定义了 Python 导入系统期望的查找器接口。 `importlib.metadata` 通过寻找 [`sys.meta_path`]({{< ref "/library/python/sys#sys.meta_path" >}}) 上查找器可选的 `find_distributions` 可调用的属性扩展这个协议，并将这个扩展接口作为 `DistributionFinder` 抽象基类提供，它定义了这个抽象方法：
 
 ```
 @abc.abstractmethod

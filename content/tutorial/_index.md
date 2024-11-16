@@ -27,4 +27,4 @@ draft = false
 
 ​	本教程对每一个功能的介绍并不完整，甚至没有涉及全部常用功能，只是介绍了 Python 中最值得学习的功能，旨在让读者快速感受一下 Python 的特色。学完本教程的读者可以阅读和编写 Python 模块和程序，也可以继续学习 [Python 标准库]({{< ref "/library#library-index" >}})。
 
-​	强烈推荐阅读 [术语对照表](https://docs.python.org/zh-cn/3.13/glossary.html#glossary)。
+​	强烈推荐阅读 [术语对照表]({{< ref "/glossary/idx#glossary" >}})。

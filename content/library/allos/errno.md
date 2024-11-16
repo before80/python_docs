@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/errno.html](https://docs.python.org/zh-cn/3.13/library/errno.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/errno.html](https://docs.python.org/zh-cn/3.13/library/errno.html)
 >
 > 收录该文档的时间：`2024-11-15T12:09:25+08:00`
 
@@ -22,25 +22,25 @@ draft = false
 
 ​	提供从 errno 值到底层系统中字符串名称的映射的字典。例如， `errno.errorcode[errno.EPERM]` 映射为 `'EPERM'` 。
 
-​	如果要将数字的错误代码转换为错误信息，请使用 [`os.strerror()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.strerror)。
+​	如果要将数字的错误代码转换为错误信息，请使用 [`os.strerror()`]({{< ref "/library/allos/os#os.strerror" >}})。
 
 ​	在下面的列表中，当前平台上没有使用的符号没有被本模块定义。 已定义的符号的具体列表可参见 `errno.errorcode.keys()`。 可用的符号包括：
 
 ## errno.**EPERM**
 
-​	操作不允许。这个错误被映射到异常 [`PermissionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#PermissionError) 。
+​	操作不允许。这个错误被映射到异常 [`PermissionError`]({{< ref "/library/exceptions#PermissionError" >}}) 。
 
 ## errno.**ENOENT**
 
-​	没有这样的文件或目录。这个错误被映射到异常 [`FileNotFoundError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#FileNotFoundError) 。
+​	没有这样的文件或目录。这个错误被映射到异常 [`FileNotFoundError`]({{< ref "/library/exceptions#FileNotFoundError" >}}) 。
 
 ## errno.**ESRCH**
 
-​	没有这样的进程。这个错误被映射到异常 [`ProcessLookupError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ProcessLookupError) 。
+​	没有这样的进程。这个错误被映射到异常 [`ProcessLookupError`]({{< ref "/library/exceptions#ProcessLookupError" >}}) 。
 
 ## errno.**EINTR**
 
-​	系统调用中断。这个错误被映射到异常 [`InterruptedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#InterruptedError) 。
+​	系统调用中断。这个错误被映射到异常 [`InterruptedError`]({{< ref "/library/exceptions#InterruptedError" >}}) 。
 
 ## errno.**EIO**
 
@@ -64,11 +64,11 @@ draft = false
 
 ## errno.**ECHILD**
 
-​	没有子进程。这个错误被映射到异常 [`ChildProcessError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ChildProcessError) 。
+​	没有子进程。这个错误被映射到异常 [`ChildProcessError`]({{< ref "/library/exceptions#ChildProcessError" >}}) 。
 
 ## errno.**EAGAIN**
 
-​	再试一次。这个错误被映射到异常 [`BlockingIOError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BlockingIOError) 。
+​	再试一次。这个错误被映射到异常 [`BlockingIOError`]({{< ref "/library/exceptions#BlockingIOError" >}}) 。
 
 ## errno.**ENOMEM**
 
@@ -76,7 +76,7 @@ draft = false
 
 ## errno.**EACCES**
 
-​	权限被拒绝。 这个错误被映射到异常 [`PermissionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#PermissionError) 。
+​	权限被拒绝。 这个错误被映射到异常 [`PermissionError`]({{< ref "/library/exceptions#PermissionError" >}}) 。
 
 ## errno.**EFAULT**
 
@@ -92,7 +92,7 @@ draft = false
 
 ## errno.**EEXIST**
 
-​	文件存在。这个错误被映射到异常 [`FileExistsError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#FileExistsError) 。
+​	文件存在。这个错误被映射到异常 [`FileExistsError`]({{< ref "/library/exceptions#FileExistsError" >}}) 。
 
 ## errno.**EXDEV**
 
@@ -104,11 +104,11 @@ draft = false
 
 ## errno.**ENOTDIR**
 
-​	不是一个目录。这个错误被映射到异常 [`NotADirectoryError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#NotADirectoryError) 。
+​	不是一个目录。这个错误被映射到异常 [`NotADirectoryError`]({{< ref "/library/exceptions#NotADirectoryError" >}}) 。
 
 ## errno.**EISDIR**
 
-​	是一个目录。这个错误被映射到异常 [`IsADirectoryError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#IsADirectoryError) 。
+​	是一个目录。这个错误被映射到异常 [`IsADirectoryError`]({{< ref "/library/exceptions#IsADirectoryError" >}}) 。
 
 ## errno.**EINVAL**
 
@@ -152,7 +152,7 @@ draft = false
 
 ## errno.**EPIPE**
 
-​	管道中断。这个错误被映射到异常 [`BrokenPipeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BrokenPipeError) 。
+​	管道中断。这个错误被映射到异常 [`BrokenPipeError`]({{< ref "/library/exceptions#BrokenPipeError" >}}) 。
 
 ## errno.**EDOM**
 
@@ -188,7 +188,7 @@ draft = false
 
 ## errno.**EWOULDBLOCK**
 
-​	操作会阻塞。这个错误被映射到异常 [`BlockingIOError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BlockingIOError) 。
+​	操作会阻塞。这个错误被映射到异常 [`BlockingIOError`]({{< ref "/library/exceptions#BlockingIOError" >}}) 。
 
 ## errno.**ENOMSG**
 
@@ -443,11 +443,11 @@ draft = false
 
 ## errno.**ECONNABORTED**
 
-​	软件导致连接中止。这个错误被映射到异常 [`ConnectionAbortedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ConnectionAbortedError) 。
+​	软件导致连接中止。这个错误被映射到异常 [`ConnectionAbortedError`]({{< ref "/library/exceptions#ConnectionAbortedError" >}}) 。
 
 ## errno.**ECONNRESET**
 
-​	连接被对方重置。这个错误被映射到异常 [`ConnectionResetError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ConnectionResetError) 。
+​	连接被对方重置。这个错误被映射到异常 [`ConnectionResetError`]({{< ref "/library/exceptions#ConnectionResetError" >}}) 。
 
 ## errno.**ENOBUFS**
 
@@ -463,7 +463,7 @@ draft = false
 
 ## errno.**ESHUTDOWN**
 
-​	在传输端点关闭后无法发送。这个错误被映射到异常 [`BrokenPipeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BrokenPipeError) 。
+​	在传输端点关闭后无法发送。这个错误被映射到异常 [`BrokenPipeError`]({{< ref "/library/exceptions#BrokenPipeError" >}}) 。
 
 ## errno.**ETOOMANYREFS**
 
@@ -471,11 +471,11 @@ draft = false
 
 ## errno.**ETIMEDOUT**
 
-​	连接超时。这个错误被映射到异常 [`TimeoutError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TimeoutError) 。
+​	连接超时。这个错误被映射到异常 [`TimeoutError`]({{< ref "/library/exceptions#TimeoutError" >}}) 。
 
 ## errno.**ECONNREFUSED**
 
-​	连接被拒绝。这个错误被映射到异常 [`ConnectionRefusedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ConnectionRefusedError) 。
+​	连接被拒绝。这个错误被映射到异常 [`ConnectionRefusedError`]({{< ref "/library/exceptions#ConnectionRefusedError" >}}) 。
 
 ## errno.**EHOSTDOWN**
 
@@ -487,11 +487,11 @@ draft = false
 
 ## errno.**EALREADY**
 
-​	操作已经在进行中。这个错误被映射到异常 [`BlockingIOError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BlockingIOError) 。
+​	操作已经在进行中。这个错误被映射到异常 [`BlockingIOError`]({{< ref "/library/exceptions#BlockingIOError" >}}) 。
 
 ## errno.**EINPROGRESS**
 
-​	操作现在正在进行中。这个错误被映射到异常 [`BlockingIOError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BlockingIOError) 。
+​	操作现在正在进行中。这个错误被映射到异常 [`BlockingIOError`]({{< ref "/library/exceptions#BlockingIOError" >}}) 。
 
 ## errno.**ESTALE**
 
@@ -530,9 +530,9 @@ draft = false
 
 ## errno.**ENOTCAPABLE**
 
-​	功能不足。 此错误被映射到异常 [`PermissionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#PermissionError)。
+​	功能不足。 此错误被映射到异常 [`PermissionError`]({{< ref "/library/exceptions#PermissionError" >}})。
 
-[Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): WASI, FreeBSD
+[Availability]({{< ref "/library/intro#availability" >}}): WASI, FreeBSD
 
 > Added in version 3.11.1.
 >

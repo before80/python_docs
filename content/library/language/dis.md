@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/dis.html](https://docs.python.org/zh-cn/3.13/library/dis.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/dis.html](https://docs.python.org/zh-cn/3.13/library/dis.html)
 >
 > 收录该文档的时间：`2024-11-15T21:23:55+08:00`
 
@@ -18,21 +18,21 @@ draft = false
 
 ------
 
-[`dis`](https://docs.python.org/zh-cn/3.13/library/dis.html#module-dis) 模块通过反汇编支持CPython的 [bytecode](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytecode) 分析。该模块作为输入的 CPython 字节码在文件 `Include/opcode.h` 中定义，并由编译器和解释器使用。
+[`dis`]({{< ref "/library/language/dis#module-dis" >}}) 模块通过反汇编支持CPython的 [bytecode]({{< ref "/glossary/idx#term-bytecode" >}}) 分析。该模块作为输入的 CPython 字节码在文件 `Include/opcode.h` 中定义，并由编译器和解释器使用。
 
 **CPython 实现细节：** 字节码是 CPython 解释器的实现细节。不保证不会在Python版本之间添加、删除或更改字节码。不应考虑将此模块的跨 Python VM 或 Python 版本的使用。
 
-*在 3.6 版本发生变更:* 每条指令使用2个字节。以前字节数因指令而异。
+> 在 3.6 版本发生变更: 每条指令使用2个字节。以前字节数因指令而异。
 
-*在 3.10 版本发生变更:* 跳转、异常处理和循环指令的参数现在将为指令偏移量而不是字节偏移量。
+> 在 3.10 版本发生变更: 跳转、异常处理和循环指令的参数现在将为指令偏移量而不是字节偏移量。
 
-*在 3.11 版本发生变更:* 有些指令带有一个或多个内联缓存条目，它们是采用 [`CACHE`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-CACHE) 指令的形式。 这些指令默认是隐藏的，但可以通过将 `show_caches=True` 传给任何 [`dis`](https://docs.python.org/zh-cn/3.13/library/dis.html#module-dis) 工具对象来显示。 此外，解释器现在会适配字节码以使其能针对不同的运行时条件实现专门化。 适配的字节码可通过传入 `adaptive=True` 来显示。
+> 在 3.11 版本发生变更: 有些指令带有一个或多个内联缓存条目，它们是采用 [`CACHE`]({{< ref "/library/language/dis#opcode-CACHE" >}}) 指令的形式。 这些指令默认是隐藏的，但可以通过将 `show_caches=True` 传给任何 [`dis`]({{< ref "/library/language/dis#module-dis" >}}) 工具对象来显示。 此外，解释器现在会适配字节码以使其能针对不同的运行时条件实现专门化。 适配的字节码可通过传入 `adaptive=True` 来显示。
 
-*在 3.12 版本发生变更:* 跳转的参数是目标指令相对于紧接在跳转指令的 [`CACHE`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-CACHE) 条目之后的指令的偏移量。
+> 在 3.12 版本发生变更: 跳转的参数是目标指令相对于紧接在跳转指令的 [`CACHE`]({{< ref "/library/language/dis#opcode-CACHE" >}}) 条目之后的指令的偏移量。
 
-​	因此，[`CACHE`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-CACHE) 指令的存在对前向跳转是透明的但在处理后向跳转时则需要将其纳入考虑。
+​	因此，[`CACHE`]({{< ref "/library/language/dis#opcode-CACHE" >}}) 指令的存在对前向跳转是透明的但在处理后向跳转时则需要将其纳入考虑。
 
-*在 3.13 版本发生变更:* 对于跳转目标和异常处理器输出将显示逻辑标签而不是指令偏移量。 增加了 `-O` 命令行选项和 `show_offsets` 参数。
+> 在 3.13 版本发生变更: 对于跳转目标和异常处理器输出将显示逻辑标签而不是指令偏移量。 增加了 `-O` 命令行选项和 `show_offsets` 参数。
 
 ​	示例：给定函数 `myfunc()`:
 
@@ -61,7 +61,7 @@ def myfunc(alist):
 
 ## 命令行接口
 
-[`dis`](https://docs.python.org/zh-cn/3.13/library/dis.html#module-dis) 模块可以在命令行下作为一个脚本来发起调用：
+[`dis`]({{< ref "/library/language/dis#module-dis" >}}) 模块可以在命令行下作为一个脚本来发起调用：
 
 ```
 python -m dis [-h] [-C] [-O] [infile]
@@ -69,15 +69,15 @@ python -m dis [-h] [-C] [-O] [infile]
 
 ​	可以接受以下选项：
 
-## **-h**, **--help**
+## **-h**, `--help`
 
 ​	显示用法并退出。
 
-## **-C**, **--show-caches**
+## **-C**, `--show-caches`
 
 ​	显示内联缓存。
 
-## **-O**, **--show-offsets**
+## **-O**, `--show-offsets`
 
 ​	显示指令偏移量。
 
@@ -88,27 +88,27 @@ python -m dis [-h] [-C] [-O] [infile]
 > Added in version 3.4.
 >
 
-​	字节码分析 API 允许将 Python 代码片段包装在 [`Bytecode`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Bytecode) 对象中，以便轻松访问已编译代码的详细信息。
+​	字节码分析 API 允许将 Python 代码片段包装在 [`Bytecode`]({{< ref "/library/language/dis#dis.Bytecode" >}}) 对象中，以便轻松访问已编译代码的详细信息。
 
 ## *class* dis.**Bytecode**(*x*, ***, *first_line=None*, *current_offset=None*, *show_caches=False*, *adaptive=False*, *show_offsets=False*)
 
-​	分析的字节码对应于函数、生成器、异步生成器、协程、方法、源代码字符串或代码对象（由 [`compile()`](https://docs.python.org/zh-cn/3.13/library/functions.html#compile) 返回）。
+​	分析的字节码对应于函数、生成器、异步生成器、协程、方法、源代码字符串或代码对象（由 [`compile()`]({{< ref "/library/functions#compile" >}}) 返回）。
 
-​	这是下面列出的许多函数的便利包装，最值得注意的是 [`get_instructions()`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.get_instructions) ，迭代于 [`Bytecode`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Bytecode) 的实例产生字节码操作 [`Instruction`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Instruction) 的实例。
+​	这是下面列出的许多函数的便利包装，最值得注意的是 [`get_instructions()`]({{< ref "/library/language/dis#dis.get_instructions" >}}) ，迭代于 [`Bytecode`]({{< ref "/library/language/dis#dis.Bytecode" >}}) 的实例产生字节码操作 [`Instruction`]({{< ref "/library/language/dis#dis.Instruction" >}}) 的实例。
 
 ​	如果 *first_line* 不是 `None` ，则表示应该为反汇编代码中的第一个源代码行报告的行号。否则，源行信息（如果有的话）直接来自反汇编的代码对象。
 
-​	如果 *current_offset* 不是 `None` ，它指的就是汇编代码中的指令偏移量。设置它意味着 [`dis()`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Bytecode.dis) 将针对指定的操作码显示“当前指令”标记。
+​	如果 *current_offset* 不是 `None` ，它指的就是汇编代码中的指令偏移量。设置它意味着 [`dis()`]({{< ref "/library/language/dis#dis.Bytecode.dis" >}}) 将针对指定的操作码显示“当前指令”标记。
 
-​	如果 *show_caches* 为 `True`，[`dis()`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Bytecode.dis) 将显示解释器用来专门化字节码的内联缓存条目。
+​	如果 *show_caches* 为 `True`，[`dis()`]({{< ref "/library/language/dis#dis.Bytecode.dis" >}}) 将显示解释器用来专门化字节码的内联缓存条目。
 
-​	如果 *adaptive* 为 `True`，[`dis()`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Bytecode.dis) 将显示可能不同于原始字节码的专门化字节码。
+​	如果 *adaptive* 为 `True`，[`dis()`]({{< ref "/library/language/dis#dis.Bytecode.dis" >}}) 将显示可能不同于原始字节码的专门化字节码。
 
-​	若 *show_offsets* 是 `True`，[`dis()`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Bytecode.dis) 的输出将会显示指令偏移量。
+​	若 *show_offsets* 是 `True`，[`dis()`]({{< ref "/library/language/dis#dis.Bytecode.dis" >}}) 的输出将会显示指令偏移量。
 
 ## *classmethod* **from_traceback**(*tb*, ***, *show_caches=False*)
 
-​	从给定回溯构造一个 [`Bytecode`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Bytecode) 实例，将设置 *current_offset* 为异常负责的指令。
+​	从给定回溯构造一个 [`Bytecode`]({{< ref "/library/language/dis#dis.Bytecode" >}}) 实例，将设置 *current_offset* 为异常负责的指令。
 
 ## **codeobj**
 
@@ -120,15 +120,15 @@ python -m dis [-h] [-C] [-O] [infile]
 
 ## **dis**()
 
-​	返回字节码操作的格式化视图（与 [`dis.dis()`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.dis) 打印相同，但作为多行字符串返回）。
+​	返回字节码操作的格式化视图（与 [`dis.dis()`]({{< ref "/library/language/dis#dis.dis" >}}) 打印相同，但作为多行字符串返回）。
 
 ## **info**()
 
-​	返回带有关于代码对象的详细信息的格式化多行字符串，如 [`code_info()`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.code_info) 。
+​	返回带有关于代码对象的详细信息的格式化多行字符串，如 [`code_info()`]({{< ref "/library/language/dis#dis.code_info" >}}) 。
 
-*在 3.7 版本发生变更:* 现在可以处理协程和异步生成器对象。
+> 在 3.7 版本发生变更: 现在可以处理协程和异步生成器对象。
 
-*在 3.11 版本发生变更:* 增加了 *show_caches* 和 *adaptive* 形参。
+> 在 3.11 版本发生变更: 增加了 *show_caches* 和 *adaptive* 形参。
 
 ​	示例:
 
@@ -148,7 +148,7 @@ RETURN_VALUE
 
 ## 分析函数
 
-[`dis`](https://docs.python.org/zh-cn/3.13/library/dis.html#module-dis) 模块还定义了以下分析函数，它们将输入直接转换为所需的输出。如果只执行单个操作，它们可能很有用，因此中间分析对象没用：
+[`dis`]({{< ref "/library/language/dis#module-dis" >}}) 模块还定义了以下分析函数，它们将输入直接转换为所需的输出。如果只执行单个操作，它们可能很有用，因此中间分析对象没用：
 
 ## dis.**code_info**(*x*)
 
@@ -159,7 +159,7 @@ RETURN_VALUE
 > Added in version 3.2.
 >
 
-*在 3.7 版本发生变更:* 现在可以处理协程和异步生成器对象。
+> 在 3.7 版本发生变更: 现在可以处理协程和异步生成器对象。
 
 ## dis.**show_code**(*x*, ***, *file=None*)
 
@@ -170,11 +170,11 @@ RETURN_VALUE
 > Added in version 3.2.
 >
 
-*在 3.4 版本发生变更:* 添加 *file* 形参。
+> 在 3.4 版本发生变更: 添加 *file* 形参。
 
 ## dis.**dis**(*x=None*, ***, *file=None*, *depth=None*, *show_caches=False*, *adaptive=False*)
 
-​	反汇编 *x* 对象。 *x* 可以表示模块、类、方法、函数、生成器、异步生成器、协程、代码对象、源代码字符串或原始字节码的字节序列。 对于模块，它会反汇编所有函数。 对于一个类，它会反汇编所有方法（包括类方法和静态方法）。 对于代码对象或原始字节码序列，它会为每条字节码指令打印一行。 它还会递归地反汇编嵌套代码对象。 这些对象包括生成器表达式、嵌套函数、嵌套类的语句体以及用于 [标注作用域](https://docs.python.org/zh-cn/3.13/reference/executionmodel.html#annotation-scopes) 的代码对象。 在反汇编之前，首先使用 [`compile()`](https://docs.python.org/zh-cn/3.13/library/functions.html#compile) 内置函数将字符串编译为代码对象。 如果未提供任何对象，则该函数将反汇编最后一次回溯。
+​	反汇编 *x* 对象。 *x* 可以表示模块、类、方法、函数、生成器、异步生成器、协程、代码对象、源代码字符串或原始字节码的字节序列。 对于模块，它会反汇编所有函数。 对于一个类，它会反汇编所有方法（包括类方法和静态方法）。 对于代码对象或原始字节码序列，它会为每条字节码指令打印一行。 它还会递归地反汇编嵌套代码对象。 这些对象包括生成器表达式、嵌套函数、嵌套类的语句体以及用于 [标注作用域]({{< ref "/reference/executionmodel#annotation-scopes" >}}) 的代码对象。 在反汇编之前，首先使用 [`compile()`]({{< ref "/library/functions#compile" >}}) 内置函数将字符串编译为代码对象。 如果未提供任何对象，则该函数将反汇编最后一次回溯。
 
 ​	如果提供的话，反汇编将作为文本写入提供的 *file* 参数，否则写入 `sys.stdout` 。
 
@@ -184,13 +184,13 @@ RETURN_VALUE
 
 ​	如果 *adaptive* 为 `True`，此函数将显示可能不同于原始字节码的专门化字节码。
 
-*在 3.4 版本发生变更:* 添加 *file* 形参。
+> 在 3.4 版本发生变更: 添加 *file* 形参。
 
-*在 3.7 版本发生变更:* 实现了递归反汇编并添加了 *depth* 参数。
+> 在 3.7 版本发生变更: 实现了递归反汇编并添加了 *depth* 参数。
 
-*在 3.7 版本发生变更:* 现在可以处理协程和异步生成器对象。
+> 在 3.7 版本发生变更: 现在可以处理协程和异步生成器对象。
 
-*在 3.11 版本发生变更:* 增加了 *show_caches* 和 *adaptive* 形参。
+> 在 3.11 版本发生变更: 增加了 *show_caches* 和 *adaptive* 形参。
 
 ## **distb(tb=None, \*, file=None, show_caches=False, adaptive=False,**
 
@@ -200,11 +200,11 @@ RETURN_VALUE
 
 ​	如果提供的话，反汇编将作为文本写入提供的 *file* 参数，否则写入 `sys.stdout` 。
 
-*在 3.4 版本发生变更:* 添加 *file* 形参。
+> 在 3.4 版本发生变更: 添加 *file* 形参。
 
-*在 3.11 版本发生变更:* 增加了 *show_caches* 和 *adaptive* 形参。
+> 在 3.11 版本发生变更: 增加了 *show_caches* 和 *adaptive* 形参。
 
-*在 3.13 版本发生变更:* 添加了*show_offsets*参数。
+> 在 3.13 版本发生变更: 添加了*show_offsets*参数。
 
 ## dis.**disassemble**(*code*, *lasti=-1*, ***, *file=None*, *show_caches=False*, *adaptive=False*)
 
@@ -226,38 +226,38 @@ RETURN_VALUE
 
 ​	如果提供的话，反汇编将作为文本写入提供的 *file* 参数，否则写入 `sys.stdout` 。
 
-*在 3.4 版本发生变更:* 添加 *file* 形参。
+> 在 3.4 版本发生变更: 添加 *file* 形参。
 
-*在 3.11 版本发生变更:* 增加了 *show_caches* 和 *adaptive* 形参。
+> 在 3.11 版本发生变更: 增加了 *show_caches* 和 *adaptive* 形参。
 
-*在 3.13 版本发生变更:* 添加了*show_offsets*参数。
+> 在 3.13 版本发生变更: 添加了*show_offsets*参数。
 
 ## dis.**get_instructions**(*x*, ***, *first_line=None*, *show_caches=False*, *adaptive=False*)
 
 ​	在所提供的函数、方法、源代码字符串或代码对象中的指令上返回一个迭代器。
 
-​	迭代器生成一系列 [`Instruction`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Instruction) ，命名为元组，提供所提供代码中每个操作的详细信息。
+​	迭代器生成一系列 [`Instruction`]({{< ref "/library/language/dis#dis.Instruction" >}}) ，命名为元组，提供所提供代码中每个操作的详细信息。
 
 ​	如果 *first_line* 不是 `None` ，则表示应该为反汇编代码中的第一个源代码行报告的行号。否则，源行信息（如果有的话）直接来自反汇编的代码对象。
 
-​	参数 *adaptive* 和其在 [`dis()`](https://docs.python.org/zh-cn/3.13/library/dis.html#module-dis) 中的工作方式一样。
+​	参数 *adaptive* 和其在 [`dis()`]({{< ref "/library/language/dis#module-dis" >}}) 中的工作方式一样。
 
 > Added in version 3.4.
 >
 
-*在 3.11 版本发生变更:* 增加了 *show_caches* 和 *adaptive* 形参。
+> 在 3.11 版本发生变更: 增加了 *show_caches* 和 *adaptive* 形参。
 
-*在 3.13 版本发生变更:* *show_caches* 参数被弃用并且失效。 迭代器保证 [`Instruction`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Instruction) 实例一定有 *cache_info* 字段（无论 *show_caches* 传入什么），不再生成单独的缓存项。
+> 在 3.13 版本发生变更: *show_caches* 参数被弃用并且失效。 迭代器保证 [`Instruction`]({{< ref "/library/language/dis#dis.Instruction" >}}) 实例一定有 *cache_info* 字段（无论 *show_caches* 传入什么），不再生成单独的缓存项。
 
 ## dis.**findlinestarts**(*code*)
 
-​	这个生成器函数使用 [代码对象](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#code-objects) *code* 的 [`co_lines()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#codeobject.co_lines) 方法来查找源代码中行开头的偏移量。 它们将作为 `(offset, lineno)` 对被生成。
+​	这个生成器函数使用 [代码对象]({{< ref "/reference/datamodel#code-objects" >}}) *code* 的 [`co_lines()`]({{< ref "/reference/datamodel#codeobject.co_lines" >}}) 方法来查找源代码中行开头的偏移量。 它们将作为 `(offset, lineno)` 对被生成。
 
-*在 3.6 版本发生变更:* 行号可能会减少。 以前，他们总是在增加。
+> 在 3.6 版本发生变更: 行号可能会减少。 以前，他们总是在增加。
 
-*在 3.10 版本发生变更:* 使用 [**PEP 626**](https://peps.python.org/pep-0626/) [`co_lines()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#codeobject.co_lines) 方法而不是 [代码对象](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#code-objects) 的 [`co_firstlineno`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#codeobject.co_firstlineno) 和 [`co_lnotab`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#codeobject.co_lnotab) 属性。
+> 在 3.10 版本发生变更: 使用 [**PEP 626**](https://peps.python.org/pep-0626/) [`co_lines()`]({{< ref "/reference/datamodel#codeobject.co_lines" >}}) 方法而不是 [代码对象]({{< ref "/reference/datamodel#code-objects" >}}) 的 [`co_firstlineno`]({{< ref "/reference/datamodel#codeobject.co_firstlineno" >}}) 和 [`co_lnotab`]({{< ref "/reference/datamodel#codeobject.co_lnotab" >}}) 属性。
 
-*在 3.13 版本发生变更:* 若字节码不对应任何一行，行号可以是``None``。
+> 在 3.13 版本发生变更: 若字节码不对应任何一行，行号可以是``None``。
 
 ## dis.**findlabels**(*code*)
 
@@ -272,15 +272,15 @@ RETURN_VALUE
 > Added in version 3.4.
 >
 
-*在 3.8 版本发生变更:* 添加 *jump* 参数。
+> 在 3.8 版本发生变更: 添加 *jump* 参数。
 
-*在 3.13 版本发生变更:* 如果``oparg`` 被省略（或传入``None`` ），过去如果字节码使用参数，此时会抛出错误，而现在会返回``oparg=0``时的结果 。当``opcode`` 不使用整数 `oparg` 时，传入的``oparg``将被忽略，不会抛出错误。
+> 在 3.13 版本发生变更: 如果``oparg`` 被省略（或传入``None`` ），过去如果字节码使用参数，此时会抛出错误，而现在会返回``oparg=0``时的结果 。当``opcode`` 不使用整数 `oparg` 时，传入的``oparg``将被忽略，不会抛出错误。
 
 
 
 ## Python字节码说明
 
-[`get_instructions()`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.get_instructions) 函数和 [`Bytecode`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Bytecode) 类提供字节码指令的详细信息的 [`Instruction`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Instruction) 实例：
+[`get_instructions()`]({{< ref "/library/language/dis#dis.get_instructions" >}}) 函数和 [`Bytecode`]({{< ref "/library/language/dis#dis.Bytecode" >}}) 类提供字节码指令的详细信息的 [`Instruction`]({{< ref "/library/language/dis#dis.Instruction" >}}) 实例：
 
 ## *class* dis.**Instruction**
 
@@ -288,7 +288,7 @@ RETURN_VALUE
 
 ## **opcode**
 
-​	操作的数字代码，对应于下面列出的操作码值和 [操作码集合](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-collections) 中的字节码值。
+​	操作的数字代码，对应于下面列出的操作码值和 [操作码集合]({{< ref "/library/language/dis#opcode-collections" >}}) 中的字节码值。
 
 ## **opname**
 
@@ -296,11 +296,11 @@ RETURN_VALUE
 
 ## **baseopcode**
 
-​	如果操作是专用的则为基本操作的数字码；否则等于 [`opcode`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Instruction.opcode)
+​	如果操作是专用的则为基本操作的数字码；否则等于 [`opcode`]({{< ref "/library/language/dis#dis.Instruction.opcode" >}})
 
 ## **baseopname**
 
-​	如果操作是专用的则为基本操作的人类易读的名称；否则等于 [`opname`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.opname)
+​	如果操作是专用的则为基本操作的人类易读的名称；否则等于 [`opname`]({{< ref "/library/language/dis#dis.opname" >}})
 
 ## **arg**
 
@@ -308,7 +308,7 @@ RETURN_VALUE
 
 ## **oparg**
 
-[`arg`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Instruction.arg) 的别名
+[`arg`]({{< ref "/library/language/dis#dis.Instruction.arg" >}}) 的别名
 
 ## **argval**
 
@@ -324,7 +324,7 @@ RETURN_VALUE
 
 ## **start_offset**
 
-​	在字节码序列中的起始索引，包括前面的 `EXTENDED_ARG` 操作（如有），否则和 [`offset`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Instruction.offset) 相等。
+​	在字节码序列中的起始索引，包括前面的 `EXTENDED_ARG` 操作（如有），否则和 [`offset`]({{< ref "/library/language/dis#dis.Instruction.offset" >}}) 相等。
 
 ## **cache_offset**
 
@@ -352,14 +352,14 @@ RETURN_VALUE
 
 ## **positions**
 
-[`dis.Positions`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.Positions) 对象保存了这条指令所涵盖的起始和结束位置。
+[`dis.Positions`]({{< ref "/library/language/dis#dis.Positions" >}}) 对象保存了这条指令所涵盖的起始和结束位置。
 
 > Added in version 3.4.
 >
 
-*在 3.11 版本发生变更:* 增加了 `positions` 字段。
+> 在 3.11 版本发生变更: 增加了 `positions` 字段。
 
-*在 3.13 版本发生变更:* 更改了字段``starts_line``。
+> 在 3.13 版本发生变更: 更改了字段``starts_line``。
 
 ​	添加了字段``start_offset``、`cache_offset`、`end_offset`、`baseopname`、`baseopcode`、`jump_target`、`oparg`、`line_number``和``cache_info`
 
@@ -456,7 +456,7 @@ STACK[-i], STACK[-1] = STACK[-1], STACK[-i]
 
 ​	实现 `STACK[-1] = not STACK[-1]` 。
 
-*在 3.13 版本发生变更:* 现在，操作对象需要是 [`bool`](https://docs.python.org/zh-cn/3.13/library/functions.html#bool) 类型。
+> 在 3.13 版本发生变更: 现在，操作对象需要是 [`bool`]({{< ref "/library/functions#bool" >}}) 类型。
 
 ## **UNARY_INVERT**
 
@@ -468,7 +468,7 @@ STACK[-i], STACK[-1] = STACK[-1], STACK[-i]
 
 ## **GET_YIELD_FROM_ITER**
 
-​	如果 `STACK[-1]` 是一个 [generator iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-generator-iterator) 或 [coroutine](https://docs.python.org/zh-cn/3.13/glossary.html#term-coroutine) 对象则它将保持原样。 否则，将实现 `STACK[-1] = iter(STACK[-1])`。
+​	如果 `STACK[-1]` 是一个 [generator iterator]({{< ref "/glossary/idx#term-generator-iterator" >}}) 或 [coroutine]({{< ref "/glossary/idx#term-coroutine" >}}) 对象则它将保持原样。 否则，将实现 `STACK[-1] = iter(STACK[-1])`。
 
 > Added in version 3.5.
 >
@@ -563,7 +563,7 @@ container[start:end] = value
 
 ## **GET_AWAITABLE**(*where*)
 
-​	实现 `STACK[-1] = get_awaitable(STACK[-1])` 。其中对于 `get_awaitable(o)` ，当 `o` 是一个有 [`CO_ITERABLE_COROUTINE`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.CO_ITERABLE_COROUTINE) 旗标的协程对象或生成器对象时，返回 `o`，否则解析 `o.__await__` 。
+​	实现 `STACK[-1] = get_awaitable(STACK[-1])` 。其中对于 `get_awaitable(o)` ，当 `o` 是一个有 [`CO_ITERABLE_COROUTINE`]({{< ref "/library/python/inspect#inspect.CO_ITERABLE_COROUTINE" >}}) 旗标的协程对象或生成器对象时，返回 `o`，否则解析 `o.__await__` 。
 
 > ​	如果 `where` 操作数为非零值，则表示指令所在的位置:
 >
@@ -573,7 +573,7 @@ container[start:end] = value
 > Added in version 3.5.
 >
 
-*在 3.11 版本发生变更:* 在之前版本中，该指令没有 oparg。
+> 在 3.11 版本发生变更: 在之前版本中，该指令没有 oparg。
 
 ## **GET_AITER**
 
@@ -582,7 +582,7 @@ container[start:end] = value
 > Added in version 3.5.
 >
 
-*在 3.7 版本发生变更:* 已经不再支持从 `__aiter__` 返回可等待对象。
+> 在 3.7 版本发生变更: 已经不再支持从 `__aiter__` 返回可等待对象。
 
 ## **GET_ANEXT**
 
@@ -593,16 +593,16 @@ container[start:end] = value
 
 ## **END_ASYNC_FOR**
 
-​	终结一个 [`async for`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#async-for) 循环。 在等待下一项时处理被引发的异常。 栈包含了 `STACK[-2]` 中的异步可迭代对象和 `STACK[-1]` 中的已引发异常。 两者都将被弹出。 如果异常不是 [`StopAsyncIteration`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#StopAsyncIteration)，它会被重新引发。
+​	终结一个 [`async for`]({{< ref "/reference/compound_stmts#async-for" >}}) 循环。 在等待下一项时处理被引发的异常。 栈包含了 `STACK[-2]` 中的异步可迭代对象和 `STACK[-1]` 中的已引发异常。 两者都将被弹出。 如果异常不是 [`StopAsyncIteration`]({{< ref "/library/exceptions#StopAsyncIteration" >}})，它会被重新引发。
 
 > Added in version 3.8.
 >
 
-*在 3.11 版本发生变更:* 栈中的异常表示形式现在将由一个而不是三个条目组成。
+> 在 3.11 版本发生变更: 栈中的异常表示形式现在将由一个而不是三个条目组成。
 
 ## **CLEANUP_THROW**
 
-​	处理当前帧中由调用 [`throw()`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#generator.throw) 或 [`close()`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#generator.close) 引发的异常。 如果 `STACK[-1]` 是 [`StopIteration`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#StopIteration) 的实例，则从栈中弹出三个值，并将其成员 `value` 的值推入栈中，否则重新引发 `STACK[-1]` 异常。
+​	处理当前帧中由调用 [`throw()`]({{< ref "/reference/expressions#generator.throw" >}}) 或 [`close()`]({{< ref "/reference/expressions#generator.close" >}}) 引发的异常。 如果 `STACK[-1]` 是 [`StopIteration`]({{< ref "/library/exceptions#StopIteration" >}}) 的实例，则从栈中弹出三个值，并将其成员 `value` 的值推入栈中，否则重新引发 `STACK[-1]` 异常。
 
 > Added in version 3.12.
 >
@@ -657,9 +657,9 @@ dict.__setitem__(STACK[-i], key, value)
 > Added in version 3.1.
 >
 
-*在 3.8 版本发生变更:* 映射的值为 `STACK[-1]` ，映射的键为 `STACK[-2]` 。之前它们是反过来的。
+> 在 3.8 版本发生变更: 映射的值为 `STACK[-1]` ，映射的键为 `STACK[-2]` 。之前它们是反过来的。
 
-​	对于所有 [`SET_ADD`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-SET_ADD) 、 [`LIST_APPEND`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-LIST_APPEND) 和 [`MAP_ADD`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-MAP_ADD) 指令，当弹出添加的值或键值对时，容器对象保留在堆栈上，以便它可用于循环的进一步迭代。
+​	对于所有 [`SET_ADD`]({{< ref "/library/language/dis#opcode-SET_ADD" >}}) 、 [`LIST_APPEND`]({{< ref "/library/language/dis#opcode-LIST_APPEND" >}}) 和 [`MAP_ADD`]({{< ref "/library/language/dis#opcode-MAP_ADD" >}}) 指令，当弹出添加的值或键值对时，容器对象保留在堆栈上，以便它可用于循环的进一步迭代。
 
 ## **RETURN_VALUE**
 
@@ -674,17 +674,17 @@ dict.__setitem__(STACK[-i], key, value)
 
 ## **YIELD_VALUE**
 
-​	从 [generator](https://docs.python.org/zh-cn/3.13/glossary.html#term-generator) 产生 `STACK.pop()`。
+​	从 [generator]({{< ref "/glossary/idx#term-generator" >}}) 产生 `STACK.pop()`。
 
-*在 3.11 版本发生变更:* oparg 被设为堆栈深度。
+> 在 3.11 版本发生变更: oparg 被设为堆栈深度。
 
-*在 3.12 版本发生变更:* oparg 被设为异常块的深度，以确保关闭生成器的效率。
+> 在 3.12 版本发生变更: oparg 被设为异常块的深度，以确保关闭生成器的效率。
 
-*在 3.13 版本发生变更:* 如果该指令是 yield-from 或 await 的一部分则 oparg 为 `1`，否则为 `0`。
+> 在 3.13 版本发生变更: 如果该指令是 yield-from 或 await 的一部分则 oparg 为 `1`，否则为 `0`。
 
 ## **SETUP_ANNOTATIONS**
 
-​	检查 `__annotations__` 是否在 `locals()` 中定义，如果没有，它被设置为空 `dict` 。只有在类或模块体静态地包含 [variable annotations](https://docs.python.org/zh-cn/3.13/glossary.html#term-variable-annotation) 时才会发出此操作码。
+​	检查 `__annotations__` 是否在 `locals()` 中定义，如果没有，它被设置为空 `dict` 。只有在类或模块体静态地包含 [variable annotations]({{< ref "/glossary/idx#term-variable-annotation" >}}) 时才会发出此操作码。
 
 > Added in version 3.6.
 >
@@ -693,16 +693,16 @@ dict.__setitem__(STACK[-i], key, value)
 
 ​	从栈中弹出一个值，它将被用来恢复异常状态。
 
-*在 3.11 版本发生变更:* 栈中的异常表示形式现在将由一个而不是三个条目组成。
+> 在 3.11 版本发生变更: 栈中的异常表示形式现在将由一个而不是三个条目组成。
 
 ## **RERAISE**
 
-​	重新引发当前位于栈顶的异常。 如果 oparg 为非零值，则从栈顶额外弹出一个值用来设置当前帧的 [`f_lasti`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#frame.f_lasti)。
+​	重新引发当前位于栈顶的异常。 如果 oparg 为非零值，则从栈顶额外弹出一个值用来设置当前帧的 [`f_lasti`]({{< ref "/reference/datamodel#frame.f_lasti" >}})。
 
 > Added in version 3.9.
 >
 
-*在 3.11 版本发生变更:* 栈中的异常表示形式现在将由一个而不是三个条目组成。
+> 在 3.11 版本发生变更: 栈中的异常表示形式现在将由一个而不是三个条目组成。
 
 ## **PUSH_EXC_INFO**
 
@@ -729,16 +729,16 @@ dict.__setitem__(STACK[-i], key, value)
 
 ## **WITH_EXCEPT_START**
 
-​	调用栈中 4 号位置上的函数并附带代表位于栈顶的异常的参数 (type, val, tb)。 用于在 [`with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#with) 语句内发生异常时实现调用 `context_manager.__exit__(*exc_info())`。
+​	调用栈中 4 号位置上的函数并附带代表位于栈顶的异常的参数 (type, val, tb)。 用于在 [`with`]({{< ref "/reference/compound_stmts#with" >}}) 语句内发生异常时实现调用 `context_manager.__exit__(*exc_info())`。
 
 > Added in version 3.9.
 >
 
-*在 3.11 版本发生变更:* `__exit__` 函数位于栈的 4 号位而不是 7 号位。 栈中的异常表示形式现在由一项而不是三项组成。
+> 在 3.11 版本发生变更: `__exit__` 函数位于栈的 4 号位而不是 7 号位。 栈中的异常表示形式现在由一项而不是三项组成。
 
 ## **LOAD_ASSERTION_ERROR**
 
-​	将 [`AssertionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AssertionError) 推入栈顶。 由 [`assert`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#assert) 语句使用。
+​	将 [`AssertionError`]({{< ref "/library/exceptions#AssertionError" >}}) 推入栈顶。 由 [`assert`]({{< ref "/reference/simple_stmts#assert" >}}) 语句使用。
 
 > Added in version 3.9.
 >
@@ -749,48 +749,48 @@ dict.__setitem__(STACK[-i], key, value)
 
 ## **BEFORE_WITH**
 
-​	此操作码会在 with 代码块开始之前执行多个操作。 首先，它将从上下文管理器加载 [`__exit__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__exit__) 并将其推入栈顶以供 [`WITH_EXCEPT_START`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-WITH_EXCEPT_START) 后续使用。 然后，将调用 [`__enter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__enter__)。 最后，将调用 `__enter__()` 方法的结果推入栈顶。
+​	此操作码会在 with 代码块开始之前执行多个操作。 首先，它将从上下文管理器加载 [`__exit__()`]({{< ref "/reference/datamodel#object.__exit__" >}}) 并将其推入栈顶以供 [`WITH_EXCEPT_START`]({{< ref "/library/language/dis#opcode-WITH_EXCEPT_START" >}}) 后续使用。 然后，将调用 [`__enter__()`]({{< ref "/reference/datamodel#object.__enter__" >}})。 最后，将调用 `__enter__()` 方法的结果推入栈顶。
 
 > Added in version 3.11.
 >
 
 ## **GET_LEN**
 
-​	Perform `STACK.append(len(STACK[-1]))`. Used in [`match`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#match) statements where comparison with structure of pattern is needed.
+​	Perform `STACK.append(len(STACK[-1]))`. Used in [`match`]({{< ref "/reference/compound_stmts#match" >}}) statements where comparison with structure of pattern is needed.
 
 > Added in version 3.10.
 >
 
 ## **MATCH_MAPPING**
 
-​	如果 `STACK[-1]` 是 [`collections.abc.Mapping`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Mapping) 的实例（或者更准确地说：如果在它的 [`tp_flags`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_flags) 中设置了 [`Py_TPFLAGS_MAPPING`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.Py_TPFLAGS_MAPPING) 旗标），则将 `True` 推入栈顶。 否则，推入 `False`。
+​	如果 `STACK[-1]` 是 [`collections.abc.Mapping`]({{< ref "/library/datatypes/collections_abc#collections.abc.Mapping" >}}) 的实例（或者更准确地说：如果在它的 [`tp_flags`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_flags) 中设置了 [`Py_TPFLAGS_MAPPING`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.Py_TPFLAGS_MAPPING) 旗标），则将 `True` 推入栈顶。 否则，推入 `False`。
 
 > Added in version 3.10.
 >
 
 ## **MATCH_SEQUENCE**
 
-​	如果 `STACK[-1]` 是 [`collections.abc.Sequence`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Sequence) 的实例而 *不是* [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str)/[`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes)/[`bytearray`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytearray) 的实例（或者更准确地说：如果在它的 [`tp_flags`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_flags) 中设置了 [`Py_TPFLAGS_SEQUENCE`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.Py_TPFLAGS_SEQUENCE) 旗标），则将 `True` 推入栈顶。 否则 ，推入 `False`。
+​	如果 `STACK[-1]` 是 [`collections.abc.Sequence`]({{< ref "/library/datatypes/collections_abc#collections.abc.Sequence" >}}) 的实例而 *不是* [`str`]({{< ref "/library/stdtypes#str" >}})/[`bytes`]({{< ref "/library/stdtypes#bytes" >}})/[`bytearray`]({{< ref "/library/stdtypes#bytearray" >}}) 的实例（或者更准确地说：如果在它的 [`tp_flags`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.PyTypeObject.tp_flags) 中设置了 [`Py_TPFLAGS_SEQUENCE`](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#c.Py_TPFLAGS_SEQUENCE) 旗标），则将 `True` 推入栈顶。 否则 ，推入 `False`。
 
 > Added in version 3.10.
 >
 
 ## **MATCH_KEYS**
 
-`STACK[-1]` 是一个映射键的元组，而 `STACK[-2]` 是匹配目标。 如果 `STACK[-2]` 包含 `STACK[-1]` 中的所有键，则推入一个包含对应值的 [`tuple`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#tuple)。 在其他情况下，推入 `None`。
+`STACK[-1]` 是一个映射键的元组，而 `STACK[-2]` 是匹配目标。 如果 `STACK[-2]` 包含 `STACK[-1]` 中的所有键，则推入一个包含对应值的 [`tuple`]({{< ref "/library/stdtypes#tuple" >}})。 在其他情况下，推入 `None`。
 
 > Added in version 3.10.
 >
 
-*在 3.11 版本发生变更:* 在之前的版本中，该指令还会推入一个表示成功 (`True`) 或失败 (`False`) 的布尔值。
+> 在 3.11 版本发生变更: 在之前的版本中，该指令还会推入一个表示成功 (`True`) 或失败 (`False`) 的布尔值。
 
 ## **STORE_NAME**(*namei*)
 
-​	实现 `name = STACK.pop()`。 *namei* 是 *name* 在 [代码对象](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#code-objects) 的 [`co_names`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#codeobject.co_names) 属性中的索引。 在可能的情况下编译器会尝试使用 [`STORE_FAST`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-STORE_FAST) 或 [`STORE_GLOBAL`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-STORE_GLOBAL)。
+​	实现 `name = STACK.pop()`。 *namei* 是 *name* 在 [代码对象]({{< ref "/reference/datamodel#code-objects" >}}) 的 [`co_names`]({{< ref "/reference/datamodel#codeobject.co_names" >}}) 属性中的索引。 在可能的情况下编译器会尝试使用 [`STORE_FAST`]({{< ref "/library/language/dis#opcode-STORE_FAST" >}}) 或 [`STORE_GLOBAL`]({{< ref "/library/language/dis#opcode-STORE_GLOBAL" >}})。
 
 ## **DELETE_NAME**(*namei*)
 
-​	实现 `del name`，其中 *namei* 是 [代码对象](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#code-objects) 的 [`co_names`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#codeobject.co_names) 属性的索引。
+​	实现 `del name`，其中 *namei* 是 [代码对象]({{< ref "/reference/datamodel#code-objects" >}}) 的 [`co_names`]({{< ref "/reference/datamodel#codeobject.co_names" >}}) 属性的索引。
 
 ## **UNPACK_SEQUENCE**(*count*)
 
@@ -821,7 +821,7 @@ value = STACK.pop()
 obj.name = value
 ```
 
-​	其中 *namei* 是 name 在 [代码对象](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#code-objects) 的 [`co_names`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#codeobject.co_names) 中的索引。
+​	其中 *namei* 是 name 在 [代码对象]({{< ref "/reference/datamodel#code-objects" >}}) 的 [`co_names`]({{< ref "/reference/datamodel#codeobject.co_names" >}}) 中的索引。
 
 ## **DELETE_ATTR**(*namei*)
 
@@ -832,15 +832,15 @@ obj = STACK.pop()
 del obj.name
 ```
 
-​	其中 *namei* 是 name 在 [代码对象](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#code-objects) 的 [`co_names`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#codeobject.co_names) 中的索引。
+​	其中 *namei* 是 name 在 [代码对象]({{< ref "/reference/datamodel#code-objects" >}}) 的 [`co_names`]({{< ref "/reference/datamodel#codeobject.co_names" >}}) 中的索引。
 
 ## **STORE_GLOBAL**(*namei*)
 
-​	类似于 [`STORE_NAME`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-STORE_NAME) 但会将 name 存储为全局变量。
+​	类似于 [`STORE_NAME`]({{< ref "/library/language/dis#opcode-STORE_NAME" >}}) 但会将 name 存储为全局变量。
 
 ## **DELETE_GLOBAL**(*namei*)
 
-​	类似于 [`DELETE_NAME`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-DELETE_NAME) 但会删除一个全局变量。
+​	类似于 [`DELETE_NAME`]({{< ref "/library/language/dis#opcode-DELETE_NAME" >}}) 但会删除一个全局变量。
 
 ## **LOAD_CONST**(*consti*)
 
@@ -852,14 +852,14 @@ del obj.name
 
 ## **LOAD_LOCALS**
 
-​	将一个局部变量字典的引用压入栈中。 被用于为 [`LOAD_FROM_DICT_OR_DEREF`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-LOAD_FROM_DICT_OR_DEREF) 和 [`LOAD_FROM_DICT_OR_GLOBALS`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-LOAD_FROM_DICT_OR_GLOBALS) 准备命名空间字典。
+​	将一个局部变量字典的引用压入栈中。 被用于为 [`LOAD_FROM_DICT_OR_DEREF`]({{< ref "/library/language/dis#opcode-LOAD_FROM_DICT_OR_DEREF" >}}) 和 [`LOAD_FROM_DICT_OR_GLOBALS`]({{< ref "/library/language/dis#opcode-LOAD_FROM_DICT_OR_GLOBALS" >}}) 准备命名空间字典。
 
 > Added in version 3.12.
 >
 
 ## **LOAD_FROM_DICT_OR_GLOBALS**(*i*)
 
-​	从栈中弹出一个映射，在其中查找 `co_names[namei]`。 如果在此没有找到相应的名称，则在全局变量和内置量中查找，类似 [`LOAD_GLOBAL`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-LOAD_GLOBAL) 。 被用于在类定义中的 [标注作用域](https://docs.python.org/zh-cn/3.13/reference/executionmodel.html#annotation-scopes) 中加载全局变量。
+​	从栈中弹出一个映射，在其中查找 `co_names[namei]`。 如果在此没有找到相应的名称，则在全局变量和内置量中查找，类似 [`LOAD_GLOBAL`]({{< ref "/library/language/dis#opcode-LOAD_GLOBAL" >}}) 。 被用于在类定义中的 [标注作用域]({{< ref "/reference/executionmodel#annotation-scopes" >}}) 中加载全局变量。
 
 > Added in version 3.12.
 >
@@ -880,21 +880,21 @@ STACK.append(value)
 
 ## **BUILD_LIST**(*count*)
 
-​	类似于 [`BUILD_TUPLE`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-BUILD_TUPLE) 但会创建一个列表。
+​	类似于 [`BUILD_TUPLE`]({{< ref "/library/language/dis#opcode-BUILD_TUPLE" >}}) 但会创建一个列表。
 
 ## **BUILD_SET**(*count*)
 
-​	类似于 [`BUILD_TUPLE`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-BUILD_TUPLE) 但会创建一个集合。
+​	类似于 [`BUILD_TUPLE`]({{< ref "/library/language/dis#opcode-BUILD_TUPLE" >}}) 但会创建一个集合。
 
 ## **BUILD_MAP**(*count*)
 
 ​	将一个新字典对象推入栈顶。 弹出 `2 * count` 项使得字典包含 *count* 个条目: `{..., STACK[-4]: STACK[-3], STACK[-2]: STACK[-1]}` 。
 
-*在 3.5 版本发生变更:* 字典是根据栈中的项创建而不是创建一个预设大小包含 *count* 项的空字典。
+> 在 3.5 版本发生变更: 字典是根据栈中的项创建而不是创建一个预设大小包含 *count* 项的空字典。
 
 ## **BUILD_CONST_KEY_MAP**(*count*)
 
-[`BUILD_MAP`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-BUILD_MAP) 版本专用于常量键。 弹出的栈顶元素包含一个由键构成的元组，然后从 `STACK[-2]` 开始从构建字典的值中弹出 *count* 个值。
+[`BUILD_MAP`]({{< ref "/library/language/dis#opcode-BUILD_MAP" >}}) 版本专用于常量键。 弹出的栈顶元素包含一个由键构成的元组，然后从 `STACK[-2]` 开始从构建字典的值中弹出 *count* 个值。
 
 > Added in version 3.6.
 >
@@ -950,7 +950,7 @@ dict.update(STACK[-i], map)
 
 ## **DICT_MERGE**(*i*)
 
-​	类似于 [`DICT_UPDATE`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-DICT_UPDATE) 但对于重复的键会引发异常。
+​	类似于 [`DICT_UPDATE`]({{< ref "/library/language/dis#opcode-DICT_UPDATE" >}}) 但对于重复的键会引发异常。
 
 > Added in version 3.9.
 >
@@ -959,13 +959,13 @@ dict.update(STACK[-i], map)
 
 ​	如果 `namei` 的低位未设置，则将 `STACK[-1]` 替换为 `getattr(STACK[-1], co_names[namei>>1])`。
 
-​	如果 `namei` 的低位已设置，则会尝试从 `STACK[-1]` 对象加载名为 `co_names[namei>>1]` 的方法。 `STACK[-1]` 会被弹出。 此字节码会区分两种情况：如果 `STACK[-1]` 具有一个名称正确的方法，字节码会推入未绑定的方法和 `STACK[-1]`。 `STACK[-1]` 将被 [`CALL`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-CALL) 或者 [`CALL_KW`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-CALL_KW) 用作调用未绑定方法时的第一个参数 (`self`)。 否则，将推入 `NULL` 和属性查询所返回的对象。
+​	如果 `namei` 的低位已设置，则会尝试从 `STACK[-1]` 对象加载名为 `co_names[namei>>1]` 的方法。 `STACK[-1]` 会被弹出。 此字节码会区分两种情况：如果 `STACK[-1]` 具有一个名称正确的方法，字节码会推入未绑定的方法和 `STACK[-1]`。 `STACK[-1]` 将被 [`CALL`]({{< ref "/library/language/dis#opcode-CALL" >}}) 或者 [`CALL_KW`]({{< ref "/library/language/dis#opcode-CALL_KW" >}}) 用作调用未绑定方法时的第一个参数 (`self`)。 否则，将推入 `NULL` 和属性查询所返回的对象。
 
-*在 3.12 版本发生变更:* 如果 `namei` 的低位已置，则会在属性或未绑定方法之前分别将 `NULL` 或 `self` 推入栈。
+> 在 3.12 版本发生变更: 如果 `namei` 的低位已置，则会在属性或未绑定方法之前分别将 `NULL` 或 `self` 推入栈。
 
 ## **LOAD_SUPER_ATTR**(*namei*)
 
-​	该操作码实现了 [`super()`](https://docs.python.org/zh-cn/3.13/library/functions.html#super)，包括零参数和双参数形式 (例如 `super().method()`, `super().attr` 和 `super(cls, self).method()`, `super(cls, self).attr`)。
+​	该操作码实现了 [`super()`]({{< ref "/library/functions#super" >}})，包括零参数和双参数形式 (例如 `super().method()`, `super().attr` 和 `super(cls, self).method()`, `super(cls, self).attr`)。
 
 ​	它从栈弹出三个值（栈顶在前）：
 
@@ -973,11 +973,11 @@ dict.update(STACK[-i], map)
 - `cls`：当前方法被定义的类
 - 全局的``super``
 
-​	对应于其参数，它的操作类似于 [`LOAD_ATTR`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-LOAD_ATTR)，区别在于 `namei` 左移了 2 位而不是 1 位。
+​	对应于其参数，它的操作类似于 [`LOAD_ATTR`]({{< ref "/library/language/dis#opcode-LOAD_ATTR" >}})，区别在于 `namei` 左移了 2 位而不是 1 位。
 
-`namei` 的低位发出尝试加载方法的信号，与 [`LOAD_ATTR`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-LOAD_ATTR) 一样，其结果是推入 `NULL` 和所加载的方法。 当其被取消设置时会将单个值推入栈。
+`namei` 的低位发出尝试加载方法的信号，与 [`LOAD_ATTR`]({{< ref "/library/language/dis#opcode-LOAD_ATTR" >}}) 一样，其结果是推入 `NULL` 和所加载的方法。 当其被取消设置时会将单个值推入栈。
 
-`namei` 的次低比特位如果被设置，表示这是对 [`super()`](https://docs.python.org/zh-cn/3.13/library/functions.html#super) 附带两个参数的调用（未设置则表示附带零个参数）。
+`namei` 的次低比特位如果被设置，表示这是对 [`super()`]({{< ref "/library/functions#super" >}}) 附带两个参数的调用（未设置则表示附带零个参数）。
 
 > Added in version 3.12.
 >
@@ -986,7 +986,7 @@ dict.update(STACK[-i], map)
 
 ​	执行布尔操作。操作名可以在``cmp_op[opname >> 5]``中找到。如果``opname``的第五低位是1（`opname & 16`），则结果将被强制转换为``bool``。
 
-*在 3.13 版本发生变更:* 现在参数的第五低位表示强制将结果转换为 [`bool`](https://docs.python.org/zh-cn/3.13/library/functions.html#bool)。
+> 在 3.13 版本发生变更: 现在参数的第五低位表示强制将结果转换为 [`bool`]({{< ref "/library/functions#bool" >}})。
 
 ## **IS_OP**(*invert*)
 
@@ -1004,11 +1004,11 @@ dict.update(STACK[-i], map)
 
 ## **IMPORT_NAME**(*namei*)
 
-​	导入模块 `co_names[namei]`。 会弹出 `STACK[-1]` 和 `STACK[-2]` 以提供 *fromlist* 和 *level* 参数给 [`__import__()`](https://docs.python.org/zh-cn/3.13/library/functions.html#import__) 。 模块对象会被推入栈顶。 当前命名空间不受影响：对于一条标准 import 语句，会执行后续的 [`STORE_FAST`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-STORE_FAST) 指令来修改命名空间。
+​	导入模块 `co_names[namei]`。 会弹出 `STACK[-1]` 和 `STACK[-2]` 以提供 *fromlist* 和 *level* 参数给 [`__import__()`]({{< ref "/library/functions#import__" >}}) 。 模块对象会被推入栈顶。 当前命名空间不受影响：对于一条标准 import 语句，会执行后续的 [`STORE_FAST`]({{< ref "/library/language/dis#opcode-STORE_FAST" >}}) 指令来修改命名空间。
 
 ## **IMPORT_FROM**(*namei*)
 
-​	从在 `STACK[-1]` 内找到的模块中加载属性 `co_names[namei]`。 结果对象会被推入栈顶，以便由后续的 [`STORE_FAST`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-STORE_FAST) 指令来保存。
+​	从在 `STACK[-1]` 内找到的模块中加载属性 `co_names[namei]`。 结果对象会被推入栈顶，以便由后续的 [`STORE_FAST`]({{< ref "/library/language/dis#opcode-STORE_FAST" >}}) 指令来保存。
 
 ## **JUMP_FORWARD**(*delta*)
 
@@ -1032,21 +1032,21 @@ dict.update(STACK[-i], map)
 
 ​	如果 `STACK[-1]` 为真值，则将字节码计数器增加 *delta*。 `STACK[-1]` 将被弹出。
 
-*在 3.11 版本发生变更:* 操作符的参数现在是一个相对的差值而不是一个绝对的目标量。 此操作码是一个伪指令，在最终的字节码里被定向的版本（ forward/backward ）取代。
+> 在 3.11 版本发生变更: 操作符的参数现在是一个相对的差值而不是一个绝对的目标量。 此操作码是一个伪指令，在最终的字节码里被定向的版本（ forward/backward ）取代。
 
-*在 3.12 版本发生变更:* 该操作码现在不再是伪指令。
+> 在 3.12 版本发生变更: 该操作码现在不再是伪指令。
 
-*在 3.13 版本发生变更:* 现在，操作对象需要是 [`bool`](https://docs.python.org/zh-cn/3.13/library/functions.html#bool) 类型。
+> 在 3.13 版本发生变更: 现在，操作对象需要是 [`bool`]({{< ref "/library/functions#bool" >}}) 类型。
 
 ## **POP_JUMP_IF_FALSE**(*delta*)
 
 ​	如果 `STACK[-1]` 为假值，则将字节码计数器增加 *delta*。 `STACK[-1]` 将被弹出。
 
-*在 3.11 版本发生变更:* 操作符的参数现在是一个相对的差值而不是一个绝对的目标量。 此操作码是一个伪指令，在最终的字节码里被定向的版本（ forward/backward ）取代。
+> 在 3.11 版本发生变更: 操作符的参数现在是一个相对的差值而不是一个绝对的目标量。 此操作码是一个伪指令，在最终的字节码里被定向的版本（ forward/backward ）取代。
 
-*在 3.12 版本发生变更:* 该操作码现在不再是伪指令。
+> 在 3.12 版本发生变更: 该操作码现在不再是伪指令。
 
-*在 3.13 版本发生变更:* 现在，操作对象需要是 [`bool`](https://docs.python.org/zh-cn/3.13/library/functions.html#bool) 类型。
+> 在 3.13 版本发生变更: 现在，操作对象需要是 [`bool`]({{< ref "/library/functions#bool" >}}) 类型。
 
 ## **POP_JUMP_IF_NOT_NONE**(*delta*)
 
@@ -1057,7 +1057,7 @@ dict.update(STACK[-i], map)
 > Added in version 3.11.
 >
 
-*在 3.12 版本发生变更:* 该操作码现在不再是伪指令。
+> 在 3.12 版本发生变更: 该操作码现在不再是伪指令。
 
 ## **POP_JUMP_IF_NONE**(*delta*)
 
@@ -1068,29 +1068,29 @@ dict.update(STACK[-i], map)
 > Added in version 3.11.
 >
 
-*在 3.12 版本发生变更:* 该操作码现在不再是伪指令。
+> 在 3.12 版本发生变更: 该操作码现在不再是伪指令。
 
 ## **FOR_ITER**(*delta*)
 
-`STACK[-1]` 是一个 [iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterator)。 调用其 [`__next__()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#iterator.__next__) 方法。 如果产生一个新的值则压入栈中 （把迭代器压下去）。 如果迭代器已耗尽，则将字节码计数器增加 *delta* 。
+`STACK[-1]` 是一个 [iterator]({{< ref "/glossary/idx#term-iterator" >}})。 调用其 [`__next__()`]({{< ref "/library/stdtypes#iterator.__next__" >}}) 方法。 如果产生一个新的值则压入栈中 （把迭代器压下去）。 如果迭代器已耗尽，则将字节码计数器增加 *delta* 。
 
-*在 3.12 版本发生变更:* 直到 3.11 ，当迭代器耗尽时，它会被从栈中弹出。
+> 在 3.12 版本发生变更: 直到 3.11 ，当迭代器耗尽时，它会被从栈中弹出。
 
 ## **LOAD_GLOBAL**(*namei*)
 
 ​	将名为 `co_names[namei>>1]` 的全局对象加载到栈顶。
 
-*在 3.11 版本发生变更:* 如果设置了 `namei` 的低比特位，则会在全局变量前将一个 `NULL` 推入栈。
+> 在 3.11 版本发生变更: 如果设置了 `namei` 的低比特位，则会在全局变量前将一个 `NULL` 推入栈。
 
 ## **LOAD_FAST**(*var_num*)
 
 ​	将指向局部对象 `co_varnames[var_num]` 的引用推入栈顶。
 
-*在 3.12 版本发生变更:* 这个操作码目前只用在保证局部变量被初始化的情况下使用。它不能引发 [`UnboundLocalError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#UnboundLocalError) 。
+> 在 3.12 版本发生变更: 这个操作码目前只用在保证局部变量被初始化的情况下使用。它不能引发 [`UnboundLocalError`]({{< ref "/library/exceptions#UnboundLocalError" >}}) 。
 
 ## **LOAD_FAST_CHECK**(*var_num*)
 
-​	将一个指向局部变量 `co_varnames[var_num]` 的引用推入栈中，如果该局部变量未被初始化，引发一个 [`UnboundLocalError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#UnboundLocalError) 。
+​	将一个指向局部变量 `co_varnames[var_num]` 的引用推入栈中，如果该局部变量未被初始化，引发一个 [`UnboundLocalError`]({{< ref "/library/exceptions#UnboundLocalError" >}}) 。
 
 > Added in version 3.12.
 >
@@ -1121,11 +1121,11 @@ dict.update(STACK[-i], map)
 
 ​	加载包含在 "fast locals" 存储的 `i` 号槽位中的单元。 将一个指向该单元所包含对象的引用推入栈。
 
-*在 3.11 版本发生变更:* `i` 不再是 [`co_varnames`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#codeobject.co_varnames) 的长度的偏移量。
+> 在 3.11 版本发生变更: `i` 不再是 [`co_varnames`]({{< ref "/reference/datamodel#codeobject.co_varnames" >}}) 的长度的偏移量。
 
 ## **LOAD_FROM_DICT_OR_DEREF**(*i*)
 
-​	Pops a mapping off the stack and looks up the name associated with slot `i` of the "fast locals" storage in this mapping. If the name is not found there, loads it from the cell contained in slot `i`, similar to [`LOAD_DEREF`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-LOAD_DEREF). This is used for loading [closure variables](https://docs.python.org/zh-cn/3.13/glossary.html#term-closure-variable) in class bodies (which previously used `LOAD_CLASSDEREF`) and in [annotation scopes](https://docs.python.org/zh-cn/3.13/reference/executionmodel.html#annotation-scopes) within class bodies.
+​	Pops a mapping off the stack and looks up the name associated with slot `i` of the "fast locals" storage in this mapping. If the name is not found there, loads it from the cell contained in slot `i`, similar to [`LOAD_DEREF`]({{< ref "/library/language/dis#opcode-LOAD_DEREF" >}}). This is used for loading [closure variables]({{< ref "/glossary/idx#term-closure-variable" >}}) in class bodies (which previously used `LOAD_CLASSDEREF`) and in [annotation scopes]({{< ref "/reference/executionmodel#annotation-scopes" >}}) within class bodies.
 
 > Added in version 3.12.
 >
@@ -1134,20 +1134,20 @@ dict.update(STACK[-i], map)
 
 ​	将 `STACK.pop()` 存放到 "fast locals" 存储中包含在 `i` 号槽位的单元内。
 
-*在 3.11 版本发生变更:* `i` 不再是 [`co_varnames`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#codeobject.co_varnames) 的长度的偏移量。
+> 在 3.11 版本发生变更: `i` 不再是 [`co_varnames`]({{< ref "/reference/datamodel#codeobject.co_varnames" >}}) 的长度的偏移量。
 
 ## **DELETE_DEREF**(*i*)
 
-​	清空 "fast locals" 存储中包含在 `i` 号槽位的单元。 被用于 [`del`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#del) 语句。
+​	清空 "fast locals" 存储中包含在 `i` 号槽位的单元。 被用于 [`del`]({{< ref "/reference/simple_stmts#del" >}}) 语句。
 
 > Added in version 3.2.
 >
 
-*在 3.11 版本发生变更:* `i` 不再是 [`co_varnames`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#codeobject.co_varnames) 的长度的偏移量。
+> 在 3.11 版本发生变更: `i` 不再是 [`co_varnames`]({{< ref "/reference/datamodel#codeobject.co_varnames" >}}) 的长度的偏移量。
 
 ## **COPY_FREE_VARS**(*n*)
 
-​	Copies the `n` [free (closure) variables](https://docs.python.org/zh-cn/3.13/glossary.html#term-closure-variable) from the closure into the frame. Removes the need for special code on the caller's side when calling closures.
+​	Copies the `n` [free (closure) variables]({{< ref "/glossary/idx#term-closure-variable" >}}) from the closure into the frame. Removes the need for special code on the caller's side when calling closures.
 
 > Added in version 3.11.
 >
@@ -1175,9 +1175,9 @@ dict.update(STACK[-i], map)
 > Added in version 3.11.
 >
 
-*在 3.13 版本发生变更:* Callable现在总是出现在栈的同一位置。
+> 在 3.13 版本发生变更: Callable现在总是出现在栈的同一位置。
 
-*在 3.13 版本发生变更:* 有关键字参数的调用现在由 [`CALL_KW`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-CALL_KW) 处理。
+> 在 3.13 版本发生变更: 有关键字参数的调用现在由 [`CALL_KW`]({{< ref "/library/language/dis#opcode-CALL_KW" >}}) 处理。
 
 ## **CALL_KW**(*argc*)
 
@@ -1187,7 +1187,7 @@ dict.update(STACK[-i], map)
 - `self``或者``NULL`
 - 其余的位置参数
 - 关键字参数
-- 由关键字参数名称组成的 [`tuple`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#tuple)
+- 由关键字参数名称组成的 [`tuple`]({{< ref "/library/stdtypes#tuple" >}})
 
 `argc` 是位置参数和关键字参数的总数，不包括 `self`。 关键字参数名称元组的长度为关键字参数的数量。
 
@@ -1205,7 +1205,7 @@ dict.update(STACK[-i], map)
 
 ## **PUSH_NULL**
 
-​	将一个 `NULL` 推入栈。 在调用序列中用来匹配 [`LOAD_METHOD`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-LOAD_METHOD) 针对非方法调用推入栈的 `NULL`。
+​	将一个 `NULL` 推入栈。 在调用序列中用来匹配 [`LOAD_METHOD`]({{< ref "/library/language/dis#opcode-LOAD_METHOD" >}}) 针对非方法调用推入栈的 `NULL`。
 
 > Added in version 3.11.
 >
@@ -1214,11 +1214,11 @@ dict.update(STACK[-i], map)
 
 ​	Pushes a new function object on the stack built from the code object at `STACK[-1]`.
 
-*在 3.10 版本发生变更:* 旗标值 `0x04` 是一个字符串元组而非字典。
+> 在 3.10 版本发生变更: 旗标值 `0x04` 是一个字符串元组而非字典。
 
-*在 3.11 版本发生变更:* 位于 `STACK[-1]` 的限定名称已被移除。
+> 在 3.11 版本发生变更: 位于 `STACK[-1]` 的限定名称已被移除。
 
-*在 3.13 版本发生变更:* 操作参数曾指示额外的函数属性，现已被移除。 现在使用 [`SET_FUNCTION_ATTRIBUTE`](https://docs.python.org/zh-cn/3.13/library/dis.html#opcode-SET_FUNCTION_ATTRIBUTE)。
+> 在 3.13 版本发生变更: 操作参数曾指示额外的函数属性，现已被移除。 现在使用 [`SET_FUNCTION_ATTRIBUTE`]({{< ref "/library/language/dis#opcode-SET_FUNCTION_ATTRIBUTE" >}})。
 
 ## **SET_FUNCTION_ATTRIBUTE**(*flag*)
 
@@ -1251,7 +1251,7 @@ start = STACK.pop()
 STACK.append(slice(start, end, step))
 ```
 
-​	详见内置函数 [`slice()`](https://docs.python.org/zh-cn/3.13/library/functions.html#slice) 。
+​	详见内置函数 [`slice()`]({{< ref "/library/functions#slice" >}}) 。
 
 ## **EXTENDED_ARG**(*ext*)
 
@@ -1267,9 +1267,9 @@ result = func(value)
 STACK.append(result)
 ```
 
-- `oparg == 1`: 在 *value* 上调用 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str)
-- `oparg == 2`: 在 *value* 上调用 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr)
-- `oparg == 3`: 在 *value* 上调用 [`ascii()`](https://docs.python.org/zh-cn/3.13/library/functions.html#ascii)
+- `oparg == 1`: 在 *value* 上调用 [`str()`]({{< ref "/library/stdtypes#str" >}})
+- `oparg == 2`: 在 *value* 上调用 [`repr()`]({{< ref "/library/functions#repr" >}})
+- `oparg == 3`: 在 *value* 上调用 [`ascii()`]({{< ref "/library/functions#ascii" >}})
 
 ​	用于实现格式化的字面值字符串（f-string）。
 
@@ -1316,7 +1316,7 @@ STACK.append(result)
 > Added in version 3.10.
 >
 
-*在 3.11 版本发生变更:* 在之前的版本中，该指令还会推入一个表示成功 (`True`) 或失败 (`False`) 的布尔值。
+> 在 3.11 版本发生变更: 在之前的版本中，该指令还会推入一个表示成功 (`True`) 或失败 (`False`) 的布尔值。
 
 ## **RESUME**(*context*)
 
@@ -1334,7 +1334,7 @@ STACK.append(result)
 > Added in version 3.11.
 >
 
-*在 3.13 版本发生变更:* oparg 值已被修改以包括有关 except 深度的信息
+> 在 3.13 版本发生变更: oparg 值已被修改以包括有关 except 深度的信息
 
 ## **RETURN_GENERATOR**
 
@@ -1347,7 +1347,7 @@ STACK.append(result)
 
 ​	等价于 `STACK[-1] = STACK[-2].send(STACK[-1])` 。 被用于 `yield from` 和 `await` 语句。
 
-​	如果调用引发了 [`StopIteration`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#StopIteration)，则从栈中弹出最上面的值，推入异常的 `value` 属性，并将字节码计数器值递增 *delta*。
+​	如果调用引发了 [`StopIteration`]({{< ref "/library/exceptions#StopIteration" >}})，则从栈中弹出最上面的值，推入异常的 `value` 属性，并将字节码计数器值递增 *delta*。
 
 > Added in version 3.11.
 >
@@ -1356,13 +1356,13 @@ STACK.append(result)
 
 ​	这不是一个真正的操作码。 它是 [0,255] 范围内使用与不使用参数的操作码（分别是 `< HAVE_ARGUMENT` 和 `>= HAVE_ARGUMENT` ）的分界线。
 
-​	如果你的应用程序使用了伪指令或专用指令，请改用 [`hasarg`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.hasarg) 多项集。
+​	如果你的应用程序使用了伪指令或专用指令，请改用 [`hasarg`]({{< ref "/library/language/dis#dis.hasarg" >}}) 多项集。
 
-*在 3.6 版本发生变更:* 现在每条指令都带有参数，但操作码 `< HAVE_ARGUMENT` 会忽略它。 之前仅限操作码 `>= HAVE_ARGUMENT` 带有参数。
+> 在 3.6 版本发生变更: 现在每条指令都带有参数，但操作码 `< HAVE_ARGUMENT` 会忽略它。 之前仅限操作码 `>= HAVE_ARGUMENT` 带有参数。
 
-*在 3.12 版本发生变更:* 伪指令被添加到 [`dis`](https://docs.python.org/zh-cn/3.13/library/dis.html#module-dis) 模块中，对于它们来说，“比较 `HAVE_ARGUMENT` 以确定其是否使用参数”不再有效。
+> 在 3.12 版本发生变更: 伪指令被添加到 [`dis`]({{< ref "/library/language/dis#module-dis" >}}) 模块中，对于它们来说，“比较 `HAVE_ARGUMENT` 以确定其是否使用参数”不再有效。
 
-*自 3.13 版本弃用:* 使用 [`hasarg`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.hasarg) 来代替。
+> 自 3.13 版本弃用: 使用 [`hasarg`]({{< ref "/library/language/dis#dis.hasarg" >}}) 来代替。
 
 ## **CALL_INTRINSIC_1**
 
@@ -1379,11 +1379,11 @@ STACK.append(result)
 | `INTRINSIC_ASYNC_GEN_WRAP`      | 包裹一个异常生成器值                                         |
 | `INTRINSIC_UNARY_POSITIVE`      | 执行单目运算符 `+`                                           |
 | `INTRINSIC_LIST_TO_TUPLE`       | 将一个列表转换为元组                                         |
-| `INTRINSIC_TYPEVAR`             | 创建一个 [`typing.TypeVar`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeVar) |
-| `INTRINSIC_PARAMSPEC`           | 创建一个 [`typing.ParamSpec`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.ParamSpec) |
-| `INTRINSIC_TYPEVARTUPLE`        | 创建一个 [`typing.TypeVarTuple`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeVarTuple) |
-| `INTRINSIC_SUBSCRIPT_GENERIC`   | 返回 [`typing.Generic`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.Generic) 取参数下标。 |
-| `INTRINSIC_TYPEALIAS`           | 创建一个 [`typing.TypeAliasType`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeAliasType) ；被用于 [`type`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#type) 语句。 参数是一个由类型别名的名称、类型形参和值组成的元组。 |
+| `INTRINSIC_TYPEVAR`             | 创建一个 [`typing.TypeVar`]({{< ref "/library/development/typing#typing.TypeVar" >}}) |
+| `INTRINSIC_PARAMSPEC`           | 创建一个 [`typing.ParamSpec`]({{< ref "/library/development/typing#typing.ParamSpec" >}}) |
+| `INTRINSIC_TYPEVARTUPLE`        | 创建一个 [`typing.TypeVarTuple`]({{< ref "/library/development/typing#typing.TypeVarTuple" >}}) |
+| `INTRINSIC_SUBSCRIPT_GENERIC`   | 返回 [`typing.Generic`]({{< ref "/library/development/typing#typing.Generic" >}}) 取参数下标。 |
+| `INTRINSIC_TYPEALIAS`           | 创建一个 [`typing.TypeAliasType`]({{< ref "/library/development/typing#typing.TypeAliasType" >}}) ；被用于 [`type`]({{< ref "/reference/simple_stmts#type" >}}) 语句。 参数是一个由类型别名的名称、类型形参和值组成的元组。 |
 
 > Added in version 3.12.
 >
@@ -1404,9 +1404,9 @@ STACK.append(result)
 | 操作数                               | 描述                                                         |
 | :----------------------------------- | :----------------------------------------------------------- |
 | `INTRINSIC_2_INVALID`                | 无效                                                         |
-| `INTRINSIC_PREP_RERAISE_STAR`        | 计算 [`ExceptionGroup`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ExceptionGroup) 以从 `try-except*` 中引发异常。 |
-| `INTRINSIC_TYPEVAR_WITH_BOUND`       | 创建一个带范围的 [`typing.TypeVar`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeVar) 。 |
-| `INTRINSIC_TYPEVAR_WITH_CONSTRAINTS` | 创建一个带约束的 [`typing.TypeVar`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeVar) 。 |
+| `INTRINSIC_PREP_RERAISE_STAR`        | 计算 [`ExceptionGroup`]({{< ref "/library/exceptions#ExceptionGroup" >}}) 以从 `try-except*` 中引发异常。 |
+| `INTRINSIC_TYPEVAR_WITH_BOUND`       | 创建一个带范围的 [`typing.TypeVar`]({{< ref "/library/development/typing#typing.TypeVar" >}}) 。 |
+| `INTRINSIC_TYPEVAR_WITH_CONSTRAINTS` | 创建一个带约束的 [`typing.TypeVar`]({{< ref "/library/development/typing#typing.TypeVar" >}}) 。 |
 | `INTRINSIC_SET_FUNCTION_TYPE_PARAMS` | 为一个函数设置 `__type_params__` 属性。                      |
 
 > Added in version 3.12.
@@ -1428,7 +1428,7 @@ STACK.append(result)
 
 ​	与 `SETUP_CLEANUP` 类似，但在出现异常的情况下会从栈中再弹出一项然后将控制权转移到 `target` 上的异常处理器。
 
-​	该变体形式用于 [`with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#with) 和 [`async with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#async-with) 结构，它们会将上下文管理器的 [`__enter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__enter__) 或 [`__aenter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__aenter__) 的返回值推入栈。
+​	该变体形式用于 [`with`]({{< ref "/reference/compound_stmts#with" >}}) 和 [`async with`]({{< ref "/reference/compound_stmts#async-with" >}}) 结构，它们会将上下文管理器的 [`__enter__()`]({{< ref "/reference/datamodel#object.__enter__" >}}) 或 [`__aenter__()`]({{< ref "/reference/datamodel#object.__aenter__" >}}) 的返回值推入栈。
 
 ## **POP_BLOCK**
 
@@ -1446,7 +1446,7 @@ STACK.append(result)
 
 ​	请注意在汇编程序中 `LOAD_CLOSURE` 将被替换为 `LOAD_FAST`。
 
-*在 3.13 版本发生变更:* 该操作码现在是一个伪指令。
+> 在 3.13 版本发生变更: 该操作码现在是一个伪指令。
 
 ## **LOAD_METHOD**
 
@@ -1458,7 +1458,7 @@ STACK.append(result)
 
 ​	提供这些集合用于字节码指令的自动内省：
 
-*在 3.12 版本发生变更:* 现在此集合还包含一些伪指令和工具化指令。 这些操作码的值 `>= MIN_PSEUDO_OPCODE` 和 `>= MIN_INSTRUMENTED_OPCODE`。
+> 在 3.12 版本发生变更: 现在此集合还包含一些伪指令和工具化指令。 这些操作码的值 `>= MIN_PSEUDO_OPCODE` 和 `>= MIN_INSTRUMENTED_OPCODE`。
 
 ## dis.**opname**
 
@@ -1485,7 +1485,7 @@ STACK.append(result)
 
 ## dis.**hasfree**
 
-​	Sequence of bytecodes that access a [free (closure) variable](https://docs.python.org/zh-cn/3.13/glossary.html#term-closure-variable). 'free' in this context refers to names in the current scope that are referenced by inner scopes or names in outer scopes that are referenced from this scope. It does *not* include references to global or builtin scopes.
+​	Sequence of bytecodes that access a [free (closure) variable]({{< ref "/glossary/idx#term-closure-variable" >}}). 'free' in this context refers to names in the current scope that are referenced by inner scopes or names in outer scopes that are referenced from this scope. It does *not* include references to global or builtin scopes.
 
 ## dis.**hasname**
 
@@ -1517,10 +1517,10 @@ STACK.append(result)
 
 ​	具有相对跳转目标的字节码序列。
 
-*自 3.13 版本弃用:* 所有跳转现在都是相对的。 使用 [`hasjump`](https://docs.python.org/zh-cn/3.13/library/dis.html#dis.hasjump)。
+> 自 3.13 版本弃用: 所有跳转现在都是相对的。 使用 [`hasjump`]({{< ref "/library/language/dis#dis.hasjump" >}})。
 
 ## dis.**hasjabs**
 
 ​	具有绝对跳转目标的字节码序列。
 
-*自 3.13 版本弃用:* 所有跳转现在都是相对的。 该列表将为空。
+> 自 3.13 版本弃用: 所有跳转现在都是相对的。 该列表将为空。

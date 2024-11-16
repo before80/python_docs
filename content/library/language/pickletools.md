@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/pickletools.html](https://docs.python.org/zh-cn/3.13/library/pickletools.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/pickletools.html](https://docs.python.org/zh-cn/3.13/library/pickletools.html)
 >
 > 收录该文档的时间：`2024-11-15T21:23:55+08:00`
 
@@ -18,7 +18,7 @@ draft = false
 
 ------
 
-​	此模块包含与 [`pickle`](https://docs.python.org/zh-cn/3.13/library/pickle.html#module-pickle) 模块内部细节有关的多个常量，一些关于具体实现的详细注释，以及一些能够分析封存数据的有用函数。 此模块的内容对需要操作 [`pickle`](https://docs.python.org/zh-cn/3.13/library/pickle.html#module-pickle) 的 Python 核心开发者来说很有用处；[`pickle`](https://docs.python.org/zh-cn/3.13/library/pickle.html#module-pickle) 的一般用户则可能会感觉 [`pickletools`](https://docs.python.org/zh-cn/3.13/library/pickletools.html#module-pickletools) 模块与他们无关。
+​	此模块包含与 [`pickle`]({{< ref "/library/persistence/pickle#module-pickle" >}}) 模块内部细节有关的多个常量，一些关于具体实现的详细注释，以及一些能够分析封存数据的有用函数。 此模块的内容对需要操作 [`pickle`]({{< ref "/library/persistence/pickle#module-pickle" >}}) 的 Python 核心开发者来说很有用处；[`pickle`]({{< ref "/library/persistence/pickle#module-pickle" >}}) 的一般用户则可能会感觉 [`pickletools`]({{< ref "/library/language/pickletools#module-pickletools" >}}) 模块与他们无关。
 
 
 
@@ -47,23 +47,23 @@ highest protocol among opcodes = 2
 
 ### 命令行选项
 
-## **-a**, **--annotate**
+## **-a**, `--annotate`
 
 ​	使用简短的操作码描述来标注每一行。
 
-## **-o**, **--output**=<file>
+## **-o**, `--output`=<file>
 
 ​	输出应当写入到的文件名称。
 
-## **-l**, **--indentlevel**=<num>
+## **-l**, `--indentlevel`=<num>
 
 ​	一个新的 MARK 层级所需缩进的空格数。
 
-## **-m**, **--memo**
+## **-m**, `--memo`
 
 ​	当反汇编多个对象时，保留各个反汇编的备忘记录。
 
-## **-p**, **--preamble**=<preamble>
+## **-p**, `--preamble`=<preamble>
 
 ​	当指定一个以上的 pickle 文件时，在每次反汇编之前打印给定的前言。
 
@@ -73,11 +73,11 @@ highest protocol among opcodes = 2
 
 ​	将 pickle 的符号化反汇编数据输出到文件型对象 *out*，默认为 `sys.stdout`。 *pickle* 可以是一个字符串或一个文件型对象。 *memo* 可以是一个将被用作 pickle 的备忘记录的 Python 字典；它可被用来对由同一封存器创建的多个封存对象执行反汇编。 由 `MARK` 操作码指明的每个连续级别将会缩进 *indentlevel* 个空格。 如果为 *annotate* 指定了一个非零值，则输出中的每个操作码将以一个简短描述来标注。 *annotate* 的值会被用作标注所应开始的列的提示。
 
-*在 3.2 版本发生变更:* 增加了 *annotate* 形参。
+> 在 3.2 版本发生变更: 增加了 *annotate* 形参。
 
 ## pickletools.**genops**(*pickle*)
 
-​	提供包含 pickle 中所有操作码的 [iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterator)，返回一个 `(opcode, arg, pos)` 三元组的序列。 *opcode* 是 `OpcodeInfo` 类的一个实例；*arg* 是 Python 对象形式的 opcode 参数的已解码值；*pos* 是 opcode 所在的位置。 *pickle* 可以是一个字符串或一个文件型对象。
+​	提供包含 pickle 中所有操作码的 [iterator]({{< ref "/glossary/idx#term-iterator" >}})，返回一个 `(opcode, arg, pos)` 三元组的序列。 *opcode* 是 `OpcodeInfo` 类的一个实例；*arg* 是 Python 对象形式的 opcode 参数的已解码值；*pos* 是 opcode 所在的位置。 *pickle* 可以是一个字符串或一个文件型对象。
 
 ## pickletools.**optimize**(*picklestring*)
 

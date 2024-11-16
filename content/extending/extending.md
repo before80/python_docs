@@ -9,7 +9,7 @@ draft = false
 
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/extending/extending.html](https://docs.python.org/zh-cn/3.13/extending/extending.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/extending/extending.html](https://docs.python.org/zh-cn/3.13/extending/extending.html)
 >
 > 收录该文档的时间：`2024-11-14T22:13:29+08:00`
 
@@ -21,17 +21,16 @@ draft = false
 
 ​	扩展模块的编写方式取决与你的目的以及系统设置；下面章节会详细介绍。
 
-​	备注
-
+​备注
  
 
-​	C扩展接口特指CPython，扩展模块无法在其他Python实现上工作。在大多数情况下，应该避免写C扩展，来保持可移植性。举个例子，如果你的用例调用了C库或系统调用，你应该考虑使用 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 模块或 [cffi](https://cffi.readthedocs.io/) 库，而不是自己写C代码。这些模块允许你写Python代码来接口C代码，而且可移植性更好。不知为何编译失败了。
+​	C扩展接口特指CPython，扩展模块无法在其他Python实现上工作。在大多数情况下，应该避免写C扩展，来保持可移植性。举个例子，如果你的用例调用了C库或系统调用，你应该考虑使用 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 模块或 [cffi](https://cffi.readthedocs.io/) 库，而不是自己写C代码。这些模块允许你写Python代码来接口C代码，而且可移植性更好。不知为何编译失败了。
 
 
 
 ## 1.1. 一个简单的例子
 
-​	让我们创建一个扩展模块 `spam` (Monty Python 粉丝最喜欢的食物...) 并且想要创建对应 C 库函数 `system()` [[1\]](https://docs.python.org/zh-cn/3.13/extending/extending.html#id5) 的 Python 接口。 这个函数接受一个以 null 结尾的字符串参数并返回一个整数。 我们希望可以在 Python 中以如下方式调用此函数:
+​	让我们创建一个扩展模块 `spam` (Monty Python 粉丝最喜欢的食物...) 并且想要创建对应 C 库函数 `system()` [[1\]]({{< ref "/extending/extending#id5" >}}) 的 Python 接口。 这个函数接受一个以 null 结尾的字符串参数并返回一个整数。 我们希望可以在 Python 中以如下方式调用此函数:
 
 \>>>
 
@@ -51,8 +50,7 @@ draft = false
 
 ​	这会导入 Python API（如果你喜欢，你可以在这里添加描述模块目标和版权信息的注释)。
 
-​	备注
-
+​备注
  
 
 ​	由于 Python 可能会定义一些能在某些系统上影响标准头文件的预处理器定义，因此在包含任何标准头文件之前，你 *必须* 先包含 `Python.h`。
@@ -89,27 +87,27 @@ spam_system(PyObject *self, PyObject *args)
 
 ## 1.2. 关于错误和异常
 
-​	整个 Python 解释器系统有一个如下所述的重要惯例：当一个函数运行失败时，它应当设置一个异常条件并返回一个错误值（通常为 `-1` 或 `NULL` 指针）。 异常信息保存在解释器线程状态的三个成员中。 如果没有异常则它们的值为 `NULL`。 在其他情况下它们是 [`sys.exc_info()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.exc_info) 所返回的 Python 元组的成员的 C 对应物。 它们分别是异常类型、异常实例和回溯对象。 理解它们对于理解错误是如何被传递的非常重要。
+​	整个 Python 解释器系统有一个如下所述的重要惯例：当一个函数运行失败时，它应当设置一个异常条件并返回一个错误值（通常为 `-1` 或 `NULL` 指针）。 异常信息保存在解释器线程状态的三个成员中。 如果没有异常则它们的值为 `NULL`。 在其他情况下它们是 [`sys.exc_info()`]({{< ref "/library/python/sys#sys.exc_info" >}}) 所返回的 Python 元组的成员的 C 对应物。 它们分别是异常类型、异常实例和回溯对象。 理解它们对于理解错误是如何被传递的非常重要。
 
 ​	Python API中定义了一些函数来设置这些变量。
 
-​	最常用的就是 [`PyErr_SetString()`](https://docs.python.org/zh-cn/3.13/c-api/exceptions.html#c.PyErr_SetString)。 其参数是异常对象和 C 字符串。 异常对象一般是像 `PyExc_ZeroDivisionError` 这样的预定义对象。 C 字符串指明异常原因，并被转换为一个 Python 字符串对象存储为异常的“关联值”。
+​	最常用的就是 [`PyErr_SetString()`]({{< ref "/c_api/exceptions#c.PyErr_SetString" >}})。 其参数是异常对象和 C 字符串。 异常对象一般是像 `PyExc_ZeroDivisionError` 这样的预定义对象。 C 字符串指明异常原因，并被转换为一个 Python 字符串对象存储为异常的“关联值”。
 
-​	另一个有用的函数是 [`PyErr_SetFromErrno()`](https://docs.python.org/zh-cn/3.13/c-api/exceptions.html#c.PyErr_SetFromErrno) ，仅接受一个异常对象，异常描述包含在全局变量 `errno` 中。最通用的函数还是 [`PyErr_SetObject()`](https://docs.python.org/zh-cn/3.13/c-api/exceptions.html#c.PyErr_SetObject) ，包含两个参数，分别为异常对象和异常描述。你不需要使用 [`Py_INCREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_INCREF) 来增加传递到其他函数的参数对象的引用计数。
+​	另一个有用的函数是 [`PyErr_SetFromErrno()`]({{< ref "/c_api/exceptions#c.PyErr_SetFromErrno" >}}) ，仅接受一个异常对象，异常描述包含在全局变量 `errno` 中。最通用的函数还是 [`PyErr_SetObject()`]({{< ref "/c_api/exceptions#c.PyErr_SetObject" >}}) ，包含两个参数，分别为异常对象和异常描述。你不需要使用 [`Py_INCREF()`]({{< ref "/c_api/refcounting#c.Py_INCREF" >}}) 来增加传递到其他函数的参数对象的引用计数。
 
-​	你可以通过 [`PyErr_Occurred()`](https://docs.python.org/zh-cn/3.13/c-api/exceptions.html#c.PyErr_Occurred) 在不造成破坏的情况下检测是否设置了异常。 这将返回当前异常对象，或者如果未发生异常则返回 `NULL`。 你通常不需要调用 [`PyErr_Occurred()`](https://docs.python.org/zh-cn/3.13/c-api/exceptions.html#c.PyErr_Occurred) 来查看函数调用中是否发生了错误，因为你应该能从返回值中看出来。
+​	你可以通过 [`PyErr_Occurred()`]({{< ref "/c_api/exceptions#c.PyErr_Occurred" >}}) 在不造成破坏的情况下检测是否设置了异常。 这将返回当前异常对象，或者如果未发生异常则返回 `NULL`。 你通常不需要调用 [`PyErr_Occurred()`]({{< ref "/c_api/exceptions#c.PyErr_Occurred" >}}) 来查看函数调用中是否发生了错误，因为你应该能从返回值中看出来。
 
 ​	当一个函数 *f* 调用另一个函数 *g* 时检测到后者出错了，*f* 应当自己返回一个错误值 (通常为 `NULL` 或 `-1`)。 它 *不应* 调用某个 `PyErr_*` 函数 --- 这类函数已经被 *g* 调用过了。 *f* 的调用者随后也应当返回一个错误来提示 *它的* 调用者，同样 *不应* 调用 `PyErr_*`，依此类推 --- 错误的最详细原因已经由首先检测到它的函数报告了。 一旦这个错误到达 Python 解释器的主循环，它会中止当前执行的 Python 代码并尝试找出由 Python 程序员所指定的异常处理器。
 
 ​	（在某些情况下模块确实能够通过调用其它 `PyErr_*` 函数来给出更为详细的错误消息，并且在这些情况下是可以这样做的。 但是按照一般规则，这是不必要的，并可能导致有关错误的信息丢失：大多数操作会由于种种原因而失败。）
 
-​	想要忽略由一个失败的函数调用所设置的异常，异常条件必须通过调用 [`PyErr_Clear()`](https://docs.python.org/zh-cn/3.13/c-api/exceptions.html#c.PyErr_Clear) 显式地被清除。 C 代码应当调用 [`PyErr_Clear()`](https://docs.python.org/zh-cn/3.13/c-api/exceptions.html#c.PyErr_Clear) 的唯一情况是如果它不想将错误传给解释器而是想完全由自己来处理它（可能是尝试其他方法，或是假装没有出错）。
+​	想要忽略由一个失败的函数调用所设置的异常，异常条件必须通过调用 [`PyErr_Clear()`]({{< ref "/c_api/exceptions#c.PyErr_Clear" >}}) 显式地被清除。 C 代码应当调用 [`PyErr_Clear()`]({{< ref "/c_api/exceptions#c.PyErr_Clear" >}}) 的唯一情况是如果它不想将错误传给解释器而是想完全由自己来处理它（可能是尝试其他方法，或是假装没有出错）。
 
-​	每次失败的 `malloc()` 调用必须转换为一个异常。 `malloc()` (或 `realloc()` )的直接调用者必须调用 [`PyErr_NoMemory()`](https://docs.python.org/zh-cn/3.13/c-api/exceptions.html#c.PyErr_NoMemory) 来返回错误来提示。所有对象创建函数(例如 [`PyLong_FromLong()`](https://docs.python.org/zh-cn/3.13/c-api/long.html#c.PyLong_FromLong) )已经这么做了，所以这个提示仅用于直接调用 `malloc()` 的情况。
+​	每次失败的 `malloc()` 调用必须转换为一个异常。 `malloc()` (或 `realloc()` )的直接调用者必须调用 [`PyErr_NoMemory()`]({{< ref "/c_api/exceptions#c.PyErr_NoMemory" >}}) 来返回错误来提示。所有对象创建函数(例如 [`PyLong_FromLong()`](https://docs.python.org/zh-cn/3.13/c-api/long.html#c.PyLong_FromLong) )已经这么做了，所以这个提示仅用于直接调用 `malloc()` 的情况。
 
 ​	还要注意的是，除了 [`PyArg_ParseTuple()`](https://docs.python.org/zh-cn/3.13/c-api/arg.html#c.PyArg_ParseTuple) 等重要的例外，返回整数状态码的函数通常都是返回正值或零来表示成功，而以 `-1` 表示失败，如同 Unix 系统调用一样。
 
-​	最后，当你返回一个错误指示器时要注意清理垃圾（通过为你已经创建的对象执行 [`Py_XDECREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_XDECREF) 或 [`Py_DECREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_DECREF) 调用）！
+​	最后，当你返回一个错误指示器时要注意清理垃圾（通过为你已经创建的对象执行 [`Py_XDECREF()`]({{< ref "/c_api/refcounting#c.Py_XDECREF" >}}) 或 [`Py_DECREF()`]({{< ref "/c_api/refcounting#c.Py_DECREF" >}}) 调用）！
 
 ​	选择引发哪个异常完全取决于你的喜好。 所有 Python 内置异常都有对应的预声明 C 对象，例如 `PyExc_ZeroDivisionError`，你可以直接使用它们。 当然，你应当明智地选择异常 --- 不要使用 `PyExc_TypeError` 来表示文件无法打开（可能应该用 `PyExc_OSError` 比较好）。 如果参数列表有问题，[`PyArg_ParseTuple()`](https://docs.python.org/zh-cn/3.13/c-api/arg.html#c.PyArg_ParseTuple) 函数通常会引发 `PyExc_TypeError`。 如果你希望一个参数的值必须在特定范围内或必须满足其他条件，则适宜使用 `PyExc_ValueError`。
 
@@ -142,13 +140,13 @@ PyInit_spam(void)
 }
 ```
 
-​	请注意该异常对象的 Python 名称为 `spam.error`。 [`PyErr_NewException()`](https://docs.python.org/zh-cn/3.13/c-api/exceptions.html#c.PyErr_NewException) 函数可以创建基类为 [`Exception`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#Exception) 的类 (除非传入了另一个类而不是 `NULL`)，如 [内置异常](https://docs.python.org/zh-cn/3.13/library/exceptions.html#bltin-exceptions) 中所描述的。
+​	请注意该异常对象的 Python 名称为 `spam.error`。 [`PyErr_NewException()`]({{< ref "/c_api/exceptions#c.PyErr_NewException" >}}) 函数可以创建基类为 [`Exception`]({{< ref "/library/exceptions#Exception" >}}) 的类 (除非传入了另一个类而不是 `NULL`)，如 [内置异常]({{< ref "/library/exceptions#bltin-exceptions" >}}) 中所描述的。
 
 ​	请注意 `SpamError` 变量保留了一个对新创建的异常类的引用；这是有意为之的！ 由于异常可能会被外部代码从模块中删除，因此需要拥有一个对该类的引用以确保它不会被丢弃，从而导致 `SpamError` 成为一个悬空指针。 如果异常类成为悬空指针，则引发该异常的 C 代码可能会导致核心转储或其他预期之外的附带影响。
 
-​	本样例稍后将讨论 [`PyMODINIT_FUNC`](https://docs.python.org/zh-cn/3.13/c-api/intro.html#c.PyMODINIT_FUNC) 作为函数返回类型的用法。
+​	本样例稍后将讨论 [`PyMODINIT_FUNC`]({{< ref "/c_api/intro#c.PyMODINIT_FUNC" >}}) 作为函数返回类型的用法。
 
-​	可在扩展模块中调用 [`PyErr_SetString()`](https://docs.python.org/zh-cn/3.13/c-api/exceptions.html#c.PyErr_SetString) 来引发 `spam.error` 异常，如下所示:
+​	可在扩展模块中调用 [`PyErr_SetString()`]({{< ref "/c_api/exceptions#c.PyErr_SetString" >}}) 来引发 `spam.error` 异常，如下所示:
 
 ```
 static PyObject *
@@ -249,7 +247,7 @@ PyInit_spam(void)
 }
 ```
 
-​	请注意 [`PyMODINIT_FUNC`](https://docs.python.org/zh-cn/3.13/c-api/intro.html#c.PyMODINIT_FUNC) 将函数声明为 `PyObject *` 返回类型，声明了平台所要求的任何特殊链接声明，并针对于= C++ 将函数声明为 `extern "C"`。
+​	请注意 [`PyMODINIT_FUNC`]({{< ref "/c_api/intro#c.PyMODINIT_FUNC" >}}) 将函数声明为 `PyObject *` 返回类型，声明了平台所要求的任何特殊链接声明，并针对于= C++ 将函数声明为 `extern "C"`。
 
 ​	当 Python 程序首次导入 `spam` 模块时，`PyInit_spam()` 将被调用。 （有关嵌入 Python 的注释参见下文。） 它将调用 [`PyModule_Create()`](https://docs.python.org/zh-cn/3.13/c-api/module.html#c.PyModule_Create)，该函数会返回一个模块对象，并基于在模块定义中找到的表（一个 [`PyMethodDef`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.PyMethodDef) 结构体的数组）将内置函数对象插入到新创建的模块中。 [`PyModule_Create()`](https://docs.python.org/zh-cn/3.13/c-api/module.html#c.PyModule_Create) 返回一个指向它所创建的模块对象的指针。 它可能会会程度严重的特定错误而中止，或者在模块无法成功初始化时返回 `NULL`。 初始化函数必须将模块对象返回给其调用者，以便将其插入到 `sys.modules` 中。
 
@@ -305,16 +303,14 @@ main(int argc, char *argv[])
 }
 ```
 
-​	备注
-
+​备注
  
 
 ​	要从 `sys.modules` 删除实体或导入已编译模块到一个进程里的多个解释器(或使用 `fork()` 而没用 `exec()` )会在一些扩展模块上产生错误。扩展模块作者可以在初始化内部数据结构时给出警告。
 
 ​	更多关于模块的现实的例子包含在 Python 源码发布包的 `Modules/xxmodule.c` 中。 此文件可以被用作代码模板或是学习样例。
 
-​	备注
-
+​备注
  
 
 ​	不像我们的 `spam` 例子， `xxmodule` 使用了 *多阶段初始化* (Python3.5开始引入)， `PyInit_spam` 会返回一个 PyModuleDef 结构体，然后创建的模块放到导入机制。细节参考 [**PEP 489**](https://peps.python.org/pep-0489/) 的多阶段初始化。
@@ -323,7 +319,7 @@ main(int argc, char *argv[])
 
 ## 1.5. 编译和链接
 
-​	在你能使用你的新写的扩展之前，你还需要做两件事情：使用 Python 系统来编译和链接。如果你使用动态加载，这取决于你使用的操作系统的动态加载机制；更多信息请参考编译扩展模块的章节（ [构建C/C++扩展](https://docs.python.org/zh-cn/3.13/extending/building.html#building) 章节），以及在 Windows 上编译需要的额外信息（ [在 Windows 上构建 C 和 C++ 扩展](https://docs.python.org/zh-cn/3.13/extending/windows.html#building-on-windows) 章节）。
+​	在你能使用你的新写的扩展之前，你还需要做两件事情：使用 Python 系统来编译和链接。如果你使用动态加载，这取决于你使用的操作系统的动态加载机制；更多信息请参考编译扩展模块的章节（ [构建C/C++扩展]({{< ref "/extending/building#building" >}}) 章节），以及在 Windows 上编译需要的额外信息（ [在 Windows 上构建 C 和 C++ 扩展]({{< ref "/extending/windows#building-on-windows" >}}) 章节）。
 
 ​	如果你不使用动态加载，或者想要让模块永久性的作为Python解释器的一部分，就必须修改配置设置，并重新构建解释器。幸运的是在Unix上很简单，只需要把你的文件 ( `spammodule.c` 为例) 放在解压缩源码发行包的 `Modules/` 目录下，添加一行到 `Modules/Setup.local` 来描述你的文件：
 
@@ -345,9 +341,9 @@ spam spammodule.o -lX11
 
 ​	迄今为止，我们一直把注意力集中于让Python调用C函数，其实反过来也很有用，就是用C调用Python函数。这在回调函数中尤其有用。如果一个C接口使用回调，那么就要实现这个回调机制。
 
-​	幸运的是，Python解释器是比较方便回调的，并给标准Python函数提供了标准接口。(这里就不再详述解析Python字符串作为输入的方式，如果有兴趣可以参考 `Python/pythonmain.c` 中的 [`-c`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-c) 命令行代码。)
+​	幸运的是，Python解释器是比较方便回调的，并给标准Python函数提供了标准接口。(这里就不再详述解析Python字符串作为输入的方式，如果有兴趣可以参考 `Python/pythonmain.c` 中的 [`-c`]({{< ref "/using/cmdline#cmdoption-c" >}}) 命令行代码。)
 
-​	调用Python函数很简单，首先Python程序要传递Python函数对象。应该提供个函数(或其他接口)来实现。当调用这个函数时，用全局变量保存Python函数对象的指针，还要调用 ([`Py_INCREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_INCREF)) 来增加引用计数，当然不用全局变量也没什么关系。举个例子，如下函数可能是模块定义的一部分：
+​	调用Python函数很简单，首先Python程序要传递Python函数对象。应该提供个函数(或其他接口)来实现。当调用这个函数时，用全局变量保存Python函数对象的指针，还要调用 ([`Py_INCREF()`]({{< ref "/c_api/refcounting#c.Py_INCREF" >}})) 来增加引用计数，当然不用全局变量也没什么关系。举个例子，如下函数可能是模块定义的一部分：
 
 ```
 static PyObject *my_callback = NULL;
@@ -374,9 +370,9 @@ my_set_callback(PyObject *dummy, PyObject *args)
 }
 ```
 
-​	此函数必须使用 [`METH_VARARGS`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.METH_VARARGS) 旗标注册到解释器；这将在 [模块方法表和初始化函数](https://docs.python.org/zh-cn/3.13/extending/extending.html#methodtable) 一节中详细描述。 [`PyArg_ParseTuple()`](https://docs.python.org/zh-cn/3.13/c-api/arg.html#c.PyArg_ParseTuple) 函数及其参数的文档见 [提取扩展函数的参数](https://docs.python.org/zh-cn/3.13/extending/extending.html#parsetuple) 一节。
+​	此函数必须使用 [`METH_VARARGS`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.METH_VARARGS) 旗标注册到解释器；这将在 [模块方法表和初始化函数]({{< ref "/extending/extending#methodtable" >}}) 一节中详细描述。 [`PyArg_ParseTuple()`](https://docs.python.org/zh-cn/3.13/c-api/arg.html#c.PyArg_ParseTuple) 函数及其参数的文档见 [提取扩展函数的参数]({{< ref "/extending/extending#parsetuple" >}}) 一节。
 
-[`Py_XINCREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_XINCREF) 和 [`Py_XDECREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_XDECREF) 这两个宏可增加/减少一个对象的引用计数，并且当存在 `NULL` 指针时仍可保证安全 (但请注意在这个上下文中 *temp* 将不为 `NULL`)。 更多相关信息请参考 [引用计数](https://docs.python.org/zh-cn/3.13/extending/extending.html#refcounts) 章节。
+[`Py_XINCREF()`]({{< ref "/c_api/refcounting#c.Py_XINCREF" >}}) 和 [`Py_XDECREF()`]({{< ref "/c_api/refcounting#c.Py_XDECREF" >}}) 这两个宏可增加/减少一个对象的引用计数，并且当存在 `NULL` 指针时仍可保证安全 (但请注意在这个上下文中 *temp* 将不为 `NULL`)。 更多相关信息请参考 [引用计数]({{< ref "/extending/extending#refcounts" >}}) 章节。
 
 ​	随后，当要调用此函数时，你将调用 C 函数 [`PyObject_CallObject()`](https://docs.python.org/zh-cn/3.13/c-api/call.html#c.PyObject_CallObject)。 该函数有两个参数，它们都属于指针，指向任意 Python 对象：即 Python 函数，及其参数列表。 参数列表必须总是一个元组对象，其长度即参数的个数量。 要不带参数地调用 Python 函数，则传入 `NULL` 或一个空元组；要带一个参数调用它，则传入一个单元组。 [`Py_BuildValue()`](https://docs.python.org/zh-cn/3.13/c-api/arg.html#c.Py_BuildValue) 会在其格式字符串包含一对圆括号内的零个或多个格式代码时返回一个元组。 例如:
 
@@ -393,11 +389,11 @@ result = PyObject_CallObject(my_callback, arglist);
 Py_DECREF(arglist);
 ```
 
-[`PyObject_CallObject()`](https://docs.python.org/zh-cn/3.13/c-api/call.html#c.PyObject_CallObject) 返回Python对象指针，这也是Python函数的返回值。 [`PyObject_CallObject()`](https://docs.python.org/zh-cn/3.13/c-api/call.html#c.PyObject_CallObject) 是一个对其参数 "引用计数无关" 的函数。例子中新的元组创建用于参数列表，并且在 [`PyObject_CallObject()`](https://docs.python.org/zh-cn/3.13/c-api/call.html#c.PyObject_CallObject) 之后立即使用了 [`Py_DECREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_DECREF) 。
+[`PyObject_CallObject()`](https://docs.python.org/zh-cn/3.13/c-api/call.html#c.PyObject_CallObject) 返回Python对象指针，这也是Python函数的返回值。 [`PyObject_CallObject()`](https://docs.python.org/zh-cn/3.13/c-api/call.html#c.PyObject_CallObject) 是一个对其参数 "引用计数无关" 的函数。例子中新的元组创建用于参数列表，并且在 [`PyObject_CallObject()`](https://docs.python.org/zh-cn/3.13/c-api/call.html#c.PyObject_CallObject) 之后立即使用了 [`Py_DECREF()`]({{< ref "/c_api/refcounting#c.Py_DECREF" >}}) 。
 
-[`PyObject_CallObject()`](https://docs.python.org/zh-cn/3.13/c-api/call.html#c.PyObject_CallObject) 的返回值总是“新”的：要么是一个新建的对象；要么是已有对象，但增加了引用计数。所以除非你想把结果保存在全局变量中，你需要对这个值使用 [`Py_DECREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_DECREF)，即使你对里面的内容（特别！）不感兴趣。
+[`PyObject_CallObject()`](https://docs.python.org/zh-cn/3.13/c-api/call.html#c.PyObject_CallObject) 的返回值总是“新”的：要么是一个新建的对象；要么是已有对象，但增加了引用计数。所以除非你想把结果保存在全局变量中，你需要对这个值使用 [`Py_DECREF()`]({{< ref "/c_api/refcounting#c.Py_DECREF" >}})，即使你对里面的内容（特别！）不感兴趣。
 
-​	但是在你这么做之前，很重要的一点是检查返回值不是 `NULL`。 如果是的话，Python 函数会终止并引发异常。 如果调用 [`PyObject_CallObject()`](https://docs.python.org/zh-cn/3.13/c-api/call.html#c.PyObject_CallObject) 的 C 代码是在 Python 中发起调用的，它应当立即返回一个错误来告知其 Python 调用者，以便解释器能打印栈回溯信息，或者让调用方 Python 代码能处理该异常。 如果这无法做到或不合本意，则应当通过调用 [`PyErr_Clear()`](https://docs.python.org/zh-cn/3.13/c-api/exceptions.html#c.PyErr_Clear) 来清除异常。 例如:
+​	但是在你这么做之前，很重要的一点是检查返回值不是 `NULL`。 如果是的话，Python 函数会终止并引发异常。 如果调用 [`PyObject_CallObject()`](https://docs.python.org/zh-cn/3.13/c-api/call.html#c.PyObject_CallObject) 的 C 代码是在 Python 中发起调用的，它应当立即返回一个错误来告知其 Python 调用者，以便解释器能打印栈回溯信息，或者让调用方 Python 代码能处理该异常。 如果这无法做到或不合本意，则应当通过调用 [`PyErr_Clear()`]({{< ref "/c_api/exceptions#c.PyErr_Clear" >}}) 来清除异常。 例如:
 
 ```
 if (result == NULL)
@@ -512,11 +508,10 @@ int PyArg_ParseTupleAndKeywords(PyObject *arg, PyObject *kwdict,
 
 *arg* 与 *format* 形参与 [`PyArg_ParseTuple()`](https://docs.python.org/zh-cn/3.13/c-api/arg.html#c.PyArg_ParseTuple) 函数所定义的一致。 *kwdict* 形参是作为第三个参数从 Python 运行时接收的关键字字典。 *kwlist* 形参是以 `NULL` 结尾的字符串列表，它被用来标识形参；名称从左至右与来自 *format* 的类型信息相匹配。 如果执行成功，[`PyArg_ParseTupleAndKeywords()`](https://docs.python.org/zh-cn/3.13/c-api/arg.html#c.PyArg_ParseTupleAndKeywords) 会返回真值，否则返回假值并引发一个适当的异常。
 
-​	备注
-
+​备注
  
 
-​	嵌套的元组在使用关键字参数时无法生效，不在 *kwlist* 中的关键字参数会导致 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError) 异常。
+​	嵌套的元组在使用关键字参数时无法生效，不在 *kwlist* 中的关键字参数会导致 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}}) 异常。
 
 ​	如下例子是使用关键字参数的例子模块，作者是 Geoff Philbrick ([philbrick@hks.com](mailto:philbrick@hks.com)):
 
@@ -622,21 +617,21 @@ Py_BuildValue("((ii)(ii)) (ii)",
 
 ​	Python使用传统的引用计数实现，也提供了循环监测器，用以检测引用循环。这使得应用无需担心直接或间接的创建了循环引用，这是引用计数垃圾收集的一个弱点。引用循环是对象(可能直接)的引用了本身，所以循环中的每个对象的引用计数都不是0。典型的引用计数实现无法回收处于引用循环中的对象，或者被循环所引用的对象，哪怕没有循环以外的引用了。
 
-​	循环检测器能够检测垃圾回收循环并能回收它们。 [`gc`](https://docs.python.org/zh-cn/3.13/library/gc.html#module-gc) 模块提供了一种运行该检测器的方式 ([`collect()`](https://docs.python.org/zh-cn/3.13/library/gc.html#gc.collect) 函数)，以及多个配置接口和在运行时禁用该检测器的功能。
+​	循环检测器能够检测垃圾回收循环并能回收它们。 [`gc`]({{< ref "/library/python/gc#module-gc" >}}) 模块提供了一种运行该检测器的方式 ([`collect()`]({{< ref "/library/python/gc#gc.collect" >}}) 函数)，以及多个配置接口和在运行时禁用该检测器的功能。
 
 
 
 ### 1.10.1. Python中的引用计数
 
-​	有两个宏 `Py_INCREF(x)` 和 `Py_DECREF(x)` ，会处理引用计数的增减。 [`Py_DECREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_DECREF) 也会在引用计数到达0时释放对象。为了灵活，并不会直接调用 `free()` ，而是通过对象的 *类型对象* 的函数指针来调用。为了这个目的(或其他的)，每个对象同时包含一个指向自身类型对象的指针。
+​	有两个宏 `Py_INCREF(x)` 和 `Py_DECREF(x)` ，会处理引用计数的增减。 [`Py_DECREF()`]({{< ref "/c_api/refcounting#c.Py_DECREF" >}}) 也会在引用计数到达0时释放对象。为了灵活，并不会直接调用 `free()` ，而是通过对象的 *类型对象* 的函数指针来调用。为了这个目的(或其他的)，每个对象同时包含一个指向自身类型对象的指针。
 
-​	最大的问题依旧：何时使用 `Py_INCREF(x)` 和 `Py_DECREF(x)` ？我们首先引入一些概念。没有人"拥有"一个对象，你可以 *拥有一个引用* 到一个对象。一个对象的引用计数定义为拥有引用的数量。引用的拥有者有责任调用 [`Py_DECREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_DECREF) ，在引用不再需要时。引用的拥有关系可以被传递。有三种办法来处置拥有的引用：传递、存储、调用 [`Py_DECREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_DECREF) 。忘记处置一个拥有的引用会导致内存泄漏。
+​	最大的问题依旧：何时使用 `Py_INCREF(x)` 和 `Py_DECREF(x)` ？我们首先引入一些概念。没有人"拥有"一个对象，你可以 *拥有一个引用* 到一个对象。一个对象的引用计数定义为拥有引用的数量。引用的拥有者有责任调用 [`Py_DECREF()`]({{< ref "/c_api/refcounting#c.Py_DECREF" >}}) ，在引用不再需要时。引用的拥有关系可以被传递。有三种办法来处置拥有的引用：传递、存储、调用 [`Py_DECREF()`]({{< ref "/c_api/refcounting#c.Py_DECREF" >}}) 。忘记处置一个拥有的引用会导致内存泄漏。
 
-​	还可以 *借用* [[2\]](https://docs.python.org/zh-cn/3.13/extending/extending.html#id6) 一个对象的引用。借用的引用不应该调用 [`Py_DECREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_DECREF) 。借用者必须确保不能持有对象超过拥有者借出的时间。在拥有者处置对象后使用借用的引用是有风险的，应该完全避免 [[3\]](https://docs.python.org/zh-cn/3.13/extending/extending.html#id7) 。
+​	还可以 *借用* [[2\]]({{< ref "/extending/extending#id6" >}}) 一个对象的引用。借用的引用不应该调用 [`Py_DECREF()`]({{< ref "/c_api/refcounting#c.Py_DECREF" >}}) 。借用者必须确保不能持有对象超过拥有者借出的时间。在拥有者处置对象后使用借用的引用是有风险的，应该完全避免 [[3\]]({{< ref "/extending/extending#id7" >}}) 。
 
 ​	借用相对于引用的优点是你无需担心整条路径上代码的引用，或者说，通过借用你无需担心内存泄漏的风险。借用的缺点是一些看起来正确代码上的借用可能会在拥有者处置后使用对象。
 
-​	借用可以变为拥有引用，通过调用 [`Py_INCREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_INCREF)。 这不会影响已经借出的拥有者的状态。 这会创建一个新的拥有引用，并给予完全的拥有者责任（新的拥有者必须恰当的处置引用，就像之前的拥有者那样）。
+​	借用可以变为拥有引用，通过调用 [`Py_INCREF()`]({{< ref "/c_api/refcounting#c.Py_INCREF" >}})。 这不会影响已经借出的拥有者的状态。 这会创建一个新的拥有引用，并给予完全的拥有者责任（新的拥有者必须恰当的处置引用，就像之前的拥有者那样）。
 
 
 
@@ -650,9 +645,9 @@ Py_BuildValue("((ii)(ii)) (ii)",
 
 ​	函数 [`PyImport_AddModule()`](https://docs.python.org/zh-cn/3.13/c-api/import.html#c.PyImport_AddModule) 也会返回借用的引用，哪怕可能会返回创建的对象：这个可能因为一个拥有的引用对象是存储在 `sys.modules` 里。
 
-​	当你传递一个对象引用到另一个函数时，通常函数是借用出去的。如果需要存储，就使用 [`Py_INCREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_INCREF) 来变成独立的拥有者。这个规则有两个重要的例外： [`PyTuple_SetItem()`](https://docs.python.org/zh-cn/3.13/c-api/tuple.html#c.PyTuple_SetItem) 和 [`PyList_SetItem()`](https://docs.python.org/zh-cn/3.13/c-api/list.html#c.PyList_SetItem) 。这些函数接受传递来的引用关系，哪怕会失败！(注意 [`PyDict_SetItem()`](https://docs.python.org/zh-cn/3.13/c-api/dict.html#c.PyDict_SetItem) 及其同类不会接受引用关系，他们是"正常的")。
+​	当你传递一个对象引用到另一个函数时，通常函数是借用出去的。如果需要存储，就使用 [`Py_INCREF()`]({{< ref "/c_api/refcounting#c.Py_INCREF" >}}) 来变成独立的拥有者。这个规则有两个重要的例外： [`PyTuple_SetItem()`](https://docs.python.org/zh-cn/3.13/c-api/tuple.html#c.PyTuple_SetItem) 和 [`PyList_SetItem()`](https://docs.python.org/zh-cn/3.13/c-api/list.html#c.PyList_SetItem) 。这些函数接受传递来的引用关系，哪怕会失败！(注意 [`PyDict_SetItem()`](https://docs.python.org/zh-cn/3.13/c-api/dict.html#c.PyDict_SetItem) 及其同类不会接受引用关系，他们是"正常的")。
 
-​	当一个C函数被Python调用时，会从调用方传来的参数借用引用。调用者拥有对象的引用，所以借用的引用生命周期可以保证到函数返回。只要当借用的引用需要存储或传递时，就必须转换为拥有的引用，通过调用 [`Py_INCREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_INCREF) 。
+​	当一个C函数被Python调用时，会从调用方传来的参数借用引用。调用者拥有对象的引用，所以借用的引用生命周期可以保证到函数返回。只要当借用的引用需要存储或传递时，就必须转换为拥有的引用，通过调用 [`Py_INCREF()`]({{< ref "/c_api/refcounting#c.Py_INCREF" >}}) 。
 
 ​	Python调用从C函数返回的对象引用时必须是拥有的引用---拥有关系被从函数传递给调用者。
 
@@ -662,7 +657,7 @@ Py_BuildValue("((ii)(ii)) (ii)",
 
 ​	有少数情况下，借用的引用看起来无害，但却可能导致问题。这通常是因为解释器的隐式调用，并可能导致引用拥有者处置这个引用。
 
-​	首先需要特别注意的情况是使用 [`Py_DECREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_DECREF) 到一个无关对象，而这个对象的引用是借用自一个列表的元素。举个实例：
+​	首先需要特别注意的情况是使用 [`Py_DECREF()`]({{< ref "/c_api/refcounting#c.Py_DECREF" >}}) 到一个无关对象，而这个对象的引用是借用自一个列表的元素。举个实例：
 
 ```
 void
@@ -698,7 +693,7 @@ no_bug(PyObject *list)
 
 ​	这是一个真实的故事。 一个较旧版本的 Python 曾经包含此问题的变化形式，有人在 C 语言调试器中花费了大量时间，才弄明白为什么他的 `__del__()` 方法会失败……
 
-​	这个问题的第二种情况是借用的引用涉及线程的变种。通常，Python解释器里多个线程无法进入对方的路径，因为有个全局锁保护着Python整个对象空间。但可以使用宏 [`Py_BEGIN_ALLOW_THREADS`](https://docs.python.org/zh-cn/3.13/c-api/init.html#c.Py_BEGIN_ALLOW_THREADS) 来临时释放这个锁，重新获取锁用 [`Py_END_ALLOW_THREADS`](https://docs.python.org/zh-cn/3.13/c-api/init.html#c.Py_END_ALLOW_THREADS) 。这通常围绕在阻塞I/O调用外，使得其他线程可以在等待I/O期间使用处理器。显然，如下函数会跟之前那个有一样的问题：
+​	这个问题的第二种情况是借用的引用涉及线程的变种。通常，Python解释器里多个线程无法进入对方的路径，因为有个全局锁保护着Python整个对象空间。但可以使用宏 [`Py_BEGIN_ALLOW_THREADS`]({{< ref "/c_api/init#c.Py_BEGIN_ALLOW_THREADS" >}}) 来临时释放这个锁，重新获取锁用 [`Py_END_ALLOW_THREADS`]({{< ref "/c_api/init#c.Py_END_ALLOW_THREADS" >}}) 。这通常围绕在阻塞I/O调用外，使得其他线程可以在等待I/O期间使用处理器。显然，如下函数会跟之前那个有一样的问题：
 
 ```
 void
@@ -720,11 +715,11 @@ bug(PyObject *list)
 
 ​	更好的做法是仅在“源头”上检测 `NULL`，即在接收到一个可能为 `NULL` 的指针，例如来自 `malloc()` 或是一个可能引发异常的函数的时候。
 
-[`Py_INCREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_INCREF) 和 [`Py_DECREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_DECREF) 等宏不会检测 `NULL` 指针 --- 但是，它们的变种 [`Py_XINCREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_XINCREF) 和 [`Py_XDECREF()`](https://docs.python.org/zh-cn/3.13/c-api/refcounting.html#c.Py_XDECREF) 则会检测。
+[`Py_INCREF()`]({{< ref "/c_api/refcounting#c.Py_INCREF" >}}) 和 [`Py_DECREF()`]({{< ref "/c_api/refcounting#c.Py_DECREF" >}}) 等宏不会检测 `NULL` 指针 --- 但是，它们的变种 [`Py_XINCREF()`]({{< ref "/c_api/refcounting#c.Py_XINCREF" >}}) 和 [`Py_XDECREF()`]({{< ref "/c_api/refcounting#c.Py_XDECREF" >}}) 则会检测。
 
 ​	用于检测特定对象类型的宏 (`Pytype_Check()`) 不会检测 `NULL` 指针 --- 同样地，有大量代码会连续调用这些宏来测试一个对象是否为几种不同预期类型之一，这将会生成冗余的测试。 不存在带有 `NULL` 检测的变体。
 
-​	C 函数调用机制会保证传给 C 函数的参数列表 (本示例中为 `args`) 绝不会为 `NULL` --- 实际上它会保证其总是为一个元组 [[4\]](https://docs.python.org/zh-cn/3.13/extending/extending.html#id8)。
+​	C 函数调用机制会保证传给 C 函数的参数列表 (本示例中为 `args`) 绝不会为 `NULL` --- 实际上它会保证其总是为一个元组 [[4\]]({{< ref "/extending/extending#id8" >}})。
 
 ​	任何时候将 `NULL` 指针“泄露”给 Python 用户都会是个严重的错误。
 
@@ -742,7 +737,7 @@ bug(PyObject *list)
 
 ​	开始看起来很简单：只需要编写函数(无需声明为 `static` )，提供恰当的头文件，以及C API的文档。实际上在所有扩展模块都是静态链接到Python解释器时也是可以正常工作的。当模块以共享库链接时，一个模块中的符号定义对另一个模块不可见。可见的细节依赖于操作系统，一些系统的Python解释器使用全局命名空间(例如Windows)，有些则在链接时需要一个严格的已导入符号列表(一个例子是AIX)，或者提供可选的不同策略(如Unix系列)。即便是符号是全局可见的，你要调用的模块也可能尚未加载。
 
-​	可移植性需要不能对符号可见性做任何假设。这意味着扩展模块里的所有符号都应该声明为 `static` ，除了模块的初始化函数，来避免与其他扩展模块的命名冲突(在段落 [模块方法表和初始化函数](https://docs.python.org/zh-cn/3.13/extending/extending.html#methodtable) 中讨论) 。这意味着符号应该 *必须* 通过其他导出方式来供其他扩展模块访问。
+​	可移植性需要不能对符号可见性做任何假设。这意味着扩展模块里的所有符号都应该声明为 `static` ，除了模块的初始化函数，来避免与其他扩展模块的命名冲突(在段落 [模块方法表和初始化函数]({{< ref "/extending/extending#methodtable" >}}) 中讨论) 。这意味着符号应该 *必须* 通过其他导出方式来供其他扩展模块访问。
 
 ​	Python 提供了一个特别的机制用来从一个扩展模块向另一个扩展模块传递 C 层级的信息 (指针): Capsule。 一个 Capsule 就是一个存储了指针 (void*) 的 Python 数据类型。 Capsule 只能通过其 C API 来创建和访问，但它们可以像任何其他 Python 对象一样被传递。 特别地，它们可以被赋值给扩展模块命名空间中的一个名称。 其他扩展模块将可以导入这个模块，获取该名称对应的值，然后从 Capsule 中获取指针。
 
@@ -760,7 +755,7 @@ modulename.attributename
 
 ​	下面的例子演示了一种将大部分负担交给导出模块编写者的处理方式，这对于常用的库模块来说是合适的。 它会将所有 C API 指针（在这个例子里只有一个！）储存到一个 void 指针数组，它将成为一个 Capsule 的值。 与模块对应的头文件提供了一个宏用来管理导入模块和获取其 C API 指针；客户端模块只需要在访问 C API 之前调用这个宏即可。
 
-​	导出模块是对 [一个简单的例子](https://docs.python.org/zh-cn/3.13/extending/extending.html#extending-simpleexample) 部分的 `spam` 模块的修改。 函数 `spam.system()` 并不直接调用 C 库函数 `system()`，而是调用一个函数 `PySpam_System()`，这个函数在现实中当然会做一些更复杂的事情（比如在每条命令中添加“sapm”）。 该函数 `PySpam_System()` 也会导出给其他扩展模块。
+​	导出模块是对 [一个简单的例子]({{< ref "/extending/extending#extending-simpleexample" >}}) 部分的 `spam` 模块的修改。 函数 `spam.system()` 并不直接调用 C 库函数 `system()`，而是调用一个函数 `PySpam_System()`，这个函数在现实中当然会做一些更复杂的事情（比如在每条命令中添加“sapm”）。 该函数 `PySpam_System()` 也会导出给其他扩展模块。
 
 ​	函数 `PySpam_System()` 是一个纯 C 函数，像其他函数一样声明为 `static`:
 
@@ -906,20 +901,19 @@ PyInit_client(void)
 
 ​	最后需要提醒的是Capsule提供了额外的功能，用于存储在Capsule里的指针的内存分配和释放。细节参考 Python/C API参考手册的章节 [Capsule 对象](https://docs.python.org/zh-cn/3.13/c-api/capsule.html#capsules) 和Capsule的实现(在Python源码发行包的 `Include/pycapsule.h` 和 `Objects/pycapsule.c` )。
 
-​	备注
+​备注
+[[1]({{< ref "/extending/extending#id1" >}})]
 
-[[1](https://docs.python.org/zh-cn/3.13/extending/extending.html#id1)]
+​	这个函数的接口已经在标准模块 [`os`]({{< ref "/library/allos/os#module-os" >}}) 里了，这里作为一个简单而直接的例子。
 
-​	这个函数的接口已经在标准模块 [`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os) 里了，这里作为一个简单而直接的例子。
-
-[[2](https://docs.python.org/zh-cn/3.13/extending/extending.html#id2)]
+[[2]({{< ref "/extending/extending#id2" >}})]
 
 ​	术语"借用"一个引用是不完全正确的：拥有者仍然有引用的拷贝。
 
-[[3](https://docs.python.org/zh-cn/3.13/extending/extending.html#id3)]
+[[3]({{< ref "/extending/extending#id3" >}})]
 
 ​	检查引用计数至少为1 **没有用** ，引用计数本身可以在已经释放的内存里，并有可能被其他对象所用。
 
-[[4](https://docs.python.org/zh-cn/3.13/extending/extending.html#id4)]
+[[4]({{< ref "/extending/extending#id4" >}})]
 
 ​	当你使用 "旧式" 风格调用约定时，这些保证不成立，尽管这依旧存在于很多旧代码中。

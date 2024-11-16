@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html)
 >
 > 收录该文档的时间：`2024-11-15T15:24:42+08:00`
 
@@ -18,7 +18,7 @@ draft = false
 
 ------
 
-​	SAX 解析器实现了 [`XMLReader`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.XMLReader) 接口。 它们是在一个 Python 模块中实现的，该模块必须提供一个 `create_parser()` 函数。 该函数由 [`xml.sax.make_parser()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.html#xml.sax.make_parser) 不带参数地发起调用来创建新的解析器对象。
+​	SAX 解析器实现了 [`XMLReader`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.XMLReader" >}}) 接口。 它们是在一个 Python 模块中实现的，该模块必须提供一个 `create_parser()` 函数。 该函数由 [`xml.sax.make_parser()`]({{< ref "/library/markup/xml_sax#xml.sax.make_parser" >}}) 不带参数地发起调用来创建新的解析器对象。
 
 ## *class* xml.sax.xmlreader.**XMLReader**
 
@@ -40,67 +40,67 @@ draft = false
 
 ## *class* xml.sax.xmlreader.**InputSource**(*system_id=None*)
 
-[`XMLReader`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.XMLReader) 读取实体所需信息的封装。
+[`XMLReader`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.XMLReader" >}}) 读取实体所需信息的封装。
 
 ​	这个类可能包括了关于公有标识符、系统标识符、字节流（可能带有字符编码格式信息）和/或一个实体的字符流的信息。
 
-​	应用程序将创建这个类的对象以便在 [`XMLReader.parse()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.XMLReader.parse) 方法中使用或是用于从 EntityResolver.resolveEntity 返回值。
+​	应用程序将创建这个类的对象以便在 [`XMLReader.parse()`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.XMLReader.parse" >}}) 方法中使用或是用于从 EntityResolver.resolveEntity 返回值。
 
-[`InputSource`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.InputSource) 属于应用程序，[`XMLReader`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.XMLReader) 不能修改从应用程序传递给它的 [`InputSource`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.InputSource) 对象，但它可以创建副本并进行修改。
+[`InputSource`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.InputSource" >}}) 属于应用程序，[`XMLReader`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.XMLReader" >}}) 不能修改从应用程序传递给它的 [`InputSource`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.InputSource" >}}) 对象，但它可以创建副本并进行修改。
 
 ## *class* xml.sax.xmlreader.**AttributesImpl**(*attrs*)
 
-​	这是 `Attributes` 接口（参见 [Attributes 接口](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#attributes-objects) 一节）的具体实现。 这是一个 `startElement()` 调用中的元素属性的字典类对象。 除了最有用处的字典操作，它还支持接口所描述的一些其他方法。 该类的对象应当由读取器来实例化；*attrs* 必须为包含从属性名到属性值的映射的字典类对象。
+​	这是 `Attributes` 接口（参见 [Attributes 接口]({{< ref "/library/markup/xml_sax_reader#attributes-objects" >}}) 一节）的具体实现。 这是一个 `startElement()` 调用中的元素属性的字典类对象。 除了最有用处的字典操作，它还支持接口所描述的一些其他方法。 该类的对象应当由读取器来实例化；*attrs* 必须为包含从属性名到属性值的映射的字典类对象。
 
 ## *class* xml.sax.xmlreader.**AttributesNSImpl**(*attrs*, *qnames*)
 
-​	可感知命名空间的 [`AttributesImpl`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.AttributesImpl) 变体形式，它将被传递给 `startElementNS()`。 它派生自 [`AttributesImpl`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.AttributesImpl)，但会将属性名称解读为 *namespaceURI* 和 *localname* 二元组。 此外，它还提供了一些期望接收在原始文档中出现的限定名称的方法。 这个类实现了 `AttributesNS` 接口（参见 [AttributesNS 接口](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#attributes-ns-objects) 一节）。
+​	可感知命名空间的 [`AttributesImpl`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.AttributesImpl" >}}) 变体形式，它将被传递给 `startElementNS()`。 它派生自 [`AttributesImpl`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.AttributesImpl" >}})，但会将属性名称解读为 *namespaceURI* 和 *localname* 二元组。 此外，它还提供了一些期望接收在原始文档中出现的限定名称的方法。 这个类实现了 `AttributesNS` 接口（参见 [AttributesNS 接口]({{< ref "/library/markup/xml_sax_reader#attributes-ns-objects" >}}) 一节）。
 
 
 
 ## XMLReader 对象
 
-[`XMLReader`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.XMLReader) 接口支持下列方法:
+[`XMLReader`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.XMLReader" >}}) 接口支持下列方法:
 
 ## XMLReader.**parse**(*source*)
 
-​	处理输入源，产生 SAX 事件。 *source* 对象可以是一个系统标识符（标识输入源的字符串 -- 通常为文件名或 URL）, [`pathlib.Path`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.Path) 或 [路径类](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object) 对象，或者是 [`InputSource`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.InputSource) 对象。 当 [`parse()`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.XMLReader.parse) 返回时，输入会被全部处理完成，解析器对象可以被丢弃或重置。
+​	处理输入源，产生 SAX 事件。 *source* 对象可以是一个系统标识符（标识输入源的字符串 -- 通常为文件名或 URL）, [`pathlib.Path`]({{< ref "/library/filesys/pathlib#pathlib.Path" >}}) 或 [路径类]({{< ref "/glossary/idx#term-path-like-object" >}}) 对象，或者是 [`InputSource`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.InputSource" >}}) 对象。 当 [`parse()`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.XMLReader.parse" >}}) 返回时，输入会被全部处理完成，解析器对象可以被丢弃或重置。
 
-*在 3.5 版本发生变更:* 添加了对字符流的支持。
+> 在 3.5 版本发生变更: 添加了对字符流的支持。
 
-*在 3.8 版本发生变更:* 增加了对路径类对象的支持。
+> 在 3.8 版本发生变更: 增加了对路径类对象的支持。
 
 ## XMLReader.**getContentHandler**()
 
-​	返回当前的 [`ContentHandler`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler)。
+​	返回当前的 [`ContentHandler`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler" >}})。
 
 ## XMLReader.**setContentHandler**(*handler*)
 
-​	设置当前的 [`ContentHandler`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler)。 如果没有设置 [`ContentHandler`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ContentHandler)，内容事件将被丢弃。
+​	设置当前的 [`ContentHandler`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler" >}})。 如果没有设置 [`ContentHandler`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ContentHandler" >}})，内容事件将被丢弃。
 
 ## XMLReader.**getDTDHandler**()
 
-​	返回当前的 [`DTDHandler`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.DTDHandler)。
+​	返回当前的 [`DTDHandler`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.DTDHandler" >}})。
 
 ## XMLReader.**setDTDHandler**(*handler*)
 
-​	设置当前的 [`DTDHandler`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.DTDHandler)。 如果没有设置 [`DTDHandler`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.DTDHandler)，DTD 事件将被丢弃。
+​	设置当前的 [`DTDHandler`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.DTDHandler" >}})。 如果没有设置 [`DTDHandler`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.DTDHandler" >}})，DTD 事件将被丢弃。
 
 ## XMLReader.**getEntityResolver**()
 
-​	返回当前的 [`EntityResolver`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.EntityResolver)。
+​	返回当前的 [`EntityResolver`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.EntityResolver" >}})。
 
 ## XMLReader.**setEntityResolver**(*handler*)
 
-​	设置当前的 [`EntityResolver`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.EntityResolver)。 如果没有设置 [`EntityResolver`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.EntityResolver)，尝试解析一个外部实体将导致打开该实体的系统标识符，并且如果它不可用则操作将失败。
+​	设置当前的 [`EntityResolver`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.EntityResolver" >}})。 如果没有设置 [`EntityResolver`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.EntityResolver" >}})，尝试解析一个外部实体将导致打开该实体的系统标识符，并且如果它不可用则操作将失败。
 
 ## XMLReader.**getErrorHandler**()
 
-​	返回当前的 [`ErrorHandler`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ErrorHandler)。
+​	返回当前的 [`ErrorHandler`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ErrorHandler" >}})。
 
 ## XMLReader.**setErrorHandler**(*handler*)
 
-​	设置当前的错误处理器。 如果没有设置 [`ErrorHandler`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#xml.sax.handler.ErrorHandler)，错误将作为异常被引发，并将打印警告信息。
+​	设置当前的错误处理器。 如果没有设置 [`ErrorHandler`]({{< ref "/library/markup/xml_sax_handler#xml.sax.handler.ErrorHandler" >}})，错误将作为异常被引发，并将打印警告信息。
 
 ## XMLReader.**setLocale**(*locale*)
 
@@ -110,7 +110,7 @@ draft = false
 
 ## XMLReader.**getFeature**(*featurename*)
 
-​	返回 *featurename* 特性的当前设置。 如果特性无法被识别，则会引发 `SAXNotRecognizedException`。 在 [`xml.sax.handler`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#module-xml.sax.handler) 模块中列出了常见的特性名称。
+​	返回 *featurename* 特性的当前设置。 如果特性无法被识别，则会引发 `SAXNotRecognizedException`。 在 [`xml.sax.handler`]({{< ref "/library/markup/xml_sax_handler#module-xml.sax.handler" >}}) 模块中列出了常见的特性名称。
 
 ## XMLReader.**setFeature**(*featurename*, *value*)
 
@@ -118,7 +118,7 @@ draft = false
 
 ## XMLReader.**getProperty**(*propertyname*)
 
-​	返回 *propertyname* 属性的当前设置。 如果属性无法被识别，则会引发 `SAXNotRecognizedException`。 在 [`xml.sax.handler`](https://docs.python.org/zh-cn/3.13/library/xml.sax.handler.html#module-xml.sax.handler) 模块中列出了常见的属性名称。
+​	返回 *propertyname* 属性的当前设置。 如果属性无法被识别，则会引发 `SAXNotRecognizedException`。 在 [`xml.sax.handler`]({{< ref "/library/markup/xml_sax_handler#module-xml.sax.handler" >}}) 模块中列出了常见的属性名称。
 
 ## XMLReader.**setProperty**(*propertyname*, *value*)
 
@@ -128,7 +128,7 @@ draft = false
 
 ## IncrementalParser 对象
 
-[`IncrementalParser`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.IncrementalParser) 的实例额外提供了下列方法:
+[`IncrementalParser`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.IncrementalParser" >}}) 的实例额外提供了下列方法:
 
 ## IncrementalParser.**feed**(*data*)
 
@@ -146,7 +146,7 @@ draft = false
 
 ## Locator 对象
 
-[`Locator`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.Locator) 的实例提供了下列方法:
+[`Locator`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.Locator" >}}) 的实例提供了下列方法:
 
 ## Locator.**getColumnNumber**()
 
@@ -170,27 +170,27 @@ draft = false
 
 ## InputSource.**setPublicId**(*id*)
 
-​	设置该 [`InputSource`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.InputSource) 的公有标识符。
+​	设置该 [`InputSource`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.InputSource" >}}) 的公有标识符。
 
 ## InputSource.**getPublicId**()
 
-​	返回此 [`InputSource`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.InputSource) 的公有标识符。
+​	返回此 [`InputSource`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.InputSource" >}}) 的公有标识符。
 
 ## InputSource.**setSystemId**(*id*)
 
-​	设置此 [`InputSource`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.InputSource) 的系统标识符。
+​	设置此 [`InputSource`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.InputSource" >}}) 的系统标识符。
 
 ## InputSource.**getSystemId**()
 
-​	返回此 [`InputSource`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.InputSource) 的系统标识符。
+​	返回此 [`InputSource`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.InputSource" >}}) 的系统标识符。
 
 ## InputSource.**setEncoding**(*encoding*)
 
-​	设置此 [`InputSource`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.InputSource) 的字符编码格式。
+​	设置此 [`InputSource`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.InputSource" >}}) 的字符编码格式。
 
 ​	编码格式必须是 XML 编码声明可接受的字符串（参见 XML 建议规范第 4.3.3 节）。
 
-​	如果 [`InputSource`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.InputSource) 还包含一个字符流则 [`InputSource`](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#xml.sax.xmlreader.InputSource) 的 encoding 属性会被忽略。
+​	如果 [`InputSource`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.InputSource" >}}) 还包含一个字符流则 [`InputSource`]({{< ref "/library/markup/xml_sax_reader#xml.sax.xmlreader.InputSource" >}}) 的 encoding 属性会被忽略。
 
 ## InputSource.**getEncoding**()
 
@@ -198,7 +198,7 @@ draft = false
 
 ## InputSource.**setByteStream**(*bytefile*)
 
-​	设置此输入源的字节流（为 [binary file](https://docs.python.org/zh-cn/3.13/glossary.html#term-binary-file) 对象）。
+​	设置此输入源的字节流（为 [binary file]({{< ref "/glossary/idx#term-binary-file" >}}) 对象）。
 
 ​	如果还指定了一个字符流被则 SAX 解析器会忽略此设置，但它将优先使用字节流而不是自己打开一个 URI 连接。
 
@@ -212,7 +212,7 @@ draft = false
 
 ## InputSource.**setCharacterStream**(*charfile*)
 
-​	设置此输入源的字符流 (为 [text file](https://docs.python.org/zh-cn/3.13/glossary.html#term-text-file) 对象)。
+​	设置此输入源的字符流 (为 [text file]({{< ref "/glossary/idx#term-text-file" >}}) 对象)。
 
 ​	如果指定了一个字符流，SAX 解析器将忽略任何字节流并且不会尝试打开一个指向系统标识符的 URI 连接。
 
@@ -224,7 +224,7 @@ draft = false
 
 ## `Attributes` 接口
 
-`Attributes` 对象实现了一部分 [映射协议](https://docs.python.org/zh-cn/3.13/glossary.html#term-mapping)，包括 `copy()`, `get()`, [`__contains__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__contains__), `items()`, `keys()` 和 `values()` 等方法。 还提供了下列方法:
+`Attributes` 对象实现了一部分 [映射协议]({{< ref "/glossary/idx#term-mapping" >}})，包括 `copy()`, `get()`, [`__contains__()`]({{< ref "/reference/datamodel#object.__contains__" >}}), `items()`, `keys()` 和 `values()` 等方法。 还提供了下列方法:
 
 ## Attributes.**getLength**()
 
@@ -246,7 +246,7 @@ draft = false
 
 ## `AttributesNS` 接口
 
-​	此接口是 `Attributes` 接口（参见 [Attributes 接口](https://docs.python.org/zh-cn/3.13/library/xml.sax.reader.html#attributes-objects) 章节）的一个子类型。 那个接口所支持的所有方法在 `AttributesNS` 对象上也都可用。
+​	此接口是 `Attributes` 接口（参见 [Attributes 接口]({{< ref "/library/markup/xml_sax_reader#attributes-objects" >}}) 章节）的一个子类型。 那个接口所支持的所有方法在 `AttributesNS` 对象上也都可用。
 
 ​	下列方法也是可用的:
 

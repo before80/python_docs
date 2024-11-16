@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/argparse.html](https://docs.python.org/zh-cn/3.13/howto/argparse.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/argparse.html](https://docs.python.org/zh-cn/3.13/howto/argparse.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -18,13 +18,12 @@ draft = false
 
 ​	Tshepang Mbambo
 
-​	这篇教程旨在作为 [`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 的入门介绍，此模块是 Python 标准库中推荐的命令行解析模块。
+​	这篇教程旨在作为 [`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 的入门介绍，此模块是 Python 标准库中推荐的命令行解析模块。
 
-​	备注
-
+​备注
  
 
-​	还有另外两个模块可以完成同样的任务，即 [`getopt`](https://docs.python.org/zh-cn/3.13/library/getopt.html#module-getopt) (等价于 C 语言中的 `getopt()`) 和已被弃用的 [`optparse`](https://docs.python.org/zh-cn/3.13/library/optparse.html#module-optparse)。 还要注意 [`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 是基于 [`optparse`](https://docs.python.org/zh-cn/3.13/library/optparse.html#module-optparse) 的，因此用法与其非常相似。
+​	还有另外两个模块可以完成同样的任务，即 [`getopt`]({{< ref "/library/superseded/getopt#module-getopt" >}}) (等价于 C 语言中的 `getopt()`) 和已被弃用的 [`optparse`]({{< ref "/library/superseded/optparse#module-optparse" >}})。 还要注意 [`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 是基于 [`optparse`]({{< ref "/library/superseded/optparse#module-optparse" >}}) 的，因此用法与其非常相似。
 
 ## 概念
 
@@ -86,7 +85,7 @@ prog.py: error: unrecognized arguments: foo
 ​	程序运行情况如下：
 
 - 在没有任何选项的情况下运行脚本不会在标准输出显示任何内容。这没有什么用处。
-- 第二行代码开始展现出 [`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 模块的作用。我们几乎什么也没有做，但已经得到一条很好的帮助信息。
+- 第二行代码开始展现出 [`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 模块的作用。我们几乎什么也没有做，但已经得到一条很好的帮助信息。
 - `--help` 选项，也可缩写为 `-h`，是唯一一个可以直接使用的选项（即不需要指定该选项的内容）。指定任何内容都会导致错误。即便如此，我们也能直接得到一条有用的用法信息。
 
 ## 位置参数介绍
@@ -121,10 +120,10 @@ foo
 
 ​	程序运行情况如下：
 
-- 我们增加了 [`add_argument()`](https://docs.python.org/zh-cn/3.13/library/argparse.html#argparse.ArgumentParser.add_argument) 方法，该方法用于指定程序将能接受哪些命令行选项。 在这个例子中，我将它命名为 `echo` 以与其对应的函数保持一致。
+- 我们增加了 [`add_argument()`]({{< ref "/library/allos/argparse#argparse.ArgumentParser.add_argument" >}}) 方法，该方法用于指定程序将能接受哪些命令行选项。 在这个例子中，我将它命名为 `echo` 以与其对应的函数保持一致。
 - 现在调用我们的程序必须要指定一个选项。
-- [`parse_args()`](https://docs.python.org/zh-cn/3.13/library/argparse.html#argparse.ArgumentParser.parse_args) 方法实际将返回来自指定选项的某些数据，在这个例子中是 `echo`。
-- 这一变量是 [`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 免费施放的某种 “魔法”（即是说，不需要指定哪个变量是存储哪个值的）。你也可以注意到，这一名称与传递给方法的字符串参数一致，都是 `echo`。
+- [`parse_args()`]({{< ref "/library/allos/argparse#argparse.ArgumentParser.parse_args" >}}) 方法实际将返回来自指定选项的某些数据，在这个例子中是 `echo`。
+- 这一变量是 [`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 免费施放的某种 “魔法”（即是说，不需要指定哪个变量是存储哪个值的）。你也可以注意到，这一名称与传递给方法的字符串参数一致，都是 `echo`。
 
 ​	然而请注意，尽管显示的帮助看起来清楚完整，但它可以比现在更有帮助。比如我们可以知道 `echo` 是一个位置参数，但我们除了靠猜或者看源代码，没法知道它是用来干什么的。所以，我们可以把它改造得更有用：
 
@@ -169,7 +168,7 @@ Traceback (most recent call last):
 TypeError: unsupported operand type(s) for ** or pow(): 'str' and 'int'
 ```
 
-​	进展不太顺利。那是因为 [`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 会把我们传递给它的选项视作为字符串，除非我们告诉它别这样。所以，让我们来告诉 [`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 来把这一输入视为整数：
+​	进展不太顺利。那是因为 [`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 会把我们传递给它的选项视作为字符串，除非我们告诉它别这样。所以，让我们来告诉 [`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 来把这一输入视为整数：
 
 ```
 import argparse
@@ -226,7 +225,7 @@ prog.py: error: argument --verbosity: expected one argument
 ​	程序运行情况如下：
 
 - 这一程序被设计为当指定 `--verbosity` 选项时显示某些东西，否则不显示。
-- 为表明此选项确实是可选的，当不附带该选项运行程序时将不会提示任何错误。 请注意在默认情况下，如果一个可选参数未被使用，则关联的变量，在这个例子中是 `args.verbosity`，将被赋值为 `None`，这也就是它在 [`if`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#if) 语句中无法通过真值检测的原因。
+- 为表明此选项确实是可选的，当不附带该选项运行程序时将不会提示任何错误。 请注意在默认情况下，如果一个可选参数未被使用，则关联的变量，在这个例子中是 `args.verbosity`，将被赋值为 `None`，这也就是它在 [`if`]({{< ref "/reference/compound_stmts#if" >}}) 语句中无法通过真值检测的原因。
 - 帮助信息有点不同。
 - 使用 `--verbosity` 选项时，必须指定一个值，但可以是任何值。
 
@@ -514,7 +513,7 @@ else:
     print(answer)
 ```
 
-​	我们刚刚引入了又一个新的关键字 `default`。我们把它设置为 `0` 来让它可以与其他整数值相互比较。记住，默认情况下如果一个可选参数没有被指定，它的值会是 `None`，并且它不能和整数值相比较（所以产生了 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError) 异常）。
+​	我们刚刚引入了又一个新的关键字 `default`。我们把它设置为 `0` 来让它可以与其他整数值相互比较。记住，默认情况下如果一个可选参数没有被指定，它的值会是 `None`，并且它不能和整数值相比较（所以产生了 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}}) 异常）。
 
 ​	然后：
 
@@ -523,7 +522,7 @@ $ python prog.py 4
 16
 ```
 
-​	凭借我们目前已学的东西你就可以做到许多事情，而我们还仅仅学了一些皮毛而已。 [`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 模块是非常强大的，在结束篇教程之前我们将再探索更多一些内容。
+​	凭借我们目前已学的东西你就可以做到许多事情，而我们还仅仅学了一些皮毛而已。 [`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 模块是非常强大的，在结束篇教程之前我们将再探索更多一些内容。
 
 ## 进行一些小小的改进
 
@@ -598,7 +597,7 @@ Running 'prog.py'
 
 ### 指定有歧义的参数
 
-​	当在确定一个参数是位置参数还是从属于另一个参数存在歧义时，可以使用 `--` 来告诉 [`parse_args()`](https://docs.python.org/zh-cn/3.13/library/argparse.html#argparse.ArgumentParser.parse_args) 在它之后的参数是位置参数:
+​	当在确定一个参数是位置参数还是从属于另一个参数存在歧义时，可以使用 `--` 来告诉 [`parse_args()`]({{< ref "/library/allos/argparse#argparse.ArgumentParser.parse_args" >}}) 在它之后的参数是位置参数:
 
 
 
@@ -625,7 +624,7 @@ Namespace(args=['2', '3'], n=['1'])
 
 ### 矛盾的选项
 
-​	到目前为止，我们一直在使用 [`argparse.ArgumentParser`](https://docs.python.org/zh-cn/3.13/library/argparse.html#argparse.ArgumentParser) 实例的两个方法。 让我们再介绍第三个方法 [`add_mutually_exclusive_group()`](https://docs.python.org/zh-cn/3.13/library/argparse.html#argparse.ArgumentParser.add_mutually_exclusive_group)。 它允许我们指定彼此相冲突的选项。 让我们再修改程序的其余部分以便使新功能更有意义：我们将引入 `--quiet` 选项，它将与 `--verbose` 的作用相反:
+​	到目前为止，我们一直在使用 [`argparse.ArgumentParser`]({{< ref "/library/allos/argparse#argparse.ArgumentParser" >}}) 实例的两个方法。 让我们再介绍第三个方法 [`add_mutually_exclusive_group()`]({{< ref "/library/allos/argparse#argparse.ArgumentParser.add_mutually_exclusive_group" >}})。 它允许我们指定彼此相冲突的选项。 让我们再修改程序的其余部分以便使新功能更有意义：我们将引入 `--quiet` 选项，它将与 `--verbose` 的作用相反:
 
 ```
 import argparse
@@ -708,9 +707,9 @@ options:
 
 ## 如何翻译 argparse 的输出
 
-[`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 模块的输出例如它的帮助文本和错误消息都可以通过 [`gettext`](https://docs.python.org/zh-cn/3.13/library/gettext.html#module-gettext) 模块实现翻译。 这允许应用程序轻松本地化 [`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 所产生的消息。 另请参见 [国际化 (I18N) 你的程序和模块](https://docs.python.org/zh-cn/3.13/library/gettext.html#i18n-howto)。
+[`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 模块的输出例如它的帮助文本和错误消息都可以通过 [`gettext`]({{< ref "/library/i18n/gettext#module-gettext" >}}) 模块实现翻译。 这允许应用程序轻松本地化 [`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 所产生的消息。 另请参见 [国际化 (I18N) 你的程序和模块]({{< ref "/library/i18n/gettext#i18n-howto" >}})。
 
-​	例如，在这个 [`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 输出中:
+​	例如，在这个 [`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 输出中:
 
 ```
 $ python prog.py --help
@@ -736,22 +735,22 @@ options:
 $ pybabel extract -o messages.po /usr/lib/python3.12/argparse.py
 ```
 
-​	此命令将从 [`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 模块提取所有可翻译的字符串，并将其输出到名为 `messages.po` 的文件中。 此命令假定你的 Python 安装位置为 `/usr/lib`。
+​	此命令将从 [`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 模块提取所有可翻译的字符串，并将其输出到名为 `messages.po` 的文件中。 此命令假定你的 Python 安装位置为 `/usr/lib`。
 
-​	你可以使用以下脚本查找 [`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 模块在系统中的位置：
+​	你可以使用以下脚本查找 [`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 模块在系统中的位置：
 
 ```
 import argparse
 print(argparse.__file__)
 ```
 
-​	一旦 `.po` 文件中的文本信息翻译完毕并使用 [`gettext`](https://docs.python.org/zh-cn/3.13/library/gettext.html#module-gettext) 安装了译文，[`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 将能显示翻译后的信息。
+​	一旦 `.po` 文件中的文本信息翻译完毕并使用 [`gettext`]({{< ref "/library/i18n/gettext#module-gettext" >}}) 安装了译文，[`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 将能显示翻译后的信息。
 
-​	要翻译在 [`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 输出中的字符串，请使用 [`gettext`](https://docs.python.org/zh-cn/3.13/library/gettext.html#module-gettext)。
+​	要翻译在 [`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 输出中的字符串，请使用 [`gettext`]({{< ref "/library/i18n/gettext#module-gettext" >}})。
 
 ## Custom type converters
 
-​	The [`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) module allows you to specify custom type converters for your command-line arguments. This allows you to modify user input before it's stored in the [`argparse.Namespace`](https://docs.python.org/zh-cn/3.13/library/argparse.html#argparse.Namespace). This can be useful when you need to pre-process the input before it is used in your program.
+​	The [`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) module allows you to specify custom type converters for your command-line arguments. This allows you to modify user input before it's stored in the [`argparse.Namespace`]({{< ref "/library/allos/argparse#argparse.Namespace" >}}). This can be useful when you need to pre-process the input before it is used in your program.
 
 ​	When using a custom type converter, you can use any callable that takes a single string argument (the argument value) and returns the converted value. However, if you need to handle more complex scenarios, you can use a custom action class with the **action** parameter instead.
 
@@ -787,4 +786,4 @@ Namespace(a=[('-', 'value1'), ('+', 'value2')])
 
 ## 后记
 
-​	除了这里显示的内容，[`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 模块还提供了更多功能。 它的文档相当详细和完整，包含大量示例。 完成这个教程之后，你应该能毫不困难地阅读该文档。
+​	除了这里显示的内容，[`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 模块还提供了更多功能。 它的文档相当详细和完整，包含大量示例。 完成这个教程之后，你应该能毫不困难地阅读该文档。

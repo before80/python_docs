@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/configparser.html](https://docs.python.org/zh-cn/3.13/library/configparser.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/configparser.html](https://docs.python.org/zh-cn/3.13/library/configparser.html)
 >
 > 收录该文档的时间：`2024-11-15T12:03:23+08:00`
 
@@ -18,25 +18,23 @@ draft = false
 
 ------
 
-​	此模块提供了它实现一种基本配置语言 [`ConfigParser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser) 类，这种语言所提供的结构与 Microsoft Windows INI 文件的类似。 你可以使用这种语言来编写能够由最终用户来自定义的 Python 程序。
+​	此模块提供了它实现一种基本配置语言 [`ConfigParser`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser" >}}) 类，这种语言所提供的结构与 Microsoft Windows INI 文件的类似。 你可以使用这种语言来编写能够由最终用户来自定义的 Python 程序。
 
-​	备注
-
+​备注
  
 
 ​	这个库 *并不* 能够解析或写入在 Windows Registry 扩展版本 INI 语法中所使用的值-类型前缀。
 
-​	参见
-
-## 模块 [`tomllib`](https://docs.python.org/zh-cn/3.13/library/tomllib.html#module-tomllib)
+​参见
+## 模块 [`tomllib`]({{< ref "/library/fileformats/tomllib#module-tomllib" >}})
 
 ​	TOML 是一种具有良好规范的针对应用程序配置文件的格式。 它被专门设计作为 INI 改进版本。
 
-## 模块 [`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#module-shlex)
+## 模块 [`shlex`]({{< ref "/library/frameworks/shlex#module-shlex" >}})
 
 ​	支持创建类似 Unix shell 的同样可被用于应用程序配置文件的迷你语言。
 
-## 模块 [`json`](https://docs.python.org/zh-cn/3.13/library/json.html#module-json)
+## 模块 [`json`]({{< ref "/library/netdata/json#module-json" >}})
 
 `json` 模块实现了 JavaScript 语法的一个子集，它有时被用于配置，但是不支持注释。
 
@@ -59,7 +57,7 @@ Port = 50022
 ForwardX11 = no
 ```
 
-​	INI 文件的结构描述见 [以下章节](https://docs.python.org/zh-cn/3.13/library/configparser.html#supported-ini-file-structure)。 总的来说，这种文件由多个节组成，每个节包含多个带有值的键。 [`configparser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#module-configparser) 类可以读取和写入这种文件。 让我们先通过程序方式来创建上述的配置文件。
+​	INI 文件的结构描述见 [以下章节]({{< ref "/library/fileformats/configparser#supported-ini-file-structure" >}})。 总的来说，这种文件由多个节组成，每个节包含多个带有值的键。 [`configparser`]({{< ref "/library/fileformats/configparser#module-configparser" >}}) 类可以读取和写入这种文件。 让我们先通过程序方式来创建上述的配置文件。
 
 
 
@@ -81,7 +79,7 @@ ForwardX11 = no
 ...
 ```
 
-​	如你所见，我们可以把配置解析器当作一个字典来处理。 两者确实存在差异，[将在后文说明](https://docs.python.org/zh-cn/3.13/library/configparser.html#mapping-protocol-access)，但是其行为非常接近于字典所具有一般行为。
+​	如你所见，我们可以把配置解析器当作一个字典来处理。 两者确实存在差异，[将在后文说明]({{< ref "/library/fileformats/configparser#mapping-protocol-access" >}})，但是其行为非常接近于字典所具有一般行为。
 
 ​	现在我们已经创建并保存了一个配置文件，让我们再将它读取出来并探究其中包含的数据。
 
@@ -119,9 +117,9 @@ forwardx11
 'yes'
 ```
 
-​	正如我们在上面所看到的，相关的 API 相当直观。 唯一有些神奇的地方是 `DEFAULT` 小节，它为所有其他小节提供了默认值 [[1\]](https://docs.python.org/zh-cn/3.13/library/configparser.html#id16)。 还要注意小节中的键大小写不敏感并且会存储为小写形式 [[1\]](https://docs.python.org/zh-cn/3.13/library/configparser.html#id16)。
+​	正如我们在上面所看到的，相关的 API 相当直观。 唯一有些神奇的地方是 `DEFAULT` 小节，它为所有其他小节提供了默认值 [[1\]]({{< ref "/library/fileformats/configparser#id16" >}})。 还要注意小节中的键大小写不敏感并且会存储为小写形式 [[1\]]({{< ref "/library/fileformats/configparser#id16" >}})。
 
-​	将多个配置读入单个 [`ConfigParser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser) 是可能的，其中最近添加的配置具有最高优先级。 任何冲突的键都会从更近的配置获取并且先前存在的键会被保留。 下面的例子读入一个 `override.ini` 文件，它将覆盖任何来自 `example.ini` 文件的冲突的键。
+​	将多个配置读入单个 [`ConfigParser`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser" >}}) 是可能的，其中最近添加的配置具有最高优先级。 任何冲突的键都会从更近的配置获取并且先前存在的键会被保留。 下面的例子读入一个 `override.ini` 文件，它将覆盖任何来自 `example.ini` 文件的冲突的键。
 
 ```
 [DEFAULT]
@@ -143,7 +141,7 @@ ServerAliveInterval = -1
 -1
 ```
 
-​	此行为等价于一次 [`ConfigParser.read()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.read) 调用并向 *filenames* 形参传入多个文件。
+​	此行为等价于一次 [`ConfigParser.read()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.read" >}}) 调用并向 *filenames* 形参传入多个文件。
 
 ## 支持的数据类型
 
@@ -158,7 +156,7 @@ ServerAliveInterval = -1
 9.0
 ```
 
-​	由于这种任务十分常用，配置解析器提供了一系列便捷的获取方法来处理整数、浮点数和布尔值。 最后一个类型的处理最为有趣，因为简单地将值传给 `bool()` 是没有用的，`bool('False')` 仍然会是 `True`。 为解决这个问题配置解析器还提供了 [`getboolean()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getboolean)。 这个方法对大小写不敏感并可识别 `'yes'`/`'no'`, `'on'`/`'off'`, `'true'`/`'false'` 和 `'1'`/`'0'` [[1\]](https://docs.python.org/zh-cn/3.13/library/configparser.html#id16) 等布尔值。 例如:
+​	由于这种任务十分常用，配置解析器提供了一系列便捷的获取方法来处理整数、浮点数和布尔值。 最后一个类型的处理最为有趣，因为简单地将值传给 `bool()` 是没有用的，`bool('False')` 仍然会是 `True`。 为解决这个问题配置解析器还提供了 [`getboolean()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.getboolean" >}})。 这个方法对大小写不敏感并可识别 `'yes'`/`'no'`, `'on'`/`'off'`, `'true'`/`'false'` 和 `'1'`/`'0'` [[1\]]({{< ref "/library/fileformats/configparser#id16" >}}) 等布尔值。 例如:
 
 
 
@@ -171,11 +169,11 @@ True
 True
 ```
 
-​	除了 [`getboolean()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getboolean)，配置解析器还提供了同类的 [`getint()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getint) 和 [`getfloat()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getfloat) 方法。 你可以注册你自己的转换器并或是定制已提供的转换器。 [[1\]](https://docs.python.org/zh-cn/3.13/library/configparser.html#id16)
+​	除了 [`getboolean()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.getboolean" >}})，配置解析器还提供了同类的 [`getint()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.getint" >}}) 和 [`getfloat()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.getfloat" >}}) 方法。 你可以注册你自己的转换器并或是定制已提供的转换器。 [[1\]]({{< ref "/library/fileformats/configparser#id16" >}})
 
 ## 回退值
 
-​	与字典类似，你可以使用某一节的 [`get()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.get) 方法来提供回退值：
+​	与字典类似，你可以使用某一节的 [`get()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.get" >}}) 方法来提供回退值：
 
 
 
@@ -198,7 +196,7 @@ True
 '9'
 ```
 
-​	还需要注意的一点是解析器层级的 [`get()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.get) 方法提供了自定义的更复杂接口，它被继续维护用于向下兼容。 当使用此方法时，可以通过 `fallback` 仅限关键字参数提供一个回退值：
+​	还需要注意的一点是解析器层级的 [`get()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.get" >}}) 方法提供了自定义的更复杂接口，它被继续维护用于向下兼容。 当使用此方法时，可以通过 `fallback` 仅限关键字参数提供一个回退值：
 
 
 
@@ -208,7 +206,7 @@ True
 'No such things as monsters'
 ```
 
-​	同样的 `fallback` 参数也可在 [`getint()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getint), [`getfloat()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getfloat) 和 [`getboolean()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getboolean) 方法中使用，例如:
+​	同样的 `fallback` 参数也可在 [`getint()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.getint" >}}), [`getfloat()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.getfloat" >}}) 和 [`getboolean()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.getboolean" >}}) 方法中使用，例如:
 
 
 
@@ -224,13 +222,13 @@ False
 
 ## 受支持的 INI 文件结构
 
-​	配置文件是由小节组成的，每个小节都有一个 `[section]` 标头，加上多个由特定字符串 (默认为 `=` 或 `:` [[1\]](https://docs.python.org/zh-cn/3.13/library/configparser.html#id16)) 分隔的键/值条目。 在默认情况下，小节名对大小写敏感而键对大小写不敏感 [[1\]](https://docs.python.org/zh-cn/3.13/library/configparser.html#id16)。 键和值开头和末尾的空格会被移除。 在解释器配置允许时值可以被省略 [[1\]](https://docs.python.org/zh-cn/3.13/library/configparser.html#id16)，在此情况下键/值分隔符也可以被省略。 值还可以跨越多行，只要值的其他行带有比第一行更深的缩进。 依据解析器的具体模式，空白行可能会被视为多行值的组成部分或是被忽略。
+​	配置文件是由小节组成的，每个小节都有一个 `[section]` 标头，加上多个由特定字符串 (默认为 `=` 或 `:` [[1\]]({{< ref "/library/fileformats/configparser#id16" >}})) 分隔的键/值条目。 在默认情况下，小节名对大小写敏感而键对大小写不敏感 [[1\]]({{< ref "/library/fileformats/configparser#id16" >}})。 键和值开头和末尾的空格会被移除。 在解释器配置允许时值可以被省略 [[1\]]({{< ref "/library/fileformats/configparser#id16" >}})，在此情况下键/值分隔符也可以被省略。 值还可以跨越多行，只要值的其他行带有比第一行更深的缩进。 依据解析器的具体模式，空白行可能会被视为多行值的组成部分或是被忽略。
 
-​	在默认情况下，有效的节名称可以是不包含 '\n' 的任意字符串。 要改变此设定，请参阅 [`ConfigParser.SECTCRE`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.SECTCRE)。
+​	在默认情况下，有效的节名称可以是不包含 '\n' 的任意字符串。 要改变此设定，请参阅 [`ConfigParser.SECTCRE`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.SECTCRE" >}})。
 
-​	如果解析器通过 `allow_unnamed_section=True` 被配置为允许未命名的最高层级小节则第一个小节的名称可以省略。 在这种情况下，键/值可以通过 [`UNNAMED_SECTION`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.UNNAMED_SECTION) 来获取例如 `config[UNNAMED_SECTION]`。
+​	如果解析器通过 `allow_unnamed_section=True` 被配置为允许未命名的最高层级小节则第一个小节的名称可以省略。 在这种情况下，键/值可以通过 [`UNNAMED_SECTION`]({{< ref "/library/fileformats/configparser#configparser.UNNAMED_SECTION" >}}) 来获取例如 `config[UNNAMED_SECTION]`。
 
-​	配置文件可以包含注释，要带有指定字符前缀 (默认为 `#` 和 `;` [[1\]](https://docs.python.org/zh-cn/3.13/library/configparser.html#id16))。 注释可以单独出现于原本的空白行，并可使用缩进。 [[1\]](https://docs.python.org/zh-cn/3.13/library/configparser.html#id16)
+​	配置文件可以包含注释，要带有指定字符前缀 (默认为 `#` 和 `;` [[1\]]({{< ref "/library/fileformats/configparser#id16" >}}))。 注释可以单独出现于原本的空白行，并可使用缩进。 [[1\]]({{< ref "/library/fileformats/configparser#id16" >}})
 
 ​	例如:
 
@@ -282,7 +280,7 @@ empty string value here =
 
 ## 未命名小节
 
-​	第一（或唯一）小节的名称可以省略并且其值可通过 [`UNNAMED_SECTION`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.UNNAMED_SECTION) 属性来获取。
+​	第一（或唯一）小节的名称可以省略并且其值可通过 [`UNNAMED_SECTION`]({{< ref "/library/fileformats/configparser#configparser.UNNAMED_SECTION" >}}) 属性来获取。
 
 
 
@@ -301,11 +299,11 @@ empty string value here =
 
 ## 值的插值
 
-​	在核心功能之上，[`ConfigParser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser) 还支持插值。 这意味着值可以在被 `get()` 调用返回之前进行预处理。
+​	在核心功能之上，[`ConfigParser`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser" >}}) 还支持插值。 这意味着值可以在被 `get()` 调用返回之前进行预处理。
 
 ## *class* configparser.**BasicInterpolation**
 
-​	默认实现由 [`ConfigParser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser) 来使用。 它允许值包含引用了相同小节中其他值或者特殊的默认小节中的值的格式字符串 [[1\]](https://docs.python.org/zh-cn/3.13/library/configparser.html#id16)。 额外的默认值可以在初始化时提供。
+​	默认实现由 [`ConfigParser`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser" >}}) 来使用。 它允许值包含引用了相同小节中其他值或者特殊的默认小节中的值的格式字符串 [[1\]]({{< ref "/library/fileformats/configparser#id16" >}})。 额外的默认值可以在初始化时提供。
 
 ​	例如:
 
@@ -320,7 +318,7 @@ my_pictures: %(my_dir)s/Pictures
 gain: 80%%
 ```
 
-​	在上面的例子里，[`ConfigParser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser) 的 *interpolation* 设为 `BasicInterpolation()`，这会将 `%(home_dir)s` 求解为 `home_dir` 的值 (在这里是 `/Users`)。 `%(my_dir)s` 的将被实际求解为 `/Users/lumberjack`。 所有插值都是按需进行的，这样引用链中使用的键不必以任何特定顺序在配置文件中指明。
+​	在上面的例子里，[`ConfigParser`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser" >}}) 的 *interpolation* 设为 `BasicInterpolation()`，这会将 `%(home_dir)s` 求解为 `home_dir` 的值 (在这里是 `/Users`)。 `%(my_dir)s` 的将被实际求解为 `/Users/lumberjack`。 所有插值都是按需进行的，这样引用链中使用的键不必以任何特定顺序在配置文件中指明。
 
 ​	当 `interpolation` 设为 `None` 时，解析器会简单地返回 `%(my_dir)s/Pictures` 作为 `my_pictures` 的值，并返回 `%(home_dir)s/lumberjack` 作为 `my_dir` 的值。
 
@@ -367,24 +365,24 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 > Added in version 3.2.
 >
 
-​	映射协议访问这个通用名称是指允许以字典的方式来使用自定义对象的功能。 在 [`configparser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#module-configparser) 中，映射接口的实现使用了 `parser['section']['option']` 标记法。
+​	映射协议访问这个通用名称是指允许以字典的方式来使用自定义对象的功能。 在 [`configparser`]({{< ref "/library/fileformats/configparser#module-configparser" >}}) 中，映射接口的实现使用了 `parser['section']['option']` 标记法。
 
 `parser['section']` 专门为解析器中的小节数据返回一个代理。 这意味着其中的值不会被拷贝，而是在需要时从原始解析器中获取。 更为重要的是，当值在小节代理上被修改时，它们其实是在原始解析器中发生了改变。
 
-[`configparser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#module-configparser) 对象的行为会尽可能地接近真正的字典。 映射接口是完整而且遵循 [`MutableMapping`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.MutableMapping) ABC 规范的。 但是，还是有一些差异应当被纳入考虑:
+[`configparser`]({{< ref "/library/fileformats/configparser#module-configparser" >}}) 对象的行为会尽可能地接近真正的字典。 映射接口是完整而且遵循 [`MutableMapping`]({{< ref "/library/datatypes/collections_abc#collections.abc.MutableMapping" >}}) ABC 规范的。 但是，还是有一些差异应当被纳入考虑:
 
-- 默认情况下，小节中的所有键是以大小写不敏感的方式来访问的 [[1\]](https://docs.python.org/zh-cn/3.13/library/configparser.html#id16)。 例如 `for option in parser["section"]` 只会产生 `optionxform` 形式的选项键名称。 也就是说默认使用小写字母键名。 与此同时，对于一个包含键 `'a'` 的小节，以下两个表达式均将返回 `True`:
+- 默认情况下，小节中的所有键是以大小写不敏感的方式来访问的 [[1\]]({{< ref "/library/fileformats/configparser#id16" >}})。 例如 `for option in parser["section"]` 只会产生 `optionxform` 形式的选项键名称。 也就是说默认使用小写字母键名。 与此同时，对于一个包含键 `'a'` 的小节，以下两个表达式均将返回 `True`:
 
   ```
   "a" in parser["section"]
   "A" in parser["section"]
   ```
 
-- 所有小节也包括 `DEFAULTSECT`，这意味着对一个小节执行 `.clear()` 可能无法使得该小节显示为空。 这是因为默认值是无法从小节中被删除的（因为从技术上说它们并不在那里）。 如果它们在小节中被覆盖，删除将导致默认值重新变为可见。 尝试删除默认值将会引发 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError)。
+- 所有小节也包括 `DEFAULTSECT`，这意味着对一个小节执行 `.clear()` 可能无法使得该小节显示为空。 这是因为默认值是无法从小节中被删除的（因为从技术上说它们并不在那里）。 如果它们在小节中被覆盖，删除将导致默认值重新变为可见。 尝试删除默认值将会引发 [`KeyError`]({{< ref "/library/exceptions#KeyError" >}})。
 
 - `DEFAULTSECT` 无法从解析器中被移除:
 
-  - 尝试删除将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)，
+  - 尝试删除将引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})，
   - `parser.clear()` 会保留其原状，
   - `parser.popitem()` 绝不会将其返回。
 
@@ -396,7 +394,7 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 
 ## 定制解析器行为
 
-​	INI 格式的变种数量几乎和使用此格式的应用一样多。 [`configparser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#module-configparser) 花费了很大力气来为尽量大范围的可用 INI 样式提供支持。 默认的可用功能主要由历史状况来确定，你很可能会想要定制某些特性。
+​	INI 格式的变种数量几乎和使用此格式的应用一样多。 [`configparser`]({{< ref "/library/fileformats/configparser#module-configparser" >}}) 花费了很大力气来为尽量大范围的可用 INI 样式提供支持。 默认的可用功能主要由历史状况来确定，你很可能会想要定制某些特性。
 
 ​	改变特定配置解析器行为的最常见方式是使用 `__init__()` 选项：
 
@@ -404,9 +402,9 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 
   此选项接受一个键值对的字典，它将被首先放入 `DEFAULT` 小节。 这实现了一种优雅的方式来支持简洁的配置文件，它不必指定与已记录的默认值相同的值。
 
-  提示：如果你想要为特定的节指定默认值，请在读取实际文件之前 使用 [`read_dict()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.read_dict)。
+  提示：如果你想要为特定的节指定默认值，请在读取实际文件之前 使用 [`read_dict()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.read_dict" >}})。
 
-- *dict_type*，默认值: [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict)
+- *dict_type*，默认值: [`dict`]({{< ref "/library/stdtypes#dict" >}})
 
   此选项主要影响映射协议的行为和写入配置文件的外观。 使用标准字典时，每个小节是按照它们被加入解析器的顺序保存的。 在小节内的选项也是如此。
 
@@ -436,7 +434,7 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 
 - *allow_no_value*，默认值: `False`
 
-  已知某些配置文件会包括不带值的设置，但其在其他方面均符合 [`configparser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#module-configparser) 所支持的语法。 构造器的 *allow_no_value* 形参可用于指明应当接受这样的值:
+  已知某些配置文件会包括不带值的设置，但其在其他方面均符合 [`configparser`]({{< ref "/library/fileformats/configparser#module-configparser" >}}) 所支持的语法。 构造器的 *allow_no_value* 形参可用于指明应当接受这样的值:
 
   
 
@@ -474,7 +472,7 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 
   分隔符是用于在小节内分隔键和值的子字符串。 在一行中首次出现的分隔子字符串会被视为一个分隔符。 这意味着值可以包含分隔符（但键不可以）。
 
-  另请参见 [`ConfigParser.write()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.write) 的 *space_around_delimiters* 参数。
+  另请参见 [`ConfigParser.write()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.write" >}}) 的 *space_around_delimiters* 参数。
 
 - *comment_prefixes*，默认值: `('#', ';')`
 
@@ -482,7 +480,7 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 
   注释前缀是配置文件中用于标示一条有效注释的开头的字符串。 *comment_prefixes* 仅用在被视为空白的行（可以缩进）之前而 *inline_comment_prefixes* 可用在每个有效值之后（例如小节名称、选项以及空白的行）。 默认情况下禁用行内注释，并且 `'#'` 和 `';'` 都被用作完整行注释的前缀。
 
-  *在 3.2 版本发生变更:* 在之前的 [`configparser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#module-configparser) 版本中行为匹配 `comment_prefixes=('#',';')` 和 `inline_comment_prefixes=(';',)`。
+  > 在 3.2 版本发生变更: 在之前的 [`configparser`]({{< ref "/library/fileformats/configparser#module-configparser" >}}) 版本中行为匹配 `comment_prefixes=('#',';')` 和 `inline_comment_prefixes=(';',)`。
 
   请注意配置解析器不支持对注释前缀的转义，因此使用 *inline_comment_prefixes* 可能妨碍用户将被用作注释前缀的字符指定为可选值。 当有疑问时，请避免设置 *inline_comment_prefixes*。 在许多情况下，在多行值的一行开头存储注释前缀字符的唯一方式是进行前缀插值，例如:
 
@@ -531,9 +529,9 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 
 - *strict*，默认值: `True`
 
-  当设为 `True` 时，解析器在从单一源读取 (使用 [`read_file()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.read_file), [`read_string()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.read_string) 或 [`read_dict()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.read_dict)) 期间将不允许任何节或选项出现重复。 推荐在新的应用中使用严格解析器。
+  当设为 `True` 时，解析器在从单一源读取 (使用 [`read_file()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.read_file" >}}), [`read_string()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.read_string" >}}) 或 [`read_dict()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.read_dict" >}})) 期间将不允许任何节或选项出现重复。 推荐在新的应用中使用严格解析器。
 
-  *在 3.2 版本发生变更:* 在之前的 [`configparser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#module-configparser) 版本中行为匹配 `strict=False`。
+  > 在 3.2 版本发生变更: 在之前的 [`configparser`]({{< ref "/library/fileformats/configparser#module-configparser" >}}) 版本中行为匹配 `strict=False`。
 
 - *empty_lines_in_values*，默认值: `True`
 
@@ -555,11 +553,11 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 
 - *interpolation*，默认值: `configparser.BasicInterpolation`
 
-  插值行为可以用通过提供 *interpolation* 参数提供自定义处理程序的方式来定制。 `None` 可用来完全禁用插值，`ExtendedInterpolation()` 提供了一种更高级的变体形式，它的设计受到了 `zc.buildout` 的启发。 有关该主题的更多信息请参见 [专门的文档章节](https://docs.python.org/zh-cn/3.13/library/configparser.html#interpolation-of-values)。 [`RawConfigParser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.RawConfigParser) 具有默认的值 `None`。
+  插值行为可以用通过提供 *interpolation* 参数提供自定义处理程序的方式来定制。 `None` 可用来完全禁用插值，`ExtendedInterpolation()` 提供了一种更高级的变体形式，它的设计受到了 `zc.buildout` 的启发。 有关该主题的更多信息请参见 [专门的文档章节]({{< ref "/library/fileformats/configparser#interpolation-of-values" >}})。 [`RawConfigParser`]({{< ref "/library/fileformats/configparser#configparser.RawConfigParser" >}}) 具有默认的值 `None`。
 
 - *converters*，默认值: 不设置
 
-  配置解析器提供了可选的值获取方法用来执行类型转换。 默认情况下实现了 [`getint()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getint), [`getfloat()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getfloat) 和 [`getboolean()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getboolean)。 如果还需要其他获取方法，用户可以在子类中定义它们，或者传入一个字典，其中每个键都是一个转换器的名称而每个值都是一个实现了特定转换的可调用对象。 例如，传入 `{'decimal': decimal.Decimal}` 将对解释器对象和所有节代理添加 `getdecimal()`。 换句话说，可以同时编写 `parser_instance.getdecimal('section', 'key', fallback=0)` 和 `parser_instance['section'].getdecimal('key', 0)`。
+  配置解析器提供了可选的值获取方法用来执行类型转换。 默认情况下实现了 [`getint()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.getint" >}}), [`getfloat()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.getfloat" >}}) 和 [`getboolean()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.getboolean" >}})。 如果还需要其他获取方法，用户可以在子类中定义它们，或者传入一个字典，其中每个键都是一个转换器的名称而每个值都是一个实现了特定转换的可调用对象。 例如，传入 `{'decimal': decimal.Decimal}` 将对解释器对象和所有节代理添加 `getdecimal()`。 换句话说，可以同时编写 `parser_instance.getdecimal('section', 'key', fallback=0)` 和 `parser_instance['section'].getdecimal('key', 0)`。
 
   如果转换器需要访问解析器的状态，可以在配置解析器子类上作为一个方法来实现。 如果该方法的名称是以 `get` 打头的，它将在所有节代理上以兼容字典的形式提供（参见上面的 `getdecimal()` 示例）。
 
@@ -567,7 +565,7 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 
 ## ConfigParser.**BOOLEAN_STATES**
 
-​	默认情况下当使用 [`getboolean()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.getboolean) 时，配置解析器会将下列值视为 `True`: `'1'`, `'yes'`, `'true'`, `'on'` 而将下列值视为 `False`: `'0'`, `'no'`, `'false'`, `'off'`。 你可以通过指定一个自定义的字符串键及其对应的布尔值字典来覆盖此行为。 例如:
+​	默认情况下当使用 [`getboolean()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.getboolean" >}}) 时，配置解析器会将下列值视为 `True`: `'1'`, `'yes'`, `'true'`, `'on'` 而将下列值视为 `False`: `'0'`, `'no'`, `'false'`, `'off'`。 你可以通过指定一个自定义的字符串键及其对应的布尔值字典来覆盖此行为。 例如:
 
 
 
@@ -614,8 +612,7 @@ False
 ['AnotherKey']
 ```
 
-​	备注
-
+​备注
  
 
 ​	optionxform 函数会将选项名称转换为规范形式。 这应该是一个幂等函数：如果名称已经为规范形式，则应不加修改地将其返回。
@@ -646,15 +643,14 @@ False
 ['Section 1', 'Section 2']
 ```
 
-​	备注
-
+​备注
  
 
 ​	虽然 ConfigParser 对象也使用 `OPTCRE` 属性来识别选项行，但并不推荐重写它，因为这会与构造器选项 *allow_no_value* 和 *delimiters* 产生冲突。
 
 ## 旧式 API 示例
 
-​	主要出于向下兼容性的考虑，[`configparser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#module-configparser) 还提供了一种采用显式 `get`/`set` 方法的旧式 API。 虽然以下介绍的方法存在有效的用例，但对于新项目仍建议采用映射协议访问。 旧式 API 在多数时候都更复杂、更底层并且完全违反直觉。
+​	主要出于向下兼容性的考虑，[`configparser`]({{< ref "/library/fileformats/configparser#module-configparser" >}}) 还提供了一种采用显式 `get`/`set` 方法的旧式 API。 虽然以下介绍的方法存在有效的用例，但对于新项目仍建议采用映射协议访问。 旧式 API 在多数时候都更复杂、更底层并且完全违反直觉。
 
 ​	一个写入配置文件的示例:
 
@@ -701,7 +697,7 @@ if config.getboolean('Section1', 'a_bool'):
     print(config.get('Section1', 'foo'))
 ```
 
-​	要获取插值，请使用 [`ConfigParser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser):
+​	要获取插值，请使用 [`ConfigParser`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser" >}}):
 
 ```
 import configparser
@@ -761,19 +757,19 @@ print(config.get('Section1', 'foo'))     # -> "Life is hard!"
 
 ​	当给定 *delimiters* 时，它会被用作分隔键与值的子字符串的集合。 当给定 *comment_prefixes* 时，它将被用作在否则为空行的注释的前缀子字符串的集合。 注释可以被缩进。 当给定 *inline_comment_prefixes* 时，它将被用作非空行的注释的前缀子字符串的集合。
 
-​	当 *strict* 为 `True` (默认值) 时，解析器在从单个源（文件、字符串或字典）读取时将不允许任何节或选项出现重复，否则会引发 [`DuplicateSectionError`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.DuplicateSectionError) 或 [`DuplicateOptionError`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.DuplicateOptionError)。 当 *empty_lines_in_values* 为 `False` (默认值: `True`) 时，每个空行均表示一个选项的结束。 在其他情况下，一个多行选项内部的空行会被保留为值的一部分。 当 *allow_no_value* 为 `True` (默认值: `False`) 时，将接受没有值的选项；此种选项的值将为 `None` 并且它们会以不带末尾分隔符的形式被序列化。
+​	当 *strict* 为 `True` (默认值) 时，解析器在从单个源（文件、字符串或字典）读取时将不允许任何节或选项出现重复，否则会引发 [`DuplicateSectionError`]({{< ref "/library/fileformats/configparser#configparser.DuplicateSectionError" >}}) 或 [`DuplicateOptionError`]({{< ref "/library/fileformats/configparser#configparser.DuplicateOptionError" >}})。 当 *empty_lines_in_values* 为 `False` (默认值: `True`) 时，每个空行均表示一个选项的结束。 在其他情况下，一个多行选项内部的空行会被保留为值的一部分。 当 *allow_no_value* 为 `True` (默认值: `False`) 时，将接受没有值的选项；此种选项的值将为 `None` 并且它们会以不带末尾分隔符的形式被序列化。
 
 ​	当给出 *default_section* 时，它指定了为其他部分和插值目的而保存默认值的特殊部分的名称 (通常命名为 `"DEFAULT"`)。 该值可通过使用 `default_section` 实例属性在运行时被读取或修改值。 这不会对已解析的配置文件进行重新求值，但会在将解析的设置写入新的配置文件时使用。
 
-​	插值行为可通过给出 *interpolation* 参数提供自定义处理程序的方式来定制。 `None` 可用来完全禁用插值，`ExtendedInterpolation()` 提供了一种更高级的变体形式，它的设计受到了 `zc.buildout` 的启发。 有关该主题的更多信息请参见 [专门的文档章节](https://docs.python.org/zh-cn/3.13/library/configparser.html#interpolation-of-values)。
+​	插值行为可通过给出 *interpolation* 参数提供自定义处理程序的方式来定制。 `None` 可用来完全禁用插值，`ExtendedInterpolation()` 提供了一种更高级的变体形式，它的设计受到了 `zc.buildout` 的启发。 有关该主题的更多信息请参见 [专门的文档章节]({{< ref "/library/fileformats/configparser#interpolation-of-values" >}})。
 
-​	插值中使用的所有选项名称将像任何其他选项名称引用一样通过 [`optionxform()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.optionxform) 方法来传递。 例如，使用 [`optionxform()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.optionxform) 的默认实现（它会将选项名称转换为小写形式）时，值 `foo %(bar)s` 和 `foo %(BAR)s` 是等价的。
+​	插值中使用的所有选项名称将像任何其他选项名称引用一样通过 [`optionxform()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.optionxform" >}}) 方法来传递。 例如，使用 [`optionxform()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.optionxform" >}}) 的默认实现（它会将选项名称转换为小写形式）时，值 `foo %(bar)s` 和 `foo %(BAR)s` 是等价的。
 
 ​	当给出 *converters* 时，它应当是一个字典，其中每个键代表一个类型转换器的名称而每个值则为实现从字符串到目标数据类型的转换的可调用对象。 每个转换器会获得其在解析器对象和节代理上对应的 `get*()` 方法。
 
-​	When *allow_unnamed_section* is `True` (default: `False`), the first section name can be omitted. See the ["Unnamed Sections" section](https://docs.python.org/zh-cn/3.13/library/configparser.html#unnamed-sections).
+​	When *allow_unnamed_section* is `True` (default: `False`), the first section name can be omitted. See the ["Unnamed Sections" section]({{< ref "/library/fileformats/configparser#unnamed-sections" >}}).
 
-​	将多个配置读入单个 [`ConfigParser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser) 是可能的，其中最近添加的配置具有最高优先级。 任何冲突的键都会从更近的配置获取并且先前存在的键会被保留。 下面的例子读入一个 `override.ini` 文件，它将覆盖任何来自 `example.ini` 文件的冲突的键。
+​	将多个配置读入单个 [`ConfigParser`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser" >}}) 是可能的，其中最近添加的配置具有最高优先级。 任何冲突的键都会从更近的配置获取并且先前存在的键会被保留。 下面的例子读入一个 `override.ini` 文件，它将覆盖任何来自 `example.ini` 文件的冲突的键。
 
 ```
 [DEFAULT]
@@ -795,19 +791,19 @@ ServerAliveInterval = -1
 -1
 ```
 
-*在 3.1 版本发生变更:* 默认的 *dict_type* 为 [`collections.OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict)。
+> 在 3.1 版本发生变更: 默认的 *dict_type* 为 [`collections.OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict)。
 
-*在 3.2 版本发生变更:* 添加了 *allow_no_value*, *delimiters*, *comment_prefixes*, *strict*, *empty_lines_in_values*, *default_section* 以及 *interpolation*。
+> 在 3.2 版本发生变更: 添加了 *allow_no_value*, *delimiters*, *comment_prefixes*, *strict*, *empty_lines_in_values*, *default_section* 以及 *interpolation*。
 
-*在 3.5 版本发生变更:* 添加了 *converters* 参数。
+> 在 3.5 版本发生变更: 添加了 *converters* 参数。
 
-*在 3.7 版本发生变更:* The *defaults* argument is read with [`read_dict()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.read_dict), providing consistent behavior across the parser: non-string keys and values are implicitly converted to strings.
+> 在 3.7 版本发生变更: The *defaults* argument is read with [`read_dict()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.read_dict" >}}), providing consistent behavior across the parser: non-string keys and values are implicitly converted to strings.
 
-*在 3.8 版本发生变更:* 默认的 *dict_type* 为 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict)，因为它现在会保留插入顺序。
+> 在 3.8 版本发生变更: 默认的 *dict_type* 为 [`dict`]({{< ref "/library/stdtypes#dict" >}})，因为它现在会保留插入顺序。
 
-*在 3.13 版本发生变更:* 当 *allow_no_value* 为 `True` 且没有值的键带有一个缩进的行时将会引发 [`MultilineContinuationError`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.MultilineContinuationError)。
+> 在 3.13 版本发生变更: 当 *allow_no_value* 为 `True` 且没有值的键带有一个缩进的行时将会引发 [`MultilineContinuationError`]({{< ref "/library/fileformats/configparser#configparser.MultilineContinuationError" >}})。
 
-*在 3.13 版本发生变更:* The *allow_unnamed_section* argument was added.
+> 在 3.13 版本发生变更: The *allow_unnamed_section* argument was added.
 
 ## **defaults**()
 
@@ -819,9 +815,9 @@ ServerAliveInterval = -1
 
 ## **add_section**(*section*)
 
-​	向实例添加一个名为 *section* 的节。 如果给定名称的节已存在，将会引发 [`DuplicateSectionError`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.DuplicateSectionError)。 如果传入了 *default section* 名称，则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。 节名称必须为字符串；如果不是则会引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
+​	向实例添加一个名为 *section* 的节。 如果给定名称的节已存在，将会引发 [`DuplicateSectionError`]({{< ref "/library/fileformats/configparser#configparser.DuplicateSectionError" >}})。 如果传入了 *default section* 名称，则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。 节名称必须为字符串；如果不是则会引发 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}})。
 
-*在 3.2 版本发生变更:* 非字符串的节名称将引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
+> 在 3.2 版本发生变更: 非字符串的节名称将引发 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}})。
 
 ## **has_section**(*section*)
 
@@ -833,15 +829,15 @@ ServerAliveInterval = -1
 
 ## **has_option**(*section*, *option*)
 
-​	如果给定的 *section* 存在并且包含给定的 *option* 则返回 [`True`](https://docs.python.org/zh-cn/3.13/library/constants.html#True)；否则返回 [`False`](https://docs.python.org/zh-cn/3.13/library/constants.html#False)。 如果指定的 *section* 为 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None) 或空字符串，则会使用 DEFAULT。
+​	如果给定的 *section* 存在并且包含给定的 *option* 则返回 [`True`]({{< ref "/library/constants#True" >}})；否则返回 [`False`]({{< ref "/library/constants#False" >}})。 如果指定的 *section* 为 [`None`]({{< ref "/library/constants#None" >}}) 或空字符串，则会使用 DEFAULT。
 
 ## **read**(*filenames*, *encoding=None*)
 
 ​	尝试读取并解析一个包含文件名的可迭代对象，返回一个被成功解析的文件名列表。
 
-​	如果 *filenames* 为字符串、[`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 对象或 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object)，它会被当作单个文件来处理。 如果 *filenames* 中名称对应的某个文件无法被打开，该文件将被忽略。 这样的设计使得你可以指定包含多个潜在配置文件位置的可迭代对象（例如当前目录、用户家目录以及某个系统级目录），存在于该可迭代对象中的所有配置文件都将被读取。
+​	如果 *filenames* 为字符串、[`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 对象或 [path-like object]({{< ref "/glossary/idx#term-path-like-object" >}})，它会被当作单个文件来处理。 如果 *filenames* 中名称对应的某个文件无法被打开，该文件将被忽略。 这样的设计使得你可以指定包含多个潜在配置文件位置的可迭代对象（例如当前目录、用户家目录以及某个系统级目录），存在于该可迭代对象中的所有配置文件都将被读取。
 
-​	如果名称对应的文件全都不存在，则 [`ConfigParser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser) 实例将包含一个空数据集。 一个要求从文件加载初始值的应用应当在调用 [`read()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.read) 来获取任何可选文件之前使用 [`read_file()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.read_file) 来加载所要求的一个或多个文件:
+​	如果名称对应的文件全都不存在，则 [`ConfigParser`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser" >}}) 实例将包含一个空数据集。 一个要求从文件加载初始值的应用应当在调用 [`read()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.read" >}}) 来获取任何可选文件之前使用 [`read_file()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.read_file" >}}) 来加载所要求的一个或多个文件:
 
 ```
 import configparser, os
@@ -852,11 +848,11 @@ config.read(['site.cfg', os.path.expanduser('~/.myapp.cfg')],
             encoding='cp1250')
 ```
 
-*在 3.2 版本发生变更:* 增加了 *encoding* 形参。 在之前版本中，所有文件都将使用 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open) 的默认编码格式来读取。
+> 在 3.2 版本发生变更: 增加了 *encoding* 形参。 在之前版本中，所有文件都将使用 [`open()`]({{< ref "/library/functions#open" >}}) 的默认编码格式来读取。
 
-*在 3.6.1 版本发生变更:* *filenames* 形参接受一个 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object)。
+*在 3.6.1 版本发生变更:* *filenames* 形参接受一个 [path-like object]({{< ref "/glossary/idx#term-path-like-object" >}})。
 
-*在 3.7 版本发生变更:* *filenames* 形参接受一个 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 对象。
+> 在 3.7 版本发生变更: *filenames* 形参接受一个 [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 对象。
 
 ## **read_file**(*f*, *source=None*)
 
@@ -893,19 +889,19 @@ config.read(['site.cfg', os.path.expanduser('~/.myapp.cfg')],
 
 ​	所有 `'%'` 插值会在返回值中被展开，除非 *raw* 参数为真值。 插值键所使用的值会按与选项相同的方式来查找。
 
-*在 3.2 版本发生变更:* *raw*, *vars* 和 *fallback* 都是仅限关键字参数，以防止用户试图使用第三个参数作业为 *fallback* 回退值（特别是在使用映射 协议的时候）。
+> 在 3.2 版本发生变更: *raw*, *vars* 和 *fallback* 都是仅限关键字参数，以防止用户试图使用第三个参数作业为 *fallback* 回退值（特别是在使用映射 协议的时候）。
 
 ## **getint**(*section*, *option*, ***, *raw=False*, *vars=None*[, *fallback*])
 
-​	将在指定 *section* 中的 *option* 强制转换为整数的便捷方法。 参见 [`get()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.get) 获取对于 *raw*, *vars* 和 *fallback* 的解释。
+​	将在指定 *section* 中的 *option* 强制转换为整数的便捷方法。 参见 [`get()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.get" >}}) 获取对于 *raw*, *vars* 和 *fallback* 的解释。
 
 ## **getfloat**(*section*, *option*, ***, *raw=False*, *vars=None*[, *fallback*])
 
-​	将在指定 *section* 中的 *option* 强制转换为浮点数的便捷方法。 参见 [`get()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.get) 获取对于 *raw*, *vars* 和 *fallback* 的解释。
+​	将在指定 *section* 中的 *option* 强制转换为浮点数的便捷方法。 参见 [`get()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.get" >}}) 获取对于 *raw*, *vars* 和 *fallback* 的解释。
 
 ## **getboolean**(*section*, *option*, ***, *raw=False*, *vars=None*[, *fallback*])
 
-​	将在指定 *section* 中的 *option* 强制转换为布尔值的便捷方法。 请注意选项所接受的值为 `'1'`, `'yes'`, `'true'` 和 `'on'`，它们会使得此方法返回 `True`，以及 `'0'`, `'no'`, `'false'` 和 `'off'`，它们会使得此方法返回 `False`。 这些字符串值会以对大小写不敏感的方式被检测。 任何其他值都将导致引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。 参见 [`get()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.get) 获取对于 *raw*, *vars* 和 *fallback* 的解释。
+​	将在指定 *section* 中的 *option* 强制转换为布尔值的便捷方法。 请注意选项所接受的值为 `'1'`, `'yes'`, `'true'` 和 `'on'`，它们会使得此方法返回 `True`，以及 `'0'`, `'no'`, `'false'` 和 `'off'`，它们会使得此方法返回 `False`。 这些字符串值会以对大小写不敏感的方式被检测。 任何其他值都将导致引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。 参见 [`get()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.get" >}}) 获取对于 *raw*, *vars* 和 *fallback* 的解释。
 
 ## **items**(*raw=False*, *vars=None*)
 
@@ -913,27 +909,26 @@ config.read(['site.cfg', os.path.expanduser('~/.myapp.cfg')],
 
 ​	当未给出 *section* 时，将返回由 *section_name*, *section_proxy* 对组成的列表，包括 DEFAULTSECT。
 
-​	在其他情况下，将返回给定的 *section* 中的 option 的 *name*, *value* 对组成的列表。 可选参数具有与 [`get()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.get) 方法的参数相同的含义。
+​	在其他情况下，将返回给定的 *section* 中的 option 的 *name*, *value* 对组成的列表。 可选参数具有与 [`get()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.get" >}}) 方法的参数相同的含义。
 
-*在 3.8 版本发生变更:* *vars* 中的条目将不在结果中出现。 之前的行为混淆了实际的解析器选项和为插值提供的变量。
+> 在 3.8 版本发生变更: *vars* 中的条目将不在结果中出现。 之前的行为混淆了实际的解析器选项和为插值提供的变量。
 
 ## **set**(*section*, *option*, *value*)
 
-​	如果给定的节存在，则将所给出的选项设为指定的值；在其他情况下将引发 [`NoSectionError`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.NoSectionError)。 *option* 和 *value* 必须为字符串；如果不是则将引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
+​	如果给定的节存在，则将所给出的选项设为指定的值；在其他情况下将引发 [`NoSectionError`]({{< ref "/library/fileformats/configparser#configparser.NoSectionError" >}})。 *option* 和 *value* 必须为字符串；如果不是则将引发 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}})。
 
 ## **write**(*fileobject*, *space_around_delimiters=True*)
 
-​	将配置的表示形式写入指定的 [file object](https://docs.python.org/zh-cn/3.13/glossary.html#term-file-object)，该对象必须以文本模式打开（接受字符串）。 此表示形式可由将来的 [`read()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.read) 调用进行解析。 如果 *space_around_delimiters* 为真值，键和值之前的分隔符两边将加上空格。
+​	将配置的表示形式写入指定的 [file object]({{< ref "/glossary/idx#term-file-object" >}})，该对象必须以文本模式打开（接受字符串）。 此表示形式可由将来的 [`read()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.read" >}}) 调用进行解析。 如果 *space_around_delimiters* 为真值，键和值之前的分隔符两边将加上空格。
 
-​	备注
-
+​备注
  
 
 ​	原始配置文件中的注释在写回配置时不会被保留。 具体哪些会被当作注释，取决于为 *comment_prefix* 和 *inline_comment_prefix* 所指定的值。
 
 ## **remove_option**(*section*, *option*)
 
-​	将指定的 *option* 从指定的 *section* 中移除。 如果指定的节不存在则会引发 [`NoSectionError`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.NoSectionError)。 如果要移除的选项存在则返回 [`True`](https://docs.python.org/zh-cn/3.13/library/constants.html#True)；在其他情况下将返回 [`False`](https://docs.python.org/zh-cn/3.13/library/constants.html#False)。
+​	将指定的 *option* 从指定的 *section* 中移除。 如果指定的节不存在则会引发 [`NoSectionError`]({{< ref "/library/fileformats/configparser#configparser.NoSectionError" >}})。 如果要移除的选项存在则返回 [`True`]({{< ref "/library/constants#True" >}})；在其他情况下将返回 [`False`]({{< ref "/library/constants#False" >}})。
 
 ## **remove_section**(*section*)
 
@@ -950,15 +945,15 @@ cfgparser = ConfigParser()
 cfgparser.optionxform = str
 ```
 
-​	请注意当读取配置文件时，选项名称两边的空格将在调用 [`optionxform()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.optionxform) 之前被去除。
+​	请注意当读取配置文件时，选项名称两边的空格将在调用 [`optionxform()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.optionxform" >}}) 之前被去除。
 
 ## configparser.**UNNAMED_SECTION**
 
-​	一个代表用于引用未命名小节的小节名称的特殊对象 (参见 [未命名小节](https://docs.python.org/zh-cn/3.13/library/configparser.html#unnamed-sections))。
+​	一个代表用于引用未命名小节的小节名称的特殊对象 (参见 [未命名小节]({{< ref "/library/fileformats/configparser#unnamed-sections" >}}))。
 
 ## configparser.**MAX_INTERPOLATION_DEPTH**
 
-​	当 *raw* 形参为假值时 [`get()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.get) 所采用的递归插值的最大深度。 这只在使用默认的 *interpolation* 时会起作用。
+​	当 *raw* 形参为假值时 [`get()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.get" >}}) 所采用的递归插值的最大深度。 这只在使用默认的 *interpolation* 时会起作用。
 
 
 
@@ -966,31 +961,30 @@ cfgparser.optionxform = str
 
 ## *class* configparser.**RawConfigParser**(*defaults=None*, *dict_type=dict*, *allow_no_value=False*, ***, *delimiters=('=', ':')*, *comment_prefixes=('#', ';')*, *inline_comment_prefixes=None*, *strict=True*, *empty_lines_in_values=True*, *default_section=configparser.DEFAULTSECT*, *interpolation=BasicInterpolation()*, *converters={}*, *allow_unnamed_section=False*)
 
-​	旧式 [`ConfigParser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser)。 它默认禁用插值并且允许通过不安全的 `add_section` 和 `set` 方法以及旧式 `defaults=` 关键字参数处理来设置非字符串的节名、选项名和值。
+​	旧式 [`ConfigParser`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser" >}})。 它默认禁用插值并且允许通过不安全的 `add_section` 和 `set` 方法以及旧式 `defaults=` 关键字参数处理来设置非字符串的节名、选项名和值。
 
-*在 3.2 版本发生变更:* 添加了 *allow_no_value*, *delimiters*, *comment_prefixes*, *strict*, *empty_lines_in_values*, *default_section* 以及 *interpolation*。
+> 在 3.2 版本发生变更: 添加了 *allow_no_value*, *delimiters*, *comment_prefixes*, *strict*, *empty_lines_in_values*, *default_section* 以及 *interpolation*。
 
-*在 3.5 版本发生变更:* 添加了 *converters* 参数。
+> 在 3.5 版本发生变更: 添加了 *converters* 参数。
 
-*在 3.8 版本发生变更:* 默认的 *dict_type* 为 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict)，因为它现在会保留插入顺序。
+> 在 3.8 版本发生变更: 默认的 *dict_type* 为 [`dict`]({{< ref "/library/stdtypes#dict" >}})，因为它现在会保留插入顺序。
 
-*在 3.13 版本发生变更:* The *allow_unnamed_section* argument was added.
+> 在 3.13 版本发生变更: The *allow_unnamed_section* argument was added.
 
-​	备注
-
+​备注
  
 
-​	考虑改用 [`ConfigParser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser)，它会检查内部保存的值的类型。 如果你不想要插值，你可以使用 `ConfigParser(interpolation=None)`。
+​	考虑改用 [`ConfigParser`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser" >}})，它会检查内部保存的值的类型。 如果你不想要插值，你可以使用 `ConfigParser(interpolation=None)`。
 
 ## **add_section**(*section*)
 
-​	向实例添加一个名为 *section* 的节。 如果给定名称的节已存在，将会引发 [`DuplicateSectionError`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.DuplicateSectionError)。 如果传入了 *default section* 名称，则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	向实例添加一个名为 *section* 的节。 如果给定名称的节已存在，将会引发 [`DuplicateSectionError`]({{< ref "/library/fileformats/configparser#configparser.DuplicateSectionError" >}})。 如果传入了 *default section* 名称，则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 ​	不检查 *section* 以允许用户创建以非字符串命名的节。 此行为已不受支持并可能导致内部错误。
 
 ## **set**(*section*, *option*, *value*)
 
-​	如果给定的节存在，则将给定的选项设为指定的值；在其他情况下将引发 [`NoSectionError`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.NoSectionError)。 虽然可能使用 [`RawConfigParser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.RawConfigParser) (或使用 [`ConfigParser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser) 并将 *raw* 形参设为真值) 以便实现非字符串值的 *internal* 存储，但是完整功能（包括插值和输出到文件）只能使用字符串值来实现。
+​	如果给定的节存在，则将给定的选项设为指定的值；在其他情况下将引发 [`NoSectionError`]({{< ref "/library/fileformats/configparser#configparser.NoSectionError" >}})。 虽然可能使用 [`RawConfigParser`]({{< ref "/library/fileformats/configparser#configparser.RawConfigParser" >}}) (或使用 [`ConfigParser`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser" >}}) 并将 *raw* 形参设为真值) 以便实现非字符串值的 *internal* 存储，但是完整功能（包括插值和输出到文件）只能使用字符串值来实现。
 
 ​	此方法允许用户在内部将非字符串值赋给键。 此行为已不受支持并会在尝试写入到文件或在非原始模式下获取数据时导致错误。 **请使用映射协议 API**，它不允许出现这样的赋值。
 
@@ -998,7 +992,7 @@ cfgparser.optionxform = str
 
 ## *exception* configparser.**Error**
 
-​	所有其他 [`configparser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#module-configparser) 异常的基类。
+​	所有其他 [`configparser`]({{< ref "/library/fileformats/configparser#module-configparser" >}}) 异常的基类。
 
 ## *exception* configparser.**NoSectionError**
 
@@ -1006,9 +1000,9 @@ cfgparser.optionxform = str
 
 ## *exception* configparser.**DuplicateSectionError**
 
-​	当调用 [`add_section()`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.ConfigParser.add_section) 时传入已存在的节名称，或者在严格解析器中当单个输入文件、字符串或字典内出现重复的节时引发的异常。
+​	当调用 [`add_section()`]({{< ref "/library/fileformats/configparser#configparser.ConfigParser.add_section" >}}) 时传入已存在的节名称，或者在严格解析器中当单个输入文件、字符串或字典内出现重复的节时引发的异常。
 
-*在 3.2 版本发生变更:* 向 `__init__()` 添加了可选的 *source* 和 *lineno* 属性和形参。
+> 在 3.2 版本发生变更: 向 `__init__()` 添加了可选的 *source* 和 *lineno* 属性和形参。
 
 ## *exception* configparser.**DuplicateOptionError**
 
@@ -1024,15 +1018,15 @@ cfgparser.optionxform = str
 
 ## *exception* configparser.**InterpolationDepthError**
 
-​	当字符串插值由于迭代次数超出 [`MAX_INTERPOLATION_DEPTH`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.MAX_INTERPOLATION_DEPTH) 而无法完成所引发的异常。 为 [`InterpolationError`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.InterpolationError) 的子类。
+​	当字符串插值由于迭代次数超出 [`MAX_INTERPOLATION_DEPTH`]({{< ref "/library/fileformats/configparser#configparser.MAX_INTERPOLATION_DEPTH" >}}) 而无法完成所引发的异常。 为 [`InterpolationError`]({{< ref "/library/fileformats/configparser#configparser.InterpolationError" >}}) 的子类。
 
 ## *exception* configparser.**InterpolationMissingOptionError**
 
-​	当从某个值引用的选项并不存在时引发的异常。 为 [`InterpolationError`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.InterpolationError) 的子类。
+​	当从某个值引用的选项并不存在时引发的异常。 为 [`InterpolationError`]({{< ref "/library/fileformats/configparser#configparser.InterpolationError" >}}) 的子类。
 
 ## *exception* configparser.**InterpolationSyntaxError**
 
-​	当将要执行替换的源文本不符合要求的语法时引发的异常。 为 [`InterpolationError`](https://docs.python.org/zh-cn/3.13/library/configparser.html#configparser.InterpolationError) 的子类。
+​	当将要执行替换的源文本不符合要求的语法时引发的异常。 为 [`InterpolationError`]({{< ref "/library/fileformats/configparser#configparser.InterpolationError" >}}) 的子类。
 
 ## *exception* configparser.**MissingSectionHeaderError**
 
@@ -1042,7 +1036,7 @@ cfgparser.optionxform = str
 
 ​	当尝试解析一个文件而发生错误时引发的异常。
 
-*在 3.12 版本发生变更:* `filename` 属性和 `__init__()` 构造器参数已被移除。 它们自 3.2 起可以使用名称 `source` 来访问。
+> 在 3.12 版本发生变更: `filename` 属性和 `__init__()` 构造器参数已被移除。 它们自 3.2 起可以使用名称 `source` 来访问。
 
 ## *exception* configparser.**MultilineContinuationError**
 
@@ -1051,8 +1045,7 @@ cfgparser.optionxform = str
 > Added in version 3.13.
 >
 
-​	备注
+​备注
+[1]([1](https://docs.python.org/zh-cn/3.13/library/configparser.html#id1),[2]({{< ref "/library/fileformats/configparser#id2" >}}),[3]({{< ref "/library/fileformats/configparser#id3" >}}),[4]({{< ref "/library/fileformats/configparser#id4" >}}),[5]({{< ref "/library/fileformats/configparser#id5" >}}),[6]({{< ref "/library/fileformats/configparser#id6" >}}),[7]({{< ref "/library/fileformats/configparser#id7" >}}),[8]({{< ref "/library/fileformats/configparser#id8" >}}),[9]({{< ref "/library/fileformats/configparser#id9" >}}),[10]({{< ref "/library/fileformats/configparser#id11" >}}),[11]({{< ref "/library/fileformats/configparser#id12" >}}))
 
-[1]([1](https://docs.python.org/zh-cn/3.13/library/configparser.html#id1),[2](https://docs.python.org/zh-cn/3.13/library/configparser.html#id2),[3](https://docs.python.org/zh-cn/3.13/library/configparser.html#id3),[4](https://docs.python.org/zh-cn/3.13/library/configparser.html#id4),[5](https://docs.python.org/zh-cn/3.13/library/configparser.html#id5),[6](https://docs.python.org/zh-cn/3.13/library/configparser.html#id6),[7](https://docs.python.org/zh-cn/3.13/library/configparser.html#id7),[8](https://docs.python.org/zh-cn/3.13/library/configparser.html#id8),[9](https://docs.python.org/zh-cn/3.13/library/configparser.html#id9),[10](https://docs.python.org/zh-cn/3.13/library/configparser.html#id11),[11](https://docs.python.org/zh-cn/3.13/library/configparser.html#id12))
-
-​	配置解析器允许重度定制。 如果你有兴趣改变脚注说明中所介绍的行为，请参阅 [Customizing Parser Behaviour](https://docs.python.org/zh-cn/3.13/library/configparser.html#customizing-parser-behaviour) 一节。
+​	配置解析器允许重度定制。 如果你有兴趣改变脚注说明中所介绍的行为，请参阅 [Customizing Parser Behaviour]({{< ref "/library/fileformats/configparser#customizing-parser-behaviour" >}}) 一节。

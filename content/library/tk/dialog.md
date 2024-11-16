@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/dialog.html](https://docs.python.org/zh-cn/3.13/library/dialog.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/dialog.html](https://docs.python.org/zh-cn/3.13/library/dialog.html)
 >
 > 收录该文档的时间：`2024-11-15T20:56:44+08:00`
 
@@ -16,13 +16,13 @@ draft = false
 
 
 
-## [`tkinter.simpledialog`](https://docs.python.org/zh-cn/3.13/library/dialog.html#module-tkinter.simpledialog) --- 标准 Tkinter 输入对话框
+## [`tkinter.simpledialog`]({{< ref "/library/tk/dialog#module-tkinter.simpledialog" >}}) --- 标准 Tkinter 输入对话框
 
 **源码:** [Lib/tkinter/simpledialog.py](https://github.com/python/cpython/tree/3.13/Lib/tkinter/simpledialog.py)
 
 ------
 
-[`tkinter.simpledialog`](https://docs.python.org/zh-cn/3.13/library/dialog.html#module-tkinter.simpledialog) 模块包含了一些便捷类和函数，用于创建简单的模态对话框，从用户那里读取一个值。
+[`tkinter.simpledialog`]({{< ref "/library/tk/dialog#module-tkinter.simpledialog" >}}) 模块包含了一些便捷类和函数，用于创建简单的模态对话框，从用户那里读取一个值。
 
 ## tkinter.simpledialog.**askfloat**(*title*, *prompt*, ***kw*)
 
@@ -46,13 +46,13 @@ draft = false
 
 
 
-## [`tkinter.filedialog`](https://docs.python.org/zh-cn/3.13/library/dialog.html#module-tkinter.filedialog) --- 文件选择对话框.
+## [`tkinter.filedialog`]({{< ref "/library/tk/dialog#module-tkinter.filedialog" >}}) --- 文件选择对话框.
 
 **源码:** [Lib/tkinter/filedialog.py](https://github.com/python/cpython/tree/3.13/Lib/tkinter/filedialog.py)
 
 ------
 
-[`tkinter.filedialog`](https://docs.python.org/zh-cn/3.13/library/dialog.html#module-tkinter.filedialog) 模块提供了用于创建文件/目录选择窗口的类和工厂函数。
+[`tkinter.filedialog`]({{< ref "/library/tk/dialog#module-tkinter.filedialog" >}}) 模块提供了用于创建文件/目录选择窗口的类和工厂函数。
 
 ### 原生的载入/保存对话框.
 
@@ -80,21 +80,21 @@ draft = false
 
 ## tkinter.filedialog.**askopenfiles**(*mode='r'*, ***options*)
 
-​	上述两个函数创建了 [`Open`](https://docs.python.org/zh-cn/3.13/library/dialog.html#tkinter.filedialog.Open) 对话框，并返回一个只读模式打开的文件对象。
+​	上述两个函数创建了 [`Open`]({{< ref "/library/tk/dialog#tkinter.filedialog.Open" >}}) 对话框，并返回一个只读模式打开的文件对象。
 
 ## tkinter.filedialog.**asksaveasfile**(*mode='w'*, ***options*)
 
-​	创建 [`SaveAs`](https://docs.python.org/zh-cn/3.13/library/dialog.html#tkinter.filedialog.SaveAs) 对话框并返回一个写入模式打开的文件对象。
+​	创建 [`SaveAs`]({{< ref "/library/tk/dialog#tkinter.filedialog.SaveAs" >}}) 对话框并返回一个写入模式打开的文件对象。
 
 ## tkinter.filedialog.**askopenfilename**(***options*)
 
 ## tkinter.filedialog.**askopenfilenames**(***options*)
 
-​	以上两个函数创建了 [`Open`](https://docs.python.org/zh-cn/3.13/library/dialog.html#tkinter.filedialog.Open) 对话框，并返回选中的文件名，对应着已存在的文件。
+​	以上两个函数创建了 [`Open`]({{< ref "/library/tk/dialog#tkinter.filedialog.Open" >}}) 对话框，并返回选中的文件名，对应着已存在的文件。
 
 ## tkinter.filedialog.**asksaveasfilename**(***options*)
 
-​	创建 [`SaveAs`](https://docs.python.org/zh-cn/3.13/library/dialog.html#tkinter.filedialog.SaveAs) 对话框，并返回选中的文件名。
+​	创建 [`SaveAs`]({{< ref "/library/tk/dialog#tkinter.filedialog.SaveAs" >}}) 对话框，并返回选中的文件名。
 
 ## tkinter.filedialog.**askdirectory**(***options*)
 
@@ -118,8 +118,7 @@ draft = false
 
 ​	创建对话框，提示用户选择一个目录。
 
-​	备注
-
+​备注
  
 
 ​	为了实现自定义的事件处理和行为，应继承 *FileDialog* 类。
@@ -198,13 +197,13 @@ draft = false
 
 
 
-## [`tkinter.commondialog`](https://docs.python.org/zh-cn/3.13/library/dialog.html#module-tkinter.commondialog) --- 对话窗口模板
+## [`tkinter.commondialog`]({{< ref "/library/tk/dialog#module-tkinter.commondialog" >}}) --- 对话窗口模板
 
 **源码:**：[Lib/tkinter/commondialog.py](https://github.com/python/cpython/tree/3.13/Lib/tkinter/commondialog.py)
 
 ------
 
-[`tkinter.commondialog`](https://docs.python.org/zh-cn/3.13/library/dialog.html#module-tkinter.commondialog) 模块提供了 [`Dialog`](https://docs.python.org/zh-cn/3.13/library/dialog.html#tkinter.commondialog.Dialog) 类，是其他模块定义的对话框的基类。
+[`tkinter.commondialog`]({{< ref "/library/tk/dialog#module-tkinter.commondialog" >}}) 模块提供了 [`Dialog`]({{< ref "/library/tk/dialog#tkinter.commondialog.Dialog" >}}) 类，是其他模块定义的对话框的基类。
 
 ## *class* tkinter.commondialog.**Dialog**(*master=None*, ***options*)
 
@@ -212,8 +211,7 @@ draft = false
 
 ​	显示对话窗口。
 
-​	参见
-
+​参见
  
 
-​	模块 [`tkinter.messagebox`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#module-tkinter.messagebox), [读写文件](https://docs.python.org/zh-cn/3.13/tutorial/inputoutput.html#tut-files)
+​	模块 [`tkinter.messagebox`]({{< ref "/library/tk/tkinter_messagebox#module-tkinter.messagebox" >}}), [读写文件]({{< ref "/tutorial/inputoutput#tut-files" >}})

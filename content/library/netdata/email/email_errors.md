@@ -9,7 +9,7 @@ draft = false
 
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/email.errors.html](https://docs.python.org/zh-cn/3.13/library/email.errors.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/email.errors.html](https://docs.python.org/zh-cn/3.13/library/email.errors.html)
 >
 > 收录该文档的时间：`2024-11-15T12:09:25+08:00`
 
@@ -19,19 +19,19 @@ draft = false
 
 ------
 
-​	以下异常类在 [`email.errors`](https://docs.python.org/zh-cn/3.13/library/email.errors.html#module-email.errors) 模块中定义：
+​	以下异常类在 [`email.errors`]({{< ref "/library/netdata/email/email_errors#module-email.errors" >}}) 模块中定义：
 
 ## *exception* email.errors.**MessageError**
 
-​	这是 [`email`](https://docs.python.org/zh-cn/3.13/library/email.html#module-email) 包可以引发的所有异常的基类。 它源自标准异常 [`Exception`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#Exception) 类，这个类没有定义其他方法。
+​	这是 [`email`]({{< ref "/library/netdata/email#module-email" >}}) 包可以引发的所有异常的基类。 它源自标准异常 [`Exception`]({{< ref "/library/exceptions#Exception" >}}) 类，这个类没有定义其他方法。
 
 ## *exception* email.errors.**MessageParseError**
 
-​	这是由 [`Parser`](https://docs.python.org/zh-cn/3.13/library/email.parser.html#email.parser.Parser) 类引发的异常的基类。它派生自 [`MessageError`](https://docs.python.org/zh-cn/3.13/library/email.errors.html#email.errors.MessageError)。 [`headerregistry`](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#module-email.headerregistry) 使用的解析器也在内部使用这个类。
+​	这是由 [`Parser`]({{< ref "/library/netdata/email/email_parser#email.parser.Parser" >}}) 类引发的异常的基类。它派生自 [`MessageError`]({{< ref "/library/netdata/email/email_errors#email.errors.MessageError" >}})。 [`headerregistry`]({{< ref "/library/netdata/email/email_headerregistry#module-email.headerregistry" >}}) 使用的解析器也在内部使用这个类。
 
 ## *exception* email.errors.**HeaderParseError**
 
-​	在解析消息的 [**RFC 5322**](https://datatracker.ietf.org/doc/html/rfc5322.html) 标头时，某些错误条件下会触发，此类派生自 [`MessageParseError`](https://docs.python.org/zh-cn/3.13/library/email.errors.html#email.errors.MessageParseError)。 如果在调用方法时内容类型未知，则 [`set_boundary()`](https://docs.python.org/zh-cn/3.13/library/email.message.html#email.message.EmailMessage.set_boundary) 方法将引发此错误。 当尝试创建一个看起来包含嵌入式标头的标头时 [`Header`](https://docs.python.org/zh-cn/3.13/library/email.header.html#email.header.Header) 可能会针对某些 base64 解码错误引发此错误（也就是说，应该是一个 没有前导空格并且看起来像标题的延续行）。
+​	在解析消息的 [**RFC 5322**](https://datatracker.ietf.org/doc/html/rfc5322.html) 标头时，某些错误条件下会触发，此类派生自 [`MessageParseError`]({{< ref "/library/netdata/email/email_errors#email.errors.MessageParseError" >}})。 如果在调用方法时内容类型未知，则 [`set_boundary()`]({{< ref "/library/netdata/email/email_message#email.message.EmailMessage.set_boundary" >}}) 方法将引发此错误。 当尝试创建一个看起来包含嵌入式标头的标头时 [`Header`]({{< ref "/library/netdata/email/email_header#email.header.Header" >}}) 可能会针对某些 base64 解码错误引发此错误（也就是说，应该是一个 没有前导空格并且看起来像标题的延续行）。
 
 ## *exception* email.errors.**BoundaryError**
 
@@ -39,25 +39,25 @@ draft = false
 
 ## *exception* email.errors.**MultipartConversionError**
 
-​	当使用 `add_payload()` 将有效负载添加到 [`Message`](https://docs.python.org/zh-cn/3.13/library/email.compat32-message.html#email.message.Message) 对象时，有效负载已经是一个标量，而消息的 *Content-Type* 主类型不是 *multipart* 或者缺少时触发该异常。 [`MultipartConversionError`](https://docs.python.org/zh-cn/3.13/library/email.errors.html#email.errors.MultipartConversionError) 多重继承自 [`MessageError`](https://docs.python.org/zh-cn/3.13/library/email.errors.html#email.errors.MessageError) 和内置的 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
+​	当使用 `add_payload()` 将有效负载添加到 [`Message`]({{< ref "/library/netdata/email/email_compat32-message#email.message.Message" >}}) 对象时，有效负载已经是一个标量，而消息的 *Content-Type* 主类型不是 *multipart* 或者缺少时触发该异常。 [`MultipartConversionError`]({{< ref "/library/netdata/email/email_errors#email.errors.MultipartConversionError" >}}) 多重继承自 [`MessageError`]({{< ref "/library/netdata/email/email_errors#email.errors.MessageError" >}}) 和内置的 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}})。
 
-​	由于 `Message.add_payload()` 已被弃用，此异常实际上极少会被引发。 但是如果在派生自 [`MIMENonMultipart`](https://docs.python.org/zh-cn/3.13/library/email.mime.html#email.mime.nonmultipart.MIMENonMultipart) 的类 (例如 [`MIMEImage`](https://docs.python.org/zh-cn/3.13/library/email.mime.html#email.mime.image.MIMEImage)) 的实例上调用 [`attach()`](https://docs.python.org/zh-cn/3.13/library/email.compat32-message.html#email.message.Message.attach) 方法也可以引发此异常。
+​	由于 `Message.add_payload()` 已被弃用，此异常实际上极少会被引发。 但是如果在派生自 [`MIMENonMultipart`]({{< ref "/library/netdata/email/email_mime#email.mime.nonmultipart.MIMENonMultipart" >}}) 的类 (例如 [`MIMEImage`]({{< ref "/library/netdata/email/email_mime#email.mime.image.MIMEImage" >}})) 的实例上调用 [`attach()`]({{< ref "/library/netdata/email/email_compat32-message#email.message.Message.attach" >}}) 方法也可以引发此异常。
 
 ## *exception* email.errors.**HeaderWriteError**
 
-​	当 [`generator`](https://docs.python.org/zh-cn/3.13/library/email.generator.html#module-email.generator) 输出标头发生错误时将被引发。
+​	当 [`generator`]({{< ref "/library/netdata/email/email_generator#module-email.generator" >}}) 输出标头发生错误时将被引发。
 
 ## *exception* email.errors.**MessageDefect**
 
-​	这是表示在解析邮件消息时出现的所有错误的基类。 它派生自 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	这是表示在解析邮件消息时出现的所有错误的基类。 它派生自 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 ## *exception* email.errors.**HeaderDefect**
 
-​	这是表示在解析邮件标头时出现的所有错误的基类。 它派生自 [`MessageDefect`](https://docs.python.org/zh-cn/3.13/library/email.errors.html#email.errors.MessageDefect)。
+​	这是表示在解析邮件标头时出现的所有错误的基类。 它派生自 [`MessageDefect`]({{< ref "/library/netdata/email/email_errors#email.errors.MessageDefect" >}})。
 
-​	以下是 [`FeedParser`](https://docs.python.org/zh-cn/3.13/library/email.parser.html#email.parser.FeedParser) 在解析消息时可发现的缺陷列表。 请注意这些缺陷会在问题被发现时加入到消息中，因此举例来说，如果某条嵌套在 *multipart/alternative* 中的消息具有错误的标头，该嵌套消息对象就会有一条缺陷，但外层消息对象则没有。
+​	以下是 [`FeedParser`]({{< ref "/library/netdata/email/email_parser#email.parser.FeedParser" >}}) 在解析消息时可发现的缺陷列表。 请注意这些缺陷会在问题被发现时加入到消息中，因此举例来说，如果某条嵌套在 *multipart/alternative* 中的消息具有错误的标头，该嵌套消息对象就会有一条缺陷，但外层消息对象则没有。
 
-​	所有缺陷类都是 [`email.errors.MessageDefect`](https://docs.python.org/zh-cn/3.13/library/email.errors.html#email.errors.MessageDefect) 的子类。
+​	所有缺陷类都是 [`email.errors.MessageDefect`]({{< ref "/library/netdata/email/email_errors#email.errors.MessageDefect" >}}) 的子类。
 
 - `NoBoundaryInMultipartDefect` -- 一条消息宣称有多个部分，但却没有 *boundary* 形参。
 
@@ -77,9 +77,9 @@ draft = false
 
 - `MalformedHeaderDefect` -- 找到一个缺失了冒号或格式错误的标头。
 
-  *自 3.3 版本弃用:* 此缺陷在近几个 Python 版本中已不再使用。
+  > 自 3.3 版本弃用: 此缺陷在近几个 Python 版本中已不再使用。
 
-- `MultipartInvariantViolationDefect` -- 一条消息宣称为 *multipart*，但无法找到任何子部分。 请注意当一条消息有此缺陷时，其 [`is_multipart()`](https://docs.python.org/zh-cn/3.13/library/email.compat32-message.html#email.message.Message.is_multipart) 方法可能返回 `False`，即使其内容类型宣称为 *multipart*。
+- `MultipartInvariantViolationDefect` -- 一条消息宣称为 *multipart*，但无法找到任何子部分。 请注意当一条消息有此缺陷时，其 [`is_multipart()`]({{< ref "/library/netdata/email/email_compat32-message#email.message.Message.is_multipart" >}}) 方法可能返回 `False`，即使其内容类型宣称为 *multipart*。
 
 - `InvalidBase64PaddingDefect` -- 当解码一个 base64 编码的字节分块时，填充的数据不正确。 虽然添加了足够的填充数据以执行解码，但作为结果的已解码字节串可能无效。
 

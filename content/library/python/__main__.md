@@ -9,7 +9,7 @@ draft = false
 
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/__main__.html](https://docs.python.org/zh-cn/3.13/library/__main__.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/__main__.html](https://docs.python.org/zh-cn/3.13/library/__main__.html)
 >
 > 收录该文档的时间：`2024-11-15T21:12:39+08:00`
 
@@ -22,7 +22,7 @@ draft = false
 1. 程序的顶层环境的名称，可用表达式 `__name__ == '__main__'` 来检查；以及
 2. Python 包中的文件 `__main__.py`。
 
-​	这两个机制都与 Python 模块相关——用户与它们如何交互，及它们之间如何交互——下文详述。而教程的 [模块](https://docs.python.org/zh-cn/3.13/tutorial/modules.html#tut-modules) 一节则为初学者介绍了 Python 模块。
+​	这两个机制都与 Python 模块相关——用户与它们如何交互，及它们之间如何交互——下文详述。而教程的 [模块]({{< ref "/tutorial/modules#tut-modules" >}}) 一节则为初学者介绍了 Python 模块。
 
 
 
@@ -72,7 +72,7 @@ draft = false
   Hello, world!
   ```
 
-- 与 [`-m`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-m) 一起传给 Python 解释器的 Python 模块或包：
+- 与 [`-m`]({{< ref "/using/cmdline#cmdoption-m" >}}) 一起传给 Python 解释器的 Python 模块或包：
 
   ```
   $ python -m tarfile
@@ -90,7 +90,7 @@ draft = false
   ...
   ```
 
-- 与 [`-c`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-c) 一起传给 Python 解释器的 Python 代码：
+- 与 [`-c`]({{< ref "/using/cmdline#cmdoption-c" >}}) 一起传给 Python 解释器的 Python 代码：
 
   ```
   $ python -c "import this"
@@ -111,11 +111,10 @@ if __name__ == '__main__':
     ...
 ```
 
-​	参见
-
+​参见
  
 
-​	关于在所有情况下 `__name__` 是被如何设置的，详见教程的 [模块](https://docs.python.org/zh-cn/3.13/tutorial/modules.html#tut-modules) 一节。
+​	关于在所有情况下 `__name__` 是被如何设置的，详见教程的 [模块]({{< ref "/tutorial/modules#tut-modules" >}}) 一节。
 
 ### 惯用法
 
@@ -153,27 +152,26 @@ if __name__ == '__main__':
 
 ### 打包考量
 
-`main` 函数经常被用来创建命令行工具，把它们指定为控制台脚本的入口点。 当这样做时，[pip](https://pip.pypa.io/) 将函数调用插入到模板脚本中，其中 `main` 的返回值被传递到 [`sys.exit()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.exit) 。例如:
+`main` 函数经常被用来创建命令行工具，把它们指定为控制台脚本的入口点。 当这样做时，[pip](https://pip.pypa.io/) 将函数调用插入到模板脚本中，其中 `main` 的返回值被传递到 [`sys.exit()`]({{< ref "/library/python/sys#sys.exit" >}}) 。例如:
 
 ```
 sys.exit(main())
 ```
 
-​	由于 `main` 调用被包裹在 [`sys.exit()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.exit) 中，期望你的函数将返回一些可被 [`sys.exit()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.exit) 作为输入而接受的值；通常为一个整数或 `None` （如果你的函数没有返回语句，则隐含返回）。
+​	由于 `main` 调用被包裹在 [`sys.exit()`]({{< ref "/library/python/sys#sys.exit" >}}) 中，期望你的函数将返回一些可被 [`sys.exit()`]({{< ref "/library/python/sys#sys.exit" >}}) 作为输入而接受的值；通常为一个整数或 `None` （如果你的函数没有返回语句，则隐含返回）。
 
 ​	通过主动遵循这一惯例，我们的模块在直接运行时 (即 `python echo.py`) 会有相同的行为，当我们以后把它打包成可用 pip 安装的软件包的控制台脚本入口时也会如此。
 
-​	特别的是，要小心从你的 `main` 函数中返回字符串。 [`sys.exit()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.exit) 将把一个字符串参数解释为失败信息，所以你的程序将有一个 `1` 的退出代码，表示失败。并且这个字符串将被写入 [`sys.stderr`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.stderr) 。 前面的 `echo.py` 例子举例说明了使用 `sys.exit(main())` 的约定。
+​	特别的是，要小心从你的 `main` 函数中返回字符串。 [`sys.exit()`]({{< ref "/library/python/sys#sys.exit" >}}) 将把一个字符串参数解释为失败信息，所以你的程序将有一个 `1` 的退出代码，表示失败。并且这个字符串将被写入 [`sys.stderr`]({{< ref "/library/python/sys#sys.stderr" >}}) 。 前面的 `echo.py` 例子举例说明了使用 `sys.exit(main())` 的约定。
 
-​	参见
-
+​参见
  
 
 [Python 打包用户指南](https://packaging.python.org/) 包含了一系列关于如何用现代工具分发和安装 Python 包的教程和参考资料。
 
 ## Python 包中的 `__main__.py`
 
-​	如果你不熟悉Python包，请参阅本教程的 [包](https://docs.python.org/zh-cn/3.13/tutorial/modules.html#tut-packages) 一节。最常见的是， `__main__.py` 文件被用来为一个包提供命令行接口。假设有下面这个虚构的包，"bandclass":
+​	如果你不熟悉Python包，请参阅本教程的 [包]({{< ref "/tutorial/modules#tut-packages" >}}) 一节。最常见的是， `__main__.py` 文件被用来为一个包提供命令行接口。假设有下面这个虚构的包，"bandclass":
 
 ```
 bandclass
@@ -182,7 +180,7 @@ bandclass
   └── student.py
 ```
 
-​	当使用 [`-m`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-m) 标志从命令行直接调用软件包本身时，将执行 `__main__.py` 。比如说。
+​	当使用 [`-m`]({{< ref "/using/cmdline#cmdoption-m" >}}) 标志从命令行直接调用软件包本身时，将执行 `__main__.py` 。比如说。
 
 ```
 $ python -m bandclass
@@ -200,7 +198,7 @@ student_name = sys.argv[1] if len(sys.argv) >= 2 else ''
 print(f'Found student: {search_students(student_name)}')
 ```
 
-​	注意， `from .student import search_students` 是一个相对导入的例子。 这种导入方式可以在引用一个包内的模块时使用。 更多细节，请参见教程 [模块](https://docs.python.org/zh-cn/3.13/tutorial/modules.html#tut-modules) 中的 [相对导入](https://docs.python.org/zh-cn/3.13/tutorial/modules.html#intra-package-references) 一节。
+​	注意， `from .student import search_students` 是一个相对导入的例子。 这种导入方式可以在引用一个包内的模块时使用。 更多细节，请参见教程 [模块]({{< ref "/tutorial/modules#tut-modules" >}}) 中的 [相对导入]({{< ref "/tutorial/modules#intra-package-references" >}}) 一节。
 
 ### 惯用法
 
@@ -218,19 +216,18 @@ print(f'Found student: {search_students(student_name)}')
 
 ​	但这对 `.zip` 文件的根目录中的 `__main__.py` 文件不起作用。 因此，为了保持一致性，建议使用不带 `__name__` 检测的最小化 `__main__.py`。
 
-​	参见
-
+​参见
  
 
-​	请参阅 [`venv`](https://docs.python.org/zh-cn/3.13/library/venv.html#module-venv) 以获取标准库中具有最小化 `__main__.py` 的软件包示例。 它不包含 `if __name__ == '__main__'` 代码块。 你可以用 `python -m venv [directory]` 来发起调用。
+​	请参阅 [`venv`]({{< ref "/library/distribution/venv#module-venv" >}}) 以获取标准库中具有最小化 `__main__.py` 的软件包示例。 它不包含 `if __name__ == '__main__'` 代码块。 你可以用 `python -m venv [directory]` 来发起调用。
 
-​	参见 [`runpy`](https://docs.python.org/zh-cn/3.13/library/runpy.html#module-runpy) 以了解更多关于 [`-m`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-m) 标志对解释器可执行包的细节。
+​	参见 [`runpy`]({{< ref "/library/modules/runpy#module-runpy" >}}) 以了解更多关于 [`-m`]({{< ref "/using/cmdline#cmdoption-m" >}}) 标志对解释器可执行包的细节。
 
-​	参见 [`zipapp`](https://docs.python.org/zh-cn/3.13/library/zipapp.html#module-zipapp) 了解如何运行打包成 *.zip* 文件的应用程序。在这种情况下，Python 会在归档文件的根目录下寻找一个 `__main__.py` 文件。
+​	参见 [`zipapp`]({{< ref "/library/distribution/zipapp#module-zipapp" >}}) 了解如何运行打包成 *.zip* 文件的应用程序。在这种情况下，Python 会在归档文件的根目录下寻找一个 `__main__.py` 文件。
 
 ## `import __main__`
 
-​	不管 Python 程序是用哪个模块启动的，在同一程序中运行的其他模块可以通过导入 `__main__` 模块来导入顶级环境的范围 ( [namespace](https://docs.python.org/zh-cn/3.13/glossary.html#term-namespace) )。这并不是导入一个 `__main__.py` 文件，而是导入使用特殊名称 `'__main__'` 的哪个模块。
+​	不管 Python 程序是用哪个模块启动的，在同一程序中运行的其他模块可以通过导入 `__main__` 模块来导入顶级环境的范围 ( [namespace]({{< ref "/glossary/idx#term-namespace" >}}) )。这并不是导入一个 `__main__.py` 文件，而是导入使用特殊名称 `'__main__'` 的哪个模块。
 
 ​	下面是一个使用 `__main__` 命名空间的模块的例子:
 
@@ -289,7 +286,7 @@ Dinsdale found in file /path/to/start.py
 
 ​	请注意，导入 `__main__` 不会导致无意中运行旨在用于脚本的顶层代码的问题，这些代码被放在模块 `start` 的 `if __name__ == "__main__"` 块中。为什么这样做？
 
-​	Python 解释器启动时会在 [`sys.modules`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.modules) 中插入一个空的 `__main__` 模块，并通过运行最高层级代码来填充它。 在我们的例子中这就是 `start` 模块，它逐行运行并导入 `namely`。 相应地，`namely` 会导入 `__main__` (它实际上就是 `start`)。 这就是一个导入循环！ 幸运的是，由于部分填充的 `__main__` 模块存在于 [`sys.modules`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.modules) 中，Python 会将其传递给 `namely`。 请参阅导入系统的参考文档中 [有关 __main__ 的特别考量](https://docs.python.org/zh-cn/3.13/reference/import.html#import-dunder-main) 来了解其中的详情。
+​	Python 解释器启动时会在 [`sys.modules`]({{< ref "/library/python/sys#sys.modules" >}}) 中插入一个空的 `__main__` 模块，并通过运行最高层级代码来填充它。 在我们的例子中这就是 `start` 模块，它逐行运行并导入 `namely`。 相应地，`namely` 会导入 `__main__` (它实际上就是 `start`)。 这就是一个导入循环！ 幸运的是，由于部分填充的 `__main__` 模块存在于 [`sys.modules`]({{< ref "/library/python/sys#sys.modules" >}}) 中，Python 会将其传递给 `namely`。 请参阅导入系统的参考文档中 [有关 __main__ 的特别考量]({{< ref "/reference/import#import-dunder-main" >}}) 来了解其中的详情。
 
 ​	Python REPL 是另一个 "顶层环境 "的例子，所以在 REPL 中定义的任何东西都成为 `__main__` 范围的一部分:
 
@@ -312,4 +309,4 @@ Jabberwocky
 
 ​	注意，在这种情况下， `__main__` 范围不包含 `__file__` 属性，因为它是交互式的。
 
-`__main__` 范围用于 [`pdb`](https://docs.python.org/zh-cn/3.13/library/pdb.html#module-pdb) 和 [`rlcompleter`](https://docs.python.org/zh-cn/3.13/library/rlcompleter.html#module-rlcompleter) 的实现。
+`__main__` 范围用于 [`pdb`]({{< ref "/library/debug/pdb#module-pdb" >}}) 和 [`rlcompleter`]({{< ref "/library/text/rlcompleter#module-rlcompleter" >}}) 的实现。

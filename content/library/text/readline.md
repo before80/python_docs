@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/readline.html](https://docs.python.org/zh-cn/3.13/library/readline.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/readline.html](https://docs.python.org/zh-cn/3.13/library/readline.html)
 >
 > 收录该文档的时间：`2024-11-15T11:04:21+08:00`
 
@@ -16,21 +16,20 @@ draft = false
 
 ------
 
-[`readline`](https://docs.python.org/zh-cn/3.13/library/readline.html#module-readline) 模块定义了许多方便从 Python 解释器完成和读取/写入历史文件的函数。 此模块可以直接使用，或通过支持在交互提示符下完成 Python 标识符的 [`rlcompleter`](https://docs.python.org/zh-cn/3.13/library/rlcompleter.html#module-rlcompleter) 模块使用。 使用此模块进行的设置会同时影响解释器的交互提示符以及内置 [`input()`](https://docs.python.org/zh-cn/3.13/library/functions.html#input) 函数提供的提示符。
+[`readline`]({{< ref "/library/text/readline#module-readline" >}}) 模块定义了许多方便从 Python 解释器完成和读取/写入历史文件的函数。 此模块可以直接使用，或通过支持在交互提示符下完成 Python 标识符的 [`rlcompleter`]({{< ref "/library/text/rlcompleter#module-rlcompleter" >}}) 模块使用。 使用此模块进行的设置会同时影响解释器的交互提示符以及内置 [`input()`]({{< ref "/library/functions#input" >}}) 函数提供的提示符。
 
 ​	Readline 的按键绑定可以通过一个初始化文件来配置，通常是你的用户目录中的 `.inputrc`。 请参阅 GNU Readline 手册中的 [Readline 初始化文件](https://tiswww.cwru.edu/php/chet/readline/rluserman.html#Readline-Init-File) 来了解有关该文件的格式和允许的结构，以及 Readline 库的一般功能。
 
-[Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): not Android, not iOS, not WASI.
+[Availability]({{< ref "/library/intro#availability" >}}): not Android, not iOS, not WASI.
 
-​	此模块在 [移动平台](https://docs.python.org/zh-cn/3.13/library/intro.html#mobile-availability) 或 [WebAssembly 平台](https://docs.python.org/zh-cn/3.13/library/intro.html#wasm-availability) 上不受支持。
+​	此模块在 [移动平台]({{< ref "/library/intro#mobile-availability" >}}) 或 [WebAssembly 平台]({{< ref "/library/intro#wasm-availability" >}}) 上不受支持。
 
-​	备注
-
+​备注
  
 
-​	下层的 Readline 库 API 可能使用 `editline` (`libedit`) 库而不是 GNU readline 来实现。 在 macOS 上 [`readline`](https://docs.python.org/zh-cn/3.13/library/readline.html#module-readline) 模块会在运行时检测所使用的是哪个库。
+​	下层的 Readline 库 API 可能使用 `editline` (`libedit`) 库而不是 GNU readline 来实现。 在 macOS 上 [`readline`]({{< ref "/library/text/readline#module-readline" >}}) 模块会在运行时检测所使用的是哪个库。
 
-​	用于 `editline` 的配置文件与 GNU readline 的不同。 如果你要在程序中载入配置字符串你可以使用 [`backend`](https://docs.python.org/zh-cn/3.13/library/readline.html#readline.backend) 来确定正在使用的是哪个库。
+​	用于 `editline` 的配置文件与 GNU readline 的不同。 如果你要在程序中载入配置字符串你可以使用 [`backend`]({{< ref "/library/text/readline#readline.backend" >}}) 来确定正在使用的是哪个库。
 
 ​	如果你是在 macOS 上使用 `editline`/`libedit` readline 模拟，则位于你的主目录中的初始化文件的名称为 `.editrc`。 例如，`~/.editrc` 中的以下内容将开启 *vi* 按键绑定和 TAB 补全:
 
@@ -99,7 +98,7 @@ python:bind ^I rl_complete
 
 ## readline.**set_history_length**(*length*)
 
-​	设置或返回需要保存到历史文件的行数。 [`write_history_file()`](https://docs.python.org/zh-cn/3.13/library/readline.html#readline.write_history_file) 函数会通过调用底层库中的 `history_truncate_file()` 以使用该值来截取历史文件。 负值意味着不限制历史文件的大小。
+​	设置或返回需要保存到历史文件的行数。 [`write_history_file()`]({{< ref "/library/text/readline#readline.write_history_file" >}}) 函数会通过调用底层库中的 `history_truncate_file()` 以使用该值来截取历史文件。 负值意味着不限制历史文件的大小。
 
 ## 历史列表
 
@@ -111,7 +110,7 @@ python:bind ^I rl_complete
 
 ## readline.**get_current_history_length**()
 
-​	返回历史列表的当前项数。 （此函数不同于 [`get_history_length()`](https://docs.python.org/zh-cn/3.13/library/readline.html#readline.get_history_length)，后者是返回将被写入历史文件的最大行数。）
+​	返回历史列表的当前项数。 （此函数不同于 [`get_history_length()`]({{< ref "/library/text/readline#readline.get_history_length" >}})，后者是返回将被写入历史文件的最大行数。）
 
 ## readline.**get_history_item**(*index*)
 
@@ -152,7 +151,7 @@ python:bind ^I rl_complete
 
 ## Completion
 
-​	以下函数与自定义单词补全函数的实现有关。 这通常使用 Tab 键进行操作，能够提示并自动补全正在输入的单词。 默认情况下，Readline 设置为由 [`rlcompleter`](https://docs.python.org/zh-cn/3.13/library/rlcompleter.html#module-rlcompleter) 来补全交互模式解释器的 Python 标识符。 如果 [`readline`](https://docs.python.org/zh-cn/3.13/library/readline.html#module-readline) 模块要配合自定义的补全函数来使用，则需要设置不同的单词分隔符。
+​	以下函数与自定义单词补全函数的实现有关。 这通常使用 Tab 键进行操作，能够提示并自动补全正在输入的单词。 默认情况下，Readline 设置为由 [`rlcompleter`]({{< ref "/library/text/rlcompleter#module-rlcompleter" >}}) 来补全交互模式解释器的 Python 标识符。 如果 [`readline`]({{< ref "/library/text/readline#module-readline" >}}) 模块要配合自定义的补全函数来使用，则需要设置不同的单词分隔符。
 
 ## readline.**set_completer**([*function*])
 
@@ -188,7 +187,7 @@ python:bind ^I rl_complete
 
 ## 示例
 
-​	以下示例演示了如何使用 [`readline`](https://docs.python.org/zh-cn/3.13/library/readline.html#module-readline) 模块的历史读取或写入函数来自动加载和保存用户主目录下名为 `.python_history` 的历史文件。 以下代码通常应当在交互会话期间从用户的 [`PYTHONSTARTUP`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONSTARTUP) 文件自动执行。
+​	以下示例演示了如何使用 [`readline`]({{< ref "/library/text/readline#module-readline" >}}) 模块的历史读取或写入函数来自动加载和保存用户主目录下名为 `.python_history` 的历史文件。 以下代码通常应当在交互会话期间从用户的 [`PYTHONSTARTUP`]({{< ref "/using/cmdline#envvar-PYTHONSTARTUP" >}}) 文件自动执行。
 
 ```
 import atexit
@@ -206,7 +205,7 @@ except FileNotFoundError:
 atexit.register(readline.write_history_file, histfile)
 ```
 
-​	此代码实际上会在 Python 运行于 [交互模式](https://docs.python.org/zh-cn/3.13/tutorial/interpreter.html#tut-interactive) 时自动运行 (参见 [Readline 配置](https://docs.python.org/zh-cn/3.13/library/site.html#rlcompleter-config))。
+​	此代码实际上会在 Python 运行于 [交互模式]({{< ref "/tutorial/interpreter#tut-interactive" >}}) 时自动运行 (参见 [Readline 配置]({{< ref "/library/python/site#rlcompleter-config" >}}))。
 
 ​	以下示例实现了同样的目标，但是通过只添加新历史的方式来支持并发的交互会话。
 
@@ -230,7 +229,7 @@ def save(prev_h_len, histfile):
 atexit.register(save, h_len, histfile)
 ```
 
-​	以下示例扩展了 [`code.InteractiveConsole`](https://docs.python.org/zh-cn/3.13/library/code.html#code.InteractiveConsole) 类以支持历史保存/恢复。
+​	以下示例扩展了 [`code.InteractiveConsole`]({{< ref "/library/custominterp/code#code.InteractiveConsole" >}}) 类以支持历史保存/恢复。
 
 ```
 import atexit

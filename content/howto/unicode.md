@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/unicode.html](https://docs.python.org/zh-cn/3.13/howto/unicode.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/unicode.html](https://docs.python.org/zh-cn/3.13/howto/unicode.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -108,7 +108,7 @@ draft = false
 
 ### 字符串类型
 
-​	从 Python 3.0 开始， [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 类型包含了 Unicode 字符，这意味着用 `"unicode rocks!"`、`'unicode rocks!'` 或三重引号字符串语法创建的任何字符串都会存储为 Unicode。
+​	从 Python 3.0 开始， [`str`]({{< ref "/library/stdtypes#str" >}}) 类型包含了 Unicode 字符，这意味着用 `"unicode rocks!"`、`'unicode rocks!'` 或三重引号字符串语法创建的任何字符串都会存储为 Unicode。
 
 ​	Python 源代码的默认编码是 UTF-8，因此可以直接在字符串中包含 Unicode 字符：
 
@@ -142,9 +142,9 @@ with open(répertoire, "w") as f:
 '\u0394'
 ```
 
-​	此外，可以用 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 的 [`decode()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes.decode) 方法创建一个字符串。 该方法可以接受 *encoding* 参数，比如可以为 `UTF-8` ，以及可选的 *errors* 参数。
+​	此外，可以用 [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 的 [`decode()`]({{< ref "/library/stdtypes#bytes.decode" >}}) 方法创建一个字符串。 该方法可以接受 *encoding* 参数，比如可以为 `UTF-8` ，以及可选的 *errors* 参数。
 
-​	若无法根据编码规则对输入字符串进行编码，*errors* 参数指定了响应策略。 该参数的合法值可以是 `'strict'` (触发 [`UnicodeDecodeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#UnicodeDecodeError) 异常)、`'replace'` (用 `U+FFFD`、`REPLACEMENT CHARACTER`)、`'ignore'` (只是将字符从 Unicode 结果中去掉)，或 `'backslashreplace'` (插入一个 `\xNN` 转义序列)。 以下示例演示了这些不同的参数:
+​	若无法根据编码规则对输入字符串进行编码，*errors* 参数指定了响应策略。 该参数的合法值可以是 `'strict'` (触发 [`UnicodeDecodeError`]({{< ref "/library/exceptions#UnicodeDecodeError" >}}) 异常)、`'replace'` (用 `U+FFFD`、`REPLACEMENT CHARACTER`)、`'ignore'` (只是将字符从 Unicode 结果中去掉)，或 `'backslashreplace'` (插入一个 `\xNN` 转义序列)。 以下示例演示了这些不同的参数:
 
 
 
@@ -162,9 +162,9 @@ UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 0:
 'abc'
 ```
 
-​	编码格式以包含编码格式名称的字符串来指明。 Python 有大约 100 种不同的编码格式；清单详见 Python 库参考文档 [标准编码](https://docs.python.org/zh-cn/3.13/library/codecs.html#standard-encodings)。 一些编码格式有多个名称，比如 `'latin-1'`、`'iso_8859_1'` 和 `'8859` 都是指同一种编码。
+​	编码格式以包含编码格式名称的字符串来指明。 Python 有大约 100 种不同的编码格式；清单详见 Python 库参考文档 [标准编码]({{< ref "/library/binary/codecs#standard-encodings" >}})。 一些编码格式有多个名称，比如 `'latin-1'`、`'iso_8859_1'` 和 `'8859` 都是指同一种编码。
 
-​	利用内置函数 [`chr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#chr) 还可以创建单字符的 Unicode 字符串，该函数可接受整数参数，并返回包含对应码位的长度为 1 的 Unicode 字符串。内置函数 [`ord()`](https://docs.python.org/zh-cn/3.13/library/functions.html#ord) 是其逆操作，参数为单个字符的 Unicode 字符串，并返回码位值：
+​	利用内置函数 [`chr()`]({{< ref "/library/functions#chr" >}}) 还可以创建单字符的 Unicode 字符串，该函数可接受整数参数，并返回包含对应码位的长度为 1 的 Unicode 字符串。内置函数 [`ord()`]({{< ref "/library/functions#ord" >}}) 是其逆操作，参数为单个字符的 Unicode 字符串，并返回码位值：
 
 
 
@@ -177,9 +177,9 @@ UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 0:
 
 ### 转换为字节
 
-[`bytes.decode()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes.decode) 的逆方法是 [`str.encode()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.encode) ，它会返回 Unicode 字符串的 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 形式，已按要求的 *encoding* 进行了编码。
+[`bytes.decode()`]({{< ref "/library/stdtypes#bytes.decode" >}}) 的逆方法是 [`str.encode()`]({{< ref "/library/stdtypes#str.encode" >}}) ，它会返回 Unicode 字符串的 [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 形式，已按要求的 *encoding* 进行了编码。
 
-​	参数 *errors* 的意义与 [`decode()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes.decode) 方法相同，但支持更多可能的handler。除了 `'strict'` 、 `'ignore'` 和 `'replace'` （这时会插入问号替换掉无法编码的字符），还有 `'xmlcharrefreplace'` （插入一个 XML 字符引用）、 `backslashreplace` （插入一个 `\uNNNN` 转义序列）和 `namereplace` （插入一个 `\N{...}` 转义序列 ）。
+​	参数 *errors* 的意义与 [`decode()`]({{< ref "/library/stdtypes#bytes.decode" >}}) 方法相同，但支持更多可能的handler。除了 `'strict'` 、 `'ignore'` 和 `'replace'` （这时会插入问号替换掉无法编码的字符），还有 `'xmlcharrefreplace'` （插入一个 XML 字符引用）、 `backslashreplace` （插入一个 `\uNNNN` 转义序列）和 `namereplace` （插入一个 `\N{...}` 转义序列 ）。
 
 ​	以下例子演示了各种不同的结果：
 
@@ -206,7 +206,7 @@ b'\\ua000abcd\\u07b4'
 b'\\N{YI SYLLABLE IT}abcd\\u07b4'
 ```
 
-​	用于注册和访问可用编码格式的底层函数，位于 [`codecs`](https://docs.python.org/zh-cn/3.13/library/codecs.html#module-codecs) 模块中。 若要实现新的编码格式，则还需要了解 [`codecs`](https://docs.python.org/zh-cn/3.13/library/codecs.html#module-codecs) 模块。 不过该模块返回的编码和解码函数通常更为底层一些，不大好用，编写新的编码格式是一项专业的任务，因此本文不会涉及该模块。
+​	用于注册和访问可用编码格式的底层函数，位于 [`codecs`]({{< ref "/library/binary/codecs#module-codecs" >}}) 模块中。 若要实现新的编码格式，则还需要了解 [`codecs`]({{< ref "/library/binary/codecs#module-codecs" >}}) 模块。 不过该模块返回的编码和解码函数通常更为底层一些，不大好用，编写新的编码格式是一项专业的任务，因此本文不会涉及该模块。
 
 ### Python 源代码中的 Unicode 文字
 
@@ -223,7 +223,7 @@ b'\\N{YI SYLLABLE IT}abcd\\u07b4'
 [97, 172, 4660, 8364, 32768]
 ```
 
-​	对大于 127 的码位使用转义序列，数量不多时没什么问题，但如果要用到很多重音字符，这会变得很烦人，类似于程序中的信息是用法语或其他使用重音的语言写的。也可以用内置函数 [`chr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#chr) 拼装字符串，但会更加乏味。
+​	对大于 127 的码位使用转义序列，数量不多时没什么问题，但如果要用到很多重音字符，这会变得很烦人，类似于程序中的信息是用法语或其他使用重音的语言写的。也可以用内置函数 [`chr()`]({{< ref "/library/functions#chr" >}}) 拼装字符串，但会更加乏味。
 
 ​	理想情况下，都希望能用母语的编码书写文本。还能用喜好的编辑器编辑 Python 源代码，编辑器要能自然地显示重音符，并在运行时使用正确的字符。
 
@@ -277,7 +277,7 @@ print(unicodedata.numeric(u[1]))
 
 ​	Unicode 让字符串的比较变得复杂了一些，因为同一组字符可能由不同的码位序列组成。例如，像“ê”这样的字母可以表示为单码位 U+00EA，或是 U+0065 U+0302，即“e”的码位后跟“COMBINING CIRCUMFLEX ACCENT”的码位。虽然在打印时会产生同样的输出，但一个是长度为 1 的字符串，另一个是长度为 2 的字符串。
 
-​	一种不区分大小写比较的工具是字符串方法 [`casefold()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.casefold) ，将按照 Unicode 标准描述的算法将字符串转换为不区分大小写的形式。该算法对诸如德语字母“ß”（代码点 U+00DF）之类的字符进行了特殊处理，变为一对小写字母“ss”。
+​	一种不区分大小写比较的工具是字符串方法 [`casefold()`]({{< ref "/library/stdtypes#str.casefold" >}}) ，将按照 Unicode 标准描述的算法将字符串转换为不区分大小写的形式。该算法对诸如德语字母“ß”（代码点 U+00DF）之类的字符进行了特殊处理，变为一对小写字母“ss”。
 
 
 
@@ -287,7 +287,7 @@ print(unicodedata.numeric(u[1]))
 'gürzenichstrasse'
 ```
 
-​	第二个工具是 [`unicodedata`](https://docs.python.org/zh-cn/3.13/library/unicodedata.html#module-unicodedata) 模块的 [`normalize()`](https://docs.python.org/zh-cn/3.13/library/unicodedata.html#unicodedata.normalize) 函数，该函数可将字符串转换为几种规范化形式之一，即用单字符替换后面带一个组合字符的多个字母。 [`normalize()`](https://docs.python.org/zh-cn/3.13/library/unicodedata.html#unicodedata.normalize) 可被用于执行字符串比较，如果两个字符串使用不同的组合字符，也不会错误地报告两者不相等:
+​	第二个工具是 [`unicodedata`]({{< ref "/library/text/unicodedata#module-unicodedata" >}}) 模块的 [`normalize()`]({{< ref "/library/text/unicodedata#unicodedata.normalize" >}}) 函数，该函数可将字符串转换为几种规范化形式之一，即用单字符替换后面带一个组合字符的多个字母。 [`normalize()`]({{< ref "/library/text/unicodedata#unicodedata.normalize" >}}) 可被用于执行字符串比较，如果两个字符串使用不同的组合字符，也不会错误地报告两者不相等:
 
 ```
 import unicodedata
@@ -314,7 +314,7 @@ length of second string= 2
 True
 ```
 
-[`normalize()`](https://docs.python.org/zh-cn/3.13/library/unicodedata.html#unicodedata.normalize) 函数的第一个参数是个字符串，给出所需的规范化形式，可以是“NFC”、“NFKC”、“NFD”和“NFKD”之一。
+[`normalize()`]({{< ref "/library/text/unicodedata#unicodedata.normalize" >}}) 函数的第一个参数是个字符串，给出所需的规范化形式，可以是“NFC”、“NFKC”、“NFD”和“NFKD”之一。
 
 ​	Unicode 标准还设定了如何进行不区分大小写的比较：
 
@@ -334,11 +334,11 @@ multiple_chars = '\N{LATIN CAPITAL LETTER E}\N{COMBINING CIRCUMFLEX ACCENT}'
 print(compare_caseless(single_char, multiple_chars))
 ```
 
-​	这将打印 `True`。 （为什么 `NFD()` 会两次被发起调用？因为有几个字符会使 [`casefold()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.casefold) 返回非规范化的字符串，所以需要再次对结果进行规范化处理。 有关讨论和示例，请参阅 Unicode 标准第 3.13 节）。
+​	这将打印 `True`。 （为什么 `NFD()` 会两次被发起调用？因为有几个字符会使 [`casefold()`]({{< ref "/library/stdtypes#str.casefold" >}}) 返回非规范化的字符串，所以需要再次对结果进行规范化处理。 有关讨论和示例，请参阅 Unicode 标准第 3.13 节）。
 
 ### Unicode 正则表达式
 
-[`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 模块支持的正则表达式可以用字节串或字符串的形式提供。有一些特殊字符序列，比如 `\d` 和 `\w` 具有不同的含义，具体取决于匹配模式是以字节串还是字符串形式提供的。例如，`\d` 将匹配字节串中的字符 `[0-9]` ，但对于字符串将会匹配 `'Nd'` 类别中的任何字符。
+[`re`]({{< ref "/library/text/re#module-re" >}}) 模块支持的正则表达式可以用字节串或字符串的形式提供。有一些特殊字符序列，比如 `\d` 和 `\w` 具有不同的含义，具体取决于匹配模式是以字节串还是字符串形式提供的。例如，`\d` 将匹配字节串中的字符 `[0-9]` ，但对于字符串将会匹配 `'Nd'` 类别中的任何字符。
 
 ​	上述示例中的字符串包含了泰语和阿拉伯数字书写的数字 57：
 
@@ -351,9 +351,9 @@ m = p.search(s)
 print(repr(m.group()))
 ```
 
-​	执行时，`\d+` 将匹配上泰语数字并打印出来。如果向 [`compile()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.compile) 提供的是 [`re.ASCII`](https://docs.python.org/zh-cn/3.13/library/re.html#re.ASCII) 标志，`\d+` 则会匹配子串 "57"。
+​	执行时，`\d+` 将匹配上泰语数字并打印出来。如果向 [`compile()`]({{< ref "/library/text/re#re.compile" >}}) 提供的是 [`re.ASCII`]({{< ref "/library/text/re#re.ASCII" >}}) 标志，`\d+` 则会匹配子串 "57"。
 
-​	类似地，`\w` 将匹配多种 Unicode 字符，但对于字节串则只会匹配 `[a-zA-Z0-9_]` ，如果指定 [`re.ASCII`](https://docs.python.org/zh-cn/3.13/library/re.html#re.ASCII) ， `\s` 将匹配 Unicode 空白符或 `[ \t\n\r\f\v]` 。
+​	类似地，`\w` 将匹配多种 Unicode 字符，但对于字节串则只会匹配 `[a-zA-Z0-9_]` ，如果指定 [`re.ASCII`]({{< ref "/library/text/re#re.ASCII" >}}) ， `\s` 将匹配 Unicode 空白符或 `[ \t\n\r\f\v]` 。
 
 ### 参考文献
 
@@ -362,11 +362,11 @@ print(repr(m.group()))
 - [用 Python 3 处理文本文件](https://python-notes.curiousefficiency.org/en/latest/python3/text_file_processing.html) ，作者 Nick Coghlan。
 - [实用的 Unicode](https://nedbatchelder.com/text/unipain.html)，Ned Batchelder 在 PyCon 2012 上的演示。
 
-[`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 类型在 Python 库参考文档 [文本序列类型 --- str](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#textseq) 中有介绍。
+[`str`]({{< ref "/library/stdtypes#str" >}}) 类型在 Python 库参考文档 [文本序列类型 --- str]({{< ref "/library/stdtypes#textseq" >}}) 中有介绍。
 
-[`unicodedata`](https://docs.python.org/zh-cn/3.13/library/unicodedata.html#module-unicodedata) 模块的文档
+[`unicodedata`]({{< ref "/library/text/unicodedata#module-unicodedata" >}}) 模块的文档
 
-[`codecs`](https://docs.python.org/zh-cn/3.13/library/codecs.html#module-codecs) 模块的文档
+[`codecs`]({{< ref "/library/binary/codecs#module-codecs" >}}) 模块的文档
 
 ​	Marc-André Lemburg 在 EuroPython 2002 上做了一个题为“Python 和 Unicode”（PDF 幻灯片）<https://downloads.egenix.com/python/Unicode-EPC2002-Talk.pdf>`_ 的演示文稿。该幻灯片很好地概括了 Python 2 的 Unicode 功能设计（其中 Unicode 字符串类型称为 `unicode`，文字以 `u` 开头）。
 
@@ -380,7 +380,7 @@ print(repr(m.group()))
 
 ​	编码的多字节特性就是一个难题； 一个 Unicode 字符可以用几个字节表示。 如果要以任意大小的块（例如 1024 或 4096 字节）读取文件，那么在块的末尾可能只读到某个 Unicode 字符的部分字节，这就需要编写错误处理代码。 有一种解决方案是将整个文件读入内存，然后进行解码，但这样就没法处理很大的文件了；若要读取 2 GB 的文件，就需要 2 GB 的 RAM。（其实需要的内存会更多些，因为至少有一段时间需要在内存中同时存放已编码字符串及其 Unicode 版本。）
 
-​	解决方案是利用底层解码接口去捕获编码序列不完整的情况。这部分代码已经是现成的：内置函数 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open) 可以返回一个文件类的对象，该对象认为文件的内容采用指定的编码，[`read()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.TextIOBase.read) 和 [`write()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.TextIOBase.write) 等方法接受 Unicode 参数。只要用 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open) 的 *encoding* 和 *errors* 参数即可，参数释义同 [`str.encode()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.encode) 和 [`bytes.decode()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes.decode) 。
+​	解决方案是利用底层解码接口去捕获编码序列不完整的情况。这部分代码已经是现成的：内置函数 [`open()`]({{< ref "/library/functions#open" >}}) 可以返回一个文件类的对象，该对象认为文件的内容采用指定的编码，[`read()`]({{< ref "/library/allos/io#io.TextIOBase.read" >}}) 和 [`write()`]({{< ref "/library/allos/io#io.TextIOBase.write" >}}) 等方法接受 Unicode 参数。只要用 [`open()`]({{< ref "/library/functions#open" >}}) 的 *encoding* 和 *errors* 参数即可，参数释义同 [`str.encode()`]({{< ref "/library/stdtypes#str.encode" >}}) 和 [`bytes.decode()`]({{< ref "/library/stdtypes#bytes.decode" >}}) 。
 
 ​	因此从文件读取 Unicode 就比较简单了：
 
@@ -405,9 +405,9 @@ with open('test', encoding='utf-8', mode='w+') as f:
 
 ### Unicode 文件名
 
-​	当今大多数操作系统都支持包含任意 Unicode 字符的文件名。 通常这是通过将 Unicode 字符串转换为某种根据具体系统而定的编码格式来实现的。 如今的 Python 倾向于使用 UTF-8：MacOS 上的 Python 已经在多个版本中使用了 UTF-8，而 Python 3.6 也已在 Windows 上改用了 UTF-8。 在 Unix 系统中，将只有一个 [文件系统编码格式](https://docs.python.org/zh-cn/3.13/glossary.html#term-filesystem-encoding-and-error-handler)。 如果你已设置了 `LANG` 或 `LC_CTYPE` 环境变量的话；如果未设置，则默认编码格式还是 UTF-8。
+​	当今大多数操作系统都支持包含任意 Unicode 字符的文件名。 通常这是通过将 Unicode 字符串转换为某种根据具体系统而定的编码格式来实现的。 如今的 Python 倾向于使用 UTF-8：MacOS 上的 Python 已经在多个版本中使用了 UTF-8，而 Python 3.6 也已在 Windows 上改用了 UTF-8。 在 Unix 系统中，将只有一个 [文件系统编码格式]({{< ref "/glossary/idx#term-filesystem-encoding-and-error-handler" >}})。 如果你已设置了 `LANG` 或 `LC_CTYPE` 环境变量的话；如果未设置，则默认编码格式还是 UTF-8。
 
-[`sys.getfilesystemencoding()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.getfilesystemencoding) 函数将返回要在当前系统采用的编码，若想手动进行编码时即可用到，但无需多虑。在打开文件进行读写时，通常只需提供 Unicode 字符串作为文件名，会自动转换为合适的编码格式：
+[`sys.getfilesystemencoding()`]({{< ref "/library/python/sys#sys.getfilesystemencoding" >}}) 函数将返回要在当前系统采用的编码，若想手动进行编码时即可用到，但无需多虑。在打开文件进行读写时，通常只需提供 Unicode 字符串作为文件名，会自动转换为合适的编码格式：
 
 ```
 filename = 'filename\u4500abc'
@@ -415,9 +415,9 @@ with open(filename, 'w') as f:
     f.write('blah\n')
 ```
 
-[`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os) 模块中的函数也能接受 Unicode 文件名，如 [`os.stat()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.stat) 。
+[`os`]({{< ref "/library/allos/os#module-os" >}}) 模块中的函数也能接受 Unicode 文件名，如 [`os.stat()`]({{< ref "/library/allos/os#os.stat" >}}) 。
 
-[`os.listdir()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.listdir) 函数返回文件名，这引发了一个问题：它应该返回文件名的 Unicode 版本，还是应该返回包含已编码版本的字节串？ 这两者 [`os.listdir()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.listdir) 都能做到，具体取决于你给出的目录路径是字节串还是 Unicode 字符串形式的。 如果你传入一个 Unicode 字符串作为路径，文件名将使用文件系统的编码格式进行解码并返回一个 Unicode 字符串列表，而传入一个字节串形式的路径则将返回字节串形式的文件名。 例如，假定默认 [文件系统编码](https://docs.python.org/zh-cn/3.13/glossary.html#term-filesystem-encoding-and-error-handler) 为 UTF-8，运行以下程序:
+[`os.listdir()`]({{< ref "/library/allos/os#os.listdir" >}}) 函数返回文件名，这引发了一个问题：它应该返回文件名的 Unicode 版本，还是应该返回包含已编码版本的字节串？ 这两者 [`os.listdir()`]({{< ref "/library/allos/os#os.listdir" >}}) 都能做到，具体取决于你给出的目录路径是字节串还是 Unicode 字符串形式的。 如果你传入一个 Unicode 字符串作为路径，文件名将使用文件系统的编码格式进行解码并返回一个 Unicode 字符串列表，而传入一个字节串形式的路径则将返回字节串形式的文件名。 例如，假定默认 [文件系统编码]({{< ref "/glossary/idx#term-filesystem-encoding-and-error-handler" >}}) 为 UTF-8，运行以下程序:
 
 ```
 fn = 'filename\u4500abc'
@@ -449,15 +449,15 @@ $ python listdir-test.py
 
 > ​	程序应只在内部处理 Unicode 字符串，尽快对输入数据进行解码，并只在最后对输出进行编码。
 
-​	如果尝试编写的处理函数对 Unicode 和字节串形式的字符串都能接受，就会发现组合使用两种不同类型的字符串时，容易产生差错。没办法做到自动编码或解码：如果执行 `str + bytes`，则会触发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
+​	如果尝试编写的处理函数对 Unicode 和字节串形式的字符串都能接受，就会发现组合使用两种不同类型的字符串时，容易产生差错。没办法做到自动编码或解码：如果执行 `str + bytes`，则会触发 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}})。
 
 ​	当要使用的数据来自 Web 浏览器或其他不受信来源时，常用技术是在用该字符串生成命令行之前，或要存入数据库之前，先检查字符串中是否包含非法字符。请仔细检查解码后的字符串，而不是编码格式的字节串数据；有些编码可能具备一些有趣的特性，例如与 ASCII 不是一一对应或不完全兼容。如果输入数据还指定了编码格式，则尤其如此，因为攻击者可以选择一种巧妙的方式将恶意文本隐藏在经过编码的字节流中。
 
 #### 在文件编码格式之间进行转换
 
-[`StreamRecoder`](https://docs.python.org/zh-cn/3.13/library/codecs.html#codecs.StreamRecoder) 类可以在两种编码之间透明地进行转换，参数为编码格式为 #1 的数据流，表现行为则是编码格式为 #2 的数据流。
+[`StreamRecoder`]({{< ref "/library/binary/codecs#codecs.StreamRecoder" >}}) 类可以在两种编码之间透明地进行转换，参数为编码格式为 #1 的数据流，表现行为则是编码格式为 #2 的数据流。
 
-​	假设输入文件 *f* 采用 Latin-1 编码格式，即可用 [`StreamRecoder`](https://docs.python.org/zh-cn/3.13/library/codecs.html#codecs.StreamRecoder) 包装后返回 UTF-8 编码的字节串：
+​	假设输入文件 *f* 采用 Latin-1 编码格式，即可用 [`StreamRecoder`]({{< ref "/library/binary/codecs#codecs.StreamRecoder" >}}) 包装后返回 UTF-8 编码的字节串：
 
 ```
 new_f = codecs.StreamRecoder(f,

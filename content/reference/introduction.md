@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/reference/introduction.html](https://docs.python.org/zh-cn/3.13/reference/introduction.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/reference/introduction.html](https://docs.python.org/zh-cn/3.13/reference/introduction.html)
 >
 > 收录该文档的时间：`2024-11-14T22:01:37+08:00`
 
@@ -30,23 +30,23 @@ draft = false
 
 ​	知名的实现包括:
 
-## CPython
+CPython
 
 ​	这是最早出现并持续维护的 Python 实现，以 C 语言编写。新的语言特性通常在此率先添加。
 
-## Jython
+Jython
 
 ​	以 Java 语言编写的 Python 实现。 此实现可以作为 Java 应用的一个脚本语言，或者可以用来创建需要 Java 类库支持的应用。 想了解更多信息请访问 [Jython 网站](https://www.jython.org/)。
 
-## Python for .NET
+Python for .NET
 
 ​	此实现实际上使用了 CPython 实现，但是属于 .NET 托管应用并且可以引入 .NET 类库。它的创造者是 Brian Lloyd。想了解详情可访问 [Python for .NET 主页](https://pythonnet.github.io/)。
 
-## IronPython
+IronPython
 
 ​	另一个 .NET 版 Python 实现，不同于 Python.NET，这是一个生成 IL 的完整 Python 实现，并会将 Python 代码直接编译为 .NET 程序集。 它的创造者就是当初创造 Jython 的 Jim Hugunin。 想了解更多信息，请参看 [IronPython 网站](https://ironpython.net/)。
 
-## PyPy
+PyPy
 
 ​	一个完全使用 Python 语言编写的 Python 实现。 它支持多个其他实现所没有的高级特性，例如非栈式支持和实时编译器等。 此项目的目标之一是通过允许方便地修改解释器（因为它是用 Python 编写的）来鼓励对语言本身的试验。 更多信息可在 [PyPy 项目主页](https://pypy.org/) 获取。
 

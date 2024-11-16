@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/perf_profiling.html](https://docs.python.org/zh-cn/3.13/howto/perf_profiling.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/perf_profiling.html](https://docs.python.org/zh-cn/3.13/howto/perf_profiling.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -24,8 +24,7 @@ draft = false
 
 ​	从 Python 3.12 开始，解释器可以运行于一个允许 `perf` 性能分析器的输出中显示 Python 函数的特殊模式下。 当启用此模式时，解释器将在每个 Python 函数执行之前插入一小段即时编译的代码，它将使用 [perf 映射文件](https://docs.python.org/zh-cn/3.13/c-api/perfmaps.html) 来告知 `perf` 这段代码与相关联的 Python 函数之间的关系。
 
-​	备注
-
+​备注
  
 
 ​	对 `perf` 性能分析器的支持目前仅在特定架构的 Linux 上可用。 请检查 `configure` 构建步骤的输出或检查 `python -m sysconfig | grep HAVE_PERF_TRAMPOLINE` 的输出来确定你的系统是否受到支持。
@@ -144,7 +143,7 @@ $ perf report --stdio -n -g
 
 ## 如何启用 `perf` 性能分析支持
 
-​	要启动 `perf` 性能分析支持可以通过使用环境变量 [`PYTHONPERFSUPPORT`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONPERFSUPPORT) 或 [`-X perf`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) 选项，或者动态地使用 [`sys.activate_stack_trampoline()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.activate_stack_trampoline) 和 [`sys.deactivate_stack_trampoline()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.deactivate_stack_trampoline) 来运行。
+​	要启动 `perf` 性能分析支持可以通过使用环境变量 [`PYTHONPERFSUPPORT`]({{< ref "/using/cmdline#envvar-PYTHONPERFSUPPORT" >}}) 或 [`-X perf`]({{< ref "/using/cmdline#cmdoption-X" >}}) 选项，或者动态地使用 [`sys.activate_stack_trampoline()`]({{< ref "/library/python/sys#sys.activate_stack_trampoline" >}}) 和 [`sys.deactivate_stack_trampoline()`]({{< ref "/library/python/sys#sys.deactivate_stack_trampoline" >}}) 来运行。
 
 `sys` 函数的优先级高于 `-X` 选项，`-X` 选项的优先级高于环境变量。
 
@@ -162,7 +161,7 @@ $ perf record -F 9999 -g -o perf.data python -X perf script.py
 $ perf report -g -i perf.data
 ```
 
-​	示例，在文件 `example.py` 中使用 [`sys`](https://docs.python.org/zh-cn/3.13/library/sys.html#module-sys) API:
+​	示例，在文件 `example.py` 中使用 [`sys`]({{< ref "/library/python/sys#module-sys" >}}) API:
 
 ```
 import sys
@@ -197,10 +196,9 @@ $ python -m sysconfig | grep 'no-omit-frame-pointer'
 
 ​	如果你使用在不带帧指针的情况下编译的 Python 解释器，你仍然可以使用 `perf` 性能分析器，但会有较高的资源开销因为 Python 需要为每个 Python 函数即时生成回撤信息。 此外，`perf` 将花费更多时间来处理数据因为它需要使用 DWARF 调试信息来回撤栈而这是一个缓慢的过程。
 
-​	要启用此模式，你可以使用环境变量 [`PYTHON_PERF_JIT_SUPPORT`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHON_PERF_JIT_SUPPORT) 或 [`-X perf_jit`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) 选项，它将为 `perf` 性能分析器启用 JIT 模式。
+​	要启用此模式，你可以使用环境变量 [`PYTHON_PERF_JIT_SUPPORT`]({{< ref "/using/cmdline#envvar-PYTHON_PERF_JIT_SUPPORT" >}}) 或 [`-X perf_jit`]({{< ref "/using/cmdline#cmdoption-X" >}}) 选项，它将为 `perf` 性能分析器启用 JIT 模式。
 
-​	备注
-
+​备注
  
 
 ​	由于 `perf` 工具的一个程序错误，只有 `perf` 版本号高于 v6.8 才能使用 JIT 模式。 修复也向下移植到了此工具的 v6.7.2 版。

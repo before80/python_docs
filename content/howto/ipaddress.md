@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/ipaddress.html](https://docs.python.org/zh-cn/3.13/howto/ipaddress.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/ipaddress.html](https://docs.python.org/zh-cn/3.13/howto/ipaddress.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -24,11 +24,11 @@ draft = false
 
 ​	概述
 
-​	本文档旨在简要介绍 [`ipaddress`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#module-ipaddress) 模块。 它主要针对那些不熟悉 IP 网络术语的用户，但也可能对想要速览 [`ipaddress`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#module-ipaddress) 如何代表IP网络寻址概念的网络工程师有用。
+​	本文档旨在简要介绍 [`ipaddress`]({{< ref "/library/internet/ipaddress#module-ipaddress" >}}) 模块。 它主要针对那些不熟悉 IP 网络术语的用户，但也可能对想要速览 [`ipaddress`]({{< ref "/library/internet/ipaddress#module-ipaddress" >}}) 如何代表IP网络寻址概念的网络工程师有用。
 
 ## 创建 Address/Network/Interface 对象
 
-​	因为 [`ipaddress`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#module-ipaddress) 是一个用于检查和操作 IP 地址的模块，你要做的第一件事就是创建一些对象。 您可以使用 [`ipaddress`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#module-ipaddress) 从字符串和整数创建对象。
+​	因为 [`ipaddress`]({{< ref "/library/internet/ipaddress#module-ipaddress" >}}) 是一个用于检查和操作 IP 地址的模块，你要做的第一件事就是创建一些对象。 您可以使用 [`ipaddress`]({{< ref "/library/internet/ipaddress#module-ipaddress" >}}) 从字符串和整数创建对象。
 
 ### 关于IP版本的说明
 
@@ -38,7 +38,7 @@ draft = false
 
 ### IP主机地址
 
-​	通常称为“主机地址”的地址是使用IP寻址时最基本的单元。 创建地址的最简单方法是使用 [`ipaddress.ip_address()`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.ip_address) 工厂函数，该函数根据传入的值自动确定是创建 IPv4 还是 IPv6 地址：
+​	通常称为“主机地址”的地址是使用IP寻址时最基本的单元。 创建地址的最简单方法是使用 [`ipaddress.ip_address()`]({{< ref "/library/internet/ipaddress#ipaddress.ip_address" >}}) 工厂函数，该函数根据传入的值自动确定是创建 IPv4 还是 IPv6 地址：
 
 
 
@@ -75,7 +75,7 @@ IPv6Address('::1')
 
 ### 定义网络
 
-​	主机地址通常组合在一起形成IP网络，因此 [`ipaddress`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#module-ipaddress) 提供了一种创建、检查和操作网络定义的方法。 IP网络对象由字符串构成，这些字符串定义作为该网络一部分的主机地址范围。 该信息的最简单形式是“网络地址/网络前缀”对，其中前缀定义了比较的前导比特数，以确定地址是否是网络的一部分，并且网络地址定义了那些位的预期值。
+​	主机地址通常组合在一起形成IP网络，因此 [`ipaddress`]({{< ref "/library/internet/ipaddress#module-ipaddress" >}}) 提供了一种创建、检查和操作网络定义的方法。 IP网络对象由字符串构成，这些字符串定义作为该网络一部分的主机地址范围。 该信息的最简单形式是“网络地址/网络前缀”对，其中前缀定义了比较的前导比特数，以确定地址是否是网络的一部分，并且网络地址定义了那些位的预期值。
 
 ​	对于地址，提供了一个自动确定正确IP版本的工厂函数:
 
@@ -90,7 +90,7 @@ IPv6Network('2001:db8::/96')
 
 ​	网络对象不能设置任何主机位。 这样做的实际效果是 `192.0.2.1/24` 没有描述网络。 这种定义被称为接口对象，因为网络上IP表示法通常用于描述给定网络上的计算机的网络接口，并在下一节中进一步描述。
 
-​	默认情况下，尝试创建一个设置了主机位的网络对象将导致 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 被引发。 要请求将附加位强制为零，可以将标志 `strict=False` 传递给构造函数:
+​	默认情况下，尝试创建一个设置了主机位的网络对象将导致 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) 被引发。 要请求将附加位强制为零，可以将标志 `strict=False` 传递给构造函数:
 
 
 
@@ -118,7 +118,7 @@ IPv6Network('2001:db8::/128')
 
 ### 主机接口
 
-​	如上所述，如果您需要描述特定网络上的地址，则地址和网络类都不够。 像 `192.0.2.1/24` 这样的表示法通常被网络工程师和为防火墙和路由器编写工具的人用作“ `192.0.2.0/24` 网络上的主机 `192.0.2.1` ”的简写。因此，[`ipaddress`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#module-ipaddress) 提供了一组将地址与特定网络相关联的混合类。用于创建的接口与用于定义网络对象的接口相同，除了地址部分不限于是网络地址。
+​	如上所述，如果您需要描述特定网络上的地址，则地址和网络类都不够。 像 `192.0.2.1/24` 这样的表示法通常被网络工程师和为防火墙和路由器编写工具的人用作“ `192.0.2.0/24` 网络上的主机 `192.0.2.1` ”的简写。因此，[`ipaddress`]({{< ref "/library/internet/ipaddress#module-ipaddress" >}}) 提供了一组将地址与特定网络相关联的混合类。用于创建的接口与用于定义网络对象的接口相同，除了地址部分不限于是网络地址。
 
 
 
@@ -133,7 +133,7 @@ IPv6Interface('2001:db8::1/96')
 
 ## 审查 Address/Network/Interface 对象
 
-​	你已经遇到了创建IPv(4|6)(Address|Network|Interface) 对象的麻烦，因此你可能希望获得有关它的信息。 [`ipaddress`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#module-ipaddress) 试图让这个过程变得简单直观。
+​	你已经遇到了创建IPv(4|6)(Address|Network|Interface) 对象的麻烦，因此你可能希望获得有关它的信息。 [`ipaddress`]({{< ref "/library/internet/ipaddress#module-ipaddress" >}}) 试图让这个过程变得简单直观。
 
 ​	提取 IP 版本:
 
@@ -264,7 +264,7 @@ False
 
 ## 比较运算
 
-[`ipaddress`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#module-ipaddress) 有意义地提供了一些简单、希望直观的比较对象的方法:
+[`ipaddress`]({{< ref "/library/internet/ipaddress#module-ipaddress" >}}) 有意义地提供了一些简单、希望直观的比较对象的方法:
 
 
 
@@ -273,11 +273,11 @@ False
 True
 ```
 
-​	如果你尝试比较不同版本或不同类型的对象，则会引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError) 异常。
+​	如果你尝试比较不同版本或不同类型的对象，则会引发 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}}) 异常。
 
 ## 将IP地址与其他模块一起使用
 
-​	其他使用IP地址的模块（例如 [`socket`](https://docs.python.org/zh-cn/3.13/library/socket.html#module-socket) ）通常不会直接接受来自该模块的对象。 相反，它们必须被强制转换为另一个模块可接受的整数或字符串:
+​	其他使用IP地址的模块（例如 [`socket`]({{< ref "/library/ipc/socket#module-socket" >}}) ）通常不会直接接受来自该模块的对象。 相反，它们必须被强制转换为另一个模块可接受的整数或字符串:
 
 
 
@@ -291,9 +291,9 @@ True
 
 ## 实例创建失败时获取更多详细信息
 
-​	使用与版本无关的工厂函数创建 address/network/interface 对象时，任何错误都将报告为 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) ，带有一般错误消息，只是说传入的值未被识别为该类型的对象。 缺少特定错误是因为有必要知道该值是*假设*是IPv4还是IPv6，以便提供有关其被拒绝原因的更多详细信息。
+​	使用与版本无关的工厂函数创建 address/network/interface 对象时，任何错误都将报告为 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) ，带有一般错误消息，只是说传入的值未被识别为该类型的对象。 缺少特定错误是因为有必要知道该值是*假设*是IPv4还是IPv6，以便提供有关其被拒绝原因的更多详细信息。
 
-​	为了支持访问这些额外细节的用例，各个类构造函数实际上引发了 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 子类 [`ipaddress.AddressValueError`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.AddressValueError) 和 [`ipaddress.NetmaskValueError`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.NetmaskValueError) 以准确指示定义的哪一部分无法正确解析。
+​	为了支持访问这些额外细节的用例，各个类构造函数实际上引发了 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) 子类 [`ipaddress.AddressValueError`]({{< ref "/library/internet/ipaddress#ipaddress.AddressValueError" >}}) 和 [`ipaddress.NetmaskValueError`]({{< ref "/library/internet/ipaddress#ipaddress.NetmaskValueError" >}}) 以准确指示定义的哪一部分无法正确解析。
 
 ​	直接使用类构造函数时，错误消息更加详细。 例如:
 
@@ -319,7 +319,7 @@ Traceback (most recent call last):
 ipaddress.NetmaskValueError: '64' is not a valid netmask
 ```
 
-​	但是，两个模块特定的异常都有 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 作为它们的父类，所以如果你不关心特定类型的错误，你仍然可以编写如下代码:
+​	但是，两个模块特定的异常都有 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) 作为它们的父类，所以如果你不关心特定类型的错误，你仍然可以编写如下代码:
 
 ```
 try:

@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/instrumentation.html](https://docs.python.org/zh-cn/3.13/howto/instrumentation.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/instrumentation.html](https://docs.python.org/zh-cn/3.13/howto/instrumentation.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -48,7 +48,7 @@ $ yum install systemtap-sdt-devel
 $ sudo apt-get install systemtap-sdt-dev
 ```
 
-​	之后 CPython 必须 [`配置 --with-dtrace 选项`](https://docs.python.org/zh-cn/3.13/using/configure.html#cmdoption-with-dtrace):
+​	之后 CPython 必须 [`配置 --with-dtrace 选项`]({{< ref "/using/configure#cmdoption-with-dtrace" >}}):
 
 ```
 checking for --with-dtrace... yes
@@ -78,7 +78,7 @@ $ readelf -S ./python | grep .note.stapsdt
 [30] .note.stapsdt        NOTE         0000000000000000 00308d78
 ```
 
-​	如果你将 Python 编译为共享库（使用 [`--enable-shared`](https://docs.python.org/zh-cn/3.13/using/configure.html#cmdoption-enable-shared) 配置选项），那么你需要改为在共享库内部查看。 例如:
+​	如果你将 Python 编译为共享库（使用 [`--enable-shared`]({{< ref "/using/configure#cmdoption-enable-shared" >}}) 配置选项），那么你需要改为在共享库内部查看。 例如:
 
 ```
 $ readelf -S libpython3.3dm.so.1.0 | grep .note.stapsdt
@@ -246,7 +246,7 @@ $ stap \
 
 ​	其余部分则表示脚本执行时的调用/返回层次结构。
 
-​	对于 CPython 的 [`--enable-shared`](https://docs.python.org/zh-cn/3.13/using/configure.html#cmdoption-enable-shared) 编译版，这些标记包含在 libpython 共享库内部，并且 probe 的加点路径需要反映这个。 例如，上述示例的这一行:
+​	对于 CPython 的 [`--enable-shared`]({{< ref "/using/configure#cmdoption-enable-shared" >}}) 编译版，这些标记包含在 libpython 共享库内部，并且 probe 的加点路径需要反映这个。 例如，上述示例的这一行:
 
 ```
 probe process("python").mark("function__entry") {
@@ -258,7 +258,7 @@ probe process("python").mark("function__entry") {
 probe process("python").library("libpython3.6dm.so.1.0").mark("function__entry") {
 ```
 
-​	(假定为 CPython 3.6 的 [调试编译版](https://docs.python.org/zh-cn/3.13/using/configure.html#debug-build))
+​	(假定为 CPython 3.6 的 [调试编译版]({{< ref "/using/configure#debug-build" >}}))
 
 ## 可用的静态标记
 
@@ -286,7 +286,7 @@ probe process("python").library("libpython3.6dm.so.1.0").mark("function__entry")
 
 ## **gc__start(int generation)**
 
-​	当 Python 解释器启动一个垃圾回收循环时触发。 `arg0` 是要扫描的代，与 [`gc.collect()`](https://docs.python.org/zh-cn/3.13/library/gc.html#gc.collect) 一样。
+​	当 Python 解释器启动一个垃圾回收循环时触发。 `arg0` 是要扫描的代，与 [`gc.collect()`]({{< ref "/library/python/gc#gc.collect" >}}) 一样。
 
 ## **gc__done(long collected)**
 
@@ -294,21 +294,21 @@ probe process("python").library("libpython3.6dm.so.1.0").mark("function__entry")
 
 ## **import__find__load__start(str modulename)**
 
-​	在 [`importlib`](https://docs.python.org/zh-cn/3.13/library/importlib.html#module-importlib) 试图查找并加载模块之前被触发。`arg0` 是模块名称。
+​	在 [`importlib`]({{< ref "/library/modules/importlib#module-importlib" >}}) 试图查找并加载模块之前被触发。`arg0` 是模块名称。
 
 > Added in version 3.7.
 >
 
 ## **import__find__load__done(str modulename, int found)**
 
-​	在 [`importlib`](https://docs.python.org/zh-cn/3.13/library/importlib.html#module-importlib) 的 find_and_load 函数被调用后被触发 。`arg0` 是模块名称， `arg1` 表示模块是否成功加载。
+​	在 [`importlib`]({{< ref "/library/modules/importlib#module-importlib" >}}) 的 find_and_load 函数被调用后被触发 。`arg0` 是模块名称， `arg1` 表示模块是否成功加载。
 
 > Added in version 3.7.
 >
 
 ## **audit(str event, void \*tuple)**
 
-​	当 [`sys.audit()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.audit) 或 [`PySys_Audit()`](https://docs.python.org/zh-cn/3.13/c-api/sys.html#c.PySys_Audit) 被调用时启动。 `arg0` 是事件名称的 C 字符串，`arg1` 是一个指向元组对象的 [`PyObject`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.PyObject) 指针。
+​	当 [`sys.audit()`]({{< ref "/library/python/sys#sys.audit" >}}) 或 [`PySys_Audit()`](https://docs.python.org/zh-cn/3.13/c-api/sys.html#c.PySys_Audit) 被调用时启动。 `arg0` 是事件名称的 C 字符串，`arg1` 是一个指向元组对象的 [`PyObject`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.PyObject) 指针。
 
 > Added in version 3.8.
 >

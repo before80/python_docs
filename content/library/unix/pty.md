@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/pty.html](https://docs.python.org/zh-cn/3.13/library/pty.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/pty.html](https://docs.python.org/zh-cn/3.13/library/pty.html)
 >
 > 收录该文档的时间：`2024-11-15T21:30:54+08:00`
 
@@ -18,13 +18,13 @@ draft = false
 
 ------
 
-[`pty`](https://docs.python.org/zh-cn/3.13/library/pty.html#module-pty) 模块定义了一些处理“伪终端”概念的操作：启动另一个进程并能以程序方式在其控制终端中进行读写。
+[`pty`]({{< ref "/library/unix/pty#module-pty" >}}) 模块定义了一些处理“伪终端”概念的操作：启动另一个进程并能以程序方式在其控制终端中进行读写。
 
-[Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
+[Availability]({{< ref "/library/intro#availability" >}}): Unix.
 
 ​	伪终端处理高度依赖于具体平台。 此代码主要针对 Linux, FreeBSD 和 macOS 进行了测试（它应当也能在其他 POSIX 平台上工作，但是未经充分测试）。
 
-[`pty`](https://docs.python.org/zh-cn/3.13/library/pty.html#module-pty) 模块定义了下列函数:
+[`pty`]({{< ref "/library/unix/pty#module-pty" >}}) 模块定义了下列函数:
 
 ## pty.**fork**()
 
@@ -34,11 +34,11 @@ draft = false
 
  
 
-​	在 macOS 上将此函数与高层级的系统 API 混用是不安全的，包括 [`urllib.request`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#module-urllib.request)。
+​	在 macOS 上将此函数与高层级的系统 API 混用是不安全的，包括 [`urllib.request`]({{< ref "/library/internet/urllib/urllib_request#module-urllib.request" >}})。
 
 ## pty.**openpty**()
 
-​	打开一个新的伪终端对，如果可能将使用 [`os.openpty()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.openpty)，或是针对通用 Unix 系统的模拟代码。 返回一个文件描述符对 `(master, slave)`，分别表示主从两端。
+​	打开一个新的伪终端对，如果可能将使用 [`os.openpty()`]({{< ref "/library/allos/os#os.openpty" >}})，或是针对通用 Unix 系统的模拟代码。 返回一个文件描述符对 `(master, slave)`，分别表示主从两端。
 
 ## pty.**spawn**(*argv*[, *master_read*[, *stdin_read*]])
 
@@ -52,13 +52,13 @@ draft = false
 
 ​	从两个回调返回空字节串会被解读为文件结束 (EOF) 条件，在此之后回调将不再被调用。 如果 *stdin_read* 发出 EOF 信号则控制终端就不能再与父进程或子进程进行通信。 除非子进程将不带任何输入就退出，否则随后 *spawn* 将一直循环下去。 如果 *master_read* 发出 EOF 信号则会有相同的行为结果（至少是在 Linux 上）。
 
-​	从子进程中的 [`os.waitpid()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.waitpid) 返回退出状态值。
+​	从子进程中的 [`os.waitpid()`]({{< ref "/library/allos/os#os.waitpid" >}}) 返回退出状态值。
 
-[`os.waitstatus_to_exitcode()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.waitstatus_to_exitcode) 可被用来将退出状态转换为退出码。
+[`os.waitstatus_to_exitcode()`]({{< ref "/library/allos/os#os.waitstatus_to_exitcode" >}}) 可被用来将退出状态转换为退出码。
 
-​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `pty.spawn` 并附带参数 `argv`。
+​	引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `pty.spawn` 并附带参数 `argv`。
 
-*在 3.4 版本发生变更:* [`spawn()`](https://docs.python.org/zh-cn/3.13/library/pty.html#pty.spawn) 现在会从子进程的 [`os.waitpid()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.waitpid) 返回状态值。
+> 在 3.4 版本发生变更: [`spawn()`]({{< ref "/library/unix/pty#pty.spawn" >}}) 现在会从子进程的 [`os.waitpid()`]({{< ref "/library/allos/os#os.waitpid" >}}) 返回状态值。
 
 ## 示例
 

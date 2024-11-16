@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/math.html](https://docs.python.org/zh-cn/3.13/library/math.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/math.html](https://docs.python.org/zh-cn/3.13/library/math.html)
 >
 > 收录该文档的时间：`2024-11-15T11:42:26+08:00`
 
@@ -18,86 +18,86 @@ draft = false
 
 ​	该模块提供了对C标准定义的数学函数的访问。
 
-​	这些函数不适用于复数；如果你需要计算复数，请使用 [`cmath`](https://docs.python.org/zh-cn/3.13/library/cmath.html#module-cmath) 模块中的同名函数。将支持计算复数的函数区分开的目的，来自于大多数开发者并不愿意像数学家一样需要学习复数的概念。得到一个异常而不是一个复数结果使得开发者能够更早地监测到传递给这些函数的参数中包含复数，进而调查其产生的原因。
+​	这些函数不适用于复数；如果你需要计算复数，请使用 [`cmath`]({{< ref "/library/numeric/cmath#module-cmath" >}}) 模块中的同名函数。将支持计算复数的函数区分开的目的，来自于大多数开发者并不愿意像数学家一样需要学习复数的概念。得到一个异常而不是一个复数结果使得开发者能够更早地监测到传递给这些函数的参数中包含复数，进而调查其产生的原因。
 
 ​	该模块提供了以下函数。除非另有明确说明，否则所有返回值均为浮点数。
 
 | **Number-theoretic and representation functions**            |                                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [`ceil(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.ceil) | Ceiling of *x*, the smallest integer greater than or equal to *x* |
-| [`comb(n, k)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.comb) | Number of ways to choose *k* items from *n* items without repetition and without order |
-| [`copysign(x, y)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.copysign) | Magnitude (absolute value) of *x* with the sign of *y*       |
-| [`fabs(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.fabs) | Absolute value of *x*                                        |
-| [`factorial(n)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.factorial) | *n* factorial                                                |
-| [`floor (x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.floor) | Floor of *x*, the largest integer less than or equal to *x*  |
-| [`fma(x, y, z)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.fma) | Fused multiply-add operation: `(x * y) + z`                  |
-| [`fmod(x, y)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.fmod) | Remainder of division `x / y`                                |
-| [`frexp(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.frexp) | Mantissa and exponent of *x*                                 |
-| [`fsum(iterable)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.fsum) | Sum of values in the input *iterable*                        |
-| [`gcd(*integers)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.gcd) | Greatest common divisor of the integer arguments             |
-| [`isclose(a, b, rel_tol, abs_tol)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.isclose) | Check if the values *a* and *b* are close to each other      |
-| [`isfinite(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.isfinite) | Check if *x* is neither an infinity nor a NaN                |
-| [`isinf(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.isinf) | Check if *x* is a positive or negative infinity              |
-| [`isnan(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.isnan) | Check if *x* is a NaN (not a number)                         |
-| [`isqrt(n)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.isqrt) | Integer square root of a nonnegative integer *n*             |
-| [`lcm(*integers)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.lcm) | Least common multiple of the integer arguments               |
-| [`ldexp(x, i)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.ldexp) | `x * (2**i)`, inverse of function [`frexp()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.frexp) |
-| [`modf(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.modf) | Fractional and integer parts of *x*                          |
-| [`nextafter(x, y, steps)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.nextafter) | Floating-point value *steps* steps after *x* towards *y*     |
-| [`perm(n, k)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.perm) | Number of ways to choose *k* items from *n* items without repetition and with order |
-| [`prod(iterable, start)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.prod) | Product of elements in the input *iterable* with a *start* value |
-| [`remainder(x, y)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.remainder) | Remainder of *x* with respect to *y*                         |
-| [`sumprod(p, q)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.sumprod) | Sum of products from two iterables *p* and *q*               |
-| [`trunc(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.trunc) | Integer part of *x*                                          |
-| [`ulp(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.ulp) | Value of the least significant bit of *x*                    |
+| [`ceil(x)`]({{< ref "/library/numeric/math#math.ceil" >}}) | Ceiling of *x*, the smallest integer greater than or equal to *x* |
+| [`comb(n, k)`]({{< ref "/library/numeric/math#math.comb" >}}) | Number of ways to choose *k* items from *n* items without repetition and without order |
+| [`copysign(x, y)`]({{< ref "/library/numeric/math#math.copysign" >}}) | Magnitude (absolute value) of *x* with the sign of *y*       |
+| [`fabs(x)`]({{< ref "/library/numeric/math#math.fabs" >}}) | Absolute value of *x*                                        |
+| [`factorial(n)`]({{< ref "/library/numeric/math#math.factorial" >}}) | *n* factorial                                                |
+| [`floor (x)`]({{< ref "/library/numeric/math#math.floor" >}}) | Floor of *x*, the largest integer less than or equal to *x*  |
+| [`fma(x, y, z)`]({{< ref "/library/numeric/math#math.fma" >}}) | Fused multiply-add operation: `(x * y) + z`                  |
+| [`fmod(x, y)`]({{< ref "/library/numeric/math#math.fmod" >}}) | Remainder of division `x / y`                                |
+| [`frexp(x)`]({{< ref "/library/numeric/math#math.frexp" >}}) | Mantissa and exponent of *x*                                 |
+| [`fsum(iterable)`]({{< ref "/library/numeric/math#math.fsum" >}}) | Sum of values in the input *iterable*                        |
+| [`gcd(*integers)`]({{< ref "/library/numeric/math#math.gcd" >}}) | Greatest common divisor of the integer arguments             |
+| [`isclose(a, b, rel_tol, abs_tol)`]({{< ref "/library/numeric/math#math.isclose" >}}) | Check if the values *a* and *b* are close to each other      |
+| [`isfinite(x)`]({{< ref "/library/numeric/math#math.isfinite" >}}) | Check if *x* is neither an infinity nor a NaN                |
+| [`isinf(x)`]({{< ref "/library/numeric/math#math.isinf" >}}) | Check if *x* is a positive or negative infinity              |
+| [`isnan(x)`]({{< ref "/library/numeric/math#math.isnan" >}}) | Check if *x* is a NaN (not a number)                         |
+| [`isqrt(n)`]({{< ref "/library/numeric/math#math.isqrt" >}}) | Integer square root of a nonnegative integer *n*             |
+| [`lcm(*integers)`]({{< ref "/library/numeric/math#math.lcm" >}}) | Least common multiple of the integer arguments               |
+| [`ldexp(x, i)`]({{< ref "/library/numeric/math#math.ldexp" >}}) | `x * (2**i)`, inverse of function [`frexp()`]({{< ref "/library/numeric/math#math.frexp" >}}) |
+| [`modf(x)`]({{< ref "/library/numeric/math#math.modf" >}}) | Fractional and integer parts of *x*                          |
+| [`nextafter(x, y, steps)`]({{< ref "/library/numeric/math#math.nextafter" >}}) | Floating-point value *steps* steps after *x* towards *y*     |
+| [`perm(n, k)`]({{< ref "/library/numeric/math#math.perm" >}}) | Number of ways to choose *k* items from *n* items without repetition and with order |
+| [`prod(iterable, start)`]({{< ref "/library/numeric/math#math.prod" >}}) | Product of elements in the input *iterable* with a *start* value |
+| [`remainder(x, y)`]({{< ref "/library/numeric/math#math.remainder" >}}) | Remainder of *x* with respect to *y*                         |
+| [`sumprod(p, q)`]({{< ref "/library/numeric/math#math.sumprod" >}}) | Sum of products from two iterables *p* and *q*               |
+| [`trunc(x)`]({{< ref "/library/numeric/math#math.trunc" >}}) | Integer part of *x*                                          |
+| [`ulp(x)`]({{< ref "/library/numeric/math#math.ulp" >}}) | Value of the least significant bit of *x*                    |
 | **Power and logarithmic functions**                          |                                                              |
-| [`cbrt(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.cbrt) | Cube root of *x*                                             |
-| [`exp(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.exp) | *e* raised to the power *x*                                  |
-| [`exp2(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.exp2) | *2* raised to the power *x*                                  |
-| [`expm1(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.expm1) | *e* raised to the power *x*, minus 1                         |
-| [`log(x, base)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.log) | Logarithm of *x* to the given base (*e* by default)          |
-| [`log1p(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.log1p) | Natural logarithm of *1+x* (base *e*)                        |
-| [`log2(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.log2) | Base-2 logarithm of *x*                                      |
-| [`log10(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.log10) | Base-10 logarithm of *x*                                     |
-| [`pow(x, y)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.pow) | *x* raised to the power *y*                                  |
-| [`sqrt(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.sqrt) | Square root of *x*                                           |
+| [`cbrt(x)`]({{< ref "/library/numeric/math#math.cbrt" >}}) | Cube root of *x*                                             |
+| [`exp(x)`]({{< ref "/library/numeric/math#math.exp" >}}) | *e* raised to the power *x*                                  |
+| [`exp2(x)`]({{< ref "/library/numeric/math#math.exp2" >}}) | *2* raised to the power *x*                                  |
+| [`expm1(x)`]({{< ref "/library/numeric/math#math.expm1" >}}) | *e* raised to the power *x*, minus 1                         |
+| [`log(x, base)`]({{< ref "/library/numeric/math#math.log" >}}) | Logarithm of *x* to the given base (*e* by default)          |
+| [`log1p(x)`]({{< ref "/library/numeric/math#math.log1p" >}}) | Natural logarithm of *1+x* (base *e*)                        |
+| [`log2(x)`]({{< ref "/library/numeric/math#math.log2" >}}) | Base-2 logarithm of *x*                                      |
+| [`log10(x)`]({{< ref "/library/numeric/math#math.log10" >}}) | Base-10 logarithm of *x*                                     |
+| [`pow(x, y)`]({{< ref "/library/numeric/math#math.pow" >}}) | *x* raised to the power *y*                                  |
+| [`sqrt(x)`]({{< ref "/library/numeric/math#math.sqrt" >}}) | Square root of *x*                                           |
 | **Trigonometric functions**                                  |                                                              |
-| [`acos(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.acos) | Arc cosine of *x*                                            |
-| [`asin(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.asin) | Arc sine of *x*                                              |
-| [`atan(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.atan) | Arc tangent of *x*                                           |
-| [`atan2(y, x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.atan2) | `atan(y / x)`                                                |
-| [`cos(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.cos) | Cosine of *x*                                                |
-| [`dist(p, q)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.dist) | Euclidean distance between two points *p* and *q* given as an iterable of coordinates |
-| [`hypot(*coordinates)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.hypot) | Euclidean norm of an iterable of coordinates                 |
-| [`sin(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.sin) | Sine of *x*                                                  |
-| [`tan(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.tan) | Tangent of *x*                                               |
+| [`acos(x)`]({{< ref "/library/numeric/math#math.acos" >}}) | Arc cosine of *x*                                            |
+| [`asin(x)`]({{< ref "/library/numeric/math#math.asin" >}}) | Arc sine of *x*                                              |
+| [`atan(x)`]({{< ref "/library/numeric/math#math.atan" >}}) | Arc tangent of *x*                                           |
+| [`atan2(y, x)`]({{< ref "/library/numeric/math#math.atan2" >}}) | `atan(y / x)`                                                |
+| [`cos(x)`]({{< ref "/library/numeric/math#math.cos" >}}) | Cosine of *x*                                                |
+| [`dist(p, q)`]({{< ref "/library/numeric/math#math.dist" >}}) | Euclidean distance between two points *p* and *q* given as an iterable of coordinates |
+| [`hypot(*coordinates)`]({{< ref "/library/numeric/math#math.hypot" >}}) | Euclidean norm of an iterable of coordinates                 |
+| [`sin(x)`]({{< ref "/library/numeric/math#math.sin" >}}) | Sine of *x*                                                  |
+| [`tan(x)`]({{< ref "/library/numeric/math#math.tan" >}}) | Tangent of *x*                                               |
 | **Angular conversion**                                       |                                                              |
-| [`degrees(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.degrees) | Convert angle *x* from radians to degrees                    |
-| [`radians(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.radians) | Convert angle *x* from degrees to radians                    |
+| [`degrees(x)`]({{< ref "/library/numeric/math#math.degrees" >}}) | Convert angle *x* from radians to degrees                    |
+| [`radians(x)`]({{< ref "/library/numeric/math#math.radians" >}}) | Convert angle *x* from degrees to radians                    |
 | **Hyperbolic functions**                                     |                                                              |
-| [`acosh(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.acosh) | Inverse hyperbolic cosine of *x*                             |
-| [`asinh(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.asinh) | Inverse hyperbolic sine of *x*                               |
-| [`atanh(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.atanh) | Inverse hyperbolic tangent of *x*                            |
-| [`cosh(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.cosh) | Hyperbolic cosine of *x*                                     |
-| [`sinh(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.sinh) | Hyperbolic sine of *x*                                       |
-| [`tanh(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.tanh) | Hyperbolic tangent of *x*                                    |
+| [`acosh(x)`]({{< ref "/library/numeric/math#math.acosh" >}}) | Inverse hyperbolic cosine of *x*                             |
+| [`asinh(x)`]({{< ref "/library/numeric/math#math.asinh" >}}) | Inverse hyperbolic sine of *x*                               |
+| [`atanh(x)`]({{< ref "/library/numeric/math#math.atanh" >}}) | Inverse hyperbolic tangent of *x*                            |
+| [`cosh(x)`]({{< ref "/library/numeric/math#math.cosh" >}}) | Hyperbolic cosine of *x*                                     |
+| [`sinh(x)`]({{< ref "/library/numeric/math#math.sinh" >}}) | Hyperbolic sine of *x*                                       |
+| [`tanh(x)`]({{< ref "/library/numeric/math#math.tanh" >}}) | Hyperbolic tangent of *x*                                    |
 | **Special functions**                                        |                                                              |
-| [`erf(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.erf) | [Error function](https://en.wikipedia.org/wiki/Error_function) at *x* |
-| [`erfc(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.erfc) | [Complementary error function](https://en.wikipedia.org/wiki/Error_function) at *x* |
-| [`gamma(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.gamma) | [Gamma function](https://en.wikipedia.org/wiki/Gamma_function) at *x* |
-| [`lgamma(x)`](https://docs.python.org/zh-cn/3.13/library/math.html#math.lgamma) | Natural logarithm of the absolute value of the [Gamma function](https://en.wikipedia.org/wiki/Gamma_function) at *x* |
+| [`erf(x)`]({{< ref "/library/numeric/math#math.erf" >}}) | [Error function](https://en.wikipedia.org/wiki/Error_function) at *x* |
+| [`erfc(x)`]({{< ref "/library/numeric/math#math.erfc" >}}) | [Complementary error function](https://en.wikipedia.org/wiki/Error_function) at *x* |
+| [`gamma(x)`]({{< ref "/library/numeric/math#math.gamma" >}}) | [Gamma function](https://en.wikipedia.org/wiki/Gamma_function) at *x* |
+| [`lgamma(x)`]({{< ref "/library/numeric/math#math.lgamma" >}}) | Natural logarithm of the absolute value of the [Gamma function](https://en.wikipedia.org/wiki/Gamma_function) at *x* |
 | **Constants**                                                |                                                              |
-| [`pi`](https://docs.python.org/zh-cn/3.13/library/math.html#math.pi) | *π* = 3.141592...                                            |
-| [`e`](https://docs.python.org/zh-cn/3.13/library/math.html#math.e) | *e* = 2.718281...                                            |
-| [`tau`](https://docs.python.org/zh-cn/3.13/library/math.html#math.tau) | *τ* = 2*π* = 6.283185...                                     |
-| [`inf`](https://docs.python.org/zh-cn/3.13/library/math.html#math.inf) | Positive infinity                                            |
-| [`nan`](https://docs.python.org/zh-cn/3.13/library/math.html#math.nan) | "Not a number" (NaN)                                         |
+| [`pi`]({{< ref "/library/numeric/math#math.pi" >}}) | *π* = 3.141592...                                            |
+| [`e`]({{< ref "/library/numeric/math#math.e" >}}) | *e* = 2.718281...                                            |
+| [`tau`]({{< ref "/library/numeric/math#math.tau" >}}) | *τ* = 2*π* = 6.283185...                                     |
+| [`inf`]({{< ref "/library/numeric/math#math.inf" >}}) | Positive infinity                                            |
+| [`nan`]({{< ref "/library/numeric/math#math.nan" >}}) | "Not a number" (NaN)                                         |
 
 ## 数论与表示函数
 
 ## math.**ceil**(*x*)
 
-​	返回 *x* 的向上取整，即大于或等于 *x* 的最小的整数。如果 *x* 不是浮点数，委托给 [`x.__ceil__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__ceil__) ，它应该返回一个 [`Integral`](https://docs.python.org/zh-cn/3.13/library/numbers.html#numbers.Integral) 的值。
+​	返回 *x* 的向上取整，即大于或等于 *x* 的最小的整数。如果 *x* 不是浮点数，委托给 [`x.__ceil__`]({{< ref "/reference/datamodel#object.__ceil__" >}}) ，它应该返回一个 [`Integral`]({{< ref "/library/numeric/numbers#numbers.Integral" >}}) 的值。
 
 ## math.**comb**(*n*, *k*)
 
@@ -107,7 +107,7 @@ draft = false
 
 ​	也称为二项式系数，因为它等价于 `(1 + x)ⁿ` 的多项式展开中第 k 项的系数。
 
-​	如果任一参数不为整数则会引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。 如果任一参数为负数则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	如果任一参数不为整数则会引发 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}})。 如果任一参数为负数则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 > Added in version 3.8.
 >
@@ -122,13 +122,13 @@ draft = false
 
 ## math.**factorial**(*n*)
 
-​	将 *n* 的阶乘作为整数返回。 如果 *n* 不是正数或为负值则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	将 *n* 的阶乘作为整数返回。 如果 *n* 不是正数或为负值则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
-*在 3.10 版本发生变更:* 具有整数值的浮点数 (如 `5.0`) 将不再被接受。
+> 在 3.10 版本发生变更: 具有整数值的浮点数 (如 `5.0`) 将不再被接受。
 
 ## math.**floor**(*x*)
 
-​	返回 *x* 的向下取整，小于或等于 *x* 的最大整数。如果 *x* 不是浮点数，则委托给 [`x.__floor__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__floor__) ，它应返回一个 [`Integral`](https://docs.python.org/zh-cn/3.13/library/numbers.html#numbers.Integral) 值。
+​	返回 *x* 的向下取整，小于或等于 *x* 的最大整数。如果 *x* 不是浮点数，则委托给 [`x.__floor__`]({{< ref "/reference/datamodel#object.__floor__" >}}) ，它应返回一个 [`Integral`]({{< ref "/library/numeric/numbers#numbers.Integral" >}}) 值。
 
 ## math.**fma**(*x*, *y*, *z*)
 
@@ -141,7 +141,7 @@ draft = false
 
 ## math.**fmod**(*x*, *y*)
 
-​	返回 `fmod(x, y)` ，由平台C库定义。请注意，Python表达式 `x % y` 可能不会返回相同的结果。C标准的目的是 `fmod(x, y)` 完全（数学上；到无限精度）等于 `x - n*y` 对于某个整数 *n* ，使得结果具有 与 *x* 相同的符号和小于 `abs(y)` 的幅度。Python的 `x % y` 返回带有 *y* 符号的结果，并且可能不能完全计算浮点参数。 例如， `fmod(-1e-100, 1e100)` 是 `-1e-100` ，但Python的 `-1e-100 % 1e100` 的结果是 `1e100-1e-100` ，它不能完全表示为浮点数，并且取整为令人惊讶的 `1e100` 。 出于这个原因，函数 [`fmod()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.fmod) 在使用浮点数时通常是首选，而Python的 `x % y` 在使用整数时是首选。
+​	返回 `fmod(x, y)` ，由平台C库定义。请注意，Python表达式 `x % y` 可能不会返回相同的结果。C标准的目的是 `fmod(x, y)` 完全（数学上；到无限精度）等于 `x - n*y` 对于某个整数 *n* ，使得结果具有 与 *x* 相同的符号和小于 `abs(y)` 的幅度。Python的 `x % y` 返回带有 *y* 符号的结果，并且可能不能完全计算浮点参数。 例如， `fmod(-1e-100, 1e100)` 是 `-1e-100` ，但Python的 `-1e-100 % 1e100` 的结果是 `1e100-1e-100` ，它不能完全表示为浮点数，并且取整为令人惊讶的 `1e100` 。 出于这个原因，函数 [`fmod()`]({{< ref "/library/numeric/math#math.fmod" >}}) 在使用浮点数时通常是首选，而Python的 `x % y` 在使用整数时是首选。
 
 ## math.**frexp**(*x*)
 
@@ -162,7 +162,7 @@ draft = false
 > Added in version 3.5.
 >
 
-*在 3.9 版本发生变更:* 添加了对任意数量的参数的支持。 之前的版本只支持两个参数。
+> 在 3.9 版本发生变更: 添加了对任意数量的参数的支持。 之前的版本只支持两个参数。
 
 ## math.**isclose**(*a*, *b*, ***, *rel_tol=1e-09*, *abs_tol=0.0*)
 
@@ -179,8 +179,7 @@ draft = false
 > Added in version 3.5.
 >
 
-​	参见
-
+​参见
  
 
 [**PEP 485**](https://peps.python.org/pep-0485/) —— 用于测试近似相等的函数
@@ -218,7 +217,7 @@ draft = false
 
 ## math.**ldexp**(*x*, *i*)
 
-​	返回 `x * (2**i)` 。 这基本上是函数 [`frexp()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.frexp) 的反函数。
+​	返回 `x * (2**i)` 。 这基本上是函数 [`frexp()`]({{< ref "/library/numeric/math#math.frexp" >}}) 的反函数。
 
 ## math.**modf**(*x*)
 
@@ -237,12 +236,12 @@ draft = false
 - `math.nextafter(x, 0.0)` 趋向于零。
 - `math.nextafter(x, math.copysign(math.inf, x))` 趋向于零的反方向。
 
-​	另请参阅 [`math.ulp()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.ulp)。
+​	另请参阅 [`math.ulp()`]({{< ref "/library/numeric/math#math.ulp" >}})。
 
 > Added in version 3.9.
 >
 
-*在 3.12 版本发生变更:* 增加了 *steps* 参数。
+> 在 3.12 版本发生变更: 增加了 *steps* 参数。
 
 ## math.**perm**(*n*, *k=None*)
 
@@ -252,7 +251,7 @@ draft = false
 
 ​	如果 *k* 未指定或为 `None`，则 *k* 默认值为 *n* 并且函数将返回 `n!`。
 
-​	如果任一参数不为整数则会引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。 如果任一参数为负数则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	如果任一参数不为整数则会引发 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}})。 如果任一参数为负数则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 > Added in version 3.8.
 >
@@ -270,7 +269,7 @@ draft = false
 
 ​	返回 IEEE 754 风格的 *x* 相对于 *y* 的余数。对于有限 *x* 和有限非零 *y* ，这是差异 `x - n*y` ，其中 `n` 是与商 `x / y` 的精确值最接近的整数。如果 `x / y` 恰好位于两个连续整数之间，则将最接近的 *偶数* 用作 `n` 。 余数 `r = remainder(x, y)` 因此总是满足 `abs(r) <= 0.5 * abs(y)`。
 
-​	特殊情况遵循IEEE 754：特别是 `remainder(x, math.inf)` 对于任何有限 *x* 都是 *x* ，而 `remainder(x, 0)` 和 `remainder(math.inf, x)` 引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 适用于任何非NaN的 *x* 。如果余数运算的结果为零，则该零将具有与 *x* 相同的符号。
+​	特殊情况遵循IEEE 754：特别是 `remainder(x, math.inf)` 对于任何有限 *x* 都是 *x* ，而 `remainder(x, 0)` 和 `remainder(math.inf, x)` 引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) 适用于任何非NaN的 *x* 。如果余数运算的结果为零，则该零将具有与 *x* 相同的符号。
 
 ​	在使用IEEE 754二进制浮点的平台上，此操作的结果始终可以完全表示：不会引入舍入错误。
 
@@ -281,7 +280,7 @@ draft = false
 
 ​	两个可迭代对象 *p* 和 *q* 中的值的乘积的总计值。
 
-​	如果输入值的长度不相等则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+​	如果输入值的长度不相等则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 ​	大致相当于：
 
@@ -296,7 +295,7 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 
 ## math.**trunc**(*x*)
 
-​	返回去除小数部分的 *x* ，只留下整数部分。 这样就可以四舍五入到0了： `trunc()` 对于正的 *x* 相当于 [`floor()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.floor) ，对于负的 *x* 相当于 [`ceil()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.ceil) 。如果 *x* 不是浮点数，委托给 [`x.__trunc__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__trunc__) ，它应该返回一个 [`Integral`](https://docs.python.org/zh-cn/3.13/library/numbers.html#numbers.Integral) 值。
+​	返回去除小数部分的 *x* ，只留下整数部分。 这样就可以四舍五入到0了： `trunc()` 对于正的 *x* 相当于 [`floor()`]({{< ref "/library/numeric/math#math.floor" >}}) ，对于负的 *x* 相当于 [`ceil()`]({{< ref "/library/numeric/math#math.ceil" >}}) 。如果 *x* 不是浮点数，委托给 [`x.__trunc__`]({{< ref "/reference/datamodel#object.__trunc__" >}}) ，它应该返回一个 [`Integral`]({{< ref "/library/numeric/numbers#numbers.Integral" >}}) 值。
 
 ## math.**ulp**(*x*)
 
@@ -305,20 +304,20 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 - 如果 *x* 是 NaN (非数字)，则返回 *x*。
 - 如果 *x* 为负数，则返回 `ulp(-x)`。
 - 如果 *x* 为正数，则返回 *x*。
-- 如果 *x* 等于零，则返回 *去正规化的* 可表示最小正浮点数 (小于 *正规化的* 最小正浮点数 [`sys.float_info.min`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.float_info))。
+- 如果 *x* 等于零，则返回 *去正规化的* 可表示最小正浮点数 (小于 *正规化的* 最小正浮点数 [`sys.float_info.min`]({{< ref "/library/python/sys#sys.float_info" >}}))。
 - 如果 *x* 等于可表示最大正浮点数，则返回 *x* 的最低有效比特位的值，使得小于 *x* 的第一个浮点数为 `x - ulp(x)`。
 - 在其他情况下 (*x* 是一个有限的正数)，则返回 *x* 的最低有效比特位的值，使得大于 *x* 的第一个浮点数为 `x + ulp(x)`。
 
 ​	ULP 即 "Unit in the Last Place" 的缩写。
 
-​	另请参阅 [`math.nextafter()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.nextafter) 和 [`sys.float_info.epsilon`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.float_info)。
+​	另请参阅 [`math.nextafter()`]({{< ref "/library/numeric/math#math.nextafter" >}}) 和 [`sys.float_info.epsilon`]({{< ref "/library/python/sys#sys.float_info" >}})。
 
 > Added in version 3.9.
 >
 
-​	注意 [`frexp()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.frexp) 和 [`modf()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.modf) 具有与它们的C等价函数不同的调用/返回模式：它们采用单个参数并返回一对值，而不是通过 '输出形参' 返回它们的第二个返回参数（Python中没有这样的东西）。
+​	注意 [`frexp()`]({{< ref "/library/numeric/math#math.frexp" >}}) 和 [`modf()`]({{< ref "/library/numeric/math#math.modf" >}}) 具有与它们的C等价函数不同的调用/返回模式：它们采用单个参数并返回一对值，而不是通过 '输出形参' 返回它们的第二个返回参数（Python中没有这样的东西）。
 
-​	对于 [`ceil()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.ceil) ， [`floor()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.floor) 和 [`modf()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.modf) 函数，请注意 *所有* 足够大的浮点数都是精确整数。Python浮点数通常不超过53位的精度（与平台C double类型相同），在这种情况下，任何浮点 *x* 与 `abs(x) >= 2**52` 必然没有小数位。
+​	对于 [`ceil()`]({{< ref "/library/numeric/math#math.ceil" >}}) ， [`floor()`]({{< ref "/library/numeric/math#math.floor" >}}) 和 [`modf()`]({{< ref "/library/numeric/math#math.modf" >}}) 函数，请注意 *所有* 足够大的浮点数都是精确整数。Python浮点数通常不超过53位的精度（与平台C double类型相同），在这种情况下，任何浮点 *x* 与 `abs(x) >= 2**52` 必然没有小数位。
 
 ## 幂函数与对数函数
 
@@ -342,7 +341,7 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 
 ## math.**expm1**(*x*)
 
-​	返回 *e* 的 *x*，减去 1。 这里 *e* 是以自然对数作为基数。 对于小浮点数 *x*，在 `exp(x) - 1` 中的减法运算可能导致 [明显的精度损失](https://en.wikipedia.org/wiki/Loss_of_significance); [`expm1()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.expm1) 函数提供了一种以完整精度计算此数量的办法:
+​	返回 *e* 的 *x*，减去 1。 这里 *e* 是以自然对数作为基数。 对于小浮点数 *x*，在 `exp(x) - 1` 中的减法运算可能导致 [明显的精度损失](https://en.wikipedia.org/wiki/Loss_of_significance); [`expm1()`]({{< ref "/library/numeric/math#math.expm1" >}}) 函数提供了一种以完整精度计算此数量的办法:
 
 
 
@@ -374,11 +373,10 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 > Added in version 3.3.
 >
 
-​	参见
-
+​参见
  
 
-[`int.bit_length()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#int.bit_length) 返回表示二进制整数所需的位数，不包括符号和前导零。
+[`int.bit_length()`]({{< ref "/library/stdtypes#int.bit_length" >}}) 返回表示二进制整数所需的位数，不包括符号和前导零。
 
 ## math.**log10**(*x*)
 
@@ -386,11 +384,11 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 
 ## math.**pow**(*x*, *y*)
 
-​	Return *x* raised to the power *y*. Exceptional cases follow the IEEE 754 standard as far as possible. In particular, `pow(1.0, x)` and `pow(x, 0.0)` always return `1.0`, even when *x* is a zero or a NaN. If both *x* and *y* are finite, *x* is negative, and *y* is not an integer then `pow(x, y)` is undefined, and raises [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError).
+​	Return *x* raised to the power *y*. Exceptional cases follow the IEEE 754 standard as far as possible. In particular, `pow(1.0, x)` and `pow(x, 0.0)` always return `1.0`, even when *x* is a zero or a NaN. If both *x* and *y* are finite, *x* is negative, and *y* is not an integer then `pow(x, y)` is undefined, and raises [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}).
 
-​	与内置的 `**` 运算符不同， [`math.pow()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.pow) 将其参数转换为 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) 类型。使用 `**` 或内置的 [`pow()`](https://docs.python.org/zh-cn/3.13/library/functions.html#pow) 函数来计算精确的整数幂。
+​	与内置的 `**` 运算符不同， [`math.pow()`]({{< ref "/library/numeric/math#math.pow" >}}) 将其参数转换为 [`float`]({{< ref "/library/functions#float" >}}) 类型。使用 `**` 或内置的 [`pow()`]({{< ref "/library/functions#pow" >}}) 函数来计算精确的整数幂。
 
-*在 3.11 版本发生变更:* 特殊情况 `pow(0.0, -inf)` 和 `pow(-0.0, -inf)` 已改为返回 `inf` 而不是引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)，以便同 IEEE 754 保持一致。
+> 在 3.11 版本发生变更: 特殊情况 `pow(0.0, -inf)` 和 `pow(-0.0, -inf)` 已改为返回 `inf` 而不是引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})，以便同 IEEE 754 保持一致。
 
 ## math.**sqrt**(*x*)
 
@@ -412,7 +410,7 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 
 ## math.**atan2**(*y*, *x*)
 
-​	以弧度为单位返回 `atan(y / x)` 。结果是在 `-pi` 和 `pi` 之间。从原点到点 `(x, y)` 的平面矢量使该角度与正X轴成正比。 [`atan2()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.atan2) 的点的两个输入的符号都是已知的，因此它可以计算角度的正确象限。 例如， `atan(1)` 和 `atan2(1, 1)` 都是 `pi/4` ，但 `atan2(-1, -1)` 是 `-3*pi/4` 。
+​	以弧度为单位返回 `atan(y / x)` 。结果是在 `-pi` 和 `pi` 之间。从原点到点 `(x, y)` 的平面矢量使该角度与正X轴成正比。 [`atan2()`]({{< ref "/library/numeric/math#math.atan2" >}}) 的点的两个输入的符号都是已知的，因此它可以计算角度的正确象限。 例如， `atan(1)` 和 `atan2(1, 1)` 都是 `pi/4` ，但 `atan2(-1, -1)` 是 `-3*pi/4` 。
 
 ## math.**cos**(*x*)
 
@@ -437,9 +435,9 @@ sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))
 
 ​	对于一个二维点 `(x, y)`，这等价于使用毕达哥拉斯定义 `sqrt(x*x + y*y)` 计算一个直角三角形的斜边。
 
-*在 3.8 版本发生变更:* 添加了对 n 维点的支持。 之前的版本只支持二维点。
+> 在 3.8 版本发生变更: 添加了对 n 维点的支持。 之前的版本只支持二维点。
 
-*在 3.10 版本发生变更:* 改进了算法的精确性，使得最大误差在 1 ulp (最后一位的单位数值) 以下。 更为常见的情况是，结果几乎总是能正确地舍入到 1/2 ulp 范围之内。
+> 在 3.10 版本发生变更: 改进了算法的精确性，使得最大误差在 1 ulp (最后一位的单位数值) 以下。 更为常见的情况是，结果几乎总是能正确地舍入到 1/2 ulp 范围之内。
 
 ## math.**sin**(*x*)
 
@@ -493,7 +491,7 @@ sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))
 
 ​	返回 *x* 处的 [误差函数](https://en.wikipedia.org/wiki/Error_function) 。
 
-​	可以使用 [`erf()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.erf) 函数来计算传统的统计函数如 [累积标准正态分布](https://en.wikipedia.org/wiki/Cumulative_distribution_function):
+​	可以使用 [`erf()`]({{< ref "/library/numeric/math#math.erf" >}}) 函数来计算传统的统计函数如 [累积标准正态分布](https://en.wikipedia.org/wiki/Cumulative_distribution_function):
 
 ```
 def phi(x):
@@ -551,7 +549,7 @@ def phi(x):
 
 ## math.**nan**
 
-​	一个浮点数值 "Not a Number" (NaN)。 相当于 `float('nan')` 的输出。 根据 [IEEE-754 标准](https://en.wikipedia.org/wiki/IEEE_754) 要求，`math.nan` 和 `float('nan')` 不会被视为等于任何其他数值，包括其本身。 要检查一个数字是否为 NaN，请使用 [`isnan()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.isnan) 函数来测试 NaN 而不能使用 `is` 或 `==`。 例如:
+​	一个浮点数值 "Not a Number" (NaN)。 相当于 `float('nan')` 的输出。 根据 [IEEE-754 标准](https://en.wikipedia.org/wiki/IEEE_754) 要求，`math.nan` 和 `float('nan')` 不会被视为等于任何其他数值，包括其本身。 要检查一个数字是否为 NaN，请使用 [`isnan()`]({{< ref "/library/numeric/math#math.isnan" >}}) 函数来测试 NaN 而不能使用 `is` 或 `==`。 例如:
 
 
 
@@ -570,14 +568,13 @@ True
 > Added in version 3.5.
 >
 
-*在 3.11 版本发生变更:* 该常量现在总是可用。
+> 在 3.11 版本发生变更: 该常量现在总是可用。
 
-**CPython 实现细节：** [`math`](https://docs.python.org/zh-cn/3.13/library/math.html#module-math) 模块主要包含围绕平台C数学库函数的简单包装器。特殊情况下的行为在适当情况下遵循C99标准的附录F。当前的实现将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 用于无效操作，如 `sqrt(-1.0)` 或 `log(0.0)` （其中C99附件F建议发出无效操作信号或被零除）， 和 [`OverflowError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OverflowError) 用于溢出的结果（例如， `exp(1000.0)` ）。除非一个或多个输入参数是NaN，否则不会从上述任何函数返回NaN；在这种情况下，大多数函数将返回一个NaN，但是（再次遵循C99附件F）这个规则有一些例外，例如 `pow(float('nan'), 0.0)` 或 `hypot(float('nan'), float('inf'))` 。
+**CPython 实现细节：** [`math`]({{< ref "/library/numeric/math#module-math" >}}) 模块主要包含围绕平台C数学库函数的简单包装器。特殊情况下的行为在适当情况下遵循C99标准的附录F。当前的实现将引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) 用于无效操作，如 `sqrt(-1.0)` 或 `log(0.0)` （其中C99附件F建议发出无效操作信号或被零除）， 和 [`OverflowError`]({{< ref "/library/exceptions#OverflowError" >}}) 用于溢出的结果（例如， `exp(1000.0)` ）。除非一个或多个输入参数是NaN，否则不会从上述任何函数返回NaN；在这种情况下，大多数函数将返回一个NaN，但是（再次遵循C99附件F）这个规则有一些例外，例如 `pow(float('nan'), 0.0)` 或 `hypot(float('nan'), float('inf'))` 。
 
 ​	请注意，Python不会将显式NaN与静默NaN区分开来，并且显式NaN的行为仍未明确。典型的行为是将所有NaN视为静默的。
 
-​	参见
-
-## [`cmath`](https://docs.python.org/zh-cn/3.13/library/cmath.html#module-cmath) 模块
+​参见
+## [`cmath`]({{< ref "/library/numeric/cmath#module-cmath" >}}) 模块
 
 ​	这里很多函数的复数版本。

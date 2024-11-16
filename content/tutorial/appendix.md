@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/tutorial/appendix.html](https://docs.python.org/zh-cn/3.13/tutorial/appendix.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/tutorial/appendix.html](https://docs.python.org/zh-cn/3.13/tutorial/appendix.html)
 >
 > 收录该文档的时间：`2024-11-14T22:01:54+08:00`
 
@@ -18,21 +18,21 @@ draft = false
 
 ## 16.1. 交互模式
 
-​	交互式 [REPL](https://docs.python.org/zh-cn/3.13/glossary.html#term-REPL) 有两个变种版本。 经典的基本解释器在所有平台上受到支持，具有最小化的行控制功能。
+​	交互式 [REPL]({{< ref "/glossary/idx#term-REPL" >}}) 有两个变种版本。 经典的基本解释器在所有平台上受到支持，具有最小化的行控制功能。
 
-​	On Windows, or Unix-like systems with [`curses`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses) support, a new interactive shell is used by default. This one supports color, multiline editing, history browsing, and paste mode. To disable color, see [控制颜色](https://docs.python.org/zh-cn/3.13/using/cmdline.html#using-on-controlling-color) for details. Function keys provide some additional functionality. F1 enters the interactive help browser [`pydoc`](https://docs.python.org/zh-cn/3.13/library/pydoc.html#module-pydoc). F2 allows for browsing command-line history with neither output nor the [>>>](https://docs.python.org/zh-cn/3.13/glossary.html#term-0) and [...](https://docs.python.org/zh-cn/3.13/glossary.html#term-...) prompts. F3 enters "paste mode", which makes pasting larger blocks of code easier. Press F3 to return to the regular prompt.
+​	On Windows, or Unix-like systems with [`curses`]({{< ref "/library/allos/curses#module-curses" >}}) support, a new interactive shell is used by default. This one supports color, multiline editing, history browsing, and paste mode. To disable color, see [控制颜色]({{< ref "/using/cmdline#using-on-controlling-color" >}}) for details. Function keys provide some additional functionality. F1 enters the interactive help browser [`pydoc`]({{< ref "/library/development/pydoc#module-pydoc" >}}). F2 allows for browsing command-line history with neither output nor the [>>>]({{< ref "/glossary/idx#term-0" >}}) and [...]({{< ref "/glossary/idx#term-..." >}}) prompts. F3 enters "paste mode", which makes pasting larger blocks of code easier. Press F3 to return to the regular prompt.
 
 ​	当使用新的交互式 shell 时，可通过键入 exit 或 quit 退出 shell。 不再需要在这些命令之后添加代表调用的圆括号。
 
-​	如果不想要新的交互式 shell，可以通过 [`PYTHON_BASIC_REPL`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHON_BASIC_REPL) 环境变量禁用它。
+​	如果不想要新的交互式 shell，可以通过 [`PYTHON_BASIC_REPL`]({{< ref "/using/cmdline#envvar-PYTHON_BASIC_REPL" >}}) 环境变量禁用它。
 
 
 
 ### 16.1.1. 错误处理
 
-​	当发生错误时，解释器会打印错误消息和栈回溯。 在交互模式下，将返回到主提示符；当输入是来自文件的时候，它将在打印栈回溯之后退出并附带一个非零的退出状态码。 （由 [`try`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#try) 语句中 [`except`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#except) 子句所处理的异常在此上下文中不属于错误。） 有些错误属于无条件致命错误，会导致程序附带非零状态码退出；这适用于内部一致性丧失以及某些内存耗尽的情况等。 所有错误消息都将被写入到标准错误流；来自被执行命令的正常输出测会被写入到标准输出。
+​	当发生错误时，解释器会打印错误消息和栈回溯。 在交互模式下，将返回到主提示符；当输入是来自文件的时候，它将在打印栈回溯之后退出并附带一个非零的退出状态码。 （由 [`try`]({{< ref "/reference/compound_stmts#try" >}}) 语句中 [`except`]({{< ref "/reference/compound_stmts#except" >}}) 子句所处理的异常在此上下文中不属于错误。） 有些错误属于无条件致命错误，会导致程序附带非零状态码退出；这适用于内部一致性丧失以及某些内存耗尽的情况等。 所有错误消息都将被写入到标准错误流；来自被执行命令的正常输出测会被写入到标准输出。
 
-​	将中断字符（通常为 Control-C 或 Delete ）键入主要或辅助提示符会取消输入并返回主提示符。 [[1\]](https://docs.python.org/zh-cn/3.13/tutorial/appendix.html#id2) 在执行命令时键入中断引发的 [`KeyboardInterrupt`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyboardInterrupt) 异常，可以由 [`try`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#try) 语句处理。
+​	将中断字符（通常为 Control-C 或 Delete ）键入主要或辅助提示符会取消输入并返回主提示符。 [[1\]]({{< ref "/tutorial/appendix#id2" >}}) 在执行命令时键入中断引发的 [`KeyboardInterrupt`]({{< ref "/library/exceptions#KeyboardInterrupt" >}}) 异常，可以由 [`try`]({{< ref "/reference/compound_stmts#try" >}}) 语句处理。
 
 
 
@@ -58,7 +58,7 @@ $ chmod +x myscript.py
 
 ### 16.1.3. 交互式启动文件
 
-​	当您以交互模式使用 Python 时，您可能会希望在每次启动解释器时，解释器先执行几条您预先编写的命令，然后您再以交互模式继续使用。您可以通过将名为 [`PYTHONSTARTUP`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONSTARTUP) 的环境变量设置为包含启动命令的文件的文件名来实现。这类似于 Unix shell 的 `.profile` 功能。
+​	当您以交互模式使用 Python 时，您可能会希望在每次启动解释器时，解释器先执行几条您预先编写的命令，然后您再以交互模式继续使用。您可以通过将名为 [`PYTHONSTARTUP`]({{< ref "/using/cmdline#envvar-PYTHONSTARTUP" >}}) 的环境变量设置为包含启动命令的文件的文件名来实现。这类似于 Unix shell 的 `.profile` 功能。
 
 ​	Python 只有在交互模式时，才会读取此文件，而非在从脚本读指令或是将 `/dev/tty` 显式作为被运行的 Python 脚本的文件名时（后者反而表现得像一个交互式会话）。这个文件与交互式指令共享相同的命名空间，所以它定义或导入的对象可以在交互式会话中直接使用。您也可以在该文件中更改提示符 `sys.ps1` 和 `sys.ps2`。
 
@@ -87,12 +87,11 @@ if filename and os.path.isfile(filename):
 '/home/user/.local/lib/python3.x/site-packages'
 ```
 
-​	现在，您可以在该目录中创建一个名为 `usercustomize.py` 的文件，并将所需内容放入其中。它会影响Python的每次启动，除非它以 [`-s`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-s) 选项启动，以禁用自动导入。
+​	现在，您可以在该目录中创建一个名为 `usercustomize.py` 的文件，并将所需内容放入其中。它会影响Python的每次启动，除非它以 [`-s`]({{< ref "/using/cmdline#cmdoption-s" >}}) 选项启动，以禁用自动导入。
 
-sitecustomize 的工作方式相同，但通常由计算机管理员在全局 site-packages 目录中创建，并在 usercustomize 之前导入。 更多细节请参阅 [`site`](https://docs.python.org/zh-cn/3.13/library/site.html#module-site) 模块的文档。
+​	sitecustomize 的工作方式相同，但通常由计算机管理员在全局 site-packages 目录中创建，并在 usercustomize 之前导入。 更多细节请参阅 [`site`]({{< ref "/library/python/site#module-site" >}}) 模块的文档。
 
-​	备注
-
-[[1](https://docs.python.org/zh-cn/3.13/tutorial/appendix.html#id1)]
-
-​	GNU Readline 包的问题可能会阻止这种情况。
+> 备注
+> [[1]({{< ref "/tutorial/appendix#id1" >}})]
+>
+> ​	GNU Readline 包的问题可能会阻止这种情况。

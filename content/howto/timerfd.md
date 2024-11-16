@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/timerfd.html](https://docs.python.org/zh-cn/3.13/howto/timerfd.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/timerfd.html](https://docs.python.org/zh-cn/3.13/howto/timerfd.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -46,9 +46,9 @@ finally:
     os.close(fd)
 ```
 
-​	为避免 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) 类型导致的精度损失，定时器文件描述符允许使用这些函数的 `_ns` 变种形式以整数纳秒值指定初始到期时间和间隔。
+​	为避免 [`float`]({{< ref "/library/functions#float" >}}) 类型导致的精度损失，定时器文件描述符允许使用这些函数的 `_ns` 变种形式以整数纳秒值指定初始到期时间和间隔。
 
-​	这个例子演示了如何使用 [`epoll()`](https://docs.python.org/zh-cn/3.13/library/select.html#select.epoll) 配合定时器文件描述符来执行等待直到文件描述符准备好读取：
+​	这个例子演示了如何使用 [`epoll()`]({{< ref "/library/ipc/select#select.epoll" >}}) 配合定时器文件描述符来执行等待直到文件描述符准备好读取：
 
 ```
 import os, time, select, socket, sys
@@ -156,7 +156,7 @@ finally:
     ep.close()
 ```
 
-​	这个例子演示了如何使用 [`select()`](https://docs.python.org/zh-cn/3.13/library/select.html#select.select) 配合定时器文件描述符来执行等待直接文件描述符准备好读取：
+​	这个例子演示了如何使用 [`select()`]({{< ref "/library/ipc/select#select.select" >}}) 配合定时器文件描述符来执行等待直接文件描述符准备好读取：
 
 ```
 import os, time, select, socket, sys

@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/tutorial/stdlib.html](https://docs.python.org/zh-cn/3.13/tutorial/stdlib.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/tutorial/stdlib.html](https://docs.python.org/zh-cn/3.13/tutorial/stdlib.html)
 >
 > 收录该文档的时间：`2024-11-14T22:01:54+08:00`
 
@@ -18,7 +18,7 @@ draft = false
 
 ## 10.1. 操作系统接口
 
-[`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os) 模块提供了许多与操作系统交互的函数:
+​	[`os`]({{< ref "/library/allos/os#module-os" >}}) 模块提供了许多与操作系统交互的函数:
 
 
 
@@ -31,9 +31,9 @@ draft = false
 0
 ```
 
-​	一定要使用 `import os` 而不是 `from os import *` 。这将避免内建的 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open) 函数被 [`os.open()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.open) 隐式替换掉，因为它们的使用方式大不相同。
+​	一定要使用 `import os` 而不是 `from os import *` 。这将避免内建的 [`open()`]({{< ref "/library/functions#open" >}}) 函数被 [`os.open()`]({{< ref "/library/allos/os#os.open" >}}) 隐式替换掉，因为它们的使用方式大不相同。
 
-​	内置的 [`dir()`](https://docs.python.org/zh-cn/3.13/library/functions.html#dir) 和 [`help()`](https://docs.python.org/zh-cn/3.13/library/functions.html#help) 函数可用作交互式辅助工具，用于处理大型模块，如 [`os`](https://docs.python.org/zh-cn/3.13/library/os.html#module-os):
+​	内置的 [`dir()`]({{< ref "/library/functions#dir" >}}) 和 [`help()`]({{< ref "/library/functions#help" >}}) 函数可用作交互式辅助工具，用于处理大型模块，如 [`os`]({{< ref "/library/allos/os#module-os" >}}):
 
 
 
@@ -45,7 +45,7 @@ draft = false
 <返回根据模块文档字符串创建的详细说明页面>
 ```
 
-​	对于日常文件和目录管理任务， [`shutil`](https://docs.python.org/zh-cn/3.13/library/shutil.html#module-shutil) 模块提供了更易于使用的更高级别的接口:
+​	对于日常文件和目录管理任务， [`shutil`]({{< ref "/library/filesys/shutil#module-shutil" >}}) 模块提供了更易于使用的更高级别的接口:
 
 
 
@@ -61,7 +61,7 @@ draft = false
 
 ## 10.2. 文件通配符
 
-[`glob`](https://docs.python.org/zh-cn/3.13/library/glob.html#module-glob) 模块提供了一个在目录中使用通配符搜索创建文件列表的函数:
+​	[`glob`]({{< ref "/library/filesys/glob#module-glob" >}}) 模块提供了一个在目录中使用通配符搜索创建文件列表的函数:
 
 
 
@@ -75,7 +75,7 @@ draft = false
 
 ## 10.3. 命令行参数
 
-​	一般的工具脚本常常需要处理命令行参数。 这些参数以列表形式存储在 [`sys`](https://docs.python.org/zh-cn/3.13/library/sys.html#module-sys) 模块的 *argv* 属性中。 举例来说，让我们查看下面的 `demo.py` 文件:
+​	一般的工具脚本常常需要处理命令行参数。 这些参数以列表形式存储在 [`sys`]({{< ref "/library/python/sys#module-sys" >}}) 模块的 *argv* 属性中。 举例来说，让我们查看下面的 `demo.py` 文件:
 
 ```
 # 文件 demo.py
@@ -89,7 +89,7 @@ print(sys.argv)
 ['demo.py', 'one', 'two', 'three']
 ```
 
-[`argparse`](https://docs.python.org/zh-cn/3.13/library/argparse.html#module-argparse) 模块提供了一种更复杂的机制来处理命令行参数。 以下脚本可提取一个或多个文件名，并可选择要显示的行数:
+​	[`argparse`]({{< ref "/library/allos/argparse#module-argparse" >}}) 模块提供了一种更复杂的机制来处理命令行参数。 以下脚本可提取一个或多个文件名，并可选择要显示的行数:
 
 ```
 import argparse
@@ -109,7 +109,7 @@ print(args)
 
 ## 10.4. 错误输出重定向和程序终止
 
-[`sys`](https://docs.python.org/zh-cn/3.13/library/sys.html#module-sys) 模块还具有 *stdin* ， *stdout* 和 *stderr* 的属性。后者对于发出警告和错误消息非常有用，即使在 *stdout* 被重定向后也可以看到它们:
+​	[`sys`]({{< ref "/library/python/sys#module-sys" >}}) 模块还具有 *stdin* ， *stdout* 和 *stderr* 的属性。后者对于发出警告和错误消息非常有用，即使在 *stdout* 被重定向后也可以看到它们:
 
 
 
@@ -124,7 +124,7 @@ Warning, log file not found starting a new one
 
 ## 10.5. 字符串模式匹配
 
-[`re`](https://docs.python.org/zh-cn/3.13/library/re.html#module-re) 模块为高级字符串处理提供正则表达式工具。对于复杂的匹配和操作，正则表达式提供简洁，优化的解决方案:
+​	[`re`]({{< ref "/library/text/re#module-re" >}}) 模块为高级字符串处理提供正则表达式工具。对于复杂的匹配和操作，正则表达式提供简洁，优化的解决方案:
 
 
 
@@ -149,7 +149,7 @@ Warning, log file not found starting a new one
 
 ## 10.6. 数学
 
-[`math`](https://docs.python.org/zh-cn/3.13/library/math.html#module-math) 模块提供对用于浮点数学运算的下层 C 库函数的访问:
+​	[`math`]({{< ref "/library/numeric/math#module-math" >}}) 模块提供对用于浮点数学运算的下层 C 库函数的访问:
 
 
 
@@ -161,7 +161,7 @@ Warning, log file not found starting a new one
 10.0
 ```
 
-[`random`](https://docs.python.org/zh-cn/3.13/library/random.html#module-random) 模块提供了进行随机选择的工具:
+​	[`random`]({{< ref "/library/numeric/random#module-random" >}}) 模块提供了进行随机选择的工具:
 
 
 
@@ -177,7 +177,7 @@ Warning, log file not found starting a new one
 4
 ```
 
-[`statistics`](https://docs.python.org/zh-cn/3.13/library/statistics.html#module-statistics) 模块计算数值数据的基本统计属性（均值，中位数，方差等）:
+​	[`statistics`]({{< ref "/library/numeric/statistics#module-statistics" >}}) 模块计算数值数据的基本统计属性（均值，中位数，方差等）:
 
 
 
@@ -198,7 +198,7 @@ Warning, log file not found starting a new one
 
 ## 10.7. 互联网访问
 
-​	有许多模块可用于访问互联网和处理互联网协议。其中两个最简单的 [`urllib.request`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#module-urllib.request) 用于从URL检索数据，以及 [`smtplib`](https://docs.python.org/zh-cn/3.13/library/smtplib.html#module-smtplib) 用于发送邮件:
+​	有许多模块可用于访问互联网和处理互联网协议。其中两个最简单的 [`urllib.request`]({{< ref "/library/internet/urllib/urllib_request#module-urllib.request" >}}) 用于从URL检索数据，以及 [`smtplib`]({{< ref "/library/internet/smtplib#module-smtplib" >}}) 用于发送邮件:
 
 
 
@@ -229,7 +229,7 @@ datetime: 2022-01-01T01:36:47.689215+00:00
 
 ## 10.8. 日期和时间
 
-[`datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#module-datetime) 模块提供了以简单和复杂的方式操作日期和时间的类。虽然支持日期和时间算法，但实现的重点是有效的成员提取以进行输出格式化和操作。该模块还支持可感知时区的对象。
+​	[`datetime`]({{< ref "/library/datatypes/datetime#module-datetime" >}}) 模块提供了以简单和复杂的方式操作日期和时间的类。虽然支持日期和时间算法，但实现的重点是有效的成员提取以进行输出格式化和操作。该模块还支持可感知时区的对象。
 
 
 
@@ -253,7 +253,7 @@ datetime.date(2003, 12, 2)
 
 ## 10.9. 数据压缩
 
-​	常见的数据存档和压缩格式由模块直接支持，包括：[`zlib`](https://docs.python.org/zh-cn/3.13/library/zlib.html#module-zlib), [`gzip`](https://docs.python.org/zh-cn/3.13/library/gzip.html#module-gzip), [`bz2`](https://docs.python.org/zh-cn/3.13/library/bz2.html#module-bz2), [`lzma`](https://docs.python.org/zh-cn/3.13/library/lzma.html#module-lzma), [`zipfile`](https://docs.python.org/zh-cn/3.13/library/zipfile.html#module-zipfile) 和 [`tarfile`](https://docs.python.org/zh-cn/3.13/library/tarfile.html#module-tarfile)。:
+​	常见的数据存档和压缩格式由模块直接支持，包括：[`zlib`]({{< ref "/library/archiving/zlib#module-zlib" >}}), [`gzip`]({{< ref "/library/archiving/gzip#module-gzip" >}}), [`bz2`]({{< ref "/library/archiving/bz2#module-bz2" >}}), [`lzma`]({{< ref "/library/archiving/lzma#module-lzma" >}}), [`zipfile`]({{< ref "/library/archiving/zipfile#module-zipfile" >}}) 和 [`tarfile`]({{< ref "/library/archiving/tarfile#module-tarfile" >}})。:
 
 
 
@@ -277,7 +277,7 @@ b'witch which has which witches wrist watch'
 
 ​	一些Python用户对了解同一问题的不同方法的相对性能产生了浓厚的兴趣。 Python提供了一种可以立即回答这些问题的测量工具。
 
-​	例如，元组封包和拆包功能相比传统的交换参数可能更具吸引力。[`timeit`](https://docs.python.org/zh-cn/3.13/library/timeit.html#module-timeit) 模块可以快速演示在运行效率方面一定的优势:
+​	例如，元组封包和拆包功能相比传统的交换参数可能更具吸引力。[`timeit`]({{< ref "/library/debug/timeit#module-timeit" >}}) 模块可以快速演示在运行效率方面一定的优势:
 
 
 
@@ -289,7 +289,7 @@ b'witch which has which witches wrist watch'
 0.54962537085770791
 ```
 
-​	与 [`timeit`](https://docs.python.org/zh-cn/3.13/library/timeit.html#module-timeit) 的精细粒度级别相反， [`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 和 [`pstats`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-pstats) 模块提供了用于在较大的代码块中识别时间关键部分的工具。
+​	与 [`timeit`]({{< ref "/library/debug/timeit#module-timeit" >}}) 的精细粒度级别相反， [`profile`]({{< ref "/library/debug/profile#module-profile" >}}) 和 [`pstats`]({{< ref "/library/debug/profile#module-pstats" >}}) 模块提供了用于在较大的代码块中识别时间关键部分的工具。
 
 
 
@@ -297,7 +297,7 @@ b'witch which has which witches wrist watch'
 
 ​	开发高质量软件的一种方法是在开发过程中为每个函数编写测试，并在开发过程中经常运行这些测试。
 
-[`doctest`](https://docs.python.org/zh-cn/3.13/library/doctest.html#module-doctest) 模块提供了一个工具，用于扫描模块并验证程序文档字符串中嵌入的测试。测试构造就像将典型调用及其结果剪切并粘贴到文档字符串一样简单。这通过向用户提供示例来改进文档，并且它允许doctest模块确保代码保持对文档的真实:
+​	[`doctest`]({{< ref "/library/development/doctest#module-doctest" >}}) 模块提供了一个工具，用于扫描模块并验证程序文档字符串中嵌入的测试。测试构造就像将典型调用及其结果剪切并粘贴到文档字符串一样简单。这通过向用户提供示例来改进文档，并且它允许doctest模块确保代码保持对文档的真实:
 
 ```
 def average(values):
@@ -312,7 +312,7 @@ import doctest
 doctest.testmod()   # 自动验证嵌入式测试
 ```
 
-[`unittest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#module-unittest) 模块不像 [`doctest`](https://docs.python.org/zh-cn/3.13/library/doctest.html#module-doctest) 模块那样易于使用，但它允许在一个单独的文件中维护更全面的测试集:
+​	[`unittest`]({{< ref "/library/development/unittest#module-unittest" >}}) 模块不像 [`doctest`]({{< ref "/library/development/doctest#module-doctest" >}}) 模块那样易于使用，但它允许在一个单独的文件中维护更全面的测试集:
 
 ```
 import unittest
@@ -336,8 +336,8 @@ unittest.main()  # 从命令行调用时会执行所有测试
 
 ​	Python有“自带电池”的理念。通过其包的复杂和强大功能可以最好地看到这一点。例如:
 
-- [`xmlrpc.client`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#module-xmlrpc.client) 和 [`xmlrpc.server`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.server.html#module-xmlrpc.server) 模块使得实现远程过程调用变成了小菜一碟。 尽管存在于模块名称中，但用户不需要直接了解或处理 XML。
--  [`email`](https://docs.python.org/zh-cn/3.13/library/email.html#module-email) 包是一个用于管理电子邮件的库，包括MIME和其他符合 [**RFC 2822**](https://datatracker.ietf.org/doc/html/rfc2822.html) 规范的邮件文档。与 [`smtplib`](https://docs.python.org/zh-cn/3.13/library/smtplib.html#module-smtplib) 和 [`poplib`](https://docs.python.org/zh-cn/3.13/library/poplib.html#module-poplib) 不同（它们实际上做的是发送和接收消息），电子邮件包提供完整的工具集，用于构建或解码复杂的消息结构（包括附件）以及实现互联网编码和标头协议。
--  [`json`](https://docs.python.org/zh-cn/3.13/library/json.html#module-json) 包为解析这种流行的数据交换格式提供了强大的支持。 [`csv`](https://docs.python.org/zh-cn/3.13/library/csv.html#module-csv) 模块支持以逗号分隔值格式直接读取和写入文件，这种格式通常为数据库和电子表格所支持。 XML 处理由 [`xml.etree.ElementTree`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#module-xml.etree.ElementTree) ， [`xml.dom`](https://docs.python.org/zh-cn/3.13/library/xml.dom.html#module-xml.dom) 和 [`xml.sax`](https://docs.python.org/zh-cn/3.13/library/xml.sax.html#module-xml.sax) 包支持。这些模块和软件包共同大大简化了 Python 应用程序和其他工具之间的数据交换。
--  [`sqlite3`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#module-sqlite3) 模块是 SQLite 数据库库的包装器，提供了一个可以使用稍微非标准的 SQL 语法更新和访问的持久数据库。
-- 国际化由许多模块支持，包括 [`gettext`](https://docs.python.org/zh-cn/3.13/library/gettext.html#module-gettext) ， [`locale`](https://docs.python.org/zh-cn/3.13/library/locale.html#module-locale) ，以及 [`codecs`](https://docs.python.org/zh-cn/3.13/library/codecs.html#module-codecs) 包。
+- [`xmlrpc.client`]({{< ref "/library/internet/xmlrpc_client#module-xmlrpc.client" >}}) 和 [`xmlrpc.server`]({{< ref "/library/internet/xmlrpc_server#module-xmlrpc.server" >}}) 模块使得实现远程过程调用变成了小菜一碟。 尽管存在于模块名称中，但用户不需要直接了解或处理 XML。
+-  [`email`]({{< ref "/library/netdata/email#module-email" >}}) 包是一个用于管理电子邮件的库，包括MIME和其他符合 [**RFC 2822**](https://datatracker.ietf.org/doc/html/rfc2822.html) 规范的邮件文档。与 [`smtplib`]({{< ref "/library/internet/smtplib#module-smtplib" >}}) 和 [`poplib`]({{< ref "/library/internet/poplib#module-poplib" >}}) 不同（它们实际上做的是发送和接收消息），电子邮件包提供完整的工具集，用于构建或解码复杂的消息结构（包括附件）以及实现互联网编码和标头协议。
+-  [`json`]({{< ref "/library/netdata/json#module-json" >}}) 包为解析这种流行的数据交换格式提供了强大的支持。 [`csv`]({{< ref "/library/fileformats/csv#module-csv" >}}) 模块支持以逗号分隔值格式直接读取和写入文件，这种格式通常为数据库和电子表格所支持。 XML 处理由 [`xml.etree.ElementTree`]({{< ref "/library/markup/xml_etree_elementtree#module-xml.etree.ElementTree" >}}) ， [`xml.dom`]({{< ref "/library/markup/xml_dom#module-xml.dom" >}}) 和 [`xml.sax`]({{< ref "/library/markup/xml_sax#module-xml.sax" >}}) 包支持。这些模块和软件包共同大大简化了 Python 应用程序和其他工具之间的数据交换。
+-  [`sqlite3`]({{< ref "/library/persistence/sqlite3#module-sqlite3" >}}) 模块是 SQLite 数据库库的包装器，提供了一个可以使用稍微非标准的 SQL 语法更新和访问的持久数据库。
+- 国际化由许多模块支持，包括 [`gettext`]({{< ref "/library/i18n/gettext#module-gettext" >}}) ， [`locale`]({{< ref "/library/i18n/locale#module-locale" >}}) ，以及 [`codecs`]({{< ref "/library/binary/codecs#module-codecs" >}}) 包。

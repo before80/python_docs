@@ -9,7 +9,7 @@ draft = false
 
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/urllib.robotparser.html](https://docs.python.org/zh-cn/3.13/library/urllib.robotparser.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/urllib.robotparser.html](https://docs.python.org/zh-cn/3.13/library/urllib.robotparser.html)
 >
 > 收录该文档的时间：`2024-11-15T20:28:46+08:00`
 
@@ -19,7 +19,7 @@ draft = false
 
 ------
 
-​	此模块提供了一个单独的类 [`RobotFileParser`](https://docs.python.org/zh-cn/3.13/library/urllib.robotparser.html#urllib.robotparser.RobotFileParser)，它可以回答关于某个特定用户代理能否在发布了 `robots.txt` 文件的网站抓取特定 URL 的问题。 有关 `robots.txt` 文件结构的更多细节，请参阅 http://www.robotstxt.org/orig.html。
+​	此模块提供了一个单独的类 [`RobotFileParser`]({{< ref "/library/internet/urllib/urllib_robotparser#urllib.robotparser.RobotFileParser" >}})，它可以回答关于某个特定用户代理能否在发布了 `robots.txt` 文件的网站抓取特定 URL 的问题。 有关 `robots.txt` 文件结构的更多细节，请参阅 http://www.robotstxt.org/orig.html。
 
 ## *class* urllib.robotparser.**RobotFileParser**(*url=''*)
 
@@ -58,19 +58,19 @@ draft = false
 
 ## **request_rate**(*useragent*)
 
-​	以 [named tuple](https://docs.python.org/zh-cn/3.13/glossary.html#term-named-tuple) `RequestRate(requests, seconds)` 的形式从 `robots.txt` 返回 `Request-rate` 形参的内容。 如果此形参不存在或不适用于指定的 *useragent* 或者此形参的 `robots.txt` 条目存在语法错误，则返回 `None`。
+​	以 [named tuple]({{< ref "/glossary/idx#term-named-tuple" >}}) `RequestRate(requests, seconds)` 的形式从 `robots.txt` 返回 `Request-rate` 形参的内容。 如果此形参不存在或不适用于指定的 *useragent* 或者此形参的 `robots.txt` 条目存在语法错误，则返回 `None`。
 
 > Added in version 3.6.
 >
 
 ## **site_maps**()
 
-​	以 [`list()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 的形式从 `robots.txt` 返回 `Sitemap` 形参的内容。 如果此形参不存在或者此形参的 `robots.txt` 条目存在语法错误，则返回 `None`。
+​	以 [`list()`]({{< ref "/library/stdtypes#list" >}}) 的形式从 `robots.txt` 返回 `Sitemap` 形参的内容。 如果此形参不存在或者此形参的 `robots.txt` 条目存在语法错误，则返回 `None`。
 
 > Added in version 3.8.
 >
 
-​	下面的例子演示了 [`RobotFileParser`](https://docs.python.org/zh-cn/3.13/library/urllib.robotparser.html#urllib.robotparser.RobotFileParser) 类的基本用法:
+​	下面的例子演示了 [`RobotFileParser`]({{< ref "/library/internet/urllib/urllib_robotparser#urllib.robotparser.RobotFileParser" >}}) 类的基本用法:
 
 
 

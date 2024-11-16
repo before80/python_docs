@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/zoneinfo.html](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/zoneinfo.html](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html)
 >
 > 收录该文档的时间：`2024-11-15T11:18:41+08:00`
 
@@ -21,25 +21,24 @@ draft = false
 
 ------
 
-[`zoneinfo`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#module-zoneinfo) 模块根据 [**PEP 615**](https://peps.python.org/pep-0615/) 中的原始规范说明提供了一个具体的时区实现来支持 IANA 时区数据库。 在默认情况下，[`zoneinfo`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#module-zoneinfo) 会在可能的情况下使用系统的时区数据；如果系统时区数据不可用，该库将回退为使用 PyPI 上提供的 [tzdata](https://pypi.org/project/tzdata/) 第一方包。
+[`zoneinfo`]({{< ref "/library/datatypes/zoneinfo#module-zoneinfo" >}}) 模块根据 [**PEP 615**](https://peps.python.org/pep-0615/) 中的原始规范说明提供了一个具体的时区实现来支持 IANA 时区数据库。 在默认情况下，[`zoneinfo`]({{< ref "/library/datatypes/zoneinfo#module-zoneinfo" >}}) 会在可能的情况下使用系统的时区数据；如果系统时区数据不可用，该库将回退为使用 PyPI 上提供的 [tzdata](https://pypi.org/project/tzdata/) 第一方包。
 
-​	参见
+​参见
+## 模块: [`datetime`]({{< ref "/library/datatypes/datetime#module-datetime" >}})
 
-## 模块: [`datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#module-datetime)
-
-​	提供 [`time`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.time) 和 [`datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime) 类型，[`ZoneInfo`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.ZoneInfo) 类被设计为可配合这两个类型使用。
+​	提供 [`time`]({{< ref "/library/datatypes/datetime#datetime.time" >}}) 和 [`datetime`]({{< ref "/library/datatypes/datetime#datetime.datetime" >}}) 类型，[`ZoneInfo`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.ZoneInfo" >}}) 类被设计为可配合这两个类型使用。
 
 ## 包 [tzdata](https://pypi.org/project/tzdata/)
 
 ​	由 CPython 核心开发者维护以通过 PyPI 提供时区数据的第一方包。
 
-[Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): not WASI.
+[Availability]({{< ref "/library/intro#availability" >}}): not WASI.
 
-​	此模块在 WebAssembly 平台上无效或不可用。 请参阅 [WebAssembly 平台](https://docs.python.org/zh-cn/3.13/library/intro.html#wasm-availability) 了解详情。
+​	此模块在 WebAssembly 平台上无效或不可用。 请参阅 [WebAssembly 平台]({{< ref "/library/intro#wasm-availability" >}}) 了解详情。
 
 ## 使用 `ZoneInfo`
 
-[`ZoneInfo`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.ZoneInfo) 是 [`datetime.tzinfo`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.tzinfo) 抽象基类的具体实现，其目标是通过构造器、 [`datetime.replace`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime.replace) 方法或 [`datetime.astimezone`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime.astimezone) 来与 `tzinfo` 建立关联:
+[`ZoneInfo`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.ZoneInfo" >}}) 是 [`datetime.tzinfo`]({{< ref "/library/datatypes/datetime#datetime.tzinfo" >}}) 抽象基类的具体实现，其目标是通过构造器、 [`datetime.replace`]({{< ref "/library/datatypes/datetime#datetime.datetime.replace" >}}) 方法或 [`datetime.astimezone`]({{< ref "/library/datatypes/datetime#datetime.datetime.astimezone" >}}) 来与 `tzinfo` 建立关联:
 
 
 
@@ -69,7 +68,7 @@ draft = false
 'PST'
 ```
 
-​	这些时区还支持在 [**PEP 495**](https://peps.python.org/pep-0495/) 中引入的 [`fold`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime.fold)。 在可能导致时间歧义的时差转换中（例如夏令时到标准时的转换），当 `fold=0` 时会使用转换 *之前* 的时差，而当 `fold=1` 时则使用转换 *之后* 的时差，例如:
+​	这些时区还支持在 [**PEP 495**](https://peps.python.org/pep-0495/) 中引入的 [`fold`]({{< ref "/library/datatypes/datetime#datetime.datetime.fold" >}})。 在可能导致时间歧义的时差转换中（例如夏令时到标准时的转换），当 `fold=0` 时会使用转换 *之前* 的时差，而当 `fold=1` 时则使用转换 *之后* 的时差，例如:
 
 
 
@@ -102,35 +101,35 @@ draft = false
 
 ## 数据源
 
-`zoneinfo` 模块不直接提供时区数据，而是在可能的情况下从系统时区数据库或使用 PyPI 上的第一方包 [tzdata](https://pypi.org/project/tzdata/) 来获取时区信息。 某些系统，特别是 Windows 系统也包括在内，并没有可用的 IANA 数据库，因此对于要保证获取时区信息的跨平台兼容性的项目，推荐针对 tzdata 声明依赖。 如果系统数据和 tzdata 均不可用，则所有对 [`ZoneInfo`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.ZoneInfo) 的调用都将引发 [`ZoneInfoNotFoundError`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.ZoneInfoNotFoundError)。
+`zoneinfo` 模块不直接提供时区数据，而是在可能的情况下从系统时区数据库或使用 PyPI 上的第一方包 [tzdata](https://pypi.org/project/tzdata/) 来获取时区信息。 某些系统，特别是 Windows 系统也包括在内，并没有可用的 IANA 数据库，因此对于要保证获取时区信息的跨平台兼容性的项目，推荐针对 tzdata 声明依赖。 如果系统数据和 tzdata 均不可用，则所有对 [`ZoneInfo`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.ZoneInfo" >}}) 的调用都将引发 [`ZoneInfoNotFoundError`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.ZoneInfoNotFoundError" >}})。
 
 
 
 ### 配置数据源
 
-​	当 `ZoneInfo(key)` 被调用时，此构造器首先会在 [`TZPATH`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.TZPATH) 所指定的目录下搜索匹配 `key` 的文件，失败时则会在 tzdata 包中查找匹配。 此行为可通过三种方式来配置:
+​	当 `ZoneInfo(key)` 被调用时，此构造器首先会在 [`TZPATH`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.TZPATH" >}}) 所指定的目录下搜索匹配 `key` 的文件，失败时则会在 tzdata 包中查找匹配。 此行为可通过三种方式来配置:
 
-1. 默认的 [`TZPATH`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.TZPATH) 未通过其他方式指定时可在 [编译时](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo-data-compile-time-config) 进行配置。
-2. [`TZPATH`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.TZPATH) 可使用 [环境变量](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo-data-environment-var) 进行配置。
-3. 在 [运行时](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo-data-runtime-config)，搜索路径可使用 [`reset_tzpath()`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.reset_tzpath) 函数来修改。
+1. 默认的 [`TZPATH`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.TZPATH" >}}) 未通过其他方式指定时可在 [编译时]({{< ref "/library/datatypes/zoneinfo#zoneinfo-data-compile-time-config" >}}) 进行配置。
+2. [`TZPATH`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.TZPATH" >}}) 可使用 [环境变量]({{< ref "/library/datatypes/zoneinfo#zoneinfo-data-environment-var" >}}) 进行配置。
+3. 在 [运行时]({{< ref "/library/datatypes/zoneinfo#zoneinfo-data-runtime-config" >}})，搜索路径可使用 [`reset_tzpath()`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.reset_tzpath" >}}) 函数来修改。
 
 
 
 #### 编译时配置
 
-​	默认的 [`TZPATH`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.TZPATH) 包括一些时区数据库的通用部署位置（Windows 除外，该系统没有时区数据的“通用”位置）。 在 POSIX 系统中，下游分发者和从源码编译 Python 的开发者知道系统时区数据部署位置，它们可以通过指定编译时选项 `TZPATH` (或者更常见的是通过 [`配置旗标 --with-tzpath`](https://docs.python.org/zh-cn/3.13/using/configure.html#cmdoption-with-tzpath)) 来改变默认的时区路径，该选项应当是一个由 [`os.pathsep`](https://docs.python.org/zh-cn/3.13/library/os.html#os.pathsep) 分隔的字符串。
+​	默认的 [`TZPATH`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.TZPATH" >}}) 包括一些时区数据库的通用部署位置（Windows 除外，该系统没有时区数据的“通用”位置）。 在 POSIX 系统中，下游分发者和从源码编译 Python 的开发者知道系统时区数据部署位置，它们可以通过指定编译时选项 `TZPATH` (或者更常见的是通过 [`配置旗标 --with-tzpath`]({{< ref "/using/configure#cmdoption-with-tzpath" >}})) 来改变默认的时区路径，该选项应当是一个由 [`os.pathsep`]({{< ref "/library/allos/os#os.pathsep" >}}) 分隔的字符串。
 
-​	在所有平台上，配置值会在 [`sysconfig.get_config_var()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_config_var) 中以 `TZPATH` 键的形式提供。
+​	在所有平台上，配置值会在 [`sysconfig.get_config_var()`]({{< ref "/library/python/sysconfig#sysconfig.get_config_var" >}}) 中以 `TZPATH` 键的形式提供。
 
 
 
 #### 环境配置
 
-​	当初始化 [`TZPATH`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.TZPATH) 时（在导入时或不带参数调用 [`reset_tzpath()`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.reset_tzpath) 时），`zoneinfo` 模块将使用环境变量 `PYTHONTZPATH`，如果变量存在则会设置搜索路径。
+​	当初始化 [`TZPATH`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.TZPATH" >}}) 时（在导入时或不带参数调用 [`reset_tzpath()`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.reset_tzpath" >}}) 时），`zoneinfo` 模块将使用环境变量 `PYTHONTZPATH`，如果变量存在则会设置搜索路径。
 
 ## **PYTHONTZPATH**
 
-​	这是一个以 [`os.pathsep`](https://docs.python.org/zh-cn/3.13/library/os.html#os.pathsep) 分隔的字符串，其中包含要使用的时区搜索路径。 它必须仅由绝对路径而非相对路径组成。 在 `PYTHONTZPATH` 中指定的相对路径部分将不会被使用，但在其他情况下当指定相对路径时的行为该实现是有定义的；CPython 将引发 [`InvalidTZPathWarning`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.InvalidTZPathWarning)，而其他实现可自由地忽略错误部分或是引发异常。
+​	这是一个以 [`os.pathsep`]({{< ref "/library/allos/os#os.pathsep" >}}) 分隔的字符串，其中包含要使用的时区搜索路径。 它必须仅由绝对路径而非相对路径组成。 在 `PYTHONTZPATH` 中指定的相对路径部分将不会被使用，但在其他情况下当指定相对路径时的行为该实现是有定义的；CPython 将引发 [`InvalidTZPathWarning`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.InvalidTZPathWarning" >}})，而其他实现可自由地忽略错误部分或是引发异常。
 
 ​	要设置让系统忽略系统数据并改用 tzdata 包，请设置 `PYTHONTZPATH=""`。
 
@@ -138,13 +137,13 @@ draft = false
 
 #### 运行时配置
 
-​	TZ 搜索路径也可在运行时使用 [`reset_tzpath()`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.reset_tzpath) 函数来配置。 通常并不建议如此操作，不过在需要使用指定时区路径（或者需要禁止访问系统时区）的测试函数中使用它则是合理的。
+​	TZ 搜索路径也可在运行时使用 [`reset_tzpath()`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.reset_tzpath" >}}) 函数来配置。 通常并不建议如此操作，不过在需要使用指定时区路径（或者需要禁止访问系统时区）的测试函数中使用它则是合理的。
 
 ## `ZoneInfo` 类
 
 ## *class* zoneinfo.**ZoneInfo**(*key*)
 
-​	一个具体的 [`datetime.tzinfo`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.tzinfo) 子类，它代表一个由字符串 `key` 所指定的 IANA 时区。 对主构造器的调用将总是返回可进行标识比较的对象；但是另一种方式，对所有的 `key` 值通过 [`ZoneInfo.clear_cache()`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.ZoneInfo.clear_cache) 禁止缓存失效，对以下断言将总是为真值:
+​	一个具体的 [`datetime.tzinfo`]({{< ref "/library/datatypes/datetime#datetime.tzinfo" >}}) 子类，它代表一个由字符串 `key` 所指定的 IANA 时区。 对主构造器的调用将总是返回可进行标识比较的对象；但是另一种方式，对所有的 `key` 值通过 [`ZoneInfo.clear_cache()`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.ZoneInfo.clear_cache" >}}) 禁止缓存失效，对以下断言将总是为真值:
 
 ```
 a = ZoneInfo(key)
@@ -152,19 +151,19 @@ b = ZoneInfo(key)
 assert a is b
 ```
 
-`key` 必须采用相对的标准化 POSIX 路径的形式，其中没有对上一层级的引用。 如果传入了不合要求的键则构造器将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+`key` 必须采用相对的标准化 POSIX 路径的形式，其中没有对上一层级的引用。 如果传入了不合要求的键则构造器将引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
-​	如果没有找到匹配 `key` 的文件，构造器将引发 [`ZoneInfoNotFoundError`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.ZoneInfoNotFoundError)。
+​	如果没有找到匹配 `key` 的文件，构造器将引发 [`ZoneInfoNotFoundError`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.ZoneInfoNotFoundError" >}})。
 
 `ZoneInfo` 类具有两个替代构造器:
 
 ## *classmethod* ZoneInfo.**from_file**(*fobj*, */*, *key=None*)
 
-​	基于一个返回字节串的文件型对象（例如一个以二进制模式打开的文件或是一个 [`io.BytesIO`](https://docs.python.org/zh-cn/3.13/library/io.html#io.BytesIO) 对象）构造 `ZoneInfo` 对象。 不同于主构造器，此构造器总是会构造一个新对象。
+​	基于一个返回字节串的文件型对象（例如一个以二进制模式打开的文件或是一个 [`io.BytesIO`]({{< ref "/library/allos/io#io.BytesIO" >}}) 对象）构造 `ZoneInfo` 对象。 不同于主构造器，此构造器总是会构造一个新对象。
 
-`key` 形参设置时区名称以供 [`__str__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__str__) 和 [`__repr__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__repr__) 使用。
+`key` 形参设置时区名称以供 [`__str__()`]({{< ref "/reference/datamodel#object.__str__" >}}) 和 [`__repr__()`]({{< ref "/reference/datamodel#object.__repr__" >}}) 使用。
 
-​	由此构造器创建的对象不可被封存 (参见 [pickling](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#pickling))。
+​	由此构造器创建的对象不可被封存 (参见 [pickling]({{< ref "/library/datatypes/zoneinfo#pickling" >}}))。
 
 ## *classmethod* ZoneInfo.**no_cache**(*key*)
 
@@ -196,19 +195,18 @@ assert a is b
 
 ## ZoneInfo.**key**
 
-​	这是一个只读的 [attribute](https://docs.python.org/zh-cn/3.13/glossary.html#term-attribute)，它返回传给构造器的 `key` 的值，该值应为一个 IANA 时区数据库的查找键 (例如 `America/New_York`, `Europe/Paris` 或 `Asia/Tokyo`)。
+​	这是一个只读的 [attribute]({{< ref "/glossary/idx#term-attribute" >}})，它返回传给构造器的 `key` 的值，该值应为一个 IANA 时区数据库的查找键 (例如 `America/New_York`, `Europe/Paris` 或 `Asia/Tokyo`)。
 
 ​	对于不指定 `key` 形参而是基于文件构造时区，该属性将设为 `None`。
 
-​	备注
-
+​备注
  
 
 ​	尽管将这些信息暴露给最终用户是一种比较普通的做法，但是这些值被设计作为代表相关时区的主键而不一定是面向用户的元素。 CLDR (Unicode 通用区域数据存储库) 之类的项目可被用来根据这些键获取更为用户友好的字符串。
 
 ### 字符串表示
 
-​	当在 [`ZoneInfo`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.ZoneInfo) 对象上调用 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 时返回的字符串表示默认会使用 [`ZoneInfo.key`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.ZoneInfo.key) 属性（参见该属性文档中的用法注释）:
+​	当在 [`ZoneInfo`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.ZoneInfo" >}}) 对象上调用 [`str`]({{< ref "/library/stdtypes#str" >}}) 时返回的字符串表示默认会使用 [`ZoneInfo.key`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.ZoneInfo.key" >}}) 属性（参见该属性文档中的用法注释）:
 
 
 
@@ -222,7 +220,7 @@ assert a is b
 '2020-04-01T03:15:00+12:00 [Pacific/Kwajalein]'
 ```
 
-​	对于基于文件而非指定 `key` 形参所构建的对象，`str` 会回退为调用 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr)。 `ZoneInfo` 的 `repr` 是由具体实现定义的并且不一定会在不同版本间保持稳定，但它保证不会是一个有效的 `ZoneInfo` 键。
+​	对于基于文件而非指定 `key` 形参所构建的对象，`str` 会回退为调用 [`repr()`]({{< ref "/library/functions#repr" >}})。 `ZoneInfo` 的 `repr` 是由具体实现定义的并且不一定会在不同版本间保持稳定，但它保证不会是一个有效的 `ZoneInfo` 键。
 
 
 
@@ -272,19 +270,18 @@ assert a is b
 
 ​	此函数可能会打开大量的文件，因为确定时区路径上某个文件是否为有效时区的最佳方式是读取开头位置的“魔术字符串”。
 
-​	备注
-
+​备注
  
 
-​	这些值并不被设计用来对外公开给最终用户；对于面向用户的元素，应用程序应当使用 CLDR (Unicode 通用区域数据存储库) 之类来获取更为用户友好的字符串。 另请参阅 [`ZoneInfo.key`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.ZoneInfo.key) 中的提示性说明。
+​	这些值并不被设计用来对外公开给最终用户；对于面向用户的元素，应用程序应当使用 CLDR (Unicode 通用区域数据存储库) 之类来获取更为用户友好的字符串。 另请参阅 [`ZoneInfo.key`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.ZoneInfo.key" >}}) 中的提示性说明。
 
 ## zoneinfo.**reset_tzpath**(*to=None*)
 
-​	设置或重置模块的时区搜索路径 ([`TZPATH`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.TZPATH))。 当不带参数调用时，[`TZPATH`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.TZPATH) 会被设为默认值。
+​	设置或重置模块的时区搜索路径 ([`TZPATH`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.TZPATH" >}}))。 当不带参数调用时，[`TZPATH`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.TZPATH" >}}) 会被设为默认值。
 
-​	调用 `reset_tzpath` 将不会使 [`ZoneInfo`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.ZoneInfo) 缓存失效，因而在缓存未命中的情况下对主 `ZoneInfo` 构造器的调用将只使用新的 `TZPATH`。
+​	调用 `reset_tzpath` 将不会使 [`ZoneInfo`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.ZoneInfo" >}}) 缓存失效，因而在缓存未命中的情况下对主 `ZoneInfo` 构造器的调用将只使用新的 `TZPATH`。
 
-`to` 形参必须是由字符串或 [`os.PathLike`](https://docs.python.org/zh-cn/3.13/library/os.html#os.PathLike) 组成的 [sequence](https://docs.python.org/zh-cn/3.13/glossary.html#term-sequence) 或而不是字符串，它们必须都是绝对路径。 如果所传入的不是绝对路径则将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+`to` 形参必须是由字符串或 [`os.PathLike`]({{< ref "/library/allos/os#os.PathLike" >}}) 组成的 [sequence]({{< ref "/glossary/idx#term-sequence" >}}) 或而不是字符串，它们必须都是绝对路径。 如果所传入的不是绝对路径则将引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 ## 全局变量
 
@@ -294,16 +291,16 @@ assert a is b
 
 `TZPATH` 可以只包含绝对路径，绝不包含相对路径，无论它是如何配置的。
 
-`zoneinfo.TZPATH` 所指向的对象可能随着对 [`reset_tzpath()`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.reset_tzpath) 的调用而改变，因此推荐使用 `zoneinfo.TZPATH` 而不是从 `zoneinfo` 导入 `TZPATH` 或是将 `zoneinfo.TZPATH` 赋值给一个长期变量。
+`zoneinfo.TZPATH` 所指向的对象可能随着对 [`reset_tzpath()`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.reset_tzpath" >}}) 的调用而改变，因此推荐使用 `zoneinfo.TZPATH` 而不是从 `zoneinfo` 导入 `TZPATH` 或是将 `zoneinfo.TZPATH` 赋值给一个长期变量。
 
-​	有关配置时区搜索路径的更多信息，请参阅 [配置数据源](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo-data-configuration)。
+​	有关配置时区搜索路径的更多信息，请参阅 [配置数据源]({{< ref "/library/datatypes/zoneinfo#zoneinfo-data-configuration" >}})。
 
 ## 异常与警告
 
 ## *exception* zoneinfo.**ZoneInfoNotFoundError**
 
-​	当一个 [`ZoneInfo`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#zoneinfo.ZoneInfo) 对象的构造由于在系统中找不到指定的键而失败时引发。 这是 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError) 的一个子类。
+​	当一个 [`ZoneInfo`]({{< ref "/library/datatypes/zoneinfo#zoneinfo.ZoneInfo" >}}) 对象的构造由于在系统中找不到指定的键而失败时引发。 这是 [`KeyError`]({{< ref "/library/exceptions#KeyError" >}}) 的一个子类。
 
 ## *exception* zoneinfo.**InvalidTZPathWarning**
 
-​	当 [`PYTHONTZPATH`](https://docs.python.org/zh-cn/3.13/library/zoneinfo.html#envvar-PYTHONTZPATH) 包含将被过滤掉的无效组件，例如一个相对路径时引发。
+​	当 [`PYTHONTZPATH`]({{< ref "/library/datatypes/zoneinfo#envvar-PYTHONTZPATH" >}}) 包含将被过滤掉的无效组件，例如一个相对路径时引发。

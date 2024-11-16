@@ -9,13 +9,13 @@ draft = false
 
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/email.examples.html](https://docs.python.org/zh-cn/3.13/library/email.examples.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/email.examples.html](https://docs.python.org/zh-cn/3.13/library/email.examples.html)
 >
 > 收录该文档的时间：`2024-11-15T12:09:25+08:00`
 
 # `email`: 示例
 
-​	以下是一些如何使用 [`email`](https://docs.python.org/zh-cn/3.13/library/email.html#module-email) 包来读取、写入和发送简单电子邮件以及更复杂的MIME邮件的示例。
+​	以下是一些如何使用 [`email`]({{< ref "/library/netdata/email#module-email" >}}) 包来读取、写入和发送简单电子邮件以及更复杂的MIME邮件的示例。
 
 ​	首先，让我们看看如何创建和发送简单的文本消息（文本内容和地址都可能包含unicode字符）：
 
@@ -44,7 +44,7 @@ s.send_message(msg)
 s.quit()
 ```
 
-​	解析 [**RFC 822**](https://datatracker.ietf.org/doc/html/rfc822.html) 标题可以通过使用 [`parser`](https://docs.python.org/zh-cn/3.13/library/email.parser.html#module-email.parser) 模块中的类来轻松完成：
+​	解析 [**RFC 822**](https://datatracker.ietf.org/doc/html/rfc822.html) 标题可以通过使用 [`parser`]({{< ref "/library/netdata/email/email_parser#module-email.parser" >}}) 模块中的类来轻松完成：
 
 ```
 # 导入我们需要的 email 模块
@@ -105,7 +105,7 @@ with smtplib.SMTP('localhost') as s:
     s.send_message(msg)
 ```
 
-​	以下是如何将目录的全部内容作为电子邮件消息发送的示例： [[1\]](https://docs.python.org/zh-cn/3.13/library/email.examples.html#id3)
+​	以下是如何将目录的全部内容作为电子邮件消息发送的示例： [[1\]]({{< ref "/library/netdata/email/email_examples#id3" >}})
 
 ``` sh
 #!/usr/bin/env python3
@@ -401,8 +401,7 @@ Salut!
 Cette recette [1] sera sûrement un très bon repas.
 ```
 
-​	备注
-
-[[1](https://docs.python.org/zh-cn/3.13/library/email.examples.html#id2)]
+​备注
+[[1]({{< ref "/library/netdata/email/email_examples#id2" >}})]
 
 ​	感谢 Matthew Dixon Cowles 提供最初的灵感和示例。

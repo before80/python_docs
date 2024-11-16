@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/tkinter.html](https://docs.python.org/zh-cn/3.13/library/tkinter.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/tkinter.html](https://docs.python.org/zh-cn/3.13/library/tkinter.html)
 >
 > 收录该文档的时间：`2024-11-15T20:56:44+08:00`
 
@@ -18,16 +18,15 @@ draft = false
 
 ------
 
-[`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 包 ("Tk 接口") 是针对 Tcl/Tk GUI 工具包的标准 Python 接口。 Tk 和 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 在大多数 Unix 平台，包括 macOS，以及 Windows 系统上均可使用。
+[`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 包 ("Tk 接口") 是针对 Tcl/Tk GUI 工具包的标准 Python 接口。 Tk 和 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 在大多数 Unix 平台，包括 macOS，以及 Windows 系统上均可使用。
 
-​	若在命令行执行 `python -m tkinter`，应会弹出一个简单的 Tk 界面窗口， 表明 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 包已安装完成，还会显示当前安装的 Tcl/Tk 版本，以便阅读对应版本的 Tcl/Tk 文档。
+​	若在命令行执行 `python -m tkinter`，应会弹出一个简单的 Tk 界面窗口， 表明 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 包已安装完成，还会显示当前安装的 Tcl/Tk 版本，以便阅读对应版本的 Tcl/Tk 文档。
 
-​	Tkinter 支持众多的 Tcl/Tk 版本，带或不带多线程版本均可。官方的 Python 二进制版本捆绑了 Tcl/Tk 8.6 多线程版本。关于可支持版本的更多信息，请参阅 [`_tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-_tkinter) 模块的源代码。
+​	Tkinter 支持众多的 Tcl/Tk 版本，带或不带多线程版本均可。官方的 Python 二进制版本捆绑了 Tcl/Tk 8.6 多线程版本。关于可支持版本的更多信息，请参阅 [`_tkinter`]({{< ref "/library/tk/tkinter#module-_tkinter" >}}) 模块的源代码。
 
 ​	Tkinter 并不只是做了简单的封装，而是增加了相当多的代码逻辑，让使用体验更具 Python 风格（pythonic） 。本文将集中介绍这些增加和变化部分，关于未改动部分的细节，请参考 Tcl/Tk 官方文档。
 
-​	备注
-
+​备注
  
 
 ​	Tcl/Tk 8.5 (2007) 引入了支持主题的现代风格用户界面组件集以及使用这些组件的新版 API。 旧版和新版 API 都可以使用。 你在网上所能找到的大多数文档仍然是使用旧版 API 因此也许已经相当过时。
@@ -78,23 +77,23 @@ draft = false
 
 ## Tcl
 
-​	Tcl 是一种动态解释型编程语言，正如 Python 一样。尽管它可作为一种通用的编程语言单独使用，但最常见的用法还是作为脚本引擎或 Tk 工具包的接口嵌入到 C 程序中。Tcl 库有一个 C 接口，用于创建和管理一个或多个 Tcl 解释器实例，并在这些实例中运行 Tcl 命令和脚本，添加用 Tcl 或 C 语言实现的自定义命令。每个解释器都拥有一个事件队列，某些部件可向解释器发送事件交由其处理。与 Python 不同，Tcl 的执行模型是围绕协同多任务而设计的，Tkinter 协调了两者的差别（详见 [Threading model](https://docs.python.org/zh-cn/3.13/library/tkinter.html#threading-model) ）。
+​	Tcl 是一种动态解释型编程语言，正如 Python 一样。尽管它可作为一种通用的编程语言单独使用，但最常见的用法还是作为脚本引擎或 Tk 工具包的接口嵌入到 C 程序中。Tcl 库有一个 C 接口，用于创建和管理一个或多个 Tcl 解释器实例，并在这些实例中运行 Tcl 命令和脚本，添加用 Tcl 或 C 语言实现的自定义命令。每个解释器都拥有一个事件队列，某些部件可向解释器发送事件交由其处理。与 Python 不同，Tcl 的执行模型是围绕协同多任务而设计的，Tkinter 协调了两者的差别（详见 [Threading model]({{< ref "/library/tk/tkinter#threading-model" >}}) ）。
 
 ## Tk
 
-​	Tk 是一个用 C 语言实现的 [Tcl 包](https://wiki.tcl-lang.org/37432)，它添加了用于创建和操纵 GUI 部件的自定义命令。 每个 [`Tk`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#tkinter.Tk) 对象都嵌入了自己的 Tcl 解释器实例并将 Tk 加载到其中。 Tk 的部件是高度可定制的，但其代价则是过时的外观。 Tk 使用 Tcl 的事件队列来生成并处理 GUI 事件。
+​	Tk 是一个用 C 语言实现的 [Tcl 包](https://wiki.tcl-lang.org/37432)，它添加了用于创建和操纵 GUI 部件的自定义命令。 每个 [`Tk`]({{< ref "/library/tk/tkinter#tkinter.Tk" >}}) 对象都嵌入了自己的 Tcl 解释器实例并将 Tk 加载到其中。 Tk 的部件是高度可定制的，但其代价则是过时的外观。 Tk 使用 Tcl 的事件队列来生成并处理 GUI 事件。
 
 ## Ttk
 
-​	带有主题的 Tk（Ttk）是较新加入的 Tk 部件，相比很多经典的 Tk 部件，在各平台提供的界面更加美观。自 Tk 8.5 版本开始，Ttk 作为 Tk 的成员进行发布。Python 则捆绑在一个单独的模块中， [`tkinter.ttk`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#module-tkinter.ttk)。
+​	带有主题的 Tk（Ttk）是较新加入的 Tk 部件，相比很多经典的 Tk 部件，在各平台提供的界面更加美观。自 Tk 8.5 版本开始，Ttk 作为 Tk 的成员进行发布。Python 则捆绑在一个单独的模块中， [`tkinter.ttk`]({{< ref "/library/tk/tkinter_ttk#module-tkinter.ttk" >}})。
 
 ​	在内部，Tk 和 Ttk 使用下层操作系统的工具库，例如在 Unix/X11 上是 Xlib，在 macOS 上是 Cocoa，在 Windows 上是 GDI。
 
-​	当你的 Python 应用程序使用 Tkinter 中的某个类，例如创建一个部件时，[`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 模块将首先生成一个 Tcl/Tk 命令字符串。 它会把这个 Tcl 命令字符串传给内部的 [`_tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-_tkinter) 二进制模块，后者将随后调用 Tcl 解释器来对其求值。 Tcl 解释器随后将对 Tk 和/和 Ttk 包发起调用，它们又将继续对 Xlib, Cocoa 或 GDI 发起调用。
+​	当你的 Python 应用程序使用 Tkinter 中的某个类，例如创建一个部件时，[`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 模块将首先生成一个 Tcl/Tk 命令字符串。 它会把这个 Tcl 命令字符串传给内部的 [`_tkinter`]({{< ref "/library/tk/tkinter#module-_tkinter" >}}) 二进制模块，后者将随后调用 Tcl 解释器来对其求值。 Tcl 解释器随后将对 Tk 和/和 Ttk 包发起调用，它们又将继续对 Xlib, Cocoa 或 GDI 发起调用。
 
 ## Tkinter 模块
 
-​	对 Tkinter 的支持分布在多个模块中。 大多数应用程序将需要主模块 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter)，以及 [`tkinter.ttk`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#module-tkinter.ttk) 模块，后者提供了带主题的现代部件集及相应的 API:
+​	对 Tkinter 的支持分布在多个模块中。 大多数应用程序将需要主模块 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}})，以及 [`tkinter.ttk`]({{< ref "/library/tk/tkinter_ttk#module-tkinter.ttk" >}}) 模块，后者提供了带主题的现代部件集及相应的 API:
 
 ```
 from tkinter import *
@@ -105,7 +104,7 @@ from tkinter import ttk
 
 ​	构造一个最高层级的 Tk 部件，这通常是一个应用程序的主窗口，并为这个部件初始化 Tcl 解释器。 每个实例都有其各自所关联的 Tcl 解释器。
 
-[`Tk`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#tkinter.Tk) 类通常全部使用默认值来初始化。 不过，目前还可识别下列关键字参数:
+[`Tk`]({{< ref "/library/tk/tkinter#tkinter.Tk" >}}) 类通常全部使用默认值来初始化。 不过，目前还可识别下列关键字参数:
 
 ## *screenName*
 
@@ -121,7 +120,7 @@ from tkinter import ttk
 
 ## *useTk*
 
-​	如果为 `True`，则初始化 Tk 子系统。 [`tkinter.Tcl()`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#tkinter.Tcl) 函数会将其设为 `False`。
+​	如果为 `True`，则初始化 Tk 子系统。 [`tkinter.Tcl()`]({{< ref "/library/tk/tkinter#tkinter.Tcl" >}}) 函数会将其设为 `False`。
 
 ## *sync*
 
@@ -133,81 +132,81 @@ from tkinter import ttk
 
 ​	请注意在某些平台上只有当 *id* 是指向一个启用了 -container 选项的 Tk 框架或顶层窗口时此参数才能正确生效。
 
-[`Tk`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#tkinter.Tk) 读取并解释预置文件，其名称为 `.*className*.tcl` 和 `.*baseName*.tcl`，进入 Tcl 解释器并基于 `.*className*.py` 和 `.*baseName*.py` 的内容来调用 [`exec()`](https://docs.python.org/zh-cn/3.13/library/functions.html#exec)。 预置文件的路径为 `HOME` 环境变量，或者如果它未被定义，则为 [`os.curdir`](https://docs.python.org/zh-cn/3.13/library/os.html#os.curdir)。
+[`Tk`]({{< ref "/library/tk/tkinter#tkinter.Tk" >}}) 读取并解释预置文件，其名称为 `.*className*.tcl` 和 `.*baseName*.tcl`，进入 Tcl 解释器并基于 `.*className*.py` 和 `.*baseName*.py` 的内容来调用 [`exec()`]({{< ref "/library/functions#exec" >}})。 预置文件的路径为 `HOME` 环境变量，或者如果它未被定义，则为 [`os.curdir`]({{< ref "/library/allos/os#os.curdir" >}})。
 
 ## **tk**
 
-​	通过实例化 [`Tk`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#tkinter.Tk) 创建的 Tk 应用程序对象。 这提供了对 Tcl 解释器的访问。 每个被附加到相同 [`Tk`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#tkinter.Tk) 实例的控件都具有相同的 [`tk`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#tkinter.Tk.tk) 属性值。
+​	通过实例化 [`Tk`]({{< ref "/library/tk/tkinter#tkinter.Tk" >}}) 创建的 Tk 应用程序对象。 这提供了对 Tcl 解释器的访问。 每个被附加到相同 [`Tk`]({{< ref "/library/tk/tkinter#tkinter.Tk" >}}) 实例的控件都具有相同的 [`tk`]({{< ref "/library/tk/tkinter#tkinter.Tk.tk" >}}) 属性值。
 
 ## **master**
 
-​	包含此控件的控件对象。 对于 [`Tk`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#tkinter.Tk)，*master* 将为 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None) 因为它是主窗口。 术语 *master* 和 *parent* 是类似的且有时作为参数名称被交替使用；但是，调用 `winfo_parent()` 将返回控件名称字符串而 [`master`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#tkinter.Tk.master) 将返回控件对象。 *parent*/*child* 反映了树型关系而 *master*/*slave* 反映了容器结构。
+​	包含此控件的控件对象。 对于 [`Tk`]({{< ref "/library/tk/tkinter#tkinter.Tk" >}})，*master* 将为 [`None`]({{< ref "/library/constants#None" >}}) 因为它是主窗口。 术语 *master* 和 *parent* 是类似的且有时作为参数名称被交替使用；但是，调用 `winfo_parent()` 将返回控件名称字符串而 [`master`]({{< ref "/library/tk/tkinter#tkinter.Tk.master" >}}) 将返回控件对象。 *parent*/*child* 反映了树型关系而 *master*/*slave* 反映了容器结构。
 
 ## **children**
 
-​	以 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 表示的此控件的直接下级其中的键为子控件名称而值为子实例对象。
+​	以 [`dict`]({{< ref "/library/stdtypes#dict" >}}) 表示的此控件的直接下级其中的键为子控件名称而值为子实例对象。
 
 ## tkinter.**Tcl**(*screenName=None*, *baseName=None*, *className='Tk'*, *useTk=False*)
 
-[`Tcl()`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#tkinter.Tcl) 函数是一个工厂函数，它创建的对象类似于 [`Tk`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#tkinter.Tk) 类创建的，只是不会初始化 Tk 子系统。这在调动 Tcl 解释器时最为有用，这时不想创建多余的顶层窗口，或者无法创建（比如不带 X 服务的 Unix/Linux 系统）。由 [`Tcl()`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#tkinter.Tcl) 创建的对象可调用 `loadtk()` 方法创建一个顶层窗口（且会初始化 Tk 子系统）。
+[`Tcl()`]({{< ref "/library/tk/tkinter#tkinter.Tcl" >}}) 函数是一个工厂函数，它创建的对象类似于 [`Tk`]({{< ref "/library/tk/tkinter#tkinter.Tk" >}}) 类创建的，只是不会初始化 Tk 子系统。这在调动 Tcl 解释器时最为有用，这时不想创建多余的顶层窗口，或者无法创建（比如不带 X 服务的 Unix/Linux 系统）。由 [`Tcl()`]({{< ref "/library/tk/tkinter#tkinter.Tcl" >}}) 创建的对象可调用 `loadtk()` 方法创建一个顶层窗口（且会初始化 Tk 子系统）。
 
 ​	提供 Tk 支持的模块包括:
 
-## [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter)
+## [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}})
 
 ​	主 Tkinter 模块。
 
-## [`tkinter.colorchooser`](https://docs.python.org/zh-cn/3.13/library/tkinter.colorchooser.html#module-tkinter.colorchooser)
+## [`tkinter.colorchooser`]({{< ref "/library/tk/tkinter_colorchooser#module-tkinter.colorchooser" >}})
 
 ​	让用户选择颜色的对话框。
 
-## [`tkinter.commondialog`](https://docs.python.org/zh-cn/3.13/library/dialog.html#module-tkinter.commondialog)
+## [`tkinter.commondialog`]({{< ref "/library/tk/dialog#module-tkinter.commondialog" >}})
 
 ​	本文其他模块定义的对话框的基类。
 
-## [`tkinter.filedialog`](https://docs.python.org/zh-cn/3.13/library/dialog.html#module-tkinter.filedialog)
+## [`tkinter.filedialog`]({{< ref "/library/tk/dialog#module-tkinter.filedialog" >}})
 
 ​	允许用户指定文件的通用对话框，用于打开或保存文件。
 
-## [`tkinter.font`](https://docs.python.org/zh-cn/3.13/library/tkinter.font.html#module-tkinter.font)
+## [`tkinter.font`]({{< ref "/library/tk/tkinter_font#module-tkinter.font" >}})
 
 ​	帮助操作字体的工具。
 
-## [`tkinter.messagebox`](https://docs.python.org/zh-cn/3.13/library/tkinter.messagebox.html#module-tkinter.messagebox)
+## [`tkinter.messagebox`]({{< ref "/library/tk/tkinter_messagebox#module-tkinter.messagebox" >}})
 
 ​	访问标准的 Tk 对话框。
 
-## [`tkinter.scrolledtext`](https://docs.python.org/zh-cn/3.13/library/tkinter.scrolledtext.html#module-tkinter.scrolledtext)
+## [`tkinter.scrolledtext`]({{< ref "/library/tk/tkinter_scrolledtext#module-tkinter.scrolledtext" >}})
 
 ​	内置纵向滚动条的文本组件。
 
-## [`tkinter.simpledialog`](https://docs.python.org/zh-cn/3.13/library/dialog.html#module-tkinter.simpledialog)
+## [`tkinter.simpledialog`]({{< ref "/library/tk/dialog#module-tkinter.simpledialog" >}})
 
 ​	基础对话框和一些便捷功能。
 
-## [`tkinter.ttk`](https://docs.python.org/zh-cn/3.13/library/tkinter.ttk.html#module-tkinter.ttk)
+## [`tkinter.ttk`]({{< ref "/library/tk/tkinter_ttk#module-tkinter.ttk" >}})
 
-​	在 Tk 8.5 中引入的带主题的控件集，提供了对应于 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 模块中许多经典控件的现代替代。
+​	在 Tk 8.5 中引入的带主题的控件集，提供了对应于 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 模块中许多经典控件的现代替代。
 
 ​	附加模块:
 
-## [`_tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-_tkinter)
+## [`_tkinter`]({{< ref "/library/tk/tkinter#module-_tkinter" >}})
 
-​	一个包含低层级 Tcl/Tk 接口的二进制模块。 它会被主 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 模块自动导入，且永远不应被应用程序员所直接使用。 它通常是一个共享库（或 DLL），但在某些情况下可能被动态链接到 Python 解释器。
+​	一个包含低层级 Tcl/Tk 接口的二进制模块。 它会被主 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 模块自动导入，且永远不应被应用程序员所直接使用。 它通常是一个共享库（或 DLL），但在某些情况下可能被动态链接到 Python 解释器。
 
-## [`idlelib`](https://docs.python.org/zh-cn/3.13/library/idle.html#module-idlelib)
+## [`idlelib`]({{< ref "/library/tk/idle#module-idlelib" >}})
 
-​	Python 的集成开发与学习环境（IDLE）。 基于 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter)。
+​	Python 的集成开发与学习环境（IDLE）。 基于 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}})。
 
 ## `tkinter.constants`
 
-​	当向 Tkinter 调用传入各种形参时可被用来代替字符串的符号常量。 由主 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 模块自动导入。
+​	当向 Tkinter 调用传入各种形参时可被用来代替字符串的符号常量。 由主 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 模块自动导入。
 
-## [`tkinter.dnd`](https://docs.python.org/zh-cn/3.13/library/tkinter.dnd.html#module-tkinter.dnd)
+## [`tkinter.dnd`]({{< ref "/library/tk/tkinter_dnd#module-tkinter.dnd" >}})
 
-​	针对 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 的（实验性的）拖放支持。 当以 Tk DND 代替时它将会被弃用。
+​	针对 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 的（实验性的）拖放支持。 当以 Tk DND 代替时它将会被弃用。
 
-## [`turtle`](https://docs.python.org/zh-cn/3.13/library/turtle.html#module-turtle)
+## [`turtle`]({{< ref "/library/frameworks/turtle#module-turtle" >}})
 
 ​	Tk 窗口中的海龟绘图库。
 
@@ -295,7 +294,7 @@ grid [ttk::button .frm.btn -text "Quit" -command "destroy ."] -column 1 -row 0
 
 ​	首先，请记住，在不同版本的 Tkinter 和 Tcl/Tk 中，各个控件如何工作的细节可能会有所不同。如果您正在搜索文档，请确保它与安装在系统上的 Python 和 Tcl/Tk 版本相对应。
 
-​	在搜索如何使用 API 时，知道正在使用的类、选项或方法的确切名称会有所帮助。内省，无论是在交互式 Python shell 中，还是在 [`print()`](https://docs.python.org/zh-cn/3.13/library/functions.html#print) 中，都可以帮助你确定你需要什么。
+​	在搜索如何使用 API 时，知道正在使用的类、选项或方法的确切名称会有所帮助。内省，无论是在交互式 Python shell 中，还是在 [`print()`]({{< ref "/library/functions#print" >}}) 中，都可以帮助你确定你需要什么。
 
 ​	要找出控件上可用的配置选项，请调用其 `configure()` 方法，该方法返回一个字典，其中包含每个对象的各种信息，包括其默认值和当前值。使用 `keys()` 获取每个选项的名称。
 
@@ -310,7 +309,7 @@ print(btn.configure().keys())
 print(set(btn.configure().keys()) - set(frm.configure().keys()))
 ```
 
-​	类似地，你可以使用标准函数 [`dir()`](https://docs.python.org/zh-cn/3.13/library/functions.html#dir) 来查找控件对象的可用方法。如果您尝试一下，您会发现有超过200种常见的控件方法，因此再次确认那些特定于控件类的方法是有帮助的。
+​	类似地，你可以使用标准函数 [`dir()`]({{< ref "/library/functions#dir" >}}) 来查找控件对象的可用方法。如果您尝试一下，您会发现有超过200种常见的控件方法，因此再次确认那些特定于控件类的方法是有帮助的。
 
 ```
 print(dir(btn))
@@ -341,30 +340,29 @@ grid .frm.btn -column 0 -row 0
 
 ​	你还会发现许多 Tkinter 方法有复合名称，例如 `winfo_x()`，`winfo_height()`，`winfo_viewable()`。你可以在 [winfo](https://www.tcl.tk/man/tcl8.6/TkCmd/winfo.htm) 页面找到这些文档。
 
-​	备注
-
+​备注
  
 
 ​	有些令人困惑的是，所有 Tkinter 小部件上还有一些方法实际上并不在控件上操作，而是在全局范围内操作，独立于任何控件。例如访问剪贴板或系统响铃的方法。（它们恰好被实现为所有 Tkinter 小部件都继承自的基类 `Widget` 中的方法）。
 
 ## 线程模型
 
-​	Python 和 Tcl/Tk 的线程模型大不相同，而 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 则会试图进行调和。若要用到线程，可能需要注意这一点。
+​	Python 和 Tcl/Tk 的线程模型大不相同，而 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 则会试图进行调和。若要用到线程，可能需要注意这一点。
 
 ​	一个 Python 解释器可能会关联很多线程。在 Tcl 中，可以创建多个线程，但每个线程都关联了单独的 Tcl 解释器实例。线程也可以创建一个以上的解释器实例，尽管每个解释器实例只能由创建它的那个线程使用。
 
-​	Each `Tk` object created by [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) contains a Tcl interpreter. It also keeps track of which thread created that interpreter. Calls to [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) can be made from any Python thread. Internally, if a call comes from a thread other than the one that created the `Tk` object, an event is posted to the interpreter's event queue, and when executed, the result is returned to the calling Python thread.
+​	Each `Tk` object created by [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) contains a Tcl interpreter. It also keeps track of which thread created that interpreter. Calls to [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) can be made from any Python thread. Internally, if a call comes from a thread other than the one that created the `Tk` object, an event is posted to the interpreter's event queue, and when executed, the result is returned to the calling Python thread.
 
 ​	Tcl/Tk 应用程序通常是事件驱动的，这意味着在完成初始化以后，解释器会运行一个事件循环（即 `Tk.mainloop()`）并对事件做出响应。因为它是单线程的，所以事件处理程序必须快速响应，否则会阻塞其他事件的处理。为了避免阻塞，不应在事件处理程序中执行任何耗时很久的计算，而应利用计时器将任务分块，或者在其他线程中运行。而其他很多工具包的 GUI 是在一个完全独立的线程中运行的，独立于包括事件处理程序在内的所有代码。
 
-​	如果 Tcl 解释器没有运行事件循环并处理解释器事件，则除运行 Tcl 解释器的线程外，任何其他线程发起的 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 调用都会失败。
+​	如果 Tcl 解释器没有运行事件循环并处理解释器事件，则除运行 Tcl 解释器的线程外，任何其他线程发起的 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 调用都会失败。
 
 ​	存在一些特殊情况：
 
-- Tcl/Tk 库可编译为不支持多线程的版本。这时 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 会从初始 Python 线程调用底层库，即便那不是创建 Tcl 解释器的线程。会有一个全局锁来确保每次只会发生一次调用。
-- 虽然 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 允许创建一个以上的 `Tk` 实例（都带有自己的解释器），但所有属于同一线程的解释器均会共享同一个事件队列，这样很快就会一团糟。在实际编程时，一次创建的 `Tk` 实例不要超过一个。否则最好在不同的线程中创建，并确保运行的是支持多线程的 Tcl/Tk 版本。
+- Tcl/Tk 库可编译为不支持多线程的版本。这时 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 会从初始 Python 线程调用底层库，即便那不是创建 Tcl 解释器的线程。会有一个全局锁来确保每次只会发生一次调用。
+- 虽然 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 允许创建一个以上的 `Tk` 实例（都带有自己的解释器），但所有属于同一线程的解释器均会共享同一个事件队列，这样很快就会一团糟。在实际编程时，一次创建的 `Tk` 实例不要超过一个。否则最好在不同的线程中创建，并确保运行的是支持多线程的 Tcl/Tk 版本。
 - 为了防止 Tcl 解释器重新进入事件循环，阻塞事件处理程序并不是唯一的做法。甚至可以运行多个嵌套的事件循环，或者完全放弃事件循环。如果在处理事件或线程时碰到棘手的问题，请小心这些可能的事情。
-- 有几个 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 函数，目前只在创建 Tcl 解释器的线程中调用才行。
+- 有几个 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 函数，目前只在创建 Tcl 解释器的线程中调用才行。
 
 ## 快速参考
 
@@ -470,7 +468,7 @@ fred.pack(expand=1)
 
 ​	通过一些特定参数，某些组件（如文本输入组件）的当前设置可直接与应用程序的变量关联。这些参数包括 `variable` 、 `textvariable` 、 `onvalue` 、 `offvalue` 、 `value`。这种关联是双向的：只要这些变量因任何原因发生变化，其关联的部件就会更新以反映新的参数值。
 
-​	不幸的是，在目前 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 的实现代码中，不可能通过 `variable` 或 `textvariable` 参数将任意 Python 变量移交给组件。变量只有是 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 中定义的 Variable 类的子类，才能生效。
+​	不幸的是，在目前 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 的实现代码中，不可能通过 `variable` 或 `textvariable` 参数将任意 Python 变量移交给组件。变量只有是 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 中定义的 Variable 类的子类，才能生效。
 
 ​	已经定义了很多有用的 Variable 子类： `StringVar` 、 `IntVar` 、`DoubleVar` 和 `BooleanVar`。调用 `get()` 方法可以读取这些变量的当前值；调用 `set()` 方法则可改变变量值。只要遵循这种用法，组件就会保持跟踪变量的值，而不需要更多的干预。
 
@@ -510,7 +508,7 @@ myapp.mainloop()
 
 ### 窗口管理器
 
-​	Tk 有个实用命令 `wm`，用于与窗口管理器进行交互。`wm` 命令的参数可用于控制标题、位置、图标之类的东西。在 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 中，这些命令已被实现为 `Wm` 类的方法。顶层部件是 `Wm` 类的子类，所以可以直接调用 `Wm` 的这些方法。
+​	Tk 有个实用命令 `wm`，用于与窗口管理器进行交互。`wm` 命令的参数可用于控制标题、位置、图标之类的东西。在 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 中，这些命令已被实现为 `Wm` 类的方法。顶层部件是 `Wm` 类的子类，所以可以直接调用 `Wm` 的这些方法。
 
 ​	要获得指定部件所在的顶层窗口，通常只要引用该部件的主窗口即可。当然，如果该部件是包装在框架内的，那么主窗口不代表就是顶层窗口。为了获得任意组件所在的顶层窗口，可以调用 `_root()` 方法。该方法以下划线开头，表明其为 Python 实现的代码，而非 Tk 提供的某个接口。
 
@@ -653,7 +651,7 @@ self.button.bind("<Enter>", self.turn_red)
 
 ## Entry 控件的索引（index、view index 等）
 
-​	Entry 控件带有索引属性，指向显示文本中的字符位置。这些 [`tkinter`](https://docs.python.org/zh-cn/3.13/library/tkinter.html#module-tkinter) 函数可用于访问文本控件中的这些特定位置：
+​	Entry 控件带有索引属性，指向显示文本中的字符位置。这些 [`tkinter`]({{< ref "/library/tk/tkinter#module-tkinter" >}}) 函数可用于访问文本控件中的这些特定位置：
 
 ## Text 控件的索引
 
@@ -679,12 +677,11 @@ self.button.bind("<Enter>", self.turn_red)
 
 ​	这两种图片可通过 `file` 或 `data` 属性创建的（也可能由其他属性创建）。
 
-*在 3.13 版本发生变更:* Added the `PhotoImage` method `copy_replace()` to copy a region from one image to other image, possibly with pixel zooming and/or subsampling. Add *from_coords* parameter to `PhotoImage` methods `copy()`, `zoom()` and `subsample()`. Add *zoom* and *subsample* parameters to `PhotoImage` method `copy()`.
+> 在 3.13 版本发生变更: Added the `PhotoImage` method `copy_replace()` to copy a region from one image to other image, possibly with pixel zooming and/or subsampling. Add *from_coords* parameter to `PhotoImage` methods `copy()`, `zoom()` and `subsample()`. Add *zoom* and *subsample* parameters to `PhotoImage` method `copy()`.
 
 ​	然后可在某些支持 `image` 属性的控件中（如标签、按钮、菜单）使用图片对象。这时，Tk 不会保留对图片对象的引用。当图片对象的最后一个 Python 引用被删除时，图片数据也会删除，并且 Tk 会在用到图片对象的地方显示一个空白框。
 
-​	参见
-
+​参见
  
 
 [Pillow](https://python-pillow.org/) 包增加了对 BMP, JPEG, TIFF 和 WebP 等多种格式的支持。
@@ -706,11 +703,11 @@ widget.tk.deletefilehandler(file)
 
 ​	在 Windows 系统中不可用。
 
-​	由于不知道可读取多少字节，你可能不希望使用 [`BufferedIOBase`](https://docs.python.org/zh-cn/3.13/library/io.html#io.BufferedIOBase) 或 [`TextIOBase`](https://docs.python.org/zh-cn/3.13/library/io.html#io.TextIOBase) 的 [`read()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.BufferedIOBase.read) 或 [`readline()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.IOBase.readline) 方法，因为这些方法必须读取预定数量的字节。 对于套接字，可使用 [`recv()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.recv) 或 [`recvfrom()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.recvfrom) 方法；对于其他文件，可使用原始读取方法或 `os.read(file.fileno(), maxbytecount)`。
+​	由于不知道可读取多少字节，你可能不希望使用 [`BufferedIOBase`]({{< ref "/library/allos/io#io.BufferedIOBase" >}}) 或 [`TextIOBase`]({{< ref "/library/allos/io#io.TextIOBase" >}}) 的 [`read()`]({{< ref "/library/allos/io#io.BufferedIOBase.read" >}}) 或 [`readline()`]({{< ref "/library/allos/io#io.IOBase.readline" >}}) 方法，因为这些方法必须读取预定数量的字节。 对于套接字，可使用 [`recv()`]({{< ref "/library/ipc/socket#socket.socket.recv" >}}) 或 [`recvfrom()`]({{< ref "/library/ipc/socket#socket.socket.recvfrom" >}}) 方法；对于其他文件，可使用原始读取方法或 `os.read(file.fileno(), maxbytecount)`。
 
 ## Widget.tk.**createfilehandler**(*file*, *mask*, *func*)
 
-​	注册文件处理程序的回调函数 *func*。 *file* 参数可以是具备 [`fileno()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.IOBase.fileno) 方法的对象（例如文件或套接字对象），也可以是整数文件描述符。 *mask* 参数是下述三个常量的逻辑“或”组合。回调函数将用以下格式调用：
+​	注册文件处理程序的回调函数 *func*。 *file* 参数可以是具备 [`fileno()`]({{< ref "/library/allos/io#io.IOBase.fileno" >}}) 方法的对象（例如文件或套接字对象），也可以是整数文件描述符。 *mask* 参数是下述三个常量的逻辑“或”组合。回调函数将用以下格式调用：
 
 ```
 callback(file, mask)

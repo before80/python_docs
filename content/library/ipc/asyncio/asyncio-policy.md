@@ -9,19 +9,19 @@ draft = false
 
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html)
 >
 > 收录该文档的时间：`2024-11-15T12:30:27+08:00`
 
 # 策略
 
-​	事件循环策略是一个用于获取和设置当前 [事件循环](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio-event-loop) 的全局对象，还可以创建新的事件循环。 默认策略可以可以被 [替换](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio-policy-get-set) 为 [内置替代策略](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio-policy-builtin) 以使用不同的事件循环实现，或者替换为可以覆盖这些行为的 [自定义策略](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio-custom-policies)。
+​	事件循环策略是一个用于获取和设置当前 [事件循环]({{< ref "/library/ipc/asyncio/asyncio-eventloop#asyncio-event-loop" >}}) 的全局对象，还可以创建新的事件循环。 默认策略可以可以被 [替换]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio-policy-get-set" >}}) 为 [内置替代策略]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio-policy-builtin" >}}) 以使用不同的事件循环实现，或者替换为可以覆盖这些行为的 [自定义策略]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio-custom-policies" >}})。
 
-[策略对象](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio-policy-objects) 可为每个 *context* 获取和设置单独的事件循环。 在默认情况下是分线程，不过自定义策略可以按不同的方式定义 *context*。
+[策略对象]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio-policy-objects" >}}) 可为每个 *context* 获取和设置单独的事件循环。 在默认情况下是分线程，不过自定义策略可以按不同的方式定义 *context*。
 
-​	自定义事件循环策略可以控制 [`get_event_loop()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.get_event_loop), [`set_event_loop()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.set_event_loop) 和 [`new_event_loop()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.new_event_loop) 的行为。
+​	自定义事件循环策略可以控制 [`get_event_loop()`]({{< ref "/library/ipc/asyncio/asyncio-eventloop#asyncio.get_event_loop" >}}), [`set_event_loop()`]({{< ref "/library/ipc/asyncio/asyncio-eventloop#asyncio.set_event_loop" >}}) 和 [`new_event_loop()`]({{< ref "/library/ipc/asyncio/asyncio-eventloop#asyncio.new_event_loop" >}}) 的行为。
 
-​	策略对象应该实现 [`AbstractEventLoopPolicy`](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio.AbstractEventLoopPolicy) 抽象基类中定义的API。
+​	策略对象应该实现 [`AbstractEventLoopPolicy`]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio.AbstractEventLoopPolicy" >}}) 抽象基类中定义的API。
 
 
 
@@ -53,7 +53,7 @@ draft = false
 
 ​	为当前上下文获取事件循环。
 
-​	返回一个实现 [`AbstractEventLoop`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.AbstractEventLoop) 接口的事件循环对象。
+​	返回一个实现 [`AbstractEventLoop`]({{< ref "/library/ipc/asyncio/asyncio-eventloop#asyncio.AbstractEventLoop" >}}) 接口的事件循环对象。
 
 ​	该方法永远不应返回 `None`。
 
@@ -73,7 +73,7 @@ draft = false
 
 ​	获取子进程监视器对象。
 
-​	返回一个实现 [`AbstractChildWatcher`](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio.AbstractChildWatcher) 接口的监视器对象。
+​	返回一个实现 [`AbstractChildWatcher`]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio.AbstractChildWatcher" >}}) 接口的监视器对象。
 
 ​	该函数仅支持Unix。
 
@@ -91,25 +91,25 @@ draft = false
 
 ## *class* asyncio.**DefaultEventLoopPolicy**
 
-​	默认的 asyncio 策略。 在 Unix 上使用 [`SelectorEventLoop`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.SelectorEventLoop) 而在 Windows 上使用 [`ProactorEventLoop`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.ProactorEventLoop)。
+​	默认的 asyncio 策略。 在 Unix 上使用 [`SelectorEventLoop`]({{< ref "/library/ipc/asyncio/asyncio-eventloop#asyncio.SelectorEventLoop" >}}) 而在 Windows 上使用 [`ProactorEventLoop`]({{< ref "/library/ipc/asyncio/asyncio-eventloop#asyncio.ProactorEventLoop" >}})。
 
 ​	不需要手动安装默认策略。asyncio已配置成自动使用默认策略。
 
-*在 3.8 版本发生变更:* 在 Windows 上，现在默认会使用 [`ProactorEventLoop`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.ProactorEventLoop)。
+> 在 3.8 版本发生变更: 在 Windows 上，现在默认会使用 [`ProactorEventLoop`]({{< ref "/library/ipc/asyncio/asyncio-eventloop#asyncio.ProactorEventLoop" >}})。
 
-*自 3.12 版本弃用:* 现在默认 asyncio 策略的 [`get_event_loop()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.get_event_loop) 方法将在没有正在运行的事件循环而决定创建一个事件循环时发出 [`DeprecationWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#DeprecationWarning)。 在未来的某个 Python 发布版中这将改为发出错误。
+> 自 3.12 版本弃用: 现在默认 asyncio 策略的 [`get_event_loop()`]({{< ref "/library/ipc/asyncio/asyncio-eventloop#asyncio.get_event_loop" >}}) 方法将在没有正在运行的事件循环而决定创建一个事件循环时发出 [`DeprecationWarning`]({{< ref "/library/exceptions#DeprecationWarning" >}})。 在未来的某个 Python 发布版中这将改为发出错误。
 
 ## *class* asyncio.**WindowsSelectorEventLoopPolicy**
 
-​	一个使用 [`SelectorEventLoop`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.SelectorEventLoop) 事件循环实现的替代事件循环策略。
+​	一个使用 [`SelectorEventLoop`]({{< ref "/library/ipc/asyncio/asyncio-eventloop#asyncio.SelectorEventLoop" >}}) 事件循环实现的替代事件循环策略。
 
-[Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows.
+[Availability]({{< ref "/library/intro#availability" >}}): Windows.
 
 ## *class* asyncio.**WindowsProactorEventLoopPolicy**
 
-​	使用 [`ProactorEventLoop`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.ProactorEventLoop) 事件循环实现的另一种事件循环策略。
+​	使用 [`ProactorEventLoop`]({{< ref "/library/ipc/asyncio/asyncio-eventloop#asyncio.ProactorEventLoop" >}}) 事件循环实现的另一种事件循环策略。
 
-[Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows.
+[Availability]({{< ref "/library/intro#availability" >}}): Windows.
 
 
 
@@ -117,11 +117,11 @@ draft = false
 
 ​	进程监视器允许定制事件循环如何监视Unix子进程。具体来说，事件循环需要知道子进程何时退出。
 
-​	在asyncio中子进程由 [`create_subprocess_exec()`](https://docs.python.org/zh-cn/3.13/library/asyncio-subprocess.html#asyncio.create_subprocess_exec) 和 [`loop.subprocess_exec()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.loop.subprocess_exec) 函数创建。
+​	在asyncio中子进程由 [`create_subprocess_exec()`]({{< ref "/library/ipc/asyncio/asyncio-subprocess#asyncio.create_subprocess_exec" >}}) 和 [`loop.subprocess_exec()`]({{< ref "/library/ipc/asyncio/asyncio-eventloop#asyncio.loop.subprocess_exec" >}}) 函数创建。
 
-​	asyncio 定义了 [`AbstractChildWatcher`](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio.AbstractChildWatcher) 抽象基类，子监视器必须要实现它，并具有四种不同实现: [`ThreadedChildWatcher`](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio.ThreadedChildWatcher) (已配置为默认使用), [`MultiLoopChildWatcher`](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio.MultiLoopChildWatcher), [`SafeChildWatcher`](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio.SafeChildWatcher) 和 [`FastChildWatcher`](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio.FastChildWatcher)。
+​	asyncio 定义了 [`AbstractChildWatcher`]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio.AbstractChildWatcher" >}}) 抽象基类，子监视器必须要实现它，并具有四种不同实现: [`ThreadedChildWatcher`]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio.ThreadedChildWatcher" >}}) (已配置为默认使用), [`MultiLoopChildWatcher`]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio.MultiLoopChildWatcher" >}}), [`SafeChildWatcher`]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio.SafeChildWatcher" >}}) 和 [`FastChildWatcher`]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio.FastChildWatcher" >}})。
 
-​	请参阅 [子进程和线程](https://docs.python.org/zh-cn/3.13/library/asyncio-subprocess.html#asyncio-subprocess-threads) 部分。
+​	请参阅 [子进程和线程]({{< ref "/library/ipc/asyncio/asyncio-subprocess#asyncio-subprocess-threads" >}}) 部分。
 
 ​	以下两个函数可用于自定义子进程监视器实现，它将被asyncio事件循环使用:
 
@@ -133,15 +133,14 @@ draft = false
 
 ## asyncio.**set_child_watcher**(*watcher*)
 
-​	将当前策略的子监视器设置为 *watcher* 。*watcher* 必须实现 [`AbstractChildWatcher`](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio.AbstractChildWatcher) 基类定义的方法。
+​	将当前策略的子监视器设置为 *watcher* 。*watcher* 必须实现 [`AbstractChildWatcher`]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio.AbstractChildWatcher" >}}) 基类定义的方法。
 
 *自 3.12 版本弃用.*
 
-​	备注
-
+​备注
  
 
-​	第三方事件循环实现可能不支持自定义子监视器。对于这样的事件循环，禁止使用 [`set_child_watcher()`](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio.set_child_watcher) 或不起作用。
+​	第三方事件循环实现可能不支持自定义子监视器。对于这样的事件循环，禁止使用 [`set_child_watcher()`]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio.set_child_watcher" >}}) 或不起作用。
 
 ## *class* asyncio.**AbstractChildWatcher**
 
@@ -171,7 +170,7 @@ draft = false
 
 ​	如果监视器已准备好使用则返回 `True`。
 
-​	使用 *不活动的* 当前子监视器生成子进程将引发 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError)。
+​	使用 *不活动的* 当前子监视器生成子进程将引发 [`RuntimeError`]({{< ref "/library/exceptions#RuntimeError" >}})。
 
 > Added in version 3.8.
 >
@@ -214,11 +213,11 @@ draft = false
 
 ## *class* asyncio.**SafeChildWatcher**
 
-​	该实现会使用主线程中的活动事件循环来处理 `SIGCHLD` 信号。 如果主线程没有正在运行的事件循环，则其他线程无法生成子进程 (会引发 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError))。
+​	该实现会使用主线程中的活动事件循环来处理 `SIGCHLD` 信号。 如果主线程没有正在运行的事件循环，则其他线程无法生成子进程 (会引发 [`RuntimeError`]({{< ref "/library/exceptions#RuntimeError" >}}))。
 
 ​	此监视器会在收到 `SIGCHLD` 信号时通过显式地轮询每个进程来避免干扰其他代码生成的进程。
 
-​	该解决方案与 [`MultiLoopChildWatcher`](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio.MultiLoopChildWatcher) 一样安全并具有相同的 *O*(*n*) 复杂度，但需要主线程有正在运行的事件循环才能工作。
+​	该解决方案与 [`MultiLoopChildWatcher`]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio.MultiLoopChildWatcher" >}}) 一样安全并具有相同的 *O*(*n*) 复杂度，但需要主线程有正在运行的事件循环才能工作。
 
 *自 3.12 版本弃用.*
 
@@ -228,13 +227,13 @@ draft = false
 
 ​	在处理大量子进程时没有明显的开销 (每次子进程结束时为 *O*(1))。
 
-​	该解决方案需要主线程有正在运行的事件循环才能工作，这与 [`SafeChildWatcher`](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio.SafeChildWatcher) 一样。
+​	该解决方案需要主线程有正在运行的事件循环才能工作，这与 [`SafeChildWatcher`]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio.SafeChildWatcher" >}}) 一样。
 
 *自 3.12 版本弃用.*
 
 ## *class* asyncio.**PidfdChildWatcher**
 
-​	这个实现会轮询处理文件描述符 (pidfds) 以等待子进程终结。 在某些方面，[`PidfdChildWatcher`](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio.PidfdChildWatcher) 是一个“理想的”子进程监视器实现。 它不需要使用信号或线程，不会介入任何在事件循环以外发起的进程，并能随事件循环发起的子进程数量进行线性伸缩。 其主要缺点在于 pidfds 是 Linux 专属的，并且仅在较近版本的核心（5.3+）上可用。
+​	这个实现会轮询处理文件描述符 (pidfds) 以等待子进程终结。 在某些方面，[`PidfdChildWatcher`]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio.PidfdChildWatcher" >}}) 是一个“理想的”子进程监视器实现。 它不需要使用信号或线程，不会介入任何在事件循环以外发起的进程，并能随事件循环发起的子进程数量进行线性伸缩。 其主要缺点在于 pidfds 是 Linux 专属的，并且仅在较近版本的核心（5.3+）上可用。
 
 > Added in version 3.9.
 >
@@ -243,7 +242,7 @@ draft = false
 
 ## 自定义策略
 
-​	要实现一个新的事件循环策略，建议子类化 [`DefaultEventLoopPolicy`](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio.DefaultEventLoopPolicy) 并重写需要定制行为的方法，例如:
+​	要实现一个新的事件循环策略，建议子类化 [`DefaultEventLoopPolicy`]({{< ref "/library/ipc/asyncio/asyncio-policy#asyncio.DefaultEventLoopPolicy" >}}) 并重写需要定制行为的方法，例如:
 
 ```
 class MyEventLoopPolicy(asyncio.DefaultEventLoopPolicy):

@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/random.html](https://docs.python.org/zh-cn/3.13/library/random.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/random.html](https://docs.python.org/zh-cn/3.13/library/random.html)
 >
 > 收录该文档的时间：`2024-11-15T11:42:26+08:00`
 
@@ -24,33 +24,31 @@ draft = false
 
 ​	在实数轴上，有计算均匀、正态（高斯）、对数正态、负指数、伽马和贝塔分布的函数。 为了生成角度分布，可以使用 von Mises 分布。
 
-​	几乎所有模块函数都依赖于基本函数 [`random()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.random)，它在左开右闭区间 `0.0 <= X < 1.0` 内均匀生成随机浮点数。 Python 使用 Mersenne Twister 作为核心生成器。 它产生 53 位精度的浮点数并且周期为 2**19937-1。 其在 C 中的这个底层实现既快速又线程安全。 Mersenne Twister 是目前经过最广泛测试的随机数生成器之一。 但是，因为是完全确定性的，它不适用于所有目的，并且完全不适用于加密目的。
+​	几乎所有模块函数都依赖于基本函数 [`random()`]({{< ref "/library/numeric/random#random.random" >}})，它在左开右闭区间 `0.0 <= X < 1.0` 内均匀生成随机浮点数。 Python 使用 Mersenne Twister 作为核心生成器。 它产生 53 位精度的浮点数并且周期为 2**19937-1。 其在 C 中的这个底层实现既快速又线程安全。 Mersenne Twister 是目前经过最广泛测试的随机数生成器之一。 但是，因为是完全确定性的，它不适用于所有目的，并且完全不适用于加密目的。
 
-​	这个模块提供的函数实际上是 [`random.Random`](https://docs.python.org/zh-cn/3.13/library/random.html#random.Random) 类的隐藏实例的绑定方法。 你可以实例化自己的 [`Random`](https://docs.python.org/zh-cn/3.13/library/random.html#random.Random) 类实例以获取不共享状态的生成器。
+​	这个模块提供的函数实际上是 [`random.Random`]({{< ref "/library/numeric/random#random.Random" >}}) 类的隐藏实例的绑定方法。 你可以实例化自己的 [`Random`]({{< ref "/library/numeric/random#random.Random" >}}) 类实例以获取不共享状态的生成器。
 
-​	如果你想使用自己设计的不同的基本生成器那么也可以子类化 [`Random`](https://docs.python.org/zh-cn/3.13/library/random.html#random.Random) 类：请参阅该类的文档了解详情。
+​	如果你想使用自己设计的不同的基本生成器那么也可以子类化 [`Random`]({{< ref "/library/numeric/random#random.Random" >}}) 类：请参阅该类的文档了解详情。
 
-[`random`](https://docs.python.org/zh-cn/3.13/library/random.html#module-random) 模块还提供 [`SystemRandom`](https://docs.python.org/zh-cn/3.13/library/random.html#random.SystemRandom) 类，它使用系统函数 [`os.urandom()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.urandom) 从操作系统提供的源生成随机数。
+[`random`]({{< ref "/library/numeric/random#module-random" >}}) 模块还提供 [`SystemRandom`]({{< ref "/library/numeric/random#random.SystemRandom" >}}) 类，它使用系统函数 [`os.urandom()`]({{< ref "/library/allos/os#os.urandom" >}}) 从操作系统提供的源生成随机数。
 
 ​	警告
 
  
 
-​	不应将此模块的伪随机生成器用于安全目的。 有关安全性或加密用途，请参阅 [`secrets`](https://docs.python.org/zh-cn/3.13/library/secrets.html#module-secrets) 模块。
+​	不应将此模块的伪随机生成器用于安全目的。 有关安全性或加密用途，请参阅 [`secrets`]({{< ref "/library/crypto/secrets#module-secrets" >}}) 模块。
 
-​	参见
-
+​参见
  
 
 ​	M. Matsumoto and T. Nishimura, "Mersenne Twister: A 623-dimensionally equidistributed uniform pseudorandom number generator", ACM Transactions on Modeling and Computer Simulation Vol. 8, No. 1, January pp.3--30 1998.
 
 [Complementary-Multiply-with-Carry recipe](https://code.activestate.com/recipes/576707-long-period-random-number-generator/) 用于兼容的替代性随机数发生器，具有长周期和相对简单的更新操作。
 
-​	备注
-
+​备注
  
 
-​	全局随机数发生器和 [`Random`](https://docs.python.org/zh-cn/3.13/library/random.html#random.Random) 实例是线程安全的。 不过，在自由线程构建版中，对全局发生器或同一个 [`Random`](https://docs.python.org/zh-cn/3.13/library/random.html#random.Random) 实例的并发调用可能导致竞争和糟糕的性能。 请考虑改用每线程单独的 [`Random`](https://docs.python.org/zh-cn/3.13/library/random.html#random.Random) 实例。
+​	全局随机数发生器和 [`Random`]({{< ref "/library/numeric/random#random.Random" >}}) 实例是线程安全的。 不过，在自由线程构建版中，对全局发生器或同一个 [`Random`]({{< ref "/library/numeric/random#random.Random" >}}) 实例的并发调用可能导致竞争和糟糕的性能。 请考虑改用每线程单独的 [`Random`]({{< ref "/library/numeric/random#random.Random" >}}) 实例。
 
 ## 簿记功能
 
@@ -58,25 +56,25 @@ draft = false
 
 ​	初始化随机数生成器。
 
-​	如果 *a* 被省略或为 `None` ，则使用当前系统时间。 如果操作系统提供随机源，则使用它们而不是系统时间（有关可用性的详细信息，请参阅 [`os.urandom()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.urandom) 函数）。
+​	如果 *a* 被省略或为 `None` ，则使用当前系统时间。 如果操作系统提供随机源，则使用它们而不是系统时间（有关可用性的详细信息，请参阅 [`os.urandom()`]({{< ref "/library/allos/os#os.urandom" >}}) 函数）。
 
 ​	如果 *a* 是 int 类型，则直接使用。
 
-​	对于版本2（默认的），[`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 、 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 或 [`bytearray`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytearray) 对象转换为 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 并使用它的所有位。
+​	对于版本2（默认的），[`str`]({{< ref "/library/stdtypes#str" >}}) 、 [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 或 [`bytearray`]({{< ref "/library/stdtypes#bytearray" >}}) 对象转换为 [`int`]({{< ref "/library/functions#int" >}}) 并使用它的所有位。
 
-​	对于版本1（用于从旧版本的Python再现随机序列），用于 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 和 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 的算法生成更窄的种子范围。
+​	对于版本1（用于从旧版本的Python再现随机序列），用于 [`str`]({{< ref "/library/stdtypes#str" >}}) 和 [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 的算法生成更窄的种子范围。
 
-*在 3.2 版本发生变更:* 已移至版本2方案，该方案使用字符串种子中的所有位。
+> 在 3.2 版本发生变更: 已移至版本2方案，该方案使用字符串种子中的所有位。
 
-*在 3.11 版本发生变更:* *seed* 必须是下列类型之一: `None`, [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int), [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float), [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str), [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 或 [`bytearray`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytearray)。
+> 在 3.11 版本发生变更: *seed* 必须是下列类型之一: `None`, [`int`]({{< ref "/library/functions#int" >}}), [`float`]({{< ref "/library/functions#float" >}}), [`str`]({{< ref "/library/stdtypes#str" >}}), [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 或 [`bytearray`]({{< ref "/library/stdtypes#bytearray" >}})。
 
 ## random.**getstate**()
 
-​	返回捕获生成器当前内部状态的对象。 这个对象可以传递给 [`setstate()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.setstate) 来恢复状态。
+​	返回捕获生成器当前内部状态的对象。 这个对象可以传递给 [`setstate()`]({{< ref "/library/numeric/random#random.setstate" >}}) 来恢复状态。
 
 ## random.**setstate**(*state*)
 
-*state* 应该是从之前调用 [`getstate()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.getstate) 获得的，并且 [`setstate()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.setstate) 将生成器的内部状态恢复到 [`getstate()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.getstate) 被调用时的状态。
+*state* 应该是从之前调用 [`getstate()`]({{< ref "/library/numeric/random#random.getstate" >}}) 获得的，并且 [`setstate()`]({{< ref "/library/numeric/random#random.setstate" >}}) 将生成器的内部状态恢复到 [`getstate()`]({{< ref "/library/numeric/random#random.getstate" >}}) 被调用时的状态。
 
 ## 用于字节数据的函数
 
@@ -84,7 +82,7 @@ draft = false
 
 ​	生成 *n* 个随机字节。
 
-​	此方法不可用于生成安全凭据。 那应当使用 [`secrets.token_bytes()`](https://docs.python.org/zh-cn/3.13/library/secrets.html#secrets.token_bytes)。
+​	此方法不可用于生成安全凭据。 那应当使用 [`secrets.token_bytes()`]({{< ref "/library/crypto/secrets#secrets.token_bytes" >}})。
 
 > Added in version 3.9.
 >
@@ -99,13 +97,13 @@ draft = false
 
 ​	这大致等价于 `choice(range(start, stop, step))` 但是支持任意大的取值范围并针对常见场景进行了优化。
 
-​	该位置参数的模式与 [`range()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#range) 函数相匹配。
+​	该位置参数的模式与 [`range()`]({{< ref "/library/stdtypes#range" >}}) 函数相匹配。
 
 ​	关键字参数不应被使用因为它们可能以预料之外的方式被解读。 例如 `randrange(start=100)` 会被解读为 `randrange(0, 100, 1)`。
 
-*在 3.2 版本发生变更:* [`randrange()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.randrange) 在生成均匀分布的值方面更为复杂。 以前它使用了像 `int(random()*n)` 这样的形式，它可以产生稍微不均匀的分布。
+> 在 3.2 版本发生变更: [`randrange()`]({{< ref "/library/numeric/random#random.randrange" >}}) 在生成均匀分布的值方面更为复杂。 以前它使用了像 `int(random()*n)` 这样的形式，它可以产生稍微不均匀的分布。
 
-*在 3.12 版本发生变更:* 不再支持非整数类型的自动转换。 `randrange(10.0)` 和 `randrange(Fraction(10, 1))` 之类的调用现在将会引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
+> 在 3.12 版本发生变更: 不再支持非整数类型的自动转换。 `randrange(10.0)` 和 `randrange(Fraction(10, 1))` 之类的调用现在将会引发 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}})。
 
 ## random.**randint**(*a*, *b*)
 
@@ -113,32 +111,32 @@ draft = false
 
 ## random.**getrandbits**(*k*)
 
-​	返回具有 *k* 个随机比特位的非负 Python 整数。 此方法随 Mersenne Twister 生成器一起提供，其他一些生成器也可能将其作为 API 的可选部分提供。 在可能的情况下，[`getrandbits()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.getrandbits) 会启用 [`randrange()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.randrange) 来处理任意大的区间。
+​	返回具有 *k* 个随机比特位的非负 Python 整数。 此方法随 Mersenne Twister 生成器一起提供，其他一些生成器也可能将其作为 API 的可选部分提供。 在可能的情况下，[`getrandbits()`]({{< ref "/library/numeric/random#random.getrandbits" >}}) 会启用 [`randrange()`]({{< ref "/library/numeric/random#random.randrange" >}}) 来处理任意大的区间。
 
-*在 3.9 版本发生变更:* 此方法现在接受零作为 *k* 的值。
+> 在 3.9 版本发生变更: 此方法现在接受零作为 *k* 的值。
 
 ## 序列用函数
 
 ## random.**choice**(*seq*)
 
-​	从非空序列 *seq* 返回一个随机元素。 如果 *seq* 为空，则引发 [`IndexError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#IndexError)。
+​	从非空序列 *seq* 返回一个随机元素。 如果 *seq* 为空，则引发 [`IndexError`]({{< ref "/library/exceptions#IndexError" >}})。
 
 ## random.**choices**(*population*, *weights=None*, ***, *cum_weights=None*, *k=1*)
 
-​	从 *population* 中有重复地随机选取元素，返回大小为 *k* 的元素列表。 如果 *population* 为空，则引发 [`IndexError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#IndexError)。
+​	从 *population* 中有重复地随机选取元素，返回大小为 *k* 的元素列表。 如果 *population* 为空，则引发 [`IndexError`]({{< ref "/library/exceptions#IndexError" >}})。
 
-​	如果指定了 *weight* 序列，则根据相对权重进行选择。 或者，如果给出 *cum_weights* 序列，则根据累积权重（可能使用 [`itertools.accumulate()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.accumulate) 计算）进行选择。 例如，相对权重 `[10, 5, 30, 5]``相当于累积权重``[10, 15, 45, 50]`。 在内部，相对权重在进行选择之前会转换为累积权重，因此提供累积权重可以节省工作量。
+​	如果指定了 *weight* 序列，则根据相对权重进行选择。 或者，如果给出 *cum_weights* 序列，则根据累积权重（可能使用 [`itertools.accumulate()`]({{< ref "/library/functional/itertools#itertools.accumulate" >}}) 计算）进行选择。 例如，相对权重 `[10, 5, 30, 5]``相当于累积权重``[10, 15, 45, 50]`。 在内部，相对权重在进行选择之前会转换为累积权重，因此提供累积权重可以节省工作量。
 
-​	如果既未指定 *weight* 也未指定 *cum_weights* ，则以相等的概率进行选择。 如果提供了权重序列，则它必须与 *population* 序列的长度相同。 一个 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError) 指定了 *weights* 和 *cum_weights* 。
+​	如果既未指定 *weight* 也未指定 *cum_weights* ，则以相等的概率进行选择。 如果提供了权重序列，则它必须与 *population* 序列的长度相同。 一个 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}}) 指定了 *weights* 和 *cum_weights* 。
 
-*weights* 或 *cum_weights* 可使用 [`random()`](https://docs.python.org/zh-cn/3.13/library/random.html#module-random) 所返回的能与 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) 值进行相互运算的任何数字类型（包括整数、浮点数、分数但不包括 decimal）。 权重值应当非负且为有限的数值。 如果所有的权重值均为零则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+*weights* 或 *cum_weights* 可使用 [`random()`]({{< ref "/library/numeric/random#module-random" >}}) 所返回的能与 [`float`]({{< ref "/library/functions#float" >}}) 值进行相互运算的任何数字类型（包括整数、浮点数、分数但不包括 decimal）。 权重值应当非负且为有限的数值。 如果所有的权重值均为零则会引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
-​	对于给定的种子，具有相等加权的 [`choices()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.choices) 函数通常产生与重复调用 [`choice()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.choice) 不同的序列。 [`choices()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.choices) 使用的算法使用浮点运算来实现内部一致性和速度。 [`choice()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.choice) 使用的算法默认为重复选择的整数运算，以避免因舍入误差引起的小偏差。
+​	对于给定的种子，具有相等加权的 [`choices()`]({{< ref "/library/numeric/random#random.choices" >}}) 函数通常产生与重复调用 [`choice()`]({{< ref "/library/numeric/random#random.choice" >}}) 不同的序列。 [`choices()`]({{< ref "/library/numeric/random#random.choices" >}}) 使用的算法使用浮点运算来实现内部一致性和速度。 [`choice()`]({{< ref "/library/numeric/random#random.choice" >}}) 使用的算法默认为重复选择的整数运算，以避免因舍入误差引起的小偏差。
 
 > Added in version 3.6.
 >
 
-*在 3.9 版本发生变更:* 如果所有权重均为负值则将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
+> 在 3.9 版本发生变更: 如果所有权重均为负值则将引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}})。
 
 ## random.**shuffle**(*x*)
 
@@ -148,7 +146,7 @@ draft = false
 
 ​	请注意，即使对于小的 `len(x)`，*x* 的排列总数也可以快速增长，大于大多数随机数生成器的周期。 这意味着长序列的大多数排列永远不会产生。 例如，长度为2080的序列是可以在 Mersenne Twister 随机数生成器的周期内拟合的最大序列。
 
-*在 3.11 版本发生变更:* 移除了可选的形参 *random*。
+> 在 3.11 版本发生变更: 移除了可选的形参 *random*。
 
 ## random.**sample**(*population*, *k*, ***, *counts=None*)
 
@@ -156,17 +154,17 @@ draft = false
 
 ​	返回包含来自总体的元素的新列表，同时保持原始总体不变。 结果列表按选择顺序排列，因此所有子切片也将是有效的随机样本。 这允许抽奖获奖者（样本）被划分为大奖和第二名获胜者（子切片）。
 
-​	总体成员不必是 [hashable](https://docs.python.org/zh-cn/3.13/glossary.html#term-hashable) 或 unique 。 如果总体包含重复，则每次出现都是样本中可能的选择。
+​	总体成员不必是 [hashable]({{< ref "/glossary/idx#term-hashable" >}}) 或 unique 。 如果总体包含重复，则每次出现都是样本中可能的选择。
 
 ​	重复的元素可以一个个地直接列出，或使用可选的仅限关键字形参 *counts* 来指定。 例如，`sample(['red', 'blue'], counts=[4, 2], k=5)` 等价于 `sample(['red', 'red', 'red', 'red', 'blue', 'blue'], k=5)`。
 
-​	要从一系列整数中选择样本，请使用 [`range()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#range) 对象作为参数。 对于从大量人群中采样，这种方法特别快速且节省空间：`sample(range(10000000), k=60)` 。
+​	要从一系列整数中选择样本，请使用 [`range()`]({{< ref "/library/stdtypes#range" >}}) 对象作为参数。 对于从大量人群中采样，这种方法特别快速且节省空间：`sample(range(10000000), k=60)` 。
 
-​	如果样本大小大于总体大小，则引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 。
+​	如果样本大小大于总体大小，则引发 [`ValueError`]({{< ref "/library/exceptions#ValueError" >}}) 。
 
-*在 3.9 版本发生变更:* 增加了 *counts* 形参。
+> 在 3.9 版本发生变更: 增加了 *counts* 形参。
 
-*在 3.11 版本发生变更:* *population* 必须为一个序列。 不再支持将集合自动转换为列表。
+> 在 3.11 版本发生变更: *population* 必须为一个序列。 不再支持将集合自动转换为列表。
 
 ## 离散分布
 
@@ -215,7 +213,7 @@ sum(random() < p for i in range(n))
 
 ​	指数分布。 *lambd* 是 1.0 除以所需的平均值，它应该是非零的。 （该参数本应命名为 “lambda” ，但这是 Python 中的保留字。）如果 *lambd* 为正，则返回值的范围为 0 到正无穷大；如果 *lambd* 为负，则返回值从负无穷大到 0。
 
-*在 3.12 版本发生变更:* 添加了 `lambd` 的默认值。
+> 在 3.12 版本发生变更: 添加了 `lambd` 的默认值。
 
 ## random.**gammavariate**(*alpha*, *beta*)
 
@@ -231,11 +229,11 @@ pdf(x) =  --------------------------------------
 
 ## random.**gauss**(*mu=0.0*, *sigma=1.0*)
 
-​	正态分布，也称高斯分布。 *mu* 为平均值，而 *sigma* 为标准差。 此函数要稍快于下面所定义的 [`normalvariate()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.normalvariate) 函数。
+​	正态分布，也称高斯分布。 *mu* 为平均值，而 *sigma* 为标准差。 此函数要稍快于下面所定义的 [`normalvariate()`]({{< ref "/library/numeric/random#random.normalvariate" >}}) 函数。
 
-​	多线程注意事项：当两个线程同时调用此方法时，它们有可能将获得相同的返回值。 这可以通过三种办法来避免。 1) 让每个线程使用不同的随机数生成器实例。 2) 在所有调用外面加锁。 3) 改用速度较慢但是线程安全的 [`normalvariate()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.normalvariate) 函数。
+​	多线程注意事项：当两个线程同时调用此方法时，它们有可能将获得相同的返回值。 这可以通过三种办法来避免。 1) 让每个线程使用不同的随机数生成器实例。 2) 在所有调用外面加锁。 3) 改用速度较慢但是线程安全的 [`normalvariate()`]({{< ref "/library/numeric/random#random.normalvariate" >}}) 函数。
 
-*在 3.11 版本发生变更:* 现在 *mu* 和 *sigma* 均有默认参数。
+> 在 3.11 版本发生变更: 现在 *mu* 和 *sigma* 均有默认参数。
 
 ## random.**lognormvariate**(*mu*, *sigma*)
 
@@ -245,7 +243,7 @@ pdf(x) =  --------------------------------------
 
 ​	正态分布。 *mu* 是平均值，*sigma* 是标准差。
 
-*在 3.11 版本发生变更:* 现在 *mu* 和 *sigma* 均有默认参数。
+> 在 3.11 版本发生变更: 现在 *mu* 和 *sigma* 均有默认参数。
 
 ## random.**vonmisesvariate**(*mu*, *kappa*)
 
@@ -263,37 +261,37 @@ pdf(x) =  --------------------------------------
 
 ## *class* random.**Random**([*seed*])
 
-​	该类实现了 [`random`](https://docs.python.org/zh-cn/3.13/library/random.html#module-random) 模块所用的默认伪随机数生成器。
+​	该类实现了 [`random`]({{< ref "/library/numeric/random#module-random" >}}) 模块所用的默认伪随机数生成器。
 
-*在 3.11 版本发生变更:* 之前 *seed* 可以是任何可哈希对象。 现在它被限制为: `None`, [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int), [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float), [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str), [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 或 [`bytearray`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytearray)。
+> 在 3.11 版本发生变更: 之前 *seed* 可以是任何可哈希对象。 现在它被限制为: `None`, [`int`]({{< ref "/library/functions#int" >}}), [`float`]({{< ref "/library/functions#float" >}}), [`str`]({{< ref "/library/stdtypes#str" >}}), [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 或 [`bytearray`]({{< ref "/library/stdtypes#bytearray" >}})。
 
 `Random` 的子类如果想要使用不同的基本生成器则应当重载下列方法：
 
 ## **seed**(*a=None*, *version=2*)
 
-​	在子类中重写此方法以自定义 `Random` 实例的 [`seed()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.seed) 行为。
+​	在子类中重写此方法以自定义 `Random` 实例的 [`seed()`]({{< ref "/library/numeric/random#random.seed" >}}) 行为。
 
 ## **getstate**()
 
-​	在子类中重写此方法以自定义 `Random` 实例的 [`getstate()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.getstate) 行为。
+​	在子类中重写此方法以自定义 `Random` 实例的 [`getstate()`]({{< ref "/library/numeric/random#random.getstate" >}}) 行为。
 
 ## **setstate**(*state*)
 
-​	在子类中重写此方法以自定义 `Random` 实例的 [`setstate()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.setstate) 行为。
+​	在子类中重写此方法以自定义 `Random` 实例的 [`setstate()`]({{< ref "/library/numeric/random#random.setstate" >}}) 行为。
 
 ## **random**()
 
-​	在子类中重写此方法以自定义 `Random` 实例的 [`random()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.random) 行为。
+​	在子类中重写此方法以自定义 `Random` 实例的 [`random()`]({{< ref "/library/numeric/random#random.random" >}}) 行为。
 
 ​	作为可选项，自定义的生成器子类还可以提供下列方法：
 
 ## **getrandbits**(*k*)
 
-​	在子类中重写此方法以自定义 `Random` 实例的 [`getrandbits()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.getrandbits) 行为。
+​	在子类中重写此方法以自定义 `Random` 实例的 [`getrandbits()`]({{< ref "/library/numeric/random#random.getrandbits" >}}) 行为。
 
 ## *class* random.**SystemRandom**([*seed*])
 
-​	使用 [`os.urandom()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.urandom) 函数的类，用从操作系统提供的源生成随机数。 这并非适用于所有系统。 也不依赖于软件状态，序列不可重现。 因此，[`seed()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.seed) 方法没有效果而被忽略。 [`getstate()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.getstate) 和 [`setstate()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.setstate) 方法如果被调用则引发 [`NotImplementedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#NotImplementedError)。
+​	使用 [`os.urandom()`]({{< ref "/library/allos/os#os.urandom" >}}) 函数的类，用从操作系统提供的源生成随机数。 这并非适用于所有系统。 也不依赖于软件状态，序列不可重现。 因此，[`seed()`]({{< ref "/library/numeric/random#random.seed" >}}) 方法没有效果而被忽略。 [`getstate()`]({{< ref "/library/numeric/random#random.getstate" >}}) 和 [`setstate()`]({{< ref "/library/numeric/random#random.setstate" >}}) 方法如果被调用则引发 [`NotImplementedError`]({{< ref "/library/exceptions#NotImplementedError" >}})。
 
 ## 关于再现性的说明
 
@@ -302,7 +300,7 @@ pdf(x) =  --------------------------------------
 ​	大多数随机模块的算法和种子函数都会在 Python 版本中发生变化，但保证两个方面不会改变：
 
 - 如果添加了新的播种方法，则将提供向后兼容的播种机。
-- 当兼容的播种机被赋予相同的种子时，生成器的 [`random()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.Random.random) 方法将继续产生相同的序列。
+- 当兼容的播种机被赋予相同的种子时，生成器的 [`random()`]({{< ref "/library/numeric/random#random.Random.random" >}}) 方法将继续产生相同的序列。
 
 
 
@@ -436,8 +434,7 @@ print(f'Mean wait: {mean(waits):.1f}   Max wait: {max(waits):.1f}')
 print('Quartiles:', [round(q, 1) for q in quantiles(waits)])
 ```
 
-​	参见
-
+​参见
  
 
 [Statistics for Hackers](https://www.youtube.com/watch?v=Iq9DzN6mvYA) [Jake Vanderplas](https://us.pycon.org/2016/speaker/profile/295/) 撰写的视频教程，使用一些基本概念进行统计分析，包括模拟、抽样、洗牌和交叉验证。
@@ -448,7 +445,7 @@ print('Quartiles:', [round(q, 1) for q in quantiles(waits)])
 
 ## 例程
 
-​	这些例程演示了如何有效地使用 [`itertools`](https://docs.python.org/zh-cn/3.13/library/itertools.html#module-itertools) 模块中的组合迭代器进行随机选取:
+​	这些例程演示了如何有效地使用 [`itertools`]({{< ref "/library/functional/itertools#module-itertools" >}}) 模块中的组合迭代器进行随机选取:
 
 ```
 def random_product(*args, repeat=1):
@@ -478,7 +475,7 @@ def random_combination_with_replacement(iterable, r):
     return tuple(pool[i] for i in indices)
 ```
 
-​	默认的 [`random()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.random) 返回在 *0.0 ≤ x < 1.0* 范围内 2⁻⁵³ 的倍数。 所有这些数值间隔相等并能精确表示为 Python 浮点数。 但是在此间隔上有许多其他可表示浮点数是不可能的选择。 例如，`0.05954861408025609` 就不是 2⁻⁵³ 的整数倍。
+​	默认的 [`random()`]({{< ref "/library/numeric/random#random.random" >}}) 返回在 *0.0 ≤ x < 1.0* 范围内 2⁻⁵³ 的倍数。 所有这些数值间隔相等并能精确表示为 Python 浮点数。 但是在此间隔上有许多其他可表示浮点数是不可能的选择。 例如，`0.05954861408025609` 就不是 2⁻⁵³ 的整数倍。
 
 ​	以下规范程序采取了一种不同的方式。 在间隔上的所有浮点数都是可能的选择。 它们的尾数取值来自 *2⁵² ≤ 尾数 < 2⁵³* 范围内整数的均匀分布。 指数取值则来自几何分布，其中小于 *-53* 的指数的出现频率为下一个较大指数的一半。
 
@@ -498,7 +495,7 @@ class FullRandom(Random):
         return ldexp(mantissa, exponent)
 ```
 
-​	该类中所有的 [实值分布](https://docs.python.org/zh-cn/3.13/library/random.html#real-valued-distributions) 都将使用新的方法:
+​	该类中所有的 [实值分布]({{< ref "/library/numeric/random#real-valued-distributions" >}}) 都将使用新的方法:
 
 
 
@@ -512,11 +509,10 @@ class FullRandom(Random):
 
 ​	该规范程序在概念上等效于在 *0.0 ≤ x < 1.0* 范围内对所有 2⁻¹⁰⁷⁴ 的倍数进行选择的算法。 所有这样的数字间隔都相等，但大多必须向下舍入为最接近的 Python 浮点数表示形式。 （2⁻¹⁰⁷⁴ 这个数值是等于 `math.ulp(0.0)` 的未经正规化的最小正浮点数。）
 
-​	参见
-
+​参见
  
 
-[生成伪随机浮点数值](https://allendowney.com/research/rand/downey07randfloat.pdf) 为 Allen B. Downey 所撰写的描述如何生成相比通过 [`random()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.random) 正常生成的数值更细粒度浮点数的论文。
+[生成伪随机浮点数值](https://allendowney.com/research/rand/downey07randfloat.pdf) 为 Allen B. Downey 所撰写的描述如何生成相比通过 [`random()`]({{< ref "/library/numeric/random#random.random" >}}) 正常生成的数值更细粒度浮点数的论文。
 
 
 
@@ -533,33 +529,33 @@ python -m random [-h] [-c CHOICE [CHOICE ...] | -i N | -f N] [input ...]
 
 ​	可以接受以下选项：
 
-## **-h**, **--help**
+## **-h**, `--help`
 
 ​	显示帮助信息并退出。
 
 ## **-c** CHOICE [CHOICE ...]
 
-## **--choice** CHOICE [CHOICE ...]
+## `--choice` CHOICE [CHOICE ...]
 
-​	使用 [`choice()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.choice) 打印一个随机选择的项。
+​	使用 [`choice()`]({{< ref "/library/numeric/random#random.choice" >}}) 打印一个随机选择的项。
 
 ## **-i** <N>
 
-## **--integer** <N>
+## `--integer` <N>
 
-​	使用 [`randint()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.randint) 打印从 1 到 N 闭区间中的一个随机整数。
+​	使用 [`randint()`]({{< ref "/library/numeric/random#random.randint" >}}) 打印从 1 到 N 闭区间中的一个随机整数。
 
 ## **-f** <N>
 
-## **--float** <N>
+## `--float` <N>
 
-​	使用 [`uniform()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.uniform) 打印从 0 到 N 闭区间中的一个随机浮点数。
+​	使用 [`uniform()`]({{< ref "/library/numeric/random#random.uniform" >}}) 打印从 0 到 N 闭区间中的一个随机浮点数。
 
 ​	如果未给出任何选项，输出将取决于输入：
 
-- 字符串或多个字符串：与 [`--choice`](https://docs.python.org/zh-cn/3.13/library/random.html#cmdoption-random-choice) 相同。
-- 整数：与 [`--integer`](https://docs.python.org/zh-cn/3.13/library/random.html#cmdoption-random-integer) 相同。
-- 浮点数：与 [`--float`](https://docs.python.org/zh-cn/3.13/library/random.html#cmdoption-random-float) 相同。
+- 字符串或多个字符串：与 [`--choice`]({{< ref "/library/numeric/random#cmdoption-random-choice" >}}) 相同。
+- 整数：与 [`--integer`]({{< ref "/library/numeric/random#cmdoption-random-integer" >}}) 相同。
+- 浮点数：与 [`--float`]({{< ref "/library/numeric/random#cmdoption-random-float" >}}) 相同。
 
 
 

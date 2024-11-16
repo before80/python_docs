@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html)
 >
 > 收录该文档的时间：`2024-11-14T22:01:37+08:00`
 
@@ -16,7 +16,7 @@ draft = false
 
 ​	Python 程序由 *解析器* 读取，输入解析器的是 *词法分析器* 生成的 *形符* 流。本章介绍词法分析器怎样把文件拆成形符。
 
-​	Python 将读取的程序文本转为 Unicode 代码点；编码声明用于指定源文件的编码，默认为 UTF-8，详见 [**PEP 3120**](https://peps.python.org/pep-3120/)。源文件不能解码时，触发 [`SyntaxError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxError)。
+​	Python 将读取的程序文本转为 Unicode 代码点；编码声明用于指定源文件的编码，默认为 UTF-8，详见 [**PEP 3120**](https://peps.python.org/pep-3120/)。源文件不能解码时，触发 [`SyntaxError`]({{< ref "/library/exceptions#SyntaxError" >}})。
 
 
 
@@ -64,7 +64,7 @@ draft = false
 
 ​	如果没有找到编码格式声明，则默认编码格式为 UTF-8。 如果文件的隐式或显式编码格式为 UTF-8，则初始的 UTF-8 字节序标志（b'xefxbbxbf'）将被忽略而不会报告语法错误。
 
-​	如果声明了编码格式，该编码格式的名称必须是 Python 可识别的 (参见 [标准编码](https://docs.python.org/zh-cn/3.13/library/codecs.html#standard-encodings))。 编码格式会被用于所有的词法分析，包括字符串字面值、注释和标识符等。
+​	如果声明了编码格式，该编码格式的名称必须是 Python 可识别的 (参见 [标准编码]({{< ref "/library/binary/codecs#standard-encodings" >}}))。 编码格式会被用于所有的词法分析，包括字符串字面值、注释和标识符等。
 
 
 
@@ -110,7 +110,7 @@ month_names = ['Januari', 'Februari', 'Maart',      # These are the
 
 ​	制表符（从左至右）被替换为一至八个空格，缩进空格的总数是八的倍数（与 Unix 的规则保持一致）。首个非空字符前的空格数决定了该行的缩进层次。缩进不能用反斜杠进行多行拼接；首个反斜杠之前的空白符决定了缩进的层次。
 
-​	源文件混用制表符和空格符缩进时，因空格数量与制表符相关，由此产生的不一致将导致不能正常识别缩进层次，从而触发 [`TabError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TabError)。
+​	源文件混用制表符和空格符缩进时，因空格数量与制表符相关，由此产生的不一致将导致不能正常识别缩进层次，从而触发 [`TabError`]({{< ref "/library/exceptions#TabError" >}})。
 
 **跨平台兼容性说明：** 鉴于非 UNIX 平台文本编辑器本身的特性，请勿在源文件中混用制表符和空格符。另外也请注意，不同平台有可能会显式限制最大缩进层级。
 
@@ -170,7 +170,7 @@ for i in range(len(l)):             # error: not indented
 
 ​	Python 标识符的句法基于 Unicode 标准附件 UAX-31，并加入了下文定义的细化与修改；详见 [**PEP 3131**](https://peps.python.org/pep-3131/) 。
 
-​	Within the ASCII range (U+0001..U+007F), the valid characters for identifiers include the uppercase and lowercase letters `A` through `Z`, the underscore `_` and, except for the first character, the digits `0` through `9`. Python 3.0 introduced additional characters from outside the ASCII range (see [**PEP 3131**](https://peps.python.org/pep-3131/)). For these characters, the classification uses the version of the Unicode Character Database as included in the [`unicodedata`](https://docs.python.org/zh-cn/3.13/library/unicodedata.html#module-unicodedata) module.
+​	Within the ASCII range (U+0001..U+007F), the valid characters for identifiers include the uppercase and lowercase letters `A` through `Z`, the underscore `_` and, except for the first character, the digits `0` through `9`. Python 3.0 introduced additional characters from outside the ASCII range (see [**PEP 3131**](https://peps.python.org/pep-3131/)). For these characters, the classification uses the version of the Unicode Character Database as included in the [`unicodedata`]({{< ref "/library/text/unicodedata#module-unicodedata" >}}) module.
 
 ​	标识符的长度没有限制，但区分大小写。
 
@@ -228,9 +228,9 @@ async      elif       if         or         yield
 
 ​	作为软关键字，它们能够在用于相应语法的同时仍然保持与用作标识符名称的现有代码的兼容性。
 
-`match`, `case` 和 `_` 是在 [`match`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#match) 语句中使用。 `type` 是在 [`type`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#type) 语句中使用。
+`match`, `case` 和 `_` 是在 [`match`]({{< ref "/reference/compound_stmts#match" >}}) 语句中使用。 `type` 是在 [`type`]({{< ref "/reference/simple_stmts#type" >}}) 语句中使用。
 
-*在 3.12 版本发生变更:* `type` 现在是一个软关键字。
+> 在 3.12 版本发生变更: `type` 现在是一个软关键字。
 
 
 
@@ -238,33 +238,32 @@ async      elif       if         or         yield
 
 ​	某些标识符类（除了关键字）具有特殊含义。这些类的命名模式以下划线字符开头，并以下划线结尾：
 
-## `_*`
+`_*`
 
 ​	不会被 `from module import *` 所导入。
 
-## `_`
+`_`
 
-​	在 [`match`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#match) 语句内部的 `case` 模式中，`_` 是一个 [软关键字](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#soft-keywords)，它表示 [通配符](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#wildcard-patterns)。
+​	在 [`match`]({{< ref "/reference/compound_stmts#match" >}}) 语句内部的 `case` 模式中，`_` 是一个 [软关键字]({{< ref "/reference/lexical_analysis#soft-keywords" >}})，它表示 [通配符]({{< ref "/reference/compound_stmts#wildcard-patterns" >}})。
 
-​	在此之外，交互式解释器会将最后一次求值的结果放到变量 `_` 中。 （它与 `print` 等内置函数一起被存储于 [`builtins`](https://docs.python.org/zh-cn/3.13/library/builtins.html#module-builtins) 模块。）
+​	在此之外，交互式解释器会将最后一次求值的结果放到变量 `_` 中。 （它与 `print` 等内置函数一起被存储于 [`builtins`]({{< ref "/library/python/builtins#module-builtins" >}}) 模块。）
 
 ​	在其他地方，`_` 是一个常规标识符。 它常常被用来命名 "特殊" 条目，但对 Python 本身来说毫无特殊之处。
 
-​	备注
+> 备注 
+>
+> `_` 常用于连接国际化文本；详见 [`gettext`]({{< ref "/library/i18n/gettext#module-gettext" >}}) 模块文档。
+>
+> 它还经常被用来命名无需使用的变量。
+>
 
- 
+`__*__`
 
-`_` 常用于连接国际化文本；详见 [`gettext`](https://docs.python.org/zh-cn/3.13/library/gettext.html#module-gettext) 模块文档。
+​	系统定义的名称，通常简称为 "dunder" 。这些名称由解释器及其实现（包括标准库）定义。现有系统定义名称相关的论述详见 [特殊方法名称]({{< ref "/reference/datamodel#specialnames" >}}) 等章节。Python 未来版本中还将定义更多此类名称。任何情况下，*任何* 不显式遵从 `__*__` 名称的文档用法，都可能导致无警告提示的错误。
 
-​	它还经常被用来命名无需使用的变量。
+`__*`
 
-## `__*__`
-
-​	系统定义的名称，通常简称为 "dunder" 。这些名称由解释器及其实现（包括标准库）定义。现有系统定义名称相关的论述详见 [特殊方法名称](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#specialnames) 等章节。Python 未来版本中还将定义更多此类名称。任何情况下，*任何* 不显式遵从 `__*__` 名称的文档用法，都可能导致无警告提示的错误。
-
-## `__*`
-
-​	类的私有名称。类定义时，此类名称以一种混合形式重写，以避免基类及派生类的 "私有" 属性之间产生名称冲突。详见 [标识符（名称）](https://docs.python.org/zh-cn/3.13/reference/expressions.html#atom-identifiers)。
+​	类的私有名称。类定义时，此类名称以一种混合形式重写，以避免基类及派生类的 "私有" 属性之间产生名称冲突。详见 [标识符（名称）]({{< ref "/reference/expressions#atom-identifiers" >}})。
 
 
 
@@ -300,11 +299,11 @@ longbyteschar  ::=  <any ASCII character except "\">
 bytesescapeseq ::=  "\" <any ASCII character>
 ```
 
-​	这些产生式未指明的一个句法限制是空白符不允许在 [`stringprefix`](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#grammar-token-python-grammar-stringprefix) 或 [`bytesprefix`](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#grammar-token-python-grammar-bytesprefix) 与字面值的其余部分之间出现。 源字符集是由编码格式声明来定义的；如果源文件没有给出编码格式声明则默认 UTF-8；参见 [编码声明](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#encodings) 一节。
+​	这些产生式未指明的一个句法限制是空白符不允许在 [`stringprefix`]({{< ref "/reference/lexical_analysis#grammar-token-python-grammar-stringprefix" >}}) 或 [`bytesprefix`]({{< ref "/reference/lexical_analysis#grammar-token-python-grammar-bytesprefix" >}}) 与字面值的其余部分之间出现。 源字符集是由编码格式声明来定义的；如果源文件没有给出编码格式声明则默认 UTF-8；参见 [编码声明]({{< ref "/reference/lexical_analysis#encodings" >}}) 一节。
 
-​	直白的说明：两种类型的字面值都可用成对的单引号 (`'`) 或双引号 (`"`) 括起来。 它们还可以用成对的连续三个单引号或双引号括起来 (这通常被称为 *三重引号字符串*)。 反斜杠 (`\`) 字符被用来给予普通的字符特殊含义例如 `n`，当用斜杠转义时 (`\n`) 表示 '换行'。 它还可以被用来对具有特殊含义的字符进行转义，例如换行符、反斜杠本身或者引号等。 请参阅下面的 [转义序列](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#escape-sequences) 查看示例。
+​	直白的说明：两种类型的字面值都可用成对的单引号 (`'`) 或双引号 (`"`) 括起来。 它们还可以用成对的连续三个单引号或双引号括起来 (这通常被称为 *三重引号字符串*)。 反斜杠 (`\`) 字符被用来给予普通的字符特殊含义例如 `n`，当用斜杠转义时 (`\n`) 表示 '换行'。 它还可以被用来对具有特殊含义的字符进行转义，例如换行符、反斜杠本身或者引号等。 请参阅下面的 [转义序列]({{< ref "/reference/lexical_analysis#escape-sequences" >}}) 查看示例。
 
-​	字节串字面值要加前缀 `'b'` 或 `'B'`；生成的是类型 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 的实例，不是类型 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 的实例；字节串只能包含 ASCII 字符；字节串数值大于等于 128 时，必须用转义表示。
+​	字节串字面值要加前缀 `'b'` 或 `'B'`；生成的是类型 [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 的实例，不是类型 [`str`]({{< ref "/library/stdtypes#str" >}}) 的实例；字节串只能包含 ASCII 字符；字节串数值大于等于 128 时，必须用转义表示。
 
 ​	字符串和字节串字面值都可选择加前缀字母 `'r'` 或 `'R'`；这分别被称为 *原始字符串字面值* 和 *原始字节串字面值* 并会将反斜杠视为原本的字符字面值。 因此，在原始字符串字面值中，`'\U'` 和 `'\u'` 转义符号不会被特殊对待。
 
@@ -313,7 +312,7 @@ bytesescapeseq ::=  "\" <any ASCII character>
 
 ​	支持 unicode 字面值（`u'value'`）遗留代码，简化 Python 2.x 和 3.x 并行代码库的维护工作。详见 [**PEP 414**](https://peps.python.org/pep-0414/)。
 
-​	前缀为 `'f'` 或 `'F'` 的字符串称为 *格式字符串*；详见 [f 字符串](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#f-strings)。`'f'` 可与 `'r'` 连用，但不能与 `'b'` 或 `'u'` 连用，因此，可以使用原始格式字符串，但不能使用格式字节串字面值。
+​	前缀为 `'f'` 或 `'F'` 的字符串称为 *格式字符串*；详见 [f 字符串]({{< ref "/reference/lexical_analysis#f-strings" >}})。`'f'` 可与 `'r'` 连用，但不能与 `'b'` 或 `'u'` 连用，因此，可以使用原始格式字符串，但不能使用格式字节串字面值。
 
 ​	三引号字面值可以包含未转义的换行和引号（原样保留），除了连在一起的，用于终止字面值的，未经转义的三个引号。（"引号" 是启用字面值的字符，可以是 `'`，也可以是 `"`。）
 
@@ -359,19 +358,19 @@ bytesescapeseq ::=  "\" <any ASCII character>
    'This string will not include backslashes or newline characters.'
    ```
 
-   同样的效果也可以使用 [三重引号字符串](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#strings)，或者圆括号和 [字符串字面值拼接](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#string-concatenation) 来达成。
+   同样的效果也可以使用 [三重引号字符串]({{< ref "/reference/lexical_analysis#strings" >}})，或者圆括号和 [字符串字面值拼接]({{< ref "/reference/lexical_analysis#string-concatenation" >}}) 来达成。
 
 2. 与 C 标准一致，接受最多三个八进制数字。
 
-   *在 3.11 版本发生变更:* 取值大于 `0o377` 的八进制数转义序列会产生 [`DeprecationWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#DeprecationWarning)。
+   > 在 3.11 版本发生变更: 取值大于 `0o377` 的八进制数转义序列会产生 [`DeprecationWarning`]({{< ref "/library/exceptions#DeprecationWarning" >}})。
 
-   *在 3.12 版本发生变更:* 数值大于 `0o377` 的八进制转义符会产生 [`SyntaxWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxWarning)。 在未来的 Python 版本中将最终改为 [`SyntaxError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxError)。
+   > 在 3.12 版本发生变更: 数值大于 `0o377` 的八进制转义符会产生 [`SyntaxWarning`]({{< ref "/library/exceptions#SyntaxWarning" >}})。 在未来的 Python 版本中将最终改为 [`SyntaxError`]({{< ref "/library/exceptions#SyntaxError" >}})。
 
 3. 与 C 标准不同，必须为两个十六进制数字。
 
 4. *字节串* 字面值中，十六进制数和八进制数的转义码以相应数值代表每个字节。*字符串* 字面值中，这些转义码以相应数值代表每个 Unicode 字符。
 
-5. *在 3.3 版本发生变更:* 加入了对别名 [[1\]](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#id16) 的支持。
+5. > 在 3.3 版本发生变更: 加入了对别名 [[1\]]({{< ref "/reference/lexical_analysis#id16" >}}) 的支持。
 
 6. 必须为 4 个十六进制数码。
 
@@ -379,9 +378,9 @@ bytesescapeseq ::=  "\" <any ASCII character>
 
 ​	与 C 标准不同，无法识别的转义序列在字符串里原样保留，即，*输出结果保留反斜杠*。（调试时，这种方式很有用：输错转义序列时，更容易在输出结果中识别错误。）注意，在字节串字面值内，字符串字面值专用的转义序列属于无法识别的转义序列。
 
-*在 3.6 版本发生变更:* 不可识别的转义序列会产生 [`DeprecationWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#DeprecationWarning)。
+> 在 3.6 版本发生变更: 不可识别的转义序列会产生 [`DeprecationWarning`]({{< ref "/library/exceptions#DeprecationWarning" >}})。
 
-*在 3.12 版本发生变更:* 不可识别的转义序列会产生 [`SyntaxWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxWarning)。 在未来的 Python 版本中将最终改为 [`SyntaxError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxError)。
+> 在 3.12 版本发生变更: 不可识别的转义序列会产生 [`SyntaxWarning`]({{< ref "/library/exceptions#SyntaxWarning" >}})。 在未来的 Python 版本中将最终改为 [`SyntaxError`]({{< ref "/library/exceptions#SyntaxError" >}})。
 
 ​	即使在原始字面值中，引号也可以用反斜杠转义，但反斜杠会保留在输出结果里；例如 `r"\""` 是由两个字符组成的有效字符串字面值：反斜杠和双引号；`r"\"` 则不是有效字符串字面值（原始字符串也不能以奇数个反斜杠结尾）。尤其是，*原始字面值不能以单个反斜杠结尾* （反斜杠会转义其后的引号)。还要注意，反斜杠加换行在字面值中被解释为两个字符，而 *不是* 连续行。
 
@@ -423,7 +422,7 @@ literal_char      ::=  <any code point except "{", "}" or NULL>
 
 ​	双花括号 `'{{'` 或 `'}}'` 被替换为单花括号，花括号外的字符串仍按字面值处理。单左花括号 `'{'` 标记以 Python 表达式开头的替换字段。在表达式后加等于号 `'='`，可在求值后，同时显示表达式文本及其结果（用于调试）。 随后是用叹号 `'!'` 标记的转换字段。还可以在冒号 `':'` 后附加格式说明符。替换字段以右花括号 `'}'` 为结尾。
 
-​	格式化字符串字面值中的表达式会与用圆括号包围的常规 Python 表达式一样处理，但有少量例外。 空表达式是不被允许的，而 [`lambda`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#lambda) 和赋值表达式 `:=` 都必须显式地用括号包围。 每个表达式都将在格式化字符串字面值出现的上下文中按从左到右的顺序进行求值。 替换表达式可在单引号和三引号f-字符串中包含换行符并可包含注释。 替换字段内 `#` 后面的所有内容都是注释（即使结尾花括号和引号也是）。 在这种情况下，替换字段必须在另一行中结束。
+​	格式化字符串字面值中的表达式会与用圆括号包围的常规 Python 表达式一样处理，但有少量例外。 空表达式是不被允许的，而 [`lambda`]({{< ref "/reference/expressions#lambda" >}}) 和赋值表达式 `:=` 都必须显式地用括号包围。 每个表达式都将在格式化字符串字面值出现的上下文中按从左到右的顺序进行求值。 替换表达式可在单引号和三引号f-字符串中包含换行符并可包含注释。 替换字段内 `#` 后面的所有内容都是注释（即使结尾花括号和引号也是）。 在这种情况下，替换字段必须在另一行中结束。
 
 ``` python
 >>> f"abc{a # This is a comment }"
@@ -431,20 +430,20 @@ literal_char      ::=  <any code point except "{", "}" or NULL>
 'abc5'
 ```
 
-*在 3.7 版本发生变更:* Python 3.7 以前， 因为实现的问题，不允许在格式字符串字面值表达式中使用 [`await`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#await) 表达式与包含 [`async for`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#async-for) 子句的推导式。
+> 在 3.7 版本发生变更: Python 3.7 以前， 因为实现的问题，不允许在格式字符串字面值表达式中使用 [`await`]({{< ref "/reference/expressions#await" >}}) 表达式与包含 [`async for`]({{< ref "/reference/compound_stmts#async-for" >}}) 子句的推导式。
 
-*在 3.12 版本发生变更:* 在 Python 3.12 之前，不允许在 f-字符串的替换字段中使用注释。
+> 在 3.12 版本发生变更: 在 Python 3.12 之前，不允许在 f-字符串的替换字段中使用注释。
 
-​	表达式里含等号 `'='` 时，输出内容包括表达式文本、`'='` 、求值结果。输出内容可以保留表达式中左花括号 `'{'` 后，及 `'='` 后的空格。没有指定格式时，`'='` 默认调用表达式的 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr)。指定了格式时，默认调用表达式的 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str)，除非声明了转换字段 `'!r'`。
+​	表达式里含等号 `'='` 时，输出内容包括表达式文本、`'='` 、求值结果。输出内容可以保留表达式中左花括号 `'{'` 后，及 `'='` 后的空格。没有指定格式时，`'='` 默认调用表达式的 [`repr()`]({{< ref "/library/functions#repr" >}})。指定了格式时，默认调用表达式的 [`str()`]({{< ref "/library/stdtypes#str" >}})，除非声明了转换字段 `'!r'`。
 
 > Added in version 3.8:
 > 等号 `'='`。
 
-​	指定了转换符时，表达式求值的结果会先转换，再格式化。转换符 `'!s'` 调用 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 转换求值结果，`'!r'` 调用 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr)，`'!a'` 调用 [`ascii()`](https://docs.python.org/zh-cn/3.13/library/functions.html#ascii)。
+​	指定了转换符时，表达式求值的结果会先转换，再格式化。转换符 `'!s'` 调用 [`str()`]({{< ref "/library/stdtypes#str" >}}) 转换求值结果，`'!r'` 调用 [`repr()`]({{< ref "/library/functions#repr" >}})，`'!a'` 调用 [`ascii()`]({{< ref "/library/functions#ascii" >}})。
 
-​	然后使用 [`format()`](https://docs.python.org/zh-cn/3.13/library/functions.html#format) 协议对结果进行格式化。 格式说明符将传给表达式或转换结果的 [`__format__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__format__) 方法。 如果省略格式说明符则将传入空字符串。 格式化后的结果将包括在整个字符串的最终值中。
+​	然后使用 [`format()`]({{< ref "/library/functions#format" >}}) 协议对结果进行格式化。 格式说明符将传给表达式或转换结果的 [`__format__()`]({{< ref "/reference/datamodel#object.__format__" >}}) 方法。 如果省略格式说明符则将传入空字符串。 格式化后的结果将包括在整个字符串的最终值中。
 
-​	最高层级的格式说明符可以包括嵌套的替换字段。 这些嵌套字段也可以包括它们自己的转换字段和 [格式说明符](https://docs.python.org/zh-cn/3.13/library/string.html#formatspec)，但是不可再包括更深层嵌套的替换字段。 这里的 [格式说明符微语言](https://docs.python.org/zh-cn/3.13/library/string.html#formatspec) 与 [`str.format()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.format) 方法所使用的相同。
+​	最高层级的格式说明符可以包括嵌套的替换字段。 这些嵌套字段也可以包括它们自己的转换字段和 [格式说明符]({{< ref "/library/text/string#formatspec" >}})，但是不可再包括更深层嵌套的替换字段。 这里的 [格式说明符微语言]({{< ref "/library/text/string#formatspec" >}}) 与 [`str.format()`]({{< ref "/library/stdtypes#str.format" >}}) 方法所使用的相同。
 
 ​	格式化字符串字面值可以拼接，但是一个替换字段不能拆分到多个字面值。
 
@@ -493,7 +492,7 @@ literal_char      ::=  <any code point except "{", "}" or NULL>
 'abc 2 def'
 ```
 
-*在 3.12 版本发生变更:* 在 Python 3.12 之前不允许在替换字段中重用与外层 f-字符串相同的引号类型。
+> 在 3.12 版本发生变更: 在 Python 3.12 之前不允许在替换字段中重用与外层 f-字符串相同的引号类型。
 
 ​	替换字段中也允许使用反斜杠并会以与在其他场景下相同的方式求值:
 
@@ -508,7 +507,7 @@ b
 c
 ```
 
-*在 3.12 版本发生变更:* 在 Python 3.12 之前，f-字符串的替换字段内不允许使用反斜杠。
+> 在 3.12 版本发生变更: 在 Python 3.12 之前，f-字符串的替换字段内不允许使用反斜杠。
 
 ​	即便未包含表达式，格式字符串字面值也不能用作文档字符串。
 
@@ -522,7 +521,7 @@ c
 True
 ```
 
-​	参阅 [**PEP 498**](https://peps.python.org/pep-0498/)，了解格式字符串字面值的提案，以及与格式字符串机制相关的 [`str.format()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.format)。
+​	参阅 [**PEP 498**](https://peps.python.org/pep-0498/)，了解格式字符串字面值的提案，以及与格式字符串机制相关的 [`str.format()`]({{< ref "/library/stdtypes#str.format" >}})。
 
 
 
@@ -565,7 +564,7 @@ hexdigit     ::=  digit | "a"..."f" | "A"..."F"
       100_000_000_000                   0b_1110_0101
 ```
 
-*在 3.6 版本发生变更:* 现已支持在字面值中，用下划线分组数字。
+> 在 3.6 版本发生变更: 现已支持在字面值中，用下划线分组数字。
 
 
 
@@ -590,7 +589,7 @@ exponent      ::=  ("e" | "E") ["+" | "-"] digitpart
 3.14    10.    .001    1e100    3.14e-10    0e0    3.14_15_93
 ```
 
-*在 3.6 版本发生变更:* 现已支持在字面值中，用下划线分组数字。
+> 在 3.6 版本发生变更: 现已支持在字面值中，用下划线分组数字。
 
 
 
@@ -647,8 +646,7 @@ imagnumber ::=  (floatnumber | digitpart) ("j" | "J")
 $       ?       `
 ```
 
-​	备注
-
-[[1](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#id12)]
+​备注
+[[1]({{< ref "/reference/lexical_analysis#id12" >}})]
 
 https://www.unicode.org/Public/15.1.0/ucd/NameAliases.txt

@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/stringprep.html](https://docs.python.org/zh-cn/3.13/library/stringprep.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/stringprep.html](https://docs.python.org/zh-cn/3.13/library/stringprep.html)
 >
 > 收录该文档的时间：`2024-11-15T11:04:21+08:00`
 
@@ -22,9 +22,9 @@ draft = false
 
 [**RFC 3454**](https://datatracker.ietf.org/doc/html/rfc3454.html) 定义了在因特网协议中 Unicode 字符串的“预备”过程。 在将字符串连线传输之前，它们会先使用预备过程进行处理，之后它们将具有特定的标准形式。 该 RFC 定义了一系列表格，它们可以被组合为选项配置。 每个配置必须定义所使用的表格，`stringprep` 过程的其他可选项也是配置的组成部分。 `stringprep` 配置的一个例子是 `nameprep`，它被用于国际化域名。
 
-[`stringprep`](https://docs.python.org/zh-cn/3.13/library/stringprep.html#module-stringprep) 模块只公开了来自 [**RFC 3454**](https://datatracker.ietf.org/doc/html/rfc3454.html) 的表格。 由于以字典或列表形式表示这些表格将会非常庞大，因此该模块在内部使用 Unicode 字符数据库。 该模块本身的源代码是使用 `mkstringprep.py` 工具生成的。
+[`stringprep`]({{< ref "/library/text/stringprep#module-stringprep" >}}) 模块只公开了来自 [**RFC 3454**](https://datatracker.ietf.org/doc/html/rfc3454.html) 的表格。 由于以字典或列表形式表示这些表格将会非常庞大，因此该模块在内部使用 Unicode 字符数据库。 该模块本身的源代码是使用 `mkstringprep.py` 工具生成的。
 
-​	因此，这些表格以函数而非数据结构的形式公开。 在 RFC 中有两种表格：集合与映射。 对于集合，[`stringprep`](https://docs.python.org/zh-cn/3.13/library/stringprep.html#module-stringprep) 提供了“特征函数”，即如果形参是集合的一部分则返回值为 `True` 的函数。 对于映射，它提供了映射函数：它会根据给定的键返回所关联的值。 以下是模块中所有可用函数的列表。
+​	因此，这些表格以函数而非数据结构的形式公开。 在 RFC 中有两种表格：集合与映射。 对于集合，[`stringprep`]({{< ref "/library/text/stringprep#module-stringprep" >}}) 提供了“特征函数”，即如果形参是集合的一部分则返回值为 `True` 的函数。 对于映射，它提供了映射函数：它会根据给定的键返回所关联的值。 以下是模块中所有可用函数的列表。
 
 ## stringprep.**in_table_a1**(*code*)
 

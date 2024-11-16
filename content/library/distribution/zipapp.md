@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/zipapp.html](https://docs.python.org/zh-cn/3.13/library/zipapp.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/zipapp.html](https://docs.python.org/zh-cn/3.13/library/zipapp.html)
 >
 > 收录该文档的时间：`2024-11-15T21:09:42+08:00`
 
@@ -21,11 +21,11 @@ draft = false
 
 ------
 
-​	本模块提供了一套管理工具，用于创建包含 Python 代码的压缩文件，这些文件可以 [直接由 Python 解释器执行](https://docs.python.org/zh-cn/3.13/using/cmdline.html#using-on-interface-options)。 本模块提供 [命令行接口](https://docs.python.org/zh-cn/3.13/library/zipapp.html#zipapp-command-line-interface) 和 [Python API](https://docs.python.org/zh-cn/3.13/library/zipapp.html#zipapp-python-api)。
+​	本模块提供了一套管理工具，用于创建包含 Python 代码的压缩文件，这些文件可以 [直接由 Python 解释器执行]({{< ref "/using/cmdline#using-on-interface-options" >}})。 本模块提供 [命令行接口]({{< ref "/library/distribution/zipapp#zipapp-command-line-interface" >}}) 和 [Python API]({{< ref "/library/distribution/zipapp#zipapp-python-api" >}})。
 
 ## 简单示例
 
-​	下述例子展示了用 [命令行接口](https://docs.python.org/zh-cn/3.13/library/zipapp.html#zipapp-command-line-interface) 根据含有 Python 代码的目录创建一个可执行的打包文件。 运行后该打包文件时，将会执行 `myapp` 模块中的 `main` 函数。
+​	下述例子展示了用 [命令行接口]({{< ref "/library/distribution/zipapp#zipapp-command-line-interface" >}}) 根据含有 Python 代码的目录创建一个可执行的打包文件。 运行后该打包文件时，将会执行 `myapp` 模块中的 `main` 函数。
 
 ```
 $ python -m zipapp myapp -m "myapp:main"
@@ -47,36 +47,36 @@ $ python -m zipapp source [options]
 
 ​	可以接受以下参数：
 
-## **-o** <output>, **--output**=<output>
+## **-o** <output>, `--output`=<output>
 
 ​	将程序的输出写入名为 *output* 的文件中。若未指定此参数，输出的文件名将与输入的 *source* 相同，并添加扩展名 `.pyz`。如果显式给出了文件名，将会原样使用（因此必要时应包含扩展名 `.pyz`）。
 
 ​	如果 *source* 是个打包文件，必须指定一个输出文件名（这时 *output* 必须与 *source* 不同）。
 
-## **-p** <interpreter>, **--python**=<interpreter>
+## **-p** <interpreter>, `--python`=<interpreter>
 
 ​	给打包文件加入 `#!` 行，以便指定 *解释器* 作为运行的命令行。另外，还让打包文件在 POSIX 平台上可执行。默认不会写入 `#!` 行，也不让文件可执行。
 
-## **-m** <mainfn>, **--main**=<mainfn>
+## **-m** <mainfn>, `--main`=<mainfn>
 
 ​	在打包文件中写入一个 `__main__.py` 文件，用于执行 *mainfn*。*mainfn* 参数的形式应为 “pkg.mod:fn”，其中 “pkg.mod”是打包文件中的某个包/模块，“fn”是该模块中的一个可调用对象。`__main__.py` 文件将会执行该可调用对象。
 
-​	在复制打包文件时，不能设置 [`--main`](https://docs.python.org/zh-cn/3.13/library/zipapp.html#cmdoption-zipapp-m) 参数。
+​	在复制打包文件时，不能设置 [`--main`]({{< ref "/library/distribution/zipapp#cmdoption-zipapp-m" >}}) 参数。
 
-## **-c**, **--compress**
+## **-c**, `--compress`
 
 ​	利用 deflate 方法压缩文件，减少输出文件的大小。默认情况下，打包文件中的文件是不压缩的。
 
-​	在复制打包文件时，[`--compress`](https://docs.python.org/zh-cn/3.13/library/zipapp.html#cmdoption-zipapp-c) 无效。
+​	在复制打包文件时，[`--compress`]({{< ref "/library/distribution/zipapp#cmdoption-zipapp-c" >}}) 无效。
 
 > Added in version 3.7.
 >
 
-## **--info**
+## `--info`
 
 ​	显示嵌入在打包文件中的解释器程序，以便诊断问题。这时会忽略其他所有参数，SOURCE 必须是个打包文件，而不是目录。
 
-## **-h**, **--help**
+## **-h**, `--help`
 
 ​	打印简短的用法信息并退出。
 
@@ -90,13 +90,13 @@ $ python -m zipapp source [options]
 
 ​	由 *source* 创建一个应用程序打包文件。source 可以是以下形式之一：
 
-- 一个目录名，或指向目录的 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object) ，这时将根据目录内容新建一个应用程序打包文件。
-- 一个已存在的应用程序打包文件名，或指向这类文件的 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object)，这时会将该文件复制为目标文件（会稍作修改以反映出 *interpreter* 参数的值）。必要时文件名中应包括 `.pyz` 扩展名。
+- 一个目录名，或指向目录的 [path-like object]({{< ref "/glossary/idx#term-path-like-object" >}}) ，这时将根据目录内容新建一个应用程序打包文件。
+- 一个已存在的应用程序打包文件名，或指向这类文件的 [path-like object]({{< ref "/glossary/idx#term-path-like-object" >}})，这时会将该文件复制为目标文件（会稍作修改以反映出 *interpreter* 参数的值）。必要时文件名中应包括 `.pyz` 扩展名。
 - 一个以字节串模式打开的文件对象。该文件的内容应为应用程序打包文件，且假定文件对象定位于打包文件的初始位置。
 
 *target* 参数定义了打包文件的写入位置：
 
-- 若是个文件名，或是 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object)，打包文件将写入该文件中。
+- 若是个文件名，或是 [path-like object]({{< ref "/glossary/idx#term-path-like-object" >}})，打包文件将写入该文件中。
 - 若是个打开的文件对象，打包文件将写入该对象，该文件对象必须在字节串写入模式下打开。
 - 如果省略了 target （或为 `None`），则 source 必须为一个目录，target 将是与 source 同名的文件，并加上 `.pyz` 扩展名。
 
@@ -112,11 +112,11 @@ $ python -m zipapp source [options]
 
 ​	当复制已有的打包文件时，提供的文件对象只需 `read` 和 `readline` 方法，或 `write` 方法。当由目录创建打包文件时，若目标为文件对象，将会将其传给 类，且必须提供 `zipfile.ZipFile` 类所需的方法。
 
-*在 3.7 版本发生变更:* 增加了 *filter* 和 *compressed* 形参。
+> 在 3.7 版本发生变更: 增加了 *filter* 和 *compressed* 形参。
 
 ## zipapp.**get_interpreter**(*archive*)
 
-​	返回打包文件开头的 行指定的解释器程序。如果没有 `#!` 行，则返回 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None)。参数 *archive* 可为文件名或在字节串模式下打开以供读取的文件型对象。`#!` 行假定是在打包文件的开头。
+​	返回打包文件开头的 行指定的解释器程序。如果没有 `#!` 行，则返回 [`None`]({{< ref "/library/constants#None" >}})。参数 *archive* 可为文件名或在字节串模式下打开以供读取的文件型对象。`#!` 行假定是在打包文件的开头。
 
 
 
@@ -130,7 +130,7 @@ $ python myapp.pyz
 <output from myapp>
 ```
 
-​	同样还可用 [`create_archive()`](https://docs.python.org/zh-cn/3.13/library/zipapp.html#zipapp.create_archive) 函数完成：
+​	同样还可用 [`create_archive()`]({{< ref "/library/distribution/zipapp#zipapp.create_archive" >}}) 函数完成：
 
 
 
@@ -147,7 +147,7 @@ $ ./myapp.pyz
 <output from myapp>
 ```
 
-​	若要替换已有打包文件中的释伴行，请用 [`create_archive()`](https://docs.python.org/zh-cn/3.13/library/zipapp.html#zipapp.create_archive) 函数另建一个修改好的打包文件：
+​	若要替换已有打包文件中的释伴行，请用 [`create_archive()`]({{< ref "/library/distribution/zipapp#zipapp.create_archive" >}}) 函数另建一个修改好的打包文件：
 
 
 
@@ -156,7 +156,7 @@ $ ./myapp.pyz
 >>> zipapp.create_archive('old_archive.pyz', 'new_archive.pyz', '/usr/bin/python3')
 ```
 
-​	若要原地更新打包文件，可用 [`BytesIO`](https://docs.python.org/zh-cn/3.13/library/io.html#io.BytesIO) 对象在内存中进行替换，然后再覆盖源文件。 请注意原地覆盖文件存在发生错误时丢失原始文件的风险。 这段代码没有考虑发生错误的情况，但生产性代码应该要考虑。 另外，此方法将仅在内存能容纳打包文件时才适用:
+​	若要原地更新打包文件，可用 [`BytesIO`]({{< ref "/library/allos/io#io.BytesIO" >}}) 对象在内存中进行替换，然后再覆盖源文件。 请注意原地覆盖文件存在发生错误时丢失原始文件的风险。 这段代码没有考虑发生错误的情况，但生产性代码应该要考虑。 另外，此方法将仅在内存能容纳打包文件时才适用:
 
 
 
@@ -183,7 +183,7 @@ $ ./myapp.pyz
 
 ## 用 zipapp 创建独立运行的应用程序
 
-​	利用 [`zipapp`](https://docs.python.org/zh-cn/3.13/library/zipapp.html#module-zipapp) 模块可以创建独立运行的 Python 程序，以便向最终用户发布，仅需在系统中装有合适版本的 Python 即可运行。操作的关键就是把应用程序代码和所有依赖项一起放入打包文件中。
+​	利用 [`zipapp`]({{< ref "/library/distribution/zipapp#module-zipapp" >}}) 模块可以创建独立运行的 Python 程序，以便向最终用户发布，仅需在系统中装有合适版本的 Python 即可运行。操作的关键就是把应用程序代码和所有依赖项一起放入打包文件中。
 
 ​	创建独立运行打包文件的步骤如下：
 
@@ -203,7 +203,7 @@ $ ./myapp.pyz
    $ python -m zipapp -p "interpreter" myapp
    ```
 
-​	这会生成一个独立的可执行文件，可在任何装有合适解释器的机器上运行。详情参见 [指定解释器程序](https://docs.python.org/zh-cn/3.13/library/zipapp.html#zipapp-specifying-the-interpreter)。可以单个文件的形式分发给用户。
+​	这会生成一个独立的可执行文件，可在任何装有合适解释器的机器上运行。详情参见 [指定解释器程序]({{< ref "/library/distribution/zipapp#zipapp-specifying-the-interpreter" >}})。可以单个文件的形式分发给用户。
 
 ​	在 Unix 系统中， `myapp.pyz` 文件将以原有文件名执行。如果喜欢 “普通”的命令名，可以重命名该文件，去掉扩展名 `.pyz` 。在 Windows 系统中， `myapp.pyz[w]` 是可执行文件，因为 Python 解释器在安装时注册了扩展名 `.pyz` 和 `.pyzw` 。
 
@@ -213,14 +213,14 @@ $ ./myapp.pyz
 
 ## Python 打包应用程序的格式
 
-​	自 2.6 版开始，Python 即能够执行包含 文件的打包文件了。为了能被 Python 执行，应用程序的打包文件必须为包含 `__main__.py` 文件的标准 zip 文件，`__main__.py` 文件将作为应用程序的入口运行。类似于常规的 Python 脚本，父级（这里指打包文件）将放入 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) ，因此可从打包文件中导入更多的模块。
+​	自 2.6 版开始，Python 即能够执行包含 文件的打包文件了。为了能被 Python 执行，应用程序的打包文件必须为包含 `__main__.py` 文件的标准 zip 文件，`__main__.py` 文件将作为应用程序的入口运行。类似于常规的 Python 脚本，父级（这里指打包文件）将放入 [`sys.path`]({{< ref "/library/python/sys#sys.path" >}}) ，因此可从打包文件中导入更多的模块。
 
 ​	zip 文件格式允许在文件中预置任意数据。利用这种能力，zip 应用程序格式在文件中预置了一个标准的 POSIX “释伴”行（`#!/path/to/interpreter`）。
 
 ​	因此，Python zip 应用程序的格式会如下所示：
 
-1. 可选的 shebang 行，包含字符 `b'#!'` 后面跟一个解释器名，再带一个换行符 (`b'\n'`)。 解释器名可以是 OS "shebang" 处理所能接受的任何名称，或为 Windows 上的 Python 启动器。 解释器名在 Windows 上应当使用 UTF-8 编码，而在 POSIX 上则使用 [`sys.getfilesystemencoding()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.getfilesystemencoding)。
-2. 标准的打包文件由 [`zipfile`](https://docs.python.org/zh-cn/3.13/library/zipfile.html#module-zipfile) 模块生成。其中 *必须* 包含一个名为 `__main__.py` 的文件（必须位于打包文件的“根”目录——不能位于某个子目录中）。打包文件中的数据可以是压缩或未压缩的。
+1. 可选的 shebang 行，包含字符 `b'#!'` 后面跟一个解释器名，再带一个换行符 (`b'\n'`)。 解释器名可以是 OS "shebang" 处理所能接受的任何名称，或为 Windows 上的 Python 启动器。 解释器名在 Windows 上应当使用 UTF-8 编码，而在 POSIX 上则使用 [`sys.getfilesystemencoding()`]({{< ref "/library/python/sys#sys.getfilesystemencoding" >}})。
+2. 标准的打包文件由 [`zipfile`]({{< ref "/library/archiving/zipfile#module-zipfile" >}}) 模块生成。其中 *必须* 包含一个名为 `__main__.py` 的文件（必须位于打包文件的“根”目录——不能位于某个子目录中）。打包文件中的数据可以是压缩或未压缩的。
 
 ​	如果应用程序的打包文件带有释伴行，则在 POSIX 系统中可能需要启用可执行属性，以允许直接执行。
 

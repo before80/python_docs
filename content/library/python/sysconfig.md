@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/sysconfig.html](https://docs.python.org/zh-cn/3.13/library/sysconfig.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/sysconfig.html](https://docs.python.org/zh-cn/3.13/library/sysconfig.html)
 >
 > 收录该文档的时间：`2024-11-15T21:12:39+08:00`
 
@@ -21,13 +21,13 @@ draft = false
 
 ------
 
-[`sysconfig`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#module-sysconfig) 模块提供了对 Python 配置信息的访问支持，比如安装路径列表和有关当前平台的配置变量。
+[`sysconfig`]({{< ref "/library/python/sysconfig#module-sysconfig" >}}) 模块提供了对 Python 配置信息的访问支持，比如安装路径列表和有关当前平台的配置变量。
 
 ## 配置变量
 
 ​	一个包含 `Makefile` 和 `pyconfig.h` 头文件的 Python 分发版，这是构建 Python 二进制文件本身和用 `setuptools` 编译的第三方 C 扩展所必需的。
 
-[`sysconfig`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#module-sysconfig) 将这些文件中的所有变量放在一个字典对象中，可用 [`get_config_vars()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_config_vars) 或 [`get_config_var()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_config_var) 访问。
+[`sysconfig`]({{< ref "/library/python/sysconfig#module-sysconfig" >}}) 将这些文件中的所有变量放在一个字典对象中，可用 [`get_config_vars()`]({{< ref "/library/python/sysconfig#sysconfig.get_config_vars" >}}) 或 [`get_config_var()`]({{< ref "/library/python/sysconfig#sysconfig.get_config_var" >}}) 访问。
 
 ​	请注意在 Windows 上，这是一个小得多的集合。
 
@@ -63,17 +63,17 @@ draft = false
 
 ## 安装路径
 
-​	Python 会使用根据平台和安装选项区别处理的安装方案。 这些方案被存储在 [`sysconfig`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#module-sysconfig) 中基于 [`os.name`](https://docs.python.org/zh-cn/3.13/library/os.html#os.name) 返回的值来确定的唯一标识符下。 软件包安装程序使用这些方案来确定将文件复制到何处。
+​	Python 会使用根据平台和安装选项区别处理的安装方案。 这些方案被存储在 [`sysconfig`]({{< ref "/library/python/sysconfig#module-sysconfig" >}}) 中基于 [`os.name`]({{< ref "/library/allos/os#os.name" >}}) 返回的值来确定的唯一标识符下。 软件包安装程序使用这些方案来确定将文件复制到何处。
 
 ​	Python 目前支持九种方案:
 
 - *posix_prefix*: 针对 POSIX 平台如 Linux 或 macOS 的方案。 这是在安装 Python 或者组件时的默认方案。
 - *posix_home*: 当使用 *home* 选项时，针对 POSIX 平台的方案。 该方案定义了位于特定 home 前缀下的路径。
-- *posix_user*: 当使用 *user* 选项时，针对 POSIX 平台的方案。 该方案定义了位于用户主目录 ([`site.USER_BASE`](https://docs.python.org/zh-cn/3.13/library/site.html#site.USER_BASE)) 下的路径。
-- *posix_venv*: 针对 POSIX 平台上 [`Python 虚拟环境`](https://docs.python.org/zh-cn/3.13/library/venv.html#module-venv) 的方案；在默认情况下与 *posix_prefix* 相同。
+- *posix_user*: 当使用 *user* 选项时，针对 POSIX 平台的方案。 该方案定义了位于用户主目录 ([`site.USER_BASE`]({{< ref "/library/python/site#site.USER_BASE" >}})) 下的路径。
+- *posix_venv*: 针对 POSIX 平台上 [`Python 虚拟环境`]({{< ref "/library/distribution/venv#module-venv" >}}) 的方案；在默认情况下与 *posix_prefix* 相同。
 - *nt*: 针对 Windows 的方案。 这是在安装 Python 或其组件时的默认方案。
 - *nt_user*: 针对 Windows,当使用了 *user* 选项时的方案。
-- *nt_venv*: 针对 Windows 上 [`Python 虚拟环境`](https://docs.python.org/zh-cn/3.13/library/venv.html#module-venv) 的方案；在默认情况下与 *nt* 相同。
+- *nt_venv*: 针对 Windows 上 [`Python 虚拟环境`]({{< ref "/library/distribution/venv#module-venv" >}}) 的方案；在默认情况下与 *nt* 相同。
 - *venv*: 根据 Python 运行所在平台的不同来设置 *posix_venv* 或 *nt_venv* 的值的方案。
 - *osx_framework_user*: 针对 macOS，当使用了 *user* 选项时的方案。
 
@@ -94,7 +94,7 @@ draft = false
 
 ​	此方案被设计为针对没有全局 site-packages 目录写入权限或不想安装到该目录的用户的最便捷解决方案。
 
-​	文件将被安装到 [`site.USER_BASE`](https://docs.python.org/zh-cn/3.13/library/site.html#site.USER_BASE) (以下称为 `*userbase*`) 的子目录中。 此方案将在同一个位置 (或称 [`site.USER_SITE`](https://docs.python.org/zh-cn/3.13/library/site.html#site.USER_SITE)) 中安装纯 Python 模块和扩展模块。
+​	文件将被安装到 [`site.USER_BASE`]({{< ref "/library/python/site#site.USER_BASE" >}}) (以下称为 `*userbase*`) 的子目录中。 此方案将在同一个位置 (或称 [`site.USER_SITE`]({{< ref "/library/python/site#site.USER_SITE" >}})) 中安装纯 Python 模块和扩展模块。
 
 ### `posix_user`
 
@@ -189,11 +189,11 @@ draft = false
 
 ## 安装路径函数
 
-[`sysconfig`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#module-sysconfig) 提供了一些函数来确定这些安装路径。
+[`sysconfig`]({{< ref "/library/python/sysconfig#module-sysconfig" >}}) 提供了一些函数来确定这些安装路径。
 
 ## sysconfig.**get_scheme_names**()
 
-​	返回一个包含 [`sysconfig`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#module-sysconfig) 目前支持的所有方案的元组。
+​	返回一个包含 [`sysconfig`]({{< ref "/library/python/sysconfig#module-sysconfig" >}}) 目前支持的所有方案的元组。
 
 ## sysconfig.**get_default_scheme**()
 
@@ -202,7 +202,7 @@ draft = false
 > Added in version 3.10:
 > 此函数之前被命名为 `_get_default_scheme()` 并被认为属性实现细节。
 
-*在 3.11 版本发生变更:* 当 Python 运行于虚拟环境时，将返回 *venv* 方案。
+> 在 3.11 版本发生变更: 当 Python 运行于虚拟环境时，将返回 *venv* 方案。
 
 ## sysconfig.**get_preferred_scheme**(*key*)
 
@@ -210,47 +210,47 @@ draft = false
 
 *key* 必须为 `"prefix"`, `"home"` 或 `"user"`。
 
-​	该返回值是 [`get_scheme_names()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_scheme_names) 中列出的一个方案名称。 它可以被传给接受 *scheme* 参数的 [`sysconfig`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#module-sysconfig) 函数，如 [`get_paths()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_paths)。
+​	该返回值是 [`get_scheme_names()`]({{< ref "/library/python/sysconfig#sysconfig.get_scheme_names" >}}) 中列出的一个方案名称。 它可以被传给接受 *scheme* 参数的 [`sysconfig`]({{< ref "/library/python/sysconfig#module-sysconfig" >}}) 函数，如 [`get_paths()`]({{< ref "/library/python/sysconfig#sysconfig.get_paths" >}})。
 
 > Added in version 3.10.
 >
 
-*在 3.11 版本发生变更:* 当 Python 运行于虚拟环境且 `key="prefix"` 时，将返回 *venv* 方案。
+> 在 3.11 版本发生变更: 当 Python 运行于虚拟环境且 `key="prefix"` 时，将返回 *venv* 方案。
 
 ## sysconfig.**_get_preferred_schemes**()
 
 ​	返回一个包含当前平台推荐的方案名称的字典。 Python 的实现方和再分发方可以将他们推荐的方案添加到 `_INSTALL_SCHEMES` 模块层级全局值，并修改此函数以返回这些方案名称，例如为各种系统和语言的包管理器提供不同的方案，这样它们各自安装的包就不会彼此混淆。
 
-​	最终用户不应使用此函数，而应改用 [`get_default_scheme()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_default_scheme) 和 [`get_preferred_scheme()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_preferred_scheme)。
+​	最终用户不应使用此函数，而应改用 [`get_default_scheme()`]({{< ref "/library/python/sysconfig#sysconfig.get_default_scheme" >}}) 和 [`get_preferred_scheme()`]({{< ref "/library/python/sysconfig#sysconfig.get_preferred_scheme" >}})。
 
 > Added in version 3.10.
 >
 
 ## sysconfig.**get_path_names**()
 
-​	返回一个包含在 [`sysconfig`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#module-sysconfig) 中目前支持的所有路径名称的元组。
+​	返回一个包含在 [`sysconfig`]({{< ref "/library/python/sysconfig#module-sysconfig" >}}) 中目前支持的所有路径名称的元组。
 
 ## sysconfig.**get_path**(*name*[, *scheme*[, *vars*[, *expand*]]])
 
 ​	返回一个对应于路径 *name*，来自名为 *scheme* 的安装方案的安装路径。
 
-*name* 必须是一个来自 [`get_path_names()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_path_names) 所返回的列表的值。
+*name* 必须是一个来自 [`get_path_names()`]({{< ref "/library/python/sysconfig#sysconfig.get_path_names" >}}) 所返回的列表的值。
 
-[`sysconfig`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#module-sysconfig) 会针对每个平台保存与每个路径名称相对应的安装路径，并带有可扩展的变量。 例如针对 *nt* 方案的 *stdlib* 路径是: `{base}/Lib`。
+[`sysconfig`]({{< ref "/library/python/sysconfig#module-sysconfig" >}}) 会针对每个平台保存与每个路径名称相对应的安装路径，并带有可扩展的变量。 例如针对 *nt* 方案的 *stdlib* 路径是: `{base}/Lib`。
 
-[`get_path()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_path) 将使用 [`get_config_vars()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_config_vars) 所返回的变量来扩展路径。 所有变量对于每种平台都有相应的默认值因此使用者可以调用此函数来获取默认值。
+[`get_path()`]({{< ref "/library/python/sysconfig#sysconfig.get_path" >}}) 将使用 [`get_config_vars()`]({{< ref "/library/python/sysconfig#sysconfig.get_config_vars" >}}) 所返回的变量来扩展路径。 所有变量对于每种平台都有相应的默认值因此使用者可以调用此函数来获取默认值。
 
-​	如果提供了 *scheme*，则它必须是一个来自 [`get_scheme_names()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_scheme_names) 所返回的列表的值。 在其他情况下，将会使用针对当前平台的默认方案。
+​	如果提供了 *scheme*，则它必须是一个来自 [`get_scheme_names()`]({{< ref "/library/python/sysconfig#sysconfig.get_scheme_names" >}}) 所返回的列表的值。 在其他情况下，将会使用针对当前平台的默认方案。
 
-​	如果提供了 *vars*，则它必须是一个将要更新 [`get_config_vars()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_config_vars) 所返回的字典的变量字典。
+​	如果提供了 *vars*，则它必须是一个将要更新 [`get_config_vars()`]({{< ref "/library/python/sysconfig#sysconfig.get_config_vars" >}}) 所返回的字典的变量字典。
 
 ​	如果 *expand* 被设为 `False`，则将不使用这些变量来扩展路径。
 
-​	如果 *name* 未找到，则会引发 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError)。
+​	如果 *name* 未找到，则会引发 [`KeyError`]({{< ref "/library/exceptions#KeyError" >}})。
 
 ## sysconfig.**get_paths**([*scheme*[, *vars*[, *expand*]]])
 
-​	返回一个包含与特定安装方案对应的安装路径的字典。 请参阅 [`get_path()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_path) 了解详情。
+​	返回一个包含与特定安装方案对应的安装路径的字典。 请参阅 [`get_path()`]({{< ref "/library/python/sysconfig#sysconfig.get_path" >}}) 了解详情。
 
 ​	如果未提供 *scheme*，则将使用针对当前平台的默认方案。
 
@@ -258,7 +258,7 @@ draft = false
 
 ​	如果 *expand* 被设为假值，则路径将不会被扩展。
 
-​	如果 *scheme* 不是一个现有的方案，则 [`get_paths()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_paths) 将引发 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError)。
+​	如果 *scheme* 不是一个现有的方案，则 [`get_paths()`]({{< ref "/library/python/sysconfig#sysconfig.get_paths" >}}) 将引发 [`KeyError`]({{< ref "/library/exceptions#KeyError" >}})。
 
 ## 其他功能
 
@@ -270,7 +270,7 @@ draft = false
 
 ​	返回一个标识当前平台的字符串。
 
-​	这主要被用来区分平台专属的构建目录和平台专属的构建分发版。 通常包括 OS 名称和版本以及架构（即 [`os.uname()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.uname) 所提供的信息），但是实际包括的信息取决于具体 OS；例如，在 Linux 上，内核版本并不是特别重要。
+​	这主要被用来区分平台专属的构建目录和平台专属的构建分发版。 通常包括 OS 名称和版本以及架构（即 [`os.uname()`]({{< ref "/library/allos/os#os.uname" >}}) 所提供的信息），但是实际包括的信息取决于具体 OS；例如，在 Linux 上，内核版本并不是特别重要。
 
 ​	返回值的示例：
 
@@ -290,7 +290,7 @@ draft = false
 - macosx-10.3-i386
 - macosx-10.4-fat
 
-​	对于其他非-POSIX 平台， 目前只是返回 [`sys.platform`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.platform) 。
+​	对于其他非-POSIX 平台， 目前只是返回 [`sys.platform`]({{< ref "/library/python/sys#sys.platform" >}}) 。
 
 ## sysconfig.**is_python_build**()
 
@@ -314,9 +314,9 @@ draft = false
 
 
 
-## 将 [`sysconfig`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#module-sysconfig) 作为脚本使用
+## 将 [`sysconfig`]({{< ref "/library/python/sysconfig#module-sysconfig" >}}) 作为脚本使用
 
-​	You can use [`sysconfig`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#module-sysconfig) as a script with Python's *-m* option:
+​	You can use [`sysconfig`]({{< ref "/library/python/sysconfig#module-sysconfig" >}}) as a script with Python's *-m* option:
 
 ```
 $ python -m sysconfig
@@ -342,4 +342,4 @@ Variables:
         ...
 ```
 
-​	此调用将把 [`get_platform()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_platform), [`get_python_version()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_python_version), [`get_path()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_path) 和 [`get_config_vars()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_config_vars) 所返回的信息打印至标准输出。
+​	此调用将把 [`get_platform()`]({{< ref "/library/python/sysconfig#sysconfig.get_platform" >}}), [`get_python_version()`]({{< ref "/library/python/sysconfig#sysconfig.get_python_version" >}}), [`get_path()`]({{< ref "/library/python/sysconfig#sysconfig.get_path" >}}) 和 [`get_config_vars()`]({{< ref "/library/python/sysconfig#sysconfig.get_config_vars" >}}) 所返回的信息打印至标准输出。

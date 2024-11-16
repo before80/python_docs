@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/profile.html](https://docs.python.org/zh-cn/3.13/library/profile.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/profile.html](https://docs.python.org/zh-cn/3.13/library/profile.html)
 >
 > 收录该文档的时间：`2024-11-15T21:06:32+08:00`
 
@@ -22,18 +22,17 @@ draft = false
 
 ## 性能分析器简介
 
-[`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 和 [`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 提供了 Python 程序的 *确定性性能分析* 。 *profile* 是一组统计数据，描述程序的各个部分执行的频率和时间。这些统计数据可以通过 [`pstats`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-pstats) 模块格式化为报表。
+[`cProfile`]({{< ref "/library/debug/profile#module-cProfile" >}}) 和 [`profile`]({{< ref "/library/debug/profile#module-profile" >}}) 提供了 Python 程序的 *确定性性能分析* 。 *profile* 是一组统计数据，描述程序的各个部分执行的频率和时间。这些统计数据可以通过 [`pstats`]({{< ref "/library/debug/profile#module-pstats" >}}) 模块格式化为报表。
 
 ​	Python 标准库提供了同一分析接口的两种不同实现：
 
-1. 对于大多数用户，建议使用 [`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) ；这是一个 C 扩展插件，因为其合理的运行开销，所以适合于分析长时间运行的程序。该插件基于 `lsprof` ，由 Brett Rosen 和 Ted Chaotter 贡献。
-2. [`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 是一个纯 Python 模块（[`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 就是模拟其接口的 C 语言实现），但它会显著增加配置程序的开销。如果你正在尝试以某种方式扩展分析器，则使用此模块可能会更容易完成任务。该模块最初由 Jim Roskind 设计和编写。
+1. 对于大多数用户，建议使用 [`cProfile`]({{< ref "/library/debug/profile#module-cProfile" >}}) ；这是一个 C 扩展插件，因为其合理的运行开销，所以适合于分析长时间运行的程序。该插件基于 `lsprof` ，由 Brett Rosen 和 Ted Chaotter 贡献。
+2. [`profile`]({{< ref "/library/debug/profile#module-profile" >}}) 是一个纯 Python 模块（[`cProfile`]({{< ref "/library/debug/profile#module-cProfile" >}}) 就是模拟其接口的 C 语言实现），但它会显著增加配置程序的开销。如果你正在尝试以某种方式扩展分析器，则使用此模块可能会更容易完成任务。该模块最初由 Jim Roskind 设计和编写。
 
-​	备注
-
+​备注
  
 
-​	profiler 分析器模块被设计为给指定的程序提供执行概要文件，而不是用于基准测试目的（ [`timeit`](https://docs.python.org/zh-cn/3.13/library/timeit.html#module-timeit) 才是用于此目标的，它能获得合理准确的结果）。这特别适用于将 Python 代码与 C 代码进行基准测试：分析器为Python 代码引入开销，但不会为 C级别的函数引入开销，因此 C 代码似乎比任何Python 代码都更快。
+​	profiler 分析器模块被设计为给指定的程序提供执行概要文件，而不是用于基准测试目的（ [`timeit`]({{< ref "/library/debug/timeit#module-timeit" >}}) 才是用于此目标的，它能获得合理准确的结果）。这特别适用于将 Python 代码与 C 代码进行基准测试：分析器为Python 代码引入开销，但不会为 C级别的函数引入开销，因此 C 代码似乎比任何Python 代码都更快。
 
 
 
@@ -49,9 +48,9 @@ import re
 cProfile.run('re.compile("foo|bar")')
 ```
 
-​	（如果 [`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 在您的系统上不可用，请使用 [`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 。）
+​	（如果 [`cProfile`]({{< ref "/library/debug/profile#module-cProfile" >}}) 在您的系统上不可用，请使用 [`profile`]({{< ref "/library/debug/profile#module-profile" >}}) 。）
 
-​	上述操作将运行 [`re.compile()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.compile) 并打印分析结果，如下所示：
+​	上述操作将运行 [`re.compile()`]({{< ref "/library/text/re#re.compile" >}}) 并打印分析结果，如下所示：
 
 ```
       214 function calls (207 primitive calls) in 0.002 seconds
@@ -105,9 +104,9 @@ import re
 cProfile.run('re.compile("foo|bar")', 'restats')
 ```
 
-[`pstats.Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 类从文件中读取 profile 结果，并以各种方式对其进行格式化。
+[`pstats.Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 类从文件中读取 profile 结果，并以各种方式对其进行格式化。
 
-[`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 和 [`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 文件也可以作为脚本调用，以分析另一个脚本。例如：
+[`cProfile`]({{< ref "/library/debug/profile#module-cProfile" >}}) 和 [`profile`]({{< ref "/library/debug/profile#module-profile" >}}) 文件也可以作为脚本调用，以分析另一个脚本。例如：
 
 ```
 python -m cProfile [-o output_file] [-s sort_order] (-m module | myscript.py)
@@ -115,17 +114,17 @@ python -m cProfile [-o output_file] [-s sort_order] (-m module | myscript.py)
 
 `-o` 将profile 结果写入文件而不是标准输出
 
-`-s` 指定 [`sort_stats()`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats.sort_stats) 排序值之一以对输出进行排序。这仅适用于未提供 `-o` 的情况
+`-s` 指定 [`sort_stats()`]({{< ref "/library/debug/profile#pstats.Stats.sort_stats" >}}) 排序值之一以对输出进行排序。这仅适用于未提供 `-o` 的情况
 
 `-m` 指定要分析的是模块而不是脚本。
 
 > Added in version 3.7:
-> [`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 添加 `-m` 选项
+> [`cProfile`]({{< ref "/library/debug/profile#module-cProfile" >}}) 添加 `-m` 选项
 
 > Added in version 3.8:
-> [`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 添加 `-m` 选项
+> [`profile`]({{< ref "/library/debug/profile#module-profile" >}}) 添加 `-m` 选项
 
-[`pstats`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-pstats) 模块的 [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 类具有各种方法用来操纵和打印保存到性能分析结果文件的数据。
+[`pstats`]({{< ref "/library/debug/profile#module-pstats" >}}) 模块的 [`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 类具有各种方法用来操纵和打印保存到性能分析结果文件的数据。
 
 ```
 import pstats
@@ -134,7 +133,7 @@ p = pstats.Stats('restats')
 p.strip_dirs().sort_stats(-1).print_stats()
 ```
 
-[`strip_dirs()`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats.strip_dirs) 方法移除了所有模块名称中的多余路径。 [`sort_stats()`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats.sort_stats) 方法按照打印出来的标准模块/行/名称对所有条目进行排序。 [`print_stats()`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats.print_stats) 方法打印出所有的统计数据。 你可以尝试下列排序调用:
+[`strip_dirs()`]({{< ref "/library/debug/profile#pstats.Stats.strip_dirs" >}}) 方法移除了所有模块名称中的多余路径。 [`sort_stats()`]({{< ref "/library/debug/profile#pstats.Stats.sort_stats" >}}) 方法按照打印出来的标准模块/行/名称对所有条目进行排序。 [`print_stats()`]({{< ref "/library/debug/profile#pstats.Stats.print_stats" >}}) 方法打印出所有的统计数据。 你可以尝试下列排序调用:
 
 ```
 p.sort_stats(SortKey.NAME)
@@ -186,33 +185,33 @@ p.print_callees()
 p.add('restats')
 ```
 
-​	作为脚本发起调用，[`pstats`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-pstats) 模块是一个用于读取和性能分析转储文件的统计数据浏览器。 它有一个简单的面向行的界面（使用 [`cmd`](https://docs.python.org/zh-cn/3.13/library/cmd.html#module-cmd) 实现）和交互式的帮助。
+​	作为脚本发起调用，[`pstats`]({{< ref "/library/debug/profile#module-pstats" >}}) 模块是一个用于读取和性能分析转储文件的统计数据浏览器。 它有一个简单的面向行的界面（使用 [`cmd`]({{< ref "/library/frameworks/cmd#module-cmd" >}}) 实现）和交互式的帮助。
 
 
 
-## [`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 和 [`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 模块参考
+## [`profile`]({{< ref "/library/debug/profile#module-profile" >}}) 和 [`cProfile`]({{< ref "/library/debug/profile#module-cProfile" >}}) 模块参考
 
-[`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 和 [`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 模块都提供下列函数：
+[`profile`]({{< ref "/library/debug/profile#module-profile" >}}) 和 [`cProfile`]({{< ref "/library/debug/profile#module-cProfile" >}}) 模块都提供下列函数：
 
 ## profile.**run**(*command*, *filename=None*, *sort=-1*)
 
-​	此函数接受一个可被传递给 [`exec()`](https://docs.python.org/zh-cn/3.13/library/functions.html#exec) 函数的单独参数，以及一个可选的文件名。 在所有情况下这个例程都会执行:
+​	此函数接受一个可被传递给 [`exec()`]({{< ref "/library/functions#exec" >}}) 函数的单独参数，以及一个可选的文件名。 在所有情况下这个例程都会执行:
 
 ```
 exec(command, __main__.__dict__, __main__.__dict__)
 ```
 
-​	并收集执行过程中的性能分析统计数据。 如果未提供文件名，则此函数会自动创建一个 [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 实例并打印一个简单的性能分析报告。 如果指定了 sort 值，则它会被传递给这个 [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 实例以控制结果的排序方式。
+​	并收集执行过程中的性能分析统计数据。 如果未提供文件名，则此函数会自动创建一个 [`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 实例并打印一个简单的性能分析报告。 如果指定了 sort 值，则它会被传递给这个 [`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 实例以控制结果的排序方式。
 
 ## profile.**runctx**(*command*, *globals*, *locals*, *filename=None*, *sort=-1*)
 
-​	此函数类似于 [`run()`](https://docs.python.org/zh-cn/3.13/library/profile.html#profile.run)，带有为 *command* 字符串提供 globals 和 locals 映射对象的附加参数。 这个例程会执行:
+​	此函数类似于 [`run()`]({{< ref "/library/debug/profile#profile.run" >}})，带有为 *command* 字符串提供 globals 和 locals 映射对象的附加参数。 这个例程会执行:
 
 ```
 exec(command, globals, locals)
 ```
 
-​	并像在上述的 [`run()`](https://docs.python.org/zh-cn/3.13/library/profile.html#profile.run) 函数中一样收集性能分析数据。
+​	并像在上述的 [`run()`]({{< ref "/library/debug/profile#profile.run" >}}) 函数中一样收集性能分析数据。
 
 ## *class* profile.**Profile**(*timer=None*, *timeunit=0.0*, *subcalls=True*, *builtins=True*)
 
@@ -220,7 +219,7 @@ exec(command, globals, locals)
 
 ​	可以通过 *timer* 参数提供一个自定义计时器来测量代码运行花费了多长时间。 它必须是一个返回代表当前时间的单个数字的函数。 如果该数字为整数，则 *timeunit* 指定一个表示每个时间单位持续时间的乘数。 例如，如果定时器返回以千秒为计量单位的时间值，则时间单位将为 `.001`。
 
-​	直接使用 [`Profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#profile.Profile) 类将允许格式化性能分析结果而无需将性能分析数据写入到文件:
+​	直接使用 [`Profile`]({{< ref "/library/debug/profile#profile.Profile" >}}) 类将允许格式化性能分析结果而无需将性能分析数据写入到文件:
 
 ```
 import cProfile, pstats, io
@@ -236,7 +235,7 @@ ps.print_stats()
 print(s.getvalue())
 ```
 
-[`Profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#profile.Profile) 类也可作为上下文管理器使用 (仅在 [`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 模块中支持。 参见 [上下文管理器类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#typecontextmanager)):
+[`Profile`]({{< ref "/library/debug/profile#profile.Profile" >}}) 类也可作为上下文管理器使用 (仅在 [`cProfile`]({{< ref "/library/debug/profile#module-cProfile" >}}) 模块中支持。 参见 [上下文管理器类型]({{< ref "/library/stdtypes#typecontextmanager" >}})):
 
 ```
 import cProfile
@@ -247,15 +246,15 @@ with cProfile.Profile() as pr:
     pr.print_stats()
 ```
 
-*在 3.8 版本发生变更:* 添加了上下文管理器支持。
+> 在 3.8 版本发生变更: 添加了上下文管理器支持。
 
 ## **enable**()
 
-​	开始收集分析数据。仅在 [`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 可用。
+​	开始收集分析数据。仅在 [`cProfile`]({{< ref "/library/debug/profile#module-cProfile" >}}) 可用。
 
 ## **disable**()
 
-​	停止收集分析数据。仅在 [`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 可用。
+​	停止收集分析数据。仅在 [`cProfile`]({{< ref "/library/debug/profile#module-cProfile" >}}) 可用。
 
 ## **create_stats**()
 
@@ -263,12 +262,12 @@ with cProfile.Profile() as pr:
 
 ## **print_stats**(*sort=-1*)
 
-​	根据当前性能分析数据创建一个 [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 对象并将结果打印到 stdout。
+​	根据当前性能分析数据创建一个 [`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 对象并将结果打印到 stdout。
 
-*sort* 形参指定所显示统计信息的排序。 它接受单个键或由键组成的元组以启用多级排序，就像在 [`Stats.sort_stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats.sort_stats) 中那样。
+*sort* 形参指定所显示统计信息的排序。 它接受单个键或由键组成的元组以启用多级排序，就像在 [`Stats.sort_stats`]({{< ref "/library/debug/profile#pstats.Stats.sort_stats" >}}) 中那样。
 
 > Added in version 3.13:
-> 现在 [`print_stats()`](https://docs.python.org/zh-cn/3.13/library/profile.html#profile.Profile.print_stats) 可接受一个由键组成的元组。
+> 现在 [`print_stats()`]({{< ref "/library/debug/profile#profile.Profile.print_stats" >}}) 可接受一个由键组成的元组。
 
 ## **dump_stats**(*filename*)
 
@@ -276,49 +275,49 @@ with cProfile.Profile() as pr:
 
 ## **run**(*cmd*)
 
-​	通过 [`exec()`](https://docs.python.org/zh-cn/3.13/library/functions.html#exec) 对该命令进行性能分析。
+​	通过 [`exec()`]({{< ref "/library/functions#exec" >}}) 对该命令进行性能分析。
 
 ## **runctx**(*cmd*, *globals*, *locals*)
 
-​	通过 [`exec()`](https://docs.python.org/zh-cn/3.13/library/functions.html#exec) 并附带指定的全局和局部环境对该命令进行性能分析。
+​	通过 [`exec()`]({{< ref "/library/functions#exec" >}}) 并附带指定的全局和局部环境对该命令进行性能分析。
 
 ## **runcall**(*func*, */*, **args*, ***kwargs*)
 
 ​	对 `func(*args, **kwargs)` 进行性能分析
 
-​	请注意性能分析只有在被调用的命令/函数确实能返回时才可用。 如果解释器被终结（例如在被调用的命令/函数执行期间通过 [`sys.exit()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.exit) 调用）则将不会打印性能分析结果。
+​	请注意性能分析只有在被调用的命令/函数确实能返回时才可用。 如果解释器被终结（例如在被调用的命令/函数执行期间通过 [`sys.exit()`]({{< ref "/library/python/sys#sys.exit" >}}) 调用）则将不会打印性能分析结果。
 
 
 
-## [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 类
+## [`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 类
 
-​	性能数据的分析是使用 [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 类来完成的。
+​	性能数据的分析是使用 [`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 类来完成的。
 
 ## *class* pstats.**Stats**(**filenames or profile*, *stream=sys.stdout*)
 
 ​	这个类构造器会基于 *filename* (或文件名列表) 或者 `Profile` 实例创建一个“统计对象”。 输出将被打印到由 *stream* 所指定的流。
 
-​	上述构造器所选择的文件必须由相应版本的 [`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 或 [`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 来创建。 具体来说，*不会* 保证文件与此性能分析器的未来版本兼容，也不会保证与其他性能分析器，或运行于不同操作系统的同一性能分析器所产生的文件兼容。 如果提供了几个文件，则相同函数的所有统计数据将被聚合在一起，这样就可以在单个报告中同时考虑几个进程的总体情况。 如果额外的文件需要与现有 [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 对象中的数据相结合，则可以使用 [`add()`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats.add) 方法。
+​	上述构造器所选择的文件必须由相应版本的 [`profile`]({{< ref "/library/debug/profile#module-profile" >}}) 或 [`cProfile`]({{< ref "/library/debug/profile#module-cProfile" >}}) 来创建。 具体来说，*不会* 保证文件与此性能分析器的未来版本兼容，也不会保证与其他性能分析器，或运行于不同操作系统的同一性能分析器所产生的文件兼容。 如果提供了几个文件，则相同函数的所有统计数据将被聚合在一起，这样就可以在单个报告中同时考虑几个进程的总体情况。 如果额外的文件需要与现有 [`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 对象中的数据相结合，则可以使用 [`add()`]({{< ref "/library/debug/profile#pstats.Stats.add" >}}) 方法。
 
-​	作为从一个文件读取性能分析数据的替代，可以使用 `cProfile.Profile` 或 [`profile.Profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#profile.Profile) 对象作为性能分析数据源。
+​	作为从一个文件读取性能分析数据的替代，可以使用 `cProfile.Profile` 或 [`profile.Profile`]({{< ref "/library/debug/profile#profile.Profile" >}}) 对象作为性能分析数据源。
 
-[`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 对象有以下方法:
+[`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 对象有以下方法:
 
 ## **strip_dirs**()
 
-​	这个用于 [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 类的方法会从文件名中去除所有前导路径信息。 它对于减少打印输出的大小以适应（接近） 80 列限制。 这个方法会修改对象，被去除的信息将会丢失。 在执行去除操作后，可以认为对象拥有的条目将使用“随机”顺序，就像它刚在对象初始化并加载之后一样。 如果 [`strip_dirs()`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats.strip_dirs) 导致两个函数名变得无法区分（它们位于相同文件名的相同行，并且具有相同的函数名），那么这两个条目的统计数据将被累积到单个条目中。
+​	这个用于 [`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 类的方法会从文件名中去除所有前导路径信息。 它对于减少打印输出的大小以适应（接近） 80 列限制。 这个方法会修改对象，被去除的信息将会丢失。 在执行去除操作后，可以认为对象拥有的条目将使用“随机”顺序，就像它刚在对象初始化并加载之后一样。 如果 [`strip_dirs()`]({{< ref "/library/debug/profile#pstats.Stats.strip_dirs" >}}) 导致两个函数名变得无法区分（它们位于相同文件名的相同行，并且具有相同的函数名），那么这两个条目的统计数据将被累积到单个条目中。
 
 ## **add**(**filenames*)
 
-[`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 类的这个方法会将额外的性能分析信息累积到当前的性能分析对象中。 它的参数应当指向由相应版本的 [`profile.run()`](https://docs.python.org/zh-cn/3.13/library/profile.html#profile.run) 或 `cProfile.run()` 所创建的文件名。 相同名称（包括 file, line, name）函数的统计信息会自动累积到单个函数的统计信息。
+[`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 类的这个方法会将额外的性能分析信息累积到当前的性能分析对象中。 它的参数应当指向由相应版本的 [`profile.run()`]({{< ref "/library/debug/profile#profile.run" >}}) 或 `cProfile.run()` 所创建的文件名。 相同名称（包括 file, line, name）函数的统计信息会自动累积到单个函数的统计信息。
 
 ## **dump_stats**(*filename*)
 
-​	将加载至 [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 对象内的数据保存到名为 *filename* 的文件。 该文件如果不存在则将被创建，如果已存在则将被覆盖。 这等价于 [`profile.Profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#profile.Profile) 和 `cProfile.Profile` 类上的同名方法。
+​	将加载至 [`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 对象内的数据保存到名为 *filename* 的文件。 该文件如果不存在则将被创建，如果已存在则将被覆盖。 这等价于 [`profile.Profile`]({{< ref "/library/debug/profile#profile.Profile" >}}) 和 `cProfile.Profile` 类上的同名方法。
 
 ## **sort_stats**(**keys*)
 
-​	此方法通过根据所提供的准则修改 [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 对象的排序。 其参数可以是一个字符串或标识排序准则的 SortKey 枚举 (例如: `'time'`, `'name'`, `SortKey.TIME` 或 `SortKey.NAME`)。 SortKey 枚举参数优于字符串参数因为它更为健壮且更不容易出错。
+​	此方法通过根据所提供的准则修改 [`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 对象的排序。 其参数可以是一个字符串或标识排序准则的 SortKey 枚举 (例如: `'time'`, `'name'`, `SortKey.TIME` 或 `SortKey.NAME`)。 SortKey 枚举参数优于字符串参数因为它更为健壮且更不容易出错。
 
 ​	当提供一个以上的键时，额外的键将在之前选择的所有键的值相等时被用作次级准则。 例如，`sort_stats(SortKey.NAME, SortKey.FILE)` 将根据其函数名对所有条目排序，并通过按文件名排序来处理所有平局（即函数名相同）。
 
@@ -352,13 +351,13 @@ with cProfile.Profile() as pr:
 
 ## **reverse_order**()
 
-​	这个用于 [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 类的方法将会反转对象内基本列表的顺序。 请注意在默认情况下升序和降序排列将基于所选定的排序键来进行适当的选择。
+​	这个用于 [`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 类的方法将会反转对象内基本列表的顺序。 请注意在默认情况下升序和降序排列将基于所选定的排序键来进行适当的选择。
 
 ## **print_stats**(**restrictions*)
 
-​	这个用于 [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 类的方法将打印出在 [`profile.run()`](https://docs.python.org/zh-cn/3.13/library/profile.html#profile.run) 定义中描述的报告。
+​	这个用于 [`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 类的方法将打印出在 [`profile.run()`]({{< ref "/library/debug/profile#profile.run" >}}) 定义中描述的报告。
 
-​	打印的顺序是基于在对象上执行的最后一次 [`sort_stats()`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats.sort_stats) 操作（需要注意 [`add()`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats.add) 和 [`strip_dirs()`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats.strip_dirs) 规则）。
+​	打印的顺序是基于在对象上执行的最后一次 [`sort_stats()`]({{< ref "/library/debug/profile#pstats.Stats.sort_stats" >}}) 操作（需要注意 [`add()`]({{< ref "/library/debug/profile#pstats.Stats.add" >}}) 和 [`strip_dirs()`]({{< ref "/library/debug/profile#pstats.Stats.strip_dirs" >}}) 规则）。
 
 ​	所提供的参数（如果存在）可被用来将列表限制为重要的条目。 在初始状态下，列表将为加入性能分析的函数的完整集合。 每条限制可以是一个整数（用来选择行数），或是一个 0.0 至 1.0 范围内左开右闭的十进制小数（用来选择行数百分比），或是一个将被解读为正则表达式的字符串（用来匹配要打印的标准名称的模式）。 如果提供了多条限制，则它们将逐个被应用。 例如:
 
@@ -376,14 +375,14 @@ print_stats('foo:', .1)
 
 ## **print_callers**(**restrictions*)
 
-​	这个用于 [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 类的方法将打印调用了加入性能分析数据库的每个函数的所有函数的列表。 打印顺序与 [`print_stats()`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats.print_stats) 所提供的相同，受限参数的定义也是相同的。 每个调用方将在单独的行中报告。 具体格式根据产生统计数据的性能分析器的不同而有所差异。
+​	这个用于 [`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 类的方法将打印调用了加入性能分析数据库的每个函数的所有函数的列表。 打印顺序与 [`print_stats()`]({{< ref "/library/debug/profile#pstats.Stats.print_stats" >}}) 所提供的相同，受限参数的定义也是相同的。 每个调用方将在单独的行中报告。 具体格式根据产生统计数据的性能分析器的不同而有所差异。
 
-- 使用 [`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 时，将在每个调用方之后的圆括号内显示一个数字来指明相应的调用执行了多少次。 为了方便起见，右侧还有第二个不带圆括号的数字来重复显示该函数累计耗费的时间。
-- 使用 [`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 时，每个调用方前面将有三个数字：这个调用的执行次数，以及当前函数在被这个调用方发起调用其中共计和累计耗费的时间。
+- 使用 [`profile`]({{< ref "/library/debug/profile#module-profile" >}}) 时，将在每个调用方之后的圆括号内显示一个数字来指明相应的调用执行了多少次。 为了方便起见，右侧还有第二个不带圆括号的数字来重复显示该函数累计耗费的时间。
+- 使用 [`cProfile`]({{< ref "/library/debug/profile#module-cProfile" >}}) 时，每个调用方前面将有三个数字：这个调用的执行次数，以及当前函数在被这个调用方发起调用其中共计和累计耗费的时间。
 
 ## **print_callees**(**restrictions*)
 
-​	这个用于 [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 类的方法将打印被指定的函数所调用的所有函数的列表。 除了调用方向是逆序的（对应：被调用和被调用方），其参数和顺序与 [`print_callers()`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats.print_callers) 方法相同。
+​	这个用于 [`Stats`]({{< ref "/library/debug/profile#pstats.Stats" >}}) 类的方法将打印被指定的函数所调用的所有函数的列表。 除了调用方向是逆序的（对应：被调用和被调用方），其参数和顺序与 [`print_callers()`]({{< ref "/library/debug/profile#pstats.Stats.print_callers" >}}) 方法相同。
 
 ## **get_stats_profile**()
 
@@ -410,13 +409,13 @@ print_stats('foo:', .1)
 
 ​	第二个问题是，从调度事件到分析器调用获取时间函数实际 *获取* 时钟状态，这需要 "一段时间" 。类似地，从获取时钟值（然后保存）开始，直到再次执行用户代码为止，退出分析器事件句柄时也存在一定的延迟。因此，多次调用单个函数或调用多个函数通常会累积此错误。尽管这种方式的误差通常小于时钟的精度（小于一个时钟周期），但它 *可以* 累积并变得非常可观。
 
-​	与开销较低的 [`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 相比， [`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 的问题更为严重。出于这个原因， [`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 提供了一种针对指定平台的自我校准方法，以便可以在很大程度上（平均地）消除此误差。 校准后，结果将更准确（在最小二乘意义上），但它有时会产生负数（当调用计数异常低，且概率之神对您不利时：-）。因此 *不要* 对产生的负数感到惊慌。它们应该只在你手工校准分析器的情况下才会出现，实际上结果比没有校准的情况要好。
+​	与开销较低的 [`cProfile`]({{< ref "/library/debug/profile#module-cProfile" >}}) 相比， [`profile`]({{< ref "/library/debug/profile#module-profile" >}}) 的问题更为严重。出于这个原因， [`profile`]({{< ref "/library/debug/profile#module-profile" >}}) 提供了一种针对指定平台的自我校准方法，以便可以在很大程度上（平均地）消除此误差。 校准后，结果将更准确（在最小二乘意义上），但它有时会产生负数（当调用计数异常低，且概率之神对您不利时：-）。因此 *不要* 对产生的负数感到惊慌。它们应该只在你手工校准分析器的情况下才会出现，实际上结果比没有校准的情况要好。
 
 
 
 ## 准确估量
 
-[`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 模块的 profiler 会从每个事件处理时间中减去一个常量，以补偿调用 time 函数和存储结果的开销。默认情况下，常数为0。对于特定的平台，可用以下程序获得更好修正常数（ [局限性](https://docs.python.org/zh-cn/3.13/library/profile.html#profile-limitations) ）。
+[`profile`]({{< ref "/library/debug/profile#module-profile" >}}) 模块的 profiler 会从每个事件处理时间中减去一个常量，以补偿调用 time 函数和存储结果的开销。默认情况下，常数为0。对于特定的平台，可用以下程序获得更好修正常数（ [局限性]({{< ref "/library/debug/profile#profile-limitations" >}}) ）。
 
 ```
 import profile
@@ -457,13 +456,13 @@ pr = profile.Profile(bias=your_computed_bias)
 pr = profile.Profile(your_time_func)
 ```
 
-​	结果性能分析器将随后调用 `your_time_func`。 根据你使用的是 [`profile.Profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#profile.Profile) 还是 `cProfile.Profile`，`your_time_func` 的返回值将有不同的解读方式:
+​	结果性能分析器将随后调用 `your_time_func`。 根据你使用的是 [`profile.Profile`]({{< ref "/library/debug/profile#profile.Profile" >}}) 还是 `cProfile.Profile`，`your_time_func` 的返回值将有不同的解读方式:
 
-## [`profile.Profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#profile.Profile)
+## [`profile.Profile`]({{< ref "/library/debug/profile#profile.Profile" >}})
 
-`your_time_func` 应当返回一个数字，或一个总和为当前时间的数字列表（如同 [`os.times()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.times) 所返回的内容）。 如果该函数返回一个数字，或所返回的数字列表长度为 2，则你将得到一个特别快速的调度例程版本。
+`your_time_func` 应当返回一个数字，或一个总和为当前时间的数字列表（如同 [`os.times()`]({{< ref "/library/allos/os#os.times" >}}) 所返回的内容）。 如果该函数返回一个数字，或所返回的数字列表长度为 2，则你将得到一个特别快速的调度例程版本。
 
-​	请注意你应当为你选择的计时器函数校准性能分析器类 (参见 [准确估量](https://docs.python.org/zh-cn/3.13/library/profile.html#profile-calibration))。 对于大多数机器来说，一个返回长整数值的计时器在性能分析期间将提供在低开销方面的最佳结果。 ([`os.times()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.times) 是 *相当* 糟糕的，因为它返回一个浮点数值的元组)。 如果你想以最干净的方式替换一个更好的计时器，请派生一个类并硬连线一个能最佳地处理计时器调用的替换调度方法，并使用适当的校准常量。
+​	请注意你应当为你选择的计时器函数校准性能分析器类 (参见 [准确估量]({{< ref "/library/debug/profile#profile-calibration" >}}))。 对于大多数机器来说，一个返回长整数值的计时器在性能分析期间将提供在低开销方面的最佳结果。 ([`os.times()`]({{< ref "/library/allos/os#os.times" >}}) 是 *相当* 糟糕的，因为它返回一个浮点数值的元组)。 如果你想以最干净的方式替换一个更好的计时器，请派生一个类并硬连线一个能最佳地处理计时器调用的替换调度方法，并使用适当的校准常量。
 
 ## `cProfile.Profile`
 
@@ -475,4 +474,4 @@ pr = cProfile.Profile(your_integer_time_func, 0.001)
 
 ​	由于 `cProfile.Profile` 类无法被校准，因此自定义计时器函数应当要小心地使用并应当尽可能地快速。 为了使自定义计时器获得最佳结果，可能需要在内部 `_lsprof` 模块的 C 源代码中对其进行硬编码。
 
-​	Python 3.3 在 [`time`](https://docs.python.org/zh-cn/3.13/library/time.html#module-time) 中添加了几个可被用来精确测量进程或时钟时间的新函数。 例如，参见 [`time.perf_counter()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.perf_counter)。
+​	Python 3.3 在 [`time`]({{< ref "/library/allos/time#module-time" >}}) 中添加了几个可被用来精确测量进程或时钟时间的新函数。 例如，参见 [`time.perf_counter()`]({{< ref "/library/allos/time#time.perf_counter" >}})。

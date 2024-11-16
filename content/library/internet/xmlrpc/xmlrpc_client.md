@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html)
 >
 > 收录该文档的时间：`2024-11-15T20:28:46+08:00`
 
@@ -24,25 +24,25 @@ draft = false
 
  
 
-[`xmlrpc.client`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#module-xmlrpc.client) 模块对于恶意构建的数据是不安全的。 如果你需要解析不受信任或未经身份验证的数据，请参阅 [XML 漏洞](https://docs.python.org/zh-cn/3.13/library/xml.html#xml-vulnerabilities)。
+[`xmlrpc.client`]({{< ref "/library/internet/xmlrpc_client#module-xmlrpc.client" >}}) 模块对于恶意构建的数据是不安全的。 如果你需要解析不受信任或未经身份验证的数据，请参阅 [XML 漏洞]({{< ref "/library/markup/xml#xml-vulnerabilities" >}})。
 
-*在 3.5 版本发生变更:* 对于 HTTPS URI，现在 [`xmlrpc.client`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#module-xmlrpc.client) 默认会执行所有必要的证书和主机名检查。
+> 在 3.5 版本发生变更: 对于 HTTPS URI，现在 [`xmlrpc.client`]({{< ref "/library/internet/xmlrpc_client#module-xmlrpc.client" >}}) 默认会执行所有必要的证书和主机名检查。
 
-[Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): not WASI.
+[Availability]({{< ref "/library/intro#availability" >}}): not WASI.
 
-​	此模块在 WebAssembly 平台上无效或不可用。 请参阅 [WebAssembly 平台](https://docs.python.org/zh-cn/3.13/library/intro.html#wasm-availability) 了解详情。
+​	此模块在 WebAssembly 平台上无效或不可用。 请参阅 [WebAssembly 平台]({{< ref "/library/intro#wasm-availability" >}}) 了解详情。
 
 ## *class* xmlrpc.client.**ServerProxy**(*uri*, *transport=None*, *encoding=None*, *verbose=False*, *allow_none=False*, *use_datetime=False*, *use_builtin_types=False*, ***, *headers=()*, *context=None*)
 
-[`ServerProxy`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.ServerProxy) 实例是管理与远程 XML-RPC 服务器通信的对象。 要求的第一个参数为 URI (统一资源定位符)，通常就是服务器的 URL。 可选的第二个参数为传输工厂实例；在默认情况下对于 https: URL 是一个内部 `SafeTransport` 实例，在其他情况下则是一个内部 HTTP `Transport` 实例。 可选的第三个参数为编码格式，默认为 UTF-8。 可选的第四个参数为调试旗标。
+[`ServerProxy`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.ServerProxy" >}}) 实例是管理与远程 XML-RPC 服务器通信的对象。 要求的第一个参数为 URI (统一资源定位符)，通常就是服务器的 URL。 可选的第二个参数为传输工厂实例；在默认情况下对于 https: URL 是一个内部 `SafeTransport` 实例，在其他情况下则是一个内部 HTTP `Transport` 实例。 可选的第三个参数为编码格式，默认为 UTF-8。 可选的第四个参数为调试旗标。
 
-​	下列形参控制所返回代理实例的使用。 如果 *allow_none* 为真值，则 Python 常量 `None` 将被转写至 XML；默认行为是针对 `None` 引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。 这是对 XML-RPC 规格的一个常用扩展，但并不被所有客户端和服务器所支持；请参阅 [http://ontosys.com/xml-rpc/extensions.php](https://web.archive.org/web/20130120074804/http://ontosys.com/xml-rpc/extensions.php) 了解详情。 *use_builtin_types* 旗标可被用来将日期/时间值表示为 [`datetime.datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime) 对象而将二进制数据表示为 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 对象；此旗标默认为假值。 [`datetime.datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime), [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 和 [`bytearray`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytearray) 对象可以被传给调用操作。 *headers* 形参为可选的随每次请求发送的 HTTP 标头序列，其形式为包含代表标头名称和值的二元组序列 (例如 `[('Header-Name', 'value')]`)。 已淘汰的 *use_datetime* 旗标与 *use_builtin_types* 类似但它只针对日期/时间值。
+​	下列形参控制所返回代理实例的使用。 如果 *allow_none* 为真值，则 Python 常量 `None` 将被转写至 XML；默认行为是针对 `None` 引发 [`TypeError`]({{< ref "/library/exceptions#TypeError" >}})。 这是对 XML-RPC 规格的一个常用扩展，但并不被所有客户端和服务器所支持；请参阅 [http://ontosys.com/xml-rpc/extensions.php](https://web.archive.org/web/20130120074804/http://ontosys.com/xml-rpc/extensions.php) 了解详情。 *use_builtin_types* 旗标可被用来将日期/时间值表示为 [`datetime.datetime`]({{< ref "/library/datatypes/datetime#datetime.datetime" >}}) 对象而将二进制数据表示为 [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 对象；此旗标默认为假值。 [`datetime.datetime`]({{< ref "/library/datatypes/datetime#datetime.datetime" >}}), [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 和 [`bytearray`]({{< ref "/library/stdtypes#bytearray" >}}) 对象可以被传给调用操作。 *headers* 形参为可选的随每次请求发送的 HTTP 标头序列，其形式为包含代表标头名称和值的二元组序列 (例如 `[('Header-Name', 'value')]`)。 已淘汰的 *use_datetime* 旗标与 *use_builtin_types* 类似但它只针对日期/时间值。
 
-*在 3.3 版本发生变更:* 增加了 *use_builtin_types* 旗标。
+> 在 3.3 版本发生变更: 增加了 *use_builtin_types* 旗标。
 
-*在 3.8 版本发生变更:* 增加了 *headers* 形参。
+> 在 3.8 版本发生变更: 增加了 *headers* 形参。
 
-​	HTTP 和 HTTPS 传输均支持用于 HTTP 基本身份验证的 URL 语法扩展: `http://user:pass@host:port/path`。 `user:pass` 部分将以 base64 编码为 HTTP 'Authorization' 标头，并在发起调用 XML-RPC 方法时作为连接过程的一部分发送给远程服务器。 你只需要在远程服务器要求基本身份验证账号和密码时使用此语法。 如果提供了 HTTPS URL，*context* 可以为 [`ssl.SSLContext`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext) 并配置有下层 HTTPS 连接的 SSL 设置。
+​	HTTP 和 HTTPS 传输均支持用于 HTTP 基本身份验证的 URL 语法扩展: `http://user:pass@host:port/path`。 `user:pass` 部分将以 base64 编码为 HTTP 'Authorization' 标头，并在发起调用 XML-RPC 方法时作为连接过程的一部分发送给远程服务器。 你只需要在远程服务器要求基本身份验证账号和密码时使用此语法。 如果提供了 HTTPS URL，*context* 可以为 [`ssl.SSLContext`]({{< ref "/library/ipc/ssl#ssl.SSLContext" >}}) 并配置有下层 HTTPS 连接的 SSL 设置。
 
 ​	返回的实例是一个代理对象，具有可被用来在远程服务器上发起相应 RPC 调用的方法。 如果远程服务器支持内省 API，则也可使用该代理对象在远程服务器上查询它所支持的方法（服务发现）并获取其他服务器相关的元数据
 
@@ -50,29 +50,28 @@ draft = false
 
 | XML-RPC类型                                     | Python 类型                                                  |
 | :---------------------------------------------- | :----------------------------------------------------------- |
-| `boolean`                                       | [`bool`](https://docs.python.org/zh-cn/3.13/library/functions.html#bool) |
-| `int`, `i1`, `i2`, `i4`, `i8` 或者 `biginteger` | [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 的范围从 -2147483648 到 2147483647。值将获得 `<int>` 标志。 |
-| `double` 或 `float`                             | [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float)。值将获得 `<double>` 标志。 |
-| `string`                                        | [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) |
-| `array`                                         | [`list`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 或 [`tuple`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#tuple) 包含整合元素。数组以 [`lists`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 形式返回。 |
-| `struct`                                        | [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict)。 键必须为字符串，值可以为任何适用的类型。 可以传入用户自定义类的对象；只有其 [`__dict__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__dict__) 属性会被传输。 |
-| `dateTime.iso8601`                              | [`DateTime`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.DateTime) 或 [`datetime.datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime)。返回的类型取决于 *use_builtin_types* 和 *use_datetime* 标志的值。 |
-| `base64`                                        | [`Binary`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.Binary), [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 或 [`bytearray`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytearray)。返回的类型取决于 *use_builtin_types* 标志的值。 |
+| `boolean`                                       | [`bool`]({{< ref "/library/functions#bool" >}}) |
+| `int`, `i1`, `i2`, `i4`, `i8` 或者 `biginteger` | [`int`]({{< ref "/library/functions#int" >}}) 的范围从 -2147483648 到 2147483647。值将获得 `<int>` 标志。 |
+| `double` 或 `float`                             | [`float`]({{< ref "/library/functions#float" >}})。值将获得 `<double>` 标志。 |
+| `string`                                        | [`str`]({{< ref "/library/stdtypes#str" >}}) |
+| `array`                                         | [`list`]({{< ref "/library/stdtypes#list" >}}) 或 [`tuple`]({{< ref "/library/stdtypes#tuple" >}}) 包含整合元素。数组以 [`lists`]({{< ref "/library/stdtypes#list" >}}) 形式返回。 |
+| `struct`                                        | [`dict`]({{< ref "/library/stdtypes#dict" >}})。 键必须为字符串，值可以为任何适用的类型。 可以传入用户自定义类的对象；只有其 [`__dict__`]({{< ref "/reference/datamodel#object.__dict__" >}}) 属性会被传输。 |
+| `dateTime.iso8601`                              | [`DateTime`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.DateTime" >}}) 或 [`datetime.datetime`]({{< ref "/library/datatypes/datetime#datetime.datetime" >}})。返回的类型取决于 *use_builtin_types* 和 *use_datetime* 标志的值。 |
+| `base64`                                        | [`Binary`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.Binary" >}}), [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 或 [`bytearray`]({{< ref "/library/stdtypes#bytearray" >}})。返回的类型取决于 *use_builtin_types* 标志的值。 |
 | `nil`                                           | `None` 常量。仅当 *allow_none* 为true时才允许传递。          |
-| `bigdecimal`                                    | [`decimal.Decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.Decimal). 仅返回类型。 |
+| `bigdecimal`                                    | [`decimal.Decimal`]({{< ref "/library/numeric/decimal#decimal.Decimal" >}}). 仅返回类型。 |
 
-​	这是This is the full set of data types supported by XML-RPC 所支持数据类型的完整集合。 方法调用也可能引发一个特殊的 [`Fault`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.Fault) 实例，用来提示 XML-RPC 服务器错误，或是用 [`ProtocolError`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.ProtocolError) 来提示 HTTP/HTTPS 传输层中的错误。 [`Fault`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.Fault) 和 [`ProtocolError`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.ProtocolError) 都派生自名为 `Error` 的基类。 请注意 xmlrpc client 模块目前不可 marshal 内置类型的子类的实例。
+​	这是This is the full set of data types supported by XML-RPC 所支持数据类型的完整集合。 方法调用也可能引发一个特殊的 [`Fault`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.Fault" >}}) 实例，用来提示 XML-RPC 服务器错误，或是用 [`ProtocolError`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.ProtocolError" >}}) 来提示 HTTP/HTTPS 传输层中的错误。 [`Fault`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.Fault" >}}) 和 [`ProtocolError`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.ProtocolError" >}}) 都派生自名为 `Error` 的基类。 请注意 xmlrpc client 模块目前不可 marshal 内置类型的子类的实例。
 
-​	当传入字符串时，XML 中的特殊字符如 `<`, `>` 和 `&` 将被自动转义。 但是，调用方有责任确保字符串中没有 XML 中不允许的字符，例如 ASCII 值在 0 和 31 之间的控制字符（当然，制表、换行和回车除外）；不这样做将导致 XML-RPC 请求的 XML 格式不正确。 如果你必须通过 XML-RPC 传入任意字节数据，请使用 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 或 [`bytearray`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytearray) 类或者下文描述的 [`Binary`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.Binary) 包装器类。
+​	当传入字符串时，XML 中的特殊字符如 `<`, `>` 和 `&` 将被自动转义。 但是，调用方有责任确保字符串中没有 XML 中不允许的字符，例如 ASCII 值在 0 和 31 之间的控制字符（当然，制表、换行和回车除外）；不这样做将导致 XML-RPC 请求的 XML 格式不正确。 如果你必须通过 XML-RPC 传入任意字节数据，请使用 [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 或 [`bytearray`]({{< ref "/library/stdtypes#bytearray" >}}) 类或者下文描述的 [`Binary`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.Binary" >}}) 包装器类。
 
-`Server` 被保留作为 [`ServerProxy`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.ServerProxy) 的别名用于向下兼容。 新的代码应当使用 [`ServerProxy`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.ServerProxy)。
+`Server` 被保留作为 [`ServerProxy`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.ServerProxy" >}}) 的别名用于向下兼容。 新的代码应当使用 [`ServerProxy`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.ServerProxy" >}})。
 
-*在 3.5 版本发生变更:* 增加了 *context* 参数。
+> 在 3.5 版本发生变更: 增加了 *context* 参数。
 
-*在 3.6 版本发生变更:* 增加了对带有前缀的类型标签的支持 (例如 `ex:nil`)。 增加了对反 marshall 被 Apache XML-RPC 实现用于表示数值的附加类型的支持: `i1`, `i2`, `i8`, `biginteger`, `float` 和 `bigdecimal`。 请参阅 https://ws.apache.org/xmlrpc/types.html 了解详情。
+> 在 3.6 版本发生变更: 增加了对带有前缀的类型标签的支持 (例如 `ex:nil`)。 增加了对反 marshall 被 Apache XML-RPC 实现用于表示数值的附加类型的支持: `i1`, `i2`, `i8`, `biginteger`, `float` 和 `bigdecimal`。 请参阅 https://ws.apache.org/xmlrpc/types.html 了解详情。
 
-​	参见
-
+​参见
 ## [XML-RPC HOWTO](https://tldp.org/HOWTO/XML-RPC-HOWTO/index.html)
 
 ​	以多种语言对 XML-RPC 操作和客户端软件进行了很好的说明。 包含 XML-RPC 客户端开发者所需知道的几乎任何事情。
@@ -89,7 +88,7 @@ draft = false
 
 ## ServerProxy 对象
 
-[`ServerProxy`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.ServerProxy) 实例有一个方法与 XML-RPC 服务器所接受的每个远程过程调用相对应。 调用该方法会执行一个 RPC，通过名称和参数签名来调度（例如同一个方法名可通过多个参数签名来重载）。 RPC 结束时返回一个值，它可以是适用类型的返回数据或是表示错误的 [`Fault`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.Fault) 或 [`ProtocolError`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.ProtocolError) 对象。
+[`ServerProxy`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.ServerProxy" >}}) 实例有一个方法与 XML-RPC 服务器所接受的每个远程过程调用相对应。 调用该方法会执行一个 RPC，通过名称和参数签名来调度（例如同一个方法名可通过多个参数签名来重载）。 RPC 结束时返回一个值，它可以是适用类型的返回数据或是表示错误的 [`Fault`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.Fault" >}}) 或 [`ProtocolError`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.ProtocolError" >}}) 对象。
 
 ​	支持 XML 内省 API 的服务器还支持一些以保留的 `system` 属性分组的通用方法:
 
@@ -111,7 +110,7 @@ draft = false
 
 ​	此方法接受一个形参，即 XML-RPC 服务器所实现的某个方法的名称。 它返回描述相应方法用法的文档字符串。 如果没有可用的文档字符串，则返回空字符串。 文档字符串可以包含 HTML 标记。
 
-*在 3.5 版本发生变更:* [`ServerProxy`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.ServerProxy) 的实例支持 [context manager](https://docs.python.org/zh-cn/3.13/glossary.html#term-context-manager) 协议用于关闭下层传输。
+> 在 3.5 版本发生变更: [`ServerProxy`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.ServerProxy" >}}) 的实例支持 [context manager]({{< ref "/glossary/idx#term-context-manager" >}}) 协议用于关闭下层传输。
 
 ​	以下是一个可运行的示例。 服务器端代码:
 
@@ -143,7 +142,7 @@ with xmlrpc.client.ServerProxy("http://localhost:8000/") as proxy:
 
 ## *class* xmlrpc.client.**DateTime**
 
-​	该类的初始化可以使用距离 Unix 纪元的秒数、时间元组、ISO 8601 时间/日期字符串或 [`datetime.datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime) 实例。 它具有下列方法，主要是为 marshall 和反 marshall 代码的内部使用提供支持:
+​	该类的初始化可以使用距离 Unix 纪元的秒数、时间元组、ISO 8601 时间/日期字符串或 [`datetime.datetime`]({{< ref "/library/datatypes/datetime#datetime.datetime" >}}) 实例。 它具有下列方法，主要是为 marshall 和反 marshall 代码的内部使用提供支持:
 
 ## **decode**(*string*)
 
@@ -151,9 +150,9 @@ with xmlrpc.client.ServerProxy("http://localhost:8000/") as proxy:
 
 ## **encode**(*out*)
 
-​	将此 [`DateTime`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.DateTime) 条目的 XML-RPC 编码格式写入到 *out* 流对象。
+​	将此 [`DateTime`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.DateTime" >}}) 条目的 XML-RPC 编码格式写入到 *out* 流对象。
 
-​	它还通过 [`富比较`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__lt__) 和 [`__repr__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__repr__) 方法来支持特定的 Python 内置运算符。
+​	它还通过 [`富比较`]({{< ref "/reference/datamodel#object.__lt__" >}}) 和 [`__repr__()`]({{< ref "/reference/datamodel#object.__repr__" >}}) 方法来支持特定的 Python 内置运算符。
 
 ​	以下是一个可运行的示例。 服务器端代码:
 
@@ -192,17 +191,17 @@ print("Today: %s" % converted.strftime("%d.%m.%Y, %H:%M"))
 
 ## *class* xmlrpc.client.**Binary**
 
-​	该类的初始化可以使用字节数据（可包括 NUL）。 对 [`Binary`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.Binary) 对象的初始访问是由一个属性来提供的:
+​	该类的初始化可以使用字节数据（可包括 NUL）。 对 [`Binary`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.Binary" >}}) 对象的初始访问是由一个属性来提供的:
 
 ## **data**
 
-​	被 [`Binary`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.Binary) 实例封装的二进制数据。 该数据以 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 对象的形式提供。
+​	被 [`Binary`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.Binary" >}}) 实例封装的二进制数据。 该数据以 [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 对象的形式提供。
 
-[`Binary`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.Binary) 对象具有下列方法，支持这些方法主要是供 marshall 和反 marshall 代码在内部使用:
+[`Binary`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.Binary" >}}) 对象具有下列方法，支持这些方法主要是供 marshall 和反 marshall 代码在内部使用:
 
 ## **decode**(*bytes*)
 
-​	接受一个 base64 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 对象并将其解码为实例的新数据。
+​	接受一个 base64 [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 对象并将其解码为实例的新数据。
 
 ## **encode**(*out*)
 
@@ -210,7 +209,7 @@ print("Today: %s" % converted.strftime("%d.%m.%Y, %H:%M"))
 
 ​	被编码数据将依据 [**RFC 2045 第 6.8 节**](https://datatracker.ietf.org/doc/html/rfc2045.html#section-6.8) 每 76 个字符换行一次，这是撰写 XML-RPC 规范说明时 base64 规范的事实标准。
 
-​	它还通过 [`__eq__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__eq__) 和 [`__ne__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__ne__) 方法来支持特定的 Python 内置运算符。
+​	它还通过 [`__eq__()`]({{< ref "/reference/datamodel#object.__eq__" >}}) 和 [`__ne__()`]({{< ref "/reference/datamodel#object.__ne__" >}}) 方法来支持特定的 Python 内置运算符。
 
 ​	该二进制对象的示例用法。 我们将通过 XMLRPC 来传输一张图片:
 
@@ -245,7 +244,7 @@ with open("fetched_python_logo.jpg", "wb") as handle:
 
 ## *class* xmlrpc.client.**Fault**
 
-[`Fault`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.Fault) 对象封装了 XML-RPC fault 标签的内容。 Fault 对象具有下列属性:
+[`Fault`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.Fault" >}}) 对象封装了 XML-RPC fault 标签的内容。 Fault 对象具有下列属性:
 
 ## **faultCode**
 
@@ -255,7 +254,7 @@ with open("fetched_python_logo.jpg", "wb") as handle:
 
 ​	一个包含与 fault 相关联的诊断消息的字符串。
 
-​	在接下来的示例中我们将通过返回一个复数类型的值来故意引发一个 [`Fault`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.Fault)。 服务器端代码:
+​	在接下来的示例中我们将通过返回一个复数类型的值来故意引发一个 [`Fault`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.Fault" >}})。 服务器端代码:
 
 ```
 from xmlrpc.server import SimpleXMLRPCServer
@@ -291,7 +290,7 @@ except xmlrpc.client.Fault as err:
 
 ## *class* xmlrpc.client.**ProtocolError**
 
-[`ProtocolError`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.ProtocolError) 对象描述了下层传输层中的协议错误（例如当 URI 所指定的服务器不存在时的 404 'not found' 错误）。 它具有下列属性:
+[`ProtocolError`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.ProtocolError" >}}) 对象描述了下层传输层中的协议错误（例如当 URI 所指定的服务器不存在时的 404 'not found' 错误）。 它具有下列属性:
 
 ## **url**
 
@@ -309,7 +308,7 @@ except xmlrpc.client.Fault as err:
 
 ​	一个包含触发错误的 HTTP/HTTPS 请求的标头的字典。
 
-​	在接下来的示例中我们将通过提供一个无效的 URI 来故意引发一个 [`ProtocolError`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.ProtocolError):
+​	在接下来的示例中我们将通过提供一个无效的 URI 来故意引发一个 [`ProtocolError`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.ProtocolError" >}}):
 
 ```
 import xmlrpc.client
@@ -329,11 +328,11 @@ except xmlrpc.client.ProtocolError as err:
 
 ## MultiCall 对象
 
-[`MultiCall`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.MultiCall) 对象提供了一种将对远程服务器的多个调用封装为一个单独请求的方式 [[1\]](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#id6)。
+[`MultiCall`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.MultiCall" >}}) 对象提供了一种将对远程服务器的多个调用封装为一个单独请求的方式 [[1\]]({{< ref "/library/internet/xmlrpc_client#id6" >}})。
 
 ## *class* xmlrpc.client.**MultiCall**(*server*)
 
-​	创建一个用于盒式方法调用的对象。 *server* 是调用的最终目标。 可以对结果对象发起调用，但它们将立即返回 `None`，并只在 [`MultiCall`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.MultiCall) 对象中存储调用名称和形参。 调用该对象本身会导致所有已存储的调用作为一个单独的 `system.multicall` 请求被发送。 此调用的结果是一个 [generator](https://docs.python.org/zh-cn/3.13/glossary.html#term-generator)；迭代这个生成器会产生各个结果。
+​	创建一个用于盒式方法调用的对象。 *server* 是调用的最终目标。 可以对结果对象发起调用，但它们将立即返回 `None`，并只在 [`MultiCall`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.MultiCall" >}}) 对象中存储调用名称和形参。 调用该对象本身会导致所有已存储的调用作为一个单独的 `system.multicall` 请求被发送。 此调用的结果是一个 [generator]({{< ref "/glossary/idx#term-generator" >}})；迭代这个生成器会产生各个结果。
 
 ​	以下是该类的用法示例。 服务器端代码:
 
@@ -383,15 +382,15 @@ print("7+3=%d, 7-3=%d, 7*3=%d, 7//3=%d" % tuple(result))
 
 ## xmlrpc.client.**dumps**(*params*, *methodname=None*, *methodresponse=None*, *encoding=None*, *allow_none=False*)
 
-​	请 *params* 转换为一个 XML-RPC 请求。 或者当 *methodresponse* 为真值时则转换为一个请求。 *params* 可以是一个参数元组或是一个 [`Fault`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.Fault) 异常类的实例。 如果 *methodresponse* 为真值，只有单独的值可以被返回，这意味着 *params* 的长度必须为 1。 如果提供了 *encoding*，则在生成的 XML 会使用该编码格式；默认的编码格式为 UTF-8。 Python 的 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None) 值不可在标准 XML-RPC 中使用；要通过扩展来允许使用它，请为 *allow_none* 提供一个真值。
+​	请 *params* 转换为一个 XML-RPC 请求。 或者当 *methodresponse* 为真值时则转换为一个请求。 *params* 可以是一个参数元组或是一个 [`Fault`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.Fault" >}}) 异常类的实例。 如果 *methodresponse* 为真值，只有单独的值可以被返回，这意味着 *params* 的长度必须为 1。 如果提供了 *encoding*，则在生成的 XML 会使用该编码格式；默认的编码格式为 UTF-8。 Python 的 [`None`]({{< ref "/library/constants#None" >}}) 值不可在标准 XML-RPC 中使用；要通过扩展来允许使用它，请为 *allow_none* 提供一个真值。
 
 ## xmlrpc.client.**loads**(*data*, *use_datetime=False*, *use_builtin_types=False*)
 
-​	将一个 XML-RPC 请求或响应转换为 Python 对象 `(params, methodname)`。 *params* 是一个参数元组；*methodname* 是一个字符串，或者如果数据包没有提供方法名则为 `None`。 如果 XML-RPC 数据包是代表一个故障条件，则此函数将引发一个 [`Fault`](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#xmlrpc.client.Fault) 异常。 *use_builtin_types* 旗标可被用于将日期/时间值表示为 [`datetime.datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime) 对象并将二进制数据表示为 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 对象；此旗标默认为假值。
+​	将一个 XML-RPC 请求或响应转换为 Python 对象 `(params, methodname)`。 *params* 是一个参数元组；*methodname* 是一个字符串，或者如果数据包没有提供方法名则为 `None`。 如果 XML-RPC 数据包是代表一个故障条件，则此函数将引发一个 [`Fault`]({{< ref "/library/internet/xmlrpc_client#xmlrpc.client.Fault" >}}) 异常。 *use_builtin_types* 旗标可被用于将日期/时间值表示为 [`datetime.datetime`]({{< ref "/library/datatypes/datetime#datetime.datetime" >}}) 对象并将二进制数据表示为 [`bytes`]({{< ref "/library/stdtypes#bytes" >}}) 对象；此旗标默认为假值。
 
 ​	已过时的 *use_datetime* 旗标与 *use_builtin_types* 类似但只作用于日期/时间值。
 
-*在 3.3 版本发生变更:* 增加了 *use_builtin_types* 旗标。
+> 在 3.3 版本发生变更: 增加了 *use_builtin_types* 旗标。
 
 
 
@@ -438,10 +437,9 @@ print(server.examples.getStateName(41))
 
 ## 客户端与服务器用法的示例
 
-​	参见 [SimpleXMLRPCServer 示例](https://docs.python.org/zh-cn/3.13/library/xmlrpc.server.html#simplexmlrpcserver-example)。
+​	参见 [SimpleXMLRPCServer 示例]({{< ref "/library/internet/xmlrpc_server#simplexmlrpcserver-example" >}})。
 
-​	备注
-
-[[1](https://docs.python.org/zh-cn/3.13/library/xmlrpc.client.html#id5)]
+​备注
+[[1]({{< ref "/library/internet/xmlrpc_client#id5" >}})]
 
 ​	此做法被首次提及是在 [a discussion on xmlrpc.com](https://web.archive.org/web/20060624230303/http://www.xmlrpc.com/discuss/msgReader$1208?mode=topic)。

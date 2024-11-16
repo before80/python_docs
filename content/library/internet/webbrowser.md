@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/library/webbrowser.html](https://docs.python.org/zh-cn/3.13/library/webbrowser.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/library/webbrowser.html](https://docs.python.org/zh-cn/3.13/library/webbrowser.html)
 >
 > 收录该文档的时间：`2024-11-15T20:28:46+08:00`
 
@@ -18,15 +18,15 @@ draft = false
 
 ------
 
-[`webbrowser`](https://docs.python.org/zh-cn/3.13/library/webbrowser.html#module-webbrowser) 模块提供了一个高层级接口，允许向用户显示基于 Web 的文档。 在大多数情况下，只需调用此模块的 [`open()`](https://docs.python.org/zh-cn/3.13/library/webbrowser.html#webbrowser.open) 函数就可以了。
+[`webbrowser`]({{< ref "/library/internet/webbrowser#module-webbrowser" >}}) 模块提供了一个高层级接口，允许向用户显示基于 Web 的文档。 在大多数情况下，只需调用此模块的 [`open()`]({{< ref "/library/internet/webbrowser#webbrowser.open" >}}) 函数就可以了。
 
 ​	在 Unix 下，图形浏览器在 X11 下是首选，但如果图形浏览器不可用或 X11 显示不可用，则将使用文本模式浏览器。 如果使用文本模式浏览器，则调用进程将阻塞，直到用户退出浏览器。
 
-​	如果存在环境变量 `BROWSER` ，则将其解释为 [`os.pathsep`](https://docs.python.org/zh-cn/3.13/library/os.html#os.pathsep) 分隔的浏览器列表，以便在平台默认值之前尝试。 当列表部分的值包含字符串 `％s` 时，它被解释为一个文字浏览器命令行，用于替换 `％s` 的参数 URL ；如果该部分不包含 `％s`，则它只被解释为要启动的浏览器的名称。 [[1\]](https://docs.python.org/zh-cn/3.13/library/webbrowser.html#id2)
+​	如果存在环境变量 `BROWSER` ，则将其解释为 [`os.pathsep`]({{< ref "/library/allos/os#os.pathsep" >}}) 分隔的浏览器列表，以便在平台默认值之前尝试。 当列表部分的值包含字符串 `％s` 时，它被解释为一个文字浏览器命令行，用于替换 `％s` 的参数 URL ；如果该部分不包含 `％s`，则它只被解释为要启动的浏览器的名称。 [[1\]]({{< ref "/library/internet/webbrowser#id2" >}})
 
 ​	对于非 Unix 平台，或者当 Unix 上有远程浏览器时，控制过程不会等待用户完成浏览器，而是允许远程浏览器在显示界面上维护自己的窗口。 如果 Unix 上没有远程浏览器，控制进程将启动一个新的浏览器并等待。
 
-​	在 iOS 上，`BROWSER` 环境变量以及任何控制自动唤起、浏览器首选项和新选项卡/窗口创建的参数都将被忽略。 Web 页面将 *总是* 在用户首选的浏览器中打开一个新选项卡，并且此浏览器将被切换到前台。 在 iOS 上使用 [`webbrowser`](https://docs.python.org/zh-cn/3.13/library/webbrowser.html#module-webbrowser) 模块需要有 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 模块。 如果 [`ctypes`](https://docs.python.org/zh-cn/3.13/library/ctypes.html#module-ctypes) 不可用，对 [`open()`](https://docs.python.org/zh-cn/3.13/library/webbrowser.html#webbrowser.open) 的调用将会失败。
+​	在 iOS 上，`BROWSER` 环境变量以及任何控制自动唤起、浏览器首选项和新选项卡/窗口创建的参数都将被忽略。 Web 页面将 *总是* 在用户首选的浏览器中打开一个新选项卡，并且此浏览器将被切换到前台。 在 iOS 上使用 [`webbrowser`]({{< ref "/library/internet/webbrowser#module-webbrowser" >}}) 模块需要有 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 模块。 如果 [`ctypes`]({{< ref "/library/allos/ctypes#module-ctypes" >}}) 不可用，对 [`open()`]({{< ref "/library/internet/webbrowser#webbrowser.open" >}}) 的调用将会失败。
 
 ​	脚本 **webbrowser** 可作为该模块的命令行接口来使用。 它接受一个 URL 作为参数。 它还接受下列可选形参：
 
@@ -39,7 +39,7 @@ draft = false
 python -m webbrowser -t "https://www.python.org"
 ```
 
-[Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): not WASI, not Android.
+[Availability]({{< ref "/library/intro#availability" >}}): not WASI, not Android.
 
 ​	定义了以下异常：
 
@@ -57,7 +57,7 @@ python -m webbrowser -t "https://www.python.org"
 
 ​	请注意，在某些平台上，尝试使用此函数打开文件名，可能会起作用并启动操作系统的关联程序。 但是，这种方式不被支持也不可移植。
 
-​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `webbrowser.open` 并附带参数 `url`。
+​	引发一个 [审计事件]({{< ref "/library/python/sys#auditing" >}}) `webbrowser.open` 并附带参数 `url`。
 
 ## webbrowser.**open_new**(*url*)
 
@@ -67,7 +67,7 @@ python -m webbrowser -t "https://www.python.org"
 
 ## webbrowser.**open_new_tab**(*url*)
 
-​	如果可能，在默认浏览器的新页面（“标签”）中打开 *url*，否则等效于 [`open_new()`](https://docs.python.org/zh-cn/3.13/library/webbrowser.html#webbrowser.open_new)。
+​	如果可能，在默认浏览器的新页面（“标签”）中打开 *url*，否则等效于 [`open_new()`]({{< ref "/library/internet/webbrowser#webbrowser.open_new" >}})。
 
 ​	如果浏览器成功启动则返回 `True`，否则返回 `False`。
 
@@ -77,13 +77,13 @@ python -m webbrowser -t "https://www.python.org"
 
 ## webbrowser.**register**(*name*, *constructor*, *instance=None*, ***, *preferred=False*)
 
-​	注册 *name* 浏览器类型。 注册浏览器类型后， [`get()`](https://docs.python.org/zh-cn/3.13/library/webbrowser.html#webbrowser.get) 函数可以返回该浏览器类型的控制器。 如果没有提供 *instance*，或者为 `None`，*constructor* 将在没有参数的情况下被调用，以在需要时创建实例。 如果提供了 *instance*，则永远不会调用 *constructor*，并且可能是 `None`。
+​	注册 *name* 浏览器类型。 注册浏览器类型后， [`get()`]({{< ref "/library/internet/webbrowser#webbrowser.get" >}}) 函数可以返回该浏览器类型的控制器。 如果没有提供 *instance*，或者为 `None`，*constructor* 将在没有参数的情况下被调用，以在需要时创建实例。 如果提供了 *instance*，则永远不会调用 *constructor*，并且可能是 `None`。
 
-​	将 *preferred* 设置为 `True` 使得这个浏览器成为 [`get()`](https://docs.python.org/zh-cn/3.13/library/webbrowser.html#webbrowser.get) 不带参数调用的首选结果。 否则，只有在您计划设置 `BROWSER` 变量，或使用与您声明的处理程序的名称相匹配的非空参数调用 [`get()`](https://docs.python.org/zh-cn/3.13/library/webbrowser.html#webbrowser.get) 时，此入口点才有用。
+​	将 *preferred* 设置为 `True` 使得这个浏览器成为 [`get()`]({{< ref "/library/internet/webbrowser#webbrowser.get" >}}) 不带参数调用的首选结果。 否则，只有在您计划设置 `BROWSER` 变量，或使用与您声明的处理程序的名称相匹配的非空参数调用 [`get()`]({{< ref "/library/internet/webbrowser#webbrowser.get" >}}) 时，此入口点才有用。
 
-*在 3.7 版本发生变更:* 添加了仅关键字参数 *preferred*。
+> 在 3.7 版本发生变更: 添加了仅关键字参数 *preferred*。
 
-​	预定义了许多浏览器类型。 此表给出了可以传递给 [`get()`](https://docs.python.org/zh-cn/3.13/library/webbrowser.html#webbrowser.get) 函数的类型名称以及控制器类的相应实例化，这些都在此模块中定义。
+​	预定义了许多浏览器类型。 此表给出了可以传递给 [`get()`]({{< ref "/library/internet/webbrowser#webbrowser.get" >}}) 函数的类型名称以及控制器类的相应实例化，这些都在此模块中定义。
 
 | 类型名               | 类名                           | 备注 |
 | :------------------- | :----------------------------- | :--- |
@@ -120,9 +120,9 @@ python -m webbrowser -t "https://www.python.org"
 > Added in version 3.3:
 > 添加了对 Chrome/Chromium 的支持。
 
-*在 3.12 版本发生变更:* 对某些过时浏览器的支持已被移除。 被移除的浏览器包括 Grail, Mosaic, Netscape, Galeon, Skipstone, Iceape 和 Firefox 35 及以下的版本。
+> 在 3.12 版本发生变更: 对某些过时浏览器的支持已被移除。 被移除的浏览器包括 Grail, Mosaic, Netscape, Galeon, Skipstone, Iceape 和 Firefox 35 及以下的版本。
 
-*在 3.13 版本发生变更:* 添加了对 iOS 的支持。
+> 在 3.13 版本发生变更: 添加了对 iOS 的支持。
 
 ​	以下是一些简单的例子:
 
@@ -152,14 +152,13 @@ webbrowser.open_new(url)
 
 ## controller.**open_new**(*url*)
 
-​	如果可能，在此控制器处理的浏览器的新窗口中打开 *url* ，否则，在唯一的浏览器窗口中打开 *url* 。 别名 [`open_new()`](https://docs.python.org/zh-cn/3.13/library/webbrowser.html#webbrowser.open_new)。
+​	如果可能，在此控制器处理的浏览器的新窗口中打开 *url* ，否则，在唯一的浏览器窗口中打开 *url* 。 别名 [`open_new()`]({{< ref "/library/internet/webbrowser#webbrowser.open_new" >}})。
 
 ## controller.**open_new_tab**(*url*)
 
-​	如果可能，在此控制器处理的浏览器的新页面（“标签”）中打开 *url*，否则等效于 [`open_new()`](https://docs.python.org/zh-cn/3.13/library/webbrowser.html#webbrowser.open_new)。
+​	如果可能，在此控制器处理的浏览器的新页面（“标签”）中打开 *url*，否则等效于 [`open_new()`]({{< ref "/library/internet/webbrowser#webbrowser.open_new" >}})。
 
-​	备注
-
-[[1](https://docs.python.org/zh-cn/3.13/library/webbrowser.html#id1)]
+​备注
+[[1]({{< ref "/library/internet/webbrowser#id1" >}})]
 
 ​	这里命名的不带完整路径的可执行文件将在 `PATH` 环境变量给出的目录中搜索。

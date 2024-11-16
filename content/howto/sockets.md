@@ -8,7 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
-> 原文: [https://docs.python.org/zh-cn/3.13/howto/sockets.html](https://docs.python.org/zh-cn/3.13/howto/sockets.html)
+> 原文：[https://docs.python.org/zh-cn/3.13/howto/sockets.html](https://docs.python.org/zh-cn/3.13/howto/sockets.html)
 >
 > 收录该文档的时间：`2024-11-14T22:10:11+08:00`
 
@@ -82,11 +82,10 @@ while True:
 
 ​	如果你需要在同一台机器上进行两个进程间的快速 IPC 通信，你应该了解管道或者共享内存。如果你决定使用 AF_INET 类型的套接字，绑定「服务端」套接字到 `'localhost'` 。在大多数平台，这将会使用一个许多网络层间的通用快捷方式（本地回环地址）并且速度会快很多
 
-​	参见
-
+​参见
  
 
-[`multiprocessing`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#module-multiprocessing) 模块使跨平台 IPC 通信成为一个高层的 API
+[`multiprocessing`]({{< ref "/library/concurrency/multiprocessing#module-multiprocessing" >}}) 模块使跨平台 IPC 通信成为一个高层的 API
 
 ## 使用一个套接字
 
