@@ -25,23 +25,23 @@ draft = false
 
 ## 摘要 -- 发布重点
 
-​	Python 3.13 是 Python 编程语言的最新稳定发布版，包含多项针对语言、实现和标准库的改变。 最大的变化包括一个新的 [交互式解释器]({{< ref "/whatsnew/idx#whatsnew313-better-interactive-interpreter" >}})，以及对于在 [自由线程模式]({{< ref "/whatsnew/idx#whatsnew313-free-threaded-cpython" >}}) ([**PEP 703**](https://peps.python.org/pep-0703/)) 下运行和 [即时编译器]({{< ref "/whatsnew/idx#whatsnew313-jit-compiler" >}}) ([**PEP 744**](https://peps.python.org/pep-0744/)) 的实验性支持。
+​	Python 3.13 是 Python 编程语言的最新稳定发布版，包含多项针对语言、实现和标准库的改变。 最大的变化包括一个新的 [交互式解释器]({{< ref "/other/whatsnew#whatsnew313-better-interactive-interpreter" >}})，以及对于在 [自由线程模式]({{< ref "/other/whatsnew#whatsnew313-free-threaded-cpython" >}}) ([**PEP 703**](https://peps.python.org/pep-0703/)) 下运行和 [即时编译器]({{< ref "/other/whatsnew#whatsnew313-jit-compiler" >}}) ([**PEP 744**](https://peps.python.org/pep-0744/)) 的实验性支持。
 
-​	错误消息继续得到改进，回溯信息现在默认使用彩色高亮显示。 [`locals()`]({{< ref "/library/functions#locals" >}}) 内置函数现在对于修改所返回的映射具有 [更细化的语法]({{< ref "/whatsnew/idx#whatsnew313-locals-semantics" >}})，并且类型形参现在支持设置默认值。
+​	错误消息继续得到改进，回溯信息现在默认使用彩色高亮显示。 [`locals()`]({{< ref "/library/functions#locals" >}}) 内置函数现在对于修改所返回的映射具有 [更细化的语法]({{< ref "/other/whatsnew#whatsnew313-locals-semantics" >}})，并且类型形参现在支持设置默认值。
 
-​	针对标准库的改变包括移除已弃用的 API 和模块，以及用户友好度和正确性方面的常规提升。 一些旧式标准库模块自 Python 3.11 起被弃用 ([**PEP 594**](https://peps.python.org/pep-0594/)) 之后现在 [已被移除]({{< ref "/whatsnew/idx#whatsnew313-pep594" >}})。
+​	针对标准库的改变包括移除已弃用的 API 和模块，以及用户友好度和正确性方面的常规提升。 一些旧式标准库模块自 Python 3.11 起被弃用 ([**PEP 594**](https://peps.python.org/pep-0594/)) 之后现在 [已被移除]({{< ref "/other/whatsnew#whatsnew313-pep594" >}})。
 
-​	本文并不试图提供所有新特性的完整规范说明，而是提供一个方便的概览。 要了解完整细节请参阅相应文档，如 [标准库参数]({{< ref "/library#library-index" >}}) 和 [语言参考]({{< ref "/reference#reference-index" >}})。 要了解某项改变的完整实现和设计理念，请参阅相应新特性的 PEP；但请注意一旦某项特性已完全实现则相应 PEP 通常不会再继续更新。 请参阅 [迁移到 Python 3.13]({{< ref "/whatsnew/idx#porting-to-python-3-13" >}}) 了解如何从较早 Python 进行升级的指导。
+​	本文并不试图提供所有新特性的完整规范说明，而是提供一个方便的概览。 要了解完整细节请参阅相应文档，如 [标准库参数]({{< ref "/library#library-index" >}}) 和 [语言参考]({{< ref "/reference#reference-index" >}})。 要了解某项改变的完整实现和设计理念，请参阅相应新特性的 PEP；但请注意一旦某项特性已完全实现则相应 PEP 通常不会再继续更新。 请参阅 [迁移到 Python 3.13]({{< ref "/other/whatsnew#porting-to-python-3-13" >}}) 了解如何从较早 Python 进行升级的指导。
 
 ------
 
 ​	解释器的改进：
 
-- 大幅改进的 [交互式解释器]({{< ref "/whatsnew/idx#whatsnew313-better-interactive-interpreter" >}}) 和 [改进的错误消息]({{< ref "/whatsnew/idx#whatsnew313-improved-error-messages" >}})。
-- [**PEP 667**](https://peps.python.org/pep-0667/): 现在 [`locals()`]({{< ref "/library/functions#locals" >}}) 内置函数在修改被返回的映射时具有 [已定义语义]({{< ref "/whatsnew/idx#whatsnew313-locals-semantics" >}})。 Python 调试器及类似的工具现在即使在并发代码执行期间也能更可靠地在已优化的作用域中更新局部变量。
-- [**PEP 703**](https://peps.python.org/pep-0703/): CPython 3.13 具有对在运行时禁用 [global interpreter lock]({{< ref "/glossary/idx#term-global-interpreter-lock" >}}) 的实验性支持。 请参阅 [自由线程 CPython]({{< ref "/whatsnew/idx#whatsnew313-free-threaded-cpython" >}}) 了解详情。
-- [**PEP 744**](https://peps.python.org/pep-0744/): 增加了一个基本的 [JIT 编译器]({{< ref "/whatsnew/idx#whatsnew313-jit-compiler" >}})。 目前默认是禁用的（但以后可能启用）。 能够小幅提升性能 -- 我们预计在接下来的几个发布版中不断改进它。
-- 在新的 [交互式解释器]({{< ref "/whatsnew/idx#whatsnew313-better-interactive-interpreter" >}}) 中，以及 [回溯信息]({{< ref "/whatsnew/idx#whatsnew313-improved-error-messages" >}}) 和 [文档测试]({{< ref "/whatsnew/idx#whatsnew313-doctest" >}}) 输出中的颜色支持。 这可以通过 [`PYTHON_COLORS`]({{< ref "/using/cmdline#envvar-PYTHON_COLORS" >}}) and [`NO_COLOR`](https://no-color.org/) 环境变量来禁用。
+- 大幅改进的 [交互式解释器]({{< ref "/other/whatsnew#whatsnew313-better-interactive-interpreter" >}}) 和 [改进的错误消息]({{< ref "/other/whatsnew#whatsnew313-improved-error-messages" >}})。
+- [**PEP 667**](https://peps.python.org/pep-0667/): 现在 [`locals()`]({{< ref "/library/functions#locals" >}}) 内置函数在修改被返回的映射时具有 [已定义语义]({{< ref "/other/whatsnew#whatsnew313-locals-semantics" >}})。 Python 调试器及类似的工具现在即使在并发代码执行期间也能更可靠地在已优化的作用域中更新局部变量。
+- [**PEP 703**](https://peps.python.org/pep-0703/): CPython 3.13 具有对在运行时禁用 [global interpreter lock]({{< ref "/glossary/idx#term-global-interpreter-lock" >}}) 的实验性支持。 请参阅 [自由线程 CPython]({{< ref "/other/whatsnew#whatsnew313-free-threaded-cpython" >}}) 了解详情。
+- [**PEP 744**](https://peps.python.org/pep-0744/): 增加了一个基本的 [JIT 编译器]({{< ref "/other/whatsnew#whatsnew313-jit-compiler" >}})。 目前默认是禁用的（但以后可能启用）。 能够小幅提升性能 -- 我们预计在接下来的几个发布版中不断改进它。
+- 在新的 [交互式解释器]({{< ref "/other/whatsnew#whatsnew313-better-interactive-interpreter" >}}) 中，以及 [回溯信息]({{< ref "/other/whatsnew#whatsnew313-improved-error-messages" >}}) 和 [文档测试]({{< ref "/other/whatsnew#whatsnew313-doctest" >}}) 输出中的颜色支持。 这可以通过 [`PYTHON_COLORS`]({{< ref "/using/cmdline#envvar-PYTHON_COLORS" >}}) and [`NO_COLOR`](https://no-color.org/) 环境变量来禁用。
 
 ​	对 Python 数据模型的改进：
 
@@ -78,14 +78,14 @@ draft = false
 
 ​	平台支持：
 
-- [**PEP 730**](https://peps.python.org/pep-0730/): 现在 Apple 的 iOS 是 [官方支持的平台]({{< ref "/whatsnew/idx#whatsnew313-platform-support" >}})，处于 [**第 3 层级**](https://peps.python.org/pep-0011/#tier-3)。
-- [**PEP 738**](https://peps.python.org/pep-0738/): 现在 Android 是 [官方支持的平台]({{< ref "/whatsnew/idx#whatsnew313-platform-support" >}})，处于 [**第 3 层级**](https://peps.python.org/pep-0011/#tier-3)。
+- [**PEP 730**](https://peps.python.org/pep-0730/): 现在 Apple 的 iOS 是 [官方支持的平台]({{< ref "/other/whatsnew#whatsnew313-platform-support" >}})，处于 [**第 3 层级**](https://peps.python.org/pep-0011/#tier-3)。
+- [**PEP 738**](https://peps.python.org/pep-0738/): 现在 Android 是 [官方支持的平台]({{< ref "/other/whatsnew#whatsnew313-platform-support" >}})，处于 [**第 3 层级**](https://peps.python.org/pep-0011/#tier-3)。
 - 现在 `wasm32-wasi` 作为 [**第 2 层级**](https://peps.python.org/pep-0011/#tier-2) 的平台受到支持。
 - `wasm32-emscripten` 不再是受到官方支持的平台。
 
 ​	重要的移除：
 
-- [PEP 594]({{< ref "/whatsnew/idx#whatsnew313-pep594" >}}): 剩余的 19 个“死电池”（老旧 stdlib 模块）已从标准库中移除: `aifc`, `audioop`, `cgi`, `cgitb`, `chunk`, `crypt`, `imghdr`, `mailcap`, `msilib`, `nis`, `nntplib`, `ossaudiodev`, `pipes`, `sndhdr`, `spwd`, `sunau`, `telnetlib`, `uu` 和 `xdrlib`。
+- [PEP 594]({{< ref "/other/whatsnew#whatsnew313-pep594" >}}): 剩余的 19 个“死电池”（老旧 stdlib 模块）已从标准库中移除: `aifc`, `audioop`, `cgi`, `cgitb`, `chunk`, `crypt`, `imghdr`, `mailcap`, `msilib`, `nis`, `nntplib`, `ossaudiodev`, `pipes`, `sndhdr`, `spwd`, `sunau`, `telnetlib`, `uu` 和 `xdrlib`。
 - 移除了 **2to3** 工具和 `lib2to3` 模块（在 Python 3.11 中已被弃用）。
 - 移除了 `tkinter.tix` 模块（在 Python 3.6 中已被弃用）。
 - 移除了 `locale.resetlocale()` 函数。
@@ -228,7 +228,7 @@ draft = false
 
 ​	为确保调试器和类似工具能可靠地更新受到此变化影响的作用域中的局部变量，现在 [`FrameType.f_locals`]({{< ref "/reference/datamodel#frame.f_locals" >}}) 将返回一个针对此种作用域中的帧的局部变量和在局部引用的非局部变量的直通写入代理对象，而不是返回一个非持续更新的具有规定义的运行时语义的共享 `dict` 实例。
 
-​	请参阅 [**PEP 667**](https://peps.python.org/pep-0667/) 了解详情，包括相关的 C API 更改和弃用。 下文还针对受影响的 [Python API]({{< ref "/whatsnew/idx#pep667-porting-notes-py" >}}) 和 [C API]({{< ref "/whatsnew/idx#pep667-porting-notes-c" >}}) 提供了移植说明。
+​	请参阅 [**PEP 667**](https://peps.python.org/pep-0667/) 了解详情，包括相关的 C API 更改和弃用。 下文还针对受影响的 [Python API]({{< ref "/other/whatsnew#pep667-porting-notes-py" >}}) 和 [C API]({{< ref "/other/whatsnew#pep667-porting-notes-c" >}}) 提供了移植说明。
 
 ​	（PEP 和实现由 Mark Shannon 和 Tian Gao 在 [gh-74929](https://github.com/python/cpython/issues/74929) 中贡献。 文档更新由 Guido van Rossum 和 Alyssa Coghlan 提供。）
 
@@ -655,7 +655,7 @@ draft = false
 
 - 一些标准库模块的导入时间得到了显著改善。 例如，[`typing`]({{< ref "/library/development/typing#module-typing" >}}) 模块的导入时间通过移除对 [`re`]({{< ref "/library/text/re#module-re" >}}) 和 [`contextlib`]({{< ref "/library/python/contextlib#module-contextlib" >}}) 的依赖而减少了大约三分之一。 其他获得导入时间加速的模块包括 [`email.utils`]({{< ref "/library/netdata/email/email_utils#module-email.utils" >}}), [`enum`]({{< ref "/library/datatypes/enum#module-enum" >}}), [`functools`]({{< ref "/library/functional/functools#module-functools" >}}), [`importlib.metadata`]({{< ref "/library/modules/importlib_metadata#module-importlib.metadata" >}}) 和 [`threading`]({{< ref "/library/concurrency/threading#module-threading" >}})。 （由 Alex Waygood, Shantanu Jain, Adam Turner, Daniel Hollas 等人在 [gh-109653](https://github.com/python/cpython/issues/109653) 中贡献。）
 - 现在对于大量输入 [`textwrap.indent()`]({{< ref "/library/text/textwrap#textwrap.indent" >}}) 相比之前可提速大约 30%。 （由 Inada Naoki 在 [gh-107369](https://github.com/python/cpython/issues/107369) 中贡献。）
-- 现在 [`subprocess`]({{< ref "/library/concurrency/subprocess#module-subprocess" >}}) 模块会在更多场合下使用 [`posix_spawn()`]({{< ref "/library/allos/os#os.posix_spawn" >}}) 函数，包括在许多现代系统平台上当 *close_fds* 为 `True` (默认值) 的时候。 当在 FreeBSD 和 Solaris 上启动进程时这应该能提供显著的性能提升。 请参阅上面的 [subprocess]({{< ref "/whatsnew/idx#whatsnew313-subprocess" >}}) 小节了解详情。 （由 Jakub Kulik 在 [gh-113117](https://github.com/python/cpython/issues/113117) 中贡献。）
+- 现在 [`subprocess`]({{< ref "/library/concurrency/subprocess#module-subprocess" >}}) 模块会在更多场合下使用 [`posix_spawn()`]({{< ref "/library/allos/os#os.posix_spawn" >}}) 函数，包括在许多现代系统平台上当 *close_fds* 为 `True` (默认值) 的时候。 当在 FreeBSD 和 Solaris 上启动进程时这应该能提供显著的性能提升。 请参阅上面的 [subprocess]({{< ref "/other/whatsnew#whatsnew313-subprocess" >}}) 小节了解详情。 （由 Jakub Kulik 在 [gh-113117](https://github.com/python/cpython/issues/113117) 中贡献。）
 
 ## 被移除的模块与 API
 
@@ -1089,7 +1089,7 @@ draft = false
 
 - Add the [`PyErr_FormatUnraisable()`]({{< ref "/c_api/exceptions#c.PyErr_FormatUnraisable" >}}) function as an extension to [`PyErr_WriteUnraisable()`]({{< ref "/c_api/exceptions#c.PyErr_WriteUnraisable" >}}) that allows customizing the warning message. (Contributed by Serhiy Storchaka in [gh-108082](https://github.com/python/cpython/issues/108082).)
 
-- Add new functions that return a [strong reference]({{< ref "/glossary/idx#term-strong-reference" >}}) instead of a [borrowed reference]({{< ref "/glossary/idx#term-borrowed-reference" >}}) for frame locals, globals, and builtins, as part of [PEP 667]({{< ref "/whatsnew/idx#whatsnew313-locals-semantics" >}}):
+- Add new functions that return a [strong reference]({{< ref "/glossary/idx#term-strong-reference" >}}) instead of a [borrowed reference]({{< ref "/glossary/idx#term-borrowed-reference" >}}) for frame locals, globals, and builtins, as part of [PEP 667]({{< ref "/other/whatsnew#whatsnew313-locals-semantics" >}}):
 
   - [`PyEval_GetFrameBuiltins()`](https://docs.python.org/zh-cn/3.13/c-api/reflection.html#c.PyEval_GetFrameBuiltins) replaces [`PyEval_GetBuiltins()`](https://docs.python.org/zh-cn/3.13/c-api/reflection.html#c.PyEval_GetBuiltins)
   - [`PyEval_GetFrameGlobals()`](https://docs.python.org/zh-cn/3.13/c-api/reflection.html#c.PyEval_GetFrameGlobals) replaces [`PyEval_GetGlobals()`](https://docs.python.org/zh-cn/3.13/c-api/reflection.html#c.PyEval_GetGlobals)
@@ -1377,8 +1377,8 @@ draft = false
 
 ## 构建变化
 
-- `arm64-apple-ios` and `arm64-apple-ios-simulator` are both now [**PEP 11**](https://peps.python.org/pep-0011/) tier 3 platforms. ([PEP 730]({{< ref "/whatsnew/idx#whatsnew313-platform-support" >}}) written and implementation contributed by Russell Keith-Magee in [gh-114099](https://github.com/python/cpython/issues/114099).)
-- `aarch64-linux-android` and `x86_64-linux-android` are both now [**PEP 11**](https://peps.python.org/pep-0011/) tier 3 platforms. ([PEP 738]({{< ref "/whatsnew/idx#whatsnew313-platform-support" >}}) written and implementation contributed by Malcolm Smith in [gh-116622](https://github.com/python/cpython/issues/116622).)
+- `arm64-apple-ios` and `arm64-apple-ios-simulator` are both now [**PEP 11**](https://peps.python.org/pep-0011/) tier 3 platforms. ([PEP 730]({{< ref "/other/whatsnew#whatsnew313-platform-support" >}}) written and implementation contributed by Russell Keith-Magee in [gh-114099](https://github.com/python/cpython/issues/114099).)
+- `aarch64-linux-android` and `x86_64-linux-android` are both now [**PEP 11**](https://peps.python.org/pep-0011/) tier 3 platforms. ([PEP 738]({{< ref "/other/whatsnew#whatsnew313-platform-support" >}}) written and implementation contributed by Malcolm Smith in [gh-116622](https://github.com/python/cpython/issues/116622).)
 - 现在 `wasm32-wasi` 是 [**PEP 11**](https://peps.python.org/pep-0011/) 第 2 层级的平台。 （由 Brett Cannon 在 [gh-115192](https://github.com/python/cpython/issues/115192) 中贡献。）
 - `wasm32-emscripten` 不再是 [**PEP 11**](https://peps.python.org/pep-0011/) 的受支持平台。 （由 Brett Cannon 在 [gh-115192](https://github.com/python/cpython/issues/115192) 中贡献。）
 - 现在构建 CPython 需要带有 C11 atomic 库支持的编译器、GCC 内置 atomic 函数或 MSVC 互锁内生函数。
@@ -1396,7 +1396,7 @@ draft = false
 
 ### Python API 的变化
 
-- [PEP 667]({{< ref "/whatsnew/idx#whatsnew313-locals-semantics" >}}) introduces several changes to the semantics of [`locals()`]({{< ref "/library/functions#locals" >}}) and [`f_locals`]({{< ref "/reference/datamodel#frame.f_locals" >}}):
+- [PEP 667]({{< ref "/other/whatsnew#whatsnew313-locals-semantics" >}}) introduces several changes to the semantics of [`locals()`]({{< ref "/library/functions#locals" >}}) and [`f_locals`]({{< ref "/reference/datamodel#frame.f_locals" >}}):
 
   - Calling [`locals()`]({{< ref "/library/functions#locals" >}}) in an [optimized scope]({{< ref "/glossary/idx#term-optimized-scope" >}}) now produces an independent snapshot on each call, and hence no longer implicitly updates previously returned references. Obtaining the legacy CPython behavior now requires explicit calls to update the initially returned dictionary with the results of subsequent calls to `locals()`. Code execution functions that implicitly target `locals()` (such as `exec` and `eval`) must be passed an explicit namespace to access their results in an optimized scope. (Changed as part of [**PEP 667**](https://peps.python.org/pep-0667/).)
   - Calling [`locals()`]({{< ref "/library/functions#locals" >}}) from a comprehension at module or class scope (including via `exec` or `eval`) once more behaves as if the comprehension were running as an independent nested function (i.e. the local variables from the containing scope are not included). In Python 3.12, this had changed to include the local variables from the containing scope when implementing [**PEP 709**](https://peps.python.org/pep-0709/). (Changed as part of [**PEP 667**](https://peps.python.org/pep-0667/).)
@@ -1456,7 +1456,7 @@ draft = false
 
   Note that `Py_TRASHCAN_BEGIN` has a second argument which should be the deallocation function it is in. The new macros were added in Python 3.8 and the old macros were deprecated in Python 3.11. (Contributed by Irit Katriel in [gh-105111](https://github.com/python/cpython/issues/105111).)
 
-- [PEP 667]({{< ref "/whatsnew/idx#whatsnew313-locals-semantics" >}}) introduces several changes to frame-related functions:
+- [PEP 667]({{< ref "/other/whatsnew#whatsnew313-locals-semantics" >}}) introduces several changes to frame-related functions:
   - The effects of mutating the dictionary returned from [`PyEval_GetLocals()`](https://docs.python.org/zh-cn/3.13/c-api/reflection.html#c.PyEval_GetLocals) in an [optimized scope]({{< ref "/glossary/idx#term-optimized-scope" >}}) have changed. New dict entries added this way will now *only* be visible to subsequent [`PyEval_GetLocals()`](https://docs.python.org/zh-cn/3.13/c-api/reflection.html#c.PyEval_GetLocals) calls in that frame, as [`PyFrame_GetLocals()`](https://docs.python.org/zh-cn/3.13/c-api/frame.html#c.PyFrame_GetLocals), [`locals()`]({{< ref "/library/functions#locals" >}}), and [`FrameType.f_locals`]({{< ref "/reference/datamodel#frame.f_locals" >}}) no longer access the same underlying cached dictionary. Changes made to entries for actual variable names and names added via the write-through proxy interfaces will be overwritten on subsequent calls to [`PyEval_GetLocals()`](https://docs.python.org/zh-cn/3.13/c-api/reflection.html#c.PyEval_GetLocals) in that frame. The recommended code update depends on how the function was being used, so refer to the deprecation notice on the function for details.
   - Calling [`PyFrame_GetLocals()`](https://docs.python.org/zh-cn/3.13/c-api/frame.html#c.PyFrame_GetLocals) in an [optimized scope]({{< ref "/glossary/idx#term-optimized-scope" >}}) now returns a write-through proxy rather than a snapshot that gets updated at ill-specified times. If a snapshot is desired, it must be created explicitly (e.g. with [`PyDict_Copy()`](https://docs.python.org/zh-cn/3.13/c-api/dict.html#c.PyDict_Copy)), or by calling the new [`PyEval_GetFrameLocals()`](https://docs.python.org/zh-cn/3.13/c-api/reflection.html#c.PyEval_GetFrameLocals) API.
   - `PyFrame_FastToLocals()` and `PyFrame_FastToLocalsWithError()` no longer have any effect. Calling these functions has been redundant since Python 3.11, when [`PyFrame_GetLocals()`](https://docs.python.org/zh-cn/3.13/c-api/frame.html#c.PyFrame_GetLocals) was first introduced.

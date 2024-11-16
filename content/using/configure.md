@@ -249,14 +249,14 @@ autoreconf -ivf -Werror
 
 ​	定义 `Py_GIL_DISABLED` 宏并向 [`sys.abiflags`]({{< ref "/library/python/sys#sys.abiflags" >}}) 添加 `"t"`。
 
-​	请参阅 [自由线程的 CPython]({{< ref "/whatsnew/idx#whatsnew313-free-threaded-cpython" >}}) 了解详情。
+​	请参阅 [自由线程的 CPython]({{< ref "/other/whatsnew#whatsnew313-free-threaded-cpython" >}}) 了解详情。
 
 > Added in version 3.13.
 >
 
 `--enable-experimental-jit`=[no|yes|yes-off|interpreter]
 
-​	Indicate how to integrate the [JIT compiler]({{< ref "/whatsnew/idx#whatsnew313-jit-compiler" >}}).
+​	Indicate how to integrate the [JIT compiler]({{< ref "/other/whatsnew#whatsnew313-jit-compiler" >}}).
 
 - `no` - build the interpreter without the JIT.
 - `yes` - build the interpreter with the JIT.

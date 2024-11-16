@@ -420,7 +420,7 @@ action:message:category:module:lineno
 
   *Added in version 3.13.*
 
-- `-X gil=*0,1*` 强制分别禁用或启用 GIL。 设为 `0` 仅在配置了 [`--disable-gil`]({{< ref "/using/configure#cmdoption-disable-gil" >}}) 的构建版上可用。 另请参阅 [`PYTHON_GIL`]({{< ref "/using/cmdline#envvar-PYTHON_GIL" >}}) 和 [自由线程的 CPython]({{< ref "/whatsnew/idx#whatsnew313-free-threaded-cpython" >}})。
+- `-X gil=*0,1*` 强制分别禁用或启用 GIL。 设为 `0` 仅在配置了 [`--disable-gil`]({{< ref "/using/configure#cmdoption-disable-gil" >}}) 的构建版上可用。 另请参阅 [`PYTHON_GIL`]({{< ref "/using/cmdline#envvar-PYTHON_GIL" >}}) 和 [自由线程的 CPython]({{< ref "/other/whatsnew#whatsnew313-free-threaded-cpython" >}})。
 
   *Added in version 3.13.*
 
@@ -818,7 +818,7 @@ PYTHONWARNINGS=ignore   # 从不警告
 
 ​	如果将此变量设为 `1`，则将强制启用全局解释器锁 (GIL)。 将其设为 `0` 将强制禁用 GIL (需要使用 [`--disable-gil`]({{< ref "/using/configure#cmdoption-disable-gil" >}}) 构建选项来配置 Python)。
 
-​	另请参阅 [`-X gil`]({{< ref "/using/cmdline#cmdoption-X" >}}) 命令行选项，该选项的优先级高于此变量，并请参阅 [自由线程的 CPython]({{< ref "/whatsnew/idx#whatsnew313-free-threaded-cpython" >}})。
+​	另请参阅 [`-X gil`]({{< ref "/using/cmdline#cmdoption-X" >}}) 命令行选项，该选项的优先级高于此变量，并请参阅 [自由线程的 CPython]({{< ref "/other/whatsnew#whatsnew313-free-threaded-cpython" >}})。
 
 > Added in version 3.13.
 >
