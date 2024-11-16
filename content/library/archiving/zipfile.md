@@ -28,7 +28,8 @@ draft = false
 
 ​	为损坏的 ZIP 文件抛出的错误。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## *exception* zipfile.**BadZipfile**
 
@@ -48,7 +49,8 @@ draft = false
 
 ​	实现了 [`pathlib.Path`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.Path) 所提供接口的一个子集的类，包括完整的 [`importlib.resources.abc.Traversable`](https://docs.python.org/zh-cn/3.13/library/importlib.resources.abc.html#importlib.resources.abc.Traversable) 接口。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## *class* zipfile.**PyZipFile**
 
@@ -78,13 +80,15 @@ draft = false
 
 ​	BZIP2 压缩方法的数字常数。需要 [`bz2`](https://docs.python.org/zh-cn/3.13/library/bz2.html#module-bz2) 模块。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## zipfile.**ZIP_LZMA**
 
 ​	LZMA 压缩方法的数字常数。需要 [`lzma`](https://docs.python.org/zh-cn/3.13/library/lzma.html#module-lzma) 模块。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ​	备注
 
@@ -309,7 +313,8 @@ with ZipFile('spam.zip') as myzip:
 
 ​	归档文件必须以 `'w'`, `'x'` 或 `'a'` 模式打开。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ​	以下数据属性也是可用的:
 
@@ -367,7 +372,8 @@ with ZipFile('spam.zip') as myzip:
 
 ​	如果当前上下文引用了一个符号链接则返回 `True`。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 *在 3.13 版本发生变更:* 在之前版本中，`is_symlink` 将无条件地返回 `False`。
 
@@ -379,19 +385,22 @@ with ZipFile('spam.zip') as myzip:
 
 ​	最终组件末尾的以点号分隔的部分，如果存在的话。 这通常被称为文件扩展名。
 
-*Added in version 3.11:* 添加了 [`Path.suffix`](https://docs.python.org/zh-cn/3.13/library/zipfile.html#zipfile.Path.suffix) 特征属性。
+> Added in version 3.11:
+> 添加了 [`Path.suffix`](https://docs.python.org/zh-cn/3.13/library/zipfile.html#zipfile.Path.suffix) 特征属性。
 
 ## Path.**stem**
 
 ​	路径的末尾部分，不带文件后缀。
 
-*Added in version 3.11:* 添加了 [`Path.stem`](https://docs.python.org/zh-cn/3.13/library/zipfile.html#zipfile.Path.stem) 特征属性。
+> Added in version 3.11:
+> 添加了 [`Path.stem`](https://docs.python.org/zh-cn/3.13/library/zipfile.html#zipfile.Path.stem) 特征属性。
 
 ## Path.**suffixes**
 
 ​	由路径后缀组成的列表，通常被称为文件扩展名。
 
-*Added in version 3.11:* 添加了 [`Path.suffixes`](https://docs.python.org/zh-cn/3.13/library/zipfile.html#zipfile.Path.suffixes) 特征属性。
+> Added in version 3.11:
+> 添加了 [`Path.suffixes`](https://docs.python.org/zh-cn/3.13/library/zipfile.html#zipfile.Path.suffixes) 特征属性。
 
 ## Path.**read_text**(***, ****)
 
@@ -409,7 +418,7 @@ with ZipFile('spam.zip') as myzip:
 
 
 
-```
+``` python
 >>> Path(...).joinpath('child').joinpath('grandchild')
 >>> Path(...).joinpath('child', 'grandchild')
 >>> Path(...) / 'child' / 'grandchild'
@@ -449,7 +458,7 @@ with ZipFile('spam.zip') as myzip:
 
 
 
-```
+``` python
 >>> zf = PyZipFile('myprog.zip')
 >>> def notests(s):
 ...     fn = os.path.basename(s)
@@ -492,7 +501,8 @@ test/bogus/myfile.pyc        # 子模块 test.bogus.myfile
 
 *strict_timestamps* 参数在设为 `False` 时允许压缩早于 1980-01-01 的文件，代价时会将时间戳设为 1980-01-01。 类似的行为也会对晚于 2107-12-31 的文件发生，时间戳也会被设为该上限值。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 *在 3.6.2 版本发生变更:* *filename* 形参接受一个 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object)。
 
@@ -506,7 +516,8 @@ test/bogus/myfile.pyc        # 子模块 test.bogus.myfile
 
 ​	这会使用条目的名称：目录应当总是以 `/` 结尾。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## ZipInfo.**filename**
 
@@ -651,7 +662,8 @@ $ python -m zipfile -l monty.zip
 
 ​	为 [`-l`](https://docs.python.org/zh-cn/3.13/library/zipfile.html#cmdoption-zipfile-l), [`-e`](https://docs.python.org/zh-cn/3.13/library/zipfile.html#cmdoption-zipfile-e) 和 [`-t`](https://docs.python.org/zh-cn/3.13/library/zipfile.html#cmdoption-zipfile-t) 指定成员名称的编码格式。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## 解压缩的障碍
 

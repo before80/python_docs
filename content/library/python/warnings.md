@@ -350,7 +350,8 @@ def g(x: str) -> int: ...
 
 ​	传给该装饰器的弃用消息保存在被装饰对象的 `__deprecated__` 属性中。 如果应用于重载，该装饰器必须位于 [`@overload`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.overload) 装饰器之后以使该属性存在于 [`typing.get_overloads()`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.get_overloads) 所返回的重载之中。
 
-*Added in version 3.13:* 参见 [**PEP 702**](https://peps.python.org/pep-0702/)。
+> Added in version 3.13:* 参见 [**PEP 702*
+>](https://peps.python.org/pep-0702/)。
 
 ## 可用的上下文管理器
 

@@ -24,7 +24,7 @@ draft = false
 
 
 
-```
+``` python
 >>> while True print('Hello world')
   File "<stdin>", line 1
     while True print('Hello world')
@@ -42,7 +42,7 @@ SyntaxError: invalid syntax
 
 
 
-```
+``` python
 >>> 10 * (1/0)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -79,7 +79,7 @@ TypeError: can only concatenate str (not "int") to str
 
 
 
-```
+``` python
 >>> while True:
 ...     try:
 ...         x = int(input("Please enter a number: "))
@@ -134,7 +134,7 @@ for cls in [B, C, D]:
 
 
 
-```
+``` python
 >>> try:
 ...     raise Exception('spam', 'eggs')
 ... except Exception as inst:
@@ -196,7 +196,7 @@ for arg in sys.argv[1:]:
 
 
 
-```
+``` python
 >>> def this_fails():
 ...     x = 1/0
 ...
@@ -216,7 +216,7 @@ Handling run-time error: division by zero
 
 
 
-```
+``` python
 >>> raise NameError('HiThere')
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -234,7 +234,7 @@ raise ValueError  # 'raise ValueError()' 的简化
 
 
 
-```
+``` python
 >>> try:
 ...     raise NameError('HiThere')
 ... except NameError:
@@ -256,7 +256,7 @@ NameError: HiThere
 
 
 
-```
+``` python
 >>> try:
 ...     open("database.sqlite")
 ... except OSError:
@@ -287,7 +287,7 @@ raise RuntimeError from exc
 
 
 
-```
+``` python
 >>> def func():
 ...     raise ConnectionError
 ...
@@ -315,7 +315,7 @@ RuntimeError: Failed to open database
 
 
 
-```
+``` python
 >>> try:
 ...     open('database.sqlite')
 ... except OSError:
@@ -349,7 +349,7 @@ RuntimeError
 
 
 
-```
+``` python
 >>> try:
 ...     raise KeyboardInterrupt
 ... finally:
@@ -374,7 +374,7 @@ KeyboardInterrupt
 
 
 
-```
+``` python
 >>> def bool_return():
 ...     try:
 ...         return True
@@ -389,7 +389,7 @@ False
 
 
 
-```
+``` python
 >>> def divide(x, y):
 ...     try:
 ...         result = x / y
@@ -453,7 +453,7 @@ with open("myfile.txt") as f:
 
 
 
-```
+``` python
 >>> def f():
 ...     excs = [OSError('error 1'), SystemError('error 2')]
 ...     raise ExceptionGroup('there were problems', excs)
@@ -484,7 +484,7 @@ caught <class 'ExceptionGroup'>: e
 
 
 
-```
+``` python
 >>> def f():
 ...     raise ExceptionGroup(
 ...         "group1",
@@ -531,7 +531,7 @@ There were SystemErrors
 
 
 
-```
+``` python
 >>> excs = []
 ... for test in tests:
 ...     try:
@@ -552,7 +552,7 @@ There were SystemErrors
 
 
 
-```
+``` python
 >>> try:
 ...     raise TypeError('bad type')
 ... except Exception as e:
@@ -573,7 +573,7 @@ Add some more information
 
 
 
-```
+``` python
 >>> def f():
 ...     raise OSError('operation failed')
 ...

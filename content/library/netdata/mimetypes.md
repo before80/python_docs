@@ -42,7 +42,8 @@ draft = false
 
 ​	根据由 *path* 给出的文件路径猜测其类型。 类似于 [`guess_type()`](https://docs.python.org/zh-cn/3.13/library/mimetypes.html#mimetypes.guess_type) 函数，但可接受路径而非 URL。 路径可以是字符串、字节串对象或 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## mimetypes.**guess_all_extensions**(*type*, *strict=True*)
 
@@ -106,7 +107,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import mimetypes
 >>> mimetypes.init()
 >>> mimetypes.knownfiles
@@ -159,7 +160,8 @@ draft = false
 
 ​	类似于 [`guess_file_type()`](https://docs.python.org/zh-cn/3.13/library/mimetypes.html#mimetypes.guess_file_type) 函数，使用存储的表作为对象的一部分。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **guess_all_extensions**(*type*, *strict=True*)
 
@@ -185,7 +187,8 @@ draft = false
 
 ​	如果 *strict* 为 `True`，信息将被添加到标准类型列表，否则添加到非标准类型列表。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **add_type**(*type*, *ext*, *strict=True*)
 

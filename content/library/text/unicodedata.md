@@ -84,7 +84,8 @@ draft = false
 
 ​	判断 Unicode 字符串 *unistr* 是否为正规形式 *form*。 *form* 的有效值为 'NFC', 'NFKC', 'NFD' 和 'NFKD'。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ​	此外，该模块暴露了以下常量：
 
@@ -100,7 +101,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import unicodedata
 >>> unicodedata.lookup('LEFT CURLY BRACKET')
 '{'

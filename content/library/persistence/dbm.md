@@ -116,7 +116,8 @@ with dbm.open('cache', 'c') as db:
 
 ## [`dbm.sqlite3`](https://docs.python.org/zh-cn/3.13/library/dbm.html#module-dbm.sqlite3) --- 针对 dbm 的 SQLite 后端
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 **源代码:** [Lib/dbm/sqlite3.py](https://github.com/python/cpython/tree/3.13/Lib/dbm/sqlite3.py)
 
@@ -241,7 +242,8 @@ while k is not None:
 
 ​	从 GDBM 数据库移除所有条目。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 
 
@@ -308,7 +310,8 @@ while k is not None:
 
 ​	从 NDBM 数据库移除所有条目。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 
 

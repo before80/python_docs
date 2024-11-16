@@ -39,7 +39,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from urllib.parse import urlparse
 >>> urlparse("scheme://netloc/path;parameters?query#fragment")
 ParseResult(scheme='scheme', netloc='netloc', path='/path;parameters', params='',
@@ -66,7 +66,7 @@ ParseResult(scheme='http', netloc='docs.python.org:80',
 
 
 
-```
+``` python
 >>> from urllib.parse import urlparse
 >>> urlparse('//www.cwi.nl:80/%7Eguido/Python.html')
 ParseResult(scheme='', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',
@@ -108,7 +108,7 @@ ParseResult(scheme='', netloc='', path='help/Python.html', params='',
 
 
 
-```
+``` python
 >>> from urllib.parse import urlparse
 >>> u = urlparse('//www.cwi.nl:80/%7Eguido/Python.html')
 >>> u
@@ -235,7 +235,7 @@ ParseResult(scheme='http', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',
 
 
 
-```
+``` python
 >>> from urllib.parse import urljoin
 >>> urljoin('http://www.cwi.nl/%7Eguido/Python.html', 'FAQ.html')
 'http://www.cwi.nl/%7Eguido/FAQ.html'
@@ -251,7 +251,7 @@ ParseResult(scheme='http', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',
 
 
 
-```
+``` python
 >>> urljoin('http://www.cwi.nl/%7Eguido/Python.html',
 ...         '//www.python.org/%7Eguido')
 'http://www.python.org/%7Eguido'
@@ -326,7 +326,7 @@ ParseResult(scheme='http', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',
 
 
 
-```
+``` python
 >>> from urllib.parse import urlsplit
 >>> url = 'HTTP://www.Python.org/doc/#'
 >>> r1 = urlsplit(url)
@@ -343,7 +343,8 @@ ParseResult(scheme='http', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',
 
 ​	用于 [`urldefrag()`](https://docs.python.org/zh-cn/3.13/library/urllib.parse.html#urllib.parse.urldefrag) 结果的实体类，包含有 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 数据。 `encode()` 方法会返回一个 [`DefragResultBytes`](https://docs.python.org/zh-cn/3.13/library/urllib.parse.html#urllib.parse.DefragResultBytes) 实例。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## *class* urllib.parse.**ParseResult**(*scheme*, *netloc*, *path*, *params*, *query*, *fragment*)
 
@@ -359,19 +360,22 @@ ParseResult(scheme='http', netloc='www.cwi.nl:80', path='/%7Eguido/Python.html',
 
 ​	用于 [`urldefrag()`](https://docs.python.org/zh-cn/3.13/library/urllib.parse.html#urllib.parse.urldefrag) 结果的实体类，包含有 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 数据。 `decode()` 方法会返回一个 [`DefragResult`](https://docs.python.org/zh-cn/3.13/library/urllib.parse.html#urllib.parse.DefragResult) 实例。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## *class* urllib.parse.**ParseResultBytes**(*scheme*, *netloc*, *path*, *params*, *query*, *fragment*)
 
 ​	用于 [`urlparse()`](https://docs.python.org/zh-cn/3.13/library/urllib.parse.html#urllib.parse.urlparse) 结果的实体类，包含有 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 数据。 `decode()` 方法会返回一个 [`ParseResult`](https://docs.python.org/zh-cn/3.13/library/urllib.parse.html#urllib.parse.ParseResult) 实例。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## *class* urllib.parse.**SplitResultBytes**(*scheme*, *netloc*, *path*, *query*, *fragment*)
 
 ​	用于 [`urlsplit()`](https://docs.python.org/zh-cn/3.13/library/urllib.parse.html#urllib.parse.urlsplit) 结果的实体类，包含有 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 数据。 `decode()` 方法会返回一个 [`SplitResult`](https://docs.python.org/zh-cn/3.13/library/urllib.parse.html#urllib.parse.SplitResult) 实例。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## URL 转码
 

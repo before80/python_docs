@@ -58,7 +58,8 @@ class PrioritizedItem:
 
 ​	无界的 FIFO 队列构造函数。简单的队列，缺少任务跟踪等高级功能。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## *exception* queue.**Empty**
 
@@ -72,7 +73,8 @@ class PrioritizedItem:
 
 ​	当在已被关闭的 [`Queue`](https://docs.python.org/zh-cn/3.13/library/queue.html#queue.Queue) 对象上调用 [`put()`](https://docs.python.org/zh-cn/3.13/library/queue.html#queue.Queue.put) 或 [`get()`](https://docs.python.org/zh-cn/3.13/library/queue.html#queue.Queue.get) 时引发的异常。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 
 
@@ -171,7 +173,8 @@ print('All work completed')
 
 ​	所有 [`put()`](https://docs.python.org/zh-cn/3.13/library/queue.html#queue.Queue.put) 和 [`get()`](https://docs.python.org/zh-cn/3.13/library/queue.html#queue.Queue.get) 被阻塞的调用方将被撤销阻塞。 如果 *immediate* 为真值，一个任务将对队列中每个剩余的项标记为已完成，它可能撤销对 [`join()`](https://docs.python.org/zh-cn/3.13/library/queue.html#queue.Queue.join) 的调用方的阻塞。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## SimpleQueue 对象
 

@@ -45,7 +45,8 @@ python:bind ^I rl_complete
 
 ​	被使用的下层 Readline 库的名称，可以是 `"readline"` 或 `"editline"`。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## 初始化文件
 
@@ -91,7 +92,8 @@ python:bind ^I rl_complete
 
 ​	将历史列表的最后 *nelements* 项添加到历史文件。 默认文件名为 `~/.history`。 文件必须已存在。 此函数会调用底层库中的 `append_history()`。 此函数仅当 Python 编译包带有支持此功能的库版本时才会存在。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## readline.**get_history_length**()
 
@@ -131,7 +133,8 @@ python:bind ^I rl_complete
 
 ​	启用或禁用当通过 readline 读取输入时自动调用 `add_history()`。 *enabled* 参数应为一个布尔值，当其为真值时启用自动历史，当其为假值时禁用自动历史。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 **CPython 实现细节：** 自动历史将默认启用，对此设置的改变不会在多个会话中保持。
 

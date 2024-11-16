@@ -487,7 +487,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.position()
 (0.00,0.00)
 >>> turtle.forward(25)
@@ -512,7 +512,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.position()
 (0.00,0.00)
 >>> turtle.backward(30)
@@ -532,7 +532,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.heading()
 22.0
 >>> turtle.right(45)
@@ -552,7 +552,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.heading()
 22.0
 >>> turtle.left(45)
@@ -577,7 +577,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> tp = turtle.pos()
 >>> tp
 (0.00,0.00)
@@ -604,7 +604,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> tp = turtle.pos()
 >>> tp
 (0.00,0.00)
@@ -619,7 +619,8 @@ t.screen.bgcolor("orange")
 (20.00,30.00)
 ```
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## turtle.**setx**(*x*)
 
@@ -631,7 +632,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.position()
 (0.00,240.00)
 >>> turtle.setx(10)
@@ -649,7 +650,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.position()
 (0.00,40.00)
 >>> turtle.sety(-10)
@@ -676,7 +677,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.setheading(90)
 >>> turtle.heading()
 90.0
@@ -688,7 +689,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.heading()
 90.0
 >>> turtle.position()
@@ -714,7 +715,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.home()
 >>> turtle.position()
 (0.00,0.00)
@@ -743,7 +744,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.home()
 >>> turtle.dot()
 >>> turtle.fd(50); turtle.dot(20, "blue"); turtle.fd(50)
@@ -759,7 +760,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.color("blue")
 >>> stamp_id = turtle.stamp()
 >>> turtle.fd(50)
@@ -775,7 +776,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.position()
 (150.00,-0.00)
 >>> turtle.color("blue")
@@ -798,7 +799,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> for i in range(8):
 ...     unused_stamp_id = turtle.stamp()
 ...     turtle.fd(30)
@@ -813,7 +814,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> for i in range(4):
 ...     turtle.fd(50); turtle.lt(80)
 ...
@@ -843,7 +844,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.speed()
 3
 >>> turtle.speed('normal')
@@ -864,7 +865,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.pos()
 (440.00,-0.00)
 ```
@@ -880,7 +881,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.goto(10, 10)
 >>> turtle.towards(0,0)
 225.0
@@ -892,7 +893,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.home()
 >>> turtle.left(50)
 >>> turtle.forward(100)
@@ -908,7 +909,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.home()
 >>> turtle.left(60)
 >>> turtle.forward(100)
@@ -924,7 +925,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.home()
 >>> turtle.left(67)
 >>> turtle.heading()
@@ -942,7 +943,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.home()
 >>> turtle.distance(30,40)
 50.0
@@ -966,7 +967,7 @@ t.screen.bgcolor("orange")
 
 
 
-```
+``` python
 >>> turtle.home()
 >>> turtle.left(90)
 >>> turtle.heading()
@@ -988,7 +989,7 @@ grade 或 gradian，等于直角的 1/100。）
 
 
 
-```
+``` python
 >>> turtle.home()
 >>> turtle.left(90)
 >>> turtle.heading()
@@ -1030,7 +1031,7 @@ grade 或 gradian，等于直角的 1/100。）
 
 
 
-```
+``` python
 >>> turtle.pensize()
 1
 >>> turtle.pensize(10)   # 从这里开始，画出宽度为10的线
@@ -1060,7 +1061,7 @@ grade 或 gradian，等于直角的 1/100。）
 
 
 
-```
+``` python
 >>> turtle.pen(fillcolor="black", pencolor="red", pensize=10)
 >>> sorted(turtle.pen().items())
 [('fillcolor', 'black'), ('outline', 1), ('pencolor', 'red'),
@@ -1083,7 +1084,7 @@ grade 或 gradian，等于直角的 1/100。）
 
 
 
-```
+``` python
 >>> turtle.penup()
 >>> turtle.isdown()
 False
@@ -1120,7 +1121,7 @@ True
 
 
 
-```
+``` python
 >>> colormode()
 1.0
 >>> turtle.pencolor()
@@ -1166,7 +1167,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.fillcolor("violet")
 >>> turtle.fillcolor()
 'violet'
@@ -1202,7 +1203,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.color("red", "green")
 >>> turtle.color()
 ('red', 'green')
@@ -1221,7 +1222,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.begin_fill()
 >>> if turtle.filling():
 ...    turtle.pensize(5)
@@ -1241,7 +1242,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.color("black", "red")
 >>> turtle.begin_fill()
 >>> turtle.circle(80)
@@ -1256,7 +1257,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.goto(0,-22)
 >>> turtle.left(100)
 >>> turtle.position()
@@ -1287,7 +1288,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.write("Home = ", True, align="center")
 >>> turtle.write((0,0), True)
 ```
@@ -1304,7 +1305,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.hideturtle()
 ```
 
@@ -1316,7 +1317,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.showturtle()
 ```
 
@@ -1326,7 +1327,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.hideturtle()
 >>> turtle.isvisible()
 False
@@ -1347,7 +1348,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.shape()
 'classic'
 >>> turtle.shape("turtle")
@@ -1371,7 +1372,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.resizemode()
 'noresize'
 >>> turtle.resizemode("auto")
@@ -1393,7 +1394,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.shapesize()
 (1.0, 1.0, 1)
 >>> turtle.resizemode("user")
@@ -1415,7 +1416,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.shape("circle")
 >>> turtle.shapesize(5,2)
 >>> turtle.shearfactor(0.5)
@@ -1433,7 +1434,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.reset()
 >>> turtle.shape("circle")
 >>> turtle.shapesize(5,2)
@@ -1453,7 +1454,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.reset()
 >>> turtle.shape("circle")
 >>> turtle.shapesize(5,2)
@@ -1477,7 +1478,7 @@ True
 
 
 
-```
+``` python
 >>> turtle = Turtle()
 >>> turtle.shape("square")
 >>> turtle.shapesize(4,2)
@@ -1492,7 +1493,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.shape("square")
 >>> turtle.shapetransform(4, -1, 0, 2)
 >>> turtle.get_shapepoly()
@@ -1513,7 +1514,7 @@ True
 
 
 
-```
+``` python
 >>> def turn(x, y):
 ...     left(180)
 ...
@@ -1533,7 +1534,7 @@ True
 
 
 
-```
+``` python
 >>> class MyTurtle(Turtle):
 ...     def glow(self,x,y):
 ...         self.fillcolor("red")
@@ -1559,7 +1560,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.ondrag(turtle.goto)
 ```
 
@@ -1581,7 +1582,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.home()
 >>> turtle.begin_poly()
 >>> turtle.fd(100)
@@ -1600,7 +1601,7 @@ True
 
 
 
-```
+``` python
 >>> mick = Turtle()
 >>> joe = mick.clone()
 ```
@@ -1613,7 +1614,7 @@ True
 
 
 
-```
+``` python
 >>> pet = getturtle()
 >>> pet.fd(50)
 >>> pet
@@ -1626,7 +1627,7 @@ True
 
 
 
-```
+``` python
 >>> ts = turtle.getscreen()
 >>> ts
 <turtle._Screen object at 0x...>
@@ -1643,7 +1644,7 @@ True
 
 
 
-```
+``` python
 >>> turtle.setundobuffer(42)
 ```
 
@@ -1653,7 +1654,7 @@ True
 
 
 
-```
+``` python
 >>> while undobufferentries():
 ...     undo()
 ```
@@ -1711,7 +1712,7 @@ True
 
 
 
-```
+``` python
 >>> screen.bgcolor("orange")
 >>> screen.bgcolor()
 'orange'
@@ -1730,7 +1731,7 @@ True
 
 
 
-```
+``` python
 >>> screen.bgpic()
 'nopic'
 >>> screen.bgpic("landscape.gif")
@@ -1774,7 +1775,7 @@ True
 
 
 
-```
+``` python
 >>> screen.screensize()
 (400, 300)
 >>> screen.screensize(2000,1500)
@@ -1799,7 +1800,7 @@ True
 
 
 
-```
+``` python
 >>> screen.reset()
 >>> screen.setworldcoordinates(-50,-7.5,50,7.5)
 >>> for _ in range(72):
@@ -1823,7 +1824,7 @@ True
 
 
 
-```
+``` python
 >>> screen.delay()
 10
 >>> screen.delay(5)
@@ -1842,7 +1843,7 @@ True
 
 
 
-```
+``` python
 >>> screen.tracer(8, 25)
 >>> dist = 2
 >>> for i in range(200):
@@ -1876,7 +1877,7 @@ True
 
 
 
-```
+``` python
 >>> def f():
 ...     fd(50)
 ...     lt(60)
@@ -1896,7 +1897,7 @@ True
 
 
 
-```
+``` python
 >>> def f():
 ...     fd(50)
 ...
@@ -1920,7 +1921,7 @@ True
 
 
 
-```
+``` python
 >>> screen.onclick(turtle.goto) # 后续对 TurtleScreen 的点击
 >>>                             # 将使海龟移至被点击的位置。
 >>> screen.onclick(None)        # 再次移除事件绑定
@@ -1943,7 +1944,7 @@ True
 
 
 
-```
+``` python
 >>> running = True
 >>> def f():
 ...     if running:
@@ -1962,7 +1963,7 @@ True
 
 
 
-```
+``` python
 >>> screen.mainloop()
 ```
 
@@ -1979,7 +1980,7 @@ True
 
 
 
-```
+``` python
 >>> screen.textinput("NIM", "Name of first player:")
 ```
 
@@ -1997,7 +1998,7 @@ True
 
 
 
-```
+``` python
 >>> screen.numinput("Poker", "Your stakes:", 1000, minval=10, maxval=10000)
 ```
 
@@ -2020,7 +2021,7 @@ True
 
 
 
-```
+``` python
 >>> mode("logo")   # 将海龟重置为朝向北方
 >>> mode()
 'logo'
@@ -2036,7 +2037,7 @@ True
 
 
 
-```
+``` python
 >>> screen.colormode(1)
 >>> turtle.pencolor(240, 160, 80)
 Traceback (most recent call last):
@@ -2056,7 +2057,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 
 
-```
+``` python
 >>> cv = screen.getcanvas()
 >>> cv
 <turtle.ScrolledCanvas object ...>
@@ -2068,7 +2069,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 
 
-```
+``` python
 >>> screen.getshapes()
 ['arrow', 'blank', 'circle', ..., 'turtle']
 ```
@@ -2111,7 +2112,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 
 
-```
+``` python
 >>> for turtle in screen.turtles():
 ...     turtle.color("red")
 ```
@@ -2122,7 +2123,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 
 
-```
+``` python
 >>> screen.window_height()
 480
 ```
@@ -2133,7 +2134,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 
 
-```
+``` python
 >>> screen.window_width()
 640
 ```
@@ -2165,7 +2166,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 
 
-```
+``` python
 >>> screen.setup (width=200, height=200, startx=0, starty=0)
 >>>              # 设置窗口为 200x200 像素，位于屏幕左上角
 >>> screen.setup(width=.75, height=0.5, startx=None, starty=None)
@@ -2182,7 +2183,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 
 
-```
+``` python
 >>> screen.title("Welcome to the turtle zoo!")
 ```
 
@@ -2248,7 +2249,7 @@ TurtleGraphicsError: bad color sequence: (240, 160, 80)
 
 
 
-```
+``` python
 >>> poly = ((0,0),(10,-5),(0,10),(-10,-5))
 >>> s = Shape("compound")
 >>> s.addcomponent(poly, "red", "blue")

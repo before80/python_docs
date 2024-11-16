@@ -22,7 +22,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import os
 >>> os.getcwd()      # 返回当前工作目录
 'C:\\Python313'
@@ -37,7 +37,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import os
 >>> dir(os)
 <返回由模块的所有函数组成的列表>
@@ -49,7 +49,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import shutil
 >>> shutil.copyfile('data.db', 'archive.db')
 'archive.db'
@@ -65,7 +65,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import glob
 >>> glob.glob('*.py')
 ['primes.py', 'random.py', 'quote.py']
@@ -113,7 +113,7 @@ print(args)
 
 
 
-```
+``` python
 >>> sys.stderr.write('Warning, log file not found starting a new one\n')
 Warning, log file not found starting a new one
 ```
@@ -128,7 +128,7 @@ Warning, log file not found starting a new one
 
 
 
-```
+``` python
 >>> import re
 >>> re.findall(r'\bf[a-z]*', 'which foot or hand fell fastest')
 ['foot', 'fell', 'fastest']
@@ -140,7 +140,7 @@ Warning, log file not found starting a new one
 
 
 
-```
+``` python
 >>> 'tea for too'.replace('too', 'two')
 'tea for two'
 ```
@@ -153,7 +153,7 @@ Warning, log file not found starting a new one
 
 
 
-```
+``` python
 >>> import math
 >>> math.cos(math.pi / 4)
 0.70710678118654757
@@ -165,7 +165,7 @@ Warning, log file not found starting a new one
 
 
 
-```
+``` python
 >>> import random
 >>> random.choice(['apple', 'pear', 'banana'])
 'apple'
@@ -181,7 +181,7 @@ Warning, log file not found starting a new one
 
 
 
-```
+``` python
 >>> import statistics
 >>> data = [2.75, 1.75, 1.25, 0.25, 0.5, 1.25, 3.5]
 >>> statistics.mean(data)
@@ -202,7 +202,7 @@ Warning, log file not found starting a new one
 
 
 
-```
+``` python
 >>> from urllib.request import urlopen
 >>> with urlopen('http://worldtimeapi.org/api/timezone/etc/UTC.txt') as response:
 ...     for line in response:
@@ -233,7 +233,7 @@ datetime: 2022-01-01T01:36:47.689215+00:00
 
 
 
-```
+``` python
 >>> # 方便地构造和格式化日期值
 >>> from datetime import date
 >>> now = date.today()
@@ -257,7 +257,7 @@ datetime.date(2003, 12, 2)
 
 
 
-```
+``` python
 >>> import zlib
 >>> s = b'witch which has which witches wrist watch'
 >>> len(s)
@@ -281,7 +281,7 @@ b'witch which has which witches wrist watch'
 
 
 
-```
+``` python
 >>> from timeit import Timer
 >>> Timer('t=a; a=b; b=t', 'a=1; b=2').timeit()
 0.57535828626024577

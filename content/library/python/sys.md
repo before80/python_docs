@@ -22,7 +22,8 @@ draft = false
 
 ​	在POSIX系统上，以标准的 `configure` 脚本构建的 Python 中，这个变量会包含 [**PEP 3149**](https://peps.python.org/pep-3149/) 中定义的ABI标签。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.8 版本发生变更:* 默认的 flags 变为了空字符串（用于 pymalloc 的 `m` 旗标已经移除）
 
@@ -40,7 +41,8 @@ draft = false
 
 ​	请参阅 [审计事件表](https://docs.python.org/zh-cn/3.13/library/audit_events.html#audit-events) 以获取由 CPython 引发的所有事件，并参阅 [**PEP 578**](https://peps.python.org/pep-0578/) 了解最初的设计讨论。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.8.1 版本发生变更:* 派生自 [`Exception`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#Exception) （而非 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError) ）的异常不会被抑制。
 
@@ -74,19 +76,22 @@ draft = false
 
 ​	参阅 [审计事件表](https://docs.python.org/zh-cn/3.13/library/audit_events.html#audit-events) 以获取 CPython 定义的所有审计事件。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## sys.**base_exec_prefix**
 
 ​	在 `site.py` 运行之前， Python 启动的时候被设置为跟 [`exec_prefix`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.exec_prefix) 同样的值。如果不是运行在 [虚拟环境](https://docs.python.org/zh-cn/3.13/library/venv.html#venv-def) 中，两个值会保持相同；如果 `site.py` 发现处于一个虚拟环境中， [`prefix`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.prefix) 和 [`exec_prefix`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.exec_prefix) 将会指向虚拟环境。然而 [`base_prefix`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.base_prefix) 和 [`base_exec_prefix`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.base_exec_prefix) 将仍然会指向基础的 Python 环境（用来创建虚拟环境的 Python 环境）
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## sys.**base_prefix**
 
 ​	在 `site.py` 运行之前， Python 启动的时候被设置为跟 [`prefix`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.prefix) 同样的值。如果不是运行在 [虚拟环境](https://docs.python.org/zh-cn/3.13/library/venv.html#venv-def) 中, 两个值会保持相同；如果 `site.py` 发现处于一个虚拟环境中， [`prefix`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.prefix) 和 [`exec_prefix`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.exec_prefix) 将会指向虚拟环境。然而 [`base_prefix`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.base_prefix) 和 [`base_exec_prefix`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.base_exec_prefix) 将仍然会指向基础的 Python 环境（用来创建虚拟环境的 Python 环境）
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## sys.**byteorder**
 
@@ -120,7 +125,8 @@ draft = false
 
 ​	清空所有内部性能相关的缓存。 此函数的使用 *仅限于* 释放不再需要的引用和寻找泄漏的内存块时。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## sys.**_current_frames**()
 
@@ -156,7 +162,8 @@ draft = false
 
 ​	另请注意，如果以编程方式覆盖 `sys.breakpointhook()`，则 *不会* 查询 [`PYTHONBREAKPOINT`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONBREAKPOINT)。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## sys.**_debugmallocstats**()
 
@@ -164,7 +171,8 @@ draft = false
 
 ​	如果 Python 是 [以调试模式编译的](https://docs.python.org/zh-cn/3.13/using/configure.html#debug-build) ([`使用 --with-pydebug 配置选项`](https://docs.python.org/zh-cn/3.13/using/configure.html#cmdoption-with-pydebug))，它还会执行某些高开销的内部一致性检查。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 **CPython 实现细节：** 本函数仅限 CPython。此处没有定义确切的输出格式，且可能会更改。
 
@@ -230,7 +238,8 @@ def displayhook(value):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Emscripten.
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## sys.**pycache_prefix**
 
@@ -240,7 +249,8 @@ def displayhook(value):
 
 ​	该值的初值设置，依据 [`-X`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) `pycache_prefix=PATH` 命令行选项或 [`PYTHONPYCACHEPREFIX`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONPYCACHEPREFIX) 环境变量的值（命令行优先）。如果两者均未设置，则为 `None`。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## sys.**excepthook**(*type*, *value*, *traceback*)
 
@@ -266,9 +276,11 @@ def displayhook(value):
 
 ​	程序开始时，这些对象存有 `breakpointhook`、`displayhook`、`excepthook` 和 `unraisablehook` 的初始值。保存它们是为了可以在 `breakpointhook`、`displayhook` 和 `excepthook`、`unraisablehook` 被破坏或被替换时恢复它们。
 
-*Added in version 3.7:* __breakpointhook__
+> Added in version 3.7:
+> __breakpointhook__
 
-*Added in version 3.8:* __unraisablehook__
+> Added in version 3.8:
+> __unraisablehook__
 
 ## sys.**exception**()
 
@@ -276,7 +288,8 @@ def displayhook(value):
 
 ​	如果没有任何异常处理器在执行，此函数将返回 `None`。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## sys.**exc_info**()
 
@@ -336,7 +349,8 @@ def displayhook(value):
 
 *在 3.2 版本发生变更:* 为新的 [`-q`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-q) 标志添加了 `quiet` 属性
 
-*Added in version 3.2.3:* `hash_randomization` 属性
+> Added in version 3.2.3:
+> `hash_randomization` 属性
 
 *在 3.3 版本发生变更:* 删除了过时的 `division_warning` 属性
 
@@ -370,7 +384,7 @@ def displayhook(value):
 
 ​	属性 [`sys.float_info.dig`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.float_info.dig) 需要进一步的解释。 如果 `s` 是表示十进制数的字符串，且最多有 `sys.float_info.dig` 位有效数字，那么将 `s` 转换为浮点数再转换回来将恢复为一个表示相同十进制值的字符串:
 
-```
+``` python
 >>> import sys
 >>> sys.float_info.dig
 15
@@ -381,7 +395,7 @@ def displayhook(value):
 
 ​	但是对于超过 [`sys.float_info.dig`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.float_info.dig) 位有效数字的字符串，转换前后并非总是相同:
 
-```
+``` python
 >>> s = '9876543211234567'    # 16 个有效位就太多了！
 >>> format(float(s), '.16g')  # 转换将改变原值
 '9876543211234568'
@@ -391,7 +405,8 @@ def displayhook(value):
 
 ​	一个字符串，反映 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr) 函数在浮点数上的行为。如果该字符串是 `'short'`，那么对于（非无穷的）浮点数 `x`，`repr(x)` 将会生成一个短字符串，满足 `float(repr(x)) == x` 的特性。这是 Python 3.1 及更高版本中的常见行为。否则 `float_repr_style` 的值将是 `'legacy'`，此时 `repr(x)` 的行为方式将与 Python 3.1 之前的版本相同。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## sys.**getallocatedblocks**()
 
@@ -399,13 +414,15 @@ def displayhook(value):
 
 ​	如果一个 Python 构建或实现无法合理地计算此信息，则允许 [`getallocatedblocks()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.getallocatedblocks) 返回 0。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## sys.**getunicodeinternedsize**()
 
 ​	返回已被处置的 unicode 对象数量。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## sys.**getandroidapilevel**()
 
@@ -413,7 +430,8 @@ def displayhook(value):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Android.
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## sys.**getdefaultencoding**()
 
@@ -449,13 +467,15 @@ def displayhook(value):
 
 [filesystem encoding and error handler](https://docs.python.org/zh-cn/3.13/glossary.html#term-filesystem-encoding-and-error-handler) 是在 Python 启动时通过 [`PyConfig_Read()`](https://docs.python.org/zh-cn/3.13/c-api/init_config.html#c.PyConfig_Read) 函数来配置的：请参阅 [`PyConfig`](https://docs.python.org/zh-cn/3.13/c-api/init_config.html#c.PyConfig) 的 [`filesystem_encoding`](https://docs.python.org/zh-cn/3.13/c-api/init_config.html#c.PyConfig.filesystem_encoding) 和 [`filesystem_errors`](https://docs.python.org/zh-cn/3.13/c-api/init_config.html#c.PyConfig.filesystem_errors) 等成员。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## sys.**get_int_max_str_digits**()
 
 ​	返回 [整数字符串转换长度限制](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#int-max-str-digits) 的当前值。 另请参阅 [`set_int_max_str_digits()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.set_int_max_str_digits)。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## sys.**getrefcount**(*object*)
 
@@ -485,7 +505,8 @@ def displayhook(value):
 
 ​	返回解释器的“线程切换间隔时间”，请参阅 [`setswitchinterval()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.setswitchinterval)。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## sys.**_getframe**([*depth*])
 
@@ -559,7 +580,8 @@ def displayhook(value):
 
 ​	返回一个 *asyncgen_hooks* 对象，该对象类似于 `(firstiter, finalizer)` 形式的 [`namedtuple`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.namedtuple)，其中 *firstiter* 和 *finalizer* 应为 `None` 或是一个接受 [asynchronous generator iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-asynchronous-generator-iterator) 作为参数的函数，并被用来在事件循环中调度异步生成器的最终化。
 
-*Added in version 3.6:* 详情请参阅 [**PEP 525**](https://peps.python.org/pep-0525/)。
+> Added in version 3.6:* 详情请参阅 [**PEP 525*
+>](https://peps.python.org/pep-0525/)。
 
 ​	备注
 
@@ -571,7 +593,8 @@ def displayhook(value):
 
 ​	获取由 [`set_coroutine_origin_tracking_depth()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.set_coroutine_origin_tracking_depth) 设置的协程来源的追踪深度。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ​	备注
 
@@ -615,7 +638,8 @@ def displayhook(value):
 
 ​	哈希算法种子密钥的大小
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.4 版本发生变更:* 添加了 *algorithm*, *hash_bits* 和 *seed_bits*
 
@@ -650,7 +674,8 @@ else:
 
 [`sys.implementation`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.implementation) 可能包含相应 Python 实现的其他属性。这些非标准属性必须以下划线开头，此处不详细阐述。无论其内容如何，[`sys.implementation`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.implementation) 在解释器运行期间或不同实现版本之间都不会更改。（但是不同 Python 语言版本间可能会不同。）详情请参阅 [**PEP 421**](https://peps.python.org/pep-0421/)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ​	备注
 
@@ -678,7 +703,8 @@ else:
 
 [`sys.set_int_max_str_digits()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.set_int_max_str_digits), [`PYTHONINTMAXSTRDIGITS`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONINTMAXSTRDIGITS) 或 [`-X int_max_str_digits`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) 的最小非零值。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 *在 3.11 版本发生变更:* 添加了 [`default_max_str_digits`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.int_info.default_max_str_digits) 和 [`str_digits_check_threshold`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.int_info.str_digits_check_threshold)。
 
@@ -688,7 +714,8 @@ else:
 
 ​	如果在启动时调用了钩子，则引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `cpython.run_interactivehook`，附带参数为 hook 对象。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## sys.**intern**(*string*)
 
@@ -700,7 +727,8 @@ else:
 
 ​	如果 [GIL](https://docs.python.org/zh-cn/3.13/glossary.html#term-GIL) 已启用则返回 [`True`](https://docs.python.org/zh-cn/3.13/library/constants.html#True) 而如果已禁用则返回 [`False`](https://docs.python.org/zh-cn/3.13/library/constants.html#False)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## sys.**is_finalizing**()
 
@@ -708,19 +736,22 @@ else:
 
 ​	另请参阅 [`PythonFinalizationError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#PythonFinalizationError) 异常。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## sys.**last_exc**
 
 ​	该变量并非总是会被定义；当有未处理的异常时它将被设为相应的异常实例并且解释器将打印异常消息和栈回溯。它的预期用途是允许交互用户导入调试器模块并进行事后调试而不必重新运行导致了错误的命令。 （典型用法是执行 `import pdb; pdb.pm()` 来进入事后调试器；请参阅 [`pdb`](https://docs.python.org/zh-cn/3.13/library/pdb.html#module-pdb) 了解详情。）
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## sys.**_is_interned**(*string*)
 
 ​	如果给定的字符串为“驻留字符串”则返回 [`True`](https://docs.python.org/zh-cn/3.13/library/constants.html#True)，在其他情况下返回 [`False`](https://docs.python.org/zh-cn/3.13/library/constants.html#False)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 **CPython 实现细节：** 不保证存在于所有的 Python 实现。
 
@@ -770,7 +801,8 @@ else:
 
 [`sys.orig_argv`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.orig_argv) 中的元素是传给 Python 解释器的参数，而 [`sys.argv`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.argv) 中的元素则是传给用户程序的参数。 解释器本身所使用的参数将出现在 [`sys.orig_argv`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.orig_argv) 中而不会出现在 [`sys.argv`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.argv) 中。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## sys.**path**
 
@@ -850,7 +882,8 @@ if sys.platform.startswith('freebsd'):
 - `/usr/lib/pythonX.Y/site-packages/` (请使用 `lib`, 而非 [`sys.platlibdir`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.platlibdir)): 第三方模块
 - `/usr/lib64/pythonX.Y/site-packages/`: 第三方包的 C 扩展模块
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## sys.**prefix**
 
@@ -878,7 +911,8 @@ if sys.platform.startswith('freebsd'):
 
 ​	设置解释器所使用的 [整数字符串转换长度限制](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#int-max-str-digits)。 另请参阅 [`get_int_max_str_digits()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.get_int_max_str_digits)。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## sys.**setprofile**(*profilefunc*)
 
@@ -930,7 +964,8 @@ if sys.platform.startswith('freebsd'):
 
 ​	设置解释器的线程切换间隔时间（单位为秒）。该浮点数决定了“时间片”的理想持续时间，时间片将分配给同时运行的 Python 线程。请注意，实际值可能更高，尤其是使用了运行时间长的内部函数或方法时。同时，在时间间隔末尾调度哪个线程是操作系统的决定。解释器没有自己的调度程序。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## sys.**settrace**(*tracefunc*)
 
@@ -994,7 +1029,8 @@ if sys.platform.startswith('freebsd'):
 
 ​	之所以会引发两个审计事件，是因为底层的 API 由两个调用组成，每个调用都须要引发自己的事件。
 
-*Added in version 3.6:* 更多详情请参阅 [**PEP 525**](https://peps.python.org/pep-0525/)，*finalizer* 方法的参考示例可参阅 [Lib/asyncio/base_events.py](https://github.com/python/cpython/tree/3.13/Lib/asyncio/base_events.py) 中 `asyncio.Loop.shutdown_asyncgens` 的实现。
+> Added in version 3.6:* 更多详情请参阅 [**PEP 525**](https://peps.python.org/pep-0525/)，*finalizer
+> 方法的参考示例可参阅 [Lib/asyncio/base_events.py](https://github.com/python/cpython/tree/3.13/Lib/asyncio/base_events.py) 中 `asyncio.Loop.shutdown_asyncgens` 的实现。
 
 ​	备注
 
@@ -1010,7 +1046,8 @@ if sys.platform.startswith('freebsd'):
 
 ​	该设置是特定于单个线程的。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ​	备注
 
@@ -1024,7 +1061,8 @@ if sys.platform.startswith('freebsd'):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux.
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ​	参见
 
@@ -1039,7 +1077,8 @@ if sys.platform.startswith('freebsd'):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux.
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## sys.**is_stack_trampoline_active**()
 
@@ -1047,7 +1086,8 @@ if sys.platform.startswith('freebsd'):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux.
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## sys.**_enablelegacywindowsfsencoding**()
 
@@ -1065,7 +1105,8 @@ if sys.platform.startswith('freebsd'):
 
 ​	在 Python 启动后改变文件系统编码格式是有风险的因为旧的文件系统编码格式或由旧的文件系统编码格式所编码的路径可能已被缓存。 请改用 [`PYTHONLEGACYWINDOWSFSENCODING`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONLEGACYWINDOWSFSENCODING)。
 
-*Added in version 3.6:* 更多详情请参阅 [**PEP 529**](https://peps.python.org/pep-0529/)。
+> Added in version 3.6:* 更多详情请参阅 [**PEP 529*
+>](https://peps.python.org/pep-0529/)。
 
 *Deprecated since version 3.13, will be removed in version 3.16:* 应改用 [`PYTHONLEGACYWINDOWSFSENCODING`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONLEGACYWINDOWSFSENCODING)。
 
@@ -1129,7 +1170,8 @@ if sys.platform.startswith('freebsd'):
 
 ​	另请参阅 [`sys.builtin_module_names`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.builtin_module_names) 列表。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## sys.**thread_info**
 
@@ -1156,7 +1198,8 @@ if sys.platform.startswith('freebsd'):
 
 ​	线程库的名称和版本。 它是一个字符串，如果此信息未知则为 `None`。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## sys.**tracebacklimit**
 
@@ -1196,7 +1239,8 @@ if sys.platform.startswith('freebsd'):
 
 ​	当发生无法处理的异常时将引发一个审计事件 `sys.unraisablehook`，附带参数 *hook*、*unraisable*。 其中 *unraisable* 对象与传递给钩子的对象相同。 如果没有设置钩子，那么 *hook* 可以为 `None`。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## sys.**version**
 
@@ -1242,7 +1286,8 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 **CPython 实现细节：** 这是 CPython 专属的访问通过 [`-X`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) 传递的选项的方式。 其他实现可能会通过其他方式导出它们，或者完全不导出。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	引用
 

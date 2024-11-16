@@ -14,7 +14,8 @@ draft = false
 
 # `zoneinfo` --- IANA 时区支持
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 **源代码:** [Lib/zoneinfo](https://github.com/python/cpython/tree/3.13/Lib/zoneinfo)
 
@@ -42,7 +43,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from zoneinfo import ZoneInfo
 >>> from datetime import datetime, timedelta
 
@@ -58,7 +59,7 @@ draft = false
 
 
 
-```
+``` python
 >>> dt_add = dt + timedelta(days=1)
 
 >>> print(dt_add)
@@ -72,7 +73,7 @@ draft = false
 
 
 
-```
+``` python
 >>> dt = datetime(2020, 11, 1, 1, tzinfo=ZoneInfo("America/Los_Angeles"))
 >>> print(dt)
 2020-11-01 01:00:00-07:00
@@ -85,7 +86,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from datetime import timezone
 >>> LOS_ANGELES = ZoneInfo("America/Los_Angeles")
 >>> dt_utc = datetime(2020, 11, 1, 8, tzinfo=timezone.utc)
@@ -211,7 +212,7 @@ assert a is b
 
 
 
-```
+``` python
 >>> zone = ZoneInfo("Pacific/Kwajalein")
 >>> str(zone)
 'Pacific/Kwajalein'

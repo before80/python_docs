@@ -24,7 +24,7 @@ draft = false
 
 
 
-```
+``` python
 >>> x = int(input("Please enter an integer: "))
 Please enter an integer: 42
 >>> if x < 0:
@@ -52,7 +52,7 @@ Please enter an integer: 42
 
 
 
-```
+``` python
 >>> # 度量一些字符串：
 >>> words = ['cat', 'window', 'defenestrate']
 >>> for w in words:
@@ -89,7 +89,7 @@ for user, status in users.items():
 
 
 
-```
+``` python
 >>> for i in range(5):
 ...     print(i)
 ...
@@ -104,7 +104,7 @@ for user, status in users.items():
 
 
 
-```
+``` python
 >>> list(range(5, 10))
 [5, 6, 7, 8, 9]
 
@@ -119,7 +119,7 @@ for user, status in users.items():
 
 
 
-```
+``` python
 >>> a = ['Mary', 'had', 'a', 'little', 'lamb']
 >>> for i in range(len(a)):
 ...     print(i, a[i])
@@ -137,7 +137,7 @@ for user, status in users.items():
 
 
 
-```
+``` python
 >>> range(10)
 range(0, 10)
 ```
@@ -148,7 +148,7 @@ range(0, 10)
 
 
 
-```
+``` python
 >>> sum(range(4))  # 0 + 1 + 2 + 3
 6
 ```
@@ -163,7 +163,7 @@ range(0, 10)
 
 
 
-```
+``` python
 >>> for n in range(2, 10):
 ...     for x in range(2, n):
 ...         if n % x == 0:
@@ -180,7 +180,7 @@ range(0, 10)
 
 
 
-```
+``` python
 >>> for num in range(2, 10):
 ...     if num % 2 == 0:
 ...         print(f"Found an even number {num}")
@@ -213,7 +213,7 @@ Found an odd number 9
 
 
 
-```
+``` python
 >>> for n in range(2, 10):
 ...     for x in range(2, n):
 ...         if n % x == 0:
@@ -247,7 +247,7 @@ Found an odd number 9
 
 
 
-```
+``` python
 >>> while True:
 ...     pass  # 无限等待键盘中断 (Ctrl+C)
 ...
@@ -257,7 +257,7 @@ Found an odd number 9
 
 
 
-```
+``` python
 >>> class MyEmptyClass:
 ...     pass
 ...
@@ -267,7 +267,7 @@ Found an odd number 9
 
 
 
-```
+``` python
 >>> def initlog(*args):
 ...     pass   # 记得实现这个！
 ...
@@ -435,7 +435,7 @@ match point:
 
 
 
-```
+``` python
 >>> def fib(n):    # write Fibonacci series less than n
 ...     """Print a Fibonacci series less than n."""
 ...     a, b = 0, 1
@@ -461,7 +461,7 @@ match point:
 
 
 
-```
+``` python
 >>> fib
 <function fib at 10042ed0>
 >>> f = fib
@@ -473,7 +473,7 @@ match point:
 
 
 
-```
+``` python
 >>> fib(0)
 >>> print(fib(0))
 None
@@ -483,7 +483,7 @@ None
 
 
 
-```
+``` python
 >>> def fib2(n):  # 返回斐波那契数组直到 n
 ...     """Return a list containing the Fibonacci series up to n."""
 ...     result = []
@@ -619,7 +619,7 @@ parrot(actor='John Cleese')  # 未知的关键字参数
 
 
 
-```
+``` python
 >>> def function(a):
 ...     pass
 ...
@@ -704,7 +704,7 @@ def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2):
 
 
 
-```
+``` python
 >>> def standard_arg(arg):
 ...     print(arg)
 ...
@@ -722,7 +722,7 @@ def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2):
 
 
 
-```
+``` python
 >>> standard_arg(2)
 2
 
@@ -734,7 +734,7 @@ def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2):
 
 
 
-```
+``` python
 >>> pos_only_arg(1)
 1
 
@@ -748,7 +748,7 @@ TypeError: pos_only_arg() got some positional-only arguments passed as keyword a
 
 
 
-```
+``` python
 >>> kwd_only_arg(3)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -762,7 +762,7 @@ TypeError: kwd_only_arg() takes 0 positional arguments but 1 was given
 
 
 
-```
+``` python
 >>> combined_example(1, 2, 3)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -791,7 +791,7 @@ def foo(name, **kwds):
 
 
 
-```
+``` python
 >>> foo(1, **{'name': 2})
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -803,7 +803,7 @@ TypeError: foo() got multiple values for argument 'name'
 
 
 
-```
+``` python
 >>> def foo(name, /, **kwds):
 ...     return 'name' in kwds
 ...
@@ -842,7 +842,7 @@ def write_multiple_items(file, separator, *args):
 
 
 
-```
+``` python
 >>> def concat(*args, sep="/"):
 ...     return sep.join(args)
 ...
@@ -860,7 +860,7 @@ def write_multiple_items(file, separator, *args):
 
 
 
-```
+``` python
 >>> list(range(3, 6))            # 附带两个参数的正常调用
 [3, 4, 5]
 >>> args = [3, 6]
@@ -872,7 +872,7 @@ def write_multiple_items(file, separator, *args):
 
 
 
-```
+``` python
 >>> def parrot(voltage, state='a stiff', action='voom'):
 ...     print("-- This parrot wouldn't", action, end=' ')
 ...     print("if you put", voltage, "volts through it.", end=' ')
@@ -891,7 +891,7 @@ def write_multiple_items(file, separator, *args):
 
 
 
-```
+``` python
 >>> def make_incrementor(n):
 ...     return lambda x: x + n
 ...
@@ -906,7 +906,7 @@ def write_multiple_items(file, separator, *args):
 
 
 
-```
+``` python
 >>> pairs = [(1, 'one'), (2, 'two'), (3, 'three'), (4, 'four')]
 >>> pairs.sort(key=lambda pair: pair[1])
 >>> pairs
@@ -929,7 +929,7 @@ def write_multiple_items(file, separator, *args):
 
 
 
-```
+``` python
 >>> def my_function():
 ...     """Do nothing, but document it.
 ...
@@ -953,7 +953,7 @@ Do nothing, but document it.
 
 
 
-```
+``` python
 >>> def f(ham: str, eggs: str = 'eggs') -> str:
 ...     print("Annotations:", f.__annotations__)
 ...     print("Arguments:", ham, eggs)

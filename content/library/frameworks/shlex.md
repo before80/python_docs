@@ -34,7 +34,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from shlex import join
 >>> print(join(['echo', '-n', 'Multiple words']))
 echo -n 'Multiple words'
@@ -42,7 +42,8 @@ echo -n 'Multiple words'
 
 ​	为防止注入漏洞，返回值是经过 shell 转义的（参见 [`quote()`](https://docs.python.org/zh-cn/3.13/library/shlex.html#shlex.quote) ）。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## shlex.**quote**(*s*)
 
@@ -62,7 +63,7 @@ echo -n 'Multiple words'
 
 
 
-```
+``` python
 >>> filename = 'somefile; rm -rf ~'
 >>> command = 'ls -l {}'.format(filename)
 >>> print(command)  # executed by a shell: boom!
@@ -73,7 +74,7 @@ ls -l somefile; rm -rf ~
 
 
 
-```
+``` python
 >>> from shlex import quote
 >>> command = 'ls -l {}'.format(quote(filename))
 >>> print(command)
@@ -87,7 +88,7 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 
 
-```
+``` python
 >>> from shlex import split
 >>> remote_command = split(remote_command)
 >>> remote_command
@@ -97,7 +98,8 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 ['ls', '-l', 'somefile; rm -rf ~']
 ```
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 [`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#module-shlex) 模块中定义了以下类：
 
@@ -221,7 +223,8 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 ​	只读属性。表示应视作标点符号的字符。标点符号将作为单个词法单元返回。然而，请注意不会进行语义有效性检查：比如 “>>>” 可能会作为一个词法单元返回，虽然 shell 可能无法识别。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 
 
@@ -250,13 +253,14 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 ## 改进的 shell 兼容性
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 [`shlex`](https://docs.python.org/zh-cn/3.13/library/shlex.html#module-shlex) 类提供了与常见 Unix shell（如 `bash`、 `dash` 和 `sh`）的解析兼容性。为了充分利用这种兼容性，请在构造函数中设定 `punctuation_chars` 参数。该参数默认为 `False`，维持 3.6 以下版本的行为。如果设为 `True`，则会改变对 `();<>|&` 字符的解析方式：这些字符都将视为单个的词法单元返回。虽然不算是完整的 shell 解析程序（考虑到 shell 的多样性，超出了标准库的范围），但确实能比其他方式更容易进行命令行的处理。以下代码段演示了两者的差异：
 
 
 
-```
+``` python
 >>> import shlex
 >>> text = "a && b; c && d || e; f >'abc'; (def \"ghi\")"
 >>> s = shlex.shlex(text, posix=True)
@@ -276,7 +280,7 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 
 
-```
+``` python
 >>> import shlex
 >>> s = shlex.shlex("a && b || c", punctuation_chars="|")
 >>> list(s)
@@ -291,7 +295,7 @@ ssh home 'ls -l '"'"'somefile; rm -rf ~'"'"''
 
 
 
-```
+``` python
 >>> import shlex
 >>> s = shlex.shlex('~/a && b-c --color=auto || d *.py?',
 ...                 punctuation_chars=True)

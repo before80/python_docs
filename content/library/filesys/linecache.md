@@ -42,13 +42,14 @@ draft = false
 
 ​	捕获有关某个非基于文件的模块的足够细节信息，以允许稍后再通过 [`getline()`](https://docs.python.org/zh-cn/3.13/library/linecache.html#linecache.getline) 来获取其中的行，即使当稍后调用时 *module_globals* 为 `None`。 这可以避免在实际需要读取行之前执行 I/O，也不必始终保持模块全局变量。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ​	示例:
 
 
 
-```
+``` python
 >>> import linecache
 >>> linecache.getline(linecache.__file__, 8)
 'import sys\n'

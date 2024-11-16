@@ -40,7 +40,7 @@ draft = false
 
 ​	在 BSD 等类Unix系统上，Python 脚本可以像 shell 脚本一样直接执行，通过在第一行添加：
 
-```
+``` sh
 #!/usr/bin/env python3
 ```
 
@@ -81,7 +81,7 @@ if filename and os.path.isfile(filename):
 
 
 
-```
+``` python
 >>> import site
 >>> site.getusersitepackages()
 '/home/user/.local/lib/python3.x/site-packages'

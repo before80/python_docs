@@ -61,7 +61,8 @@ draft = false
 
 ​	返回可迭代对象 *paths* 中每个路径名称的最长共同子路径。 如果 *paths* 同时包含绝对和相对路径名称，如果 *paths* 位于不同驱动器，或者如果 *paths* 为空则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。 不同于 [`commonprefix()`](https://docs.python.org/zh-cn/3.13/library/os.path.html#os.path.commonprefix)，此函数将返回一个有效的路径。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.6 版本发生变更:* 接受一个 [类路径对象](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object) 序列。
 
@@ -79,7 +80,7 @@ draft = false
 
 
 
-```
+``` python
 >>> os.path.commonprefix(['/usr/lib', '/usr/local/lib'])
 '/usr/l'
 
@@ -177,7 +178,8 @@ draft = false
 
 ​	Return `True` 如果 *path* 指向的 [`现有`](https://docs.python.org/zh-cn/3.13/library/os.path.html#os.path.lexists) 目录条目是一个连接点。 则当连接点在当前平台不受支持时将总是返回 `False`。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## os.path.**islink**(*path*)
 
@@ -199,7 +201,8 @@ draft = false
 
 ​	对于无效的路径可能引发错误，例如，没有可识别的驱动器的路径，但在不支持 Dev 驱动器的平台上将返回 `False`。 请参阅 [Windows 文档](https://learn.microsoft.com/windows/dev-drive/) 了解有关启用并创建 Dev 驱动器的信息。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 *在 3.13 版本发生变更:* 现在此函数在所有平台上可用，并且在不支持 Dev 驱动器的平台上将总是返回 `False`。
 
@@ -217,7 +220,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows.
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## os.path.**join**(*path*, **paths*)
 
@@ -315,7 +319,7 @@ draft = false
 
 
 
-```
+``` python
 >>> splitdrive("c:/dir")
 ("c:", "/dir")
 ```
@@ -324,7 +328,7 @@ draft = false
 
 
 
-```
+``` python
 >>> splitdrive("//host/computer/dir")
 ("//host/computer", "/dir")
 ```
@@ -339,7 +343,7 @@ draft = false
 
 
 
-```
+``` python
 >>> splitroot('/home/sam')
 ('', '/', 'home/sam')
 >>> splitroot('//home/sam')
@@ -352,14 +356,15 @@ draft = false
 
 
 
-```
+``` python
 >>> splitroot('C:/Users/Sam')
 ('C:', '/', 'Users/Sam')
 >>> splitroot('//Server/Share/Users/Sam')
 ('//Server/Share', '/', 'Users/Sam')
 ```
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## os.path.**splitext**(*path*)
 
@@ -369,7 +374,7 @@ draft = false
 
 
 
-```
+``` python
 >>> splitext('bar')
 ('bar', '')
 ```
@@ -378,7 +383,7 @@ draft = false
 
 
 
-```
+``` python
 >>> splitext('foo.bar.exe')
 ('foo.bar', '.exe')
 >>> splitext('/foo/bar.exe')
@@ -389,7 +394,7 @@ draft = false
 
 
 
-```
+``` python
 >>> splitext('.cshrc')
 ('.cshrc', '')
 >>> splitext('/foo/....jpg')

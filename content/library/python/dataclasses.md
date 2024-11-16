@@ -47,7 +47,8 @@ def __init__(self, name: str, unit_price: float, quantity_on_hand: int = 0):
 
 ​	请注意此方法会自动添加到类中：它不是在如上所示的 `InventoryItem` 定义中直接指定的。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## 模块内容
 
@@ -348,7 +349,8 @@ p = Point(0, y=1.5, z=2.0)
 
 ​	在单个数据类中，指定一个以上 `KW_ONLY` 类型的字段将导致错误。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *exception* dataclasses.**FrozenInstanceError**
 

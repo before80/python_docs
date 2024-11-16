@@ -87,7 +87,7 @@ python -m timeit -h # 获取详情
 
 ​	参见
 
-## [`runpy.run_module()`](https://docs.python.org/zh-cn/3.13/library/runpy.html#runpy.run_module)
+[`runpy.run_module()`](https://docs.python.org/zh-cn/3.13/library/runpy.html#runpy.run_module)
 
 ​	Python 代码可以直接使用的等效功能
 
@@ -121,7 +121,7 @@ python -m timeit -h # 获取详情
 
 ​	参见
 
-## [`runpy.run_path()`](https://docs.python.org/zh-cn/3.13/library/runpy.html#runpy.run_path)
+[`runpy.run_path()`](https://docs.python.org/zh-cn/3.13/library/runpy.html#runpy.run_path)
 
 ​	Python 代码可以直接使用的等效功能
 
@@ -151,19 +151,22 @@ python -m timeit -h # 获取详情
 
 ​	打印 Python 专属环境变量的简短描述然后退出。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **--help-xoptions**
 
 ​	打印实现专属 [`-X`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) 选项的简短描述然后退出。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **--help-all**
 
 ​	打印完整使用信息然后退出。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **-V**
 
@@ -182,7 +185,8 @@ Python 3.8.0b2+ (3.8:0c076caaa8, Apr 20 2019, 21:55:00)
 [GCC 6.2.0 20161005]
 ```
 
-*Added in version 3.6:* `-VV` 选项。
+> Added in version 3.6:
+> `-VV` 选项。
 
 
 
@@ -228,7 +232,8 @@ Python 3.8.0b2+ (3.8:0c076caaa8, Apr 20 2019, 21:55:00)
 
 ​	在隔离模式下 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 既不包含脚本所在目录也不包含用户的 site-packages 目录。 所有 `PYTHON*` 环境变量也都会被忽略。 还可以施加更进一步的限制以防止用户注入恶意代码。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **-O**
 
@@ -252,13 +257,15 @@ Python 3.8.0b2+ (3.8:0c076caaa8, Apr 20 2019, 21:55:00)
 
 ​	另请参阅 [`PYTHONSAFEPATH`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONSAFEPATH) 环境变量，以及 [`-E`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-E) 和 [`-I`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-I) (隔离) 选项。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **-q**
 
 ​	即使在交互模式下也不显示版权和版本信息。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **-R**
 
@@ -270,7 +277,8 @@ Python 3.8.0b2+ (3.8:0c076caaa8, Apr 20 2019, 21:55:00)
 
 [`PYTHONHASHSEED`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONHASHSEED) 允许你为哈希种子密码设置一个固定值。
 
-*Added in version 3.2.3.*
+> Added in version 3.2.3.
+>
 
 *在 3.7 版本发生变更:* 此选项不会再被忽略。
 
@@ -422,7 +430,8 @@ action:message:category:module:lineno
 
 ​	它还允许传入任意值并通过 [`sys._xoptions`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys._xoptions) 字典来提取这些值。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.9 版本发生变更:* 移除了 `-X showalloccount` 选项。
 
@@ -474,13 +483,15 @@ action:message:category:module:lineno
 
 ​	如果这被设为一个非空字符串，请不要将具有潜在不安全性的路径附加到 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path): 参见 [`-P`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-P) 选项了解详情。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **PYTHONPLATLIBDIR**
 
 ​	如果它被设为非空字符串，则会覆盖 [`sys.platlibdir`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.platlibdir) 值。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## **PYTHONSTARTUP**
 
@@ -496,7 +507,8 @@ action:message:category:module:lineno
 
 ​	此变量如果被设定，它会使用加点号的路径标记一个可调用对象。 包含该可调用对象的模块将被导入，随后该可调用对象将由 [`sys.breakpointhook()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.breakpointhook) 的默认实现来运行，后者自身将由内置的 [`breakpoint()`](https://docs.python.org/zh-cn/3.13/library/functions.html#breakpoint) 来调用。 如果未设定，或设定为空字符串，则它相当于值 "pdb.set_trace"。 将此变量设为字符串 "0" 会导致 [`sys.breakpointhook()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.breakpointhook) 的默认实现不做任何事而直接返回。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **PYTHONDEBUG**
 
@@ -536,7 +548,8 @@ action:message:category:module:lineno
 
 ​	如果设置了此选项，Python将在镜像目录树中的此路径中写入 `.pyc` 文件，而不是源树中的 `__pycache__` 目录中。这相当于指定 [`-X`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) `pycache_prefix=PATH` 选项。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **PYTHONHASHSEED**
 
@@ -548,13 +561,15 @@ action:message:category:module:lineno
 
 ​	该整数必须为一个 [0,4294967295] 范围内的十进制数。 指定数值 0 将禁用哈希随机化。
 
-*Added in version 3.2.3.*
+> Added in version 3.2.3.
+>
 
 ## **PYTHONINTMAXSTRDIGITS**
 
 ​	如果将此变量设为一个整数，它会被用来配置解释器的全局 [整数字符串转换长度限制](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#int-max-str-digits)。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **PYTHONIOENCODING**
 
@@ -612,25 +627,29 @@ PYTHONWARNINGS=ignore   # 从不警告
 
 ​	如果此环境变量被设为一个非空字符串，[`faulthandler.enable()`](https://docs.python.org/zh-cn/3.13/library/faulthandler.html#faulthandler.enable) 会在启动时被调用：为 [`SIGSEGV`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.SIGSEGV), [`SIGFPE`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.SIGFPE), [`SIGABRT`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.SIGABRT), [`SIGBUS`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.SIGBUS) 和 [`SIGILL`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.SIGILL) 等信号安装一个处理器以转储 Python 回溯信息。 此环境变量等价于 [`-X`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) `faulthandler` 选项。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **PYTHONTRACEMALLOC**
 
 ​	如果此环境变量被设为一个非空字符串，则会使用 [`tracemalloc`](https://docs.python.org/zh-cn/3.13/library/tracemalloc.html#module-tracemalloc) 模块启动对 Python 内存分配的跟踪。 该变量的值是保存在跟踪的回溯信息中的最大帧数。 例如， `PYTHONTRACEMALLOC=1` 只保存最近的帧。 请参阅 [`tracemalloc.start()`](https://docs.python.org/zh-cn/3.13/library/tracemalloc.html#tracemalloc.start) 函数了解更多信息。 这等价于设置 [`-X`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) `tracemalloc` 选项。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **PYTHONPROFILEIMPORTTIME**
 
 ​	如果此环境变量被设为一个非空字符串，Python 将会显示每次导入耗费了多长时间。 这等价于设置 [`-X`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) `importtime` 选项。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **PYTHONASYNCIODEBUG**
 
 ​	如果此变量被设为一个非空字符串，则会启用 [`asyncio`](https://docs.python.org/zh-cn/3.13/library/asyncio.html#module-asyncio) 模块的 [调试模式](https://docs.python.org/zh-cn/3.13/library/asyncio-dev.html#asyncio-debug-mode)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **PYTHONMALLOC**
 
@@ -650,7 +669,8 @@ PYTHONWARNINGS=ignore   # 从不警告
 - `pymalloc_debug`: 与 `pymalloc` 相同但还会安装调试钩子。
 - `mimalloc_debug`: 与 `mimalloc` 相同但还会安装调试钩子。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 *在 3.7 版本发生变更:* 增加了 `"default"` 分配器。
 
@@ -670,7 +690,8 @@ PYTHONWARNINGS=ignore   # 从不警告
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows.
 
-*Added in version 3.6:* 更多详情请参阅 [**PEP 529**](https://peps.python.org/pep-0529/)。
+> Added in version 3.6:* 更多详情请参阅 [**PEP 529*
+>](https://peps.python.org/pep-0529/)。
 
 ## **PYTHONLEGACYWINDOWSSTDIO**
 
@@ -680,7 +701,8 @@ PYTHONWARNINGS=ignore   # 从不警告
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows.
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **PYTHONCOERCECLOCALE**
 
@@ -702,13 +724,15 @@ PYTHONWARNINGS=ignore   # 从不警告
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.7:* 请参阅 [**PEP 538**](https://peps.python.org/pep-0538/) 了解详情。
+> Added in version 3.7:* 请参阅 [**PEP 538*
+>](https://peps.python.org/pep-0538/) 了解详情。
 
 ## **PYTHONDEVMODE**
 
 ​	如果此环境变量被设为一个非空字符串，则会启用 [Python 开发模式](https://docs.python.org/zh-cn/3.13/library/devmode.html#devmode)，引入在默认情况下启用扩展会导致开销过大的额外运行时检查。 这等价于设置 [`-X`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) `dev` 选项。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **PYTHONUTF8**
 
@@ -718,7 +742,8 @@ PYTHONWARNINGS=ignore   # 从不警告
 
 ​	设置任何其他非空字符串会在解释器初始化期间导致错误。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **PYTHONWARNDEFAULTENCODING**
 
@@ -726,13 +751,15 @@ PYTHONWARNINGS=ignore   # 从不警告
 
 ​	请参阅 [选择性的 EncodingWarning](https://docs.python.org/zh-cn/3.13/library/io.html#io-encoding-warning) 来了解详情。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## **PYTHONNODEBUGRANGES**
 
 ​	如果设置了此变量，它会禁用在代码对象中包括将额外位置信息（结束行、开始列偏移量和结束列偏移量）映射到每条指令的映射表。 这在需要较小的代码对象和 pyc 文件时很有用处并可在解释器显示回溯时屏蔽额外的视觉位置提示。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **PYTHONPERFSUPPORT**
 
@@ -742,7 +769,8 @@ PYTHONWARNINGS=ignore   # 从不警告
 
 ​	另请参阅 [`-X perf`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) 命令行选项和 [Python 对 Linux perf 性能分析器的支持](https://docs.python.org/zh-cn/3.13/howto/perf_profiling.html#perf-profiling)。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **PYTHON_PERF_JIT_SUPPORT**
 
@@ -752,7 +780,8 @@ PYTHONWARNINGS=ignore   # 从不警告
 
 ​	另请参阅 [`-X perf_jit`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) 命令行选项和 [Python 对 Linux perf 性能分析器的支持](https://docs.python.org/zh-cn/3.13/howto/perf_profiling.html#perf-profiling)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **PYTHON_CPU_COUNT**
 
@@ -760,7 +789,8 @@ PYTHONWARNINGS=ignore   # 从不警告
 
 ​	另请参阅 [`-X cpu_count`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) 命令行选项。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **PYTHON_FROZEN_MODULES**
 
@@ -768,25 +798,29 @@ PYTHONWARNINGS=ignore   # 从不警告
 
 ​	另请参阅 [`-X frozen_modules`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) 命令行选项。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **PYTHON_COLORS**
 
 ​	如果此变量被设为 `1`，解释器将对各种输出添加彩色。 将其设为 `0` 将禁用此行为。 另请参阅 [控制颜色](https://docs.python.org/zh-cn/3.13/using/cmdline.html#using-on-controlling-color)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **PYTHON_BASIC_REPL**
 
 ​	如果此变量被设为 `1`，解释器将不再尝试加载需要 [`curses`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses) 和 [`readline`](https://docs.python.org/zh-cn/3.13/library/readline.html#module-readline) 的基于 Python 的 [REPL](https://docs.python.org/zh-cn/3.13/glossary.html#term-REPL)，而将改用传统的基于解析器的 [REPL](https://docs.python.org/zh-cn/3.13/glossary.html#term-REPL)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **PYTHON_HISTORY**
 
 ​	此环境变量可被用来设置 `.python_history` 文件的位置（在默认情况下，它将为用户主目录下的 `.python_history` 文件）。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **PYTHON_GIL**
 
@@ -794,7 +828,8 @@ PYTHONWARNINGS=ignore   # 从不警告
 
 ​	另请参阅 [`-X gil`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) 命令行选项，该选项的优先级高于此变量，并请参阅 [自由线程的 CPython](https://docs.python.org/zh-cn/3.13/whatsnew/3.13.html#whatsnew313-free-threaded-cpython)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ### 1.2.1. 调试模式变量
 
@@ -810,7 +845,8 @@ PYTHONWARNINGS=ignore   # 从不警告
 
 ​	需要使用 [`--with-trace-refs`](https://docs.python.org/zh-cn/3.13/using/configure.html#cmdoption-with-trace-refs) 构建选项来配置 Python。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **PYTHON_PRESITE**
 
@@ -824,4 +860,5 @@ PYTHONWARNINGS=ignore   # 从不警告
 
 ​	需要使用 [`--with-pydebug`](https://docs.python.org/zh-cn/3.13/using/configure.html#cmdoption-with-pydebug) 构建选项来配置 Python。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>

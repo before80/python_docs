@@ -48,7 +48,7 @@ draft = false
 
 
 
-```
+``` python
 >>> h1 = http.client.HTTPConnection('www.python.org')
 >>> h2 = http.client.HTTPConnection('www.python.org:80')
 >>> h3 = http.client.HTTPConnection('www.python.org', 80)
@@ -159,7 +159,8 @@ draft = false
 
 [`ConnectionResetError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ConnectionResetError) 和 [`BadStatusLine`](https://docs.python.org/zh-cn/3.13/library/http.client.html#http.client.BadStatusLine) 的一个子类。 当尝试读取响应时的结果是未从连接读取到数据时由 [`HTTPConnection.getresponse()`](https://docs.python.org/zh-cn/3.13/library/http.client.html#http.client.HTTPConnection.getresponse) 引发，表明远端已关闭连接。
 
-*Added in version 3.5:* 在此之前引发的异常为 [`BadStatusLine`](https://docs.python.org/zh-cn/3.13/library/http.client.html#http.client.BadStatusLine)`('')`。
+> Added in version 3.5:
+> 在此之前引发的异常为 [`BadStatusLine`](https://docs.python.org/zh-cn/3.13/library/http.client.html#http.client.BadStatusLine)`('')`。
 
 ​	此模块中定义的常量为：
 
@@ -201,7 +202,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import http.client
 >>> host = "docs.python.org"
 >>> conn = http.client.HTTPSConnection(host)
@@ -237,7 +238,8 @@ draft = false
 
 ​	设置调试等级。 默认的调试等级为 `0`，意味着不会打印调试输出。 任何大于 `0` 的值将使得所有当前定义的调试输出被打印到 stdout。 `debuglevel` 会被传给任何新创建的 [`HTTPResponse`](https://docs.python.org/zh-cn/3.13/library/http.client.html#http.client.HTTPResponse) 对象。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## HTTPConnection.**set_tunnel**(*host*, *port=None*, *headers=None*)
 
@@ -253,14 +255,15 @@ draft = false
 
 
 
-```
+``` python
 >>> import http.client
 >>> conn = http.client.HTTPSConnection("localhost", 8080)
 >>> conn.set_tunnel("www.python.org")
 >>> conn.request("HEAD","/index.html")
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.12 版本发生变更:* HTTP CONNECT 隧道请求使用 HTTP/1.1 协议，它是从 HTTP/1.0 协议升级而来。 `Host:` HTTP 标头是 HTTP/1.1 所必需的，因此如果未在 headers 参数中提供则会自动生成并传送一个标头。
 
@@ -270,7 +273,8 @@ draft = false
 
 ​	如果未发送 CONNECT 请求，该方法将返回 `None`。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## HTTPConnection.**connect**()
 
@@ -286,7 +290,8 @@ draft = false
 
 ​	用于发送文件类消息体的缓冲区大小。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ​	作为对使用上述 [`request()`](https://docs.python.org/zh-cn/3.13/library/http.client.html#http.client.HTTPConnection.request) 方法的替代，你也可以通过使用以下四个函数来一步步地发送你的请求。
 
@@ -334,7 +339,8 @@ draft = false
 
 ​	读取响应体的后续 len(b) 个字节到缓冲区 *b*。返回读取的字节数。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## HTTPResponse.**getheader**(*name*, *default=None*)
 
@@ -398,7 +404,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import http.client
 >>> conn = http.client.HTTPSConnection("www.python.org")
 >>> conn.request("GET", "/")
@@ -427,7 +433,7 @@ b'<!doctype html>\n<!--[if"...
 
 
 
-```
+``` python
 >>> import http.client
 >>> conn = http.client.HTTPSConnection("www.python.org")
 >>> conn.request("HEAD", "/")
@@ -445,7 +451,7 @@ True
 
 
 
-```
+``` python
 >>> import http.client, urllib.parse
 >>> params = urllib.parse.urlencode({'@number': 12524, '@type': 'issue', '@action': 'show'})
 >>> headers = {"Content-type": "application/x-www-form-urlencoded",
@@ -465,7 +471,7 @@ b'Redirecting to <a href="https://bugs.python.org/issue12524">https://bugs.pytho
 
 
 
-```
+``` python
 >>> # 在这里创建一个 HTTP 请求
 >>> # 其中 BODY 的内容为资源 http://localhost:8080/file
 >>> # 的附件表示形式

@@ -122,7 +122,8 @@ draft = false
 
 ​	返回对应于 *key* 的消息的字节表示形式，或者如果对应的消息不存在则会引发 [`KeyError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyError) 异常。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **get_string**(*key*)
 
@@ -245,7 +246,8 @@ mailbox.Maildir.colon = '!'
 
 ​	如果你确实有一个 [`MaildirMessage`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage) 对象，请改用其 [`get_flags()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage.get_flags) 方法，因为由消息的 [`set_flags()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage.set_flags), [`add_flag()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage.add_flag) 和 [`remove_flag()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage.remove_flag) 方法所做的修改在邮箱的 [`__setitem__()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.Maildir.__setitem__) 方法被调用之前都不会在这里反映出来。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **set_flags**(*key*, *flags*)
 
@@ -261,7 +263,8 @@ some_mailbox[key] = one_message
 
 ​	如果你确实有一个 [`MaildirMessage`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage) 对象，请改用其 [`set_flags()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage.set_flags) 方法，因为用此邮箱方法所做的修改对消息对象的方法 [`get_flags()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage.get_flags) 来说将不可见。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **add_flag**(*key*, *flag*)
 
@@ -269,7 +272,8 @@ some_mailbox[key] = one_message
 
 ​	对于是使用此方法还是使用消息对象的 [`add_flag()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage.add_flag) 方法的考量与 [`set_flags()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.Maildir.set_flags) 类似；参见那里的讨论。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **remove_flag**(*key*, *flag*)
 
@@ -277,7 +281,8 @@ some_mailbox[key] = one_message
 
 ​	对于是使用此方法还是使用消息对象的 [`remove_flag()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage.remove_flag) 方法的考量与 [`set_flags()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.Maildir.set_flags) 类似；参见那里的讨论。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **get_info**(*key*)
 
@@ -285,7 +290,8 @@ some_mailbox[key] = one_message
 
 ​	如果你确实有一个 [`MaildirMessage`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage) 对象，请改用其 [`get_info()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage.get_info) 方法，因为由消息的 [`set_info()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage.set_info) 方法所做的修改在邮箱的 [`__setitem__()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.Maildir.__setitem__) 方法被调用之前都不会在这里反映出来。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **set_info**(*key*, *info*)
 
@@ -301,7 +307,8 @@ some_mailbox[key] = one_message
 
 ​	如果你确实有一个 [`MaildirMessage`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage) 对象，请改用其 [`set_info()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage.set_info) 方法，因为用此邮箱方法所做的修改对消息对象的方法 [`get_info()`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.MaildirMessage.get_info) 来说将不可见。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 `Maildir` 所实现的某些 [`Mailbox`](https://docs.python.org/zh-cn/3.13/library/mailbox.html#mailbox.Mailbox) 方法值得进行特别说明：
 

@@ -14,7 +14,8 @@ draft = false
 
 # [`typing`](https://docs.python.org/zh-cn/3.13/library/typing.html#module-typing) —— 对类型提示的支持
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 **源代码：** [Lib/typing.py](https://github.com/python/cpython/tree/3.13/Lib/typing.py)
 
@@ -182,7 +183,8 @@ ProUserId = NewType('ProUserId', UserId)
 
 ​	反之，`NewType` 声明把一种类型当作另一种类型的 *子类型*。`Derived = NewType('Derived', Original)` 时，静态类型检查器把 `Derived` 当作 `Original` 的 *子类* ，即，`Original` 类型的值不能用在预期 `Derived` 类型的位置。这种方式适用于以最小运行时成本防止逻辑错误。
 
-*Added in version 3.5.2.*
+> Added in version 3.5.2.
+>
 
 *在 3.10 版本发生变更:* `NewType` 现在是一个类而不是一个函数。 因此，当调用 `NewType` 而非常规函数时会有一些额外的运行时开销。
 
@@ -621,7 +623,7 @@ Response = Iterable[S] | int
 
 
 
-```
+``` python
 >>> class Z[T, **P]: ...  # T 为 TypeVar；P 为 ParamSpec
 ...
 >>> Z[int, [dict, float]]
@@ -643,7 +645,7 @@ class Z(Generic[P]):
 
 
 
-```
+``` python
 >>> class X[**P]: ...
 ...
 >>> X[int, str]
@@ -842,7 +844,8 @@ def caller(arbitrary_string: str, literal_string: LiteralString) -> None:
 
 ​	请参阅 [**PEP 675**](https://peps.python.org/pep-0675/) 了解详情。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## typing.**Never**
 
@@ -880,9 +883,11 @@ def int_or_str(arg: int | str) -> None:
 
 `Never` 和 `NoReturn` 在类型系统中具有相同的含义并且静态类型检查器会以相同的方式对待这两者。
 
-*Added in version 3.6.2:* 增加了 [`NoReturn`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.NoReturn)。
+> Added in version 3.6.2:
+> 增加了 [`NoReturn`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.NoReturn)。
 
-*Added in version 3.11:* 增加了 [`Never`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.Never)。
+> Added in version 3.11:
+> 增加了 [`Never`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.Never)。
 
 ## typing.**Self**
 
@@ -937,7 +942,8 @@ class Eggs:
 
 ​	更多细节请参见 [**PEP 673**](https://peps.python.org/pep-0673/)。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## typing.**TypeAlias**
 
@@ -971,7 +977,8 @@ class Box(Generic[T]):
 
 ​	请参阅 [**PEP 613**](https://peps.python.org/pep-0613/) 了解详情。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 *自 3.12 版本弃用:* [`TypeAlias`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeAlias) 被弃用，请使用 [`type`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#type) 语句，后者创建 [`TypeAliasType`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeAliasType) 的实例，并且天然支持正向引用。请注意，虽然 [`TypeAlias`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeAlias) 和 [`TypeAliasType`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeAliasType) 具有相似的用途和名称，但它们是不同的，后者并不是前者的类型。目前还没有移除 [`TypeAlias`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeAlias) 的计划，但鼓励用户迁移到 [`type`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#type) 语句。
 
@@ -1072,7 +1079,8 @@ def sum_threadsafe(lock: Lock, numbers: list[float]) -> float:
 sum_threadsafe([1.1, 2.2, 3.3])
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ​	参见
 
@@ -1102,7 +1110,8 @@ open_helper('/other/path', 'typo')  # 类型检查错误
 
 `Literal[...]` 不能创建子类。在运行时，任意值均可作为 `Literal[...]` 的类型参数，但类型检查器可以对此加以限制。字面量类型详见 [**PEP 586**](https://peps.python.org/pep-0586/) 。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.9.1 版本发生变更:* `Literal` 现在能去除形参的重复。 `Literal` 对象的相等性比较不再依赖顺序。 现在如果有某个参数不为 [hashable](https://docs.python.org/zh-cn/3.13/glossary.html#term-hashable)，`Literal` 对象在相等性比较期间将引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
 
@@ -1128,7 +1137,8 @@ enterprise_d.stats = {} # 错误，在实例上设置类变量
 Starship.stats = {}     # 这是可以的
 ```
 
-*Added in version 3.5.3.*
+> Added in version 3.5.3.
+>
 
 *在 3.13 版本发生变更:* 现在 [`ClassVar`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.ClassVar) 可以被嵌套在 [`Final`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.Final) 中，反之亦然。
 
@@ -1153,7 +1163,8 @@ class FastConnector(Connection):
 
 ​	这些属性没有运行时检查。详见 [**PEP 591**](https://peps.python.org/pep-0591/)。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.13 版本发生变更:* 现在 [`Final`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.Final) 可以被嵌套在 [`ClassVar`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.ClassVar) 中，反之亦然。
 
@@ -1163,7 +1174,8 @@ class FastConnector(Connection):
 
 ​	这主要用于 `total=False` 的 TypedDict。有关更多详细信息，请参阅 [`TypedDict`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypedDict) 和 [**PEP 655**](https://peps.python.org/pep-0655/) 。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## typing.**NotRequired**
 
@@ -1171,7 +1183,8 @@ class FastConnector(Connection):
 
 ​	详情参见 [`TypedDict`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypedDict) 和 [**PEP 655**](https://peps.python.org/pep-0655/)。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## typing.**ReadOnly**
 
@@ -1193,7 +1206,8 @@ def mutate_movie(m: Movie) -> None:
 
 ​	详见 [`TypedDict`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypedDict) 和 [**PEP 705**](https://peps.python.org/pep-0705/)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## typing.**Annotated**
 
@@ -1344,7 +1358,8 @@ T2 = Annotated[T1, ValueRange(-20, 3)]
 
 ​	该 PEP 将 `Annotated` 引入到标准库中。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## typing.**TypeIs**
 
@@ -1404,7 +1419,8 @@ def run(arg: Child | Unrelated):
 
 `TypeIs` 同样可作用于类型变量，详见 [**PEP 742**](https://peps.python.org/pep-0742/) (使用 `TypeIs` 收窄类型) 。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## typing.**TypeGuard**
 
@@ -1441,7 +1457,8 @@ def func1(val: list[object]):
 - 当 `TypeGuard` 函数返回 `True` 时，类型检查器会将变量的类型精确地收窄到 `TypeGuard` 类型。当 `TypeIs` 函数返回 `True` 时，类型检查程序可以结合先前已知的变量类型和 `TypeIs` 类型推断出更精确的类型。（从技术上讲，这叫做交类型。）
 - 当 `TypeGuard` 函数返回 `False` 时，类型检查器不会收窄变量的类型范围。当 `TypeIs` 函数返回 `False` 时，类型检查器可以收窄变量的类型范围至排除 `TypeIs` 类型。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## typing.**Unpack**
 
@@ -1484,7 +1501,8 @@ def foo(**kwargs: Unpack[Movie]): ...
 
 ​	请参阅 [**PEP 692**](https://peps.python.org/pep-0692/) 了解将 `Unpack` 用于 `**kwargs` 类型标注的更多细节。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 #### 构造泛型类型与类型别名
 
@@ -1640,7 +1658,8 @@ c = concatenate('one', b'two')  # 错误：在一个函数调用中类型变量 
 
 ​	类型变量的种类是否应由类型检查器来推断。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **__bound__**
 
@@ -1658,13 +1677,15 @@ c = concatenate('one', b'two')  # 错误：在一个函数调用中类型变量 
 
 ​	类型变量的默认值，如果没有默认值，则为 [`typing.NoDefault`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.NoDefault)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **has_default**()
 
 ​	返回类型变量是否有默认值。它等价于检查 [`__default__`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeVar.__default__) 是否为 [`typing.NoDefault`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.NoDefault) 单例，但它不要求对 [惰性求值](https://docs.python.org/zh-cn/3.13/reference/executionmodel.html#lazy-evaluation) 的默认值求值。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 *在 3.12 版本发生变更:* 类型变量现在可以通过使用 [**PEP 695**](https://peps.python.org/pep-0695/) 引入的 [类型形参](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#type-params) 语法来声明。 增加了 `infer_variance` 形参。
 
@@ -1778,15 +1799,18 @@ def call_soon[*Ts](
 
 ​	类型变量元组的默认值，如果没有默认值，则为 [`typing.NoDefault`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.NoDefault)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **has_default**()
 
 ​	返回类型变量元组是否有默认值。它等价于检查 [`__default__`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeVarTuple.__default__) 是否为 [`typing.NoDefault`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.NoDefault) 单例，但它不要求对 [惰性求值](https://docs.python.org/zh-cn/3.13/reference/executionmodel.html#lazy-evaluation) 的默认值求值。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 *在 3.12 版本发生变更:* 类型变量元组现在可以使用 [**PEP 695**](https://peps.python.org/pep-0695/) 所引入的 [类型形参](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#type-params) 语法来声明。
 
@@ -1848,17 +1872,20 @@ def add_two(x: float, y: float) -> float:
 
 ​	形参规格的默认值，如果没有默认值，则为 [`typing.NoDefault`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.NoDefault)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **has_default**()
 
 ​	返回形参规格是否有默认值。它等价于检查 [`__default__`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.ParamSpec.__default__) 是否为 [`typing.NoDefault`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.NoDefault) 单例，但它不要求对 [惰性求值](https://docs.python.org/zh-cn/3.13/reference/executionmodel.html#lazy-evaluation) 的默认值求值。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ​	用 `covariant=True` 或 `contravariant=True` 创建的参数规范变量可以用来声明协变或逆变泛型类型。 参数 `bound` 也被接受，类似于 [`TypeVar`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeVar)。 然而这些关键字的实际语义还有待决定。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 *在 3.12 版本发生变更:* 形参说明现在可以使用 [**PEP 695**](https://peps.python.org/pep-0695/) 所引入的 [类型形参](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#type-params) 语法来声明。
 
@@ -1886,7 +1913,7 @@ def add_two(x: float, y: float) -> float:
 
 
 
-```
+``` python
 >>> from typing import ParamSpec, get_origin
 >>> P = ParamSpec("P")
 >>> get_origin(P.args) is P
@@ -1895,7 +1922,8 @@ True
 True
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* typing.**TypeAliasType**(*name*, *value*, ***, *type_params=()*)
 
@@ -1905,13 +1933,14 @@ True
 
 
 
-```
+``` python
 >>> type Alias = int
 >>> type(Alias)
 <class 'typing.TypeAliasType'>
 ```
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **__name__**
 
@@ -1919,7 +1948,7 @@ True
 
 
 
-```
+``` python
 >>> type Alias = int
 >>> Alias.__name__
 'Alias'
@@ -1931,7 +1960,7 @@ True
 
 
 
-```
+``` python
 >>> type Alias = int
 >>> Alias.__module__
 '__main__'
@@ -1943,7 +1972,7 @@ True
 
 
 
-```
+``` python
 >>> type ListOrSet[T] = list[T] | set[T]
 >>> ListOrSet.__type_params__
 (T,)
@@ -1958,7 +1987,7 @@ True
 
 
 
-```
+``` python
 >>> type Mutually = Recursive
 >>> type Recursive = Mutually
 >>> Mutually
@@ -2081,7 +2110,8 @@ first_user = UserId(1)  # 在运行时 "UserId" 将原样返回参数
 
 ​	新类型所基于的类型。
 
-*Added in version 3.5.2.*
+> Added in version 3.5.2.
+>
 
 *在 3.10 版本发生变更:* `NewType` 现在是一个类而不是函数。
 
@@ -2130,7 +2160,8 @@ class GenProto(Protocol[T]):
         ...
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## @typing.**runtime_checkable**
 
@@ -2165,7 +2196,8 @@ assert isinstance(threading.Thread(name='Bob'), Named)
 
 ​	针对运行时可检查协议的 [`isinstance()`](https://docs.python.org/zh-cn/3.13/library/functions.html#isinstance) 检查相比针对非协议类的 `isinstance()` 检查可能会惊人的缓慢。 请考虑在性能敏感的代码中使用替代性写法如 [`hasattr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#hasattr) 调用进行结构检查。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.12 版本发生变更:* 现在 [`isinstance()`](https://docs.python.org/zh-cn/3.13/library/functions.html#isinstance) 的内部实现对于运行时可检查协议的检查会使用 [`inspect.getattr_static()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.getattr_static) 来查找属性 (在之前版本中，会使用 [`hasattr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#hasattr))。 因此，在 Python 3.12+ 上一些以前被认为是运行时可检查协议的实例的对象可能不再被认为是该协议的实例，反之亦反。 大多数用户不太可能受到这一变化的影响。
 
@@ -2308,7 +2340,7 @@ class Group(TypedDict, Generic[T]):
 
 
 
-```
+``` python
 >>> from typing import TypedDict
 >>> class Point2D(TypedDict): pass
 >>> Point2D.__total__
@@ -2325,7 +2357,8 @@ True
 
 ## **__required_keys__**
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## **__optional_keys__**
 
@@ -2337,7 +2370,7 @@ True
 
 
 
-```
+``` python
 >>> class Point2D(TypedDict, total=False):
 ...     x: int
 ...     y: int
@@ -2351,7 +2384,8 @@ True
 True
 ```
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ​	备注
 
@@ -2365,17 +2399,20 @@ True
 
 ​	一个包含所有只读键名称的 [`frozenset`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#frozenset)。 带有 [`ReadOnly`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.ReadOnly) 限定符的键被认为是只读的。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **__mutable_keys__**
 
 ​	一个包含所有可变键名称的 [`frozenset`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#frozenset)。 不带有 [`ReadOnly`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.ReadOnly) 限定符的键被认为是可变的。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ​	更多示例与 `TypedDict` 的详细规则，详见 [**PEP 589**](https://peps.python.org/pep-0589/)。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.11 版本发生变更:* 增加了对将单独的键标记为 [`Required`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.Required) 或 [`NotRequired`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.NotRequired) 的支持。 参见 [**PEP 655**](https://peps.python.org/pep-0655/)。
 
@@ -2411,7 +2448,8 @@ True
 
 ​	一个抽象基类，含一个抽象方法 `__index__`。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## *class* typing.**SupportsInt**
 
@@ -2464,7 +2502,8 @@ def complex_function(arg: object):
     assert_type(arg, int)
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## typing.**assert_never**(*arg*, */*)
 
@@ -2495,7 +2534,8 @@ def int_or_str(arg: int | str) -> None:
 
 [Unreachable Code and Exhaustiveness Checking](https://typing.readthedocs.io/en/latest/guides/unreachable.html) 提供了更多关于静态类型穷举检查的信息。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## typing.**reveal_type**(*obj*, */*)
 
@@ -2521,7 +2561,8 @@ print(x)  # 打印 "1"
 
 ​	大多数类型检查器都能在任何地方支持 `reveal_type()`，即使并未从 `typing` 导入该名称。 不过，从 `typing` 导入该名称将允许你的代码在运行时不会出现运行时错误并能更清晰地传递意图。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## @typing.**dataclass_transform**(***, *eq_default=True*, *order_default=False*, *kw_only_default=False*, *frozen_default=False*, *field_specifiers=()*, ***kwargs*)
 
@@ -2597,7 +2638,8 @@ class CustomerModel(ModelBase):
 
 ​	更多细节请参见 [**PEP 681**](https://peps.python.org/pep-0681/)。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## @typing.**overload**
 
@@ -2635,7 +2677,8 @@ def process(response):
 
 `get_overloads()` 可被用来在运行时内省一个过载函数。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## typing.**clear_overloads**()
 
@@ -2643,7 +2686,8 @@ def process(response):
 
 ​	这可用于回收注册表所使用的内存。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## @typing.**final**
 
@@ -2671,7 +2715,8 @@ class Other(Leaf):  # 类型检查器报告错误
 
 ​	这些属性没有运行时检查。详见 [**PEP 591**](https://peps.python.org/pep-0591/)。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.11 版本发生变更:* 该装饰器现在将尝试在被装饰的对象上设置 `__final__` 属性为 `True`。 这样，可以在运行时使用 `if getattr(obj, "__final__", False)` 这样的检查来确定对象 `obj` 是否已被标记为终结。 如果被装饰的对象不支持设置属性，该装饰器将不加修改地返回对象而不会引发异常。
 
@@ -2720,7 +2765,8 @@ class Sub(Base):
 
 ​	更多细节参见 [**PEP 698**](https://peps.python.org/pep-0698/)。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## @typing.**type_check_only**
 
@@ -2783,7 +2829,8 @@ assert get_origin(P.args) is P
 assert get_origin(P.kwargs) is P
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## typing.**get_args**(*tp*)
 
@@ -2799,7 +2846,8 @@ assert get_args(Dict[int, str]) == (int, str)
 assert get_args(Union[int, str]) == (int, str)
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## typing.**get_protocol_members**(*tp*)
 
@@ -2807,7 +2855,7 @@ assert get_args(Union[int, str]) == (int, str)
 
 
 
-```
+``` python
 >>> from typing import Protocol, get_protocol_members
 >>> class P(Protocol):
 ...     def a(self) -> str: ...
@@ -2818,7 +2866,8 @@ True
 
 ​	如果参数不是协议，引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## typing.**is_protocol**(*tp*)
 
@@ -2835,7 +2884,8 @@ is_protocol(P)    # => True
 is_protocol(int)  # => False
 ```
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## typing.**is_typeddict**(*tp*)
 
@@ -2856,7 +2906,8 @@ assert not is_typeddict(list | str)
 assert not is_typeddict(TypedDict)
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* typing.**ForwardRef**
 
@@ -2870,7 +2921,8 @@ assert not is_typeddict(TypedDict)
 
 [**PEP 585**](https://peps.python.org/pep-0585/) 泛型类型例如 `list["SomeClass"]` 将不会被隐式地转换为 `list[ForwardRef("SomeClass")]` 因而将不会自动解析为 `list[SomeClass]`。
 
-*Added in version 3.7.4.*
+> Added in version 3.7.4.
+>
 
 ## typing.**NoDefault**
 
@@ -2878,7 +2930,7 @@ assert not is_typeddict(TypedDict)
 
 
 
-```
+``` python
 >>> T = TypeVar("T")
 >>> T.__default__ is typing.NoDefault
 True
@@ -2887,7 +2939,8 @@ True
 True
 ```
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ### 常量
 
@@ -2913,7 +2966,8 @@ def fun(arg: 'expensive_mod.SomeType') -> None:
 
 ​	若用了 `from __future__ import annotations`，函数定义时则不求值注解，直接把注解以字符串形式存在 `__annotations__` 里。这时毋需为注解打引号（见 [**PEP 563**](https://peps.python.org/pep-0563/)）。
 
-*Added in version 3.5.2.*
+> Added in version 3.5.2.
+>
 
 
 
@@ -2975,7 +3029,8 @@ def fun(arg: 'expensive_mod.SomeType') -> None:
 
 ​	有关在类型注解中使用 [`type`](https://docs.python.org/zh-cn/3.13/library/functions.html#type) 或 `typing.Type` 的详细信息，请参阅 [类对象的类型](https://docs.python.org/zh-cn/3.13/library/typing.html#type-of-class-objects) 。
 
-*Added in version 3.5.2.*
+> Added in version 3.5.2.
+>
 
 *自 3.9 版本弃用:* [`builtins.type`](https://docs.python.org/zh-cn/3.13/library/functions.html#type) 现在支持下标操作 (`[]`)。 参见 [**PEP 585**](https://peps.python.org/pep-0585/) 和 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias)。
 
@@ -2987,7 +3042,8 @@ def fun(arg: 'expensive_mod.SomeType') -> None:
 
 [`collections.defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) 的已弃用的别名。
 
-*Added in version 3.5.2.*
+> Added in version 3.5.2.
+>
 
 *自 3.9 版本弃用:* [`collections.defaultdict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.defaultdict) 现在支持下标操作 (`[]`)。 参见 [**PEP 585**](https://peps.python.org/pep-0585/) 和 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias)。
 
@@ -2995,7 +3051,8 @@ def fun(arg: 'expensive_mod.SomeType') -> None:
 
 [`collections.OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 的已弃用的别名。
 
-*Added in version 3.7.2.*
+> Added in version 3.7.2.
+>
 
 *自 3.9 版本弃用:* [`collections.OrderedDict`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.OrderedDict) 现在支持下标操作 (`[]`)。 参见 [**PEP 585**](https://peps.python.org/pep-0585/) 和 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias)。
 
@@ -3003,7 +3060,8 @@ def fun(arg: 'expensive_mod.SomeType') -> None:
 
 [`collections.ChainMap`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.ChainMap) 的已弃用的别名。
 
-*Added in version 3.6.1.*
+> Added in version 3.6.1.
+>
 
 *自 3.9 版本弃用:* [`collections.ChainMap`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.ChainMap) 现在支持下标操作 (`[]`)。 参见 [**PEP 585**](https://peps.python.org/pep-0585/) 和 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias)。
 
@@ -3011,7 +3069,8 @@ def fun(arg: 'expensive_mod.SomeType') -> None:
 
 [`collections.Counter`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter) 的已弃用的别名。
 
-*Added in version 3.6.1.*
+> Added in version 3.6.1.
+>
 
 *自 3.9 版本弃用:* [`collections.Counter`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter) 现在支持下标操作 (`[]`)。 参见 [**PEP 585**](https://peps.python.org/pep-0585/) 和 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias)。
 
@@ -3019,7 +3078,8 @@ def fun(arg: 'expensive_mod.SomeType') -> None:
 
 [`collections.deque`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.deque) 的已弃用的别名。
 
-*Added in version 3.6.1.*
+> Added in version 3.6.1.
+>
 
 *自 3.9 版本弃用:* [`collections.deque`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.deque) 现在支持下标操作 (`[]`)。 参见 [**PEP 585**](https://peps.python.org/pep-0585/) 和 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias)。
 
@@ -3050,7 +3110,8 @@ def add_unicode_checkmark(text: Text) -> Text:
     return text + u' \u2713'
 ```
 
-*Added in version 3.5.2.*
+> Added in version 3.5.2.
+>
 
 *自 3.11 版本弃用:* Python 2 已不再受支持，并且大部分类型检查器也都不再支持 Python 2 代码的类型检查。 目前还没有计划移除该别名，但建议用户使用 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 来代替 `Text`。
 
@@ -3074,7 +3135,8 @@ def add_unicode_checkmark(text: Text) -> Text:
 
 [`collections.abc.Collection`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Collection) 的已弃用的别名。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 *自 3.9 版本弃用:* [`collections.abc.Collection`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Collection) 现在支持下标操作 (`[]`)。 参见 [**PEP 585**](https://peps.python.org/pep-0585/) 和 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias)。
 
@@ -3148,7 +3210,8 @@ def add_unicode_checkmark(text: Text) -> Text:
 
 ​	有关在注解类型中使用 [`collections.abc.Coroutine`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Coroutine) 和 `typing.Coroutine` 的详细信息，请参见 [标注生成器和协程](https://docs.python.org/zh-cn/3.13/library/typing.html#annotating-generators-and-coroutines)。
 
-*Added in version 3.5.3.*
+> Added in version 3.5.3.
+>
 
 *自 3.9 版本弃用:* [`collections.abc.Coroutine`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Coroutine) 现在支持下标操作（`[]`）。参见 [**PEP 585**](https://peps.python.org/pep-0585/) 和 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias)。
 
@@ -3158,7 +3221,8 @@ def add_unicode_checkmark(text: Text) -> Text:
 
 ​	有关在注解类型中使用 [`collections.abc.AsyncGenerator`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.AsyncGenerator) 和 `typing.AsyncGenerator` 的详细信息，请参见 [标注生成器和协程](https://docs.python.org/zh-cn/3.13/library/typing.html#annotating-generators-and-coroutines)。
 
-*Added in version 3.6.1.*
+> Added in version 3.6.1.
+>
 
 *自 3.9 版本弃用:* [`collections.abc.AsyncGenerator`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.AsyncGenerator) 现在支持下标操作（`[]`）。参见 [**PEP 585**](https://peps.python.org/pep-0585/) 和 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias)。
 
@@ -3168,7 +3232,8 @@ def add_unicode_checkmark(text: Text) -> Text:
 
 [`collections.abc.AsyncIterable`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.AsyncIterable) 的已弃用的别名。
 
-*Added in version 3.5.2.*
+> Added in version 3.5.2.
+>
 
 *自 3.9 版本弃用:* [`collections.abc.AsyncIterable`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.AsyncIterable) 现在支持下标操作 (`[]`)。 参见 [**PEP 585**](https://peps.python.org/pep-0585/) 和 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias)。
 
@@ -3176,7 +3241,8 @@ def add_unicode_checkmark(text: Text) -> Text:
 
 [`collections.abc.AsyncIterator`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.AsyncIterator) 的已弃用的别名。
 
-*Added in version 3.5.2.*
+> Added in version 3.5.2.
+>
 
 *自 3.9 版本弃用:* [`collections.abc.AsyncIterator`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.AsyncIterator) 现在支持下标操作 (`[]`)。 参见 [**PEP 585**](https://peps.python.org/pep-0585/) 和 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias)。
 
@@ -3184,7 +3250,8 @@ def add_unicode_checkmark(text: Text) -> Text:
 
 [`collections.abc.Awaitable`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Awaitable) 的已弃用的别名。
 
-*Added in version 3.5.2.*
+> Added in version 3.5.2.
+>
 
 *自 3.9 版本弃用:* [`collections.abc.Awaitable`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Awaitable) 现在支持下标操作 (`[]`)。 参见 [**PEP 585**](https://peps.python.org/pep-0585/) 和 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias)。
 
@@ -3252,7 +3319,8 @@ def add_unicode_checkmark(text: Text) -> Text:
 
 ​	第一个类型形参 `T_co` 表示 [`__enter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__enter__) 方法返回值的类型。可选的第二个类型形参 `ExitT_co` 默认为 `bool | None`，它表示 [`__exit__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__exit__) 方法返回的类型。
 
-*Added in version 3.5.4.*
+> Added in version 3.5.4.
+>
 
 *自 3.9 版本弃用:* [`contextlib.AbstractContextManager`](https://docs.python.org/zh-cn/3.13/library/contextlib.html#contextlib.AbstractContextManager) 现在支持下标操作 (`[]`)。 参见 [**PEP 585**](https://peps.python.org/pep-0585/) 和 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias)。
 
@@ -3264,7 +3332,8 @@ def add_unicode_checkmark(text: Text) -> Text:
 
 ​	第一个类型形参 `T_co` 表示 [`__aenter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__aenter__) 方法返回值的类型。可选的第二个类型形参 `AExitT_co` 默认为 `bool | None`，它表示 [`__aexit__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__aexit__) 方法返回的类型。
 
-*Added in version 3.6.2.*
+> Added in version 3.6.2.
+>
 
 *自 3.9 版本弃用:* [`contextlib.AbstractAsyncContextManager`](https://docs.python.org/zh-cn/3.13/library/contextlib.html#contextlib.AbstractAsyncContextManager) 现在 支持下标操作 (`[]`)。 参见 [**PEP 585**](https://peps.python.org/pep-0585/) 和 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias)。
 

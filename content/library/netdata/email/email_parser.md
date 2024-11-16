@@ -43,7 +43,8 @@ draft = false
 
 ​	注: **一定要指定policy关键字**。 在未来版本的 Python 当中，它的默认值会变成 [`email.policy.default`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#email.policy.default)。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.3 版本发生变更:* 添加了 *policy* 关键字。
 
@@ -91,13 +92,15 @@ draft = false
 
 ​	可选的 *headersonly* 与 [`parse()`](https://docs.python.org/zh-cn/3.13/library/email.parser.html#email.parser.BytesParser.parse) 方法中的 *headersonly* 是一致的。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## *class* email.parser.**BytesHeaderParser**(*_class=None*, ***, *policy=policy.compat32*)
 
 ​	除了 *headersonly* 默认为 `True`，其他与 [`BytesParser`](https://docs.python.org/zh-cn/3.13/library/email.parser.html#email.parser.BytesParser) 类完全一样。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## *class* email.parser.**Parser**(*_class=None*, ***, *policy=policy.compat32*)
 
@@ -129,7 +132,8 @@ draft = false
 
 ​	从一个 [bytes-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object) 中返回消息对象。 这与 `BytesParser().parsebytes(s)` 等价。 可选的 *_class* 和 *policy* 参数与 [`BytesParser`](https://docs.python.org/zh-cn/3.13/library/email.parser.html#email.parser.BytesParser) 类的构造函数的参数含义一致。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.3 版本发生变更:* 移除了 *strict* 参数。添加了 *policy* 关键字。
 
@@ -137,7 +141,8 @@ draft = false
 
 ​	从打开的二进制 [file object](https://docs.python.org/zh-cn/3.13/glossary.html#term-file-object) 中返回消息对象。 这与 `BytesParser().parse(fp)` 等价。 *_class* 和 *policy* 参数与 [`BytesParser`](https://docs.python.org/zh-cn/3.13/library/email.parser.html#email.parser.BytesParser) 类的构造函数的参数含义一致。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.3 版本发生变更:* 移除了 *strict* 参数。添加了 *policy* 关键字。
 
@@ -159,7 +164,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import email
 >>> msg = email.message_from_bytes(myBytes)  
 ```

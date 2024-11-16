@@ -42,7 +42,8 @@ draft = false
 
 ​	对于文本模式，将会创建一个 [`BZ2File`](https://docs.python.org/zh-cn/3.13/library/bz2.html#bz2.BZ2File) 对象，并将它包装到一个 [`io.TextIOWrapper`](https://docs.python.org/zh-cn/3.13/library/io.html#io.TextIOWrapper) 实例中，此实例带有指定的编码格式、错误处理行为和行结束符。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.4 版本发生变更:* 添加了 `'x'` (单独创建) 模式。
 
@@ -76,31 +77,36 @@ draft = false
 
 ​	虽然调用 [`peek()`](https://docs.python.org/zh-cn/3.13/library/bz2.html#bz2.BZ2File.peek) 不会改变 [`BZ2File`](https://docs.python.org/zh-cn/3.13/library/bz2.html#bz2.BZ2File) 的文件位置，但它可能改变下层文件对象的位置（举例来说如果 [`BZ2File`](https://docs.python.org/zh-cn/3.13/library/bz2.html#bz2.BZ2File) 是通过传入一个文件对象作为 *filename* 的话）。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **fileno**()
 
 ​	返回底层文件的文件描述符。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **readable**()
 
 ​	返回文件是否已被打开供读取。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **seekable**()
 
 ​	返回文件是否支持定位。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **writable**()
 
 ​	返回文件是否已被打开供写入。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **read1**(*size=-1*)
 
@@ -108,7 +114,8 @@ draft = false
 
 ​	如果文件位置为 EOF 则返回 `b''`。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **readinto**(*b*)
 
@@ -116,19 +123,22 @@ draft = false
 
 ​	返回读取的字节数（0 表示 EOF）。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **mode**
 
 `'rb'` 表示可读而 `'wb'` 表示可写。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **name**
 
 ​	bzip2 文件名。 等价于下层 [file object](https://docs.python.org/zh-cn/3.13/glossary.html#term-file-object) 的 [`name`](https://docs.python.org/zh-cn/3.13/library/io.html#io.FileIO.name) 属性。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 *在 3.1 版本发生变更:* 添加了对 [`with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#with) 语句的支持。
 
@@ -194,7 +204,8 @@ draft = false
 
 ​	若达到了数据流的末尾标记则为 `True`。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **unused_data**
 
@@ -206,7 +217,8 @@ draft = false
 
 ​	如果在要求新的未解压缩输入之前 [`decompress()`](https://docs.python.org/zh-cn/3.13/library/bz2.html#bz2.BZ2Decompressor.decompress) 方法可以提供更多的解压缩数据则为 `False`。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## 一次性压缩或解压缩
 
@@ -238,7 +250,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import bz2
 >>> data = b"""\
 ... Donec rhoncus quis sapien sit amet molestie. Fusce scelerisque vel augue
@@ -260,7 +272,7 @@ True
 
 
 
-```
+``` python
 >>> import bz2
 >>> def gen_data(chunks=10, chunksize=1000):
 ...     """Yield incremental blocks of chunksize bytes."""
@@ -284,7 +296,7 @@ True
 
 
 
-```
+``` python
 >>> import bz2
 >>> data = b"""\
 ... Donec rhoncus quis sapien sit amet molestie. Fusce scelerisque vel augue

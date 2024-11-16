@@ -14,7 +14,8 @@ draft = false
 
 # `unittest.mock` --- 模拟对象库
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 **源代码：** [Lib/unittest/mock.py](https://github.com/python/cpython/tree/3.13/Lib/unittest/mock.py)
 
@@ -36,7 +37,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from unittest.mock import MagicMock
 >>> thing = ProductionClass()
 >>> thing.method = MagicMock(return_value=3)
@@ -49,7 +50,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from unittest.mock import Mock
 >>> mock = Mock(side_effect=KeyError('foo'))
 >>> mock()
@@ -60,7 +61,7 @@ KeyError: 'foo'
 
 
 
-```
+``` python
 >>> values = {'a': 1, 'b': 2, 'c': 3}
 >>> def side_effect(arg):
 ...     return values[arg]
@@ -79,7 +80,7 @@ KeyError: 'foo'
 
 
 
-```
+``` python
 >>> from unittest.mock import patch
 >>> @patch('module.ClassName2')
 ... @patch('module.ClassName1')
@@ -106,7 +107,7 @@ KeyError: 'foo'
 
 
 
-```
+``` python
 >>> with patch.object(ProductionClass, 'method', return_value=None) as mock_method:
 ...     thing = ProductionClass()
 ...     thing.method(1, 2, 3)
@@ -118,7 +119,7 @@ KeyError: 'foo'
 
 
 
-```
+``` python
 >>> foo = {'key': 'value'}
 >>> original = foo.copy()
 >>> with patch.dict(foo, {'newkey': 'newvalue'}, clear=True):
@@ -131,7 +132,7 @@ KeyError: 'foo'
 
 
 
-```
+``` python
 >>> mock = MagicMock()
 >>> mock.__str__.return_value = 'foobarbaz'
 >>> str(mock)
@@ -145,7 +146,7 @@ KeyError: 'foo'
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.__str__ = Mock(return_value='wheeeeee')
 >>> str(mock)
@@ -158,7 +159,7 @@ KeyError: 'foo'
 
 
 
-```
+``` python
 >>> from unittest.mock import create_autospec
 >>> def function(a, b, c):
 ...     pass
@@ -221,14 +222,15 @@ TypeError: missing a required argument: 'b'
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.method()
 <Mock name='mock.method()' id='...'>
 >>> mock.method.assert_called()
 ```
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **assert_called_once**()
 
@@ -236,7 +238,7 @@ TypeError: missing a required argument: 'b'
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.method()
 <Mock name='mock.method()' id='...'>
@@ -250,7 +252,8 @@ AssertionError: Expected 'method' to have been called once. Called 2 times.
 Calls: [call(), call()].
 ```
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **assert_called_with**(**args*, ***kwargs*)
 
@@ -258,7 +261,7 @@ Calls: [call(), call()].
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.method(1, 2, 3, test='wow')
 <Mock name='mock.method()' id='...'>
@@ -271,7 +274,7 @@ Calls: [call(), call()].
 
 
 
-```
+``` python
 >>> mock = Mock(return_value=None)
 >>> mock('foo', bar='baz')
 >>> mock.assert_called_once_with('foo', bar='baz')
@@ -291,7 +294,7 @@ Calls: [call('foo', bar='baz'), call('other', bar='values')].
 
 
 
-```
+``` python
 >>> mock = Mock(return_value=None)
 >>> mock(1, 2, arg='thing')
 >>> mock('some', 'thing', 'else')
@@ -308,7 +311,7 @@ Calls: [call('foo', bar='baz'), call('other', bar='values')].
 
 
 
-```
+``` python
 >>> mock = Mock(return_value=None)
 >>> mock(1)
 >>> mock(2)
@@ -326,7 +329,7 @@ Calls: [call('foo', bar='baz'), call('other', bar='values')].
 
 
 
-```
+``` python
 >>> m = Mock()
 >>> m.hello.assert_not_called()
 >>> obj = m.hello()
@@ -337,7 +340,8 @@ AssertionError: Expected 'hello' to not have been called. Called 1 times.
 Calls: [call()].
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **reset_mock**(***, *return_value=False*, *side_effect=False*)
 
@@ -345,7 +349,7 @@ Calls: [call()].
 
 
 
-```
+``` python
 >>> mock = Mock(return_value=None)
 >>> mock('hello')
 >>> mock.called
@@ -383,7 +387,7 @@ False
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> attrs = {'method.return_value': 3, 'other.side_effect': KeyError}
 >>> mock.configure_mock(**attrs)
@@ -399,7 +403,7 @@ KeyError
 
 
 
-```
+``` python
 >>> attrs = {'method.return_value': 3, 'other.side_effect': KeyError}
 >>> mock = Mock(some_attribute='eggs', **attrs)
 >>> mock.some_attribute
@@ -432,7 +436,7 @@ KeyError
 
 
 
-```
+``` python
 >>> mock = Mock(return_value=None)
 >>> mock.called
 False
@@ -447,7 +451,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock(return_value=None)
 >>> mock.call_count
 0
@@ -463,7 +467,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.return_value = 'fish'
 >>> mock()
@@ -474,7 +478,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.return_value.attribute = sentinel.Attribute
 >>> mock.return_value()
@@ -486,7 +490,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock(return_value=3)
 >>> mock.return_value
 3
@@ -506,7 +510,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.side_effect = Exception('Boom!')
 >>> mock()
@@ -519,7 +523,7 @@ Exception: Boom!
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.side_effect = [3, 2, 1]
 >>> mock(), mock(), mock()
@@ -530,7 +534,7 @@ Exception: Boom!
 
 
 
-```
+``` python
 >>> mock = Mock(return_value=3)
 >>> def side_effect(*args, **kwargs):
 ...     return DEFAULT
@@ -544,7 +548,7 @@ Exception: Boom!
 
 
 
-```
+``` python
 >>> side_effect = lambda value: value + 1
 >>> mock = Mock(side_effect=side_effect)
 >>> mock(3)
@@ -557,7 +561,7 @@ Exception: Boom!
 
 
 
-```
+``` python
 >>> m = Mock(side_effect=KeyError, return_value=3)
 >>> m()
 Traceback (most recent call last):
@@ -574,7 +578,7 @@ KeyError
 
 
 
-```
+``` python
 >>> mock = Mock(return_value=None)
 >>> print(mock.call_args)
 None
@@ -611,7 +615,7 @@ call(3, 4, 5, key='fish', next='w00t!')
 
 
 
-```
+``` python
 >>> mock = Mock(return_value=None)
 >>> mock()
 >>> mock(3, 4)
@@ -631,7 +635,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.method()
 <Mock name='mock.method()' id='...'>
@@ -649,7 +653,7 @@ True
 
 
 
-```
+``` python
 >>> mock = MagicMock()
 >>> result = mock(1, 2, 3)
 >>> mock.first(a=3)
@@ -676,7 +680,7 @@ True
 
 
 
-```
+``` python
 >>> mock = MagicMock()
 >>> mock.top(a=3).bottom()
 <MagicMock name='mock.top().bottom()' id='...'>
@@ -692,7 +696,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock(spec=3)
 >>> isinstance(mock, int)
 True
@@ -702,7 +706,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.__class__ = dict
 >>> isinstance(mock, dict)
@@ -717,7 +721,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock(spec=SomeClass)
 >>> isinstance(mock, SomeClass)
 True
@@ -732,7 +736,7 @@ True
 
 
 
-```
+``` python
 >>> m = MagicMock(attribute=3, other='fish')
 >>> m.attribute
 3
@@ -744,7 +748,7 @@ True
 
 
 
-```
+``` python
 >>> attrs = {'method.return_value': 3, 'other.side_effect': KeyError}
 >>> mock = Mock(some_attribute='eggs', **attrs)
 >>> mock.some_attribute
@@ -761,7 +765,7 @@ KeyError
 
 
 
-```
+``` python
 >>> def f(a, b, c): pass
 ...
 >>> mock = Mock(spec=f)
@@ -783,7 +787,7 @@ KeyError
 
 
 
-```
+``` python
 >>> class Foo:
 ...     @property
 ...     def foo(self):
@@ -807,7 +811,7 @@ mockity-mock
 
 
 
-```
+``` python
 >>> m = MagicMock()
 >>> p = PropertyMock(return_value=3)
 >>> type(m).foo = p
@@ -824,7 +828,7 @@ mockity-mock
 
 
 
-```
+``` python
 >>> m = MagicMock()
 >>> no_attribute = PropertyMock(side_effect=AttributeError)
 >>> type(m).my_property = no_attribute
@@ -840,7 +844,7 @@ mockity-mock
 
 
 
-```
+``` python
 >>> mock = AsyncMock()
 >>> asyncio.iscoroutinefunction(mock)
 True
@@ -859,7 +863,7 @@ True
 
 
 
-```
+``` python
 >>> async def async_func(): pass
 ...
 >>> mock = MagicMock(async_func)
@@ -873,7 +877,7 @@ True
 
 
 
-```
+``` python
 >>> class ExampleClass:
 ...     def sync_foo():
 ...         pass
@@ -892,7 +896,8 @@ True
 <AsyncMock name='mock.async_foo' id='...'>
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **assert_awaited**()
 
@@ -900,7 +905,7 @@ True
 
 
 
-```
+``` python
 >>> mock = AsyncMock()
 >>> async def main(coroutine_mock):
 ...     await coroutine_mock
@@ -922,7 +927,7 @@ AssertionError: Expected mock to have been awaited.
 
 
 
-```
+``` python
 >>> mock = AsyncMock()
 >>> async def main():
 ...     await mock()
@@ -942,7 +947,7 @@ AssertionError: Expected mock to have been awaited once. Awaited 2 times.
 
 
 
-```
+``` python
 >>> mock = AsyncMock()
 >>> async def main(*args, **kwargs):
 ...     await mock(*args, **kwargs)
@@ -963,7 +968,7 @@ Actual: mock('foo', bar='bar')
 
 
 
-```
+``` python
 >>> mock = AsyncMock()
 >>> async def main(*args, **kwargs):
 ...     await mock(*args, **kwargs)
@@ -983,7 +988,7 @@ AssertionError: Expected mock to have been awaited once. Awaited 2 times.
 
 
 
-```
+``` python
 >>> mock = AsyncMock()
 >>> async def main(*args, **kwargs):
 ...     await mock(*args, **kwargs)
@@ -1007,7 +1012,7 @@ AssertionError: mock('other') await not found
 
 
 
-```
+``` python
 >>> mock = AsyncMock()
 >>> async def main(*args, **kwargs):
 ...     await mock(*args, **kwargs)
@@ -1030,7 +1035,7 @@ Actual: []
 
 
 
-```
+``` python
 >>> mock = AsyncMock()
 >>> mock.assert_not_awaited()
 ```
@@ -1045,7 +1050,7 @@ Actual: []
 
 
 
-```
+``` python
 >>> mock = AsyncMock()
 >>> async def main():
 ...     await mock()
@@ -1064,7 +1069,7 @@ Actual: []
 
 
 
-```
+``` python
 >>> mock = AsyncMock()
 >>> async def main(*args):
 ...     await mock(*args)
@@ -1084,7 +1089,7 @@ call('bar')
 
 
 
-```
+``` python
 >>> mock = AsyncMock()
 >>> async def main(*args):
 ...     await mock(*args)
@@ -1115,7 +1120,7 @@ call('bar')
 
 
 
-```
+``` python
 >>> mock = ThreadingMock()
 >>> thread = threading.Thread(target=mock)
 >>> thread.start()
@@ -1131,7 +1136,7 @@ call('bar')
 
 
 
-```
+``` python
 >>> mock = ThreadingMock()
 >>> thread = threading.Thread(target=mock, args=("arg1", "arg2",), kwargs={"arg": "thing"})
 >>> thread.start()
@@ -1143,7 +1148,8 @@ call('bar')
 
 ​	创建 [`ThreadingMock`](https://docs.python.org/zh-cn/3.13/library/unittest.mock.html#unittest.mock.ThreadingMock) 实例的全局默认超时秒数。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ### 调用
 
@@ -1157,7 +1163,7 @@ call('bar')
 
 
 
-```
+``` python
 >>> m = MagicMock(side_effect=IndexError)
 >>> m(1, 2, 3)
 Traceback (most recent call last):
@@ -1178,7 +1184,7 @@ KeyError: 'Bang!'
 
 
 
-```
+``` python
 >>> def side_effect(value):
 ...     return value + 1
 ...
@@ -1195,7 +1201,7 @@ KeyError: 'Bang!'
 
 
 
-```
+``` python
 >>> m = MagicMock()
 >>> def side_effect(*args, **kwargs):
 ...     return m.return_value
@@ -1216,7 +1222,7 @@ KeyError: 'Bang!'
 
 
 
-```
+``` python
 >>> m = MagicMock(return_value=6)
 >>> def side_effect(*args, **kwargs):
 ...     return 3
@@ -1233,7 +1239,7 @@ KeyError: 'Bang!'
 
 
 
-```
+``` python
 >>> m = MagicMock(side_effect=[1, 2, 3])
 >>> m()
 1
@@ -1251,7 +1257,7 @@ StopIteration
 
 
 
-```
+``` python
 >>> iterable = (33, ValueError, 66)
 >>> m = MagicMock(side_effect=iterable)
 >>> m()
@@ -1276,7 +1282,7 @@ ValueError
 
 
 
-```
+``` python
 >>> mock = MagicMock()
 >>> hasattr(mock, 'm')
 True
@@ -1296,7 +1302,7 @@ AttributeError: f
 
 
 
-```
+``` python
 >>> mock = MagicMock()
 >>> mock.configure_mock(name='my_name')
 >>> mock.name
@@ -1307,7 +1313,7 @@ AttributeError: f
 
 
 
-```
+``` python
 >>> mock = MagicMock()
 >>> mock.name = "foo"
 ```
@@ -1318,7 +1324,7 @@ AttributeError: f
 
 
 
-```
+``` python
 >>> parent = MagicMock()
 >>> child1 = MagicMock(return_value=None)
 >>> child2 = MagicMock(return_value=None)
@@ -1334,7 +1340,7 @@ AttributeError: f
 
 
 
-```
+``` python
 >>> mock = MagicMock()
 >>> not_a_child = MagicMock(name='not-a-child')
 >>> mock.attribute = not_a_child
@@ -1348,7 +1354,7 @@ AttributeError: f
 
 
 
-```
+``` python
 >>> thing1 = object()
 >>> thing2 = object()
 >>> parent = MagicMock()
@@ -1415,7 +1421,7 @@ AttributeError: f
 
 
 
-```
+``` python
 >>> @patch('__main__.SomeClass')
 ... def function(normal_argument, mock_class):
 ...     print(mock_class is SomeClass)
@@ -1432,7 +1438,7 @@ True
 
 
 
-```
+``` python
 >>> class Class:
 ...     def method(self):
 ...         pass
@@ -1449,7 +1455,7 @@ True
 
 
 
-```
+``` python
 >>> Original = Class
 >>> patcher = patch('__main__.Class', spec=True)
 >>> MockClass = patcher.start()
@@ -1462,7 +1468,7 @@ True
 
 
 
-```
+``` python
 >>> thing = object()
 >>> with patch('__main__.thing', new_callable=NonCallableMock) as mock_thing:
 ...     assert thing is mock_thing
@@ -1477,7 +1483,7 @@ TypeError: 'NonCallableMock' object is not callable
 
 
 
-```
+``` python
 >>> from io import StringIO
 >>> def foo():
 ...     print('Something')
@@ -1494,7 +1500,7 @@ TypeError: 'NonCallableMock' object is not callable
 
 
 
-```
+``` python
 >>> patcher = patch('__main__.thing', first='one', second='two')
 >>> mock_thing = patcher.start()
 >>> mock_thing.first
@@ -1507,7 +1513,7 @@ TypeError: 'NonCallableMock' object is not callable
 
 
 
-```
+``` python
 >>> config = {'method.return_value': 3, 'other.side_effect': KeyError}
 >>> patcher = patch('__main__.thing', **config)
 >>> mock_thing = patcher.start()
@@ -1523,7 +1529,7 @@ KeyError
 
 
 
-```
+``` python
 >>> @patch('sys.non_existing_attribute', 42)
 ... def test():
 ...     assert sys.non_existing_attribute == 42
@@ -1538,7 +1544,7 @@ AttributeError: <module 'sys' (built-in)> does not have the attribute 'non_exist
 
 
 
-```
+``` python
 >>> @patch('sys.non_existing_attribute', 42, create=True)
 ... def test(mock_stdout):
 ...     assert sys.non_existing_attribute == 42
@@ -1564,7 +1570,7 @@ AttributeError: <module 'sys' (built-in)> does not have the attribute 'non_exist
 
 
 
-```
+``` python
 >>> @patch.object(SomeClass, 'class_method')
 ... def test(mock_method):
 ...     SomeClass.class_method(3)
@@ -1597,7 +1603,7 @@ AttributeError: <module 'sys' (built-in)> does not have the attribute 'non_exist
 
 
 
-```
+``` python
 >>> foo = {}
 >>> @patch.dict(foo, {'newkey': 'newvalue'})
 ... def test():
@@ -1611,7 +1617,7 @@ AttributeError: <module 'sys' (built-in)> does not have the attribute 'non_exist
 
 
 
-```
+``` python
 >>> import os
 >>> import unittest
 >>> from unittest.mock import patch
@@ -1627,7 +1633,7 @@ AttributeError: <module 'sys' (built-in)> does not have the attribute 'non_exist
 
 
 
-```
+``` python
 >>> foo = {}
 >>> with patch.dict(foo, {'newkey': 'newvalue'}) as patched_foo:
 ...     assert foo == {'newkey': 'newvalue'}
@@ -1641,7 +1647,7 @@ AttributeError: <module 'sys' (built-in)> does not have the attribute 'non_exist
 
 
 
-```
+``` python
 >>> import os
 >>> with patch.dict('os.environ', {'newkey': 'newvalue'}):
 ...     print(os.environ['newkey'])
@@ -1654,7 +1660,7 @@ newvalue
 
 
 
-```
+``` python
 >>> mymodule = MagicMock()
 >>> mymodule.function.return_value = 'fish'
 >>> with patch.dict('sys.modules', mymodule=mymodule):
@@ -1668,7 +1674,7 @@ newvalue
 
 
 
-```
+``` python
 >>> class Container:
 ...     def __init__(self):
 ...         self.values = {}
@@ -1712,7 +1718,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 
 
-```
+``` python
 >>> thing = object()
 >>> other = object()
 
@@ -1728,7 +1734,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 
 
-```
+``` python
 >>> @patch('sys.exit')
 ... @patch.multiple('__main__', thing=DEFAULT, other=DEFAULT)
 ... def test_function(mock_exit, other, thing):
@@ -1743,7 +1749,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 
 
-```
+``` python
 >>> with patch.multiple('__main__', thing=DEFAULT, other=DEFAULT) as values:
 ...     assert 'other' in repr(values['other'])
 ...     assert 'thing' in repr(values['thing'])
@@ -1764,7 +1770,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 
 
-```
+``` python
 >>> patcher = patch('package.module.ClassName')
 >>> from package import module
 >>> original = module.ClassName
@@ -1780,7 +1786,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 
 
-```
+``` python
 >>> class MyTest(unittest.TestCase):
 ...     def setUp(self):
 ...         self.patcher1 = patch('package.module.Class1')
@@ -1807,7 +1813,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 
 
-```
+``` python
 >>> class MyTest(unittest.TestCase):
 ...     def setUp(self):
 ...         patcher = patch('package.module.Class')
@@ -1835,7 +1841,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 
 
-```
+``` python
 >>> @patch('__main__.ord')
 ... def test(mock_ord):
 ...     mock_ord.return_value = 101
@@ -1855,7 +1861,7 @@ with patch.multiple(settings, FIRST_PATCH='one', SECOND_PATCH='two'):
 
 
 
-```
+``` python
 >>> patch.TEST_PREFIX = 'foo'
 >>> value = 3
 >>>
@@ -1883,7 +1889,7 @@ not three
 
 
 
-```
+``` python
 >>> @patch.object(SomeClass, 'class_method')
 ... @patch.object(SomeClass, 'static_method')
 ... def test(mock1, mock2):
@@ -1951,7 +1957,7 @@ b.py
 
 
 
-```
+``` python
 >>> def __str__(self):
 ...     return 'fooble'
 ...
@@ -1963,7 +1969,7 @@ b.py
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.__str__ = Mock()
 >>> mock.__str__.return_value = 'fooble'
@@ -1973,7 +1979,7 @@ b.py
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.__iter__ = Mock(return_value=iter([]))
 >>> list(mock)
@@ -1984,7 +1990,7 @@ b.py
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.__enter__ = Mock(return_value='foo')
 >>> mock.__exit__ = Mock(return_value=False)
@@ -2050,7 +2056,7 @@ b.py
 
 
 
-```
+``` python
 >>> mock = MagicMock()
 >>> mock[3] = 'fish'
 >>> mock.__setitem__.assert_called_with(3, 'fish')
@@ -2085,7 +2091,7 @@ b.py
 
 
 
-```
+``` python
 >>> mock = MagicMock()
 >>> int(mock)
 1
@@ -2101,7 +2107,7 @@ False
 
 
 
-```
+``` python
 >>> MagicMock() == 3
 False
 >>> MagicMock() != 3
@@ -2116,7 +2122,7 @@ True
 
 
 
-```
+``` python
 >>> mock = MagicMock()
 >>> mock.__iter__.return_value = ['a', 'b', 'c']
 >>> list(mock)
@@ -2129,7 +2135,7 @@ True
 
 
 
-```
+``` python
 >>> mock.__iter__.return_value = iter(['a', 'b', 'c'])
 >>> list(mock)
 ['a', 'b', 'c']
@@ -2175,7 +2181,7 @@ True
 
 
 
-```
+``` python
 >>> real = ProductionClass()
 >>> real.method = Mock(name="method")
 >>> real.method.return_value = sentinel.some_object
@@ -2199,7 +2205,7 @@ sentinel.some_object
 
 
 
-```
+``` python
 >>> m = MagicMock(return_value=None)
 >>> m(1, 2, a='foo', b='bar')
 >>> m()
@@ -2217,7 +2223,7 @@ True
 
 
 
-```
+``` python
 >>> m = MagicMock()
 >>> m(1).method(arg='foo').other('bar')(2.0)
 <MagicMock name='mock().method().other()()' id='...'>
@@ -2239,7 +2245,7 @@ True
 
 
 
-```
+``` python
 >>> m = MagicMock(return_value=None)
 >>> m(1, 2, 3, arg='one', arg2='two')
 >>> kall = m.call_args
@@ -2255,7 +2261,7 @@ True
 
 
 
-```
+``` python
 >>> m = MagicMock()
 >>> m.foo(4, 5, 6, arg='two', arg2='three')
 <MagicMock name='mock.foo()' id='...'>
@@ -2299,7 +2305,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock(return_value=None)
 >>> mock('foo', bar=object())
 >>> mock.assert_called_once_with('foo', bar=ANY)
@@ -2309,7 +2315,7 @@ True
 
 
 
-```
+``` python
 >>> m = MagicMock(return_value=None)
 >>> m(1)
 >>> m(1, 2)
@@ -2338,7 +2344,7 @@ class TestStringMethods(unittest.TestCase):
 
 
 
-```
+``` python
 >>> dir(Mock())
 ['assert_any_call',
  'assert_called',
@@ -2362,7 +2368,7 @@ class TestStringMethods(unittest.TestCase):
 
 
 
-```
+``` python
 >>> from unittest import mock
 >>> mock.FILTER_DIR = False
 >>> dir(mock.Mock())
@@ -2407,7 +2413,7 @@ with open('/some/path', 'w') as f:
 
 
 
-```
+``` python
 >>> m = mock_open()
 >>> with patch('__main__.open', m):
 ...     with open('foo', 'w') as h:
@@ -2427,7 +2433,7 @@ with open('/some/path', 'w') as f:
 
 
 
-```
+``` python
 >>> with patch('__main__.open', mock_open(read_data='bibble')) as m:
 ...     with open('foo') as h:
 ...         result = h.read()
@@ -2454,7 +2460,7 @@ with open('/some/path', 'w') as f:
 
 
 
-```
+``` python
 >>> from urllib import request
 >>> mock = Mock(spec=request.Request)
 >>> mock.assret_called_with  # Intentional typo!
@@ -2467,7 +2473,7 @@ AttributeError: Mock object has no attribute 'assret_called_with'
 
 
 
-```
+``` python
 >>> mock.has_data()
 <mock.Mock object at 0x...>
 >>> mock.has_data.assret_called_with()  # Intentional typo!
@@ -2479,7 +2485,7 @@ AttributeError: Mock object has no attribute 'assret_called_with'
 
 
 
-```
+``` python
 >>> from urllib import request
 >>> patcher = patch('__main__.request', autospec=True)
 >>> mock_request = patcher.start()
@@ -2493,7 +2499,7 @@ True
 
 
 
-```
+``` python
 >>> req = request.Request()
 Traceback (most recent call last):
  ...
@@ -2504,7 +2510,7 @@ TypeError: <lambda>() takes at least 2 arguments (1 given)
 
 
 
-```
+``` python
 >>> req = request.Request('foo')
 >>> req
 <NonCallableMagicMock name='request.Request()' spec='Request' id='...'>
@@ -2514,7 +2520,7 @@ TypeError: <lambda>() takes at least 2 arguments (1 given)
 
 
 
-```
+``` python
 >>> req.add_header('spam', 'eggs')
 <MagicMock name='request.Request().add_header()' id='...'>
 >>> req.add_header.assret_called_with  # Intentional typo!
@@ -2530,7 +2536,7 @@ AttributeError: Mock object has no attribute 'assret_called_with'
 
 
 
-```
+``` python
 >>> from urllib import request
 >>> mock_request = create_autospec(request)
 >>> mock_request.Request('foo', 'bar')
@@ -2543,7 +2549,7 @@ AttributeError: Mock object has no attribute 'assret_called_with'
 
 
 
-```
+``` python
 >>> class Something:
 ...   def __init__(self):
 ...     self.a = 33
@@ -2561,7 +2567,7 @@ AttributeError: Mock object has no attribute 'a'
 
 
 
-```
+``` python
 >>> with patch('__main__.Something', autospec=True):
 ...   thing = Something()
 ...   thing.a = 33
@@ -2572,7 +2578,7 @@ AttributeError: Mock object has no attribute 'a'
 
 
 
-```
+``` python
 >>> with patch('__main__.Something', autospec=True, spec_set=True):
 ...   thing = Something()
 ...   thing.a = 33
@@ -2593,7 +2599,7 @@ class Something:
 
 
 
-```
+``` python
 >>> class Something:
 ...     member = None
 ...
@@ -2606,7 +2612,7 @@ class Something:
 
 
 
-```
+``` python
 >>> class Something:
 ...   def __init__(self):
 ...     self.a = 33
@@ -2634,7 +2640,7 @@ class Something:
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.submock.attribute1 = 2
 >>> mock.not_submock = mock.Mock(name="sample_name")
@@ -2644,7 +2650,8 @@ class Something:
 >>> mock.not_submock.attribute2  # This won't raise.
 ```
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## Order of precedence of `side_effect`, `return_value` and *wraps*
 
@@ -2658,7 +2665,7 @@ class Something:
 
 
 
-```
+``` python
 >>> from unittest.mock import Mock
 >>> class Order:
 ...     @staticmethod
@@ -2676,7 +2683,7 @@ class Something:
 
 
 
-```
+``` python
 >>> order_mock.get_value.side_effect = None
 >>> order_mock.get_value()
 'second'
@@ -2686,7 +2693,7 @@ class Something:
 
 
 
-```
+``` python
 >>> from unittest.mock import DEFAULT
 >>> order_mock.get_value.side_effect = [DEFAULT]
 >>> order_mock.get_value()
@@ -2697,7 +2704,7 @@ class Something:
 
 
 
-```
+``` python
 >>> order_mock = Mock(spec=Order, wraps=Order)
 >>> order_mock.return_value
 sentinel.DEFAULT
@@ -2711,7 +2718,7 @@ sentinel.DEFAULT
 
 
 
-```
+``` python
 >>> order_mock_instance = order_mock()
 >>> isinstance(order_mock_instance, Order)
 True
@@ -2721,7 +2728,7 @@ True
 
 
 
-```
+``` python
 >>> order_mock.get_value.return_value = DEFAULT
 >>> order_mock.get_value()
 'third'
@@ -2729,7 +2736,7 @@ True
 
 
 
-```
+``` python
 >>> order_mock.get_value.return_value = "second"
 >>> order_mock.get_value()
 'second'
@@ -2739,7 +2746,7 @@ True
 
 
 
-```
+``` python
 >>> order_mock.get_value.return_value = None
 >>> order_mock.get_value() is None
 True
@@ -2749,7 +2756,7 @@ True
 
 
 
-```
+``` python
 >>> order_mock = Mock(spec=Order, wraps=Order,
 ...                   **{"get_value.side_effect": ["first"],
 ...                      "get_value.return_value": "second"}
@@ -2769,7 +2776,7 @@ True
 
 
 
-```
+``` python
 >>> order_mock = Mock(spec=Order, wraps=Order)
 >>> order_mock.get_value.side_effect = ["first side effect value",
 ...                                     "another side effect value"]
@@ -2778,7 +2785,7 @@ True
 
 
 
-```
+``` python
 >>> order_mock.get_value()
 'first side effect value'
 >>> order_mock.get_value()
@@ -2787,7 +2794,7 @@ True
 
 
 
-```
+``` python
 >>> order_mock.get_value()
 Traceback (most recent call last):
  ...

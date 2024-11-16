@@ -50,13 +50,15 @@ draft = false
 
 ​	为 *year* 年 *month* 月返回一个与 [`itermonthdates()`](https://docs.python.org/zh-cn/3.13/library/calendar.html#calendar.Calendar.itermonthdates) 类似的迭代器，但不会受 [`datetime.date`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.date) 范围的限制。迭代器的元素为一个由年、月、日组成的元组。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **itermonthdays4**(*year*, *month*)
 
 ​	为 *year* 年 *month* 月返回一个与 [`itermonthdates()`](https://docs.python.org/zh-cn/3.13/library/calendar.html#calendar.Calendar.itermonthdates) 类似的迭代器，但不会受 [`datetime.date`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.date) 范围的限制。迭代器的元素为一个由年、月、日和代表星期几的数字组成的元组。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **monthdatescalendar**(*year*, *month*)
 
@@ -148,37 +150,43 @@ cssclasses = ["mon text-bold", "tue", "wed", "thu", "fri", "sat", "sun red"]
 
 ​	工作日的 CSS 类在上个月或下个月发生。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **cssclasses_weekday_head**
 
 ​	用于标题行中的工作日名称的 CSS 类 列表。默认值与 [`cssclasses`](https://docs.python.org/zh-cn/3.13/library/calendar.html#calendar.HTMLCalendar.cssclasses) 相同。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **cssclass_month_head**
 
 ​	月份的头 CSS 类（由 [`formatmonthname()`](https://docs.python.org/zh-cn/3.13/library/calendar.html#calendar.HTMLCalendar.formatmonthname) 使用）。默认值为 `"month"` 。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **cssclass_month**
 
 ​	某个月的月历的 CSS 类（由 [`formatmonth()`](https://docs.python.org/zh-cn/3.13/library/calendar.html#calendar.HTMLCalendar.formatmonth) 使用）。默认值为 `"month"` 。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **cssclass_year**
 
 ​	某年的年历的 CSS 类（由 [`formatyear()`](https://docs.python.org/zh-cn/3.13/library/calendar.html#calendar.HTMLCalendar.formatyear) 使用）。默认值为 `"year"` 。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **cssclass_year_head**
 
 ​	年历的·表头 CSS 类（由 [`formatyear()`](https://docs.python.org/zh-cn/3.13/library/calendar.html#calendar.HTMLCalendar.formatyear) 使用）。默认值为 `"year"` 。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ​	需要注意的是，尽管上面命名的样式类都是单独出现的(如： `cssclass_month` `cssclass_noday`), 但我们可以使用空格将样式类列表中的多个元素分隔开，例如：
 
@@ -280,7 +288,7 @@ calendar.setfirstweekday(calendar.SUNDAY)
 
 
 
-```
+``` python
 >>> import calendar
 >>> list(calendar.day_name)
 ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
@@ -292,7 +300,7 @@ calendar.setfirstweekday(calendar.SUNDAY)
 
 
 
-```
+``` python
 >>> import calendar
 >>> list(calendar.day_abbr)
 ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -314,13 +322,15 @@ calendar.setfirstweekday(calendar.SUNDAY)
 
 ​	星期内每日序号的别名，其中 `MONDAY` 是 `0` 而 `SUNDAY` 是 `6`。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## *class* calendar.**Day**
 
 ​	将星期内的每一天定义为整数常量的枚举。 该枚举的成员以 [`MONDAY`](https://docs.python.org/zh-cn/3.13/library/calendar.html#calendar.MONDAY) 至 [`SUNDAY`](https://docs.python.org/zh-cn/3.13/library/calendar.html#calendar.SUNDAY) 的形式导出到模块作用域。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## calendar.**month_name**
 
@@ -328,7 +338,7 @@ calendar.setfirstweekday(calendar.SUNDAY)
 
 
 
-```
+``` python
 >>> import calendar
 >>> list(calendar.month_name)
 ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -340,7 +350,7 @@ calendar.setfirstweekday(calendar.SUNDAY)
 
 
 
-```
+``` python
 >>> import calendar
 >>> list(calendar.month_abbr)
 ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -372,13 +382,15 @@ calendar.setfirstweekday(calendar.SUNDAY)
 
 ​	一年中各个月份的别名，其中 `JANUARY` 是 `1` 而 `DECEMBER` 是 `12`。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## *class* calendar.**Month**
 
 ​	将一年中各个月份定义为整数常量的枚举。 该枚举的成员以 [`JANUARY`](https://docs.python.org/zh-cn/3.13/library/calendar.html#calendar.JANUARY) 至 [`DECEMBER`](https://docs.python.org/zh-cn/3.13/library/calendar.html#calendar.DECEMBER) 的形式导出到模块作用域。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 [`calendar`](https://docs.python.org/zh-cn/3.13/library/calendar.html#module-calendar) 模块定义了以下异常:
 
@@ -412,7 +424,8 @@ calendar.setfirstweekday(calendar.SUNDAY)
 
 ## 命令行用法
 
-*Added in version 2.5.*
+> Added in version 2.5.
+>
 
 [`calendar`](https://docs.python.org/zh-cn/3.13/library/calendar.html#module-calendar) 模块可以作为脚本从命令行执行以实现交互式地打印日历。
 
@@ -486,7 +499,8 @@ Mo Tu We Th Fr Sa Su      Mo Tu We Th Fr Sa Su      Mo Tu We Th Fr Sa Su
 
 ​	每个星期的开始星期序号。 必须为 0 (星期一) 到 6 (星期日) 之间的数字。 默认为 0。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **year**
 

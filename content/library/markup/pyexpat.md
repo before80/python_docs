@@ -133,13 +133,15 @@ elem2
 
 ​	请注意 [`SetReparseDeferralEnabled()`](https://docs.python.org/zh-cn/3.13/library/pyexpat.html#xml.parsers.expat.xmlparser.SetReparseDeferralEnabled) 已作为安全修正被向下移植到一些较早的 CPython 发布版。 如果在运行于多个 Python 版本的代码中要用到 [`SetReparseDeferralEnabled()`](https://docs.python.org/zh-cn/3.13/library/pyexpat.html#xml.parsers.expat.xmlparser.SetReparseDeferralEnabled) 请使用 [`hasattr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#hasattr) 来检查其可用性。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## xmlparser.**GetReparseDeferralEnabled**()
 
 ​	返回当前是否为给定的 Expat 解析器实例启用了重新解析延迟。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 `xmlparser` 对象具有下列属性:
 
@@ -419,13 +421,15 @@ End element: parent
 
 ​	将字符串描述映射到其错误代码的字典。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## xml.parsers.expat.errors.**messages**
 
 ​	将数字形式的错误代码映射到其字符串描述的字典。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## xml.parsers.expat.errors.**XML_ERROR_ASYNC_ENTITY**
 

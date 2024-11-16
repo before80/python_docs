@@ -146,7 +146,8 @@ comp_if       ::=  "if" or_test [comp_iter]
 
 ​	如果一个推导式包含 `async for` 子句，或者如果它在最左侧的 `for` 子句中可迭代对象表达式以外的任何地方包含 `await` 表达式或其他异步推导式，那它就被称为 *asynchronous comprehension*。 异步推导式可以挂起它所在的协程函数的执行。 另请参阅 [**PEP 530**](https://peps.python.org/pep-0530/)。
 
-*Added in version 3.6:* 引入了异步推导式。
+> Added in version 3.6:
+> 引入了异步推导式。
 
 *在 3.8 版本发生变更:* `yield` 和 `yield from` 在隐式嵌套的作用域中已被禁用。
 
@@ -197,7 +198,8 @@ dict_comprehension ::=  expression ":" expression comp_for
 
 ​	双星号 `**` 表示 *字典拆包*。 它的操作数必须是一个 [mapping](https://docs.python.org/zh-cn/3.13/glossary.html#term-mapping)。 每个映射项会被加入到新的字典。 后续的值会替换先前的字典项和先前的字典拆包所设置的值。
 
-*Added in version 3.5:* 拆包到字典显示，最初由 [**PEP 448**](https://peps.python.org/pep-0448/) 提出。
+> Added in version 3.5:* 拆包到字典显示，最初由 [**PEP 448*
+>](https://peps.python.org/pep-0448/) 提出。
 
 ​	字典推导式与列表和集合推导式有所不同，它需要以冒号分隔的两个表达式，后面带上标准的 "for" 和 "if" 子句。 当推导式被执行时，作为结果的键和值元素会按它们的产生顺序被加入新的字典。
 
@@ -225,7 +227,8 @@ generator_expression ::=  "(" expression comp_for ")"
 
 ​	如果生成器表达式包含 `async for` 子句或 [`await`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#await) 表达式，则称为 *异步生成器表达式*。 异步生成器表达式会返回一个新的异步生成器对象，此对象属于异步迭代器 (参见 [异步迭代器](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#async-iterators))。
 
-*Added in version 3.6:* 引入了异步生成器表达式。
+> Added in version 3.6:
+> 引入了异步生成器表达式。
 
 *在 3.7 版本发生变更:* 在 Python 3.7 之前，异步生成器表达式只能在 [`async def`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#async-def) 协和中出现。 从 3.7 开始，任何函数都可以使用异步生成器表达式。
 
@@ -333,7 +336,7 @@ async def agen(): # 定义一个异步生成器函数
 
 
 
-```
+``` python
 >>> def echo(value=None):
 ...     print("Execution starts when 'next()' is called for the first time.")
 ...     try:
@@ -519,7 +522,7 @@ keyword_item         ::=  identifier "=" expression
 
 
 
-```
+``` python
 >>> def f(a, b):
 ...     print(a, b)
 ...
@@ -577,7 +580,8 @@ TypeError: f() got multiple values for keyword argument 'a'
 await_expr ::=  "await" primary
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 
 
@@ -638,7 +642,8 @@ a_expr ::=  m_expr | a_expr "+" m_expr | a_expr "-" m_expr
 
 ​	此运算可使用特殊的 [`__matmul__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__matmul__) 和 [`__rmatmul__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__rmatmul__) 方法来自定义。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ​	运算符 `/` (除) 和 `//` (整除) 将输出其参数的商。 两个数字参数将先被转换为相同类型。 整数相除会输出一个 float 值，整数相整除的结果仍是整数；整除的结果就是使用 'floor' 函数进行算术除法的结果。 除以零的运算将引发 [`ZeroDivisionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ZeroDivisionError) 异常。
 
@@ -871,7 +876,8 @@ while chunk := file.read(9000):
 
 ​	赋值表达式在被用作表达式语句及在被用作切片、条件表达式、lambda 表达式、关键字参数和推导式中的 if 表达式以及在 `assert`, `with` 和 `assignment` 语句中的子表达式时必须用圆括号括起来。 在其可使用的其他场合，圆括号则不是必须的，包括在 `if` 和 `while` 语句中。
 
-*Added in version 3.8:* 请参阅 [**PEP 572**](https://peps.python.org/pep-0572/) 了解有关赋值表达式的详情。
+> Added in version 3.8:* 请参阅 [**PEP 572*
+>](https://peps.python.org/pep-0572/) 了解有关赋值表达式的详情。
 
 
 
@@ -922,9 +928,11 @@ yield_list               ::=  expression_list | starred_expression "," [starred_
 
 ​	一个星号 `*` 表示 *可迭代拆包*。 其操作数必须为一个 [iterable](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterable)。 该可迭代对象将被拆解为迭代项的序列，并被包含于在拆包位置上新建的元组、列表或集合之中。
 
-*Added in version 3.5:* 表达式列表中的可迭代对象拆包，最初由 [**PEP 448**](https://peps.python.org/pep-0448/) 提出。
+> Added in version 3.5:* 表达式列表中的可迭代对象拆包，最初由 [**PEP 448*
+>](https://peps.python.org/pep-0448/) 提出。
 
-*Added in version 3.11:* 一个表达式列表中的任何条目都可以带星号。 参见 [**PEP 646**](https://peps.python.org/pep-0646/)。
+> Added in version 3.11:* 一个表达式列表中的任何条目都可以带星号。 参见 [**PEP 646*
+>](https://peps.python.org/pep-0646/)。
 
 ​	末尾的逗号仅在创建单条目元组，比如 `1,` 时才是必需的；在所有其他情况下它都是可选项。 没有末尾逗号的单独表达式不会创建一个元组，而是产生该表达式的值。 （要创建一个空元组，应使用一对内容为空的圆括号: `()`。）
 

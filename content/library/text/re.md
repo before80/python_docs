@@ -84,7 +84,8 @@ draft = false
 
 ​	类似于 `'*'`, `'+'` 和 `'?'` 数量限定符，添加了 `'+'` 的形式也将匹配尽可能多的次数。 但是，不同于真正的贪婪型数量限定符，这些形式在之后的表达式匹配失败时不允许反向追溯。 这些形式被称为 *占有型* 数量限定符。 例如，`a*a` 将匹配 `'aaaa'` 因为 `a*` 将匹配所有的 4 个 `'a'`，但是，当遇到最后一个 `'a'` 时，表达式将执行反向追溯以便最终 `a*` 最后变为匹配总计 3 个 `'a'`，而第四个 `'a'` 将由最后一个 `'a'` 来匹配。 然而，当使用 `a*+a` 时如果要匹配 `'aaaa'`，`a*+` 将匹配所有的 4 个 `'a'`，但是在最后一个 `'a'` 无法找到更多字符来匹配时，表达式将无法被反向追溯并将因此匹配失败。 `x*+`, `x++` 和 `x?+` 分别等价于 `(?>x*)`, `(?>x+)` 和 `(?>x?)`。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## `{m}`
 
@@ -102,7 +103,8 @@ draft = false
 
 ​	将导致结果 RE 匹配之前 RE 的 *m* 至 *n* 次重复，尝试匹配尽可能多的重复而 *不会* 建立任何反向追溯点。 这是上述数量限定符的占有型版本。 例如，在 6 个字符的字符串 `'aaaaaa'` 上，`a{3,5}+aa` 将尝试匹配 5 个 `'a'` 字符，然后，要求再有 2 个 `'a'`，这将需要比可用的更多的字符因而会失败，而 `a{3,5}aa` 的匹配将使 `a{3,5}` 先捕获 5 个，然后通过反向追溯再匹配 4 个 `'a'`，然后用模式中最后的 `aa` 来匹配最后的 2 个 `'a'`。 `x{m,n}+` 就等同于 `(?>x{m,n})`。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## `\`
 
@@ -176,7 +178,8 @@ draft = false
 
 ​	字母 `'a'`, `'L'` 和 `'u'` 在用作内联旗标时是互斥的，所以它们不能相互组合或者带 `'-'`。 相反，当它们中的某一个出现于内联的分组时，它将覆盖外层分组中匹配的模式。 在 Unicode 模式中 `(?a:...)` 将切换至仅限 ASCII 匹配，而 `(?u:...)` 将切换至 Unicode 匹配（默认）。 在字节串模式中 `(?L:...)` 将切换为基于语言区域的匹配，而 `(?a:...)` 将切换为仅限 ASCII 匹配（默认）。 这种覆盖将只在内联分组范围内生效，而在分组之外将恢复为原始的匹配模式。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 *在 3.7 版本发生变更:* 符号 `'a'`, `'L'` 和 `'u'` 同样可以用在一个组合内。
 
@@ -184,7 +187,8 @@ draft = false
 
 ​	尝试匹配 `...` 就像它是一个单独的正则表达式，如果匹配成功，则继续匹配在它之后的剩余表达式。 如果之后的表达式匹配失败，则栈只能回溯到 `(?>...)` *之前* 的点，因为一旦退出，这个被称为 *原子化分组* 的表达式将会丢弃其自身所有的栈点位。 因此，`(?>.*).` 将永远不会匹配任何东西因为首先 `.*` 将匹配所有可能的字符，然后，由于没有任何剩余的字符可供匹配，最后的 `.` 将匹配失败。 由于原子化分组中没有保存任何栈点位，并且在它之前也没有任何栈点位，因此整个表达式将匹配失败。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## `(?P<name>…)`
 
@@ -222,7 +226,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import re
 >>> m = re.search('(?<=abc)def', 'abcdef')
 >>> m.group(0)
@@ -233,7 +237,7 @@ draft = false
 
 
 
-```
+``` python
 >>> m = re.search(r'(?<=-)\w+', 'spam-egg')
 >>> m.group(0)
 'egg'
@@ -379,7 +383,8 @@ draft = false
 
 ​	包含以下列出的正则表达式选项的 [`enum.IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 类。
 
-*Added in version 3.11:* - added to `__all__`
+> Added in version 3.11:
+> - added to `__all__`
 
 ## re.**A**
 
@@ -446,7 +451,8 @@ def myfunc(text, flag=re.NOFLAG):
     return re.match(text, flag)
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## re.**S**
 
@@ -532,7 +538,8 @@ result = re.match(pattern, string)
 
 ​	表达式的行为可通过指定 *flags* 值来修改。 值可以是任意 [flags](https://docs.python.org/zh-cn/3.13/library/re.html#flags) 变量，可使用按位 OR (`|` 运算符) 进行组合。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## re.**split**(*pattern*, *string*, *maxsplit=0*, *flags=0*)
 
@@ -540,7 +547,7 @@ result = re.match(pattern, string)
 
 
 
-```
+``` python
 >>> re.split(r'\W+', 'Words, words, words.')
 ['Words', 'words', 'words', '']
 >>> re.split(r'(\W+)', 'Words, words, words.')
@@ -555,7 +562,7 @@ result = re.match(pattern, string)
 
 
 
-```
+``` python
 >>> re.split(r'(\W+)', '...words, words...')
 ['', '...', 'words', ', ', 'words', '...', '']
 ```
@@ -566,7 +573,7 @@ result = re.match(pattern, string)
 
 
 
-```
+``` python
 >>> re.split(r'\b', 'Words, words, words.')
 ['', 'Words', ', ', 'words', ', ', 'words', '.']
 >>> re.split(r'\W*', '...words...')
@@ -591,7 +598,7 @@ result = re.match(pattern, string)
 
 
 
-```
+``` python
 >>> re.findall(r'\bf[a-z]*', 'which foot or hand fell fastest')
 ['foot', 'fell', 'fastest']
 >>> re.findall(r'(\w+)=(\d+)', 'set width=20 and height=10')
@@ -616,7 +623,7 @@ result = re.match(pattern, string)
 
 
 
-```
+``` python
 >>> re.sub(r'def\s+([a-zA-Z_][a-zA-Z_0-9]*)\s*\(\s*\):',
 ...        r'static PyObject*\npy_\1(void)\n{',
 ...        'def myfunc():')
@@ -627,7 +634,7 @@ result = re.match(pattern, string)
 
 
 
-```
+``` python
 >>> def dashrepl(matchobj):
 ...     if matchobj.group(0) == '-': return ' '
 ...     else: return '-'
@@ -670,7 +677,7 @@ result = re.match(pattern, string)
 
 
 
-```
+``` python
 >>> print(re.escape('https://www.python.org'))
 https://www\.python\.org
 
@@ -687,7 +694,7 @@ https://www\.python\.org
 
 
 
-```
+``` python
 >>> digits_re = r'\d+'
 >>> sample = '/usr/sbin/sendmail - 0 errors, 12 warnings'
 >>> print(re.sub(digits_re, digits_re.replace('\\', r'\\'), sample))
@@ -752,7 +759,7 @@ https://www\.python\.org
 
 
 
-```
+``` python
 >>> pattern = re.compile("d")
 >>> pattern.search("dog")     # 在索引0处匹配
 <re.Match object; span=(0, 1), match='d'>
@@ -767,7 +774,7 @@ https://www\.python\.org
 
 
 
-```
+``` python
 >>> pattern = re.compile("o")
 >>> pattern.match("dog")      # No match as "o" is not at the start of "dog".
 >>> pattern.match("dog", 1)   # Match as "o" is the 2nd character of "dog".
@@ -784,7 +791,7 @@ https://www\.python\.org
 
 
 
-```
+``` python
 >>> pattern = re.compile("o[gh]")
 >>> pattern.fullmatch("dog")      # No match as "o" is not at the start of "dog".
 >>> pattern.fullmatch("ogre")     # No match as not the full string matches.
@@ -792,7 +799,8 @@ https://www\.python\.org
 <re.Match object; span=(1, 3), match='og'>
 ```
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## Pattern.**split**(*string*, *maxsplit=0*)
 
@@ -862,7 +870,7 @@ if match:
 
 
 
-```
+``` python
 >>> m = re.match(r"(\w+) (\w+)", "Isaac Newton, physicist")
 >>> m.group(0)       # The entire match
 'Isaac Newton'
@@ -880,7 +888,7 @@ if match:
 
 
 
-```
+``` python
 >>> m = re.match(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Malcolm Reynolds")
 >>> m.group('first_name')
 'Malcolm'
@@ -892,7 +900,7 @@ if match:
 
 
 
-```
+``` python
 >>> m.group(1)
 'Malcolm'
 >>> m.group(2)
@@ -903,7 +911,7 @@ if match:
 
 
 
-```
+``` python
 >>> m = re.match(r"(..)+", "a1b2c3")  # Matches 3 times.
 >>> m.group(1)                        # Returns only the last match.
 'c3'
@@ -915,7 +923,7 @@ if match:
 
 
 
-```
+``` python
 >>> m = re.match(r"(\w+) (\w+)", "Isaac Newton, physicist")
 >>> m[0]       # The entire match
 'Isaac Newton'
@@ -929,7 +937,7 @@ if match:
 
 
 
-```
+``` python
 >>> m = re.match(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Isaac Newton")
 >>> m['first_name']
 'Isaac'
@@ -937,7 +945,8 @@ if match:
 'Newton'
 ```
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## Match.**groups**(*default=None*)
 
@@ -947,7 +956,7 @@ if match:
 
 
 
-```
+``` python
 >>> m = re.match(r"(\d+)\.(\d+)", "24.1632")
 >>> m.groups()
 ('24', '1632')
@@ -957,7 +966,7 @@ if match:
 
 
 
-```
+``` python
 >>> m = re.match(r"(\d+)\.?(\d+)?", "24")
 >>> m.groups()      # Second group defaults to None.
 ('24', None)
@@ -971,7 +980,7 @@ if match:
 
 
 
-```
+``` python
 >>> m = re.match(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Malcolm Reynolds")
 >>> m.groupdict()
 {'first_name': 'Malcolm', 'last_name': 'Reynolds'}
@@ -993,7 +1002,7 @@ m.string[m.start(g):m.end(g)]
 
 
 
-```
+``` python
 >>> email = "tony@tiremove_thisger.net"
 >>> m = re.search("remove_this", email)
 >>> email[:m.start()] + email[m.end():]
@@ -1051,7 +1060,7 @@ def displaymatch(match):
 
 
 
-```
+``` python
 >>> valid = re.compile(r"^[a2-9tjqk]{5}$")
 >>> displaymatch(valid.match("akt5q"))  # Valid.
 "<Match: 'akt5q', groups=()>"
@@ -1065,7 +1074,7 @@ def displaymatch(match):
 
 
 
-```
+``` python
 >>> pair = re.compile(r".*(.).*\1")
 >>> displaymatch(pair.match("717ak"))     # Pair of 7s.
 "<Match: '717', groups=('7',)>"
@@ -1078,7 +1087,7 @@ def displaymatch(match):
 
 
 
-```
+``` python
 >>> pair = re.compile(r".*(.).*\1")
 >>> pair.match("717ak").group(1)
 '7'
@@ -1142,7 +1151,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 
 
-```
+``` python
 >>> re.match("c", "abcdef")    # 不匹配
 >>> re.search("c", "abcdef")   # 匹配
 <re.Match object; span=(2, 3), match='c'>
@@ -1155,7 +1164,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 
 
-```
+``` python
 >>> re.match("c", "abcdef")    # No match
 >>> re.search("^c", "abcdef")  # No match
 >>> re.search("^a", "abcdef")  # Match
@@ -1166,7 +1175,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 
 
-```
+``` python
 >>> re.match("X", "A\nB\nX", re.MULTILINE)  # No match
 >>> re.search("^X", "A\nB\nX", re.MULTILINE)  # Match
 <re.Match object; span=(4, 5), match='X'>
@@ -1180,7 +1189,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 
 
-```
+``` python
 >>> text = """Ross McFluff: 834.345.1254 155 Elm Street
 ...
 ... Ronald Heathmore: 892.345.3428 436 Finley Avenue
@@ -1194,7 +1203,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 
 
-```
+``` python
 >>> entries = re.split("\n+", text)
 >>> entries
 ['Ross McFluff: 834.345.1254 155 Elm Street',
@@ -1207,7 +1216,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 
 
-```
+``` python
 >>> [re.split(":? ", entry, maxsplit=3) for entry in entries]
 [['Ross', 'McFluff', '834.345.1254', '155 Elm Street'],
 ['Ronald', 'Heathmore', '892.345.3428', '436 Finley Avenue'],
@@ -1219,7 +1228,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 
 
-```
+``` python
 >>> [re.split(":? ", entry, maxsplit=4) for entry in entries]
 [['Ross', 'McFluff', '834.345.1254', '155', 'Elm Street'],
 ['Ronald', 'Heathmore', '892.345.3428', '436', 'Finley Avenue'],
@@ -1233,7 +1242,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 
 
-```
+``` python
 >>> def repl(m):
 ...     inner_word = list(m.group(2))
 ...     random.shuffle(inner_word)
@@ -1252,7 +1261,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 
 
-```
+``` python
 >>> text = "He was carefully disguised but captured quickly by police."
 >>> re.findall(r"\w+ly\b", text)
 ['carefully', 'quickly']
@@ -1264,7 +1273,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 
 
-```
+``` python
 >>> text = "He was carefully disguised but captured quickly by police."
 >>> for m in re.finditer(r"\w+ly\b", text):
 ...     print('%02d-%02d: %s' % (m.start(), m.end(), m.group(0)))
@@ -1278,7 +1287,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 
 
-```
+``` python
 >>> re.match(r"\W(.)\1\W", " ff ")
 <re.Match object; span=(0, 4), match=' ff '>
 >>> re.match("\\W(.)\\1\\W", " ff ")
@@ -1289,7 +1298,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 
 
 
-```
+``` python
 >>> re.match(r"\\", r"\\")
 <re.Match object; span=(0, 1), match='\\'>
 >>> re.match("\\\\", r"\\")

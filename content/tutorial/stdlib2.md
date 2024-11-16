@@ -24,7 +24,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import reprlib
 >>> reprlib.repr(set('supercalifragilisticexpialidocious'))
 "{'a', 'c', 'd', 'e', 'f', 'g', ...}"
@@ -34,7 +34,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import pprint
 >>> t = [[[['black', 'cyan'], 'white', ['green', 'red']], [['magenta',
 ...     'yellow'], 'blue']]]
@@ -51,7 +51,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import textwrap
 >>> doc = """The wrap() method is just like fill() except that it returns
 ... a list of strings instead of one big string with newlines to separate
@@ -68,7 +68,7 @@ to separate the wrapped lines.
 
 
 
-```
+``` python
 >>> import locale
 >>> locale.setlocale(locale.LC_ALL, 'English_United States.1252')
 'English_United States.1252'
@@ -91,7 +91,7 @@ to separate the wrapped lines.
 
 
 
-```
+``` python
 >>> from string import Template
 >>> t = Template('${village}folk send $$10 to $cause.')
 >>> t.substitute(village='Nottingham', cause='the ditch fund')
@@ -102,7 +102,7 @@ to separate the wrapped lines.
 
 
 
-```
+``` python
 >>> t = Template('Return the $item to $owner.')
 >>> d = dict(item='unladen swallow')
 >>> t.substitute(d)
@@ -117,7 +117,7 @@ KeyError: 'owner'
 
 
 
-```
+``` python
 >>> import time, os.path
 >>> photofiles = ['img_1074.jpg', 'img_1076.jpg', 'img_1077.jpg']
 >>> class BatchRename(Template):
@@ -239,7 +239,7 @@ CRITICAL:root:Critical error -- shutting down
 
 
 
-```
+``` python
 >>> import weakref, gc
 >>> class A:
 ...     def __init__(self, value):
@@ -274,7 +274,7 @@ KeyError: 'primary'
 
 
 
-```
+``` python
 >>> from array import array
 >>> a = array('H', [4000, 10, 700, 22222])
 >>> sum(a)
@@ -287,7 +287,7 @@ array('H', [10, 700])
 
 
 
-```
+``` python
 >>> from collections import deque
 >>> d = deque(["task1", "task2", "task3"])
 >>> d.append("task4")
@@ -306,7 +306,7 @@ def breadth_first_search(unsearched):
 
 
 
-```
+``` python
 >>> import bisect
 >>> scores = [(100, 'perl'), (200, 'tcl'), (400, 'lua'), (500, 'python')]
 >>> bisect.insort(scores, (300, 'ruby'))
@@ -318,7 +318,7 @@ def breadth_first_search(unsearched):
 
 
 
-```
+``` python
 >>> from heapq import heapify, heappop, heappush
 >>> data = [1, 3, 5, 7, 9, 2, 4, 6, 8, 0]
 >>> heapify(data)                      # 将列表重新调整为堆顺序
@@ -343,7 +343,7 @@ def breadth_first_search(unsearched):
 
 
 
-```
+``` python
 >>> from decimal import *
 >>> round(Decimal('0.70') * Decimal('1.05'), 2)
 Decimal('0.74')
@@ -357,7 +357,7 @@ Decimal('0.74')
 
 
 
-```
+``` python
 >>> Decimal('1.00') % Decimal('.10')
 Decimal('0.00')
 >>> 1.00 % 0.10
@@ -373,7 +373,7 @@ False
 
 
 
-```
+``` python
 >>> getcontext().prec = 36
 >>> Decimal(1) / Decimal(7)
 Decimal('0.142857142857142857142857142857142857')

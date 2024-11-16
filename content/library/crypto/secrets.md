@@ -14,7 +14,8 @@ draft = false
 
 # `secrets` --- 生成管理密码的安全随机数
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 **源代码:** [Lib/secrets.py](https://github.com/python/cpython/tree/3.13/Lib/secrets.py)
 
@@ -60,7 +61,7 @@ draft = false
 
 
 
-```
+``` python
 >>> token_bytes(16)  
 b'\xebr\x17D*t\xae\xd4\xe3S\xb6\xe2\xebP1\x8b'
 ```
@@ -71,7 +72,7 @@ b'\xebr\x17D*t\xae\xd4\xe3S\xb6\xe2\xebP1\x8b'
 
 
 
-```
+``` python
 >>> token_hex(16)  
 'f9bf78b9a18ce6d46a0cd2b0b86df9da'
 ```
@@ -82,7 +83,7 @@ b'\xebr\x17D*t\xae\xd4\xe3S\xb6\xe2\xebP1\x8b'
 
 
 
-```
+``` python
 >>> token_urlsafe(16)  
 'Drmhze6EPcv0fN_81Bj-nA'
 ```

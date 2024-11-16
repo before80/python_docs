@@ -179,13 +179,15 @@ INFO:__main__:Finished
 
 ​	返回由后缀确定的该记录器的后代记录器。 因此，`logging.getLogger('abc').getChild('def.ghi')` 与 `logging.getLogger('abc.def.ghi')` 将返回相同的记录器。 这是一个便捷方法，当使用如 `__name__` 而不是字符串字面值命名父记录器时很有用。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **getChildren**()
 
 ​	返回由该日志记录器的直接下级日志记录器组成的集合。 举例来说 `logging.getLogger().getChildren()` 将返回包含名为 `foo` 和 `bar` 的日志记录器的集合，但名为 `foo.bar` 的日志记录器则不会包括在集合中。 类似地，`logging.getLogger('foo').getChildren()` 将返回包括名为 `foo.bar` 的日志记录器的集合，但不会包括名为 `foo.bar.baz` 的日志记录器。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **debug**(*msg*, **args*, ***kwargs*)
 
@@ -305,7 +307,8 @@ logger.warning('Protocol problem: %s', 'connection reset', extra=d)
 
 ​	检查此记录器是否配置了任何处理器。通过在此记录器及其记录器层次结构中的父级中查找处理器完成此操作。如果找到处理器则返回 `True`，否则返回 `False`。只要找到 “propagate” 属性设置为假值的记录器，该方法就会停止搜索层次结构 —— 其将是最后一个检查处理器是否存在的记录器。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.7 版本发生变更:* 现在可以对处理器进行序列化和反序列化。
 
@@ -636,7 +639,8 @@ class MyLogger(logging.getLoggerClass()):
 
 ​	返回一个被用来创建 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 的可调用对象。
 
-*Added in version 3.2:* 此函数与 [`setLogRecordFactory()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.setLogRecordFactory) 一起提供，以允许开发者对表示日志记录事件的 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 的构造有更好的控制。
+> Added in version 3.2:
+> 此函数与 [`setLogRecordFactory()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.setLogRecordFactory) 一起提供，以允许开发者对表示日志记录事件的 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 的构造有更好的控制。
 
 ​	请参阅 [`setLogRecordFactory()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.setLogRecordFactory) 了解有关如何调用该工厂方法的更多信息。
 
@@ -700,7 +704,8 @@ class MyLogger(logging.getLoggerClass()):
 
 ​	返回一个级别名到其对应日志记录级别的映射。 例如，字符串 "CRITICAL" 将映射到 [`CRITICAL`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.CRITICAL)。 所返回的映射是从每个对此函数的调用的内部映射拷贝的。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## logging.**getLevelName**(*level*)
 
@@ -724,13 +729,15 @@ class MyLogger(logging.getLoggerClass()):
 
 ​	返回具有指定 *name* 的处理器，或者如果指定名称的处理器不存在则返回 `None`。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## logging.**getHandlerNames**()
 
 ​	返回一个由所有已知处理器名称组成的不可变集合。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## logging.**makeLogRecord**(*attrdict*)
 
@@ -790,7 +797,8 @@ class MyLogger(logging.getLoggerClass()):
 
 **factory** -- 用来实例化日志记录的工厂可调用对象。
 
-*Added in version 3.2:* 此函数与 [`getLogRecordFactory()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.getLogRecordFactory) 一起提供，以便允许开发者对如何构造表示日志记录事件的 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 有更好的控制。
+> Added in version 3.2:
+> 此函数与 [`getLogRecordFactory()`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.getLogRecordFactory) 一起提供，以便允许开发者对如何构造表示日志记录事件的 [`LogRecord`](https://docs.python.org/zh-cn/3.13/library/logging.html#logging.LogRecord) 有更好的控制。
 
 ​	可调用对象 factory 具有如下签名:
 
@@ -844,7 +852,8 @@ factory(name, level, fn, lno, msg, args, exc_info, func=None, sinfo=None, **kwar
 
 ​	通过此属性提供的“最后处理者”。 这是一个以 `WARNING` 级别写入到 `sys.stderr` 的 [`StreamHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.StreamHandler)，用于在没有任何日志记录配置的情况下处理日志记录事件。 最终结果就是将消息打印到 `sys.stderr`，这会替代先前形式为 "no handlers could be found for logger XYZ" 的错误消息。 如果出于某种原因你需要先前的行为，可将 `lastResort` 设为 `None`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## logging.**raiseExceptions**
 

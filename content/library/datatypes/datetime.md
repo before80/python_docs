@@ -80,7 +80,8 @@ draft = false
 
 ​	UTC 时区单例 [`datetime.timezone.utc`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.timezone.utc) 的别名。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## 有效的类型
 
@@ -108,7 +109,8 @@ draft = false
 
 ​	一个实现了 [`tzinfo`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.tzinfo) 抽象基类的子类，用于表示相对于 世界标准时间（UTC）的偏移量。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	这些类型的对象都是不可变的。
 
@@ -181,7 +183,7 @@ object
 
 
 
-```
+``` python
 >>> from datetime import timedelta
 >>> delta = timedelta(
 ...     days=50,
@@ -205,7 +207,7 @@ datetime.timedelta(days=64, seconds=29156, microseconds=10)
 
 
 
-```
+``` python
 >>> from datetime import timedelta
 >>> d = timedelta(microseconds=-1)
 >>> (d.days, d.seconds, d.microseconds)
@@ -246,7 +248,7 @@ datetime.timedelta(days=64, seconds=29156, microseconds=10)
 
 
 
-```
+``` python
 >>> from datetime import timedelta
 >>> duration = timedelta(seconds=11235813)
 >>> duration.days, duration.seconds
@@ -318,7 +320,8 @@ datetime.timedelta(days=64, seconds=29156, microseconds=10)
 
 ​	需要注意的是，时间间隔较大时，这个方法的结果中的微秒将会失真（大多数平台上大于270年视为一个较大的时间间隔）。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ### [`timedelta`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.timedelta) 用法示例
 
@@ -326,7 +329,7 @@ datetime.timedelta(days=64, seconds=29156, microseconds=10)
 
 
 
-```
+``` python
 >>> # Components of another_year add up to exactly 365 days
 >>> from datetime import timedelta
 >>> year = timedelta(days=365)
@@ -342,7 +345,7 @@ True
 
 
 
-```
+``` python
 >>> from datetime import timedelta
 >>> year = timedelta(days=365)
 >>> ten_years = 10 * year
@@ -410,7 +413,7 @@ datetime.timedelta(days=3285)
 
 
 
-```
+``` python
 >>> from datetime import date
 >>> date.fromisoformat('2019-12-04')
 datetime.date(2019, 12, 4)
@@ -420,7 +423,8 @@ datetime.date(2019, 12, 4)
 datetime.date(2021, 1, 4)
 ```
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 *在 3.11 版本发生变更:* 在之前版本中，此方法仅支持一种格式 `YYYY-MM-DD`。
 
@@ -428,7 +432,8 @@ datetime.date(2021, 1, 4)
 
 ​	返回指定 year, week 和 day 所对应 ISO 历法日期的 [`date`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.date)。 这是函数 [`date.isocalendar()`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.date.isocalendar) 的逆操作。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ​	类属性：
 
@@ -498,7 +503,7 @@ datetime.date(2021, 1, 4)
 
 
 
-```
+``` python
 >>> from datetime import date
 >>> d = date(2002, 12, 31)
 >>> d.replace(day=26)
@@ -545,7 +550,7 @@ time.struct_time((d.year, d.month, d.day, 0, 0, 0, d.weekday(), yday, -1))
 
 
 
-```
+``` python
 >>> from datetime import date
 >>> date(2003, 12, 29).isocalendar()
 datetime.IsoCalendarDate(year=2004, week=1, weekday=1)
@@ -561,7 +566,7 @@ datetime.IsoCalendarDate(year=2004, week=1, weekday=7)
 
 
 
-```
+``` python
 >>> from datetime import date
 >>> date(2002, 12, 4).isoformat()
 '2002-12-04'
@@ -577,7 +582,7 @@ datetime.IsoCalendarDate(year=2004, week=1, weekday=7)
 
 
 
-```
+``` python
 >>> from datetime import date
 >>> date(2002, 12, 4).ctime()
 'Wed Dec  4 00:00:00 2002'
@@ -605,7 +610,7 @@ time.ctime(time.mktime(d.timetuple()))
 
 
 
-```
+``` python
 >>> import time
 >>> from datetime import date
 >>> today = date.today()
@@ -628,7 +633,7 @@ datetime.date(2008, 6, 24)
 
 
 
-```
+``` python
 >>> from datetime import date
 >>> d = date.fromordinal(730920) # 730920th day after 1. 1. 0001
 >>> d
@@ -813,7 +818,7 @@ datetime(1970, 1, 1, tzinfo=timezone.utc) + timedelta(seconds=timestamp)
 
 
 
-```
+``` python
 >>> from datetime import datetime
 >>> datetime.fromisoformat('2011-11-04')
 datetime.datetime(2011, 11, 4, 0, 0)
@@ -836,7 +841,8 @@ datetime.datetime(2011, 11, 4, 0, 5, 23,
     tzinfo=datetime.timezone(datetime.timedelta(seconds=14400)))
 ```
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 *在 3.11 版本发生变更:* Previously, this method only supported formats that could be emitted by [`date.isoformat()`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.date.isoformat) or [`datetime.isoformat()`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime.isoformat).
 
@@ -844,7 +850,8 @@ datetime.datetime(2011, 11, 4, 0, 5, 23,
 
 ​	返回以 year, week 和 day 值指明的 ISO 历法日期所对应的 [`datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime)。 该datetime 对象的非日期部分将使用其标准默认值来填充。 这是函数 [`datetime.isocalendar()`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime.isocalendar) 的逆操作。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## *classmethod* datetime.**strptime**(*date_string*, *format*)
 
@@ -862,7 +869,7 @@ datetime(*(time.strptime(date_string, format)[0:6]))
 
 
 
-```
+``` python
 >>> from datetime import datetime
 >>> date_string = "02/29"
 >>> when = datetime.strptime(f"{date_string};1984", "%m/%d;%Y")  # Avoids leap year bug.
@@ -922,7 +929,8 @@ datetime(*(time.strptime(date_string, format)[0:6]))
 
 ​	取值范围是 `[0, 1]`。 用于在重复的时间段中消除边界时间的歧义。 （当夏令时结束时回拨时钟或由于政治原因导致当前时区的 UTC 时差减少就会出现重复时间段。） 取值 0 和 1 分别表示两个相同边界时间表示形式的前一个和后一个时间。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ​	支持的运算：
 
@@ -1072,7 +1080,8 @@ time.struct_time((d.year, d.month, d.day,
 (dt - datetime(1970, 1, 1, tzinfo=timezone.utc)).total_seconds()
 ```
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.6 版本发生变更:* [`timestamp()`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime.timestamp) 方法使用 [`fold`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime.fold) 属性来消除重复间隔中的时间歧义。
 
@@ -1120,7 +1129,7 @@ timestamp = (dt - datetime(1970, 1, 1)) / timedelta(seconds=1)
 
 
 
-```
+``` python
 >>> from datetime import datetime, timezone
 >>> datetime(2019, 5, 18, 15, 17, 8, 132263).isoformat()
 '2019-05-18T15:17:08.132263'
@@ -1132,7 +1141,7 @@ timestamp = (dt - datetime(1970, 1, 1)) / timedelta(seconds=1)
 
 
 
-```
+``` python
 >>> from datetime import tzinfo, timedelta, datetime
 >>> class TZ(tzinfo):
 ...     """A time zone with an arbitrary, constant -06:39 offset."""
@@ -1164,7 +1173,7 @@ timestamp = (dt - datetime(1970, 1, 1)) / timedelta(seconds=1)
 
 
 
-```
+``` python
 >>> from datetime import datetime
 >>> datetime.now().isoformat(timespec='minutes')   
 '2002-12-25T00:00'
@@ -1185,7 +1194,7 @@ timestamp = (dt - datetime(1970, 1, 1)) / timedelta(seconds=1)
 
 
 
-```
+``` python
 >>> from datetime import datetime
 >>> datetime(2002, 12, 4, 20, 30, 40).ctime()
 'Wed Dec  4 20:30:40 2002'
@@ -1215,7 +1224,7 @@ time.ctime(time.mktime(d.timetuple()))
 
 
 
-```
+``` python
 >>> from datetime import datetime, date, time, timezone
 
 >>> # Using datetime.combine()
@@ -1317,7 +1326,7 @@ class KabulTz(tzinfo):
 
 
 
-```
+``` python
 >>> tz1 = KabulTz()
 
 >>> # Datetime before the change
@@ -1398,7 +1407,8 @@ True
 
 ​	取值范围是 `[0, 1]`。 用于在重复的时间段中消除边界时间的歧义。 （当夏令时结束时回拨时钟或由于政治原因导致当前时区的 UTC 时差减少就会出现重复时间段。） 取值 0 和 1 分别表示两个相同边界时间表示形式的前一个和后一个时间。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 [`time`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.time) objects support equality and order comparisons, where `a` is considered less than `b` when `a` precedes `b` in time.
 
@@ -1427,7 +1437,7 @@ True
 
 
 
-```
+``` python
 >>> from datetime import time
 >>> time.fromisoformat('04:23:01')
 datetime.time(4, 23, 1)
@@ -1447,7 +1457,8 @@ datetime.time(4, 23, 1, tzinfo=datetime.timezone.utc)
 datetime.time(4, 23, 1, tzinfo=datetime.timezone.utc)
 ```
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 *在 3.11 版本发生变更:* Previously, this method only supported formats that could be emitted by [`time.isoformat()`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.time.isoformat).
 
@@ -1491,7 +1502,7 @@ datetime.time(4, 23, 1, tzinfo=datetime.timezone.utc)
 
 
 
-```
+``` python
 >>> from datetime import time
 >>> time(hour=12, minute=34, second=56, microsecond=123456).isoformat(timespec='minutes')
 '12:34'
@@ -1538,7 +1549,7 @@ datetime.time(4, 23, 1, tzinfo=datetime.timezone.utc)
 
 
 
-```
+``` python
 >>> from datetime import time, tzinfo, timedelta
 >>> class TZ1(tzinfo):
 ...     def utcoffset(self, dt):
@@ -1873,7 +1884,7 @@ start  22:MM 23:MM  0:MM  1:MM  3:MM  4:MM
 
 
 
-```
+``` python
 >>> from datetime import datetime, timezone
 >>> from tzinfo_examples import HOUR, Eastern
 >>> u0 = datetime(2016, 3, 13, 5, tzinfo=timezone.utc)
@@ -1892,7 +1903,7 @@ start  22:MM 23:MM  0:MM  1:MM  3:MM  4:MM
 
 
 
-```
+``` python
 >>> u0 = datetime(2016, 11, 6, 4, tzinfo=timezone.utc)
 >>> for i in range(4):
 ...     u = u0 + i*HOUR
@@ -1935,7 +1946,8 @@ start  22:MM 23:MM  0:MM  1:MM  3:MM  4:MM
 
 *name* 参数是可选的。 如果指定则必须为一个字符串，它将被用作 [`datetime.tzname()`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime.tzname) 方法的返回值。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.7 版本发生变更:* UTC 时差不再限制为一个整数分钟值。
 
@@ -1996,7 +2008,7 @@ start  22:MM 23:MM  0:MM  1:MM  3:MM  4:MM
 
 
 
-```
+``` python
 >>> datetime.strptime('31/01/22 23:59:59.999999',
 ...                   '%d/%m/%y %H:%M:%S.%f')
 datetime.datetime(2022, 1, 31, 23, 59, 59, 999999)
@@ -2046,9 +2058,11 @@ datetime.datetime(2022, 1, 31, 23, 59, 59, 999999)
 
 ​	对完整格式代码集的支持在不同平台上有所差异，因为 Python 要调用所在平台的 C 库的 `strftime()` 函数，而不同平台的差异是很常见的。 要查看你所用平台所支持的完整格式代码集，请参阅 *[strftime(3)](https://manpages.debian.org/strftime(3))* 文档。 不同的平台在处理不支持的格式说明符方面也有差异。
 
-*Added in version 3.6:* 增加了 `%G`, `%u` 和 `%V`。
+> Added in version 3.6:
+> 增加了 `%G`, `%u` 和 `%V`。
 
-*Added in version 3.12:* 增加了 `%:z`。
+> Added in version 3.12:
+> 增加了 `%:z`。
 
 ### 技术细节
 

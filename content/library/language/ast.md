@@ -207,12 +207,13 @@ module Python
 
 
 
-```
+``` python
 >>> ast.TypeVar._field_types
 {'name': <class 'str'>, 'bound': ast.expr | None, 'default_value': ast.expr | None}
 ```
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **lineno**
 
@@ -270,7 +271,7 @@ node = ast.UnaryOp(ast.USub(), ast.Constant(5, lineno=0, col_offset=0),
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('x = 1'), indent=4))
 Module(
     body=[
@@ -288,7 +289,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('123', mode='eval'), indent=4))
 Expression(
     body=Constant(value=123))
@@ -302,7 +303,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('x = 1; y = 2', mode='single'), indent=4))
 Interactive(
     body=[
@@ -334,7 +335,7 @@ def sum_two_number(a, b):
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('(int, str) -> List[int]', mode='func_type'), indent=4))
 FunctionType(
     argtypes=[
@@ -346,7 +347,8 @@ FunctionType(
         ctx=Load()))
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ### 字面值
 
@@ -356,7 +358,7 @@ FunctionType(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('123', mode='eval'), indent=4))
 Expression(
     body=Constant(value=123))
@@ -380,7 +382,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('f"sin({a}) is {sin(a):.3}"', mode='eval'), indent=4))
 Expression(
     body=JoinedStr(
@@ -409,7 +411,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('[1, 2, 3]', mode='eval'), indent=4))
 Expression(
     body=List(
@@ -434,7 +436,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('{1, 2, 3}', mode='eval'), indent=4))
 Expression(
     body=Set(
@@ -452,7 +454,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('{"a":1, **d}', mode='eval'), indent=4))
 Expression(
     body=Dict(
@@ -480,7 +482,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('a'), indent=4))
 Module(
     body=[
@@ -509,7 +511,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('a, *b = it'), indent=4))
 Module(
     body=[
@@ -535,7 +537,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('-a'), indent=4))
 Module(
     body=[
@@ -561,7 +563,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('not x', mode='eval'), indent=4))
 Expression(
     body=UnaryOp(
@@ -575,7 +577,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('x + y', mode='eval'), indent=4))
 Expression(
     body=BinOp(
@@ -620,7 +622,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('x or y', mode='eval'), indent=4))
 Expression(
     body=BoolOp(
@@ -642,7 +644,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('1 <= a < 10', mode='eval'), indent=4))
 Expression(
     body=Compare(
@@ -688,7 +690,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('func(a, b=c, *d, **e)', mode='eval'), indent=4))
 Expression(
     body=Call(
@@ -716,7 +718,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('a if b else c', mode='eval'), indent=4))
 Expression(
     body=IfExp(
@@ -731,7 +733,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('snake.colour', mode='eval'), indent=4))
 Expression(
     body=Attribute(
@@ -746,7 +748,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('(x := 4)', mode='eval'), indent=4))
 Expression(
     body=NamedExpr(
@@ -754,7 +756,8 @@ Expression(
         value=Constant(value=4)))
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 #### 抽取
 
@@ -764,7 +767,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('l[1:2, 3]', mode='eval'), indent=4))
 Expression(
     body=Subscript(
@@ -785,7 +788,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('l[1:2]', mode='eval'), indent=4))
 Expression(
     body=Subscript(
@@ -812,7 +815,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(
 ...     ast.parse('[x for x in numbers]', mode='eval'),
 ...     indent=4,
@@ -863,7 +866,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('[ord(c) for line in file for c in line]', mode='eval'),
 ...                indent=4)) # Multiple comprehensions in one.
 Expression(
@@ -937,7 +940,7 @@ Expression(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('a = b = 1'), indent=4)) # Multiple assignment
 Module(
     body=[
@@ -968,7 +971,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('c: int'), indent=4))
 Module(
     body=[
@@ -1017,7 +1020,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('x += 2'), indent=4))
 Module(
     body=[
@@ -1033,7 +1036,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('raise x from y'), indent=4))
 Module(
     body=[
@@ -1048,7 +1051,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('assert x,y'), indent=4))
 Module(
     body=[
@@ -1063,7 +1066,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('del x,y,z'), indent=4))
 Module(
     body=[
@@ -1080,7 +1083,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('pass'), indent=4))
 Module(
     body=[
@@ -1093,7 +1096,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('type Alias = int'), indent=4))
 Module(
     body=[
@@ -1102,7 +1105,8 @@ Module(
             value=Name(id='int', ctx=Load()))])
 ```
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ​	其他仅在函数或循环内部可用的语句将在其他小节中描述。
 
@@ -1114,7 +1118,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('import x,y,z'), indent=4))
 Module(
     body=[
@@ -1131,7 +1135,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('from y import x,y,z'), indent=4))
 Module(
     body=[
@@ -1150,7 +1154,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('from ..foo.bar import a as b, c'), indent=4))
 Module(
     body=[
@@ -1178,7 +1182,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""
 ... if x:
 ...    ...
@@ -1215,7 +1219,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""
 ... for x in y:
 ...     ...
@@ -1266,7 +1270,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""\
 ... for a in b:
 ...     if a > 5:
@@ -1300,7 +1304,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""
 ... try:
 ...    ...
@@ -1345,7 +1349,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""
 ... try:
 ...    ...
@@ -1366,7 +1370,8 @@ Module(
                             value=Constant(value=Ellipsis))])])])
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *class* ast.**ExceptHandler**(*type*, *name*, *body*)
 
@@ -1374,7 +1379,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""\
 ... try:
 ...     a + 1
@@ -1411,7 +1416,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""\
 ... with a as b, c as d:
 ...    something(b, d)
@@ -1441,7 +1446,8 @@ Module(
 
 ​	一条 `match` 语句。 `subject` 保存匹配的目标（与 cases 相匹配的对象）而 `cases` 包含一个由不同分支的 [`match_case`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.match_case) 节点组成的可迭代对象。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* ast.**match_case**(*pattern*, *guard*, *body*)
 
@@ -1453,7 +1459,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""
 ... match x:
 ...     case [x] if x>0:
@@ -1487,7 +1493,8 @@ Module(
                             value=Constant(value=Ellipsis))])])])
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* ast.**MatchValue**(*value*)
 
@@ -1495,7 +1502,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""
 ... match x:
 ...     case "Relevant":
@@ -1514,7 +1521,8 @@ Module(
                             value=Constant(value=Ellipsis))])])])
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* ast.**MatchSingleton**(*value*)
 
@@ -1522,7 +1530,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""
 ... match x:
 ...     case None:
@@ -1540,7 +1548,8 @@ Module(
                             value=Constant(value=Ellipsis))])])])
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* ast.**MatchSequence**(*patterns*)
 
@@ -1548,7 +1557,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""
 ... match x:
 ...     case [1, 2]:
@@ -1571,7 +1580,8 @@ Module(
                             value=Constant(value=Ellipsis))])])])
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* ast.**MatchStar**(*name*)
 
@@ -1579,7 +1589,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""
 ... match x:
 ...     case [1, 2, *rest]:
@@ -1612,7 +1622,8 @@ Module(
                             value=Constant(value=Ellipsis))])])])
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* ast.**MatchMapping**(*keys*, *patterns*, *rest*)
 
@@ -1622,7 +1633,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""
 ... match x:
 ...     case {1: _, 2: _}:
@@ -1653,7 +1664,8 @@ Module(
                             value=Constant(value=Ellipsis))])])])
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* ast.**MatchClass**(*cls*, *patterns*, *kwd_attrs*, *kwd_patterns*)
 
@@ -1665,7 +1677,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""
 ... match x:
 ...     case Point2D(0, 0):
@@ -1708,7 +1720,8 @@ Module(
                             value=Constant(value=Ellipsis))])])])
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* ast.**MatchAs**(*pattern*, *name*)
 
@@ -1718,7 +1731,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""
 ... match x:
 ...     case [x] as y:
@@ -1747,7 +1760,8 @@ Module(
                             value=Constant(value=Ellipsis))])])])
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* ast.**MatchOr**(*patterns*)
 
@@ -1755,7 +1769,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""
 ... match x:
 ...     case [x] | (y):
@@ -1778,7 +1792,8 @@ Module(
                             value=Constant(value=Ellipsis))])])])
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 
 
@@ -1792,7 +1807,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("type Alias[T: int = bool] = list[T]"), indent=4))
 Module(
     body=[
@@ -1809,7 +1824,8 @@ Module(
                 ctx=Load()))])
 ```
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 *在 3.13 版本发生变更:* 增加了 *default_value* 形参。
 
@@ -1819,7 +1835,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("type Alias[**P = (int, str)] = Callable[P, int]"), indent=4))
 Module(
     body=[
@@ -1843,7 +1859,8 @@ Module(
                 ctx=Load()))])
 ```
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 *在 3.13 版本发生变更:* 增加了 *default_value* 形参。
 
@@ -1853,7 +1870,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("type Alias[*Ts = ()] = tuple[*Ts]"), indent=4))
 Module(
     body=[
@@ -1874,7 +1891,8 @@ Module(
                 ctx=Load()))])
 ```
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 *在 3.13 版本发生变更:* 增加了 *default_value* 形参。
 
@@ -1903,7 +1921,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('lambda x,y: ...'), indent=4))
 Module(
     body=[
@@ -1935,7 +1953,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""\
 ... @decorator1
 ... @decorator2
@@ -1978,7 +1996,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('return 4'), indent=4))
 Module(
     body=[
@@ -1994,7 +2012,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('yield x'), indent=4))
 Module(
     body=[
@@ -2018,7 +2036,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse('global x,y,z'), indent=4))
 Module(
     body=[
@@ -2051,7 +2069,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""\
 ... @decorator1
 ... @decorator2
@@ -2092,7 +2110,7 @@ Module(
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""\
 ... async def f():
 ...     await other_func()
@@ -2171,7 +2189,8 @@ Module(
 
 ​	尝试反向解析一个高度复杂的表达式可能会导致 [`RecursionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RecursionError)。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## ast.**literal_eval**(*node_or_string*)
 
@@ -2207,7 +2226,8 @@ Module(
 
 ​	如果 *padded* 为 `True`，则多行语句的第一行将以与其初始位置相匹配的空格填充。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## ast.**fix_missing_locations**(*node*)
 
@@ -2307,7 +2327,7 @@ node = YourTransformer().visit(node)
 
 
 
-```
+``` python
 >>> print(ast.dump(ast.parse("""\
 ... async def f():
 ...     await other_func()
@@ -2344,7 +2364,8 @@ Module(
 
 ​	启用对最高层级 `await`, `async for`, `async with` 以及异步推导式的支持。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## ast.**PyCF_ONLY_AST**
 
@@ -2354,19 +2375,22 @@ Module(
 
 ​	返回的 AST 已根据 [`compile()`](https://docs.python.org/zh-cn/3.13/library/functions.html#compile) 或 [`ast.parse()`](https://docs.python.org/zh-cn/3.13/library/ast.html#ast.parse) 中的 *optimize* 参数进行了优化。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## ast.**PyCF_TYPE_COMMENTS**
 
 ​	启用对 [**PEP 484**](https://peps.python.org/pep-0484/) 和 [**PEP 526**](https://peps.python.org/pep-0526/) 风格的类型注释的支持 (`# type: <type>`, `# type: ignore <stuff>`)。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 
 
 ## 命令行用法
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 [`ast`](https://docs.python.org/zh-cn/3.13/library/ast.html#module-ast) 模块可以在命令行下作为脚本来执行。 具体做法非常简单:
 

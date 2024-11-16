@@ -47,7 +47,8 @@ def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
 
 ​	该类相似于 HTTPServer ，只是会利用 [`ThreadingMixIn`](https://docs.python.org/zh-cn/3.13/library/socketserver.html#socketserver.ThreadingMixIn) 对请求进行多线程处理。当需要对 Web 浏览器预先打开套接字进行处理时，这就很有用，这时 [`HTTPServer`](https://docs.python.org/zh-cn/3.13/library/http.server.html#http.server.HTTPServer) 会一直等待请求。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ​	实例化 [`HTTPServer`](https://docs.python.org/zh-cn/3.13/library/http.server.html#http.server.HTTPServer) 和 [`ThreadingHTTPServer`](https://docs.python.org/zh-cn/3.13/library/http.server.html#http.server.ThreadingHTTPServer) 时，必须给出一个 *RequestHandlerClass*，本模块提供了该对象的三种变体：
 
@@ -145,7 +146,8 @@ def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
 
 ​	当一个符合 HTTP/1.1 标准的服务器接收到一个 `Expect: 100-continue` 请求标头时它会以一个 `100 Continue` 加 `200 OK` 标头作为响应。 如果服务器不希望客户端继续则可以通过重写来引发一个错误。 例如服务器可以选择发送 `417 Expectation Failed` 作为响应标头并 `return False`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **send_error**(*code*, *message=None*, *explain=None*)
 
@@ -169,7 +171,8 @@ def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
 
 ​	只发送响应标头，用于当 `100 Continue` 响应被服务器发送给客户端的场合。 标头不会被缓冲而是直接发送到输出流。 如果未指定 *message*，则会发送与响应 *code* 相对应的 HTTP 消息。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **end_headers**()
 
@@ -181,7 +184,8 @@ def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
 
 ​	最终将标头发送到输出流并清空内部标头缓冲区。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **log_request**(*code='-'*, *size='-'*)
 

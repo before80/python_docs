@@ -161,7 +161,7 @@ draft = false
 
 
 
-```
+``` python
 >>> x = 10
 >>> def bar():
 ...     print(x)
@@ -174,7 +174,7 @@ draft = false
 
 
 
-```
+``` python
 >>> x = 10
 >>> def foo():
 ...     print(x)
@@ -185,7 +185,7 @@ draft = false
 
 
 
-```
+``` python
 >>> foo()
 Traceback (most recent call last):
   ...
@@ -198,7 +198,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 
 
-```
+``` python
 >>> x = 10
 >>> def foobar():
 ...     global x
@@ -213,7 +213,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 
 
-```
+``` python
 >>> print(x)
 11
 ```
@@ -222,7 +222,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 
 
-```
+``` python
 >>> def foo():
 ...    x = 10
 ...    def bar():
@@ -249,7 +249,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 
 
-```
+``` python
 >>> squares = []
 >>> for x in range(5):
 ...     squares.append(lambda: x**2)
@@ -259,7 +259,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 
 
-```
+``` python
 >>> squares[2]()
 16
 >>> squares[4]()
@@ -270,7 +270,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 
 
-```
+``` python
 >>> x = 8
 >>> squares[2]()
 64
@@ -280,7 +280,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 
 
-```
+``` python
 >>> squares = []
 >>> for x in range(5):
 ...     squares.append(lambda n=x: n**2)
@@ -290,7 +290,7 @@ UnboundLocalError: local variable 'x' referenced before assignment
 
 
 
-```
+``` python
 >>> squares[2]()
 4
 >>> squares[4]()
@@ -433,7 +433,7 @@ func(42, bar=314, extra=somevar)
 
 
 
-```
+``` python
 >>> x = []
 >>> y = x
 >>> y.append(10)
@@ -456,7 +456,7 @@ func(42, bar=314, extra=somevar)
 
 
 
-```
+``` python
 >>> x = 5  # 整数是不可变对象
 >>> y = x
 >>> x = x + 1  # 5 不能被修改，在此我们会新建一个对象
@@ -644,7 +644,7 @@ new_l = l[:]
 
 
 
-```
+``` python
 >>> class A:
 ...     pass
 ...
@@ -673,7 +673,7 @@ new_l = l[:]
 
 
 
-```
+``` python
 >>> "a" in "b", "a"
 (False, 'a')
 ```
@@ -751,7 +751,7 @@ i=i,Sx=Sx,F=lambda xc,yc,x,y,k,f=lambda xc,yc,x,y,k,f:(k<=0)or (x*x+y*y
 
 
 
-```
+``` python
 >>> help(divmod)
 Help on built-in function divmod in module builtins:
 
@@ -763,7 +763,7 @@ divmod(x, y, /)
 
 
 
-```
+``` python
 >>> divmod(x=3, y=4)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -778,7 +778,7 @@ TypeError: divmod() takes no keyword arguments
 
 
 
-```
+``` python
 >>> a = 0o10
 >>> a
 8
@@ -788,7 +788,7 @@ TypeError: divmod() takes no keyword arguments
 
 
 
-```
+``` python
 >>> a = 0xa5
 >>> a
 165
@@ -815,7 +815,7 @@ i == (i // j) * j + (i % j)
 
 
 
-```
+``` python
 >>> 1.__class__
   File "<stdin>", line 1
   1.__class__
@@ -827,7 +827,7 @@ SyntaxError: invalid decimal literal
 
 
 
-```
+``` python
 >>> 1 .__class__
 <class 'int'>
 >>> (1).__class__
@@ -854,7 +854,7 @@ SyntaxError: invalid decimal literal
 
 
 
-```
+``` python
 >>> import io
 >>> s = "Hello, world"
 >>> sio = io.StringIO(s)
@@ -937,7 +937,7 @@ array('w', 'yello, world')
 
 
 
-```
+``` python
 >>> lines = ("line 1 \r\n"
 ...          "\r\n"
 ...          "\r\n")
@@ -967,7 +967,7 @@ array('w', 'yello, world')
 
 
 
-```
+``` python
 >>> r'C:\this\will\not\work\'
   File "<stdin>", line 1
     r'C:\this\will\not\work\'
@@ -979,7 +979,7 @@ SyntaxError: unterminated string literal (detected at line 1)
 
 
 
-```
+``` python
 >>> 'C:\\this\\will\\work\\'
 'C:\\this\\will\\work\\'
 ```
@@ -988,7 +988,7 @@ SyntaxError: unterminated string literal (detected at line 1)
 
 
 
-```
+``` python
 >>> r'C:\this\will\work' '\\'
 'C:\\this\\will\\work\\'
 ```
@@ -997,7 +997,7 @@ SyntaxError: unterminated string literal (detected at line 1)
 
 
 
-```
+``` python
 >>> os.path.join(r'C:\this\will\work', '')
 'C:\\this\\will\\work\\'
 ```
@@ -1006,7 +1006,7 @@ SyntaxError: unterminated string literal (detected at line 1)
 
 
 
-```
+``` python
 >>> r'backslash\'preserved'
 "backslash\\'preserved"
 ```
@@ -1032,7 +1032,7 @@ SyntaxError: unterminated string literal (detected at line 1)
 - 如果标准库已为某些操作提供了基础函数，则可能（当然不能保证）比所有自编的函数都要快。对于用 C 语言编写的基础函数则更是如此，比如内置函数和一些扩展类型。例如，一定要用内置方法 [`list.sort()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list.sort) 或 [`sorted()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted) 函数进行排序（某些高级用法的示例请参阅 [排序的技术](https://docs.python.org/zh-cn/3.13/howto/sorting.html#sortinghowto) ）。
 - 抽象往往会造成中间层，并会迫使解释器执行更多的操作。如果抽象出来的中间层级太多，工作量超过了要完成的有效任务，那么程序就会被拖慢。应该避免过度的抽象，而且往往也会对可读性产生不利影响，特别是当函数或方法比较小的时候。
 
-​	如果你已经达到纯 Python 允许的限制，那么有一些工具可以让你走得更远。 例如，[Cython](https://cython.org/) 可以将稍加修改的 Python 代码版本编译为 C 扩展，并能在许多不同的平台上使用。 Cython 可以利用编译（和可选的类型标注）来让你的代码显著快于解释运行时的速度。 如果你对自己的 C 编程技能有信心，还可以自行 [编写 C 扩展模块](https://docs.python.org/zh-cn/3.13/extending/index.html#extending-index)。
+​	如果你已经达到纯 Python 允许的限制，那么有一些工具可以让你走得更远。 例如，[Cython](https://cython.org/) 可以将稍加修改的 Python 代码版本编译为 C 扩展，并能在许多不同的平台上使用。 Cython 可以利用编译（和可选的类型标注）来让你的代码显著快于解释运行时的速度。 如果你对自己的 C 编程技能有信心，还可以自行 [编写 C 扩展模块]({{< ref "/extending#extending-index" >}})。
 
 ​	参见
 
@@ -1159,7 +1159,7 @@ lisp_list = ("like",  ("this",  ("example", None) ) )
 
 
 
-```
+``` python
 >>> A = [[None] * 2] * 3
 ```
 
@@ -1167,7 +1167,7 @@ lisp_list = ("like",  ("this",  ("example", None) ) )
 
 
 
-```
+``` python
 >>> A
 [[None, None], [None, None], [None, None]]
 ```
@@ -1176,7 +1176,7 @@ lisp_list = ("like",  ("this",  ("example", None) ) )
 
 
 
-```
+``` python
 >>> A[0][0] = 5
 >>> A
 [[5, None], [5, None], [5, None]]
@@ -1233,7 +1233,7 @@ for obj in mylist:
 
 
 
-```
+``` python
 >>> a_tuple = (1, 2)
 >>> a_tuple[0] += 1
 Traceback (most recent call last):
@@ -1247,7 +1247,7 @@ TypeError: 'tuple' object does not support item assignment
 
 
 
-```
+``` python
 >>> result = a_tuple[0] + 1
 >>> a_tuple[0] = result
 Traceback (most recent call last):
@@ -1261,7 +1261,7 @@ TypeError: 'tuple' object does not support item assignment
 
 
 
-```
+``` python
 >>> a_tuple = (['foo'], 'bar')
 >>> a_tuple[0] += ['item']
 Traceback (most recent call last):
@@ -1273,7 +1273,7 @@ TypeError: 'tuple' object does not support item assignment
 
 
 
-```
+``` python
 >>> a_tuple[0]
 ['foo', 'item']
 ```
@@ -1282,7 +1282,7 @@ TypeError: 'tuple' object does not support item assignment
 
 
 
-```
+``` python
 >>> a_list = []
 >>> a_list += [1]
 >>> a_list
@@ -1293,7 +1293,7 @@ TypeError: 'tuple' object does not support item assignment
 
 
 
-```
+``` python
 >>> result = a_list.__iadd__([1])
 >>> a_list = result
 ```
@@ -1304,7 +1304,7 @@ TypeError: 'tuple' object does not support item assignment
 
 
 
-```
+``` python
 >>> result = a_tuple[0].__iadd__(['item'])
 >>> a_tuple[0] = result
 Traceback (most recent call last):
@@ -1329,7 +1329,7 @@ Isorted.sort(key=lambda s: int(s[10:15]))
 
 
 
-```
+``` python
 >>> list1 = ["what", "I'm", "sorting", "by"]
 >>> list2 = ["something", "else", "to", "sort"]
 >>> pairs = zip(list1, list2)
@@ -1385,7 +1385,7 @@ Mapping.register(P)
 
 
 
-```
+``` python
 >>> c = C()
 >>> isinstance(c, C)        # 直接
 True
@@ -1627,7 +1627,7 @@ four = 4 * A()._A__one()
 
 
 
-```
+``` python
 >>> id(1000) 
 13901272
 >>> id(2000) 
@@ -1638,7 +1638,7 @@ four = 4 * A()._A__one()
 
 
 
-```
+``` python
 >>> a = 1000; b = 2000
 >>> id(a) 
 13901272
@@ -1664,7 +1664,7 @@ four = 4 * A()._A__one()
 
 
 
-```
+``` python
 >>> a = 1000
 >>> b = 500
 >>> c = b + 500
@@ -1682,7 +1682,7 @@ False
 
 
 
-```
+``` python
 >>> a = []
 >>> b = []
 >>> a is b
@@ -1753,7 +1753,7 @@ class TitleStr(str):
 
 
 
-```
+``` python
 >>> FirstOfMonthDate(2012, 2, 14)
 FirstOfMonthDate(2012, 2, 1)
 >>> NamedInt('ten')
@@ -1848,7 +1848,7 @@ class Weather:
 
 
 
-```
+``` python
 >>> import py_compile
 >>> py_compile.compile('foo.py')                 
 ```
@@ -1951,7 +1951,7 @@ from modname import some_objects
 
 
 
-```
+``` python
 >>> import importlib
 >>> import cls
 >>> c = cls.C()                # Create an instance of C
@@ -1965,7 +1965,7 @@ False
 
 
 
-```
+``` python
 >>> hex(id(c.__class__))
 '0x7352a0'
 >>> hex(id(cls.C))

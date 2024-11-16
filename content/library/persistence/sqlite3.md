@@ -72,7 +72,7 @@ cur.execute("CREATE TABLE movie(title, year, score)")
 
 
 
-```
+``` python
 >>> res = cur.execute("SELECT name FROM sqlite_master")
 >>> res.fetchone()
 ('movie',)
@@ -82,7 +82,7 @@ cur.execute("CREATE TABLE movie(title, year, score)")
 
 
 
-```
+``` python
 >>> res = cur.execute("SELECT name FROM sqlite_master WHERE name='spam'")
 >>> res.fetchone() is None
 True
@@ -108,7 +108,7 @@ con.commit()
 
 
 
-```
+``` python
 >>> res = cur.execute("SELECT score FROM movie")
 >>> res.fetchall()
 [(8.2,), (7.5,)]
@@ -134,7 +134,7 @@ con.commit()  # 记得在执行 INSERT 之后提交事务。
 
 
 
-```
+``` python
 >>> for row in cur.execute("SELECT year, title FROM movie ORDER BY year"):
 ...     print(row)
 (1971, 'And Now for Something Completely Different')
@@ -150,7 +150,7 @@ con.commit()  # 记得在执行 INSERT 之后提交事务。
 
 
 
-```
+``` python
 >>> con.close()
 >>> new_con = sqlite3.connect("tutorial.db")
 >>> new_cur = new_con.cursor()
@@ -223,7 +223,7 @@ The highest scoring Monty Python movie is 'Monty Python and the Holy Grail', rel
 
 
 
-```
+``` python
 >>> sqlite3.complete_statement("SELECT foo FROM bar;")
 True
 >>> sqlite3.complete_statement("SELECT foo")
@@ -386,7 +386,8 @@ CREATE TABLE test(
 
 ​	这些常量的可用性会根据 Python 编译时使用的 SQLite 版本而发生变化。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ​	参见
 
@@ -441,7 +442,8 @@ CREATE TABLE test(
 
 ​	blob 的大小无法使用 [`Blob`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Blob) 类来修改。 可使用 SQL 函数 `zeroblob` 来创建固定大小的 blob。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **commit**()
 
@@ -484,7 +486,7 @@ CREATE TABLE test(
 
 
 
-```
+``` python
 >>> import hashlib
 >>> def md5sum(t):
 ...     return hashlib.md5(t).hexdigest()
@@ -548,7 +550,8 @@ con.close()
 
 [**NotSupportedError**](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.NotSupportedError) -- 如果在早于 SQLite 3.25.0，不支持聚合窗口函数的版本上使用。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ​	示例:
 
@@ -675,7 +678,8 @@ con.close()
 
 ​	在跟踪回调中产生的异常不会被传播。作为开发和调试的辅助手段，使用 [`enable_callback_tracebacks()`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.enable_callback_tracebacks) 来启用打印跟踪回调中产生的异常的回调。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.13 版本发生变更:* 将 *trace_callback* 作为关键字参数传入的做法已被弃用。 该形参将在 Python 3.15 中成为仅限位置形参。
 
@@ -691,7 +695,8 @@ con.close()
 
 ​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `sqlite3.enable_load_extension` 并附带参数 `connection`, `enabled`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.10 版本发生变更:* 增加了 `sqlite3.enable_load_extension` 审计事件。
 
@@ -730,7 +735,8 @@ for row in con.execute("SELECT rowid, name, ingredients FROM recipe WHERE name M
 
 ​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `sqlite3.load_extension` 并附带参数 `connection`, `path`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.10 版本发生变更:* 增加了 `sqlite3.load_extension` 审计事件。
 
@@ -801,7 +807,8 @@ dst.close()
 src.close()
 ```
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ​	参见
 
@@ -829,12 +836,13 @@ src.close()
 
 
 
-```
+``` python
 >>> con.getlimit(sqlite3.SQLITE_LIMIT_SQL_LENGTH)
 1000000000
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **setlimit**(*category*, *limit*, */*)
 
@@ -857,14 +865,15 @@ src.close()
 
 
 
-```
+``` python
 >>> con.setlimit(sqlite3.SQLITE_LIMIT_ATTACHED, 1)
 10
 >>> con.getlimit(sqlite3.SQLITE_LIMIT_ATTACHED)
 1
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **getconfig**(*op*, */*)
 
@@ -878,7 +887,8 @@ src.close()
 
 [bool](https://docs.python.org/zh-cn/3.13/library/functions.html#bool)
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **setconfig**(*op*, *enable=True*, */*)
 
@@ -889,7 +899,8 @@ src.close()
 - **op** ([*int*](https://docs.python.org/zh-cn/3.13/library/functions.html#int)) -- 一个 [SQLITE_DBCONFIG 代码](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3-dbconfig-constants)。
 - **enable** ([*bool*](https://docs.python.org/zh-cn/3.13/library/functions.html#bool)) -- 如果该配置选项应当启用则为 `True` (默认值)；如果应当禁用则为 `False`。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **serialize**(***, *name='main'*)
 
@@ -909,7 +920,8 @@ src.close()
 
 ​	此方法仅在下层 SQLite 库具有序列化 API 时可用。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **deserialize**(*data*, */*, ***, *name='main'*)
 
@@ -932,7 +944,8 @@ src.close()
 
 ​	此方法仅在下层的 SQLite 库具有反序列化 API 时可用。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **autocommit**
 
@@ -958,7 +971,8 @@ src.close()
 
 ​	除非 [`autocommit`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Connection.autocommit) 为 [`LEGACY_TRANSACTION_CONTROL`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.LEGACY_TRANSACTION_CONTROL) 否则 [`isolation_level`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Connection.isolation_level) 属性将不起作用。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **in_transaction**
 
@@ -966,7 +980,8 @@ src.close()
 
 ​	如果一个事务处于活动状态（有未提交的更改）则为 `True`，否则为 `False`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **isolation_level**
 
@@ -1127,7 +1142,7 @@ cur.executescript("""
 
 
 
-```
+``` python
 >>> con = sqlite3.connect(":memory:")
 >>> cur = con.cursor()
 >>> cur.connection == con
@@ -1189,7 +1204,8 @@ True
 
 ## *class* sqlite3.**Blob**
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 [`Blob`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Blob) 实例是可以读写 SQLite BLOB 数据的 [file-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-file-like-object)。 调用 [`len(blob)`](https://docs.python.org/zh-cn/3.13/library/functions.html#len) 可得到 blob 的大小（字节数）。 请使用索引和 [切片](https://docs.python.org/zh-cn/3.13/glossary.html#term-slice) 来直接访问 blob 数据。
 
@@ -1264,13 +1280,15 @@ con.close()
 
 ​	来自 [SQLite API](https://sqlite.org/rescode.html) 的数字错误代码
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **sqlite_errorname**
 
 ​	来自 [SQLite API](https://sqlite.org/rescode.html) 的数字错误代码符号名称
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *exception* sqlite3.**InterfaceError**
 
@@ -1377,7 +1395,8 @@ python -m sqlite3 [-h] [-v] [filename] [sql]
 
 ​	打印下层 SQLite 库版本。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 
 
@@ -1391,7 +1410,7 @@ python -m sqlite3 [-h] [-v] [filename] [sql]
 
 
 
-```
+``` python
 >>> # Never do this -- insecure!
 >>> symbol = input()
 ' OR TRUE; --
@@ -1670,7 +1689,7 @@ con.close()
 
 
 
-```
+``` python
 >>> con = sqlite3.connect("file:tutorial.db?mode=ro", uri=True)
 >>> con.execute("CREATE TABLE readonly(data)")
 Traceback (most recent call last):
@@ -1682,7 +1701,7 @@ OperationalError: attempt to write a readonly database
 
 
 
-```
+``` python
 >>> con = sqlite3.connect("file:nosuchdb.db?mode=rw", uri=True)
 Traceback (most recent call last):
 OperationalError: unable to open database file
@@ -1718,7 +1737,7 @@ con2.close()
 
 
 
-```
+``` python
 >>> con = sqlite3.connect(":memory:")
 >>> con.row_factory = sqlite3.Row
 ```
@@ -1727,7 +1746,7 @@ con2.close()
 
 
 
-```
+``` python
 >>> res = con.execute("SELECT 'Earth' AS name, 6378 AS radius")
 >>> row = res.fetchone()
 >>> row.keys()
@@ -1759,7 +1778,7 @@ def dict_factory(cursor, row):
 
 
 
-```
+``` python
 >>> con = sqlite3.connect(":memory:")
 >>> con.row_factory = dict_factory
 >>> for row in con.execute("SELECT 1 AS a, 2 AS b"):
@@ -1783,7 +1802,7 @@ def namedtuple_factory(cursor, row):
 
 
 
-```
+``` python
 >>> con = sqlite3.connect(":memory:")
 >>> con.row_factory = namedtuple_factory
 >>> cur = con.execute("SELECT 1 AS a, 2 AS b")

@@ -339,7 +339,8 @@ barrier passed
 <asyncio.locks.Barrier object at 0x... [filling, waiters:0/3]>
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *coroutine* **wait**()
 

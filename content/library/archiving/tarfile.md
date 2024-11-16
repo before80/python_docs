@@ -241,7 +241,8 @@ draft = false
 
 [`TarFile`](https://docs.python.org/zh-cn/3.13/library/tarfile.html#tarfile.TarFile) 对象可在 [`with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#with) 语句中作为上下文管理器使用。 当语句块结束时它将自动被关闭。 请注意在发生异常事件时被打开用于写入的归档将不会被终结；只有内部使用的文件对象将被关闭。 相关用例请参见 [例子](https://docs.python.org/zh-cn/3.13/library/tarfile.html#tar-examples)。
 
-*Added in version 3.2:* 添加了对上下文管理器协议的支持。
+> Added in version 3.2:
+> 添加了对上下文管理器协议的支持。
 
 ## *class* tarfile.**TarFile**(*name=None*, *mode='r'*, *fileobj=None*, *format=DEFAULT_FORMAT*, *tarinfo=TarInfo*, *dereference=False*, *ignore_zeros=False*, *encoding=ENCODING*, *errors='surrogateescape'*, *pax_headers=None*, *debug=0*, *errorlevel=1*, *stream=False*)
 
@@ -387,7 +388,8 @@ draft = false
 
 ## TarFile.**extraction_filter**
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ​	被用作 [`extract()`](https://docs.python.org/zh-cn/3.13/library/tarfile.html#tarfile.TarFile.extract) 和 [`extractall()`](https://docs.python.org/zh-cn/3.13/library/tarfile.html#tarfile.TarFile.extractall) 的 *filter* 参数的默认值的 [提取过滤器](https://docs.python.org/zh-cn/3.13/library/tarfile.html#tarfile-extraction-filter)。
 
@@ -551,7 +553,8 @@ draft = false
 
 ## TarInfo.**replace**(*name=...*, *mtime=...*, *mode=...*, *linkname=...*, *uid=...*, *gid=...*, *uname=...*, *gname=...*, *deep=True*)
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ​	返回修改了给定属性的 `TarInfo` 对象的 *新* 副本。 例如，要返回组名设为 `'staff'` 的 `TarInfo`，请使用:
 
@@ -603,7 +606,8 @@ new_tarinfo = old_tarinfo.replace(gname='staff')
 
 ## 解压缩过滤器
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 *tar* 格式的设计旨在捕捉类 UNIX 文件系统的所有细节，这使其功能非常强大。 不幸的是，这些特性也使得很容易创建在解压缩时产生意想不到的 -- 甚至可能是恶意的 -- 影响的 tar 文件。 举例来说，解压缩 tar 文件时可以通过各种方式覆盖任意文件（例如通过使用绝对路径、`..` 路径组件或影响后续成员的符号链接等）。
 
@@ -785,7 +789,8 @@ class StatefulFilter:
 
 ## 命令行接口
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 [`tarfile`](https://docs.python.org/zh-cn/3.13/library/tarfile.html#module-tarfile) 模块提供了简单的命令行接口以便与 tar 归档进行交互。
 

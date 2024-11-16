@@ -14,11 +14,11 @@ draft = false
 
 # ipaddress模块介绍
 
-## 作者:
+作者:
 
 ​	Peter Moody
 
-## 作者:
+作者:
 
 ​	Nick Coghlan
 
@@ -42,7 +42,7 @@ draft = false
 
 
 
-```
+``` python
 >>> ipaddress.ip_address('192.0.2.1')
 IPv4Address('192.0.2.1')
 >>> ipaddress.ip_address('2001:DB8::1')
@@ -53,7 +53,7 @@ IPv6Address('2001:db8::1')
 
 
 
-```
+``` python
 >>> ipaddress.ip_address(3221225985)
 IPv4Address('192.0.2.1')
 >>> ipaddress.ip_address(42540766411282592856903984951653826561)
@@ -64,7 +64,7 @@ IPv6Address('2001:db8::1')
 
 
 
-```
+``` python
 >>> ipaddress.ip_address(1)
 IPv4Address('0.0.0.1')
 >>> ipaddress.IPv4Address(1)
@@ -81,7 +81,7 @@ IPv6Address('::1')
 
 
 
-```
+``` python
 >>> ipaddress.ip_network('192.0.2.0/24')
 IPv4Network('192.0.2.0/24')
 >>> ipaddress.ip_network('2001:db8::0/96')
@@ -94,7 +94,7 @@ IPv6Network('2001:db8::/96')
 
 
 
-```
+``` python
 >>> ipaddress.ip_network('192.0.2.1/24')
 Traceback (most recent call last):
    ...
@@ -107,7 +107,7 @@ IPv4Network('192.0.2.0/24')
 
 
 
-```
+``` python
 >>> ipaddress.ip_network(3221225984)
 IPv4Network('192.0.2.0/32')
 >>> ipaddress.ip_network(42540766411282592856903984951653826560)
@@ -122,7 +122,7 @@ IPv6Network('2001:db8::/128')
 
 
 
-```
+``` python
 >>> ipaddress.ip_interface('192.0.2.1/24')
 IPv4Interface('192.0.2.1/24')
 >>> ipaddress.ip_interface('2001:db8::1/96')
@@ -139,7 +139,7 @@ IPv6Interface('2001:db8::1/96')
 
 
 
-```
+``` python
 >>> addr4 = ipaddress.ip_address('192.0.2.1')
 >>> addr6 = ipaddress.ip_address('2001:db8::1')
 >>> addr6.version
@@ -152,7 +152,7 @@ IPv6Interface('2001:db8::1/96')
 
 
 
-```
+``` python
 >>> host4 = ipaddress.ip_interface('192.0.2.1/24')
 >>> host4.network
 IPv4Network('192.0.2.0/24')
@@ -165,7 +165,7 @@ IPv6Network('2001:db8::/96')
 
 
 
-```
+``` python
 >>> net4 = ipaddress.ip_network('192.0.2.0/24')
 >>> net4.num_addresses
 256
@@ -178,7 +178,7 @@ IPv6Network('2001:db8::/96')
 
 
 
-```
+``` python
 >>> net4 = ipaddress.ip_network('192.0.2.0/24')
 >>> for x in net4.hosts():
 ...     print(x)  
@@ -196,7 +196,7 @@ IPv6Network('2001:db8::/96')
 
 
 
-```
+``` python
 >>> net4 = ipaddress.ip_network('192.0.2.0/24')
 >>> net4.netmask
 IPv4Address('255.255.255.0')
@@ -213,7 +213,7 @@ IPv6Address('::ffff:ffff')
 
 
 
-```
+``` python
 >>> addr6.exploded
 '2001:0db8:0000:0000:0000:0000:0000:0001'
 >>> addr6.compressed
@@ -232,7 +232,7 @@ IPv6Address('::ffff:ffff')
 
 
 
-```
+``` python
 >>> net4[1]
 IPv4Address('192.0.2.1')
 >>> net4[-1]
@@ -254,7 +254,7 @@ if address in network:
 
 
 
-```
+``` python
 >>> addr4 = ipaddress.ip_address('192.0.2.1')
 >>> addr4 in ipaddress.ip_network('192.0.2.0/24')
 True
@@ -268,7 +268,7 @@ False
 
 
 
-```
+``` python
 >>> ipaddress.ip_address('192.0.2.1') < ipaddress.ip_address('192.0.2.2')
 True
 ```
@@ -281,7 +281,7 @@ True
 
 
 
-```
+``` python
 >>> addr4 = ipaddress.ip_address('192.0.2.1')
 >>> str(addr4)
 '192.0.2.1'
@@ -299,7 +299,7 @@ True
 
 
 
-```
+``` python
 >>> ipaddress.ip_address("192.168.0.256")
 Traceback (most recent call last):
   ...

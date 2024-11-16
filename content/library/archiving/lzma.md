@@ -14,7 +14,8 @@ draft = false
 
 # `lzma` --- 使用 LZMA 算法进行压缩
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 **源代码：** [Lib/lzma.py](https://github.com/python/cpython/tree/3.13/Lib/lzma.py)
 
@@ -84,13 +85,15 @@ draft = false
 
 `'rb'` 表示可读而 `'wb'` 表示可写。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **name**
 
 ​	lzma 文件名。 等价于下层 [file object](https://docs.python.org/zh-cn/3.13/glossary.html#term-file-object) 的 [`name`](https://docs.python.org/zh-cn/3.13/library/io.html#io.FileIO.name) 属性。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 *在 3.4 版本发生变更:* 增加了对 `"x"` 和 `"xb"` 模式的支持。
 
@@ -199,7 +202,8 @@ draft = false
 
 ​	如果在要求新的未解压缩输入之前 [`decompress()`](https://docs.python.org/zh-cn/3.13/library/lzma.html#lzma.LZMADecompressor.decompress) 方法可以提供更多的解压缩数据则为 `False`。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## lzma.**compress**(*data*, *format=FORMAT_XZ*, *check=-1*, *preset=None*, *filters=None*)
 

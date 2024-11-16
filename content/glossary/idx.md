@@ -337,7 +337,7 @@ def sum_two_numbers(a: int, b: int) -> int:
 
 
 
-```
+``` python
 >>> import __future__
 >>> __future__.division
 _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)
@@ -365,7 +365,7 @@ _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)
 
 
 
-```
+``` python
 >>> sum(i*i for i in range(10))         # 平方值 0, 1, 4, ... 81 之和
 285
 ```
@@ -566,7 +566,7 @@ _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)
 
 
 
-```
+``` python
 >>> sys.float_info[1]                   # 索引访问
 1024
 >>> sys.float_info.max_exp              # 命名字段访问
@@ -719,7 +719,7 @@ for piece in food:
 
 
 
-```
+``` python
 >>> class C:
 ...     class D:
 ...         def meth(self):
@@ -737,7 +737,7 @@ for piece in food:
 
 
 
-```
+``` python
 >>> import email.mime.text
 >>> email.mime.text.__name__
 'email.mime.text'

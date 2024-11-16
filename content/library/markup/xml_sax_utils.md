@@ -44,7 +44,7 @@ draft = false
 
 
 
-```
+``` python
 >>> print("<element attr=%s>" % quoteattr("ab ' cd \" ef"))
 <element attr="ab ' cd &quot; ef">
 ```

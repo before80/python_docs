@@ -68,7 +68,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.36 with glibc >= 2.13.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ​	这些符号定义了资源的消耗可以通过下面描述的 [`setrlimit()`](https://docs.python.org/zh-cn/3.13/library/resource.html#resource.setrlimit) 和 [`getrlimit()`](https://docs.python.org/zh-cn/3.13/library/resource.html#resource.getrlimit) 函数来控制。这些符号的值正是 C 程序所使用的常数。
 
@@ -130,7 +131,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.8.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## resource.**RLIMIT_NICE**
 
@@ -138,7 +140,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.12.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## resource.**RLIMIT_RTPRIO**
 
@@ -146,7 +149,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.12.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## resource.**RLIMIT_RTTIME**
 
@@ -154,7 +158,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.25.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## resource.**RLIMIT_SIGPENDING**
 
@@ -162,7 +167,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.8.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## resource.**RLIMIT_SBSIZE**
 
@@ -170,7 +176,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): FreeBSD.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## resource.**RLIMIT_SWAP**
 
@@ -178,7 +185,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): FreeBSD.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## resource.**RLIMIT_NPTS**
 
@@ -186,7 +194,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): FreeBSD.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## resource.**RLIMIT_KQUEUES**
 
@@ -194,7 +203,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): FreeBSD >= 11.
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## 资源用量
 
@@ -269,4 +279,5 @@ print(getrusage(RUSAGE_SELF))
 
 ​	传递给 [`getrusage()`](https://docs.python.org/zh-cn/3.13/library/resource.html#resource.getrusage) 以请求当前线程所消耗的资源。 并非所有系统都能使用。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>

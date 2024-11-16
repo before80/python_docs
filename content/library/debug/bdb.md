@@ -61,7 +61,8 @@ draft = false
 - 要忽略的次数。
 - 命中的次数。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **bpprint**(*out=None*)
 
@@ -271,7 +272,8 @@ draft = false
 
 ​	返回由指定数字所指明的中断点。 如果 *arg* 是一个字符串，它将被转换为一个数字。 如果 *arg* 不是一个表示数字的字符串，如果给定的中断点不存在或者已被删除，则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **get_break**(*filename*, *lineno*)
 

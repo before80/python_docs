@@ -132,7 +132,7 @@ def find_ge(a, x):
 
 
 
-```
+``` python
 >>> def grade(score, breakpoints=[60, 70, 80, 90], grades='FDCBA'):
 ...     i = bisect(breakpoints, score)
 ...     return grades[i]
@@ -145,7 +145,7 @@ def find_ge(a, x):
 
 
 
-```
+``` python
 >>> from collections import namedtuple
 >>> from operator import attrgetter
 >>> from bisect import bisect, insort
@@ -181,7 +181,7 @@ Movie(name='The Birds', released=1963, director='Hitchcock')
 
 
 
-```
+``` python
 >>> data = [('red', 5), ('blue', 1), ('yellow', 8), ('black', 0)]
 >>> data.sort(key=lambda r: r[1])       # 或者使用 operator.itemgetter(1)。
 >>> keys = [r[1] for r in data]         # 预计算一个由键组成的列表。

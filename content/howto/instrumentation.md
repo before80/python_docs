@@ -14,11 +14,11 @@ draft = false
 
 # 使用 DTrace 和 SystemTap 检测CPython
 
-## 作者:
+作者:
 
 ​	David Malcolm
 
-## 作者:
+作者:
 
 ​	Łukasz Langa
 
@@ -296,19 +296,22 @@ probe process("python").library("libpython3.6dm.so.1.0").mark("function__entry")
 
 ​	在 [`importlib`](https://docs.python.org/zh-cn/3.13/library/importlib.html#module-importlib) 试图查找并加载模块之前被触发。`arg0` 是模块名称。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **import__find__load__done(str modulename, int found)**
 
 ​	在 [`importlib`](https://docs.python.org/zh-cn/3.13/library/importlib.html#module-importlib) 的 find_and_load 函数被调用后被触发 。`arg0` 是模块名称， `arg1` 表示模块是否成功加载。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **audit(str event, void \*tuple)**
 
 ​	当 [`sys.audit()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.audit) 或 [`PySys_Audit()`](https://docs.python.org/zh-cn/3.13/c-api/sys.html#c.PySys_Audit) 被调用时启动。 `arg0` 是事件名称的 C 字符串，`arg1` 是一个指向元组对象的 [`PyObject`](https://docs.python.org/zh-cn/3.13/c-api/structures.html#c.PyObject) 指针。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## SystemTap Tapsets
 

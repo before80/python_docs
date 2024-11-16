@@ -63,7 +63,7 @@ ForwardX11 = no
 
 
 
-```
+``` python
 >>> import configparser
 >>> config = configparser.ConfigParser()
 >>> config['DEFAULT'] = {'ServerAliveInterval': '45',
@@ -87,7 +87,7 @@ ForwardX11 = no
 
 
 
-```
+``` python
 >>> config = configparser.ConfigParser()
 >>> config.sections()
 []
@@ -130,7 +130,7 @@ ServerAliveInterval = -1
 
 
 
-```
+``` python
 >>> config_override = configparser.ConfigParser()
 >>> config_override['DEFAULT'] = {'ServerAliveInterval': '-1'}
 >>> with open('override.ini', 'w') as configfile:
@@ -151,7 +151,7 @@ ServerAliveInterval = -1
 
 
 
-```
+``` python
 >>> int(topsecret['Port'])
 50022
 >>> float(topsecret['CompressionLevel'])
@@ -162,7 +162,7 @@ ServerAliveInterval = -1
 
 
 
-```
+``` python
 >>> topsecret.getboolean('ForwardX11')
 False
 >>> config['forge.example'].getboolean('ForwardX11')
@@ -179,7 +179,7 @@ True
 
 
 
-```
+``` python
 >>> topsecret.get('Port')
 '50022'
 >>> topsecret.get('CompressionLevel')
@@ -193,7 +193,7 @@ True
 
 
 
-```
+``` python
 >>> topsecret.get('CompressionLevel', '3')
 '9'
 ```
@@ -202,7 +202,7 @@ True
 
 
 
-```
+``` python
 >>> config.get('forge.example', 'monster',
 ...            fallback='No such things as monsters')
 'No such things as monsters'
@@ -212,7 +212,7 @@ True
 
 
 
-```
+``` python
 >>> 'BatchMode' in topsecret
 False
 >>> topsecret.getboolean('BatchMode', fallback=True)
@@ -286,7 +286,7 @@ empty string value here =
 
 
 
-```
+``` python
 >>> config = """
 ... option = value
 ...
@@ -364,7 +364,8 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 
 ## 映射协议访问
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	映射协议访问这个通用名称是指允许以字典的方式来使用自定义对象的功能。 在 [`configparser`](https://docs.python.org/zh-cn/3.13/library/configparser.html#module-configparser) 中，映射接口的实现使用了 `parser['section']['option']` 标记法。
 
@@ -570,7 +571,7 @@ python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
 
 
 
-```
+``` python
 >>> custom = configparser.ConfigParser()
 >>> custom['section1'] = {'funky': 'nope'}
 >>> custom['section1'].getboolean('funky')
@@ -590,7 +591,7 @@ False
 
 
 
-```
+``` python
 >>> config = """
 ... [Section1]
 ... Key = Value
@@ -625,7 +626,7 @@ False
 
 
 
-```
+``` python
 >>> import re
 >>> config = """
 ... [Section 1]
@@ -781,7 +782,7 @@ ServerAliveInterval = -1
 
 
 
-```
+``` python
 >>> config_override = configparser.ConfigParser()
 >>> config_override['DEFAULT'] = {'ServerAliveInterval': '-1'}
 >>> with open('override.ini', 'w') as configfile:
@@ -863,7 +864,8 @@ config.read(['site.cfg', os.path.expanduser('~/.myapp.cfg')],
 
 ​	可选参数 *source* 指定要读取的文件名称。 如果未给出并且 *f* 具有 `name` 属性，则该属性会被用作 *source*；默认值为 `'<???>'`。
 
-*Added in version 3.2:* 替代 `readfp()`。
+> Added in version 3.2:
+> 替代 `readfp()`。
 
 ## **read_string**(*string*, *source='<string>'*)
 
@@ -871,7 +873,8 @@ config.read(['site.cfg', os.path.expanduser('~/.myapp.cfg')],
 
 ​	可选参数 *source* 指定一个所传入字符串的上下文专属名称。 如果未给出，则会使用 `'<string>'`。 这通常应为一个文件系统路径或 URL。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **read_dict**(*dictionary*, *source='<dict>'*)
 
@@ -881,7 +884,8 @@ config.read(['site.cfg', os.path.expanduser('~/.myapp.cfg')],
 
 ​	此方法可被用于在解析器之间拷贝状态。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **get**(*section*, *option*, ***, *raw=False*, *vars=None*[, *fallback*])
 
@@ -1044,7 +1048,8 @@ cfgparser.optionxform = str
 
 ​	当没有对应值的键带有一个缩进的行时将引发的异常。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ​	备注
 

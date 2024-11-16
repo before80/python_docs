@@ -170,7 +170,7 @@ except E as N:
 
 
 
-```
+``` python
 >>> print(sys.exception())
 None
 >>> try:
@@ -198,7 +198,7 @@ None
 
 
 
-```
+``` python
 >>> try:
 ...     raise ExceptionGroup("eg",
 ...         [ValueError(1), TypeError(2), OSError(3), OSError(4)])
@@ -223,7 +223,7 @@ caught <class 'ExceptionGroup'> with nested (OSError(3), OSError(4))
 
 
 
-```
+``` python
 >>> try:
 ...     raise BlockingIOError
 ... except* BlockingIOError as e:
@@ -250,7 +250,7 @@ ExceptionGroup('', (BlockingIOError()))
 
 
 
-```
+``` python
 >>> def f():
 ...     try:
 ...         1/0
@@ -269,7 +269,7 @@ ExceptionGroup('', (BlockingIOError()))
 
 
 
-```
+``` python
 >>> def foo():
 ...     try:
 ...         return 'try'
@@ -384,7 +384,8 @@ with (
 
 ## 8.6. `match` 语句
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ​	匹配语句用于进行模式匹配。语法如下：
 
@@ -443,7 +444,7 @@ case_block   ::=  'case' patterns [guard] ":" block
 
 
 
-```
+``` python
 >>> flag = False
 >>> match (100, 200):
 ...    case (100, 300):  # Mismatch: 200 != 300
@@ -989,7 +990,8 @@ Foo = f1(arg)(f2(Foo))
 
 ## 8.9. 协程
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 
 
@@ -1111,7 +1113,8 @@ finally:
 
 ## 8.10. 类型形参列表
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 *在 3.13 版本发生变更:* 增加了对默认值的支持 (参见 [**PEP 696**](https://peps.python.org/pep-0696/))。
 

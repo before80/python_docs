@@ -69,7 +69,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 
 
-```
+``` python
 >>> print("Hello")
 Hello
 >>> "Hello" * 3

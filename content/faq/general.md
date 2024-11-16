@@ -49,7 +49,7 @@ draft = false
 
 ​	Python 是一种解释型、交互式、面向对象的编程语言。 它包含了模块、异常、动态类型、高层级动态数据类型以及类等特性。 在面向对象编程以外它还支持多种编程范式，例如过程式和函数式编程等。 Python 结合了超强的功能和极清晰的语法。 它带有许多系统调用和库以及多种窗口系统的接口，并且能用 C 或 C++ 来进行扩展。 它还可用作需要可编程接口的应用程序的扩展语言。 最后，Python 非常易于移植：它可以在包括 Linux 和 macOS 在内的许多 Unix 变种以及 Windows 上运行。
 
-​	要了解更多详情，请先查看 [Python 教程](https://docs.python.org/zh-cn/3.13/tutorial/index.html#tutorial-index)。 [Python 新手指南](https://wiki.python.org/moin/BeginnersGuide) 提供了学习 Python 的其他入门教程及资源的链接。
+​	要了解更多详情，请先查看 [Python 教程]({{< ref "/tutorial#tutorial-index" >}})。 [Python 新手指南](https://wiki.python.org/moin/BeginnersGuide) 提供了学习 Python 的其他入门教程及资源的链接。
 
 ### [什么是 Python 软件基金会？](https://docs.python.org/zh-cn/3.13/faq/general.html#id6)
 
@@ -85,7 +85,7 @@ draft = false
 
 ​	Python 是一种高层级的多用途编程语言，可用于解决许多不同门类的问题。
 
-​	本语言自带一个庞大标准库，所涵盖的编程领域包括字符串处理（正则表达式、Unicode、文件间的差异比较等），互联网协议（HTTP, FTP, SMTP, XML-RPC, POP, IMAP），软件工程（单元测试、日志记录、性能分析、Python 代码解析），以及操作系统接口（系统调用、文件系统、TCP/IP 套接字）。 请查看 [Python 标准库](https://docs.python.org/zh-cn/3.13/library/index.html#library-index) 目录页以获取所有可用内容的概览。 此外还有大量第三方扩展包可供使用。 请访问 [Python 软件包索引](https://pypi.org/) 来查找你感兴趣的软件包。
+​	本语言自带一个庞大标准库，所涵盖的编程领域包括字符串处理（正则表达式、Unicode、文件间的差异比较等），互联网协议（HTTP, FTP, SMTP, XML-RPC, POP, IMAP），软件工程（单元测试、日志记录、性能分析、Python 代码解析），以及操作系统接口（系统调用、文件系统、TCP/IP 套接字）。 请查看 [Python 标准库]({{< ref "/library#library-index" >}}) 目录页以获取所有可用内容的概览。 此外还有大量第三方扩展包可供使用。 请访问 [Python 软件包索引](https://pypi.org/) 来查找你感兴趣的软件包。
 
 
 
@@ -127,7 +127,7 @@ draft = false
 
 ### [我之前从未接触过编程。 哪里有 Python 的教程？](https://docs.python.org/zh-cn/3.13/faq/general.html#id13)
 
-​	有许多可选择的教程和书籍。 标准文档中也包含有 [Python 教程](https://docs.python.org/zh-cn/3.13/tutorial/index.html#tutorial-index)。
+​	有许多可选择的教程和书籍。 标准文档中也包含有 [Python 教程]({{< ref "/tutorial#tutorial-index" >}})。
 
 ​	请参阅 [新手指南](https://wiki.python.org/moin/BeginnersGuide) 以获取针对 Python 编程初学者的信息，包括教程的清单。
 
@@ -227,7 +227,7 @@ draft = false
 
 
 
-```
+``` python
 >>> L = []
 >>> dir(L) 
 ['__add__', '__class__', '__contains__', '__delattr__', '__delitem__',

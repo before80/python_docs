@@ -24,7 +24,8 @@ draft = false
 
 ​	这是完整的模块 API 参考—若要查看概述，请见 [ipaddress模块介绍](https://docs.python.org/zh-cn/3.13/howto/ipaddress.html#ipaddress-howto).
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## 方便的工厂函数
 
@@ -36,7 +37,7 @@ draft = false
 
 
 
-```
+``` python
 >>> ipaddress.ip_address('192.168.0.1')
 IPv4Address('192.168.0.1')
 >>> ipaddress.ip_address('2001:db8::')
@@ -49,7 +50,7 @@ IPv6Address('2001:db8::')
 
 
 
-```
+``` python
 >>> ipaddress.ip_network('192.168.0.0/28')
 IPv4Network('192.168.0.0/28')
 ```
@@ -78,7 +79,7 @@ IPv4Network('192.168.0.0/28')
 
 
 
-```
+``` python
 >>> ipaddress.IPv4Address('192.168.0.1')
 IPv4Address('192.168.0.1')
 >>> ipaddress.IPv4Address(3232235521)
@@ -119,7 +120,7 @@ IPv4Address('192.168.0.1')
 
 
 
-```
+``` python
 >>> ipaddress.ip_address("127.0.0.1").reverse_pointer
 '1.0.0.127.in-addr.arpa'
 >>> ipaddress.ip_address("2001:db8::1").reverse_pointer
@@ -128,7 +129,8 @@ IPv4Address('192.168.0.1')
 
 ​	这是可用于执行PTR查询的名称，而不是已解析的主机名本身。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **is_multicast**
 
@@ -167,7 +169,8 @@ address.is_global == address.ipv4_mapped.is_global
 
 `is_global` 具有与 [`is_private`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv4Address.is_private) 相反的值，除了对于共享的地址空间（即 `100.64.0.0/10` 范围）来说它们均为 `False`。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.13 版本发生变更:* 修复了一些错误的正值和错误的负值，请参阅 [`is_private`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv4Address.is_private) 了解详情。
 
@@ -191,7 +194,8 @@ address.is_global == address.ipv4_mapped.is_global
 
 [`IPv4Address`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv4Address) 对象代表已映射 IPv4 的 IPv6 地址。 参见 [**RFC 4291**](https://datatracker.ietf.org/doc/html/rfc4291.html)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## IPv4Address.**__format__**(*fmt*)
 
@@ -199,7 +203,7 @@ address.is_global == address.ipv4_mapped.is_global
 
 
 
-```
+``` python
 >>> format(ipaddress.IPv4Address('192.168.0.1'))
 '192.168.0.1'
 >>> '{:#b}'.format(ipaddress.IPv4Address('192.168.0.1'))
@@ -212,7 +216,8 @@ address.is_global == address.ipv4_mapped.is_global
 '0x2001_0db8_0000_0000_0000_0000_0000_1000'
 ```
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## *class* ipaddress.**IPv6Address**(*address*)
 
@@ -230,7 +235,7 @@ address.is_global == address.ipv4_mapped.is_global
 
 
 
-```
+``` python
 >>> ipaddress.IPv6Address('2001:db8::1000')
 IPv6Address('2001:db8::1000')
 >>> ipaddress.IPv6Address('ff02::5678%1')
@@ -263,7 +268,8 @@ IPv6Address('ff02::5678%1')
 
 ## **is_global**
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **is_unspecified**
 
@@ -297,7 +303,8 @@ IPv6Address('ff02::5678%1')
 
 ​	请参考 [`IPv4Address`](https://docs.python.org/zh-cn/3.13/library/ipaddress.html#ipaddress.IPv4Address) 中对应的方法文档。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ### 转换字符串和整数
 
@@ -305,7 +312,7 @@ IPv6Address('ff02::5678%1')
 
 
 
-```
+``` python
 >>> str(ipaddress.IPv4Address('192.168.0.1'))
 '192.168.0.1'
 >>> int(ipaddress.IPv4Address('192.168.0.1'))
@@ -328,7 +335,7 @@ IPv6Address('ff02::5678%1')
 
 
 
-```
+``` python
 >>> IPv4Address('127.0.0.2') > IPv4Address('127.0.0.1')
 True
 >>> IPv4Address('127.0.0.2') == IPv4Address('127.0.0.1')
@@ -347,7 +354,7 @@ True
 
 
 
-```
+``` python
 >>> IPv4Address('127.0.0.2') + 3
 IPv4Address('127.0.0.5')
 >>> IPv4Address('127.0.0.2') - 3
@@ -460,7 +467,7 @@ ipaddress.AddressValueError: 4294967296 (>= 2**32) is not permitted as an IPv4 a
 
 
 
-```
+``` python
 >>> list(ip_network('192.0.2.0/29').hosts())  
 [IPv4Address('192.0.2.1'), IPv4Address('192.0.2.2'),
  IPv4Address('192.0.2.3'), IPv4Address('192.0.2.4'),
@@ -481,7 +488,7 @@ ipaddress.AddressValueError: 4294967296 (>= 2**32) is not permitted as an IPv4 a
 
 
 
-```
+``` python
 >>> n1 = ip_network('192.0.2.0/28')
 >>> n2 = ip_network('192.0.2.1/32')
 >>> list(n1.address_exclude(n2))  
@@ -495,7 +502,7 @@ ipaddress.AddressValueError: 4294967296 (>= 2**32) is not permitted as an IPv4 a
 
 
 
-```
+``` python
 >>> list(ip_network('192.0.2.0/24').subnets())
 [IPv4Network('192.0.2.0/25'), IPv4Network('192.0.2.128/25')]
 >>> list(ip_network('192.0.2.0/24').subnets(prefixlen_diff=2))  
@@ -519,7 +526,7 @@ ValueError: new prefix must be longer
 
 
 
-```
+``` python
 >>> ip_network('192.0.2.0/24').supernet()
 IPv4Network('192.0.2.0/23')
 >>> ip_network('192.0.2.0/24').supernet(prefixlen_diff=2)
@@ -534,14 +541,15 @@ IPv4Network('192.0.0.0/20')
 
 
 
-```
+``` python
 >>> a = ip_network('192.168.1.0/24')
 >>> b = ip_network('192.168.1.128/30')
 >>> b.subnet_of(a)
 True
 ```
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **supernet_of**(*other*)
 
@@ -549,14 +557,15 @@ True
 
 
 
-```
+``` python
 >>> a = ip_network('192.168.1.0/24')
 >>> b = ip_network('192.168.1.128/30')
 >>> a.supernet_of(b)
 True
 ```
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **compare_networks**(*other*)
 
@@ -564,7 +573,7 @@ True
 
 
 
-```
+``` python
 >>> ip_network('192.0.2.1/32').compare_networks(ip_network('192.0.2.2/32'))
 -1
 >>> ip_network('192.0.2.1/32').compare_networks(ip_network('192.0.2.0/32'))
@@ -671,7 +680,7 @@ True
 
 
 
-```
+``` python
 >>> for addr in IPv4Network('192.0.2.0/28'):
 ...     addr
 ...
@@ -699,7 +708,7 @@ IPv4Address('192.0.2.15')
 
 
 
-```
+``` python
 >>> IPv4Network('192.0.2.0/28')[0]
 IPv4Address('192.0.2.0')
 >>> IPv4Network('192.0.2.0/28')[15]
@@ -726,7 +735,7 @@ False
 
 
 
-```
+``` python
 >>> interface = IPv4Interface('192.0.2.5/24')
 >>> interface.ip
 IPv4Address('192.0.2.5')
@@ -738,7 +747,7 @@ IPv4Address('192.0.2.5')
 
 
 
-```
+``` python
 >>> interface = IPv4Interface('192.0.2.5/24')
 >>> interface.network
 IPv4Network('192.0.2.0/24')
@@ -750,7 +759,7 @@ IPv4Network('192.0.2.0/24')
 
 
 
-```
+``` python
 >>> interface = IPv4Interface('192.0.2.5/24')
 >>> interface.with_prefixlen
 '192.0.2.5/24'
@@ -762,7 +771,7 @@ IPv4Network('192.0.2.0/24')
 
 
 
-```
+``` python
 >>> interface = IPv4Interface('192.0.2.5/24')
 >>> interface.with_netmask
 '192.0.2.5/255.255.255.0'
@@ -774,7 +783,7 @@ IPv4Network('192.0.2.0/24')
 
 
 
-```
+``` python
 >>> interface = IPv4Interface('192.0.2.5/24')
 >>> interface.with_hostmask
 '192.0.2.5/0.0.0.255'
@@ -820,7 +829,7 @@ IPv4Network('192.0.2.0/24')
 
 
 
-```
+``` python
 >>> ipaddress.ip_address(3221225985)
 IPv4Address('192.0.2.1')
 >>> ipaddress.v4_int_to_packed(3221225985)
@@ -837,7 +846,7 @@ b'\xc0\x00\x02\x01'
 
 
 
-```
+``` python
 >>> [ipaddr for ipaddr in ipaddress.summarize_address_range(
 ...    ipaddress.IPv4Address('192.0.2.0'),
 ...    ipaddress.IPv4Address('192.0.2.130'))]
@@ -850,7 +859,7 @@ b'\xc0\x00\x02\x01'
 
 
 
-```
+``` python
 >>> [ipaddr for ipaddr in
 ... ipaddress.collapse_addresses([ipaddress.IPv4Network('192.0.2.0/25'),
 ... ipaddress.IPv4Network('192.0.2.128/25')])]

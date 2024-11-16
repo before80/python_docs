@@ -123,19 +123,22 @@ bar
 
 ​	返回包含所有全局 site-packages 目录的列表。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## site.**getuserbase**()
 
 ​	返回用户基准目录的路径 [`USER_BASE`](https://docs.python.org/zh-cn/3.13/library/site.html#site.USER_BASE)。 如果它尚未被初始化，则此函数还将参照 [`PYTHONUSERBASE`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONUSERBASE) 来设置它。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## site.**getusersitepackages**()
 
 ​	返回用户专属 site-packages 目录的路径 [`USER_SITE`](https://docs.python.org/zh-cn/3.13/library/site.html#site.USER_SITE)。 如果它尚未被初始化，则此函数还将参照 [`USER_BASE`](https://docs.python.org/zh-cn/3.13/library/site.html#site.USER_BASE) 来设置它。 要确定用户专属 site-packages 是否已被添加到 `sys.path` 则应当使用 [`ENABLE_USER_SITE`](https://docs.python.org/zh-cn/3.13/library/site.html#site.ENABLE_USER_SITE)。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 
 

@@ -24,7 +24,8 @@ draft = false
 
 ​	将 HTML5 命名字符引用 [[1\]](https://docs.python.org/zh-cn/3.13/library/html.entities.html#id2) 映射到等效的 Unicode 字符的字典，例如 `html5['gt;'] == '>'`。 请注意，尾随的分号包含在名称中（例如 `'gt;'` ），但是即使没有分号，一些名称也会被标准接受，在这种情况下，名称出现时带有和不带有 `';'`。另见 [`html.unescape()`](https://docs.python.org/zh-cn/3.13/library/html.html#html.unescape)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## html.entities.**entitydefs**
 

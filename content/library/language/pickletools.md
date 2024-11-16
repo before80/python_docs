@@ -24,7 +24,8 @@ draft = false
 
 ## 命令行语法
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	当从命令行发起调用时，`python -m pickletools` 将对一个或更多 pickle 文件的内容进行拆解。 请注意如果你查看 pickle 中保存的 Python 对象而非 pickle 格式的细节，你可能需要改用 `-m pickle`。 但是，当你想检查的 pickle 文件来自某个不受信任的源时，`-m pickletools` 是更安全的选择，因为它不会执行 pickle 字节码。
 

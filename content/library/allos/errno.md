@@ -410,7 +410,8 @@ draft = false
 
 ​	操作不受支持
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## errno.**EPFNOSUPPORT**
 
@@ -524,7 +525,8 @@ draft = false
 
 ​	接口输出队列已满
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## errno.**ENOTCAPABLE**
 
@@ -532,22 +534,26 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): WASI, FreeBSD
 
-*Added in version 3.11.1.*
+> Added in version 3.11.1.
+>
 
 ## errno.**ECANCELED**
 
 ​	操作已被取消
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## errno.**EOWNERDEAD**
 
 ​	所有者已不存在
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## errno.**ENOTRECOVERABLE**
 
 ​	状态无法恢复
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>

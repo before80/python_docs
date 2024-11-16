@@ -193,13 +193,15 @@ draft = false
 
 [`HTTPPasswordMgrWithDefaultRealm`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#urllib.request.HTTPPasswordMgrWithDefaultRealm) 的一个变体，也带有 `uri -> is_authenticated` 映射数据库。可被 BasicAuth 处理函数用于确定立即发送身份认证凭据的时机，而不是先等待 `401` 响应。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## *class* urllib.request.**AbstractBasicAuthHandler**(*password_mgr=None*)
 
 ​	这是一个帮助完成 HTTP 身份认证的混合类，对远程主机和代理都适用。参数 *password_mgr* 应与 [`HTTPPasswordMgr`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#urllib.request.HTTPPasswordMgr) 兼容；关于必须支持哪些接口，请参阅 [HTTPPasswordMgr 对象](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#http-password-mgr) 对象的章节。如果 *password_mgr* 还提供 `is_authenticated` 和 `update_authenticated` 方法（请参阅 [HTTPPasswordMgrWithPriorAuth 对象](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#http-password-mgr-with-prior-auth) 对象），则 handler 将对给定 URI 用到 `is_authenticated` 的结果，来确定是否随请求发送身份认证凭据。如果该 URI 的 `is_authenticated` 返回 `True`，则发送凭据。如果 `is_authenticated` 为 `False` ，则不发送凭据，然后若收到 `401` 响应，则使用身份认证凭据重新发送请求。如果身份认证成功，则调用 `update_authenticated` 设置该 URI 的 `is_authenticated` 为 `True`，这样后续对该 URI 或其所有父 URI 的请求将自动包含该身份认证凭据。
 
-*Added in version 3.5:* 增加了对 `is_authenticated` 的支持。
+> Added in version 3.5:
+> 增加了对 `is_authenticated` 的支持。
 
 ## *class* urllib.request.**HTTPBasicAuthHandler**(*password_mgr=None*)
 
@@ -241,7 +243,8 @@ draft = false
 
 ​	打开数据 URL。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## *class* urllib.request.**FTPHandler**
 
@@ -303,7 +306,8 @@ draft = false
 
 ​	要采用的 HTTP 请求方法。默认为 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None)，表示 [`get_method()`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#urllib.request.Request.get_method) 将对方法进行正常处理。设置本值可以覆盖 [`get_method()`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#urllib.request.Request.get_method) 中的默认处理过程，设置方式可以是在 [`Request`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#urllib.request.Request) 的子类中给出默认值，也可以通过 *method* 参数给 [`Request`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#urllib.request.Request) 构造函数传入一个值。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.4 版本发生变更:* 现在可以在子类中设置默认值；而之前只能通过构造函数的实参进行设置。
 
@@ -329,7 +333,8 @@ draft = false
 
 ​	从本请求实例中移除指定命名的头部信息（对常规数据和非重定向数据都会检测）。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## Request.**get_full_url**()
 
@@ -521,7 +526,8 @@ draft = false
 
 ​	与 [`http_error_301()`](https://docs.python.org/zh-cn/3.13/library/urllib.request.html#urllib.request.HTTPRedirectHandler.http_error_301) 一样，但是针对 '永久重定向' 响应进行调用。 它不允许将请求方法从 `POST` 改为 `GET`。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 
 
@@ -721,7 +727,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import urllib.request
 >>> with urllib.request.urlopen('http://www.python.org/') as f:
 ...     print(f.read(300))
@@ -741,7 +747,7 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">\n\n<head>\n
 
 
 
-```
+``` python
 >>> with urllib.request.urlopen('http://www.python.org/') as f:
 ...     print(f.read(100).decode('utf-8'))
 ...
@@ -753,7 +759,7 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">\n\n<head>\n
 
 
 
-```
+``` python
 >>> import urllib.request
 >>> f = urllib.request.urlopen('http://www.python.org/')
 >>> print(f.read(100).decode('utf-8'))
@@ -765,7 +771,7 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">\n\n<head>\n
 
 
 
-```
+``` python
 >>> import urllib.request
 >>> req = urllib.request.Request(url='https://localhost/cgi-bin/test.cgi',
 ...                       data=b'This data is passed to stdin of the CGI')
@@ -777,7 +783,7 @@ Got Data: "This data is passed to stdin of the CGI"
 
 ​	上述示例中的 CGI 代码如下所示：
 
-```
+``` sh
 #!/usr/bin/env python
 import sys
 data = sys.stdin.read()
@@ -854,7 +860,7 @@ opener.open('http://www.example.com/')
 
 
 
-```
+``` python
 >>> import urllib.request
 >>> import urllib.parse
 >>> params = urllib.parse.urlencode({'spam': 1, 'eggs': 2, 'bacon': 0})
@@ -868,7 +874,7 @@ opener.open('http://www.example.com/')
 
 
 
-```
+``` python
 >>> import urllib.request
 >>> import urllib.parse
 >>> data = urllib.parse.urlencode({'spam': 1, 'eggs': 2, 'bacon': 0})
@@ -882,7 +888,7 @@ opener.open('http://www.example.com/')
 
 
 
-```
+``` python
 >>> import urllib.request
 >>> proxies = {'http': 'http://proxy.example.com:8080/'}
 >>> opener = urllib.request.FancyURLopener(proxies)
@@ -895,7 +901,7 @@ opener.open('http://www.example.com/')
 
 
 
-```
+``` python
 >>> import urllib.request
 >>> opener = urllib.request.FancyURLopener({})
 >>> with opener.open("http://www.python.org/") as f:
@@ -917,7 +923,7 @@ opener.open('http://www.example.com/')
 
 
 
-```
+``` python
 >>> import urllib.request
 >>> local_filename, headers = urllib.request.urlretrieve('http://python.org/')
 >>> html = open(local_filename)
@@ -1038,7 +1044,8 @@ opener.open('http://www.example.com/')
 
 ## **status**
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ​	由服务器返回的状态码。
 

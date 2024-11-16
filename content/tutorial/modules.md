@@ -43,7 +43,7 @@ def fib2(n):   # 返回斐波那契数列直到 n
 
 
 
-```
+``` python
 >>> import fibo
 ```
 
@@ -51,7 +51,7 @@ def fib2(n):   # 返回斐波那契数列直到 n
 
 
 
-```
+``` python
 >>> fibo.fib(1000)
 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
 >>> fibo.fib2(100)
@@ -64,7 +64,7 @@ def fib2(n):   # 返回斐波那契数列直到 n
 
 
 
-```
+``` python
 >>> fib = fibo.fib
 >>> fib(500)
 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377
@@ -84,7 +84,7 @@ def fib2(n):   # 返回斐波那契数列直到 n
 
 
 
-```
+``` python
 >>> from fibo import fib, fib2
 >>> fib(500)
 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377
@@ -96,7 +96,7 @@ def fib2(n):   # 返回斐波那契数列直到 n
 
 
 
-```
+``` python
 >>> from fibo import *
 >>> fib(500)
 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377
@@ -110,7 +110,7 @@ def fib2(n):   # 返回斐波那契数列直到 n
 
 
 
-```
+``` python
 >>> import fibo as fib
 >>> fib.fib(500)
 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377
@@ -122,7 +122,7 @@ def fib2(n):   # 返回斐波那契数列直到 n
 
 
 
-```
+``` python
 >>> from fibo import fib as fibonacci
 >>> fibonacci(500)
 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377
@@ -163,7 +163,7 @@ $ python fibo.py 50
 
 
 
-```
+``` python
 >>> import fibo
 >>>
 ```
@@ -215,7 +215,7 @@ $ python fibo.py 50
 
 
 
-```
+``` python
 >>> import sys
 >>> sys.ps1
 '>>> '
@@ -233,7 +233,7 @@ C>
 
 
 
-```
+``` python
 >>> import sys
 >>> sys.path.append('/ufs/guido/lib/python')
 ```
@@ -246,7 +246,7 @@ C>
 
 
 
-```
+``` python
 >>> import fibo, sys
 >>> dir(fibo)
 ['__name__', 'fib', 'fib2']
@@ -278,7 +278,7 @@ C>
 
 
 
-```
+``` python
 >>> a = [1, 2, 3, 4, 5]
 >>> import fibo
 >>> fib = fibo.fib
@@ -292,7 +292,7 @@ C>
 
 
 
-```
+``` python
 >>> import builtins
 >>> dir(builtins)  
 ['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException',

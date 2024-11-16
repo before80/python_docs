@@ -132,23 +132,27 @@ draft = false
 
 ​	通过调用每个 [帧对象](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#frame-objects) 的 [`clear()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#frame.clear) 方法来清除 [回溯](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#traceback-objects) *tb* 中所有栈帧的局部变量。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## traceback.**walk_stack**(*f*)
 
 ​	从给定的帧开始访问 [`f.f_back`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#frame.f_back) 之后的栈内容，产生每一个帧和帧对应的行号。 如果 *f* 为 `None`，则会使用当前栈。 这个辅助函数要与 [`StackSummary.extract()`](https://docs.python.org/zh-cn/3.13/library/traceback.html#traceback.StackSummary.extract) 一起使用。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## traceback.**walk_tb**(*tb*)
 
 ​	访问 [`tb_next`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#traceback.tb_next) 之后的回溯并产生每一个帧和帧对应的行号。 这个辅助函数要与 [`StackSummary.extract()`](https://docs.python.org/zh-cn/3.13/library/traceback.html#traceback.StackSummary.extract) 一起使用。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## `TracebackException` 对象
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 `TracebackException` objects are created from actual exceptions to capture data for later printing. They offer a more lightweight method of storing this information by avoiding holding references to [traceback](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#traceback-objects) and [frame](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#frame-objects) objects In addition, they expose more options to configure the output compared to the module-level functions described above.
 
@@ -178,7 +182,8 @@ draft = false
 
 ​	如果 `self` 代表一个 [`ExceptionGroup`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ExceptionGroup)，此字段将保存一个由代表被嵌套异常的 `TracebackException` 实例组成的列表。 否则它将为 `None`。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **__suppress_context__**
 
@@ -188,7 +193,8 @@ draft = false
 
 ​	来自原始异常的 [`__notes__`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseException.__notes__) 值，或者如果异常没有任何注释则为 `None`。 如果它不为 `None` 则会在异常字符串之后的回溯中进行格式化。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **stack**
 
@@ -204,7 +210,8 @@ draft = false
 
 ​	原始异常类的字符串显示。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **filename**
 
@@ -218,7 +225,8 @@ draft = false
 
 ​	针对语法错误 —— 错误发生所在的末尾行号。 如不存在则可以为 `None`。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## **text**
 
@@ -232,7 +240,8 @@ draft = false
 
 ​	针对语法错误 —— 错误发生所在的文本末尾偏移量。 如不存在则可以为 `None`。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## **msg**
 
@@ -248,7 +257,8 @@ draft = false
 
 ​	将 [`format()`](https://docs.python.org/zh-cn/3.13/library/functions.html#format) 所返回的异常信息打印至 *file* (默认为 `sys.stderr`)。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **format**(***, *chain=True*)
 
@@ -274,7 +284,8 @@ draft = false
 
 ## `StackSummary` 对象
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 `StackSummary` 对象代表一个可被格式化的调用栈。
 
@@ -304,11 +315,13 @@ draft = false
 
 ​	返回用于打印栈中涉及的某一个 [帧](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#frame-objects) 的字符串。 此方法会为每个要用 [`StackSummary.format()`](https://docs.python.org/zh-cn/3.13/library/traceback.html#traceback.StackSummary.format) 来打印的 [`FrameSummary`](https://docs.python.org/zh-cn/3.13/library/traceback.html#traceback.FrameSummary) 对象进行调用。 如果它返回 `None`，该帧将从输出中被省略。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## `FrameSummary` 对象
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 `FrameSummary` 对象表示 [回溯](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#traceback-objects) 中的某一个 [帧](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#frame-objects)。
 
@@ -440,7 +453,7 @@ IndexError: tuple index out of range
 
 
 
-```
+``` python
 >>> import traceback
 >>> def another_function():
 ...     lumberstack()
@@ -469,7 +482,7 @@ IndexError: tuple index out of range
 
 
 
-```
+``` python
 >>> import traceback
 >>> traceback.format_list([('spam.py', 3, '<module>', 'spam.eggs()'),
 ...                        ('eggs.py', 42, 'eggs', 'return "bacon"')])
@@ -486,7 +499,7 @@ IndexError: tuple index out of range
 
 
 
-```
+``` python
 >>> import sys
 >>> from traceback import TracebackException
 >>>

@@ -52,7 +52,8 @@ draft = false
 
 ​	一个由可用方法组成的枚举，解释器可以用它来确定字节码文件是否与源文件保持同步。 `.pyc` 文件在其标头中指明了所需的失效模式。 请参阅 [已缓存字节码的失效](https://docs.python.org/zh-cn/3.13/reference/import.html#pyc-invalidation) 了解有关 Python 在运行时如何让 `.pyc` 文件失效的更多信息。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **TIMESTAMP**
 

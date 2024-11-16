@@ -68,7 +68,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from decimal import *
 >>> getcontext()
 Context(prec=28, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999,
@@ -82,7 +82,7 @@ Context(prec=28, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999,
 
 
 
-```
+``` python
 >>> getcontext().prec = 28
 >>> Decimal(10)
 Decimal('10')
@@ -106,7 +106,7 @@ Decimal('-Infinity')
 
 
 
-```
+``` python
 >>> c = getcontext()
 >>> c.traps[FloatOperation] = True
 >>> Decimal(3.14)
@@ -121,13 +121,14 @@ decimal.FloatOperation: [<class 'decimal.FloatOperation'>]
 True
 ```
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ​	新 Decimal 的重要性仅由输入的位数决定。 上下文精度和舍入仅在算术运算期间发挥作用。
 
 
 
-```
+``` python
 >>> getcontext().prec = 6
 >>> Decimal('3.0')
 Decimal('3.0')
@@ -144,7 +145,7 @@ Decimal('5.85988')
 
 
 
-```
+``` python
 >>> Decimal("1e9999999999999999999")
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -157,7 +158,7 @@ decimal.InvalidOperation: [<class 'decimal.InvalidOperation'>]
 
 
 
-```
+``` python
 >>> data = list(map(Decimal, '1.34 1.87 3.45 2.35 1.00 0.03 9.25'.split()))
 >>> max(data)
 Decimal('9.25')
@@ -189,7 +190,7 @@ Decimal('0.77')
 
 
 
-```
+``` python
 >>> getcontext().prec = 28
 >>> Decimal(2).sqrt()
 Decimal('1.414213562373095048801688724')
@@ -205,7 +206,7 @@ Decimal('1')
 
 
 
-```
+``` python
 >>> Decimal('7.325').quantize(Decimal('.01'), rounding=ROUND_DOWN)
 Decimal('7.32')
 >>> Decimal('7.325').quantize(Decimal('1.'), rounding=ROUND_UP)
@@ -220,7 +221,7 @@ Decimal('8')
 
 
 
-```
+``` python
 >>> myothercontext = Context(prec=60, rounding=ROUND_HALF_DOWN)
 >>> setcontext(myothercontext)
 >>> Decimal(1) / Decimal(7)
@@ -247,7 +248,7 @@ DivisionByZero: x / 0
 
 
 
-```
+``` python
 >>> setcontext(ExtendedContext)
 >>> getcontext().clear_flags()
 >>> Decimal(355) / Decimal(113)
@@ -263,7 +264,7 @@ Context(prec=9, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999,
 
 
 
-```
+``` python
 >>> setcontext(ExtendedContext)
 >>> Decimal(1) / Decimal(0)
 Decimal('Infinity')
@@ -324,7 +325,7 @@ numeric-string ::=  [sign] numeric-value | [sign] nan
 
 
 
-```
+``` python
 >>> (-7) % 4
 1
 >>> Decimal(-7) % Decimal(4)
@@ -335,7 +336,7 @@ Decimal('-3')
 
 
 
-```
+``` python
 >>> -7 // 4
 -2
 >>> Decimal(-7) // Decimal(4)
@@ -360,14 +361,15 @@ Decimal('-1')
 
 
 
-```
+``` python
 >>> Decimal('-3.14').as_integer_ratio()
 (-157, 50)
 ```
 
 ​	转换是精确的。 在 Infinity 上引发 OverflowError ，在 NaN 上引起 ValueError 。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **as_tuple**()
 
@@ -398,7 +400,7 @@ a > b            ==> Decimal('1')
 
 
 
-```
+``` python
 >>> Decimal('12.0').compare_total(Decimal('12'))
 Decimal('-1')
 ```
@@ -431,7 +433,7 @@ Decimal('-1')
 
 
 
-```
+``` python
 >>> Decimal('2.3').copy_sign(Decimal('-1.5'))
 Decimal('-2.3')
 ```
@@ -444,7 +446,7 @@ Decimal('-2.3')
 
 
 
-```
+``` python
 >>> Decimal(1).exp()
 Decimal('2.718281828459045235360287471')
 >>> Decimal(321).exp()
@@ -465,7 +467,7 @@ Decimal('2.561702493119680037517373933E+139')
 
 
 
-```
+``` python
 >>> Decimal.from_float(0.1)
 Decimal('0.1000000000000000055511151231257827021181583404541015625')
 >>> Decimal.from_float(float('nan'))
@@ -476,7 +478,8 @@ Decimal('Infinity')
 Decimal('-Infinity')
 ```
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **fma**(*other*, *third*, *context=None*)
 
@@ -484,7 +487,7 @@ Decimal('-Infinity')
 
 
 
-```
+``` python
 >>> Decimal(2).fma(3, 5)
 Decimal('11')
 ```
@@ -618,7 +621,7 @@ Decimal('11')
 
 
 
-```
+``` python
 >>> Decimal('1.41421356').quantize(Decimal('1.000'))
 Decimal('1.414')
 ```
@@ -643,7 +646,7 @@ Decimal('1.414')
 
 
 
-```
+``` python
 >>> Decimal(18).remainder_near(Decimal(10))
 Decimal('-2')
 >>> Decimal(25).remainder_near(Decimal(10))
@@ -712,7 +715,7 @@ Decimal('-5')
 
 
 
-```
+``` python
 >>> from decimal import Decimal, getcontext, ROUND_DOWN
 >>> getcontext().rounding = ROUND_DOWN
 >>> round(Decimal('3.75'))     # 上下文舍入设置将被忽略
@@ -824,7 +827,7 @@ s = +s
 
 
 
-```
+``` python
 >>> Context(prec=6, Emax=999, clamp=1).create_decimal('1.23e999')
 Decimal('1.23000E+999')
 ```
@@ -841,7 +844,8 @@ Decimal('1.23000E+999')
 
 ​	将所有陷阱重置为 `0`。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **copy**()
 
@@ -859,7 +863,7 @@ Decimal('1.23000E+999')
 
 
 
-```
+``` python
 >>> getcontext().prec = 3
 >>> Decimal('3.4445') + Decimal('1.0023')
 Decimal('4.45')
@@ -875,7 +879,7 @@ Decimal('4.44')
 
 
 
-```
+``` python
 >>> context = Context(prec=5, rounding=ROUND_DOWN)
 >>> context.create_decimal_from_float(math.pi)
 Decimal('3.1415')
@@ -886,7 +890,8 @@ Traceback (most recent call last):
 decimal.Inexact: None
 ```
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **Etiny**()
 
@@ -1172,7 +1177,8 @@ decimal.Inexact: None
 
 ​	默认值为 `True`。 如果 Python 编译版本 [`使用了 --without-decimal-contextvar 选项来配置`](https://docs.python.org/zh-cn/3.13/using/configure.html#cmdoption-without-decimal-contextvar)，则 C 版本会使用线程局部而非协程局部上下文并且该值为 `False`。 这在某些嵌套上下文场景中将会稍快一些。
 
-*Added in version 3.8.3.*
+> Added in version 3.8.3.
+>
 
 ## 舍入模式
 
@@ -1340,7 +1346,7 @@ Decimal('0.0060000')
 
 
 
-```
+``` python
 >>> getcontext().prec = 20
 >>> u, v, w = Decimal(11111113), Decimal(-11111111), Decimal('7.51111111')
 >>> (u + v) + w
@@ -1375,7 +1381,7 @@ Decimal('0.0060000')
 
 
 
-```
+``` python
 >>> 1 / Decimal('Infinity')
 Decimal('0E-1000026')
 ```
@@ -1570,7 +1576,7 @@ def sin(x):
 
 
 
-```
+``` python
 >>> D = decimal.Decimal
 >>> D('1.23') + D('3.45')
 Decimal('4.68')
@@ -1582,13 +1588,13 @@ Decimal('4.68')
 
 
 
-```
+``` python
 >>> TWOPLACES = Decimal(10) ** -2       # same as Decimal('0.01')
 ```
 
 
 
-```
+``` python
 >>> # Round to two places
 >>> Decimal('3.214').quantize(TWOPLACES)
 Decimal('3.21')
@@ -1596,7 +1602,7 @@ Decimal('3.21')
 
 
 
-```
+``` python
 >>> # Validate that a number does not exceed two places
 >>> Decimal('3.21').quantize(TWOPLACES, context=Context(traps=[Inexact]))
 Decimal('3.21')
@@ -1604,7 +1610,7 @@ Decimal('3.21')
 
 
 
-```
+``` python
 >>> Decimal('3.214').quantize(TWOPLACES, context=Context(traps=[Inexact]))
 Traceback (most recent call last):
    ...
@@ -1617,7 +1623,7 @@ Inexact: None
 
 
 
-```
+``` python
 >>> a = Decimal('102.72')           # Initial fixed-point values
 >>> b = Decimal('3.17')
 >>> a + b                           # Addition preserves fixed-point
@@ -1636,7 +1642,7 @@ Decimal('0.03')
 
 
 
-```
+``` python
 >>> def mul(x, y, fp=TWOPLACES):
 ...     return (x * y).quantize(fp)
 ...
@@ -1646,7 +1652,7 @@ Decimal('0.03')
 
 
 
-```
+``` python
 >>> mul(a, b)                       # Automatically preserve fixed-point
 Decimal('325.62')
 >>> div(b, a)
@@ -1659,7 +1665,7 @@ Decimal('0.03')
 
 
 
-```
+``` python
 >>> values = map(Decimal, '200 200.000 2E2 .02E+4'.split())
 >>> [v.normalize() for v in values]
 [Decimal('2E+2'), Decimal('2E+2'), Decimal('2E+2'), Decimal('2E+2')]
@@ -1671,7 +1677,7 @@ Decimal('0.03')
 
 
 
-```
+``` python
 >>> getcontext().prec = 5
 >>> pi = Decimal('3.1415926535')   # 超过 5 个数位
 >>> pi                             # 所有数位都将保留
@@ -1692,14 +1698,14 @@ Decimal('3.1416')
 
 
 
-```
+``` python
 >>> def remove_exponent(d):
 ...     return d.quantize(Decimal(1)) if d == d.to_integral() else d.normalize()
 ```
 
 
 
-```
+``` python
 >>> remove_exponent(Decimal('5E+3'))
 Decimal('5000')
 ```
@@ -1710,7 +1716,7 @@ Decimal('5000')
 
 
 
-```
+``` python
 >>> Decimal(math.pi)
 Decimal('3.141592653589793115997963468544185161590576171875')
 ```
@@ -1725,7 +1731,7 @@ Decimal('3.141592653589793115997963468544185161590576171875')
 
 
 
-```
+``` python
 >>> getcontext().prec = 3
 >>> Decimal('3.104') + Decimal('2.104')
 Decimal('5.21')
@@ -1737,7 +1743,7 @@ Decimal('5.20')
 
 
 
-```
+``` python
 >>> getcontext().prec = 3
 >>> +Decimal('1.23456789')      # 单目取正运算符将触发舍入
 Decimal('1.23')
@@ -1747,7 +1753,7 @@ Decimal('1.23')
 
 
 
-```
+``` python
 >>> Context(prec=5, rounding=ROUND_DOWN).create_decimal('1.2345678')
 Decimal('1.2345')
 ```
@@ -1762,7 +1768,7 @@ Decimal('1.2345')
 
 
 
-```
+``` python
 >>> setcontext(Context(prec=MAX_PREC, Emax=MAX_EMAX, Emin=MIN_EMIN))
 >>> x = Decimal(2) ** 256
 >>> x / 128
@@ -1773,7 +1779,7 @@ Decimal('90462569716653277674664832038037428010367175520031690655826237506182132
 
 
 
-```
+``` python
 >>> Decimal(1) / 3
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -1784,7 +1790,7 @@ MemoryError
 
 
 
-```
+``` python
 >>> import sys
 >>>
 >>> # 字长 8 字节使用 500MB 的单个操作数的最大位数
@@ -1810,7 +1816,8 @@ Traceback (most recent call last):
 
 [[1](https://docs.python.org/zh-cn/3.13/library/decimal.html#id2)]
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 [[2](https://docs.python.org/zh-cn/3.13/library/decimal.html#id3)]
 

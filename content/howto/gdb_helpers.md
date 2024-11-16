@@ -92,7 +92,7 @@ add-auto-load-safe-path /path/to/cpython
 
 ​	这是当此扩展被启用时 GDB 回溯信息的显示效果（截取部分）:
 
-```
+``` sh
 #0  0x000000000041a6b1 in PyObject_Malloc (nbytes=Cannot access memory at address 0x7fffff7fefe8
 ) at Objects/obmalloc.c:748
 #1  0x000000000041b7c0 in _PyObject_DebugMallocApi (id=111 'o', nbytes=24) at Objects/obmalloc.c:1445

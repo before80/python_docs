@@ -38,7 +38,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import copyreg, copy, pickle
 >>> class C:
 ...     def __init__(self, a):

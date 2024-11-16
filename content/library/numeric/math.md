@@ -109,7 +109,8 @@ draft = false
 
 ​	如果任一参数不为整数则会引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。 如果任一参数为负数则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## math.**copysign**(*x*, *y*)
 
@@ -135,7 +136,8 @@ draft = false
 
 ​	此函数遵循在 IEEE 754 标准中描述的 fusedMultiplyAdd 运算规范。 该标准定义了相同场景的统一实现，即 `fma(0, inf, nan)` 和 `fma(inf, 0, nan)`。 在这些场景中，`math.fma` 将返回 NaN，且不会引发任何异常。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## math.**fmod**(*x*, *y*)
 
@@ -157,7 +159,8 @@ draft = false
 
 ​	返回给定的整数参数的最大公约数。 如果有一个参数非零，则返回值将是能同时整除所有参数的最大正整数。 如果所有参数为零，则返回值为 `0`。 不带参数的 `gcd()` 返回 `0`。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.9 版本发生变更:* 添加了对任意数量的参数的支持。 之前的版本只支持两个参数。
 
@@ -173,7 +176,8 @@ draft = false
 
 ​	IEEE 754特殊值 `NaN` ， `inf` 和 `-inf` 将根据IEEE规则处理。具体来说， `NaN` 不被认为接近任何其他值，包括 `NaN` 。 `inf` 和 `-inf` 只被认为接近自己。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ​	参见
 
@@ -185,7 +189,8 @@ draft = false
 
 ​	如果 *x* 既不是无穷大也不是NaN，则返回 `True` ，否则返回 `False` 。 （注意 `0.0` 被认为 *是* 有限的。）
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## math.**isinf**(*x*)
 
@@ -201,13 +206,15 @@ draft = false
 
 ​	对于某些应用来说，可以更适合取值为使得 *n* ≤ *a*² 的最小整数 *a* ，或者换句话说就是 *n* 的实际平方根向上取整。 对于正数 *n*，这可以使用 `a = 1 + isqrt(n - 1)` 来计算。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## math.**lcm**(**integers*)
 
 ​	返回给定的整数参数的最小公倍数。 如果所有参数均非零，则返回值将是为所有参数的整数倍的最小正整数。 如果参数之一为零，则返回值为 `0`。 不带参数的 `lcm()` 返回 `1`。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## math.**ldexp**(*x*, *i*)
 
@@ -232,7 +239,8 @@ draft = false
 
 ​	另请参阅 [`math.ulp()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.ulp)。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 *在 3.12 版本发生变更:* 增加了 *steps* 参数。
 
@@ -246,7 +254,8 @@ draft = false
 
 ​	如果任一参数不为整数则会引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。 如果任一参数为负数则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## math.**prod**(*iterable*, ***, *start=1*)
 
@@ -254,7 +263,8 @@ draft = false
 
 ​	当可迭代对象为空时，返回起始值。 此函数特别针对数字值使用，并会拒绝非数字类型。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## math.**remainder**(*x*, *y*)
 
@@ -264,7 +274,8 @@ draft = false
 
 ​	在使用IEEE 754二进制浮点的平台上，此操作的结果始终可以完全表示：不会引入舍入错误。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## math.**sumprod**(*p*, *q*)
 
@@ -280,7 +291,8 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 
 ​	对于浮点数或混合整数/浮点数的输入，中间的乘积和总计值将使用扩展精度来计算。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## math.**trunc**(*x*)
 
@@ -301,7 +313,8 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 
 ​	另请参阅 [`math.nextafter()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.nextafter) 和 [`sys.float_info.epsilon`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.float_info)。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ​	注意 [`frexp()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.frexp) 和 [`modf()`](https://docs.python.org/zh-cn/3.13/library/math.html#math.modf) 具有与它们的C等价函数不同的调用/返回模式：它们采用单个参数并返回一对值，而不是通过 '输出形参' 返回它们的第二个返回参数（Python中没有这样的东西）。
 
@@ -313,7 +326,8 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 
 ​	返回 *x* 的立方根。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## math.**exp**(*x*)
 
@@ -323,7 +337,8 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 
 ​	返回 *2* 的 *x* 次幂。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## math.**expm1**(*x*)
 
@@ -331,7 +346,7 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 
 
 
-```
+``` python
 >>> from math import exp, expm1
 >>> exp(1e-5) - 1  # gives result accurate to 11 places
 1.0000050000069649e-05
@@ -339,7 +354,8 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 1.0000050000166668e-05
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## math.**log**(*x*[, *base*])
 
@@ -355,7 +371,8 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 
 ​	返回 *x* 以2为底的对数。这通常比 `log(x, 2)` 更准确。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ​	参见
 
@@ -411,7 +428,8 @@ sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
 sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## math.**hypot**(**coordinates*)
 
@@ -483,25 +501,29 @@ def phi(x):
     return (1.0 + erf(x / sqrt(2.0))) / 2.0
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## math.**erfc**(*x*)
 
 ​	返回 *x* 处的互补误差函数。 [互补错误函数](https://en.wikipedia.org/wiki/Error_function) 定义为 `1.0 - erf(x)`。 它用于 *x* 的大值，从其中减去一个会导致 [有效位数损失](https://en.wikipedia.org/wiki/Loss_of_significance)。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## math.**gamma**(*x*)
 
 ​	返回 *x* 处的 [伽马函数](https://en.wikipedia.org/wiki/Gamma_function) 值。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## math.**lgamma**(*x*)
 
 ​	返回Gamma函数在 *x* 绝对值的自然对数。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## 常量
 
@@ -517,13 +539,15 @@ def phi(x):
 
 ​	数学常数 *τ* = 6.283185...，精确到可用精度。Tau 是一个圆周常数，等于 2*π*，圆的周长与半径之比。更多关于 Tau 的信息可参考 Vi Hart 的视频 [Pi is (still) Wrong](https://www.youtube.com/watch?v=jG7vhMMXagQ)。吃两倍多的派来庆祝 [Tau 日](https://tauday.com/) 吧！
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## math.**inf**
 
 ​	浮点正无穷大。 （对于负无穷大，使用 `-math.inf` 。）相当于 `float('inf')` 的输出。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## math.**nan**
 
@@ -531,7 +555,7 @@ def phi(x):
 
 
 
-```
+``` python
 >>> import math
 >>> math.nan == math.nan
 False
@@ -543,7 +567,8 @@ True
 True
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.11 版本发生变更:* 该常量现在总是可用。
 

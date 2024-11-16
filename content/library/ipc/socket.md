@@ -34,11 +34,11 @@ draft = false
 
 ​	参见
 
-## 模块 [`socketserver`](https://docs.python.org/zh-cn/3.13/library/socketserver.html#module-socketserver)
+模块 [`socketserver`](https://docs.python.org/zh-cn/3.13/library/socketserver.html#module-socketserver)
 
 ​	用于简化网络服务端编写的类。
 
-## 模块 [`ssl`](https://docs.python.org/zh-cn/3.13/library/ssl.html#module-ssl)
+模块 [`ssl`](https://docs.python.org/zh-cn/3.13/library/ssl.html#module-ssl)
 
 ​	套接字对象的TLS/SSL封装。
 
@@ -245,7 +245,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27.
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **SO_\***
 
@@ -305,7 +306,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.25, NetBSD >= 8.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.11 版本发生变更:* 添加了 NetBSD 支持。
 
@@ -323,7 +325,8 @@ draft = false
 
 `CAN_BCM_CAN_FD_FRAME` 旗标仅在 Linux >= 4.8 时可用。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## socket.**CAN_RAW_FD_FRAMES**
 
@@ -333,7 +336,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 3.6.
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## socket.**CAN_RAW_JOIN_FILTERS**
 
@@ -343,7 +347,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 4.1.
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## socket.**CAN_ISOTP**
 
@@ -351,7 +356,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.25.
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## socket.**CAN_J1939**
 
@@ -359,7 +365,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 5.4.
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## socket.**AF_DIVERT**
 
@@ -369,7 +376,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): FreeBSD >= 14.0.
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## socket.**AF_PACKET**
 
@@ -389,7 +397,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux.
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## socket.**AF_RDS**
 
@@ -403,7 +412,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.30.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## socket.**SIO_RCVALL**
 
@@ -431,7 +441,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.38.
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## socket.**AF_VSOCK**
 
@@ -445,13 +456,15 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 4.8.
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## socket.**AF_LINK**
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): BSD, macOS.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## socket.**has_ipv6**
 
@@ -485,7 +498,8 @@ draft = false
 
 ​	LOCAL_CREDS 和 LOCAL_CREDS_PERSISTENT 可与 SOCK_DGRAM, SOCK_STREAM 套接字一起使用，等价于 Linux/DragonFlyBSD SO_PASSCRED，其中 LOCAL_CREDS 会在首次读取时发送凭证，LOCAL_CREDS_PERSISTENT 会在每次读取时发送，随后必须为后者使用 SCM_CREDS2 作为消息类型。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): FreeBSD.
 
@@ -493,7 +507,8 @@ draft = false
 
 > ​	用于优化 CPU 定位的常量，应与 `SO_REUSEPORT` 配合使用。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 3.9
 
@@ -525,7 +540,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows.
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## socket.**ETHERTYPE_ARP**
 
@@ -539,7 +555,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux, FreeBSD, macOS.
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## socket.**SHUT_RD**
 
@@ -639,13 +656,15 @@ else:
 
 ​	在 POSIX 平台上，设置 `SO_REUSEADDR` 套接字选项是为了立即重用以前绑定在同一 *address* 上并保持 TIME_WAIT 状态的套接字。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## socket.**has_dualstack_ipv6**()
 
 ​	如果平台支持创建 IPv4 和 IPv6 连接都可以处理的 TCP 套接字，则返回 `True`。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## socket.**fromfd**(*fd*, *family*, *type*, *proto=0*)
 
@@ -661,7 +680,8 @@ else:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## socket.**SocketType**
 
@@ -675,7 +695,8 @@ else:
 
 ​	关闭一个套接字文件描述符。它类似于 [`os.close()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.close)，但专用于套接字。在某些平台上（特别是在 Windows 上），[`os.close()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.close) 对套接字文件描述符无效。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## socket.**getaddrinfo**(*host*, *port*, *family=0*, *type=0*, *proto=0*, *flags=0*)
 
@@ -697,7 +718,7 @@ else:
 
 
 
-```
+``` python
 >>> socket.getaddrinfo("example.org", 80, proto=socket.IPPROTO_TCP)
 [(socket.AF_INET6, socket.SOCK_STREAM,
  6, '', ('2606:2800:220:1:248:1893:25c8:1946', 80, 0, 0)),
@@ -849,7 +870,8 @@ else:
 
 ​	大多数 Unix 平台。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## socket.**CMSG_SPACE**(*length*)
 
@@ -861,7 +883,8 @@ else:
 
 ​	大多数 Unix 平台。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## socket.**getdefaulttimeout**()
 
@@ -879,7 +902,8 @@ else:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not Android.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## socket.**if_nameindex**()
 
@@ -887,7 +911,8 @@ else:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, Windows, not WASI.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.8 版本发生变更:* 添加了 Windows 支持。
 
@@ -910,7 +935,8 @@ else:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, Windows, not WASI.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.8 版本发生变更:* 添加了 Windows 支持。
 
@@ -926,7 +952,8 @@ else:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, Windows, not WASI.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.8 版本发生变更:* 添加了 Windows 支持。
 
@@ -944,7 +971,8 @@ else:
 
 ​	支持 [`sendmsg()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.sendmsg) 和 `SCM_RIGHTS` 机制的 Unix 平台。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## socket.**recv_fds**(*sock*, *bufsize*, *maxfds*[, *flags*])
 
@@ -954,7 +982,8 @@ else:
 
 ​	支持 [`sendmsg()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.sendmsg) 和 `SCM_RIGHTS` 机制的 Unix 平台。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ​	备注
 
@@ -1026,7 +1055,8 @@ else:
 
 ​	将套接字对象置于关闭状态，而底层的文件描述符实际并不关闭。返回该文件描述符，使其可以重新用于其他目的。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## socket.**dup**()
 
@@ -1048,7 +1078,8 @@ else:
 
 ​	获取套接字文件描述符或套接字句柄的 [可继承标志](https://docs.python.org/zh-cn/3.13/library/os.html#fd-inheritance) ：如果子进程可以继承套接字则为 `True`，否则为 `False`。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## socket.**getpeername**()
 
@@ -1070,7 +1101,8 @@ else:
 
 ​	这等价于检测 `socket.gettimeout() != 0`。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## socket.**gettimeout**()
 
@@ -1161,7 +1193,8 @@ def recv_fds(sock, msglen, maxfds):
 
 ​	大多数 Unix 平台。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.5 版本发生变更:* 如果系统调用被中断，但信号处理程序没有触发异常，此方法现在会重试系统调用，而不是触发 [`InterruptedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#InterruptedError) 异常 (原因详见 [**PEP 475**](https://peps.python.org/pep-0475/))。
 
@@ -1175,7 +1208,7 @@ def recv_fds(sock, msglen, maxfds):
 
 
 
-```
+``` python
 >>> import socket
 >>> s1, s2 = socket.socketpair()
 >>> b1 = bytearray(b'----')
@@ -1193,7 +1226,8 @@ def recv_fds(sock, msglen, maxfds):
 
 ​	大多数 Unix 平台。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## socket.**recvfrom_into**(*buffer*[, *nbytes*[, *flags*]])
 
@@ -1246,7 +1280,8 @@ def send_fds(sock, msg, fds):
 
 ​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `socket.sendmsg` 并附带参数 `self`, `address`。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.5 版本发生变更:* 如果系统调用被中断，但信号处理程序没有触发异常，此方法现在会重试系统调用，而不是触发 [`InterruptedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#InterruptedError) 异常 (原因详见 [**PEP 475**](https://peps.python.org/pep-0475/))。
 
@@ -1256,19 +1291,22 @@ def send_fds(sock, msg, fds):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.38.
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## socket.**sendfile**(*file*, *offset=0*, *count=None*)
 
 ​	使用高性能的 [`os.sendfile`](https://docs.python.org/zh-cn/3.13/library/os.html#os.sendfile) 发送文件，直到达到文件的 EOF 为止，返回已发送的字节总数。*file* 必须是一个以二进制模式打开的常规文件对象。如果 [`os.sendfile`](https://docs.python.org/zh-cn/3.13/library/os.html#os.sendfile) 不可用（如 Windows）或 *file* 不是常规文件，将使用 [`send()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.send) 代替。*offset* 指示从哪里开始读取文件。如果指定了 *count*，它确定了要发送的字节总数，而不会持续发送直到达到文件的 EOF。返回时或发生错误时，文件位置将更新，在这种情况下，[`file.tell()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.IOBase.tell) 可用于确定已发送的字节数。套接字必须为 [`SOCK_STREAM`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.SOCK_STREAM) 类型。不支持非阻塞的套接字。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## socket.**set_inheritable**(*inheritable*)
 
 ​	设置套接字文件描述符或套接字句柄的 [可继承标志](https://docs.python.org/zh-cn/3.13/library/os.html#fd-inheritance)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## socket.**setblocking**(*flag*)
 
@@ -1315,7 +1353,8 @@ def send_fds(sock, msg, fds):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ​	注意此处没有 `read()` 或 `write()` 方法，请使用不带 *flags* 参数的 [`recv()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.recv) 和 [`send()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.send) 来替代。
 

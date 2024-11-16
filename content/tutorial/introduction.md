@@ -43,7 +43,7 @@ text = "# 这不是注释因为它是在引号之内。"
 
 
 
-```
+``` python
 >>> 2 + 2
 4
 >>> 50 - 5*6
@@ -60,7 +60,7 @@ text = "# 这不是注释因为它是在引号之内。"
 
 
 
-```
+``` python
 >>> 17 / 3  # 经典除法运算返回一个浮点数
 5.666666666666667
 >>>
@@ -76,7 +76,7 @@ text = "# 这不是注释因为它是在引号之内。"
 
 
 
-```
+``` python
 >>> 5 ** 2  # 5 的平方
 25
 >>> 2 ** 7  # 2 的 7 次方
@@ -87,7 +87,7 @@ text = "# 这不是注释因为它是在引号之内。"
 
 
 
-```
+``` python
 >>> width = 20
 >>> height = 5 * 9
 >>> width * height
@@ -98,7 +98,7 @@ text = "# 这不是注释因为它是在引号之内。"
 
 
 
-```
+``` python
 >>> n  # 试图访问一个未定义的变量
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -109,7 +109,7 @@ NameError: name 'n' is not defined
 
 
 
-```
+``` python
 >>> 4 * 3.75 - 1
 14.0
 ```
@@ -118,7 +118,7 @@ NameError: name 'n' is not defined
 
 
 
-```
+``` python
 >>> tax = 12.5 / 100
 >>> price = 100.50
 >>> price * tax
@@ -141,7 +141,7 @@ NameError: name 'n' is not defined
 
 
 
-```
+``` python
 >>> 'spam eggs'  # single quotes
 'spam eggs'
 >>> "Paris rabbit got your back :)! Yay!"  # double quotes
@@ -154,7 +154,7 @@ NameError: name 'n' is not defined
 
 
 
-```
+``` python
 >>> 'doesn\'t'  # 使用 \' 来转义单引号...
 "doesn't"
 >>> "doesn't"  # ...或者改用双引号
@@ -171,7 +171,7 @@ NameError: name 'n' is not defined
 
 
 
-```
+``` python
 >>> s = 'First line.\nSecond line.'  # \n 表示换行符
 >>> s  # 不用 print()，特殊字符将包括在字符串中
 'First line.\nSecond line.'
@@ -184,7 +184,7 @@ Second line.
 
 
 
-```
+``` python
 >>> print('C:\some\name')  # 这里 \n 表示换行符！
 C:\some
 ame
@@ -198,7 +198,7 @@ C:\some\name
 
 
 
-```
+``` python
 >>> print("""\
 ... Usage: thingy [OPTIONS]
 ...      -h                        Display this usage message
@@ -215,7 +215,7 @@ Usage: thingy [OPTIONS]
 
 
 
-```
+``` python
 >>> # 3 乘以 'un'，再加 'ium'
 >>> 3 * 'un' + 'ium'
 'unununium'
@@ -225,7 +225,7 @@ Usage: thingy [OPTIONS]
 
 
 
-```
+``` python
 >>> 'Py' 'thon'
 'Python'
 ```
@@ -234,7 +234,7 @@ Usage: thingy [OPTIONS]
 
 
 
-```
+``` python
 >>> text = ('Put several strings within parentheses '
 ...         'to have them joined together.')
 >>> text
@@ -245,7 +245,7 @@ Usage: thingy [OPTIONS]
 
 
 
-```
+``` python
 >>> prefix = 'Py'
 >>> prefix 'thon'  # 不能拼接变量和字符串字面值
   File "<stdin>", line 1
@@ -263,7 +263,7 @@ SyntaxError: invalid syntax
 
 
 
-```
+``` python
 >>> prefix + 'thon'
 'Python'
 ```
@@ -272,7 +272,7 @@ SyntaxError: invalid syntax
 
 
 
-```
+``` python
 >>> word = 'Python'
 >>> word[0]  # 0 号位的字符
 'P'
@@ -284,7 +284,7 @@ SyntaxError: invalid syntax
 
 
 
-```
+``` python
 >>> word[-1]  # 最后一个字符
 'n'
 >>> word[-2]  # 倒数第二个字符
@@ -299,7 +299,7 @@ SyntaxError: invalid syntax
 
 
 
-```
+``` python
 >>> word[0:2]  # 从 0 号位 (含) 到 2 号位 (不含) 的字符
 'Py'
 >>> word[2:5]  # 从 2 号位 (含) 到 5 号位 (不含) 的字符
@@ -310,7 +310,7 @@ SyntaxError: invalid syntax
 
 
 
-```
+``` python
 >>> word[:2]   # 从开头到 2 号位 (不含) 的字符
 'Py'
 >>> word[4:]   # 从 4 号位 (含) 到末尾
@@ -323,7 +323,7 @@ SyntaxError: invalid syntax
 
 
 
-```
+``` python
 >>> word[:2] + word[2:]
 'Python'
 >>> word[:4] + word[4:]
@@ -348,7 +348,7 @@ SyntaxError: invalid syntax
 
 
 
-```
+``` python
 >>> word[42]  # word 只有 6 个字符
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -359,7 +359,7 @@ IndexError: string index out of range
 
 
 
-```
+``` python
 >>> word[4:42]
 'on'
 >>> word[42:]
@@ -370,7 +370,7 @@ IndexError: string index out of range
 
 
 
-```
+``` python
 >>> word[0] = 'J'
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -385,7 +385,7 @@ TypeError: 'str' object does not support item assignment
 
 
 
-```
+``` python
 >>> 'J' + word[1:]
 'Jython'
 >>> word[:2] + 'py'
@@ -396,7 +396,7 @@ TypeError: 'str' object does not support item assignment
 
 
 
-```
+``` python
 >>> s = 'supercalifragilisticexpialidocious'
 >>> len(s)
 34
@@ -432,7 +432,7 @@ TypeError: 'str' object does not support item assignment
 
 
 
-```
+``` python
 >>> squares = [1, 4, 9, 16, 25]
 >>> squares
 [1, 4, 9, 16, 25]
@@ -442,7 +442,7 @@ TypeError: 'str' object does not support item assignment
 
 
 
-```
+``` python
 >>> squares[0]  # 索引操作将返回条目
 1
 >>> squares[-1]
@@ -455,7 +455,7 @@ TypeError: 'str' object does not support item assignment
 
 
 
-```
+``` python
 >>> squares + [36, 49, 64, 81, 100]
 [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 ```
@@ -464,7 +464,7 @@ TypeError: 'str' object does not support item assignment
 
 
 
-```
+``` python
 >>> cubes = [1, 8, 27, 65, 125]  # 这里有点问题
 >>> 4 ** 3  # 4 的立方是 64，不是 65！
 64
@@ -477,7 +477,7 @@ TypeError: 'str' object does not support item assignment
 
 
 
-```
+``` python
 >>> cubes.append(216)  # 添加 6 的立方
 >>> cubes.append(7 ** 3)  # 和 7 的立方
 >>> cubes
@@ -488,7 +488,7 @@ TypeError: 'str' object does not support item assignment
 
 
 
-```
+``` python
 >>> rgb = ["Red", "Green", "Blue"]
 >>> rgba = rgb
 >>> id(rgb) == id(rgba)  # 它们指向同一个对象
@@ -502,7 +502,7 @@ True
 
 
 
-```
+``` python
 >>> correct_rgba = rgba[:]
 >>> correct_rgba[-1] = "Alpha"
 >>> correct_rgba
@@ -515,7 +515,7 @@ True
 
 
 
-```
+``` python
 >>> letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 >>> letters
 ['a', 'b', 'c', 'd', 'e', 'f', 'g']
@@ -537,7 +537,7 @@ True
 
 
 
-```
+``` python
 >>> letters = ['a', 'b', 'c', 'd']
 >>> len(letters)
 4
@@ -547,7 +547,7 @@ True
 
 
 
-```
+``` python
 >>> a = ['a', 'b', 'c']
 >>> n = [1, 2, 3]
 >>> x = [a, n]
@@ -567,7 +567,7 @@ True
 
 
 
-```
+``` python
 >>> # 斐波那契数列：
 >>> # 前两项之和即下一项的值
 >>> a, b = 0, 1

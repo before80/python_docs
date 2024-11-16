@@ -14,7 +14,8 @@ draft = false
 
 # `importlib` --- `import` 的实现
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 **源代码** [Lib/importlib/__init__.py](https://github.com/python/cpython/tree/3.13/Lib/importlib/__init__.py)
 
@@ -127,7 +128,8 @@ draft = false
 
 ​	使查找器存储在 [`sys.meta_path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.meta_path) 中的内部缓存无效。如果一个查找器实现了 `invalidate_caches()`，那么它会被调用来执行那个无效过程。 如果创建/安装任何模块，同时正在运行的程序是为了保证所有的查找器知道新模块的存在，那么应该调用这个函数。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.10 版本发生变更:* 当注意到相同命名空间已被导入之后在不同 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 位置中创建/安装的命名空间包。
 
@@ -159,7 +161,8 @@ except NameError:
 
 ​	如果一个模块创建一个类的实例，重新加载定义那个类的模块不影响那些实例的方法定义———它们继续使用旧类中的定义。对于子类来说同样是正确的。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.7 版本发生变更:* 如果重新加载的模块缺少 [`ModuleSpec`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.ModuleSpec) ，则会触发 [`ModuleNotFoundError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ModuleNotFoundError) 。
 
@@ -191,7 +194,8 @@ object
 
 ​	一个代表 [meta path finder](https://docs.python.org/zh-cn/3.13/glossary.html#term-meta-path-finder) 的抽象基类。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.10 版本发生变更:* 不再是 `Finder` 的子类。
 
@@ -199,7 +203,8 @@ object
 
 ​	An abstract method for finding a [spec](https://docs.python.org/zh-cn/3.13/glossary.html#term-module-spec) for the specified module. If this is a top-level import, *path* will be `None`. Otherwise, this is a search for a subpackage or module and *path* will be the value of [`__path__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#module.__path__) from the parent package. If a spec cannot be found, `None` is returned. When passed in, `target` is a module object that the finder may use to make a more educated guess about what spec to return. [`importlib.util.spec_from_loader()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.util.spec_from_loader) may be useful for implementing concrete `MetaPathFinders`.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **invalidate_caches**()
 
@@ -211,7 +216,8 @@ object
 
 ​	一个抽象基类，代表 [path entry finder](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-entry-finder)。虽然与 [`MetaPathFinder`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.MetaPathFinder) 有些相似之处，但 PathEntryFinder 仅用于 [`importlib.machinery.PathFinder`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.PathFinder) 提供的基于路径的导入子系统中。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.10 版本发生变更:* 不再是 `Finder` 的子类。
 
@@ -219,7 +225,8 @@ object
 
 ​	一个抽象方法，用于查找指定模块的 [spec](https://docs.python.org/zh-cn/3.13/glossary.html#term-module-spec)。搜索器将只在指定的 [path entry](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-entry) 内搜索该模块。找不到则会返回 `None`。在实现具体的 `PathEntryFinders` 代码时，可能会用到 [`importlib.util.spec_from_loader()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.util.spec_from_loader) 。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **invalidate_caches**()
 
@@ -237,7 +244,8 @@ object
 
 ​	当导入一个模块的时候，一个返回将要使用的那个模块对象的方法。这个方法可能返回 `None` ，这暗示着应该发生默认的模块创建语义。"
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.6 版本发生变更:* 当 [`exec_module()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.Loader.exec_module) 已定义时此方法将不再是可选项。
 
@@ -245,7 +253,8 @@ object
 
 ​	当一个模块被导入或重新加载时在自己的命名空间中执行该模块的的抽象方法。 该模块在 [`exec_module()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.Loader.exec_module) 被调用时应该已经被初始化了。 当此方法存在时，必须要定义 [`create_module()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.Loader.create_module)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.6 版本发生变更:* [`create_module()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.Loader.create_module) 也必须要定义。
 
@@ -318,7 +327,8 @@ object
 
 ​	在有后续代码对象的情况下，可以在一个模块中通过运行 `exec(code, module.__dict__)` 来执行它。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.5 版本发生变更:* 使得这个方法变成静态的。
 
@@ -326,7 +336,8 @@ object
 
 [`Loader.exec_module()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.Loader.exec_module) 的实现。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **load_module**(*fullname*)
 
@@ -352,7 +363,8 @@ object
 
 ​	参数 *fullname* 是加载器要处理的模块的完全解析的名字。参数 *path* 是模块文件的路径。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **name**
 
@@ -397,7 +409,8 @@ object
 
 ​	字典中任何其他键会被忽略，以允许将来的扩展。 如果不能处理该路径，则会引发 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.4 版本发生变更:* 引发 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 而不是 [`NotImplemented`](https://docs.python.org/zh-cn/3.13/library/constants.html#NotImplemented)。
 
@@ -425,7 +438,8 @@ object
 
 [`Loader.exec_module()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.Loader.exec_module) 的具体实现。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **load_module**(*fullname*)
 
@@ -453,7 +467,8 @@ object
 
 ​	想支持资源读取的加载器需要提供一个返回实现了此 ABC 的接口的 `get_resource_reader(fullname)` 方法。如果通过全名指定的模块不是一个包，这个方法应该返回 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None)。 当指定的模块是一个包时，应该只返回一个与这个抽象类ABC兼容的对象。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 *Deprecated since version 3.12, will be removed in version 3.14:* 使用 [`importlib.resources.abc.TraversableResources`](https://docs.python.org/zh-cn/3.13/library/importlib.resources.abc.html#importlib.resources.abc.TraversableResources) 代替。
 
@@ -487,7 +502,8 @@ object
 
 ​	对于该对象在文件系统中的表示形式，请使用 [`importlib.resources.as_file()`](https://docs.python.org/zh-cn/3.13/library/importlib.resources.html#importlib.resources.as_file)。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 *Deprecated since version 3.12, will be removed in version 3.14:* 使用 [`importlib.resources.abc.Traversable`](https://docs.python.org/zh-cn/3.13/library/importlib.resources.abc.html#importlib.resources.abc.Traversable) 代替。
 
@@ -535,7 +551,8 @@ object
 
 ​	需要支持资源读取的加载器应实现此接口。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 *Deprecated since version 3.12, will be removed in version 3.14:* 使用 [`importlib.resources.abc.TraversableResources`](https://docs.python.org/zh-cn/3.13/library/importlib.resources.abc.html#importlib.resources.abc.TraversableResources) 代替。
 
@@ -557,13 +574,15 @@ object
 
 ​	一个字符串列表，表示源模块的可识别的文件后缀。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## importlib.machinery.**DEBUG_BYTECODE_SUFFIXES**
 
 ​	一个字符串列表，表示未经优化字节码模块的文件后缀。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *自 3.5 版本弃用:* 改用 [`BYTECODE_SUFFIXES`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.BYTECODE_SUFFIXES) 。
 
@@ -571,7 +590,8 @@ object
 
 ​	一个字符串列表，表示已优化字节码模块的文件后缀。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *自 3.5 版本弃用:* 改用 [`BYTECODE_SUFFIXES`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.BYTECODE_SUFFIXES) 。
 
@@ -579,7 +599,8 @@ object
 
 ​	一个字符串列表，表示字节码模块的可识别的文件后缀（包含前导的句点符号）。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.5 版本发生变更:* 该值不再依赖于 `__debug__` 。
 
@@ -587,13 +608,15 @@ object
 
 ​	一个字符串列表，表示扩展模块的可识别的文件后缀。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## importlib.machinery.**all_suffixes**()
 
 ​	返回字符串的组合列表，代表标准导入机制可识别模块的所有文件后缀。这是个助手函数，只需知道某个文件系统路径是否会指向模块，而不需要任何关于模块种类的细节（例如 [`inspect.getmodulename()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.getmodulename)）。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## *class* importlib.machinery.**BuiltinImporter**
 
@@ -617,7 +640,8 @@ object
 
 ​	此类只定义类的方法，以减轻实例化的开销。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *自 3.6 版本弃用:* 改用 [`site`](https://docs.python.org/zh-cn/3.13/library/site.html#module-site) 配置。未来版本的 Python 可能不会默认启用该查找器。
 
@@ -631,7 +655,8 @@ object
 
 ​	类方法试图在 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 或 *path* 上为 *fullname* 指定的模块查找 [spec](https://docs.python.org/zh-cn/3.13/glossary.html#term-module-spec)。对于每个路径条目，都会查看 [`sys.path_importer_cache`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path_importer_cache) 。如果找到非 False 的对象，则将其用作 [path entry finder](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-entry-finder) 来查找要搜索的模块。如果在 [`sys.path_importer_cache`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path_importer_cache) 中没有找到条目，那会在 [`sys.path_hooks`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path_hooks) 检索该路径条目的查找器，找到了则和查到的模块信息一起存入 [`sys.path_importer_cache`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path_importer_cache) 。如果查找器没有找到，则缓存中的查找器和模块信息都存为 `None` ，然后返回。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.5 版本发生变更:* 如果当前工作目录不再有效（用空字符串表示），则返回 `None`，但在 [`sys.path_importer_cache`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path_importer_cache) 中不会有缓存值。
 
@@ -653,7 +678,8 @@ object
 
 ​	查找器将按需对目录内容进行缓存，通过对每个模块的检索进行状态统计，验证缓存是否过期。因为缓存的滞后性依赖于操作系统文件系统状态信息的粒度，所以搜索模块、新建文件、然后搜索新文件代表的模块，这会存在竞争状态。如果这些操作的频率太快，甚至小于状态统计的粒度，那么模块搜索将会失败。为了防止这种情况发生，在动态创建模块时，请确保调用 [`importlib.invalidate_caches()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.invalidate_caches)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **path**
 
@@ -663,7 +689,8 @@ object
 
 ​	尝试在 [`path`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.FileFinder.path) 中找到处理 *fullname* 的规格。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **invalidate_caches**()
 
@@ -679,7 +706,8 @@ object
 
 [`importlib.abc.SourceLoader`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.SourceLoader) 的一个具体实现，该实现子类化了 [`importlib.abc.FileLoader`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.FileLoader) 并提供了其他一些方法的具体实现。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **name**
 
@@ -713,7 +741,8 @@ object
 
 ​	请注意，直接用字节码文件（而不是源代码文件），会让模块无法应用于所有的 Python 版本或字节码格式有所改动的新版本 Python。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **name**
 
@@ -749,7 +778,8 @@ object
 
 ​	请注意，在默认情况下，在子解释器中导入未实现多阶段初始化的扩展模块 (参见 [**PEP 489**](https://peps.python.org/pep-0489/)) 将会失败，即使在其他情况下能够成功导入。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.12 版本发生变更:* 在子解释器中使用时需要多阶段初始化。
 
@@ -765,13 +795,15 @@ object
 
 ​	根据 [**PEP 489**](https://peps.python.org/pep-0489/) ，由给定规范创建模块对象。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **exec_module**(*module*)
 
 ​	根据 [**PEP 489**](https://peps.python.org/pep-0489/)，初始化给定的模块对象。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **is_package**(*fullname*)
 
@@ -789,7 +821,8 @@ object
 
 ​	返回 [`path`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.ExtensionFileLoader.path)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## *class* importlib.machinery.**NamespaceLoader**(*name*, *path*, *path_finder*)
 
@@ -797,7 +830,7 @@ object
 
 
 
-```
+``` python
 >>> from importlib.machinery import NamespaceLoader
 >>> import my_namespace
 >>> isinstance(my_namespace.__loader__, NamespaceLoader)
@@ -807,13 +840,15 @@ True
 True
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *class* importlib.machinery.**ModuleSpec**(*name*, *loader*, ***, *origin=None*, *loader_state=None*, *is_package=None*)
 
 ​	A specification for a module's import-system-related state. This is typically exposed as the module's [`__spec__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#module.__spec__) attribute. Many of these attributes are also available directly on a module: for example, `module.__spec__.origin == module.__file__`. Note, however, that while the *values* are usually equivalent, they can differ since there is no synchronization between the two objects. For example, it is possible to update the module's [`__file__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#module.__file__) at runtime and this will not be automatically reflected in the module's [`__spec__.origin`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.ModuleSpec.origin), and vice versa.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **name**
 
@@ -863,7 +898,8 @@ True
 
 ​	构建 app 的 Xcode 项目要负责将存在于 `PYTHONPATH` 中的任何 `.so` 文件转换为 `Frameworks` 文件夹下的框架（包括从模块文件获取扩展，框架元数据的添加，以及结果框架的签名），并创建 `.fwork` 和 `.origin` 文件。 这通常会在 Xcode 项目中使用一个构建步骤来完成；请参阅 iOS 文档了解有关如何构造此构建步骤的细节。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): iOS.
 
@@ -889,7 +925,8 @@ True
 
 ​	代表字节码版本号的字节串。若要有助于加载/写入字节码，可考虑采用 [`importlib.abc.SourceLoader`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.SourceLoader)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## importlib.util.**cache_from_source**(*path*, *debug_override=None*, ***, *optimization=None*)
 
@@ -899,7 +936,8 @@ True
 
 *debug_override* 参数已废弃，可用于覆盖系统的 `__debug__` 值。`True` 值相当于将 *optimization* 设为空字符串。`False` 则相当于*optimization* 设为 `1`。如果 *debug_override* 和 *optimization* 都不为 `None`，则会触发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.5 版本发生变更:* 增加了 *optimization* 参数，废弃了 *debug_override* 参数。
 
@@ -909,7 +947,8 @@ True
 
 ​	根据指向一个 [**PEP 3147**](https://peps.python.org/pep-3147/) 文件名的 *path*，返回相关联的源代码文件路径。 举例来说，如果 *path* 为 `/foo/bar/__pycache__/baz.cpython-32.pyc` 则返回的路径将是 `/foo/bar/baz.py`。 *path* 不需要已存在，但如果它未遵循 [**PEP 3147**](https://peps.python.org/pep-3147/) 或 [**PEP 488**](https://peps.python.org/pep-0488/) 的格式，则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。 如果未定义 `sys.implementation.cache_tag`，则会引发 [`NotImplementedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#NotImplementedError)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.6 版本发生变更:* 接受一个 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object)。
 
@@ -917,7 +956,8 @@ True
 
 ​	对代表源代码的字节串进行解码，并将其作为带有通用换行符的字符串返回（符合 [`importlib.abc.InspectLoader.get_source()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.InspectLoader.get_source) 要求）。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## importlib.util.**resolve_name**(*name*, *package*)
 
@@ -927,7 +967,8 @@ True
 
 ​	如果 **name** 是一个相对模块名称但 **package** 为假值（如为 `None` 或空字符串）则会引发 [`ImportError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ImportError)。 如果相对名称离开了其所在的包（如为从 `spam` 包请求 `..bacon` 的形式）则也会引发 [`ImportError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ImportError)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.9 版本发生变更:* 为了改善与 import 语句的一致性，对于无效的相对导入尝试会引发 [`ImportError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ImportError) 而不是 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
@@ -939,7 +980,8 @@ True
 
 **name** 和 **package** 的用法与 `import_module()` 相同。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.7 版本发生变更:* 如果 **package** 实际上不是一个包（即缺少 [`__path__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#module.__path__) 属性）则会引发 [`ModuleNotFoundError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ModuleNotFoundError) 而不是 [`AttributeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AttributeError)。
 
@@ -951,19 +993,22 @@ True
 
 ​	本函数比 [`types.ModuleType`](https://docs.python.org/zh-cn/3.13/library/types.html#types.ModuleType) 创建新模块要好，因为用到 **spec** 模块设置了尽可能多的导入控制属性。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## importlib.util.**spec_from_loader**(*name*, *loader*, ***, *origin=None*, *is_package=None*)
 
 ​	一个工厂函数，用于创建基于加载器的 [`ModuleSpec`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.ModuleSpec) 实例。参数的含义与 ModuleSpec 的相同。该函数会利用当前可用的 [loader](https://docs.python.org/zh-cn/3.13/glossary.html#term-loader) API，比如 `InspectLoader.is_package()`，以填充所有缺失的规格信息。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## importlib.util.**spec_from_file_location**(*name*, *location*, ***, *loader=None*, *submodule_search_locations=None*)
 
 ​	一个工厂函数，根据文件路径创建 [`ModuleSpec`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.ModuleSpec) 实例。缺失的信息将根据 spec 进行填补，利用加载器 API ，以及模块基于文件的隐含条件。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.6 版本发生变更:* 接受一个 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object)。
 
@@ -971,7 +1016,8 @@ True
 
 ​	以字节串的形式返回 *source_bytes* 的哈希值。基于哈希值的 `.pyc` 文件在头部嵌入了对应源文件内容的 [`source_hash()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.util.source_hash)。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## importlib.util.**_incompatible_extension_module_restrictions**(***, *disable_check*)
 
@@ -987,7 +1033,8 @@ True
 
 ​	使用该函数来禁用检查可能会导致预期之外的行为甚至崩溃。 它应当仅在扩展模块开发过程中使用。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## *class* importlib.util.**LazyLoader**(*loader*)
 
@@ -1001,7 +1048,8 @@ True
 
 ​	如果项目对启动时间要求很高，只要模块未被用过，此类能够最小化加载模块的开销。对于启动时间并不重要的项目来说，由于加载过程中产生的错误信息会被暂时搁置，因此强烈不建议使用此类。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.6 版本发生变更:* 开始调用 [`create_module()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.Loader.create_module)，移除 [`importlib.machinery.BuiltinImporter`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.BuiltinImporter) 和 [`importlib.machinery.ExtensionFileLoader`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.ExtensionFileLoader) 的兼容性警告。
 
@@ -1089,7 +1137,7 @@ json = import_from_path(module_name, file_path)
 
 
 
-```
+``` python
 >>> import importlib.util
 >>> import sys
 >>> def lazy_import(name):

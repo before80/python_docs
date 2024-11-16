@@ -192,7 +192,8 @@ asyncio.run(tcp_echo_client('Hello World!'))
 
 *separator* 也可以是由分隔符组成的元组。 在这种情况下返回值将为以任意分隔符为前缀的最短可能值。 对于 [`LimitOverrunError`](https://docs.python.org/zh-cn/3.13/library/asyncio-exceptions.html#asyncio.LimitOverrunError) 来说，分隔符的最短可能值将被认为是匹配的值。
 
-*Added in version 3.5.2.*
+> Added in version 3.5.2.
+>
 
 *在 3.13 版本发生变更:* 现在 *separator* 形参可以是由分隔符组成的 [`tuple`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#tuple)。
 
@@ -279,7 +280,8 @@ await writer.drain()
 - *ssl_handshake_timeout* 是在放弃连接之前要等待 TLS 握手完成的秒数。 如为 `None` (默认值) 则使用 `60.0`。
 - *ssl_shutdown_timeout* 是在放弃连接之前要等待 SSL 关闭完成的秒数。 如为 `None` (默认值) 则使用 `30.0`。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 *在 3.12 版本发生变更:* 添加了 *ssl_shutdown_timeout* 形参。
 
@@ -287,7 +289,8 @@ await writer.drain()
 
 ​	如果流已被关闭或正在被关闭则返回 `True`。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## *coroutine* **wait_closed**()
 
@@ -295,7 +298,8 @@ await writer.drain()
 
 ​	应当在 [`close()`](https://docs.python.org/zh-cn/3.13/library/asyncio-stream.html#asyncio.StreamWriter.close) 之后调用以等待直到下层连接被关闭，确保所有数据在退出程序之前已刷新。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## 例子
 

@@ -64,7 +64,8 @@ draft = false
 
 ​	与前缀中没有 `p` 的相应函数类似（即 [`gettext()`](https://docs.python.org/zh-cn/3.13/library/gettext.html#module-gettext), [`dgettext()`](https://docs.python.org/zh-cn/3.13/library/gettext.html#gettext.dgettext), [`ngettext()`](https://docs.python.org/zh-cn/3.13/library/gettext.html#gettext.ngettext), [`dngettext()`](https://docs.python.org/zh-cn/3.13/library/gettext.html#gettext.dngettext) ），但是仅翻译给定的 message *context*。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ​	请注意 GNU **gettext** 还定义了一个 `dcgettext()` 方法，但它被认为并不实用因此目前尚未实现它。
 
@@ -153,13 +154,15 @@ print(_('This string will be translated.'))
 
 ​	如果设置了替补，则转发 [`pgettext()`](https://docs.python.org/zh-cn/3.13/library/gettext.html#gettext.pgettext) 给替补。否则返回已翻译的消息。在派生类中被重写。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **npgettext**(*context*, *singular*, *plural*, *n*)
 
 ​	如果设置了替补，则转发 [`npgettext()`](https://docs.python.org/zh-cn/3.13/library/gettext.html#gettext.npgettext) 给替补。否则返回已翻译的消息。在派生类中被重写。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **info**()
 
@@ -228,7 +231,8 @@ message = cat.ngettext(
 
 ​	在编目中查找 *context* 和 *message* ID，并以 Unicode 字符串形式返回相应的消息字符串。如果在编目中没有 *message* ID 和 *context* 条目，且配置了替补，则查找请求将被转发到替补的 [`pgettext()`](https://docs.python.org/zh-cn/3.13/library/gettext.html#gettext.pgettext) 方法。否则，返回 *message* ID。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **npgettext**(*context*, *singular*, *plural*, *n*)
 
@@ -236,7 +240,8 @@ message = cat.ngettext(
 
 ​	如果在编目中没有找到 *context* 对应的消息 ID，且配置了替补，则查找请求将被转发到替补的 [`npgettext()`](https://docs.python.org/zh-cn/3.13/library/gettext.html#gettext.npgettext) 方法。否则，当 *n* 为 1 时返回 *singular*，其他情况返回 *plural*。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ### Solaris 消息编目支持
 

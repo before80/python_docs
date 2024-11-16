@@ -14,7 +14,7 @@ draft = false
 
 # 描述器指南
 
-## 作者:
+作者:
 
 ​	Raymond Hettinger（译者：wh2099 at outlook dot com）
 
@@ -89,7 +89,7 @@ class A:
 
 
 
-```
+``` python
 >>> a = A()                     # 创建一个类 A 的实例
 >>> a.x                         # 正常属性查找
 5
@@ -129,7 +129,7 @@ class Directory:
 
 
 
-```
+``` python
 >>> s = Directory('songs')
 >>> g = Directory('games')
 >>> s.size                              # songs 目录有二十个文件
@@ -181,7 +181,7 @@ class Person:
 
 
 
-```
+``` python
 >>> mary = Person('Mary M', 30)         # The initial age update is logged
 INFO:root:Updating 'age' to 30
 >>> dave = Person('David D', 40)
@@ -251,7 +251,7 @@ class Person:
 
 
 
-```
+``` python
 >>> vars(vars(Person)['name'])
 {'public_name': 'name', 'private_name': '_name'}
 >>> vars(vars(Person)['age'])
@@ -262,7 +262,7 @@ class Person:
 
 
 
-```
+``` python
 >>> pete = Person('Peter P', 10)
 INFO:root:Updating 'name' to 'Peter P'
 INFO:root:Updating 'age' to 10
@@ -275,7 +275,7 @@ INFO:root:Updating 'age' to 20
 
 
 
-```
+``` python
 >>> vars(pete)
 {'_name': 'Peter P', '_age': 10}
 >>> vars(kate)
@@ -413,7 +413,7 @@ class Component:
 
 
 
-```
+``` python
 >>> Component('Widget', 'metal', 5)      # Blocked: 'Widget' is not all uppercase
 Traceback (most recent call last):
     ...
@@ -616,7 +616,7 @@ class Song:
 
 
 
-```
+``` python
 >>> import sqlite3
 >>> conn = sqlite3.connect('entertainment.db')
 ```
@@ -625,7 +625,7 @@ class Song:
 
 
 
-```
+``` python
 >>> Movie('Star Wars').director
 'George Lucas'
 >>> jaws = Movie('Jaws')
@@ -787,7 +787,7 @@ class D2:
 
 
 
-```
+``` python
 >>> D.f.__qualname__
 'D.f'
 ```
@@ -796,7 +796,7 @@ class D2:
 
 
 
-```
+``` python
 >>> D.__dict__['f']
 <function D.f at 0x00C45070>
 ```
@@ -805,7 +805,7 @@ class D2:
 
 
 
-```
+``` python
 >>> D.f
 <function D.f at 0x00C45070>
 ```
@@ -814,7 +814,7 @@ class D2:
 
 
 
-```
+``` python
 >>> d = D()
 >>> d.f
 <bound method D.f of <__main__.D object at 0x00B18C90>>
@@ -824,7 +824,7 @@ class D2:
 
 
 
-```
+``` python
 >>> d.f.__func__
 <function D.f at 0x00C45070>
 
@@ -867,7 +867,7 @@ class E:
 
 
 
-```
+``` python
 >>> E.f(3)
 30
 >>> E().f(3)
@@ -908,7 +908,7 @@ class F:
 
 
 
-```
+``` python
 >>> F.f(3)
 ('F', 3)
 >>> F().f(3)
@@ -932,7 +932,7 @@ class Dict(dict):
 
 
 
-```
+``` python
 >>> d = Dict.fromkeys('abracadabra')
 >>> type(d) is Dict
 True
@@ -973,7 +973,7 @@ class Vehicle:
 
 
 
-```
+``` python
 >>> auto = Vehicle()
 >>> auto.id_nubmer = 'VYE483814LQEX'
 Traceback (most recent call last):
@@ -1003,7 +1003,7 @@ class Immutable:
 
 
 
-```
+``` python
 >>> mark = Immutable('Botany', 'Mark Watney')
 >>> mark.dept
 'Botany'
@@ -1037,7 +1037,7 @@ class CP:
 
 
 
-```
+``` python
 >>> CP().pi
 Traceback (most recent call last):
   ...
@@ -1149,7 +1149,7 @@ class H(Object, metaclass=Type):
 
 
 
-```
+``` python
 >>> from pprint import pp
 >>> pp(dict(vars(H)))
 {'__module__': '__main__',
@@ -1164,7 +1164,7 @@ class H(Object, metaclass=Type):
 
 
 
-```
+``` python
 >>> h = H(10, 20)
 >>> vars(h)
 {'_slotvalues': [10, 20]}
@@ -1177,7 +1177,7 @@ class H(Object, metaclass=Type):
 
 
 
-```
+``` python
 >>> h.xz
 Traceback (most recent call last):
     ...

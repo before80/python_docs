@@ -42,7 +42,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from fractions import Fraction
 >>> Fraction(16, -10)
 Fraction(-8, 5)
@@ -97,13 +97,15 @@ Fraction(11, 10)
 
 ​	返回由两个整数组成的元组，两数之比等于原 Fraction 的值且其分母为正数。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **is_integer**()
 
 ​	如果 Fraction 为整数则返回 `True`。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## *classmethod* **from_float**(*flt*)
 
@@ -131,7 +133,7 @@ Fraction(11, 10)
 
 
 
-```
+``` python
 >>> from fractions import Fraction
 >>> Fraction('3.1415926535897932').limit_denominator(1000)
 Fraction(355, 113)
@@ -141,7 +143,7 @@ Fraction(355, 113)
 
 
 
-```
+``` python
 >>> from math import pi, cos
 >>> Fraction(cos(pi/3))
 Fraction(4503599627370497, 9007199254740992)
@@ -157,7 +159,7 @@ Fraction(11, 10)
 
 
 
-```
+``` python
 >>> from math import floor
 >>> floor(Fraction(355, 113))
 3
@@ -185,7 +187,7 @@ Fraction(11, 10)
 
 
 
-```
+``` python
 >>> from fractions import Fraction
 >>> format(Fraction(103993, 33102), '_')
 '103_993/33_102'

@@ -86,7 +86,8 @@ draft = false
 
 [接口选项](https://docs.python.org/zh-cn/3.13/using/cmdline.html#using-on-interface-options) 用于在命令行上实现同等功能（`python path/to/script`）。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.4 版本发生变更:* 进行更新以便利用 [**PEP 451**](https://peps.python.org/pep-0451/) 加入的模块规格特性。 这允许在 `__main__` 是从有效的 [`sys.path`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.path) 条目导入而不是直接执行的情况下能够正确地设置 `__cached__`。
 

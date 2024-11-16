@@ -58,7 +58,8 @@ draft = false
 
 ​	此异常会在 [`copyfile()`](https://docs.python.org/zh-cn/3.13/library/shutil.html#shutil.copyfile) 中的源和目标为同一文件时被引发。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## shutil.**copymode**(*src*, *dst*, ***, *follow_symlinks=True*)
 
@@ -190,7 +191,8 @@ draft = false
 
 ​	指明当前平台和实现是否提供防御符号链接攻击的 [`rmtree()`](https://docs.python.org/zh-cn/3.13/library/shutil.html#shutil.rmtree) 版本。 目前它仅在平台支持基于 fd 的目录访问函数时才返回真值。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## shutil.**move**(*src*, *dst*, *copy_function=copy2*)
 
@@ -224,7 +226,8 @@ draft = false
 
 ​	在 Unix 文件系统中，*path* 必须指向一个 **已挂载** 文件系统分区中的路径。 在这些平台上，CPython 不会尝试从未挂载的文件系统中获取磁盘使用信息。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.8 版本发生变更:* 在 Windows 上，*path* 现在可以是一个文件或目录。
 
@@ -242,7 +245,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.13 版本发生变更:* 增加了 *dir_fd* 和 *follow_symlinks* 形参。
 
@@ -260,7 +264,7 @@ draft = false
 
 
 
-```
+``` python
 >>> shutil.which("python")
 'C:\\Python33\\python.EXE'
 ```
@@ -272,7 +276,8 @@ draft = false
 'C:\\Python33\\python.EXE'
 ```
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.8 版本发生变更:* 现在可以接受 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 类型。 如果 *cmd* 的类型为 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes)，结果的类型也将为 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes)。
 
@@ -349,7 +354,8 @@ shutil.rmtree(directory, onexc=remove_readonly)
 
 ## 归档操作
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.5 版本发生变更:* 添加了对 *xztar* 格式的支持。
 
@@ -482,7 +488,7 @@ shutil.rmtree(directory, onexc=remove_readonly)
 
 
 
-```
+``` python
 >>> from shutil import make_archive
 >>> import os
 >>> archive_name = os.path.expanduser(os.path.join('~', 'myarchive'))
@@ -525,7 +531,7 @@ tmp
 
 
 
-```
+``` python
 >>> from shutil import make_archive
 >>> import os
 >>> archive_name = os.path.expanduser(os.path.join('~', 'myarchive'))
@@ -562,6 +568,7 @@ structure/content/please_add.txt
 
 ​	另请参阅: The Single UNIX Specification, Version 2, [Other Environment Variables](https://pubs.opengroup.org/onlinepubs/7908799/xbd/envvar.html#tag_002_003).
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.11 版本发生变更:* 如果 [`os.get_terminal_size()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.get_terminal_size) 返回零值则 `fallback` 值也将被使用。

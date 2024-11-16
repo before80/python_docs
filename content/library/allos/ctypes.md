@@ -42,7 +42,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from ctypes import *
 >>> print(windll.kernel32)  
 <WinDLL 'kernel32', handle ... at ...>
@@ -64,7 +64,7 @@ draft = false
 
 
 
-```
+``` python
 >>> cdll.LoadLibrary("libc.so.6")  
 <CDLL 'libc.so.6', handle ... at ...>
 >>> libc = CDLL("libc.so.6")       
@@ -81,7 +81,7 @@ draft = false
 
 
 
-```
+``` python
 >>> libc.printf
 <_FuncPtr object at 0x...>
 >>> print(windll.kernel32.GetModuleHandleA)  
@@ -110,7 +110,7 @@ HMODULE GetModuleHandleW(LPCWSTR lpModuleName);
 
 
 
-```
+``` python
 >>> getattr(cdll.msvcrt, "??2@YAPAXI@Z")  
 <_FuncPtr object at 0x...>
 >>>
@@ -120,7 +120,7 @@ HMODULE GetModuleHandleW(LPCWSTR lpModuleName);
 
 
 
-```
+``` python
 >>> cdll.kernel32[1]  
 <_FuncPtr object at 0x...>
 >>> cdll.kernel32[0]  
@@ -140,7 +140,7 @@ AttributeError: function ordinal 0 not found
 
 
 
-```
+``` python
 >>> print(libc.rand())  
 1804289383
 ```
@@ -149,7 +149,7 @@ AttributeError: function ordinal 0 not found
 
 
 
-```
+``` python
 >>> print(hex(windll.kernel32.GetModuleHandleA(None)))  
 0x1d000000
 >>>
@@ -159,7 +159,7 @@ AttributeError: function ordinal 0 not found
 
 
 
-```
+``` python
 >>> cdll.kernel32.GetModuleHandleA(None)  
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -179,7 +179,7 @@ ValueError: Procedure probably called with too many arguments (4 bytes in excess
 
 
 
-```
+``` python
 >>> windll.kernel32.GetModuleHandleA(32)  
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -230,7 +230,7 @@ OSError: exception: access violation reading 0x00000020
 
 
 
-```
+``` python
 >>> c_int()
 c_long(0)
 >>> c_wchar_p("Hello, World")
@@ -244,7 +244,7 @@ c_ushort(65533)
 
 
 
-```
+``` python
 >>> i = c_int(42)
 >>> print(i)
 c_long(42)
@@ -260,7 +260,7 @@ c_long(42)
 
 
 
-```
+``` python
 >>> s = "Hello, World"
 >>> c_s = c_wchar_p(s)
 >>> print(c_s)
@@ -281,7 +281,7 @@ Hello, World
 
 
 
-```
+``` python
 >>> from ctypes import *
 >>> p = create_string_buffer(3)            # 创建一个 3 字节的缓冲区，初始化为 NUL 字节
 >>> print(sizeof(p), repr(p.raw))
@@ -310,7 +310,7 @@ b'Hello'
 
 
 
-```
+``` python
 >>> printf = libc.printf
 >>> printf(b"Hello, %s\n", b"World!")
 Hello, World!
@@ -332,7 +332,7 @@ ctypes.ArgumentError: argument 2: TypeError: Don't know how to convert parameter
 
 
 
-```
+``` python
 >>> printf(b"An int %d, a double %f\n", 1234, c_double(3.14))
 An int 1234, a double 3.140000
 31
@@ -361,7 +361,7 @@ libc.printf.argtypes = [ctypes.c_char_p]
 
 
 
-```
+``` python
 >>> class Bottles:
 ...     def __init__(self, number):
 ...         self._as_parameter_ = number
@@ -385,7 +385,7 @@ libc.printf.argtypes = [ctypes.c_char_p]
 
 
 
-```
+``` python
 >>> printf.argtypes = [c_char_p, c_char_p, c_int, c_double]
 >>> printf(b"String '%s', Int %d, Double %f\n", b"Hi", 10, 2.2)
 String 'Hi', Int 10, Double 2.200000
@@ -397,7 +397,7 @@ String 'Hi', Int 10, Double 2.200000
 
 
 
-```
+``` python
 >>> printf(b"%d %d %d", 1, 2, 3)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -420,7 +420,7 @@ X 2 3.000000
 
 
 
-```
+``` python
 >>> libc.time.restype = c_time_t
 ```
 
@@ -428,7 +428,7 @@ X 2 3.000000
 
 
 
-```
+``` python
 >>> libc.time.argtypes = (POINTER(c_time_t),)
 ```
 
@@ -436,7 +436,7 @@ X 2 3.000000
 
 
 
-```
+``` python
 >>> print(libc.time(None))  
 1150640792
 ```
@@ -445,7 +445,7 @@ X 2 3.000000
 
 
 
-```
+``` python
 >>> strchr = libc.strchr
 >>> strchr(b"abcdef", ord("d"))  
 8059983
@@ -461,7 +461,7 @@ None
 
 
 
-```
+``` python
 >>> strchr.restype = c_char_p
 >>> strchr.argtypes = [c_char_p, c_char]
 >>> strchr(b"abcdef", b"d")
@@ -480,7 +480,7 @@ b'def'
 
 
 
-```
+``` python
 >>> GetModuleHandle = windll.kernel32.GetModuleHandleA  
 >>> def ValidHandle(value):
 ...     if value == 0:
@@ -513,7 +513,7 @@ OSError: [Errno 126] The specified module could not be found.
 
 
 
-```
+``` python
 >>> i = c_int()
 >>> f = c_float()
 >>> s = create_string_buffer(b'\000' * 32)
@@ -539,7 +539,7 @@ OSError: [Errno 126] The specified module could not be found.
 
 
 
-```
+``` python
 >>> from ctypes import *
 >>> class POINT(Structure):
 ...     _fields_ = [("x", c_int),
@@ -564,7 +564,7 @@ TypeError: too many initializers
 
 
 
-```
+``` python
 >>> class RECT(Structure):
 ...     _fields_ = [("upperleft", POINT),
 ...                 ("lowerright", POINT)]
@@ -581,7 +581,7 @@ TypeError: too many initializers
 
 
 
-```
+``` python
 >>> r = RECT(POINT(1, 2), POINT(3, 4))
 >>> r = RECT((1, 2), (3, 4))
 ```
@@ -590,7 +590,7 @@ TypeError: too many initializers
 
 
 
-```
+``` python
 >>> print(POINT.x)
 <Field type=c_long, ofs=0, size=4>
 >>> print(POINT.y)
@@ -618,7 +618,7 @@ TypeError: too many initializers
 
 
 
-```
+``` python
 >>> class Int(Structure):
 ...     _fields_ = [("first_16", c_int, 16),
 ...                 ("second_16", c_int, 16)]
@@ -646,7 +646,7 @@ TenPointsArrayType = POINT * 10
 
 
 
-```
+``` python
 >>> from ctypes import *
 >>> class POINT(Structure):
 ...     _fields_ = ("x", c_int), ("y", c_int)
@@ -675,7 +675,7 @@ for pt in arr:
 
 
 
-```
+``` python
 >>> from ctypes import *
 >>> TenIntegers = c_int * 10
 >>> ii = TenIntegers(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
@@ -695,7 +695,7 @@ for pt in arr:
 
 
 
-```
+``` python
 >>> from ctypes import *
 >>> i = c_int(42)
 >>> pi = pointer(i)
@@ -706,7 +706,7 @@ for pt in arr:
 
 
 
-```
+``` python
 >>> pi.contents
 c_long(42)
 >>>
@@ -716,7 +716,7 @@ c_long(42)
 
 
 
-```
+``` python
 >>> pi.contents is i
 False
 >>> pi.contents is pi.contents
@@ -728,7 +728,7 @@ False
 
 
 
-```
+``` python
 >>> i = c_int(99)
 >>> pi.contents = i
 >>> pi.contents
@@ -740,7 +740,7 @@ c_long(99)
 
 
 
-```
+``` python
 >>> pi[0]
 99
 >>>
@@ -750,7 +750,7 @@ c_long(99)
 
 
 
-```
+``` python
 >>> print(i)
 c_long(99)
 >>> pi[0] = 22
@@ -765,7 +765,7 @@ c_long(22)
 
 
 
-```
+``` python
 >>> PI = POINTER(c_int)
 >>> PI
 <class 'ctypes.LP_c_long'>
@@ -782,7 +782,7 @@ TypeError: expected c_long instead of int
 
 
 
-```
+``` python
 >>> null_ptr = POINTER(c_int)()
 >>> print(bool(null_ptr))
 False
@@ -793,7 +793,7 @@ False
 
 
 
-```
+``` python
 >>> null_ptr[0]
 Traceback (most recent call last):
     ....
@@ -815,7 +815,7 @@ ValueError: NULL pointer access
 
 
 
-```
+``` python
 >>> class Bar(Structure):
 ...     _fields_ = [("count", c_int), ("values", POINTER(c_int))]
 ...
@@ -837,7 +837,7 @@ ValueError: NULL pointer access
 
 
 
-```
+``` python
 >>> bar.values = None
 >>>
 ```
@@ -846,7 +846,7 @@ ValueError: NULL pointer access
 
 
 
-```
+``` python
 >>> bar.values = (c_byte * 4)()
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -860,7 +860,7 @@ TypeError: incompatible types, c_byte_Array_4 instance instead of LP_c_long inst
 
 
 
-```
+``` python
 >>> a = (c_byte * 4)()
 >>> cast(a, POINTER(c_int))
 <ctypes.LP_c_long object at ...>
@@ -871,7 +871,7 @@ TypeError: incompatible types, c_byte_Array_4 instance instead of LP_c_long inst
 
 
 
-```
+``` python
 >>> bar = Bar()
 >>> bar.values = cast((c_byte * 4)(), POINTER(c_int))
 >>> print(bar.values[0])
@@ -898,7 +898,7 @@ struct cell {
 
 
 
-```
+``` python
 >>> class cell(Structure):
 ...     _fields_ = [("name", c_char_p),
 ...                 ("next", POINTER(cell))]
@@ -914,7 +914,7 @@ NameError: name 'cell' is not defined
 
 
 
-```
+``` python
 >>> from ctypes import *
 >>> class cell(Structure):
 ...     pass
@@ -928,7 +928,7 @@ NameError: name 'cell' is not defined
 
 
 
-```
+``` python
 >>> c1 = cell()
 >>> c1.name = b"foo"
 >>> c2 = cell()
@@ -960,7 +960,7 @@ foo bar foo bar foo bar foo bar
 
 
 
-```
+``` python
 >>> IntArray5 = c_int * 5
 >>> ia = IntArray5(5, 1, 7, 33, 99)
 >>> qsort = libc.qsort
@@ -974,7 +974,7 @@ foo bar foo bar foo bar foo bar
 
 
 
-```
+``` python
 >>> CMPFUNC = CFUNCTYPE(c_int, POINTER(c_int), POINTER(c_int))
 >>>
 ```
@@ -983,7 +983,7 @@ foo bar foo bar foo bar foo bar
 
 
 
-```
+``` python
 >>> def py_cmp_func(a, b):
 ...     print("py_cmp_func", a[0], b[0])
 ...     return 0
@@ -996,7 +996,7 @@ foo bar foo bar foo bar foo bar
 
 
 
-```
+``` python
 >>> qsort(ia, len(ia), sizeof(c_int), cmp_func)  
 py_cmp_func 5 1
 py_cmp_func 33 99
@@ -1010,7 +1010,7 @@ py_cmp_func 1 7
 
 
 
-```
+``` python
 >>> def py_cmp_func(a, b):
 ...     print("py_cmp_func", a[0], b[0])
 ...     return a[0] - b[0]
@@ -1029,7 +1029,7 @@ py_cmp_func 5 7
 
 
 
-```
+``` python
 >>> for i in ia: print(i, end=" ")
 ...
 1 5 7 33 99
@@ -1040,7 +1040,7 @@ py_cmp_func 5 7
 
 
 
-```
+``` python
 >>> @CFUNCTYPE(c_int, POINTER(c_int), POINTER(c_int))
 ... def py_cmp_func(a, b):
 ...     print("py_cmp_func", a[0], b[0])
@@ -1073,7 +1073,7 @@ py_cmp_func 5 7
 
 
 
-```
+``` python
 >>> version = ctypes.c_int.in_dll(ctypes.pythonapi, "Py_Version")
 >>> print(hex(version.value))
 0x30c00a0
@@ -1089,7 +1089,7 @@ py_cmp_func 5 7
 
 
 
-```
+``` python
 >>> from ctypes import *
 >>>
 >>> class struct_frozen(Structure):
@@ -1106,7 +1106,7 @@ py_cmp_func 5 7
 
 
 
-```
+``` python
 >>> FrozenTable = POINTER(struct_frozen)
 >>> table = FrozenTable.in_dll(pythonapi, "_PyImport_FrozenBootstrap")
 >>>
@@ -1116,7 +1116,7 @@ py_cmp_func 5 7
 
 
 
-```
+``` python
 >>> for item in table:
 ...     if item.name is None:
 ...         break
@@ -1140,7 +1140,7 @@ zipimport 12345
 
 
 
-```
+``` python
 >>> from ctypes import *
 >>> class POINT(Structure):
 ...     _fields_ = ("x", c_int), ("y", c_int)
@@ -1164,7 +1164,7 @@ zipimport 12345
 
 
 
-```
+``` python
 >>> temp0, temp1 = rc.b, rc.a
 >>> rc.a = temp0
 >>> rc.b = temp1
@@ -1179,7 +1179,7 @@ zipimport 12345
 
 
 
-```
+``` python
 >>> s = c_char_p()
 >>> s.value = b"abc def ghi"
 >>> s.value
@@ -1207,7 +1207,7 @@ False
 
 
 
-```
+``` python
 >>> short_array = (c_short * 4)()
 >>> print(sizeof(short_array))
 8
@@ -1227,7 +1227,7 @@ ValueError: minimum size is 8
 
 
 
-```
+``` python
 >>> short_array[:]
 [0, 0, 0, 0]
 >>> short_array[7]
@@ -1267,7 +1267,7 @@ IndexError: invalid index
 
 
 
-```
+``` python
 >>> from ctypes.util import find_library
 >>> find_library("m")
 'libm.so.6'
@@ -1282,7 +1282,7 @@ IndexError: invalid index
 
 
 
-```
+``` python
 >>> from ctypes.util import find_library
 >>> find_library("c")
 '/usr/lib/libc.dylib'
@@ -1373,7 +1373,7 @@ IndexError: invalid index
 
 
 
-```
+``` python
 >>> from ctypes import CDLL
 >>> libc = CDLL("libc.so.6")  # 在 Linux
 >>> libc.time == libc.time
@@ -1444,7 +1444,7 @@ False
 
 
 
-```
+``` python
 >>> import ctypes
 >>> lib = ctypes.CDLL(None)
 >>> issubclass(lib._FuncPtr, ctypes._CFuncPtr)
@@ -1574,7 +1574,7 @@ MessageBoxW(
 
 
 
-```
+``` python
 >>> from ctypes import c_int, WINFUNCTYPE, windll
 >>> from ctypes.wintypes import HWND, LPCWSTR, UINT
 >>> prototype = WINFUNCTYPE(c_int, HWND, LPCWSTR, LPCWSTR, UINT)
@@ -1586,7 +1586,7 @@ MessageBoxW(
 
 
 
-```
+``` python
 >>> MessageBox()
 >>> MessageBox(text="Spam, spam, spam")
 >>> MessageBox(flags=2, text="foo bar")
@@ -1605,7 +1605,7 @@ GetWindowRect(
 
 
 
-```
+``` python
 >>> from ctypes import POINTER, WINFUNCTYPE, windll, WinError
 >>> from ctypes.wintypes import BOOL, HWND, RECT
 >>> prototype = WINFUNCTYPE(BOOL, HWND, POINTER(RECT))
@@ -1620,7 +1620,7 @@ GetWindowRect(
 
 
 
-```
+``` python
 >>> def errcheck(result, func, args):
 ...     if not result:
 ...         raise WinError()
@@ -1634,7 +1634,7 @@ GetWindowRect(
 
 
 
-```
+``` python
 >>> def errcheck(result, func, args):
 ...     if not result:
 ...         raise WinError()
@@ -1929,13 +1929,15 @@ GetWindowRect(
 
 ​	代表 C `ssize_t` 数据类型。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## *class* ctypes.**c_time_t**
 
 ​	代表 C `time_t` 数据类型。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## *class* ctypes.**c_ubyte**
 
@@ -2011,13 +2013,15 @@ GetWindowRect(
 
 *大端* 字节序的联合所对应的抽象基类。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *class* ctypes.**LittleEndianUnion**(**args*, ***kw*)
 
 *小端* 字节序的联合所对应的抽象基类。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *class* ctypes.**BigEndianStructure**(**args*, ***kw*)
 
@@ -2065,7 +2069,8 @@ List._fields_ = [("pnext", POINTER(List)),
 
 ​	一个可选的小整数，它允许覆盖结构体在针对内存执行打包或解包时的对齐方式。 将该属性设为 0 与完全不设置它效果相同。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **_anonymous_**
 

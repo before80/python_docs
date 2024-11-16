@@ -189,7 +189,7 @@ for k, v in rawdata.items():
 
 
 
-```
+``` python
 >>> from http import cookies
 >>> C = cookies.SimpleCookie()
 >>> C["fig"] = "newton"

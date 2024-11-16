@@ -37,7 +37,7 @@ $ python -m timeit "'-'.join(map(str, range(100)))"
 
 
 
-```
+``` python
 >>> import timeit
 >>> timeit.timeit('"-".join(str(n) for n in range(100))', number=10000)
 0.3018611848820001
@@ -51,7 +51,7 @@ $ python -m timeit "'-'.join(map(str, range(100)))"
 
 
 
-```
+``` python
 >>> timeit.timeit(lambda: "-".join(map(str, range(100))), number=10000)
 0.19665591977536678
 ```
@@ -120,7 +120,8 @@ timeit.Timer('for i in range(10): oct(i)', 'gc.enable()').timeit()
 
 ​	如果给出 *callback* 并且不是 `None` ，则在每次试验后将使用两个参数调用它： `callback(number, time_taken)` 。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **repeat**(*repeat=5*, *number=1000000*)
 
@@ -180,13 +181,15 @@ python -m timeit [-n N] [-r N] [-u U] [-s S] [-p] [-v] [-h] [statement ...]
 
 ​	测量进程时间，而不是 wallclock 时间，使用 [`time.process_time()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.process_time) 而不是 [`time.perf_counter()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.perf_counter) ，这是默认值
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **-u**, **--unit**=U
 
 ​	为定时器输出指定一个时间单位；可以选择 `nsec`, `usec`, `msec` 或 `sec`
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **-v**, **--verbose**
 
@@ -225,7 +228,7 @@ $ python -m timeit -s "text = 'sample string'; char = 'g'" "text.find(char)"
 
 
 
-```
+``` python
 >>> import timeit
 >>> timeit.timeit('char in text', setup='text = "sample string"; char = "g"')
 0.41440500499993504
@@ -237,7 +240,7 @@ $ python -m timeit -s "text = 'sample string'; char = 'g'" "text.find(char)"
 
 
 
-```
+``` python
 >>> import timeit
 >>> t = timeit.Timer('char in text', setup='text = "sample string"; char = "g"')
 >>> t.timeit()
@@ -262,7 +265,7 @@ $ python -m timeit "if hasattr(int, '__bool__'): pass"
 
 
 
-```
+``` python
 >>> import timeit
 >>> # 属性缺失
 >>> s = """\

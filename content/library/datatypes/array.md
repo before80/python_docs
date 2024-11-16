@@ -101,7 +101,8 @@ draft = false
 
 ​	添加来自 [bytes-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object) 的条目，将其内容解读为由机器值组成的数组（就像是使用 [`fromfile()`](https://docs.python.org/zh-cn/3.13/library/array.html#array.array.fromfile) 方法从文件中读取内容一样）。
 
-*Added in version 3.2:* `fromstring()` 被重命名为含义更准确的 [`frombytes()`](https://docs.python.org/zh-cn/3.13/library/array.html#array.array.frombytes)。
+> Added in version 3.2:
+> `fromstring()` 被重命名为含义更准确的 [`frombytes()`](https://docs.python.org/zh-cn/3.13/library/array.html#array.array.frombytes)。
 
 ## **fromfile**(*f*, *n*)
 
@@ -137,7 +138,8 @@ draft = false
 
 ​	从数组中移除所有元素。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **reverse**()
 
@@ -147,7 +149,8 @@ draft = false
 
 ​	将数组转换为一个由机器值组成的数组并返回其字节表示（和用 [`tofile()`](https://docs.python.org/zh-cn/3.13/library/array.html#array.array.tofile) 方法写入文件的字节序列相同）。
 
-*Added in version 3.2:* `tostring()` 被重命名为含义更准确的 [`tobytes()`](https://docs.python.org/zh-cn/3.13/library/array.html#array.array.tobytes)。
+> Added in version 3.2:
+> `tostring()` 被重命名为含义更准确的 [`tobytes()`](https://docs.python.org/zh-cn/3.13/library/array.html#array.array.tobytes)。
 
 ## **tofile**(*f*)
 

@@ -53,7 +53,8 @@ draft = false
 
 ​	导致 [`HTTPError`](https://docs.python.org/zh-cn/3.13/library/urllib.error.html#urllib.error.HTTPError) 的特定 HTTP 请求的 HTTP 响应头。 为 *hdrs* 属性的别名。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **fp**
 

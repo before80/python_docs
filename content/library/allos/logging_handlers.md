@@ -58,7 +58,8 @@ draft = false
 
 ​	旧的流，如果流已被改变的话，或者如果未被改变则为 `None`。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **terminator**
 
@@ -68,7 +69,8 @@ draft = false
 
 ​	在较早的版本中，终止符被硬编码为 `'\n'`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 
 
@@ -98,7 +100,8 @@ draft = false
 
 ## NullHandler
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 [`NullHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.NullHandler) 类位于核心 [`logging`](https://docs.python.org/zh-cn/3.13/library/logging.html#module-logging) 包，它不执行任何格式化或输出。 它实际上是一个供库开发者使用的‘无操作’处理程序。
 
@@ -142,7 +145,8 @@ draft = false
 
 ​	检查文件是否已更改。 如果已更改，则会刷新并关闭现有流然后重新打开文件，这通常是将记录输出到文件的先导操作。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **emit**(*record*)
 
@@ -170,13 +174,15 @@ draft = false
 
 ​	还有一点值得注意的是当使用命名器来保存文件名中要在轮换中使用的特定属性时必须小心处理。 例如，[`RotatingFileHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.RotatingFileHandler) 会要求有一组名称中包含连续整数的日志文件，以便轮换的效果能满足预期，而 [`TimedRotatingFileHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.TimedRotatingFileHandler) 会通过确定要删除的最旧文件（根据传递纵使中处理器的初始化器的 `backupCount` 形参）来删除旧的日志文件。 为了达成这样的效果，文件名应当是可以使用文件名的日期/时间部分来排序的，而且命名器需要遵循此排序。 （如果想使用不遵循此规则的命名器，则需要在一个重写了 [`getFilesToDelete()`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.TimedRotatingFileHandler.getFilesToDelete) 方法的 [`TimedRotatingFileHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.TimedRotatingFileHandler) 的子类中使用它以便与自定义的命名规则进行配合。）
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **rotator**
 
 ​	如果此属性被设为一个可调用对象，则 [`rotate()`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.BaseRotatingHandler.rotate) 方法会委托给该可调用对象。 传给该可调用对象的形参与传给 [`rotate()`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.BaseRotatingHandler.rotate) 的相同。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **rotation_filename**(*default_name*)
 
@@ -190,7 +196,8 @@ draft = false
 
 **default_name** -- 日志文件的默认名称。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **rotate**(*source*, *dest*)
 
@@ -203,7 +210,8 @@ draft = false
 - **source** -- 源文件名。 这通常为基本文件名，例如 'test.log'。
 - **dest** -- 目标文件名。 这通常是源被轮换后的名称，例如 'test.log.1'。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ​	该属性存在的理由是让你不必进行子类化 —— 你可以使用与 [`RotatingFileHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.RotatingFileHandler) 和 [`TimedRotatingFileHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.TimedRotatingFileHandler) 的实例相同的可调用对象。 如果 namer 或 rotator 可调用对象引发了异常，将会按照与 `emit()` 调用期间的任何其他异常相同的方式来处理，例如通过处理程序的 `handleError()` 方法。
 
@@ -414,7 +422,8 @@ return datalen + data
 
 ​	尝试创建一个套接字，如果它不是一个数据报套接字，则将其连接到另一端。 此方法会在处理器初始化期间被调用，但是如果此时另一端还没有监听则它不会被视为出错 —— 如果此时套接字还不存在，此方法将在发出事伯时再次被调用。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **emit**(*record*)
 
@@ -604,7 +613,8 @@ return datalen + data
 
 ## QueueHandler
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 [`QueueHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueHandler) 类位于 [`logging.handlers`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#module-logging.handlers) 模块，它支持将日志记录消息发送到一个队列，例如在 [`queue`](https://docs.python.org/zh-cn/3.13/library/queue.html#module-queue) 或 [`multiprocessing`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#module-multiprocessing) 模块中实现的队列。
 
@@ -646,13 +656,15 @@ return datalen + data
 
 ​	当通过使用 [`dictConfig()`](https://docs.python.org/zh-cn/3.13/library/logging.config.html#logging.config.dictConfig) 的配置创建时，该属性将包含一个 [`QueueListener`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueListener) 实例供此处理器使用。 在其他情况下，它将为 `None`。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 
 
 ## QueueListener
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 [`QueueListener`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueListener) 类位于 [`logging.handlers`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#module-logging.handlers) 模块，它支持从一个队列接收日志记录消息，例如在 [`queue`](https://docs.python.org/zh-cn/3.13/library/queue.html#module-queue) 或 [`multiprocessing`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#module-multiprocessing) 模块中实现的队列。 消息是在内部线程中从队列接收并在同一线程上传递到一个或多个处理程序进行处理的。 尽管 [`QueueListener`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueListener) 本身并不是一个处理程序，但由于它要与 [`QueueHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueHandler) 配合工作，因此也在此处介绍。
 
@@ -706,7 +718,8 @@ return datalen + data
 
 ​	将一个标记写入队列以通知监听器退出。 此实现会使用 `put_nowait()`。 如果你想要使得超时设置或自定义的队列实现，则你可能会想要重写此方法。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 > 参见
 >

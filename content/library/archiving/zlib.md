@@ -140,7 +140,8 @@ draft = false
 
 ​	这使得区分正确构造的压缩数据流和不完整或被截断的流成为可能。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## Decompress.**decompress**(*data*, *max_length=0*)
 
@@ -172,7 +173,8 @@ draft = false
 
 ​	解释器所加载的 zlib 库的版本字符串。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ​	参见
 

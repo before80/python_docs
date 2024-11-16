@@ -522,7 +522,7 @@ idle.py [-c command] [-d] [-e] [-h] [-i] [-r file] [-s] [-t title] [-] [arg] ...
 
 
 
-```
+``` python
 >>> s = 'a\tb\a<\x02><\r>\bc\nd'  # 输入 22 个字符。
 >>> len(s)
 14

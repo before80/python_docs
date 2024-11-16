@@ -28,7 +28,7 @@ draft = false
 
 
 
-```
+``` python
 >>> sorted([5, 2, 3, 1, 4])
 [1, 2, 3, 4, 5]
 ```
@@ -37,7 +37,7 @@ draft = false
 
 
 
-```
+``` python
 >>> a = [5, 2, 3, 1, 4]
 >>> a.sort()
 >>> a
@@ -48,7 +48,7 @@ draft = false
 
 
 
-```
+``` python
 >>> sorted({1: 'D', 2: 'B', 3: 'B', 4: 'E', 5: 'A'})
 [1, 2, 3, 4, 5]
 ```
@@ -61,7 +61,7 @@ draft = false
 
 
 
-```
+``` python
 >>> sorted("This is a test string from Andrew".split(), key=str.casefold)
 ['a', 'Andrew', 'from', 'is', 'string', 'test', 'This']
 ```
@@ -72,7 +72,7 @@ draft = false
 
 
 
-```
+``` python
 >>> student_tuples = [
 ...     ('john', 'A', 15),
 ...     ('jane', 'B', 12),
@@ -86,7 +86,7 @@ draft = false
 
 
 
-```
+``` python
 >>> class Student:
 ...     def __init__(self, name, grade, age):
 ...         self.name = name
@@ -114,7 +114,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from operator import itemgetter, attrgetter
 
 >>> sorted(student_tuples, key=itemgetter(2))
@@ -128,7 +128,7 @@ draft = false
 
 
 
-```
+``` python
 >>> sorted(student_tuples, key=itemgetter(1,2))
 [('john', 'A', 15), ('dave', 'B', 10), ('jane', 'B', 12)]
 
@@ -140,7 +140,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from functools import partial
 >>> from unicodedata import normalize
 
@@ -159,7 +159,7 @@ draft = false
 
 
 
-```
+``` python
 >>> sorted(student_tuples, key=itemgetter(2), reverse=True)
 [('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
 
@@ -173,7 +173,7 @@ draft = false
 
 
 
-```
+``` python
 >>> data = [('red', 1), ('blue', 1), ('red', 2), ('blue', 2)]
 >>> sorted(data, key=itemgetter(0))
 [('blue', 1), ('blue', 2), ('red', 1), ('red', 2)]
@@ -185,7 +185,7 @@ draft = false
 
 
 
-```
+``` python
 >>> s = sorted(student_objects, key=attrgetter('age'))     # 现在根据主要键（成绩）降序排序
 >>> sorted(s, key=attrgetter('grade'), reverse=True)       # 根据次要键（年龄）排序
 [('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)
@@ -195,7 +195,7 @@ draft = false
 
 
 
-```
+``` python
 >>> def multisort(xs, specs):
 ...     for key, reverse in reversed(specs):
 ...         xs.sort(key=attrgetter(key), reverse=reverse)
@@ -219,7 +219,7 @@ draft = false
 
 
 
-```
+``` python
 >>> decorated = [(student.grade, i, student) for i, student in enumerate(student_objects)]
 >>> decorated.sort()
 >>> [student for grade, i, student in decorated]               # 取消装饰

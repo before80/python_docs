@@ -14,7 +14,8 @@ draft = false
 
 # `argparse` --- 用于命令行选项、参数和子命令的解析器
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 **源代码：** [Lib/argparse.py](https://github.com/python/cpython/tree/3.13/Lib/argparse.py)
 
@@ -99,7 +100,7 @@ print(args.filename, args.count, args.verbose)
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='myprogram')
 >>> parser.print_help()
 usage: myprogram [-h]
@@ -112,7 +113,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='myprogram')
 >>> parser.add_argument('--foo', help='foo of the %(prog)s program')
 >>> parser.print_help()
@@ -129,7 +130,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG', usage='%(prog)s [options]')
 >>> parser.add_argument('--foo', nargs='?', help='foo help')
 >>> parser.add_argument('bar', nargs='+', help='bar help')
@@ -160,7 +161,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(
 ...     description='A foo that bars',
 ...     epilog="And that's how you'd foo a bar")
@@ -183,7 +184,7 @@ And that's how you'd foo a bar
 
 
 
-```
+``` python
 >>> parent_parser = argparse.ArgumentParser(add_help=False)
 >>> parent_parser.add_argument('--parent', type=int)
 
@@ -224,7 +225,7 @@ Namespace(bar='YYY', parent=None)
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(
 ...     prog='PROG',
 ...     description='''this description
@@ -250,7 +251,7 @@ will be wrapped across a couple lines
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(
 ...     prog='PROG',
 ...     formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -280,7 +281,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(
 ...     prog='PROG',
 ...     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -301,7 +302,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(
 ...     prog='PROG',
 ...     formatter_class=argparse.MetavarTypeHelpFormatter)
@@ -324,7 +325,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG', prefix_chars='-+')
 >>> parser.add_argument('+f')
 >>> parser.add_argument('++bar')
@@ -340,7 +341,7 @@ Namespace(bar='Y', f='X')
 
 
 
-```
+``` python
 >>> with open('args.txt', 'w', encoding=sys.getfilesystemencoding()) as fp:
 ...     fp.write('-f\nbar')
 ...
@@ -364,7 +365,7 @@ Namespace(f='bar')
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(argument_default=argparse.SUPPRESS)
 >>> parser.add_argument('--foo')
 >>> parser.add_argument('bar', nargs='?')
@@ -384,7 +385,7 @@ Namespace()
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG', allow_abbrev=False)
 >>> parser.add_argument('--foobar', action='store_true')
 >>> parser.add_argument('--foonley', action='store_false')
@@ -393,7 +394,8 @@ usage: PROG [-h] [--foobar] [--foonley]
 PROG: error: unrecognized arguments: --foon
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ### conflict_handler
 
@@ -401,7 +403,7 @@ PROG: error: unrecognized arguments: --foon
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG')
 >>> parser.add_argument('-f', '--foo', help='old foo help')
 >>> parser.add_argument('--foo', help='new foo help')
@@ -414,7 +416,7 @@ ArgumentError: argument --foo: conflicting option string(s): --foo
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG', conflict_handler='resolve')
 >>> parser.add_argument('-f', '--foo', help='old foo help')
 >>> parser.add_argument('--foo', help='new foo help')
@@ -437,7 +439,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG', add_help=False)
 >>> parser.add_argument('--foo', help='foo help')
 >>> parser.print_help()
@@ -451,7 +453,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG', prefix_chars='+/')
 >>> parser.print_help()
 usage: PROG [+h]
@@ -468,7 +470,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(exit_on_error=False)
 >>> parser.add_argument('--integers', type=int)
 _StoreAction(option_strings=['--integers'], dest='integers', nargs=None, const=None, default=None, type=<class 'int'>, choices=None, help=None, metavar=None)
@@ -480,7 +482,8 @@ _StoreAction(option_strings=['--integers'], dest='integers', nargs=None, const=N
 Catching an argumentError
 ```
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## add_argument() 方法
 
@@ -513,7 +516,7 @@ Catching an argumentError
 
 
 
-```
+``` python
 >>> parser.add_argument('-f', '--foo')
 ```
 
@@ -521,7 +524,7 @@ Catching an argumentError
 
 
 
-```
+``` python
 >>> parser.add_argument('bar')
 ```
 
@@ -529,7 +532,7 @@ Catching an argumentError
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG')
 >>> parser.add_argument('-f', '--foo')
 >>> parser.add_argument('bar')
@@ -645,7 +648,7 @@ PROG: error: the following arguments are required: bar
 
 
 
-```
+``` python
 >>> import argparse
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--foo', action=argparse.BooleanOptionalAction)
@@ -653,7 +656,8 @@ PROG: error: the following arguments are required: bar
 Namespace(foo=False)
 ```
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ​	The recommended way to create a custom action is to extend [`Action`](https://docs.python.org/zh-cn/3.13/library/argparse.html#argparse.Action), overriding the `__call__()` method and optionally the `__init__()` and `format_usage()` methods.
 
@@ -661,7 +665,7 @@ Namespace(foo=False)
 
 
 
-```
+``` python
 >>> class FooAction(argparse.Action):
 ...     def __init__(self, option_strings, dest, nargs=None, **kwargs):
 ...         if nargs is not None:
@@ -785,7 +789,7 @@ Namespace(bar='1', foo='2')
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--foo', default=42)
 >>> parser.parse_args(['--foo', '2'])
@@ -798,7 +802,7 @@ Namespace(foo=42)
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--foo', default=42)
 >>> parser.parse_args([], namespace=argparse.Namespace(foo=101))
@@ -809,7 +813,7 @@ Namespace(foo=101)
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--length', default='10', type=int)
 >>> parser.add_argument('--width', default=10.5, type=int)
@@ -821,7 +825,7 @@ Namespace(length=10, width=10.5)
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('foo', nargs='?', default=42)
 >>> parser.parse_args(['a'])
@@ -836,7 +840,7 @@ Namespace(foo=42)
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--foo', default=argparse.SUPPRESS)
 >>> parser.parse_args([])
@@ -874,7 +878,7 @@ parser.add_argument('datapath', type=pathlib.Path)
 
 
 
-```
+``` python
 >>> def hyphenated(string):
 ...     return '-'.join([word[:4] for word in string.casefold().split()])
 ...
@@ -902,7 +906,7 @@ Namespace(short_title='"the-tale-of-two-citi')
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='game.py')
 >>> parser.add_argument('move', choices=['rock', 'paper', 'scissors'])
 >>> parser.parse_args(['rock'])
@@ -929,7 +933,7 @@ game.py: error: argument move: invalid choice: 'fire' (choose from 'rock',
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--foo', required=True)
 >>> parser.parse_args(['--foo', 'BAR'])
@@ -957,7 +961,7 @@ usage: [-h] --foo FOO
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='frobble')
 >>> parser.add_argument('bar', nargs='?', type=int, default=42,
 ...                     help='the bar to %(prog)s (default: %(default)s)')
@@ -977,7 +981,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='frobble')
 >>> parser.add_argument('--foo', help=argparse.SUPPRESS)
 >>> parser.print_help()
@@ -995,7 +999,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--foo')
 >>> parser.add_argument('bar')
@@ -1016,7 +1020,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--foo', metavar='YYY')
 >>> parser.add_argument('bar', metavar='XXX')
@@ -1039,7 +1043,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG')
 >>> parser.add_argument('-x', nargs=2)
 >>> parser.add_argument('--foo', nargs=2, metavar=('bar', 'baz'))
@@ -1060,7 +1064,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('bar')
 >>> parser.parse_args(['XXX'])
@@ -1071,7 +1075,7 @@ Namespace(bar='XXX')
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('-f', '--foo-bar', '--foo')
 >>> parser.add_argument('-x', '-y')
@@ -1085,7 +1089,7 @@ Namespace(foo_bar='1', x='2')
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--foo', dest='bar')
 >>> parser.parse_args('--foo XXX'.split())
@@ -1100,7 +1104,7 @@ Namespace(bar='XXX')
 
 
 
-```
+``` python
 >>> import argparse
 >>> parser = argparse.ArgumentParser(prog='snake.py')
 >>> parser.add_argument('--legs', default=0, type=int, deprecated=True)
@@ -1111,7 +1115,8 @@ snake.py: warning: option '--legs' is deprecated
 Namespace(legs=4)
 ```
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ### Action 类
 
@@ -1155,7 +1160,7 @@ Namespace(legs=4)
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG')
 >>> parser.add_argument('-x')
 >>> parser.add_argument('--foo')
@@ -1169,7 +1174,7 @@ Namespace(foo='FOO', x=None)
 
 
 
-```
+``` python
 >>> parser.parse_args(['--foo=FOO'])
 Namespace(foo='FOO', x=None)
 ```
@@ -1178,7 +1183,7 @@ Namespace(foo='FOO', x=None)
 
 
 
-```
+``` python
 >>> parser.parse_args(['-xX'])
 Namespace(foo=None, x='X')
 ```
@@ -1187,7 +1192,7 @@ Namespace(foo=None, x='X')
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG')
 >>> parser.add_argument('-x', action='store_true')
 >>> parser.add_argument('-y', action='store_true')
@@ -1202,7 +1207,7 @@ Namespace(x=True, y=True, z='Z')
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG')
 >>> parser.add_argument('--foo', type=int)
 >>> parser.add_argument('bar', nargs='?')
@@ -1229,7 +1234,7 @@ PROG: error: extra arguments found: badger
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG')
 >>> parser.add_argument('-x')
 >>> parser.add_argument('foo', nargs='?')
@@ -1265,7 +1270,7 @@ PROG: error: argument -1: expected one argument
 
 
 
-```
+``` python
 >>> parser.parse_args(['--', '-f'])
 Namespace(foo='-f', one=None)
 ```
@@ -1280,7 +1285,7 @@ Namespace(foo='-f', one=None)
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG')
 >>> parser.add_argument('-bacon')
 >>> parser.add_argument('-badger')
@@ -1303,7 +1308,7 @@ PROG: error: ambiguous option: -ba could match -badger, -bacon
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument(
 ...     'integers', metavar='int', type=int, choices=range(10),
@@ -1329,7 +1334,7 @@ Namespace(accumulate=<built-in function sum>, integers=[1, 2, 3, 4])
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--foo')
 >>> args = parser.parse_args(['--foo', 'BAR'])
@@ -1341,7 +1346,7 @@ Namespace(accumulate=<built-in function sum>, integers=[1, 2, 3, 4])
 
 
 
-```
+``` python
 >>> class C:
 ...     pass
 ...
@@ -1377,7 +1382,7 @@ Namespace(accumulate=<built-in function sum>, integers=[1, 2, 3, 4])
 
 
 
-```
+``` python
 >>> # create the top-level parser
 >>> parser = argparse.ArgumentParser(prog='PROG')
 >>> parser.add_argument('--foo', action='store_true', help='foo help')
@@ -1404,7 +1409,7 @@ Namespace(baz='Z', foo=True)
 
 
 
-```
+``` python
 >>> parser.parse_args(['--help'])
 usage: PROG [-h] [--foo] {a,b} ...
 
@@ -1438,7 +1443,7 @@ options:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> subparsers = parser.add_subparsers(title='subcommands',
 ...                                    description='valid subcommands',
@@ -1461,7 +1466,7 @@ subcommands:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> subparsers = parser.add_subparsers()
 >>> checkout = subparsers.add_parser('checkout', aliases=['co'])
@@ -1474,7 +1479,7 @@ Namespace(foo='bar')
 
 
 
-```
+``` python
 >>> import argparse
 >>> parser = argparse.ArgumentParser(prog='chicken.py')
 >>> subparsers = parser.add_subparsers()
@@ -1485,13 +1490,14 @@ chicken.py: warning: command 'fly' is deprecated
 Namespace()
 ```
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ​	One particularly effective way of handling subcommands is to combine the use of the [`add_subparsers()`](https://docs.python.org/zh-cn/3.13/library/argparse.html#argparse.ArgumentParser.add_subparsers) method with calls to [`set_defaults()`](https://docs.python.org/zh-cn/3.13/library/argparse.html#argparse.ArgumentParser.set_defaults) so that each subparser knows which Python function it should execute. For example:
 
 
 
-```
+``` python
 >>> # subcommand functions
 >>> def foo(args):
 ...     print(args.x * args.y)
@@ -1529,7 +1535,7 @@ Namespace()
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> subparsers = parser.add_subparsers(dest='subparser_name')
 >>> subparser1 = subparsers.add_parser('1')
@@ -1550,7 +1556,7 @@ Namespace(subparser_name='2', y='frobble')
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--raw', type=argparse.FileType('wb', 0))
 >>> parser.add_argument('out', type=argparse.FileType('w', encoding='UTF-8'))
@@ -1562,7 +1568,7 @@ Namespace(out=<_io.TextIOWrapper name='file.txt' mode='w' encoding='UTF-8'>, raw
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('infile', type=argparse.FileType('r'))
 >>> parser.parse_args(['-'])
@@ -1579,7 +1585,7 @@ Namespace(infile=<_io.TextIOWrapper name='<stdin>' encoding='UTF-8'>)
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG', add_help=False)
 >>> group = parser.add_argument_group('group')
 >>> group.add_argument('--foo', help='foo help')
@@ -1596,7 +1602,7 @@ group:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG', add_help=False)
 >>> group1 = parser.add_argument_group('group1', 'group1 description')
 >>> group1.add_argument('foo', help='foo help')
@@ -1630,7 +1636,7 @@ group2:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG')
 >>> group = parser.add_mutually_exclusive_group()
 >>> group.add_argument('--foo', action='store_true')
@@ -1648,7 +1654,7 @@ PROG: error: argument --bar: not allowed with argument --foo
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG')
 >>> group = parser.add_mutually_exclusive_group(required=True)
 >>> group.add_argument('--foo', action='store_true')
@@ -1662,7 +1668,7 @@ PROG: error: one of the arguments --foo --bar is required
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG')
 >>> group = parser.add_argument_group('Group title', 'Group description')
 >>> exclusive_group = group.add_mutually_exclusive_group(required=True)
@@ -1691,7 +1697,7 @@ Group title:
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('foo', type=int)
 >>> parser.set_defaults(bar=42, baz='badger')
@@ -1703,7 +1709,7 @@ Namespace(bar=42, baz='badger', foo=736)
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--foo', default='bar')
 >>> parser.set_defaults(foo='spam')
@@ -1719,7 +1725,7 @@ Namespace(foo='spam')
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--foo', default='badger')
 >>> parser.get_default('foo')
@@ -1756,7 +1762,7 @@ Namespace(foo='spam')
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--foo', action='store_true')
 >>> parser.add_argument('bar')
@@ -1818,7 +1824,7 @@ class ErrorCatchingArgumentParser(argparse.ArgumentParser):
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser()
 >>> parser.add_argument('--foo')
 >>> parser.add_argument('cmd')
@@ -1831,7 +1837,8 @@ Namespace(cmd='doit', foo='bar', rest=[1, 2, 3])
 
 [`parse_known_intermixed_args()`](https://docs.python.org/zh-cn/3.13/library/argparse.html#argparse.ArgumentParser.parse_known_intermixed_args) 返回由两个条目组成的元组，其中包含带成员的命名空间以及剩余参数字符串列表。 当存在任何剩余的未解析参数字符串时 [`parse_intermixed_args()`](https://docs.python.org/zh-cn/3.13/library/argparse.html#argparse.ArgumentParser.parse_intermixed_args) 将引发一个错误。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## 异常
 

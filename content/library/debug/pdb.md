@@ -24,11 +24,11 @@ draft = false
 
 ​	参见
 
-## 模块 [`faulthandler`](https://docs.python.org/zh-cn/3.13/library/faulthandler.html#module-faulthandler)
+模块 [`faulthandler`](https://docs.python.org/zh-cn/3.13/library/faulthandler.html#module-faulthandler)
 
 ​	用于在发生错误、超时或用户信号时显式地转储 Python 回溯信息。
 
-## 模块 [`traceback`](https://docs.python.org/zh-cn/3.13/library/traceback.html#module-traceback)
+模块 [`traceback`](https://docs.python.org/zh-cn/3.13/library/traceback.html#module-traceback)
 
 ​	提取、格式化和打印 Python 程序的栈回溯信息的标准接口。
 
@@ -85,7 +85,7 @@ python -m pdb myscript.py
 
 
 
-```
+``` python
 >>> import pdb
 >>> def f(x):
 ...     print(1 / x)
@@ -100,7 +100,7 @@ python -m pdb myscript.py
 
 
 
-```
+``` python
 >>> import pdb
 >>> def f(x):
 ...     print(1 / x)
@@ -211,7 +211,8 @@ import pdb; pdb.Pdb(skip=['django.*']).set_trace()
 - `$_retval`: 当帧返回时的返回值
 - `$_exception`: 当帧引发异常时的异常值
 
-*Added in version 3.12:* 增加了 *便捷变量* 特性。
+> Added in version 3.12:* 增加了 *便捷变量
+> 特性。
 
 ​	如果文件 `.pdbrc` 存在于用户主目录或当前目录中，则它将以 `'utf-8'` 编码格式被读入并执行，就像是在调试器提示符下被键入一样，不同之处在于空行和以 `#` 开头的行会被忽略。 这对于别名特别有用。 如果两个文件都存在，则会先读取主目录中的文件并且在那里定义的别名可以被本地文件所覆盖。
 
@@ -334,7 +335,8 @@ import pdb; pdb.Pdb(skip=['django.*']).set_trace()
 
 ​	列出当前函数或帧的所有源代码。相关行的标记与 [`list`](https://docs.python.org/zh-cn/3.13/library/pdb.html#pdbcommand-list) 相同。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **a(rgs)**
 
@@ -362,7 +364,8 @@ import pdb; pdb.Pdb(skip=['django.*']).set_trace()
 
 ​	尝试获取 *expression* 的源代码并显示它。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **display** [expression]
 
@@ -419,13 +422,15 @@ display lst[:]: [1]  [old: []]
 (Pdb)
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **undisplay** [expression]
 
 ​	不再显示当前帧中的 *expression*。 如果不带 *expression*，则清除当前帧的所有显示表达式。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **interact**
 
@@ -437,7 +442,8 @@ display lst[:]: [1]  [old: []]
 
 ​	由于 `interact` 为代码执行创建了一个新的专用命名空间，对变量的赋值将不会影响原始命名空间。 不过，对任何被引用的可变对象的修改都将照常在原始命名空间中反映出来。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.13 版本发生变更:* 可以使用 `exit()` 和 `quit()` 退出 [`interact`](https://docs.python.org/zh-cn/3.13/library/pdb.html#pdbcommand-interact) 命令。
 
@@ -543,7 +549,8 @@ def inner(x):
 -> return inner(0)
 ```
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ​	备注
 

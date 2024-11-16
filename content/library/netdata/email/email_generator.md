@@ -37,7 +37,8 @@ draft = false
 
 ​	如果指定了 *policy*，则使用该策略来控制消息的生成。 如果 *policy* 为 `None` (默认值)，则使用与传递给 `flatten` 的 [`Message`](https://docs.python.org/zh-cn/3.13/library/email.compat32-message.html#email.message.Message) 或 [`EmailMessage`](https://docs.python.org/zh-cn/3.13/library/email.message.html#email.message.EmailMessage) 对象相关联的策略来控制消息的生成。 请参阅 [`email.policy`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#module-email.policy) 了解有关 *policy* 所控制内容的详情。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.3 版本发生变更:* 添加了 *policy* 关键字。
 

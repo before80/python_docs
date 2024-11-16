@@ -59,7 +59,7 @@ draft = false
 
 
 
-```
+``` python
 >>> s = 'Hello, world.'
 >>> str(s)
 'Hello, world.'
@@ -94,7 +94,7 @@ The value of x is 32.5, and y is 40000...
 
 
 
-```
+``` python
 >>> import math
 >>> print(f'The value of pi is approximately {math.pi:.3f}.')
 The value of pi is approximately 3.142.
@@ -104,7 +104,7 @@ The value of pi is approximately 3.142.
 
 
 
-```
+``` python
 >>> table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 7678}
 >>> for name, phone in table.items():
 ...     print(f'{name:10} ==> {phone:10d}')
@@ -118,7 +118,7 @@ Dcab       ==>       7678
 
 
 
-```
+``` python
 >>> animals = 'eels'
 >>> print(f'My hovercraft is full of {animals}.')
 My hovercraft is full of eels.
@@ -130,7 +130,7 @@ My hovercraft is full of 'eels'.
 
 
 
-```
+``` python
 >>> bugs = 'roaches'
 >>> count = 13
 >>> area = 'living room'
@@ -148,7 +148,7 @@ Debugging bugs='roaches' count=13 area='living room'
 
 
 
-```
+``` python
 >>> print('We are the {} who say "{}!"'.format('knights', 'Ni'))
 We are the knights who say "Ni!"
 ```
@@ -157,7 +157,7 @@ We are the knights who say "Ni!"
 
 
 
-```
+``` python
 >>> print('{0} and {1}'.format('spam', 'eggs'))
 spam and eggs
 >>> print('{1} and {0}'.format('spam', 'eggs'))
@@ -168,7 +168,7 @@ eggs and spam
 
 
 
-```
+``` python
 >>> print('This {food} is {adjective}.'.format(
 ...       food='spam', adjective='absolutely horrible'))
 This spam is absolutely horrible.
@@ -178,7 +178,7 @@ This spam is absolutely horrible.
 
 
 
-```
+``` python
 >>> print('The story of {0}, {1}, and {other}.'.format('Bill', 'Manfred',
 ...                                                    other='Georg'))
 The story of Bill, Manfred, and Georg.
@@ -188,7 +188,7 @@ The story of Bill, Manfred, and Georg.
 
 
 
-```
+``` python
 >>> table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 8637678}
 >>> print('Jack: {0[Jack]:d}; Sjoerd: {0[Sjoerd]:d}; '
 ...       'Dcab: {0[Dcab]:d}'.format(table))
@@ -199,7 +199,7 @@ Jack: 4098; Sjoerd: 4127; Dcab: 8637678
 
 
 
-```
+``` python
 >>> table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 8637678}
 >>> print('Jack: {Jack:d}; Sjoerd: {Sjoerd:d}; Dcab: {Dcab:d}'.format(**table))
 Jack: 4098; Sjoerd: 4127; Dcab: 8637678
@@ -209,7 +209,7 @@ Jack: 4098; Sjoerd: 4127; Dcab: 8637678
 
 
 
-```
+``` python
 >>> table = {k: str(v) for k, v in vars().items()}
 >>> message = " ".join([f'{k}: ' + '{' + k +'};' for k in table.keys()])
 >>> print(message.format(**table))
@@ -220,7 +220,7 @@ __name__: __main__; __doc__: None; __package__: None; __loader__: ...
 
 
 
-```
+``` python
 >>> for x in range(1, 11):
 ...     print('{0:2d} {1:3d} {2:4d}'.format(x, x*x, x*x*x))
 ...
@@ -244,7 +244,7 @@ __name__: __main__; __doc__: None; __package__: None; __loader__: ...
 
 
 
-```
+``` python
 >>> for x in range(1, 11):
 ...     print(repr(x).rjust(2), repr(x*x).rjust(3), end=' ')
 ...     # 请注意上一行中 'end' 的使用
@@ -270,7 +270,7 @@ __name__: __main__; __doc__: None; __package__: None; __loader__: ...
 
 
 
-```
+``` python
 >>> '12'.zfill(5)
 '00012'
 >>> '-3.14'.zfill(7)
@@ -285,7 +285,7 @@ __name__: __main__; __doc__: None; __package__: None; __loader__: ...
 
 
 
-```
+``` python
 >>> import math
 >>> print('The value of pi is approximately %5.3f.' % math.pi)
 The value of pi is approximately 3.142.
@@ -301,7 +301,7 @@ The value of pi is approximately 3.142.
 
 
 
-```
+``` python
 >>> f = open('workfile', 'w', encoding="utf-8")
 ```
 
@@ -315,7 +315,7 @@ The value of pi is approximately 3.142.
 
 
 
-```
+``` python
 >>> with open('workfile', encoding="utf-8") as f:
 ...     read_data = f.read()
 
@@ -336,7 +336,7 @@ True
 
 
 
-```
+``` python
 >>> f.close()
 >>> f.read()
 Traceback (most recent call last):
@@ -354,7 +354,7 @@ ValueError: I/O operation on closed file.
 
 
 
-```
+``` python
 >>> f.read()
 'This is the entire file.\n'
 >>> f.read()
@@ -365,7 +365,7 @@ ValueError: I/O operation on closed file.
 
 
 
-```
+``` python
 >>> f.readline()
 'This is the first line of the file.\n'
 >>> f.readline()
@@ -378,7 +378,7 @@ ValueError: I/O operation on closed file.
 
 
 
-```
+``` python
 >>> for line in f:
 ...     print(line, end='')
 ...
@@ -392,7 +392,7 @@ Second line of the file
 
 
 
-```
+``` python
 >>> f.write('This is a test\n')
 15
 ```
@@ -401,7 +401,7 @@ Second line of the file
 
 
 
-```
+``` python
 >>> value = ('the answer', 42)
 >>> s = str(value)  # 将元组转换为字符串
 >>> f.write(s)
@@ -414,7 +414,7 @@ Second line of the file
 
 
 
-```
+``` python
 >>> f = open('workfile', 'rb+')
 >>> f.write(b'0123456789abcdef')
 16
@@ -450,7 +450,7 @@ b'd'
 
 
 
-```
+``` python
 >>> import json
 >>> x = [1, 'simple', 'list']
 >>> json.dumps(x)

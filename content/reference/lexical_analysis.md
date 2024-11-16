@@ -221,7 +221,8 @@ async      elif       if         or         yield
 
 ### 2.3.2. 软关键字
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ​	某些标识符仅在特定上下文中被保留。 它们被称为 *软关键字*。 `match`, `case`, `type` 和 `_` 等标识符在特定上下文中具有关键字的语义，但这种区分是在解析器层级完成的，而不是在分词的时候。
 
@@ -307,7 +308,8 @@ bytesescapeseq ::=  "\" <any ASCII character>
 
 ​	字符串和字节串字面值都可选择加前缀字母 `'r'` 或 `'R'`；这分别被称为 *原始字符串字面值* 和 *原始字节串字面值* 并会将反斜杠视为原本的字符字面值。 因此，在原始字符串字面值中，`'\U'` 和 `'\u'` 转义符号不会被特殊对待。
 
-*Added in version 3.3:* 新增原始字节串 `'rb'` 前缀，是 `'br'` 的同义词。
+> Added in version 3.3:
+> 新增原始字节串 `'rb'` 前缀，是 `'br'` 的同义词。
 
 ​	支持 unicode 字面值（`u'value'`）遗留代码，简化 Python 2.x 和 3.x 并行代码库的维护工作。详见 [**PEP 414**](https://peps.python.org/pep-0414/)。
 
@@ -401,7 +403,8 @@ re.compile("[A-Za-z_]"       # letter or underscore
 
 ### 2.4.3. f 字符串
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 *格式字符串字面值* 或称 *f-string* 是标注了 `'f'` 或 `'F'` 前缀的字符串字面值。这种字符串可包含替换字段，即以 `{}` 标注的表达式。其他字符串字面值只是常量，格式字符串字面值则是可在运行时求值的表达式。
 
@@ -422,7 +425,7 @@ literal_char      ::=  <any code point except "{", "}" or NULL>
 
 ​	格式化字符串字面值中的表达式会与用圆括号包围的常规 Python 表达式一样处理，但有少量例外。 空表达式是不被允许的，而 [`lambda`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#lambda) 和赋值表达式 `:=` 都必须显式地用括号包围。 每个表达式都将在格式化字符串字面值出现的上下文中按从左到右的顺序进行求值。 替换表达式可在单引号和三引号f-字符串中包含换行符并可包含注释。 替换字段内 `#` 后面的所有内容都是注释（即使结尾花括号和引号也是）。 在这种情况下，替换字段必须在另一行中结束。
 
-```
+``` python
 >>> f"abc{a # This is a comment }"
 ... + 3}"
 'abc5'
@@ -434,7 +437,8 @@ literal_char      ::=  <any code point except "{", "}" or NULL>
 
 ​	表达式里含等号 `'='` 时，输出内容包括表达式文本、`'='` 、求值结果。输出内容可以保留表达式中左花括号 `'{'` 后，及 `'='` 后的空格。没有指定格式时，`'='` 默认调用表达式的 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr)。指定了格式时，默认调用表达式的 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str)，除非声明了转换字段 `'!r'`。
 
-*Added in version 3.8:* 等号 `'='`。
+> Added in version 3.8:
+> 等号 `'='`。
 
 ​	指定了转换符时，表达式求值的结果会先转换，再格式化。转换符 `'!s'` 调用 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 转换求值结果，`'!r'` 调用 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr)，`'!a'` 调用 [`ascii()`](https://docs.python.org/zh-cn/3.13/library/functions.html#ascii)。
 
@@ -448,7 +452,7 @@ literal_char      ::=  <any code point except "{", "}" or NULL>
 
 
 
-```
+``` python
 >>> name = "Fred"
 >>> f"He said his name is {name!r}."
 "He said his name is 'Fred'."
@@ -483,7 +487,7 @@ literal_char      ::=  <any code point except "{", "}" or NULL>
 
 
 
-```
+``` python
 >>> a = dict(x=2)
 >>> f"abc {a["x"]} def"
 'abc 2 def'
@@ -495,7 +499,7 @@ literal_char      ::=  <any code point except "{", "}" or NULL>
 
 
 
-```
+``` python
 >>> a = ["a", "b", "c"]
 >>> print(f"List a contains:\n{"\n".join(a)}")
 List a contains:
@@ -510,7 +514,7 @@ c
 
 
 
-```
+``` python
 >>> def foo():
 ...     f"Not a docstring"
 ...

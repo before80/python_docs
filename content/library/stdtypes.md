@@ -179,7 +179,7 @@ draft = false
 
 
 
-```
+``` python
 >>> n = -37
 >>> bin(n)
 '-0b100101'
@@ -198,7 +198,8 @@ def bit_length(self):
     return len(s)       # len('100101') --> 6
 ```
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 #### int.**bit_count**()
 
@@ -206,7 +207,7 @@ def bit_length(self):
 
 
 
-```
+``` python
 >>> n = 19
 >>> bin(n)
 '0b10011'
@@ -223,7 +224,8 @@ def bit_count(self):
     return bin(self).count("1")
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 #### int.**to_bytes**(*length=1*, *byteorder='big'*, ***, *signed=False*)
 
@@ -231,7 +233,7 @@ def bit_count(self):
 
 
 
-```
+``` python
 >>> (1024).to_bytes(2, byteorder='big')
 b'\x04\x00'
 >>> (1024).to_bytes(10, byteorder='big')
@@ -253,7 +255,7 @@ b'\xe8\x03'
 
 
 
-```
+``` python
 >>> (65).to_bytes()
 b'A'
 ```
@@ -274,7 +276,8 @@ def to_bytes(n, length=1, byteorder='big', signed=False):
     return bytes((n >> i*8) & 0xff for i in order)
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.11 版本发生变更:* 添加了 `length` 和 `byteorder` 的默认参数值。
 
@@ -284,7 +287,7 @@ def to_bytes(n, length=1, byteorder='big', signed=False):
 
 
 
-```
+``` python
 >>> int.from_bytes(b'\x00\x10', byteorder='big')
 16
 >>> int.from_bytes(b'\x00\x10', byteorder='little')
@@ -321,7 +324,8 @@ def from_bytes(bytes, byteorder='big', signed=False):
     return n
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.11 版本发生变更:* 添加了 `byteorder` 的默认参数值。
 
@@ -329,13 +333,15 @@ def from_bytes(bytes, byteorder='big', signed=False):
 
 ​	返回一对整数，其比率正好等于原整数并且分母为正数。 整数的比率总是用这个整数本身作为分子并以 `1` 作为分母。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 #### int.**is_integer**()
 
 ​	返回 `True`。 存在于兼容 [`float.is_integer()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#float.is_integer) 的鸭子类型。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ### 浮点类型的附加方法
 
@@ -351,7 +357,7 @@ def from_bytes(bytes, byteorder='big', signed=False):
 
 
 
-```
+``` python
 >>> (-2.0).is_integer()
 True
 >>> (3.2).is_integer()
@@ -382,7 +388,7 @@ False
 
 
 
-```
+``` python
 >>> float.fromhex('0x3.a7p10')
 3740.0
 ```
@@ -391,7 +397,7 @@ False
 
 
 
-```
+``` python
 >>> float.hex(3740.0)
 '0x1.d380000000000p+11'
 ```
@@ -739,7 +745,7 @@ def hash_complex(z):
 
 
 
-```
+``` python
 >>> list(range(10))
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 >>> list(range(1, 11))
@@ -776,7 +782,7 @@ def hash_complex(z):
 
 
 
-```
+``` python
 >>> r = range(0, 20, 2)
 >>> r
 range(0, 20, 2)
@@ -844,7 +850,7 @@ range(0, 10, 2)
 
 
 
-```
+``` python
 >>> str(b'Zoot!')
 "b'Zoot!'"
 ```
@@ -875,7 +881,8 @@ range(0, 10, 2)
 
 ​	大小写折叠算法在 ` Unicode 标准第 3.13 节 'Default Case Folding' 中描述 <https://www.unicode.org/versions/Unicode15.1.0/ch03.pdf>`__。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## str.**center**(*width*[, *fillchar*])
 
@@ -911,7 +918,7 @@ range(0, 10, 2)
 
 
 
-```
+``` python
 >>> '01\t012\t0123\t01234'.expandtabs()
 '01      012     0123    01234'
 >>> '01\t012\t0123\t01234'.expandtabs(4)
@@ -930,7 +937,7 @@ range(0, 10, 2)
 
 
 
-```
+``` python
 >>> 'Py' in 'Python'
 True
 ```
@@ -941,7 +948,7 @@ True
 
 
 
-```
+``` python
 >>> "The sum of 1 + 2 is {0}".format(1+2)
 'The sum of 1 + 2 is 3'
 ```
@@ -962,7 +969,7 @@ True
 
 
 
-```
+``` python
 >>> class Default(dict):
 ...     def __missing__(self, key):
 ...         return key
@@ -971,7 +978,8 @@ True
 'Guido was born in country'
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## str.**index**(*sub*[, *start*[, *end*]])
 
@@ -989,7 +997,8 @@ True
 
 ​	如果字符串为空或字符串中的所有字符都是 ASCII ，返回 `True` ，否则返回 `False` 。ASCII 字符的码点范围是 U+0000-U+007F 。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## str.**isdecimal**()
 
@@ -1009,7 +1018,7 @@ True
 
 
 
-```
+``` python
 >>> from keyword import iskeyword
 
 >>> 'hello'.isidentifier(), iskeyword('hello')
@@ -1046,7 +1055,7 @@ True
 
 
 
-```
+``` python
 >>> 'BANANA'.isupper()
 True
 >>> 'banana'.isupper()
@@ -1077,7 +1086,7 @@ False
 
 
 
-```
+``` python
 >>> '   spacious   '.lstrip()
 'spacious   '
 >>> 'www.example.com'.lstrip('cmowz.')
@@ -1088,7 +1097,7 @@ False
 
 
 
-```
+``` python
 >>> 'Arthur: three!'.lstrip('Arthur: ')
 'ee!'
 >>> 'Arthur: three!'.removeprefix('Arthur: ')
@@ -1113,14 +1122,15 @@ False
 
 
 
-```
+``` python
 >>> 'TestHook'.removeprefix('Test')
 'Hook'
 >>> 'BaseTestCase'.removeprefix('Test')
 'BaseTestCase'
 ```
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## str.**removesuffix**(*suffix*, */*)
 
@@ -1128,14 +1138,15 @@ False
 
 
 
-```
+``` python
 >>> 'MiscTests'.removesuffix('Tests')
 'Misc'
 >>> 'TmpDirMixin'.removesuffix('Tests')
 'TmpDirMixin'
 ```
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## str.**replace**(*old*, *new*, *count=-1*)
 
@@ -1169,7 +1180,7 @@ False
 
 
 
-```
+``` python
 >>> '   spacious   '.rstrip()
 '   spacious'
 >>> 'mississippi'.rstrip('ipz')
@@ -1180,7 +1191,7 @@ False
 
 
 
-```
+``` python
 >>> 'Monty Python'.rstrip(' Python')
 'M'
 >>> 'Monty Python'.removesuffix(' Python')
@@ -1197,7 +1208,7 @@ False
 
 
 
-```
+``` python
 >>> '1,2,3'.split(',')
 ['1', '2', '3']
 >>> '1,2,3'.split(',', maxsplit=1)
@@ -1214,7 +1225,7 @@ False
 
 
 
-```
+``` python
 >>> '1 2 3'.split()
 ['1', '2', '3']
 >>> '1 2 3'.split(maxsplit=1)
@@ -1249,7 +1260,7 @@ False
 
 
 
-```
+``` python
 >>> 'ab c\n\nde fg\rkl\r\n'.splitlines()
 ['ab c', '', 'de fg', 'kl']
 >>> 'ab c\n\nde fg\rkl\r\n'.splitlines(keepends=True)
@@ -1260,7 +1271,7 @@ False
 
 
 
-```
+``` python
 >>> "".splitlines()
 []
 >>> "One line\n".splitlines()
@@ -1271,7 +1282,7 @@ False
 
 
 
-```
+``` python
 >>> ''.split('\n')
 ['']
 >>> 'Two lines\n'.split('\n')
@@ -1288,7 +1299,7 @@ False
 
 
 
-```
+``` python
 >>> '   spacious   '.strip()
 'spacious'
 >>> 'www.example.com'.strip('cmowz.')
@@ -1299,7 +1310,7 @@ False
 
 
 
-```
+``` python
 >>> comment_string = '#....... Section 3.2.1 Issue #32 .......'
 >>> comment_string.strip('.#! ')
 'Section 3.2.1 Issue #32'
@@ -1317,7 +1328,7 @@ False
 
 
 
-```
+``` python
 >>> 'Hello world'.title()
 'Hello World'
 ```
@@ -1326,7 +1337,7 @@ False
 
 
 
-```
+``` python
 >>> "they're bill's friends from the UK".title()
 "They'Re Bill'S Friends From The Uk"
 ```
@@ -1337,7 +1348,7 @@ False
 
 
 
-```
+``` python
 >>> import re
 >>> def titlecase(s):
 ...     return re.sub(r"[A-Za-z]+('[A-Za-z]+)?",
@@ -1370,7 +1381,7 @@ False
 
 
 
-```
+``` python
 >>> "42".zfill(5)
 '00042'
 >>> "-42".zfill(5)
@@ -1391,7 +1402,7 @@ False
 
 
 
-```
+``` python
 >>> print('%s has %d quote types.' % ('Python', 2))
 Python has 2 quote types.
 ```
@@ -1412,7 +1423,7 @@ Python has 2 quote types.
 
 
 
-```
+``` python
 >>> print('%(language)s has %(number)03d quote types.' %
 ...       {'language': "Python", "number": 2})
 Python has 002 quote types.
@@ -1520,7 +1531,7 @@ Python has 002 quote types.
 
 
 
-```
+``` python
 >>> bytes.fromhex('2Ef0 F1f2  ')
 b'.\xf0\xf1\xf2'
 ```
@@ -1535,7 +1546,7 @@ b'.\xf0\xf1\xf2'
 
 
 
-```
+``` python
 >>> b'\xf0\xf1\xf2'.hex()
 'f0f1f2'
 ```
@@ -1544,7 +1555,7 @@ b'.\xf0\xf1\xf2'
 
 
 
-```
+``` python
 >>> value = b'\xf0\xf1\xf2'
 >>> value.hex('-')
 'f0-f1-f2'
@@ -1554,7 +1565,8 @@ b'.\xf0\xf1\xf2'
 '55554444 4c524c52 4142'
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.8 版本发生变更:* [`bytes.hex()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes.hex) 现在支持可选的 *sep* 和 *bytes_per_sep* 形参以在十六进制输出的字节之间插入分隔符。
 
@@ -1589,7 +1601,7 @@ b'.\xf0\xf1\xf2'
 
 
 
-```
+``` python
 >>> bytearray.fromhex('2Ef0 F1f2  ')
 bytearray(b'.\xf0\xf1\xf2')
 ```
@@ -1604,12 +1616,13 @@ bytearray(b'.\xf0\xf1\xf2')
 
 
 
-```
+``` python
 >>> bytearray(b'\xf0\xf1\xf2').hex()
 'f0f1f2'
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.8 版本发生变更:* 与 [`bytes.hex()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes.hex) 相似， [`bytearray.hex()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytearray.hex) 现在支持可选的 *sep* 和 *bytes_per_sep* 参数以在十六进制输出的字节之间插入分隔符。
 
@@ -1671,7 +1684,7 @@ b = a.replace(b"a", b"f")
 
 
 
-```
+``` python
 >>> b'TestHook'.removeprefix(b'Test')
 b'Hook'
 >>> b'BaseTestCase'.removeprefix(b'Test')
@@ -1686,7 +1699,8 @@ b'BaseTestCase'
 
 ​	此方法的 bytearray 版本 *并非* 原地操作 —— 它总是产生一个新对象，即便没有做任何改变。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## bytes.**removesuffix**(*suffix*, */*)
 
@@ -1696,7 +1710,7 @@ b'BaseTestCase'
 
 
 
-```
+``` python
 >>> b'MiscTests'.removesuffix(b'Tests')
 b'Misc'
 >>> b'TmpDirMixin'.removesuffix(b'Tests')
@@ -1711,7 +1725,8 @@ b'TmpDirMixin'
 
 ​	此方法的 bytearray 版本 *并非* 原地操作 —— 它总是产生一个新对象，即便没有做任何改变。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## bytes.**decode**(*encoding='utf-8'*, *errors='strict'*)
 
@@ -1759,7 +1774,7 @@ b'TmpDirMixin'
 
 
 
-```
+``` python
 >>> b'Py' in b'Python'
 True
 ```
@@ -1788,7 +1803,8 @@ True
 
 ​	此静态方法返回一个可用于 [`bytes.translate()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes.translate) 的转换对照表，它将把 *from* 中的每个字符映射为 *to* 中相同位置上的字符；*from* 与 *to* 必须都是 [字节类对象](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object) 并且具有相同的长度。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## bytes.**partition**(*sep*)
 
@@ -1860,7 +1876,7 @@ True
 
 
 
-```
+``` python
 >>> b'read this short text'.translate(None, b'aeiou')
 b'rd ths shrt txt'
 ```
@@ -1901,7 +1917,7 @@ b'rd ths shrt txt'
 
 
 
-```
+``` python
 >>> b'   spacious   '.lstrip()
 b'spacious   '
 >>> b'www.example.com'.lstrip(b'cmowz.')
@@ -1912,7 +1928,7 @@ b'example.com'
 
 
 
-```
+``` python
 >>> b'Arthur: three!'.lstrip(b'Arthur: ')
 b'ee!'
 >>> b'Arthur: three!'.removeprefix(b'Arthur: ')
@@ -1951,7 +1967,7 @@ b'three!'
 
 
 
-```
+``` python
 >>> b'   spacious   '.rstrip()
 b'   spacious'
 >>> b'mississippi'.rstrip(b'ipz')
@@ -1962,7 +1978,7 @@ b'mississ'
 
 
 
-```
+``` python
 >>> b'Monty Python'.rstrip(b' Python')
 b'M'
 >>> b'Monty Python'.removesuffix(b' Python')
@@ -1987,7 +2003,7 @@ b'Monty'
 
 
 
-```
+``` python
 >>> b'1,2,3'.split(b',')
 [b'1', b'2', b'3']
 >>> b'1,2,3'.split(b',', maxsplit=1)
@@ -2004,7 +2020,7 @@ b'Monty'
 
 
 
-```
+``` python
 >>> b'1 2 3'.split()
 [b'1', b'2', b'3']
 >>> b'1 2 3'.split(maxsplit=1)
@@ -2021,7 +2037,7 @@ b'Monty'
 
 
 
-```
+``` python
 >>> b'   spacious   '.strip()
 b'spacious'
 >>> b'www.example.com'.strip(b'cmowz.')
@@ -2058,7 +2074,7 @@ b'example'
 
 
 
-```
+``` python
 >>> b'01\t012\t0123\t01234'.expandtabs()
 b'01      012     0123    01234'
 >>> b'01\t012\t0123\t01234'.expandtabs(4)
@@ -2081,7 +2097,7 @@ b'01  012 0123    01234'
 
 
 
-```
+``` python
 >>> b'ABCabc1'.isalnum()
 True
 >>> b'ABC abc1'.isalnum()
@@ -2098,7 +2114,7 @@ False
 
 
 
-```
+``` python
 >>> b'ABCabc'.isalpha()
 True
 >>> b'ABCabc1'.isalpha()
@@ -2111,7 +2127,8 @@ False
 
 ​	如果序列为空或序列中所有字节都是 ASCII 字节则返回 `True` ，否则返回 `False` 。 ASCII 字节的取值范围是 0-0x7F。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## bytes.**isdigit**()
 
@@ -2123,7 +2140,7 @@ False
 
 
 
-```
+``` python
 >>> b'1234'.isdigit()
 True
 >>> b'1.23'.isdigit()
@@ -2140,7 +2157,7 @@ False
 
 
 
-```
+``` python
 >>> b'hello world'.islower()
 True
 >>> b'Hello world'.islower()
@@ -2165,7 +2182,7 @@ False
 
 
 
-```
+``` python
 >>> b'Hello World'.istitle()
 True
 >>> b'Hello world'.istitle()
@@ -2182,7 +2199,7 @@ False
 
 
 
-```
+``` python
 >>> b'HELLO WORLD'.isupper()
 True
 >>> b'Hello world'.isupper()
@@ -2201,7 +2218,7 @@ False
 
 
 
-```
+``` python
 >>> b'Hello World'.lower()
 b'hello world'
 ```
@@ -2224,7 +2241,7 @@ b'hello world'
 
 
 
-```
+``` python
 >>> b'ab c\n\nde fg\rkl\r\n'.splitlines()
 [b'ab c', b'', b'de fg', b'kl']
 >>> b'ab c\n\nde fg\rkl\r\n'.splitlines(keepends=True)
@@ -2235,7 +2252,7 @@ b'hello world'
 
 
 
-```
+``` python
 >>> b"".split(b'\n'), b"Two lines\n".split(b'\n')
 ([b''], [b'Two lines', b''])
 >>> b"".splitlines(), b"One line\n".splitlines()
@@ -2252,7 +2269,7 @@ b'hello world'
 
 
 
-```
+``` python
 >>> b'Hello World'.swapcase()
 b'hELLO wORLD'
 ```
@@ -2277,7 +2294,7 @@ b'hELLO wORLD'
 
 
 
-```
+``` python
 >>> b'Hello world'.title()
 b'Hello World'
 ```
@@ -2288,7 +2305,7 @@ b'Hello World'
 
 
 
-```
+``` python
 >>> b"they're bill's friends from the UK".title()
 b"They'Re Bill'S Friends From The Uk"
 ```
@@ -2297,7 +2314,7 @@ b"They'Re Bill'S Friends From The Uk"
 
 
 
-```
+``` python
 >>> import re
 >>> def titlecase(s):
 ...     return re.sub(rb"[A-Za-z]+('[A-Za-z]+)?",
@@ -2325,7 +2342,7 @@ b"They're Bill's Friends."
 
 
 
-```
+``` python
 >>> b'Hello World'.upper()
 b'HELLO WORLD'
 ```
@@ -2348,7 +2365,7 @@ b'HELLO WORLD'
 
 
 
-```
+``` python
 >>> b"42".zfill(5)
 b'00042'
 >>> b"-42".zfill(5)
@@ -2389,7 +2406,7 @@ b'-0042'
 
 
 
-```
+``` python
 >>> print(b'%(language)s has %(number)03d quote types.' %
 ...       {b'language': b"Python", b"number": 2})
 b'Python has 002 quote types.'
@@ -2466,7 +2483,8 @@ b'Python has 002 quote types.'
 
 [**PEP 461**](https://peps.python.org/pep-0461/) - 为 bytes 和 bytearray 添加 % 格式化
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 
 
@@ -2490,7 +2508,7 @@ b'Python has 002 quote types.'
 
 
 
-```
+``` python
 >>> v = memoryview(b'abcefg')
 >>> v[1]
 98
@@ -2508,7 +2526,7 @@ b'bce'
 
 
 
-```
+``` python
 >>> import array
 >>> a = array.array('l', [-11111111, 22222222, -33333333, 44444444])
 >>> m = memoryview(a)
@@ -2524,7 +2542,7 @@ b'bce'
 
 
 
-```
+``` python
 >>> data = bytearray(b'abcefg')
 >>> v = memoryview(data)
 >>> v.readonly
@@ -2548,7 +2566,7 @@ bytearray(b'z1spam')
 
 
 
-```
+``` python
 >>> v = memoryview(b'abcefg')
 >>> hash(v) == hash(b'abcefg')
 True
@@ -2574,7 +2592,7 @@ True
 
 
 
-```
+``` python
 >>> import array
 >>> a = array.array('I', [1, 2, 3, 4, 5])
 >>> b = array.array('d', [1.0, 2.0, 3.0, 4.0, 5.0])
@@ -2596,7 +2614,7 @@ True
 
 
 
-```
+``` python
 >>> from ctypes import BigEndianStructure, c_long
 >>> class BEPoint(BigEndianStructure):
 ...     _fields_ = [("x", c_long), ("y", c_long)]
@@ -2620,7 +2638,7 @@ False
 
 
 
-```
+``` python
 >>> m = memoryview(b"abc")
 >>> m.tobytes()
 b'abc'
@@ -2630,7 +2648,8 @@ b'abc'
 
 ​	对于非连续数组，结果等于平面化表示的列表，其中所有元素都转换为字节串。 [`tobytes()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#memoryview.tobytes) 支持所有格式字符串，不符合 [`struct`](https://docs.python.org/zh-cn/3.13/library/struct.html#module-struct) 模块语法的那些也包括在内。
 
-*Added in version 3.8:* *order* 可以为 {'C', 'F', 'A'}。 当 *order* 为 'C' 或 'F' 时，原始数组的数据会被转换至 C 或 Fortran 顺序。 对于连续视图，'A' 会返回物理内存的精确副本。 特别地，内存中的 Fortran 顺序会被保留。对于非连续视图，数据会先被转换为 C 形式。 *order=None* 与 *order='C'* 是相同的。
+> Added in version 3.8:* *order* 可以为 {'C', 'F', 'A'}。 当 *order* 为 'C' 或 'F' 时，原始数组的数据会被转换至 C 或 Fortran 顺序。 对于连续视图，'A' 会返回物理内存的精确副本。 特别地，内存中的 Fortran 顺序会被保留。对于非连续视图，数据会先被转换为 C 形式。 *order=None* 与 *order='C'
+> 是相同的。
 
 ## **hex**([*sep*[, *bytes_per_sep*]])
 
@@ -2638,13 +2657,14 @@ b'abc'
 
 
 
-```
+``` python
 >>> m = memoryview(b"abc")
 >>> m.hex()
 '616263'
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.8 版本发生变更:* 与 [`bytes.hex()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes.hex) 相似， [`memoryview.hex()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#memoryview.hex) 现在支持可选的 *sep* 和 *bytes_per_sep* 参数以在十六进制输出的字节之间插入分隔符。
 
@@ -2654,7 +2674,7 @@ b'abc'
 
 
 
-```
+``` python
 >>> memoryview(b'abc').tolist()
 [97, 98, 99]
 >>> import array
@@ -2672,7 +2692,7 @@ b'abc'
 
 
 
-```
+``` python
 >>> m = memoryview(bytearray(b'abc'))
 >>> mm = m.toreadonly()
 >>> mm.tolist()
@@ -2686,7 +2706,8 @@ TypeError: cannot modify read-only memory
 [43, 98, 99]
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **release**()
 
@@ -2696,7 +2717,7 @@ TypeError: cannot modify read-only memory
 
 
 
-```
+``` python
 >>> m = memoryview(b'abc')
 >>> m.release()
 >>> m[0]
@@ -2709,7 +2730,7 @@ ValueError: operation forbidden on released memoryview object
 
 
 
-```
+``` python
 >>> with memoryview(b'abc') as m:
 ...     m[0]
 ...
@@ -2720,7 +2741,8 @@ Traceback (most recent call last):
 ValueError: operation forbidden on released memoryview object
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **cast**(*format*[, *shape*])
 
@@ -2732,7 +2754,7 @@ ValueError: operation forbidden on released memoryview object
 
 
 
-```
+``` python
 >>> import array
 >>> a = array.array('l', [1,2,3])
 >>> x = memoryview(a)
@@ -2759,7 +2781,7 @@ ValueError: operation forbidden on released memoryview object
 
 
 
-```
+``` python
 >>> b = bytearray(b'zyz')
 >>> x = memoryview(b)
 >>> x[0] = b'a'
@@ -2776,7 +2798,7 @@ bytearray(b'ayz')
 
 
 
-```
+``` python
 >>> import struct
 >>> buf = struct.pack("i"*12, *list(range(12)))
 >>> x = memoryview(buf)
@@ -2806,7 +2828,7 @@ bytearray(b'ayz')
 
 
 
-```
+``` python
 >>> buf = struct.pack("L"*6, *list(range(6)))
 >>> x = memoryview(buf)
 >>> y = x.cast('L', shape=[2,3])
@@ -2818,7 +2840,8 @@ bytearray(b'ayz')
 [[0, 1, 2], [3, 4, 5]]
 ```
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.5 版本发生变更:* 当转换为字节视图时，源格式将不再受限。
 
@@ -2830,14 +2853,15 @@ bytearray(b'ayz')
 
 
 
-```
+``` python
 >>> b  = bytearray(b'xyz')
 >>> m = memoryview(b)
 >>> m.obj is b
 True
 ```
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **nbytes**
 
@@ -2845,7 +2869,7 @@ True
 
 
 
-```
+``` python
 >>> import array
 >>> a = array.array('i', [1,2,3,4,5])
 >>> m = memoryview(a)
@@ -2866,7 +2890,7 @@ True
 
 
 
-```
+``` python
 >>> import struct
 >>> buf = struct.pack("d"*12, *[1.5*x for x in range(12)])
 >>> x = memoryview(buf)
@@ -2879,7 +2903,8 @@ True
 96
 ```
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **readonly**
 
@@ -2897,7 +2922,7 @@ True
 
 
 
-```
+``` python
 >>> import array, struct
 >>> m = memoryview(array.array('H', [32000, 32001, 32002]))
 >>> m.itemsize
@@ -2932,19 +2957,22 @@ True
 
 ​	一个表明内存是否为 C-[contiguous](https://docs.python.org/zh-cn/3.13/glossary.html#term-contiguous) 的布尔值。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **f_contiguous**
 
 ​	一个表明内存是否为 Fortran [contiguous](https://docs.python.org/zh-cn/3.13/glossary.html#term-contiguous) 的布尔值。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **contiguous**
 
 ​	一个表明内存是否为 [contiguous](https://docs.python.org/zh-cn/3.13/glossary.html#term-contiguous) 的布尔值。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 
 
@@ -3132,7 +3160,7 @@ True
 
 
 
-```
+``` python
 >>> a = dict(one=1, two=2, three=3)
 >>> b = {'one': 1, 'two': 2, 'three': 3}
 >>> c = dict(zip(['one', 'two', 'three'], [1, 2, 3]))
@@ -3163,7 +3191,7 @@ True
 
 
 
-```
+``` python
 >>> class Counter(dict):
 ...     def __missing__(self, key):
 ...         return 0
@@ -3240,7 +3268,8 @@ True
 
 ​	返回一个逆序获取字典键的迭代器。 这是 `reversed(d.keys())` 的快捷方式。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **setdefault**(*key*, *default=None*)
 
@@ -3260,7 +3289,7 @@ True
 
 
 
-```
+``` python
 >>> d = {'a': 1}
 >>> d.values() == d.values()
 False
@@ -3270,13 +3299,15 @@ False
 
 ​	合并 *d* 和 *other* 中的键和值来创建一个新的字典，两者必须都是字典。当 *d* 和 *other* 有相同键时， *other* 的值优先。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## **d |= other**
 
 ​	用 *other* 的键和值更新字典 *d* ，*other* 可以是 [mapping](https://docs.python.org/zh-cn/3.13/glossary.html#term-mapping) 或 [iterable](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterable) 的键值对。当 *d* 和 *other* 有相同键时， *other* 的值优先。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ​	两个字典的比较当且仅当它们具有相同的 `(键, 值)` 对时才会相等（不考虑顺序）。 排序比较 ('<', '<=', '>=', '>') 会引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
 
@@ -3284,7 +3315,7 @@ False
 
 
 
-```
+``` python
 >>> d = {"one": 1, "two": 2, "three": 3, "four": 4}
 >>> d
 {'one': 1, 'two': 2, 'three': 3, 'four': 4}
@@ -3307,7 +3338,7 @@ False
 
 
 
-```
+``` python
 >>> d = {"one": 1, "two": 2, "three": 3, "four": 4}
 >>> d
 {'one': 1, 'two': 2, 'three': 3, 'four': 4}
@@ -3363,7 +3394,8 @@ False
 
 ​	返回 [`types.MappingProxyType`](https://docs.python.org/zh-cn/3.13/library/types.html#types.MappingProxyType) 对象，封装了字典视图指向的原始字典。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ​	键视图与集合类似因为其条目是唯一的并且为 [hashable](https://docs.python.org/zh-cn/3.13/glossary.html#term-hashable)。 条视图也有类似集合的操作因为 (键, 值) 对是唯一的并且键是可哈希的。 如果条目视图中的所有值也都是可哈希的，那么条目视图就可以与其他集合执行互操作。 （值视图不会被认为与集合类似因为条目通常不是唯一的）。 对于与集合类似的视图，可以使用为抽象基类 [`collections.abc.Set`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Set) 定义的所有操作（例如，`==`, `<` 或 `^` 等）。 虽然使用了集合运算符，但与集合类似的视图接受任何可迭代对象作为其操作数，而不像集合那样只接受集合作为输入。
 
@@ -3371,7 +3403,7 @@ False
 
 
 
-```
+``` python
 >>> dishes = {'eggs': 2, 'sausage': 1, 'bacon': 1, 'spam': 500}
 >>> keys = dishes.keys()
 >>> values = dishes.values()
@@ -3486,7 +3518,7 @@ def send_post_request(url: str, body: dict[str, int]) -> None:
 
 
 
-```
+``` python
 >>> isinstance([1, 2], list[str])
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -3497,7 +3529,7 @@ TypeError: isinstance() argument 2 cannot be a parameterized generic
 
 
 
-```
+``` python
 >>> t = list[str]
 >>> t([1, 2, 3])
 [1, 2, 3]
@@ -3507,7 +3539,7 @@ TypeError: isinstance() argument 2 cannot be a parameterized generic
 
 
 
-```
+``` python
 >>> t = list[str]
 >>> type(t)
 <class 'types.GenericAlias'>
@@ -3521,7 +3553,7 @@ TypeError: isinstance() argument 2 cannot be a parameterized generic
 
 
 
-```
+``` python
 >>> repr(list[int])
 'list[int]'
 
@@ -3533,7 +3565,7 @@ TypeError: isinstance() argument 2 cannot be a parameterized generic
 
 
 
-```
+``` python
 >>> dict[str][str]
 Traceback (most recent call last):
   ...
@@ -3544,7 +3576,7 @@ TypeError: dict[str] is not a generic class
 
 
 
-```
+``` python
 >>> from typing import TypeVar
 >>> Y = TypeVar('Y')
 >>> dict[str, Y][int]
@@ -3620,7 +3652,7 @@ dict[str, int]
 
 
 
-```
+``` python
 >>> list[int].__origin__
 <class 'list'>
 ```
@@ -3631,7 +3663,7 @@ dict[str, int]
 
 
 
-```
+``` python
 >>> dict[str, list[int]].__args__
 (<class 'str'>, list[int])
 ```
@@ -3642,7 +3674,7 @@ dict[str, int]
 
 
 
-```
+``` python
 >>> from typing import TypeVar
 
 >>> T = TypeVar('T')
@@ -3660,15 +3692,16 @@ dict[str, int]
 
 ​	一个布尔值，如果别名已使用 `*` 运算符进行解包则为真值 (参见 [`TypeVarTuple`](https://docs.python.org/zh-cn/3.13/library/typing.html#typing.TypeVarTuple))。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ​	参见
 
-## [**PEP 484**](https://peps.python.org/pep-0484/) —— 类型注解
+[**PEP 484**](https://peps.python.org/pep-0484/) —— 类型注解
 
 ​	介绍 Python 中用于类型标注的框架。
 
-## [**PEP 585**](https://peps.python.org/pep-0585/) - 标准多项集中的类型提示泛型
+[**PEP 585**](https://peps.python.org/pep-0585/) - 标准多项集中的类型提示泛型
 
 ​	介绍了对标准库类进行原生形参化的能力，只要它们实现了特殊的类方法 [`__class_getitem__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__class_getitem__)。
 
@@ -3676,7 +3709,8 @@ dict[str, int]
 
 ​	有关如何实现可在运行时被形参化并能被静态类型检查器所识别的泛用类的文档。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 
 
@@ -3741,7 +3775,7 @@ def square(number: int | float) -> int | float:
 
 
 
-```
+``` python
 >>> isinstance("", int | str)
 True
 ```
@@ -3750,7 +3784,7 @@ True
 
 
 
-```
+``` python
 >>> isinstance(1, int | list[int])  # short-circuit evaluation
 True
 >>> isinstance([1], int | list[int])
@@ -3763,7 +3797,7 @@ TypeError: isinstance() argument 2 cannot be a parameterized generic
 
 
 
-```
+``` python
 >>> import types
 >>> isinstance(int | str, types.UnionType)
 True
@@ -3781,7 +3815,7 @@ TypeError: cannot create 'types.UnionType' instances
 
 
 
-```
+``` python
 >>> class M(type):
 ...     def __or__(self, other):
 ...         return "Hello"
@@ -3801,7 +3835,8 @@ int | C
 
 [**PEP 604**](https://peps.python.org/pep-0604/) —— 提出了 `X | Y` 语法和 union 类型。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 
 
@@ -3847,7 +3882,7 @@ int | C
 
 
 
-```
+``` python
 >>> class C:
 ...     def method(self):
 ...         pass
@@ -3928,7 +3963,8 @@ AttributeError: 'method' object has no attribute 'whoami'
 
 ​	类、函数、方法、描述器或生成器实例的 [qualified name](https://docs.python.org/zh-cn/3.13/glossary.html#term-qualified-name)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## definition.`__module__`
 
@@ -3942,7 +3978,8 @@ AttributeError: 'method' object has no attribute 'whoami'
 
 ​	The [type parameters](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#type-params) of generic classes, functions, and [type aliases](https://docs.python.org/zh-cn/3.13/library/typing.html#type-aliases). For classes and functions that are not generic, this will be an empty tuple.
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 
 
@@ -3960,7 +3997,7 @@ AttributeError: 'method' object has no attribute 'whoami'
 
 
 
-```
+``` python
 >>> import sys
 >>> sys.set_int_max_str_digits(4300)  # Illustrative, this is the default.
 >>> _ = int('2' * 5432)
@@ -3986,7 +4023,7 @@ ValueError: Exceeds the limit (4300 digits) for integer string conversion; use s
 
 
 
-```
+``` python
 >>> import sys
 >>> assert sys.int_info.default_max_str_digits == 4300, sys.int_info
 >>> assert sys.int_info.str_digits_check_threshold == 640, sys.int_info
@@ -3996,7 +4033,8 @@ ValueError: Exceeds the limit (4300 digits) for integer string conversion; use s
 ...
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ### 受影响的 API
 
@@ -4034,7 +4072,8 @@ ValueError: Exceeds the limit (4300 digits) for integer string conversion; use s
 - [`sys.int_info.default_max_str_digits`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.int_info) 是已编译的默认限制。
 - [`sys.int_info.str_digits_check_threshold`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.int_info) 是该限制可接受的最低值（禁用该限制的 0 除外）。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ​	小心
 
@@ -4052,7 +4091,7 @@ ValueError: Exceeds the limit (4300 digits) for integer string conversion; use s
 
 
 
-```
+``` python
 >>> import sys
 >>> if hasattr(sys, "set_int_max_str_digits"):
 ...     upper_bound = 68000

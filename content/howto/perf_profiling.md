@@ -14,7 +14,7 @@ draft = false
 
 # Python 对 Linux `perf` 性能分析器的支持
 
-## 作者:
+作者:
 
 ​	Pablo Galindo
 

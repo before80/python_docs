@@ -14,7 +14,8 @@ draft = false
 
 # `statistics` --- 数字统计函数
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 **源代码:** [Lib/statistics.py](https://github.com/python/cpython/tree/3.13/Lib/statistics.py)
 
@@ -30,7 +31,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from statistics import median
 >>> from math import isnan
 >>> from itertools import filterfalse
@@ -106,7 +107,7 @@ draft = false
 
 
 
-```
+``` python
 >>> mean([1, 2, 3, 4, 4])
 2.8
 >>> mean([-1.0, 2.5, 3.25, 5.75])
@@ -137,7 +138,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> fmean([3.5, 4.0, 5.25])
 4.25
 ```
@@ -146,7 +147,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> grades = [85, 92, 83, 91]
 >>> weights = [0.20, 0.20, 0.30, 0.30]
 >>> fmean(grades, weights)
@@ -155,7 +156,8 @@ Decimal('0.5625')
 
 ​	如果提供了 *weights*，它必须与 *data* 的长度相同否则将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.11 版本发生变更:* 添加了对 *weights* 的支持。
 
@@ -171,12 +173,13 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> round(geometric_mean([54, 24, 36]), 1)
 36.0
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## statistics.**harmonic_mean**(*data*, *weights=None*)
 
@@ -190,7 +193,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> harmonic_mean([40, 60])
 48.0
 ```
@@ -199,7 +202,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> harmonic_mean([40, 60], weights=[5, 30])
 56.0
 ```
@@ -208,7 +211,8 @@ Decimal('0.5625')
 
 ​	当前算法在输入中遇到零时会提前退出。这意味着不会测试后续输入的有效性。（此行为将来可能会更改。）
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 *在 3.10 版本发生变更:* 添加了对 *weights* 的支持。
 
@@ -234,7 +238,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> sample = [-2.1, -1.3, -0.4, 1.9, 5.1, 6.2]
 >>> f_hat = kde(sample, h=1.5)
 >>> xarr = [i/100 for i in range(-750, 1100)]
@@ -245,7 +249,8 @@ Decimal('0.5625')
 
 ![估计概率密度函数的散点图。](statistics_img/kde_example.png)
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## statistics.**kde_random**(*data*, *h*, *kernel='normal'*, ***, *seed=None*)
 
@@ -259,7 +264,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> data = [-2.1, -1.3, -0.4, 1.9, 5.1, 6.2]
 >>> rand = kde_random(data, h=1.5, seed=8675309)
 >>> new_selections = [rand() for i in range(10)]
@@ -267,7 +272,8 @@ Decimal('0.5625')
 [0.7, 6.2, 1.2, 6.9, 7.0, 1.8, 2.5, -0.5, -1.8, 5.6]
 ```
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## statistics.**median**(*data*)
 
@@ -277,7 +283,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> median([1, 3, 5])
 3
 ```
@@ -286,7 +292,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> median([1, 3, 5, 7])
 4.0
 ```
@@ -303,7 +309,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> median_low([1, 3, 5])
 3
 >>> median_low([1, 3, 5, 7])
@@ -320,7 +326,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> median_high([1, 3, 5])
 3
 >>> median_high([1, 3, 5, 7])
@@ -341,7 +347,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> from collections import Counter
 >>> demographics = Counter({
 ...    25: 172,   # 20 to 30 years old
@@ -359,7 +365,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> data = list(demographics.elements())
 >>> median(data)
 35
@@ -381,7 +387,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> mode([1, 1, 2, 3, 3, 3, 3, 4])
 3
 ```
@@ -390,7 +396,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> mode(["red", "blue", "blue", "red", "green", "red", "red"])
 'red'
 ```
@@ -405,14 +411,15 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> multimode('aabbbbccddddeeffffgg')
 ['b', 'd', 'f']
 >>> multimode('')
 []
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## statistics.**pstdev**(*data*, *mu=None*)
 
@@ -420,7 +427,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> pstdev([1.5, 2.5, 2.5, 2.75, 3.25, 4.75])
 0.986893273527251
 ```
@@ -439,7 +446,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> data = [0.0, 0.25, 0.25, 1.25, 1.5, 1.75, 2.75, 3.25]
 >>> pvariance(data)
 1.25
@@ -449,7 +456,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> mu = mean(data)
 >>> pvariance(data, mu)
 1.25
@@ -459,7 +466,7 @@ Decimal('0.5625')
 
 
 
-```
+``` python
 >>> from decimal import Decimal as D
 >>> pvariance([D("27.5"), D("30.25"), D("30.25"), D("34.5"), D("41.75")])
 Decimal('24.815')
@@ -483,7 +490,7 @@ Fraction(13, 72)
 
 
 
-```
+``` python
 >>> stdev([1.5, 2.5, 2.5, 2.75, 3.25, 4.75])
 1.0810874155219827
 ```
@@ -502,7 +509,7 @@ Fraction(13, 72)
 
 
 
-```
+``` python
 >>> data = [2.75, 1.75, 1.25, 0.25, 0.5, 1.25, 3.5]
 >>> variance(data)
 1.3720238095238095
@@ -512,7 +519,7 @@ Fraction(13, 72)
 
 
 
-```
+``` python
 >>> m = mean(data)
 >>> variance(data, m)
 1.3720238095238095
@@ -524,7 +531,7 @@ Fraction(13, 72)
 
 
 
-```
+``` python
 >>> from decimal import Decimal as D
 >>> variance([D("27.5"), D("30.25"), D("30.25"), D("34.5"), D("41.75")])
 Decimal('31.01875')
@@ -571,7 +578,8 @@ Fraction(67, 108)
 [81.0, 86.2, 89.0, 99.4, 102.5, 103.6, 106.0, 109.8, 111.0]
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.13 版本发生变更:* 对于只有单个数据点的输入不会再引发异常。 这允许分位点估计以每次一个样本点的方式建立并随着每个新数据点逐渐变得更为精细。
 
@@ -585,7 +593,7 @@ Fraction(67, 108)
 
 
 
-```
+``` python
 >>> x = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 >>> y = [1, 2, 3, 1, 2, 3, 1, 2, 3]
 >>> covariance(x, y)
@@ -597,7 +605,8 @@ Fraction(67, 108)
 -7.5
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## statistics.**correlation**(*x*, *y*, */*, ***, *method='linear'*)
 
@@ -613,7 +622,7 @@ Fraction(67, 108)
 
 
 
-```
+``` python
 >>> # Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and  Neptune
 >>> orbital_period = [88, 225, 365, 687, 4331, 10_756, 30_687, 60_190]    # days
 >>> dist_from_sun = [58, 108, 150, 228, 778, 1_400, 2_900, 4_500] # million km
@@ -635,7 +644,8 @@ Fraction(67, 108)
 1.0
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 *在 3.12 版本发生变更:* 增加了对斯皮尔曼等级相关系数的支持。
 
@@ -653,7 +663,7 @@ Fraction(67, 108)
 
 
 
-```
+``` python
 >>> year = [1971, 1975, 1979, 1982, 1983]
 >>> films_total = [1, 2, 3, 4, 5]
 >>> slope, intercept = linear_regression(year, films_total)
@@ -669,7 +679,7 @@ Fraction(67, 108)
 
 
 
-```
+``` python
 >>> model = linear_regression(period_squared, dist_cubed, proportional=True)
 >>> slope = model.slope
 
@@ -683,7 +693,8 @@ Fraction(67, 108)
 [5906, 10152, 6796, 6450, 414]
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 *在 3.11 版本发生变更:* 添加了对 *proportional* 的支持。
 
@@ -773,13 +784,14 @@ Fraction(67, 108)
 
 ​	计算 [标准分](https://www.statisticshowto.com/probability-and-statistics/z-score/) 即以高于或低于正态分布的平均值的标准差数值的形式来描述 *x*: `(x - mean) / stdev`.
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 [`NormalDist`](https://docs.python.org/zh-cn/3.13/library/statistics.html#statistics.NormalDist) 的实例支持加上、减去、乘以或除以一个常量。 这些运算被用于转换和缩放。 例如：
 
 
 
-```
+``` python
 >>> temperature_february = NormalDist(5, 2.5)             # Celsius
 >>> temperature_february * (9/5) + 32                     # Fahrenheit
 NormalDist(mu=41.0, sigma=4.5)
@@ -791,7 +803,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 
 
-```
+``` python
 >>> birth_weights = NormalDist.from_samples([2.5, 3.1, 2.1, 2.4, 2.7, 3.5])
 >>> drug_effects = NormalDist(0.4, 0.15)
 >>> combined = birth_weights + drug_effects
@@ -801,7 +813,8 @@ NormalDist(mu=41.0, sigma=4.5)
 0.5
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## 例子和配方
 
@@ -813,7 +826,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 
 
-```
+``` python
 >>> sat = NormalDist(1060, 195)
 >>> fraction = sat.cdf(1200 + 0.5) - sat.cdf(1100 - 0.5)
 >>> round(fraction * 100.0, 1)
@@ -824,7 +837,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 
 
-```
+``` python
 >>> list(map(round, sat.quantiles()))
 [928, 1060, 1192]
 >>> list(map(round, sat.quantiles(n=10)))
@@ -837,7 +850,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 
 
-```
+``` python
 >>> def model(x, y, z):
 ...     return (3*x + 7*x*y - 5*y) / (11 * z)
 ...
@@ -857,7 +870,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 
 
-```
+``` python
 >>> n = 750             # Sample size
 >>> p = 0.65            # Preference for Python
 >>> q = 1.0 - p         # Preference for Ruby
@@ -890,7 +903,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 
 
-```
+``` python
 >>> height_male = NormalDist.from_samples([6, 5.92, 5.58, 5.92])
 >>> height_female = NormalDist.from_samples([5, 5.5, 5.42, 5.75])
 >>> weight_male = NormalDist.from_samples([180, 190, 170, 165])
@@ -903,7 +916,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 
 
-```
+``` python
 >>> ht = 6.0        # height
 >>> wt = 130        # weight
 >>> fs = 8          # foot size
@@ -913,7 +926,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 
 
-```
+``` python
 >>> prior_male = 0.5
 >>> prior_female = 0.5
 >>> posterior_male = (prior_male * height_male.pdf(ht) *
@@ -927,7 +940,7 @@ NormalDist(mu=41.0, sigma=4.5)
 
 
 
-```
+``` python
 >>> 'male' if posterior_male > posterior_female else 'female'
 'female'
 ```

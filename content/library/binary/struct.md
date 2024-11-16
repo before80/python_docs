@@ -58,7 +58,8 @@ draft = false
 
 ​	每次迭代将产生一个如格式字符串所指定的元组。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## struct.**calcsize**(*format*)
 
@@ -101,7 +102,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import struct
 >>> struct.pack('>h', 1023)
 b'\x03\xff'
@@ -207,7 +208,7 @@ b'\xff\x03'
 
 
 
-```
+``` python
 >>> from struct import *
 >>> pack(">bhl", 1, 2, 3)
 b'\x01\x00\x02\x00\x00\x00\x03'
@@ -221,7 +222,7 @@ b'\x01\x00\x02\x00\x00\x00\x03'
 
 
 
-```
+``` python
 >>> pack(">h", 99999)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -232,7 +233,7 @@ struct.error: 'h' format requires -32768 <= number <= 32767
 
 
 
-```
+``` python
 >>> pack("@ccc", b'1', b'2', b'3')
 b'123'
 >>> pack("@3s", b'123')
@@ -243,7 +244,7 @@ b'123'
 
 
 
-```
+``` python
 >>> record = b'raymond   \x32\x12\x08\x01\x08'
 >>> name, serialnum, school, gradelevel = unpack('<10sHHb', record)
 
@@ -257,7 +258,7 @@ Student(name=b'raymond   ', serialnum=4658, school=264, gradelevel=8)
 
 
 
-```
+``` python
 >>> pack('@ci', b'#', 0x12131415)
 b'#\x00\x00\x00\x15\x14\x13\x12'
 >>> pack('@ic', 0x12131415, b'#')
@@ -272,22 +273,22 @@ b'\x15\x14\x13\x12#'
 
 
 
-```
+``` python
 >>> pack('@llh0l', 1, 2, 3)
 b'\x00\x00\x00\x01\x00\x00\x00\x02\x00\x03\x00\x00'
 ```
 
 ​	参见
 
-## 模块 [`array`](https://docs.python.org/zh-cn/3.13/library/array.html#module-array)
+模块 [`array`](https://docs.python.org/zh-cn/3.13/library/array.html#module-array)
 
 ​	被打包为二进制存储的同质数据。
 
-## 模块 [`json`](https://docs.python.org/zh-cn/3.13/library/json.html#module-json)
+模块 [`json`](https://docs.python.org/zh-cn/3.13/library/json.html#module-json)
 
 ​	JSON 编码器和解码器。
 
-## 模块 [`pickle`](https://docs.python.org/zh-cn/3.13/library/pickle.html#module-pickle)
+模块 [`pickle`](https://docs.python.org/zh-cn/3.13/library/pickle.html#module-pickle)
 
 ​	Python 对象序列化。
 
@@ -307,7 +308,7 @@ b'\x00\x00\x00\x01\x00\x00\x00\x02\x00\x03\x00\x00'
 
 
 
-```
+``` python
 >>> calcsize('@lhl')
 24
 >>> calcsize('@llh')
@@ -318,7 +319,7 @@ b'\x00\x00\x00\x01\x00\x00\x00\x02\x00\x03\x00\x00'
 
 
 
-```
+``` python
 >>> calcsize('@llh0l')
 24
 ```
@@ -335,7 +336,7 @@ b'\x00\x00\x00\x01\x00\x00\x00\x02\x00\x03\x00\x00'
 
 
 
-```
+``` python
 >>> calcsize('<qh6xq')
 24
 >>> pack('<qh6xq', 1, 2, 3) == pack('@lhl', 1, 2, 3)
@@ -356,7 +357,7 @@ True
 
 
 
-```
+``` python
 >>> calcsize('<qqh6x')
 24
 >>> calcsize('@llh0l')
@@ -403,7 +404,8 @@ False
 
 ​	等价于 [`iter_unpack()`](https://docs.python.org/zh-cn/3.13/library/struct.html#struct.iter_unpack) 函数，使用了已编译的格式。 缓冲区的大小必须为 [`size`](https://docs.python.org/zh-cn/3.13/library/struct.html#struct.Struct.size) 的整数倍。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **format**
 
@@ -419,7 +421,7 @@ False
 
 
 
-```
+``` python
 >>> Struct('i')
 Struct('i')
 ```

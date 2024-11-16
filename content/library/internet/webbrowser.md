@@ -114,9 +114,11 @@ python -m webbrowser -t "https://www.python.org"
 3. 仅限于 macOS。
 4. 仅限于 iOS。
 
-*Added in version 3.2:* 在 Mac 上会使用新增的 `MacOSXOSAScript` 类而不是之前的 `MacOSX` 类。 它增加了对打开当前未被设为 OS 默认首选项的浏览器的支持。
+> Added in version 3.2:
+> 在 Mac 上会使用新增的 `MacOSXOSAScript` 类而不是之前的 `MacOSX` 类。 它增加了对打开当前未被设为 OS 默认首选项的浏览器的支持。
 
-*Added in version 3.3:* 添加了对 Chrome/Chromium 的支持。
+> Added in version 3.3:
+> 添加了对 Chrome/Chromium 的支持。
 
 *在 3.12 版本发生变更:* 对某些过时浏览器的支持已被移除。 被移除的浏览器包括 Grail, Mosaic, Netscape, Galeon, Skipstone, Iceape 和 Firefox 35 及以下的版本。
 

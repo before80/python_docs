@@ -14,7 +14,7 @@ draft = false
 
 # 7. 在 iOS 上使用 Python
 
-## 作者:
+作者:
 
 ​	Russell Keith-Magee (2024-03)
 

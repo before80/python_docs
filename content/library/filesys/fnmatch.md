@@ -66,7 +66,7 @@ for file in os.listdir('.'):
 
 
 
-```
+``` python
 >>> import fnmatch, re
 >>>
 >>> regex = fnmatch.translate('*.txt')

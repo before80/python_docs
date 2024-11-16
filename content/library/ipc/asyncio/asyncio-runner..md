@@ -50,7 +50,8 @@ async def main():
 asyncio.run(main())
 ```
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 *在 3.9 版本发生变更:* 更新为使用 [`loop.shutdown_default_executor()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.loop.shutdown_default_executor)。
 
@@ -81,7 +82,8 @@ with asyncio.Runner() as runner:
     runner.run(main())
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **run**(*coro*, ***, *context=None*)
 
@@ -113,7 +115,8 @@ with asyncio.Runner() as runner:
 
 ## [处理键盘中断](https://docs.python.org/zh-cn/3.13/library/asyncio-runner.html#id4)
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ​	当 [`signal.SIGINT`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.SIGINT) 被 Ctrl-C 引发时，默认将在主线程中引发 [`KeyboardInterrupt`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyboardInterrupt)。 但是这并不适用于 [`asyncio`](https://docs.python.org/zh-cn/3.13/library/asyncio.html#module-asyncio) 因为它可以中断异步的内部操作并能挂起要退出的程序。
 

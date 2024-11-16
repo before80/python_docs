@@ -24,7 +24,8 @@ draft = false
 
 ​	一个包含模块信息的简短摘要的命名元组。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## pkgutil.**extend_path**(*path*, *name*)
 
@@ -175,4 +176,5 @@ data = open(os.path.join(d, resource), 'rb').read()
 
 [`AttributeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AttributeError) -- 当在遍历所导入包的对象层级结构以获取想要的对象时遭遇失败。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>

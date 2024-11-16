@@ -29,7 +29,8 @@ draft = false
 
 ## *class* http.**HTTPStatus**
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 [`enum.IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 的子类，它定义了组 HTTP 状态码，原理短语以及用英语书写的长描述文本。
 
@@ -37,7 +38,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from http import HTTPStatus
 >>> HTTPStatus.OK
 HTTPStatus.OK
@@ -128,15 +129,18 @@ True
 
 *在 3.7 版本发生变更:* 添加了 `421 MISDIRECTED_REQUEST` 状态码。
 
-*Added in version 3.8:* 添加了 `451 UNAVAILABLE_FOR_LEGAL_REASONS` 状态码。
+> Added in version 3.8:
+> 添加了 `451 UNAVAILABLE_FOR_LEGAL_REASONS` 状态码。
 
-*Added in version 3.9:* 增加了 `103 EARLY_HINTS`, `418 IM_A_TEAPOT` 和 `425 TOO_EARLY` 状态码
+> Added in version 3.9:
+> 增加了 `103 EARLY_HINTS`, `418 IM_A_TEAPOT` 和 `425 TOO_EARLY` 状态码
 
 *在 3.13 版本发生变更:* 实现了针对状态常量的 RFC9110 命名。 旧常量名被保留用于向下兼容。
 
 ## HTTP 状态类别
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ​	这些枚举值具有一些用于指明 HTTP 状态类别的特征属性:
 
@@ -162,7 +166,8 @@ True
 
 ## *class* http.**HTTPMethod**
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ​	一个 [`enum.StrEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.StrEnum) 的子类，它定义了一组 HTTP 方法以及用英文书写的描述。
 
@@ -170,7 +175,7 @@ True
 
 
 
-```
+``` python
 >>> from http import HTTPMethod
 >>>
 >>> HTTPMethod.GET

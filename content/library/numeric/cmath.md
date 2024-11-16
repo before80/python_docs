@@ -28,7 +28,7 @@ draft = false
 
 
 
-```
+``` python
 >>> cmath.sqrt(complex(-2.0, -0.0))
 -1.4142135623730951j
 ```
@@ -37,7 +37,7 @@ draft = false
 
 
 
-```
+``` python
 >>> cmath.sqrt(complex(-2.0, 0.0))
 1.4142135623730951j
 ```
@@ -56,7 +56,7 @@ draft = false
 
 
 
-```
+``` python
 >>> phase(complex(-1.0, 0.0))
 3.141592653589793
 >>> phase(complex(-1.0, -0.0))
@@ -153,7 +153,8 @@ draft = false
 
 ​	如果 *x* 的实部和虚部都是有限的，则返回 `True`，否则返回 `False`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## cmath.**isinf**(*x*)
 
@@ -175,7 +176,8 @@ draft = false
 
 ​	IEEE 754特殊值 `NaN` ， `inf` 和 `-inf` 将根据IEEE规则处理。具体来说， `NaN` 不被认为接近任何其他值，包括 `NaN` 。 `inf` 和 `-inf` 只被认为接近自己。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ​	参见
 
@@ -197,31 +199,36 @@ draft = false
 
 ​	数学常数 *τ* ，作为一个浮点数。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## cmath.**inf**
 
 ​	浮点正无穷大。相当于 `float('inf')`。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## cmath.**infj**
 
 ​	具有零实部和正无穷虚部的复数。相当于 `complex(0.0, float('inf'))`。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## cmath.**nan**
 
 ​	浮点“非数字”（NaN）值。相当于 `float('nan')`。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## cmath.**nanj**
 
 ​	具有零实部和 NaN 虚部的复数。相当于 `complex(0.0, float('nan'))`。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ​	请注意，函数的选择与模块 [`math`](https://docs.python.org/zh-cn/3.13/library/math.html#module-math) 中的函数选择相似，但不完全相同。 拥有两个模块的原因是因为有些用户对复数不感兴趣，甚至根本不知道它们是什么。它们宁愿 `math.sqrt(-1)` 引发异常，也不想返回一个复数。 另请注意，被 [`cmath`](https://docs.python.org/zh-cn/3.13/library/cmath.html#module-cmath) 定义的函数始终会返回一个复数，尽管答案可以表示为一个实数（在这种情况下，复数的虚数部分为零）。
 

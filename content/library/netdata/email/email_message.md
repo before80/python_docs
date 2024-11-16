@@ -19,7 +19,8 @@ draft = false
 
 ------
 
-*Added in version 3.6:* [[1\]](https://docs.python.org/zh-cn/3.13/library/email.message.html#id2)
+> Added in version 3.6:
+> [[1\]](https://docs.python.org/zh-cn/3.13/library/email.message.html#id2)
 
 ​	位于 [`email`](https://docs.python.org/zh-cn/3.13/library/email.html#module-email) 包的中心的类就是 [`EmailMessage`](https://docs.python.org/zh-cn/3.13/library/email.message.html#email.message.EmailMessage) 类。这个类导入自 [`email.message`](https://docs.python.org/zh-cn/3.13/library/email.message.html#module-email.message) 模块。它是 [`email`](https://docs.python.org/zh-cn/3.13/library/email.html#module-email) 对象模型的基类。[`EmailMessage`](https://docs.python.org/zh-cn/3.13/library/email.message.html#email.message.EmailMessage) 为设置和查询头字段内容、访问信息体的内容、以及创建和修改结构化信息提供了核心功能。
 
@@ -248,7 +249,8 @@ msg.add_header('Content-Disposition', 'attachment',
 
 ​	如果信息的 *Content-Disposition* 头字段存在，返回其字段值；否则返回 `None` 。返回的值均为小写，不包含参数。如果信息遵循 [**RFC 2183**](https://datatracker.ietf.org/doc/html/rfc2183.html) 标准，则此方法的返回值只可能在 *inline* 、 *attachment* 和 `None` 之间选择。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ​	下列方法与信息内容（载荷）之访问与操控有关。
 
@@ -260,7 +262,7 @@ msg.add_header('Content-Disposition', 'attachment',
 
 
 
-```
+``` python
 >>> for part in msg.walk():
 ...     print(part.get_content_type())
 multipart/report
@@ -276,7 +278,7 @@ text/plain
 
 
 
-```
+``` python
 >>> from email.iterators import _structure
 >>> for part in msg.walk():
 ...     print(part.get_content_maintype() == 'multipart',

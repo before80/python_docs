@@ -99,7 +99,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import sys
 >>> from difflib import *
 >>> s1 = ['bacon\n', 'eggs\n', 'ham\n', 'guido\n']
@@ -135,7 +135,7 @@ draft = false
 
 
 
-```
+``` python
 >>> get_close_matches('appel', ['ape', 'apple', 'peach', 'puppy'])
 ['apple', 'ape']
 >>> import keyword
@@ -159,7 +159,7 @@ draft = false
 
 
 
-```
+``` python
 >>> diff = ndiff('one\ntwo\nthree\n'.splitlines(keepends=True),
 ...              'ore\ntree\nemu\n'.splitlines(keepends=True))
 >>> print(''.join(diff), end="")
@@ -184,7 +184,7 @@ draft = false
 
 
 
-```
+``` python
 >>> diff = ndiff('one\ntwo\nthree\n'.splitlines(keepends=True),
 ...              'ore\ntree\nemu\n'.splitlines(keepends=True))
 >>> diff = list(diff) # materialize the generated delta into a list
@@ -212,7 +212,7 @@ emu
 
 
 
-```
+``` python
 >>> s1 = ['bacon\n', 'eggs\n', 'ham\n', 'guido\n']
 >>> s2 = ['python\n', 'eggy\n', 'hamster\n', 'guido\n']
 >>> sys.stdout.writelines(unified_diff(s1, s2, fromfile='before.py', tofile='after.py'))
@@ -236,7 +236,8 @@ emu
 
 ​	允许你比较编码未知或不一致的数据。 除 *n* 之外的所有输入都必须为字节串对象而非字符串。 作用方式为无损地将所有输入 (除 *n* 之外) 转换为字符串，并调用 `dfunc(a, b, fromfile, tofile, fromfiledate, tofiledate, n, lineterm)`。 *dfunc* 的输出会被随即转换回字节串，这样你所得到的增量行将具有与 *a* 和 *b* 相同的未知/不一致编码。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## difflib.**IS_LINE_JUNK**(*line*)
 
@@ -248,7 +249,7 @@ emu
 
 ​	参见
 
-## [Pattern Matching: The Gestalt Approach](https://www.drdobbs.com/database/pattern-matching-the-gestalt-approach/184407970)
+[Pattern Matching: The Gestalt Approach](https://www.drdobbs.com/database/pattern-matching-the-gestalt-approach/184407970)
 
 ​	John W. Ratcliff 和 D. E. Metzener 对于一种类似算法的讨论。 此文于 1988 年 7 月发表于 [Dr. Dobb's Journal](https://www.drdobbs.com/)。
 
@@ -276,7 +277,8 @@ lambda x: x in " \t"
 
 ​	SequenceMatcher 对象接受三个数据属性: *bjunk* 是 *b* 当中 *isjunk* 为 `True` 的元素集合；*bpopular* 是被启发式计算（如果其未被禁用）视为热门候选的非垃圾元素集合；*b2j* 是将 *b* 当中剩余元素映射到一个它们出现位置列表的字典。 所有三个数据属性将在 *b* 通过 [`set_seqs()`](https://docs.python.org/zh-cn/3.13/library/difflib.html#difflib.SequenceMatcher.set_seqs) 或 [`set_seq2()`](https://docs.python.org/zh-cn/3.13/library/difflib.html#difflib.SequenceMatcher.set_seq2) 重置时被重置。
 
-*Added in version 3.2:* *bjunk* 和 *bpopular* 属性。
+> Added in version 3.2:* *bjunk* 和 *bpopular
+> 属性。
 
 [`SequenceMatcher`](https://docs.python.org/zh-cn/3.13/library/difflib.html#difflib.SequenceMatcher) 对象具有以下方法：
 
@@ -302,7 +304,7 @@ lambda x: x in " \t"
 
 
 
-```
+``` python
 >>> s = SequenceMatcher(None, " abcd", "abcd abcd")
 >>> s.find_longest_match(0, 5, 0, 9)
 Match(a=0, b=4, size=5)
@@ -314,7 +316,7 @@ Match(a=0, b=4, size=5)
 
 
 
-```
+``` python
 >>> s = SequenceMatcher(lambda x: x==" ", " abcd", "abcd abcd")
 >>> s.find_longest_match(0, 5, 0, 9)
 Match(a=1, b=0, size=4)
@@ -334,7 +336,7 @@ Match(a=1, b=0, size=4)
 
 
 
-```
+``` python
 >>> s = SequenceMatcher(None, "abxcd", "abcd")
 >>> s.get_matching_blocks()
 [Match(a=0, b=0, size=2), Match(a=3, b=2, size=2), Match(a=5, b=4, size=0)]
@@ -357,7 +359,7 @@ Match(a=1, b=0, size=4)
 
 
 
-```
+``` python
 >>> a = "qabxcd"
 >>> b = "abycdf"
 >>> s = SequenceMatcher(None, a, b)
@@ -395,7 +397,7 @@ insert    a[6:6] --> b[5:6]       '' --> 'f'
 
 
 
-```
+``` python
 >>> SequenceMatcher(None, 'tide', 'diet').ratio()
 0.25
 >>> SequenceMatcher(None, 'diet', 'tide').ratio()
@@ -414,7 +416,7 @@ insert    a[6:6] --> b[5:6]       '' --> 'f'
 
 
 
-```
+``` python
 >>> s = SequenceMatcher(None, "abcd", "bcde")
 >>> s.ratio()
 0.75
@@ -432,7 +434,7 @@ insert    a[6:6] --> b[5:6]       '' --> 'f'
 
 
 
-```
+``` python
 >>> s = SequenceMatcher(lambda x: x == " ",
 ...                     "private Thread currentThread;",
 ...                     "private volatile Thread currentThread;")
@@ -442,7 +444,7 @@ insert    a[6:6] --> b[5:6]       '' --> 'f'
 
 
 
-```
+``` python
 >>> print(round(s.ratio(), 3))
 0.866
 ```
@@ -451,7 +453,7 @@ insert    a[6:6] --> b[5:6]       '' --> 'f'
 
 
 
-```
+``` python
 >>> for block in s.get_matching_blocks():
 ...     print("a[%d] and b[%d] match for %d elements" % block)
 a[0] and b[0] match for 8 elements
@@ -465,7 +467,7 @@ a[29] and b[38] match for 0 elements
 
 
 
-```
+``` python
 >>> for opcode in s.get_opcodes():
 ...     print("%6s a[%d:%d] b[%d:%d]" % opcode)
  equal a[0:8] b[0:8]
@@ -512,7 +514,7 @@ insert a[8:8] b[8:17]
 
 
 
-```
+``` python
 >>> text1 = '''  1. Beautiful is better than ugly.
 ...   2. Explicit is better than implicit.
 ...   3. Simple is better than complex.
@@ -533,7 +535,7 @@ insert a[8:8] b[8:17]
 
 
 
-```
+``` python
 >>> d = Differ()
 ```
 
@@ -543,7 +545,7 @@ insert a[8:8] b[8:17]
 
 
 
-```
+``` python
 >>> result = list(d.compare(text1, text2))
 ```
 
@@ -551,7 +553,7 @@ insert a[8:8] b[8:17]
 
 
 
-```
+``` python
 >>> from pprint import pprint
 >>> pprint(result)
 ['    1. Beautiful is better than ugly.\n',
@@ -570,7 +572,7 @@ insert a[8:8] b[8:17]
 
 
 
-```
+``` python
 >>> import sys
 >>> sys.stdout.writelines(result)
     1. Beautiful is better than ugly.

@@ -14,7 +14,8 @@ draft = false
 
 # `collections.abc` --- 容器的抽象基类
 
-*Added in version 3.3:* 该模块曾是 [`collections`](https://docs.python.org/zh-cn/3.13/library/collections.html#module-collections) 模块的组成部分。
+> Added in version 3.3:
+> 该模块曾是 [`collections`](https://docs.python.org/zh-cn/3.13/library/collections.html#module-collections) 模块的组成部分。
 
 **源代码：** [Lib/_collections_abc.py](https://github.com/python/cpython/tree/3.13/Lib/_collections_abc.py)
 
@@ -36,7 +37,7 @@ class C(Sequence):                      # 直接继承
 
 
 
-```
+``` python
 >>> issubclass(C, Sequence)
 True
 >>> isinstance(C(), Sequence)
@@ -58,7 +59,7 @@ Sequence.register(D)                     # 注册而非继承
 
 
 
-```
+``` python
 >>> issubclass(D, Sequence)
 True
 >>> isinstance(D(), Sequence)
@@ -77,7 +78,7 @@ class E:
 
 
 
-```
+``` python
 >>> issubclass(E, Iterable)
 True
 >>> isinstance(E(), Iterable)
@@ -86,7 +87,8 @@ True
 
 ​	复杂的接口不支持最后这种技术手段因为接口并不只是作为方法名称存在。 接口指明了方法之间的语义和关系，这些是无法根据特定方法名称的存在推断出来的。 例如，知道一个类提供了 `__getitem__`, `__len__` 和 `__iter__` 并不足以区分 [`Sequence`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Sequence) 和 [`Mapping`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Mapping)。
 
-*Added in version 3.9:* 这些抽象类现在都支持 `[]`。 参见 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias) 和 [**PEP 585**](https://peps.python.org/pep-0585/)。
+> Added in version 3.9:* 这些抽象类现在都支持 `[]`。 参见 [GenericAlias 类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-genericalias) 和 [**PEP 585*
+>](https://peps.python.org/pep-0585/)。
 
 
 
@@ -163,7 +165,8 @@ True
 
 ​	集合了 Sized 和 Iterable 类的抽象基类。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## *class* collections.abc.**Iterator**
 
@@ -173,7 +176,8 @@ True
 
 ​	用于同时提供了 [`__reversed__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__reversed__) 方法的可迭代类的 ABC
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## *class* collections.abc.**Generator**
 
@@ -181,7 +185,8 @@ True
 
 ​	有关在类型标注中使用 `Generator` 的详细信息请参阅 [标注生成器和协程](https://docs.python.org/zh-cn/3.13/library/typing.html#annotating-generators-and-coroutines)。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## *class* collections.abc.**Sequence**
 
@@ -231,7 +236,8 @@ True
 
 ​	在 CPython 中，基于生成器的协程 (使用 [`@types.coroutine`](https://docs.python.org/zh-cn/3.13/library/types.html#types.coroutine) 装饰的 [生成器](https://docs.python.org/zh-cn/3.13/glossary.html#term-generator)) 都是 *可等待对象*，即使它们没有 [`__await__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__await__) 方法。 对它们使用 `isinstance(gencoro, Awaitable)` 将返回 `False`。 请使用 [`inspect.isawaitable()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.isawaitable) 来检测它们。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## *class* collections.abc.**Coroutine**
 
@@ -245,19 +251,22 @@ True
 
 ​	有关在类型标注中使用 `Coroutine` 的详细信息请参阅 [标注生成器和协程](https://docs.python.org/zh-cn/3.13/library/typing.html#annotating-generators-and-coroutines)。 类型形参的变化和顺序与 [`Generator`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Generator) 的相对应。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## *class* collections.abc.**AsyncIterable**
 
 ​	针对提供了 `__aiter__` 方法的类的 ABC。 另请参阅 [asynchronous iterable](https://docs.python.org/zh-cn/3.13/glossary.html#term-asynchronous-iterable) 的定义。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## *class* collections.abc.**AsyncIterator**
 
 ​	提供了 `__aiter__` 和 `__anext__` 方法的抽象基类。参见 [asynchronous iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-asynchronous-iterator) 的定义。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## *class* collections.abc.**AsyncGenerator**
 
@@ -265,13 +274,15 @@ True
 
 ​	有关在类型标注中使用 `AsyncGenerator` 的详细信息请参阅 [标注生成器和协程](https://docs.python.org/zh-cn/3.13/library/typing.html#annotating-generators-and-coroutines)。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## *class* collections.abc.**Buffer**
 
 ​	针对提供 [`__buffer__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__buffer__) 方法的类的 ABC，实现了 [缓冲区协议](https://docs.python.org/zh-cn/3.13/c-api/buffer.html#bufferobjects)。 参见 [**PEP 688**](https://peps.python.org/pep-0688/)。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## 例子和配方
 

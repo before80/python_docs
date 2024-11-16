@@ -14,7 +14,8 @@ draft = false
 
 # `importlib.metadata` -- 访问软件包元数据
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.10 版本发生变更:* `importlib.metadata` 不再是暂定的。
 
@@ -65,7 +66,7 @@ $ source example/bin/activate
 
 
 
-```
+``` python
 >>> list(metadata('wheel'))  
 ['Metadata-Version', 'Name', 'Version', 'Summary', 'Home-page', 'Author', 'Author-email', 'Maintainer', 'Maintainer-email', 'License', 'Project-URL', 'Project-URL', 'Project-URL', 'Keywords', 'Platform', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Classifier', 'Requires-Python', 'Provides-Extra', 'Requires-Dist', 'Requires-Dist']
 ```
@@ -106,7 +107,7 @@ $ source example/bin/activate
 
 
 
-```
+``` python
 >>> eps = entry_points()  
 ```
 
@@ -114,7 +115,7 @@ $ source example/bin/activate
 
 
 
-```
+``` python
 >>> sorted(eps.groups)  
 ['console_scripts', 'distutils.commands', 'distutils.setup_keywords', 'egg_info.writers', 'setuptools.installation']
 ```
@@ -123,7 +124,7 @@ $ source example/bin/activate
 
 
 
-```
+``` python
 >>> scripts = eps.select(group='console_scripts')  
 ```
 
@@ -131,7 +132,7 @@ $ source example/bin/activate
 
 
 
-```
+``` python
 >>> scripts = entry_points(group='console_scripts')  
 ```
 
@@ -139,7 +140,7 @@ $ source example/bin/activate
 
 
 
-```
+``` python
 >>> 'wheel' in scripts.names  
 True
 >>> wheel = scripts['wheel']  
@@ -149,7 +150,7 @@ True
 
 
 
-```
+``` python
 >>> (wheel,) = entry_points(group='console_scripts', name='wheel')  
 >>> (wheel,) = entry_points().select(group='console_scripts', name='wheel')  
 ```
@@ -158,7 +159,7 @@ True
 
 
 
-```
+``` python
 >>> wheel  
 EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 >>> wheel.module  
@@ -198,7 +199,7 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 
 
-```
+``` python
 >>> wheel_metadata = metadata('wheel')  
 ```
 
@@ -206,7 +207,7 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 
 
-```
+``` python
 >>> wheel_metadata['Requires-Python']  
 '>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*'
 ```
@@ -215,7 +216,7 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 
 
-```
+``` python
 >>> wheel_metadata.json['requires_python']
 '>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*'
 ```
@@ -240,7 +241,7 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 
 
-```
+``` python
 >>> version('wheel')  
 '0.32.3'
 ```
@@ -265,7 +266,7 @@ EntryPoint(name='wheel', value='wheel.cli:main', group='console_scripts')
 
 
 
-```
+``` python
 >>> util = [p for p in files('wheel') if 'util.py' in str(p)][0]  
 >>> util  
 PackagePath('wheel/util.py')
@@ -281,7 +282,7 @@ PackagePath('wheel/util.py')
 
 
 
-```
+``` python
 >>> print(util.read_text())  
 import base64
 import sys
@@ -296,7 +297,7 @@ def as_bytes(s):
 
 
 
-```
+``` python
 >>> util.locate()  
 PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 ```
@@ -317,7 +318,7 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 
 
-```
+``` python
 >>> requires('wheel')  
 ["pytest (>=3.0.0) ; extra == 'test'", "pytest-cov ; extra == 'test'"]
 ```
@@ -336,14 +337,15 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 
 
-```
+``` python
 >>> packages_distributions()
 {'importlib_metadata': ['importlib-metadata'], 'yaml': ['PyYAML'], 'jaraco': ['jaraco.classes', 'jaraco.functools'], ...}
 ```
 
 ​	某些可编辑的安装 [没有提供最高层级名称](https://github.com/pypa/packaging-problems/issues/609)，因而此函数不适用于这样的安装。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 
 
@@ -365,7 +367,7 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 
 
-```
+``` python
 >>> from importlib.metadata import distribution  
 >>> dist = distribution('wheel')  
 >>> type(dist)  
@@ -376,7 +378,7 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 
 
-```
+``` python
 >>> dist.version  
 '0.32.3'
 ```
@@ -385,7 +387,7 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 
 
-```
+``` python
 >>> dist.metadata['Requires-Python']  
 '>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*'
 >>> dist.metadata['License']  
@@ -396,14 +398,15 @@ PosixPath('/home/gustav/example/lib/site-packages/wheel/util.py')
 
 
 
-```
+``` python
 >>> dist.origin.url
 'file:///path/to/wheel-0.32.3.editable-py3-none-any.whl'
 ```
 
 ​	The full set of available metadata is not described here. See the PyPA [Core metadata specification](https://packaging.python.org/en/latest/specifications/core-metadata/#core-metadata) for additional details.
 
-*Added in version 3.13:* 增加了 `.origin` 特征属性。
+> Added in version 3.13:
+> 增加了 `.origin` 特征属性。
 
 ## 分发包的发现
 

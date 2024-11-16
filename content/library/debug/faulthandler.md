@@ -14,7 +14,8 @@ draft = false
 
 # `faulthandler` --- 转储 Python 回溯信息
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ------
 
@@ -38,11 +39,11 @@ draft = false
 
 ​	参见
 
-## 模块 [`pdb`](https://docs.python.org/zh-cn/3.13/library/pdb.html#module-pdb)
+模块 [`pdb`](https://docs.python.org/zh-cn/3.13/library/pdb.html#module-pdb)
 
 ​	用于 Python 程序的交互式源代码调试器。
 
-## 模块 [`traceback`](https://docs.python.org/zh-cn/3.13/library/traceback.html#module-traceback)
+模块 [`traceback`](https://docs.python.org/zh-cn/3.13/library/traceback.html#module-traceback)
 
 ​	提取、格式化和打印 Python 程序的栈回溯信息的标准接口。
 

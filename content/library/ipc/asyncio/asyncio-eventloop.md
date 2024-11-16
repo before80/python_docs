@@ -37,7 +37,8 @@ draft = false
 
 ​	此函数只能由协程或回调来调用。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## asyncio.**get_event_loop**()
 
@@ -153,7 +154,8 @@ finally:
     loop.close()
 ```
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## *coroutine* loop.**shutdown_default_executor**(*timeout=None*)
 
@@ -169,7 +171,8 @@ finally:
 
 ​	当使用 [`asyncio.run()`](https://docs.python.org/zh-cn/3.13/library/asyncio-runner.html#asyncio.run) 不要调用此方法，因为它会自动处理默认执行器的关闭。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 *在 3.12 版本发生变更:* 增加了 *timeout* 形参。
 
@@ -267,7 +270,8 @@ loop.call_soon(
 
 ​	这是在asyncio中创建Futures的首选方式。这让第三方事件循环可以提供Future 对象的替代实现(更好的性能或者功能)。
 
-*Added in version 3.5.2.*
+> Added in version 3.5.2.
+>
 
 ## loop.**create_task**(*coro*, ***, *name=None*, *context=None*)
 
@@ -542,7 +546,8 @@ loop.call_soon(
 
 ​	返回一个 `(transport, protocol)` 对。
 
-*Added in version 3.5.3.*
+> Added in version 3.5.3.
+>
 
 *在 3.7 版本发生变更:* 添加了 *ssl_handshake_timeout* 参数。
 
@@ -564,7 +569,8 @@ loop.call_soon(
 
 ​	如果系统不支持 *sendfile* 系统调用且 *fallback* 为 `False` 则会引发 [`SendfileNotAvailableError`](https://docs.python.org/zh-cn/3.13/library/asyncio-exceptions.html#asyncio.SendfileNotAvailableError)。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ### [TLS 升级](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#id9)
 
@@ -587,7 +593,8 @@ loop.call_soon(
 - *ssl_handshake_timeout* 是（用于 TLS 连接的）在放弃连接之前要等待 TLS 握手完成的秒数。 如果参数为 `None` 则使用 (默认的) `60.0`。
 - *ssl_shutdown_timeout* 是在放弃连接之前要等待 SSL 关闭完成的秒数。 如为 `None` (默认值) 则使用 `30.0`。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 *在 3.11 版本发生变更:* 添加了 *ssl_shutdown_timeout* 形参。
 
@@ -635,7 +642,8 @@ loop.call_soon(
 
 *sock* 必须是个非阻塞socket。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## *coroutine* loop.**sock_recvfrom**(*sock*, *bufsize*)
 
@@ -645,7 +653,8 @@ loop.call_soon(
 
 *sock* 必须是个非阻塞socket。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *coroutine* loop.**sock_recvfrom_into**(*sock*, *buf*, *nbytes=0*)
 
@@ -655,7 +664,8 @@ loop.call_soon(
 
 *sock* 必须是个非阻塞socket。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *coroutine* loop.**sock_sendall**(*sock*, *data*)
 
@@ -675,7 +685,8 @@ loop.call_soon(
 
 *sock* 必须是个非阻塞socket。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *coroutine* loop.**sock_connect**(*sock*, *address*)
 
@@ -727,7 +738,8 @@ loop.call_soon(
 
 *sock* 必须是个非阻塞socket。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ### [DNS](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#id12)
 
@@ -896,7 +908,8 @@ if __name__ == '__main__':
 
 ​	返回当前的异常处理器，如果没有设置异常处理器，则返回 `None` 。
 
-*Added in version 3.5.2.*
+> Added in version 3.5.2.
+>
 
 ## loop.**default_exception_handler**(*context*)
 
@@ -1052,7 +1065,8 @@ if __name__ == '__main__':
 
 ​	返回关联到该句柄的 [`contextvars.Context`](https://docs.python.org/zh-cn/3.13/library/contextvars.html#contextvars.Context) 对象。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **cancel**()
 
@@ -1062,7 +1076,8 @@ if __name__ == '__main__':
 
 ​	如果此回调已被取消则返回 `True`。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## *class* asyncio.**TimerHandle**
 
@@ -1076,7 +1091,8 @@ if __name__ == '__main__':
 
 ​	时间值是一个绝对时间戳，使用与 [`loop.time()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.loop.time) 相同的时间引用。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## Server 对象
 
@@ -1117,7 +1133,8 @@ async with srv:
 
 ​	当关闭服务器时 [`close()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.Server.close) 应当在 [`close_clients()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.Server.close_clients) 之前被调用以避免与新的客户端连接发生竞争。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **abort_clients**()
 
@@ -1127,13 +1144,15 @@ async with srv:
 
 ​	当关闭服务器时 [`close()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.Server.close) 应当在 [`abort_clients()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.Server.abort_clients) 之前被调用以避免与新的服务器连接发生竞争。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **get_loop**()
 
 ​	返回与服务器对象相关联的事件循环。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## *coroutine* **start_serving**()
 
@@ -1143,7 +1162,8 @@ async with srv:
 
 ​	传给 [`loop.create_server()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.loop.create_server) 和 [`asyncio.start_server()`](https://docs.python.org/zh-cn/3.13/library/asyncio-stream.html#asyncio.start_server) 的 *start_serving* 仅限关键字形参允许创建不接受初始连接的 Server 对象。 在此情况下可以使用 `Server.start_serving()` 或 [`Server.serve_forever()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.Server.serve_forever) 让 Server 对象开始接受连接。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## *coroutine* **serve_forever**()
 
@@ -1166,13 +1186,15 @@ async def main(host, port):
 asyncio.run(main('127.0.0.1', 0))
 ```
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **is_serving**()
 
 ​	如果服务器正在接受新连接的状态，返回 `True` 。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## *coroutine* **wait_closed**()
 
@@ -1230,7 +1252,8 @@ asyncio.set_event_loop_policy(MyPolicy())
 >
 > ​	它在 Unix 上是 [`SelectorEventLoop`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.SelectorEventLoop) 的别名而在 Windows 上是 [`ProactorEventLoop`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.ProactorEventLoop) 的别名。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## *class* asyncio.**AbstractEventLoop**
 

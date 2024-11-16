@@ -115,7 +115,8 @@ print(A.Alias.__value__)  # <type 'A.Nested'>
 - 在标注作用域中定义的名称不能在内部作用域中通过 [`nonlocal`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#nonlocal) 语句来重新绑定。 这只包括类型形参，因为没有其他可以在标注作用域内部出现的语法元素能够引入新的名称。
 - 虽然标注作用域具有一个内部名称，但该名称不会反映在作用域内定义的对象的 [qualified name](https://docs.python.org/zh-cn/3.13/glossary.html#term-qualified-name) 中。 相反，这些对象的 [`__qualname__`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#definition.__qualname__) 就像它们是定义在包含作用域中的对象一样。
 
-*Added in version 3.12:* 标注作用域是在 Python 3.12 中作为 [**PEP 695**](https://peps.python.org/pep-0695/) 的一部分引入的。
+> Added in version 3.12:* 标注作用域是在 Python 3.12 中作为 [**PEP 695*
+>](https://peps.python.org/pep-0695/) 的一部分引入的。
 
 *在 3.13 版本发生变更:* 标注作用域也被用于类型形参默认值，这是由 [**PEP 696**](https://peps.python.org/pep-0696/) 引入的。
 
@@ -129,7 +130,7 @@ print(A.Alias.__value__)  # <type 'A.Nested'>
 
 
 
-```
+``` python
 >>> type Alias = 1/0
 >>> Alias.__value__
 Traceback (most recent call last):
@@ -157,7 +158,8 @@ type Expr = SimpleExpr | tuple[SimpleExpr, Literal["+", "-"], Expr]
 
 ​	被惰性求值的值是在 [标记作用域](https://docs.python.org/zh-cn/3.13/reference/executionmodel.html#annotation-scopes) 内进行求值的，这意味着出现在被惰性求值的值内部的名称的查找范围就相当于它们是在紧邻的作用域中被使用。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 
 

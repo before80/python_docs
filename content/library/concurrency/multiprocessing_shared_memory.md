@@ -16,7 +16,8 @@ draft = false
 
 **源代码:** [Lib/multiprocessing/shared_memory.py](https://github.com/python/cpython/tree/3.13/Lib/multiprocessing/shared_memory.py)
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ------
 
@@ -65,7 +66,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from multiprocessing import shared_memory
 >>> shm_a = shared_memory.SharedMemory(create=True, size=10)
 >>> type(shm_a.buf)
@@ -92,7 +93,7 @@ b'howdy'
 
 
 
-```
+``` python
 >>> # 在第一个 Python 交互式 shell 中
 >>> import numpy as np
 >>> a = np.array([1, 1, 2, 3, 5, 8])  # 从一个现有的 NumPy 数组开始
@@ -159,7 +160,7 @@ array([  1,   1,   2,   3,   5, 888])
 
 
 
-```
+``` python
 >>> from multiprocessing.managers import SharedMemoryManager
 >>> smm = SharedMemoryManager()
 >>> smm.start()  # 启动管理共享内存块的进程
@@ -177,7 +178,7 @@ ShareableList(['a', 'l', 'p', 'h', 'a'], name='psm_6572_12221')
 
 
 
-```
+``` python
 >>> with SharedMemoryManager() as smm:
 ...     sl = smm.ShareableList(range(2000))
 ...     # 将工作分给两个进程，将部分结果存储在 sl 中
@@ -219,7 +220,7 @@ ShareableList(['a', 'l', 'p', 'h', 'a'], name='psm_6572_12221')
 
 
 
-```
+``` python
 >>> from multiprocessing import shared_memory
 >>> nul_bug_demo = shared_memory.ShareableList(['?\x00', b'\x03\x02\x01\x00\x00\x00'])
 >>> nul_bug_demo[0]
@@ -255,7 +256,7 @@ b'\x03\x02\x01\x00\x00\x00'
 
 
 
-```
+``` python
 >>> from multiprocessing import shared_memory
 >>> a = shared_memory.ShareableList(['howdy', b'HoWdY', -273.154, 100, None, True, 42])
 >>> [ type(entry) for entry in a ]
@@ -291,7 +292,7 @@ ValueError: exceeds available storage for existing str
 
 
 
-```
+``` python
 >>> b = shared_memory.ShareableList(range(5))         # In a first process
 >>> c = shared_memory.ShareableList(name=b.shm.name)  # In a second process
 >>> c
@@ -308,7 +309,7 @@ ShareableList([0, 1, 2, 3, 4], name='...')
 
 
 
-```
+``` python
 >>> import pickle
 >>> from multiprocessing import shared_memory
 >>> sl = shared_memory.ShareableList(range(10))
@@ -318,7 +319,7 @@ ShareableList([0, 1, 2, 3, 4], name='...')
 
 
 
-```
+``` python
 >>> deserialized_sl = pickle.loads(pickle.dumps(sl))
 >>> list(deserialized_sl)
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -326,7 +327,7 @@ ShareableList([0, 1, 2, 3, 4], name='...')
 
 
 
-```
+``` python
 >>> sl[0] = -1
 >>> deserialized_sl[1] = -2
 >>> list(sl)
@@ -337,7 +338,7 @@ ShareableList([0, 1, 2, 3, 4], name='...')
 
 
 
-```
+``` python
 >>> sl.shm.close()
 >>> sl.shm.unlink()
 ```

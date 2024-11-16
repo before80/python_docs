@@ -119,9 +119,11 @@ python -m cProfile [-o output_file] [-s sort_order] (-m module | myscript.py)
 
 `-m` 指定要分析的是模块而不是脚本。
 
-*Added in version 3.7:* [`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 添加 `-m` 选项
+> Added in version 3.7:
+> [`cProfile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-cProfile) 添加 `-m` 选项
 
-*Added in version 3.8:* [`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 添加 `-m` 选项
+> Added in version 3.8:
+> [`profile`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-profile) 添加 `-m` 选项
 
 [`pstats`](https://docs.python.org/zh-cn/3.13/library/profile.html#module-pstats) 模块的 [`Stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats) 类具有各种方法用来操纵和打印保存到性能分析结果文件的数据。
 
@@ -265,7 +267,8 @@ with cProfile.Profile() as pr:
 
 *sort* 形参指定所显示统计信息的排序。 它接受单个键或由键组成的元组以启用多级排序，就像在 [`Stats.sort_stats`](https://docs.python.org/zh-cn/3.13/library/profile.html#pstats.Stats.sort_stats) 中那样。
 
-*Added in version 3.13:* 现在 [`print_stats()`](https://docs.python.org/zh-cn/3.13/library/profile.html#profile.Profile.print_stats) 可接受一个由键组成的元组。
+> Added in version 3.13:
+> 现在 [`print_stats()`](https://docs.python.org/zh-cn/3.13/library/profile.html#profile.Profile.print_stats) 可接受一个由键组成的元组。
 
 ## **dump_stats**(*filename*)
 
@@ -344,7 +347,8 @@ with cProfile.Profile() as pr:
 
 ​	出于向下兼容的理由，数值参数 `-1`, `0`, `1` 和 `2` 也是被允许的。 它们将被分别解读为 `'stdname'`, `'calls'`, `'time'` 和 `'cumulative'`。 如果使用这种老旧格式（数值），则将只使用一个排序键（数字键），额外的参数将被静默地忽略。
 
-*Added in version 3.7:* 增加了 SortKey 枚举。
+> Added in version 3.7:
+> 增加了 SortKey 枚举。
 
 ## **reverse_order**()
 
@@ -385,7 +389,8 @@ print_stats('foo:', .1)
 
 ​	此方法返回一个 StatsProfile 的实例，它包含从函数名称到 FunctionProfile 实例的映射。 每个 FunctionProfile 实例保存了相应函数性能分析的有关信息如函数运行耗费了多长时间，它被调用了多少次等等……
 
-*Added in version 3.9:* 添加了以下数据类: StatsProfile, FunctionProfile。 添加了以下函数: get_stats_profile。
+> Added in version 3.9:
+> 添加了以下数据类: StatsProfile, FunctionProfile。 添加了以下函数: get_stats_profile。
 
 
 

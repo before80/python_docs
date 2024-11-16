@@ -173,7 +173,8 @@ draft = false
 
 ​	使用 *不活动的* 当前子监视器生成子进程将引发 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError)。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **close**()
 
@@ -193,7 +194,8 @@ draft = false
 
 ​	此监视器会默认被使用。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## *class* asyncio.**MultiLoopChildWatcher**
 
@@ -205,7 +207,8 @@ draft = false
 
 ​	该解决方案是安全的，但在处理大量进程时会有显著的开销 (每收到一个 `SIGCHLD` 时为 *O*(*n*))。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *自 3.12 版本弃用.*
 
@@ -233,7 +236,8 @@ draft = false
 
 ​	这个实现会轮询处理文件描述符 (pidfds) 以等待子进程终结。 在某些方面，[`PidfdChildWatcher`](https://docs.python.org/zh-cn/3.13/library/asyncio-policy.html#asyncio.PidfdChildWatcher) 是一个“理想的”子进程监视器实现。 它不需要使用信号或线程，不会介入任何在事件循环以外发起的进程，并能随事件循环发起的子进程数量进行线性伸缩。 其主要缺点在于 pidfds 是 Linux 专属的，并且仅在较近版本的核心（5.3+）上可用。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 
 

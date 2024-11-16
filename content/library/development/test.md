@@ -231,7 +231,8 @@ if __name__ == '__main__':
 
 ​	如果 Python 编译时定义了 [`Py_DEBUG`](https://docs.python.org/zh-cn/3.13/c-api/intro.html#c.Py_DEBUG) 宏则为 `True`，也就是说，当 Python 是 [以调试模式编译](https://docs.python.org/zh-cn/3.13/using/configure.html#debug-build) 的时候。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## test.support.**SOCK_MAX_SIZE**
 
@@ -375,7 +376,8 @@ else:
 
 ​	获取以字节表示的分页大小。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## test.support.**setswitchinterval**(*interval*)
 
@@ -486,13 +488,15 @@ with swap_item(obj, "item", 5):
 
 ​	在 [`sys.stdout`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.stdout) 然后又在 [`sys.stderr`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.stderr) 上调用 `flush()` 方法。 它可被用来确保日志顺序在写入到 stderr 之前的一致性。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## test.support.**print_warning**(*msg*)
 
 ​	打印一个警告到 [`sys.__stderr__`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.__stderr__)。 将消息格式化为: `f"Warning -- {msg}"`。 如果 *msg* 包含多行，则为每行添加 `"Warning -- "` 前缀。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## test.support.**wait_process**(*pid*, ***, *exitcode*, *timeout=None*)
 
@@ -502,7 +506,8 @@ with swap_item(obj, "item", 5):
 
 ​	如果进程运行时长超过 *timeout* 秒 (默认为 [`SHORT_TIMEOUT`](https://docs.python.org/zh-cn/3.13/library/test.html#test.support.SHORT_TIMEOUT))，则杀死进程并引发 [`AssertionError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AssertionError)。 超时特性在 Windows 上不可用。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## test.support.**calcobjsize**(*fmt*)
 
@@ -646,7 +651,8 @@ with support.catch_unraisable_exception() as cm:
 # （以打破循环引用）
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## test.support.**load_package_tests**(*pkg_dir*, *loader*, *standard_tests*, *pattern*)
 
@@ -666,7 +672,8 @@ def load_tests(*args):
 
 ​	在默认情况下这将跳过以 '_' 打头的私有属性但包括所有魔术方法，即以 '__' 打头和结尾的方法。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## test.support.**patch**(*test_instance*, *object_to_patch*, *attr_name*, *new_value*)
 
@@ -717,25 +724,29 @@ class OtherTestCase(unittest.TestCase):
                              extra=extra, not_exported=not_exported)
 ```
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## test.support.**skip_if_broken_multiprocessing_synchronize**()
 
 ​	如果没有 `multiprocessing.synchronize` 模块，没有可用的 semaphore 实现，或者如果创建一个锁会引发 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 则跳过测试。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## test.support.**check_disallow_instantiation**(*test_case*, *tp*, **args*, ***kwds*)
 
 ​	断言类型 *tp* 不能使用 *args* 和 *kwds* 来实例化。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## test.support.**adjust_int_max_str_digits**(*max_digits*)
 
 ​	此函数返回一个将在上下文生效期间改变全局 [`sys.set_int_max_str_digits()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.set_int_max_str_digits) 设置的上下文管理器以便允许执行当在整数和字符串之间进行转换时需要对位数有不同限制的测试代码。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 [`test.support`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support) 模块定义了以下的类:
 
@@ -777,7 +788,8 @@ class OtherTestCase(unittest.TestCase):
 
 [`test.support.socket_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.socket_helper) 模块提供了对套接字测试的支持。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## test.support.socket_helper.**IPV6_ENABLED**
 
@@ -879,7 +891,8 @@ class OtherTestCase(unittest.TestCase):
 
 [`test.support.bytecode_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.bytecode_helper) 模块提供了对测试和检查字节码生成的支持。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ​	The module defines the following class:
 
@@ -905,7 +918,8 @@ class OtherTestCase(unittest.TestCase):
 
 [`test.support.threading_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.threading_helper) 模块提供了对线程测试的支持。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## test.support.threading_helper.**join_thread**(*thread*, *timeout=None*)
 
@@ -962,7 +976,8 @@ with threading_helper.catch_threading_exception() as cm:
 # （以避免循环引用）
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 
 
@@ -970,7 +985,8 @@ with threading_helper.catch_threading_exception() as cm:
 
 [`test.support.os_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.os_helper) 模块提供了对操作系统测试的支持。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## test.support.os_helper.**FS_NONASCII**
 
@@ -1092,7 +1108,8 @@ with threading_helper.catch_threading_exception() as cm:
 
 [`test.support.import_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.import_helper) 模块提供了对导入测试的支持。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## test.support.import_helper.**forget**(*module_name*)
 
@@ -1123,7 +1140,8 @@ py_warnings = import_fresh_module('warnings', blocked=['_warnings'])
 c_warnings = import_fresh_module('warnings', fresh=['_warnings'])
 ```
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## test.support.import_helper.**import_module**(*name*, *deprecated=False*, ***, *required_on=()*)
 
@@ -1131,7 +1149,8 @@ c_warnings = import_fresh_module('warnings', fresh=['_warnings'])
 
 ​	如果 *deprecated* 为 `True` 则在此导入操作期间模块和包的弃用消息会被屏蔽。 如果某个模块在特定平台上是必需的而在其他平台上是可选的，请为包含平台前缀的可迭代对象设置 *required_on*，此对象将与 [`sys.platform`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.platform) 进行比对。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## test.support.import_helper.**modules_setup**()
 
@@ -1172,7 +1191,8 @@ with CleanImport('foo'):
 
 [`test.support.warnings_helper`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test.support.warnings_helper) 模块提供了对警告测试的支持。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## test.support.warnings_helper.**ignore_warnings**(***, *category*)
 
@@ -1184,7 +1204,8 @@ def test_suppress_warning():
     # 做些什么
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## test.support.warnings_helper.**check_no_resource_warning**(*testcase*)
 
@@ -1194,7 +1215,8 @@ def test_suppress_warning():
 
 ​	用于通过尝试编译 *statement* 来测试 *statement* 中的语法警告。 还会测试 [`SyntaxWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxWarning) 是否只发出了一次，以及它在转成错误时是否将被转换为 [`SyntaxError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxError)。 *testcase* 是用于测试的 [`unittest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#module-unittest) 实例。 *errtext* 是应当匹配所发出的 [`SyntaxWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxWarning) 以及所引发的 [`SyntaxError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#SyntaxError) 的字符串表示形式的正则表达式。 如果 *lineno* 不为 `None`，则与警告和异常所在的行进行比较。 如果 *offset* 不为 `None`，则与异常的偏移量进行比较。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## test.support.warnings_helper.**check_warnings**(**filters*, *quiet=True*)
 

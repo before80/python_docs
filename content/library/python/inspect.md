@@ -133,7 +133,8 @@ draft = false
 
 [`getmembers_static()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.getmembers_static) 可能无法获得 getmembers 所能获取的所有成员（如动态创建的属性）并且可能会找到一些 getmembers 所不能找到的成员（如会引发 AttributeError 的描述器）。 在某些情况下它还能返回描述器对象而不是实例成员。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## inspect.**getmodulename**(*path*)
 
@@ -175,7 +176,8 @@ draft = false
 
 ​	如果该对象为 [coroutine function](https://docs.python.org/zh-cn/3.13/glossary.html#term-coroutine-function) (使用 [`async def`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#async-def) 语法定义的函数), 包装了 [coroutine function](https://docs.python.org/zh-cn/3.13/glossary.html#term-coroutine-function) 的 [`functools.partial()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.partial) 或使用 [`markcoroutinefunction()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.markcoroutinefunction) 标记的同步函数则返回 `True`。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.8 版本发生变更:* 对于使用 [`functools.partial()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.partial) 封装的函数，如果被封装的函数是一个 [协程函数](https://docs.python.org/zh-cn/3.13/glossary.html#term-coroutine-function) ，现在也会返回 `True`。
 
@@ -191,13 +193,15 @@ draft = false
 
 ​	在可能的情况下，更推荐使用 [`async def`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#async-def) 函数。 调用该函数并使用 [`iscoroutine()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.iscoroutine) 来检测其返回值也是可接受的。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## inspect.**iscoroutine**(*object*)
 
 ​	当该对象是一个由 [`async def`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#async-def) 函数创建的 [协程](https://docs.python.org/zh-cn/3.13/glossary.html#term-coroutine) 时返回 `True`。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## inspect.**isawaitable**(*object*)
 
@@ -218,7 +222,8 @@ assert not isawaitable(gen())
 assert isawaitable(gen_coro())
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## inspect.**isasyncgenfunction**(*object*)
 
@@ -226,7 +231,7 @@ assert isawaitable(gen_coro())
 
 
 
-```
+``` python
 >>> async def agen():
 ...     yield 1
 ...
@@ -234,7 +239,8 @@ assert isawaitable(gen_coro())
 True
 ```
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 *在 3.8 版本发生变更:* 对于使用 [`functools.partial()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.partial) 封装的函数，如果被封装的函数是一个 [异步生成器](https://docs.python.org/zh-cn/3.13/glossary.html#term-asynchronous-generator) 函数现在也会返回 `True`。
 
@@ -244,7 +250,8 @@ True
 
 ​	如果该对象是一个由 [异步生成器](https://docs.python.org/zh-cn/3.13/glossary.html#term-asynchronous-generator) 函数创建的 [异步生成器迭代器](https://docs.python.org/zh-cn/3.13/glossary.html#term-asynchronous-generator-iterator)，则返回 `True`。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## inspect.**istraceback**(*object*)
 
@@ -268,7 +275,8 @@ True
 
 ​	这些是 [`MethodWrapperType`](https://docs.python.org/zh-cn/3.13/library/types.html#types.MethodWrapperType) 的实例，如 [`__str__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__str__), [`__eq__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__eq__) 和 [`__repr__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__repr__)。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## inspect.**isroutine**(*object*)
 
@@ -354,7 +362,8 @@ True
 
 ## 使用 Signature 对象对可调用对象进行内省
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 [`Signature`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.Signature) 对象代表一个可调用对象的调用签名及其返回值标。 要获取一个 `Signature` 对象，可使用 `signature()` 函数。
 
@@ -364,7 +373,7 @@ True
 
 
 
-```
+``` python
 >>> from inspect import signature
 >>> def foo(a, *, b:int, **kwargs):
 ...     pass
@@ -441,7 +450,7 @@ True
 
 
 
-```
+``` python
 >>> def test(a, b):
 ...     pass
 ...
@@ -459,7 +468,8 @@ True
 
 ​	如果传入了 *max_width*，该方法将尝试将签名调整为每行至多 *max_width* 个字符的多行文本。 如果签名长度超过 *max_width*，所有形参都将位于单独的行。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## *classmethod* **from_callable**(*obj*, ***, *follow_wrapped=True*, *globals=None*, *locals=None*, *eval_str=False*)
 
@@ -476,7 +486,8 @@ assert isinstance(sig, MySignature)
 
 ​	其行为在其他方面都与 [`signature()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.signature) 相同。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.10 版本发生变更:* 添加了 *globals*, *locals* 和 *eval_str* 形参。
 
@@ -522,7 +533,7 @@ assert isinstance(sig, MySignature)
 
 
 
-```
+``` python
 >>> def foo(a, b, *, c, d=10):
 ...     pass
 
@@ -538,13 +549,14 @@ Parameter: c
 
 ​	描述 [`Parameter.kind`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.Parameter.kind) 的枚举值。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ​	示例：打印全部参数的描述：
 
 
 
-```
+``` python
 >>> def foo(a, b, *, c, d=10):
 ...     pass
 
@@ -563,7 +575,7 @@ keyword-only
 
 
 
-```
+``` python
 >>> from inspect import Parameter
 >>> param = Parameter('foo', Parameter.KEYWORD_ONLY, default=42)
 >>> str(param)
@@ -620,7 +632,7 @@ keyword-only
 
 
 
-```
+``` python
 >>> def foo(a, b='ham', *args): pass
 >>> ba = inspect.signature(foo).bind('spam')
 >>> ba.apply_defaults()
@@ -628,7 +640,8 @@ keyword-only
 {'a': 'spam', 'b': 'ham', 'args': ()}
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 [`args`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.BoundArguments.args) 和 [`kwargs`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.BoundArguments.kwargs) 特征属性可被用于发起调用函数：
 
@@ -703,7 +716,7 @@ FullArgSpec(args, varargs, varkw, defaults, kwonlyargs, kwonlydefaults, annotati
 
 
 
-```
+``` python
 >>> from inspect import getcallargs
 >>> def f(a, b=1, *pos, **named):
 ...     pass
@@ -718,7 +731,8 @@ Traceback (most recent call last):
 TypeError: f() missing 1 required positional argument: 'a'
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *自 3.5 版本弃用:* 改使用 [`Signature.bind()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.Signature.bind) 和 [`Signature.bind_partial()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.Signature.bind_partial)。
 
@@ -728,7 +742,8 @@ TypeError: f() missing 1 required positional argument: 'a'
 
 ​	如果 *func* 不是 Python 函数或方法，将引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## inspect.**unwrap**(*func*, ***, *stop=None*)
 
@@ -738,7 +753,8 @@ TypeError: f() missing 1 required positional argument: 'a'
 
 ​	如果遇到循环，则引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## inspect.**get_annotations**(*obj*, ***, *globals=None*, *locals=None*, *eval_str=False*)
 
@@ -769,7 +785,8 @@ TypeError: f() missing 1 required positional argument: 'a'
 
 ​	调用 `get_annotations` 是获取任何对象的标注字典的最佳实践。关于标注的最佳实践的更多信息，参见 [注解最佳实践](https://docs.python.org/zh-cn/3.13/howto/annotations.html#annotations-howto)。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 
 
@@ -918,7 +935,8 @@ def handle_stackframe_without_leak():
 
 ​	如果实例的 [`__dict__`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__dict__) 被其他成员遮盖（比如一个特性）则该函数无法找到实例成员。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	 [`getattr_static()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.getattr_static) 不解析描述器。比如槽描述器或 C 语言中实现的 getset 描述器。该描述器对象会被直接返回，而不处理底层属性。
 
@@ -961,7 +979,8 @@ if type(result) in descriptor_types:
 - GEN_SUSPENDED：当前挂起于一个 yield 表达式。
 - GEN_CLOSED：执行已经完成。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## inspect.**getcoroutinestate**(*coroutine*)
 
@@ -974,7 +993,8 @@ if type(result) in descriptor_types:
 - CORO_SUSPENDED：当前挂起于一个 await 表达式。
 - CORO_CLOSED：执行已经完成。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## inspect.**getasyncgenstate**(*agen*)
 
@@ -987,7 +1007,8 @@ if type(result) in descriptor_types:
 - AGEN_SUSPENDED: 当前在 yield 表达式上挂起。
 - AGEN_CLOSED: 执行已经完成。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ​	生成器当前的内部状态也可以被查询。这通常在测试目的中最为有用，来保证内部状态如预期一样被更新：
 
@@ -999,19 +1020,22 @@ if type(result) in descriptor_types:
 
 **CPython 实现细节：** 该函数依赖于生成器为内省暴露一个 Python 栈帧，这并非在 Python 的所有实现中被保证。在这种情况下，该函数将永远返回一个空字典。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## inspect.**getcoroutinelocals**(*coroutine*)
 
 ​	该函数可类比于 [`getgeneratorlocals()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.getgeneratorlocals)，只是作用于由 [`async def`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#async-def) 函数创建的协程。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## inspect.**getasyncgenlocals**(*agen*)
 
 ​	此函数类似于 [`getgeneratorlocals()`](https://docs.python.org/zh-cn/3.13/library/inspect.html#inspect.getgeneratorlocals)，但只适用于由 [`async def`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#async-def) 函数创建的使用 [`yield`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#yield) 语句的异步生成器对象。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 
 
@@ -1047,19 +1071,22 @@ if type(result) in descriptor_types:
 
 ​	当代码对象是一个协程函数时被置位。当代码对象被执行时它返回一个协程。详见 [**PEP 492**](https://peps.python.org/pep-0492/)。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## inspect.**CO_ITERABLE_COROUTINE**
 
 ​	该标志被用于将生成器转变为基于生成器的协程。包含此标志的生成器对象可以被用于 `await` 表达式，并可以 `yield from` 协程对象。详见 [**PEP 492**](https://peps.python.org/pep-0492/)。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## inspect.**CO_ASYNC_GENERATOR**
 
 ​	当代码对象是一个异步生成器函数时该标志被置位。当代码对象被运行时它将返回一个异步生成器对象。详见 [**PEP 525**](https://peps.python.org/pep-0525/)。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ​	备注
 
@@ -1113,7 +1140,8 @@ if type(result) in descriptor_types:
 
 ## **WRITE**
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 
 

@@ -62,7 +62,8 @@ draft = false
 
 ​	用于正式意义下的绑定、约束元组或单个类型变量的默认值的符号变量的符号表，即 TypeVar, TypeVarTuple 或 ParamSpec 对象（后两者不支持绑定或约束元组）。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## *class* symtable.**SymbolTable**
 
@@ -158,7 +159,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import symtable
 >>> st = symtable.symtable('''
 ... def outer(): pass
@@ -222,7 +223,8 @@ draft = false
 
 ​	如果符号带有注解，则返回 `True`。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **is_free**()
 
@@ -242,7 +244,7 @@ draft = false
 
 
 
-```
+``` python
 >>> table = symtable.symtable("def some_func(): pass", "string", "exec")
 >>> table.lookup("some_func").is_namespace()
 True
@@ -262,7 +264,8 @@ True
 
 ## 命令行用法
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 [`symtable`](https://docs.python.org/zh-cn/3.13/library/symtable.html#module-symtable) 模块可以在命令行下作为脚本来执行。
 

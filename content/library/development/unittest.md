@@ -206,13 +206,17 @@ python -m unittest -h
 
 ​	显示 N 个最慢的测试用例 (N=0 表示全部)。
 
-*Added in version 3.2:* 添加命令行选项 `-b`, `-c` 和 `-f` 。
+> Added in version 3.2:
+> 添加命令行选项 `-b`, `-c` 和 `-f` 。
 
-*Added in version 3.5:* 命令行选项 `--locals` 。
+> Added in version 3.5:
+> 命令行选项 `--locals` 。
 
-*Added in version 3.7:* 命令行选项 `-k` 。
+> Added in version 3.7:
+> 命令行选项 `-k` 。
 
-*Added in version 3.12:* 命令行选项 `--durations`。
+> Added in version 3.12:
+> 命令行选项 `--durations`。
 
 ​	命令行亦可用于探索性测试，以运行一个项目的所有测试或其子集。
 
@@ -220,7 +224,8 @@ python -m unittest -h
 
 ## 探索性测试
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	unittest 支持简单的测试发现。 为了与测试发现兼容，所有测试文件都必须是可从项目的最高层级目录导入的 [模块](https://docs.python.org/zh-cn/3.13/tutorial/modules.html#tut-modules) 或 [包](https://docs.python.org/zh-cn/3.13/tutorial/modules.html#tut-packages) (这意味着它们的文件名必须是有效的 [标识符](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#identifiers))。
 
@@ -420,7 +425,8 @@ testcase = unittest.FunctionTestCase(testSomething,
 
 ## 跳过测试与预计的失败
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ​	Unittest 支持跳过单个或整组的测试用例。它还支持把测试标注成“预期失败”的测试。这些坏测试会失败，但不会算进 [`TestResult`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestResult) 的失败里。
 
@@ -526,7 +532,8 @@ def skipUnlessHasattr(obj, attr):
 
 ## 使用子测试区分测试迭代
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ​	当你的几个测试之间的差异非常小，例如只有某些形参不同时，unittest 允许你使用 [`subTest()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.subTest) 上下文管理器在一个测试方法体的内部区分它们。
 
@@ -632,7 +639,8 @@ def setUpClass(cls):
 
 ​	查看 [Class and Module Fixtures](https://docs.python.org/zh-cn/3.13/library/unittest.html#class-and-module-fixtures) 获取更详细的说明。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **tearDownClass**()
 
@@ -646,7 +654,8 @@ def tearDownClass(cls):
 
 ​	查看 [Class and Module Fixtures](https://docs.python.org/zh-cn/3.13/library/unittest.html#class-and-module-fixtures) 获取更详细的说明。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **run**(*result=None*)
 
@@ -660,7 +669,8 @@ def tearDownClass(cls):
 
 ​	在测试方法或 [`setUp()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.setUp) 执行期间调用此方法将跳过当前测试。 详情参见 [跳过测试与预计的失败](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest-skipping)。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **subTest**(*msg=None*, ***params*)
 
@@ -670,7 +680,8 @@ def tearDownClass(cls):
 
 ​	查看 [使用子测试区分测试迭代](https://docs.python.org/zh-cn/3.13/library/unittest.html#subtests) 获取更详细的信息。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **debug**()
 
@@ -723,7 +734,8 @@ def tearDownClass(cls):
 
 ​	测试 *first* 和 *second* 是 (或不是) 同一个对象。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **assertIsNone**(*expr*, *msg=None*)
 
@@ -731,7 +743,8 @@ def tearDownClass(cls):
 
 ​	测试 *expr* 是 (或不是) `None`。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **assertIn**(*member*, *container*, *msg=None*)
 
@@ -739,7 +752,8 @@ def tearDownClass(cls):
 
 ​	测试 *member* 是 (或不是) *container* 的成员。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **assertIsInstance**(*obj*, *cls*, *msg=None*)
 
@@ -747,7 +761,8 @@ def tearDownClass(cls):
 
 ​	测试 *obj* 是 (或不是) *cls* (此参数可以为一个类或包含类的元组，即 [`isinstance()`](https://docs.python.org/zh-cn/3.13/library/functions.html#isinstance) 所接受的参数) 的实例。 要检测是否为指定类型，请使用 [`assertIs(type(obj), cls)`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertIs)。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	还可以使用下列方法来检查异常、警告和日志消息的产生:
 
@@ -809,7 +824,8 @@ with self.assertRaisesRegex(ValueError, 'literal'):
    int('XYZ')
 ```
 
-*Added in version 3.1:* 以方法名 `assertRaisesRegexp` 添加。
+> Added in version 3.1:
+> 以方法名 `assertRaisesRegexp` 添加。
 
 *在 3.2 版本发生变更:* 重命名为 [`assertRaisesRegex()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertRaisesRegex)。
 
@@ -842,7 +858,8 @@ self.assertEqual(320, cm.lineno)
 
 ​	无论被调用时警告过滤器是否就位此方法均可工作。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.3 版本发生变更:* 增加了 *msg* 关键字参数在作为上下文管理器时使用。
 
@@ -865,7 +882,8 @@ with self.assertWarnsRegex(RuntimeWarning, 'unsafe frobnicating'):
     frobnicate('/etc/passwd')
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.3 版本发生变更:* 增加了 *msg* 关键字参数在作为上下文管理器时使用。
 
@@ -899,7 +917,8 @@ self.assertEqual(cm.output, ['INFO:foo:first message',
                              'ERROR:foo.bar:second message'])
 ```
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **assertNoLogs**(*logger=None*, *level=None*)
 
@@ -911,7 +930,8 @@ self.assertEqual(cm.output, ['INFO:foo:first message',
 
 ​	与 [`assertLogs()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertLogs) 不同，上下文管理器将不返回任何对象。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ​	还有其他一些方法可用于执行更专门的检查，例如:
 
@@ -951,12 +971,13 @@ self.assertEqual(cm.output, ['INFO:foo:first message',
 
 
 
-```
+``` python
 >>> self.assertGreaterEqual(3, 4)
 AssertionError: "3" unexpectedly not greater than or equal to "4"
 ```
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **assertRegex**(*text*, *regex*, *msg=None*)
 
@@ -964,11 +985,13 @@ AssertionError: "3" unexpectedly not greater than or equal to "4"
 
 ​	测试一个 *regex* 搜索匹配（或不匹配） *文本*。如果不匹配，错误信息中将包含匹配模式和 *文本\*（或部分匹配失败的 \*文本*）。*regex* 可以是正则表达式对象或能够用于 [`re.search()`](https://docs.python.org/zh-cn/3.13/library/re.html#re.search) 的包含正则表达式的字符串。
 
-*Added in version 3.1:* 以方法名 `assertRegexpMatches` 添加。
+> Added in version 3.1:
+> 以方法名 `assertRegexpMatches` 添加。
 
 *在 3.2 版本发生变更:* 方法 `assertRegexpMatches()` 已被改名为 [`assertRegex()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertRegex)。
 
-*Added in version 3.2:* [`assertNotRegex()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertNotRegex)
+> Added in version 3.2:
+> [`assertNotRegex()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertNotRegex)
 
 ## **assertCountEqual**(*first*, *second*, *msg=None*)
 
@@ -976,7 +999,8 @@ AssertionError: "3" unexpectedly not greater than or equal to "4"
 
 ​	重复的元素 *不会* 在 *first* 和 *second* 的比较中被忽略。 它会检查每个元素在两个序列中的出现次数是否相同。 等价于: `assertEqual(Counter(list(first)), Counter(list(second)))` 但还适用于包含不可哈希对象的序列。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 [`assertEqual()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertEqual) 方法会将相同类型对象的相等性检查分派给不同的类型专属方法。 这些方法已被大多数内置类型所实现，但也可以使用 [`addTypeEqualityFunc()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.addTypeEqualityFunc) 来注册新的方法:
 
@@ -984,7 +1008,8 @@ AssertionError: "3" unexpectedly not greater than or equal to "4"
 
 ​	注册一个由 [`assertEqual()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertEqual) 调用的特定类型专属方法来检查恰好为相同 *typeobj* (而非子类) 的两个对象是否相等。 *function* 必须接受两个位置参数和第三个 msg=None 关键字参数，就像 [`assertEqual()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertEqual) 那样。 当检测到前两个形参之间不相等时它必须引发 [`self.failureException(msg)`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.failureException) -- 可能还会提供有用的信息并在错误消息中详细解释不相等的原因。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ​	以下是 [`assertEqual()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertEqual) 自动选用的不同类型的比较方法。一般情况下不需要直接在测试中调用这些方法。
 
@@ -1001,7 +1026,8 @@ AssertionError: "3" unexpectedly not greater than or equal to "4"
 
 ​	测试多行字符串 *first* 是否与字符串 *second* 相等。 当不相等时将在错误消息中包括两个字符串之间差异的高亮显示。 此方法会在通过 [`assertEqual()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertEqual) 进行字符串比较时默认被使用。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **assertSequenceEqual**(*first*, *second*, *msg=None*, *seq_type=None*)
 
@@ -1009,7 +1035,8 @@ AssertionError: "3" unexpectedly not greater than or equal to "4"
 
 ​	此方法不会被 [`assertEqual()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertEqual) 直接调用，但它会被用于实现 [`assertListEqual()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertListEqual) 和 [`assertTupleEqual()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertTupleEqual)。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **assertListEqual**(*first*, *second*, *msg=None*)
 
@@ -1017,7 +1044,8 @@ AssertionError: "3" unexpectedly not greater than or equal to "4"
 
 ​	测试两个列表或元组是否相等。 如果不相等，则会构造一个错误消息来显示两者之间的差异。 如果某个形参的类型不正确也会引发错误。 这些方法会在通过 [`assertEqual()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertEqual) 进行列表或元组比较时默认被使用。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **assertSetEqual**(*first*, *second*, *msg=None*)
 
@@ -1025,13 +1053,15 @@ AssertionError: "3" unexpectedly not greater than or equal to "4"
 
 ​	如果 *first* 或 *second* 没有 `set.difference()` 方法则测试失败。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **assertDictEqual**(*first*, *second*, *msg=None*)
 
 ​	测试两个字典是否相等。 如果不相等，则会构造一个错误消息来显示两个字典的差异。 此方法会在对 [`assertEqual()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.assertEqual) 的调用中默认被用来进行字典的比较。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ​	最后 [`TestCase`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase) 还提供了以下的方法和属性:
 
@@ -1051,7 +1081,8 @@ AssertionError: "3" unexpectedly not greater than or equal to "4"
 
 ​	类设置会在每个测试调用之前被重置。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **maxDiff**
 
@@ -1059,7 +1090,8 @@ AssertionError: "3" unexpectedly not greater than or equal to "4"
 
 ​	将 `maxDiff` 设为 `None` 表示不限制 diffs 的最大长度。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	测试框架可使用下列方法来收集测试的有关信息:
 
@@ -1089,13 +1121,15 @@ AssertionError: "3" unexpectedly not greater than or equal to "4"
 
 ​	如果 [`setUp()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.setUp) 失败，即意味着 [`tearDown()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.tearDown) 未被调用，则已添加的任何清理函数仍将被调用。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **enterContext**(*cm*)
 
 ​	进入所提供的 [context manager](https://docs.python.org/zh-cn/3.13/glossary.html#term-context-manager)。 如果成功，还会将其 [`__exit__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__exit__) 方法作为使用 [`addCleanup()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.addCleanup) 的清理函数并返回 [`__enter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__enter__) 方法的结果。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **doCleanups**()
 
@@ -1105,7 +1139,8 @@ AssertionError: "3" unexpectedly not greater than or equal to "4"
 
 [`doCleanups()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.doCleanups) 每次会弹出清理函数栈中的一个方法，因此它可以在任何时候被调用。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## *classmethod* **addClassCleanup**(*function*, */*, **args*, ***kwargs*)
 
@@ -1113,13 +1148,15 @@ AssertionError: "3" unexpectedly not greater than or equal to "4"
 
 ​	如果 [`setUpClass()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.setUpClass) 失败，即意味着 [`tearDownClass()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.tearDownClass) 未被调用，则已添加的任何清理函数仍将被调用。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## *classmethod* **enterClassContext**(*cm*)
 
 ​	进入所提供的 [context manager](https://docs.python.org/zh-cn/3.13/glossary.html#term-context-manager)。 如果成功，还会将其 [`__exit__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__exit__) 方法作为使用 [`addClassCleanup()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.addClassCleanup) 的清理函数并返回 [`__enter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__enter__) 方法的结果。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *classmethod* **doClassCleanups**()
 
@@ -1129,19 +1166,22 @@ AssertionError: "3" unexpectedly not greater than or equal to "4"
 
 [`doClassCleanups()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase.doClassCleanups) 每次会弹出清理函数栈中的一个方法，因此它在任何时候被调用。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## *class* unittest.**IsolatedAsyncioTestCase**(*methodName='runTest'*)
 
 ​	这个类提供了与 [`TestCase`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase) 类似的 API 并也接受协程作为测试函数。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **loop_factory**
 
 ​	传给 [`asyncio.Runner`](https://docs.python.org/zh-cn/3.13/library/asyncio-runner.html#asyncio.Runner) 的 *loop_factory*。 通过 [`asyncio.EventLoop`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.EventLoop) 重写子类以避免使用 asyncio 策略系统。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## *coroutine* **asyncSetUp**()
 
@@ -1159,7 +1199,8 @@ AssertionError: "3" unexpectedly not greater than or equal to "4"
 
 ​	进入所提供的 [asynchronous context manager](https://docs.python.org/zh-cn/3.13/glossary.html#term-asynchronous-context-manager)。 如果成功，还会将其 [`__aexit__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__aexit__) 方法作为使用 [`addAsyncCleanup()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.IsolatedAsyncioTestCase.addAsyncCleanup) 的清理函数并返回 [`__aenter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__aenter__) 方法的结果。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **run**(*result=None*)
 
@@ -1267,7 +1308,8 @@ if __name__ == "__main__":
 
 ​	由在加载测试期间遇到的非致命错误组成的列表。 在任何时候都不会被加载方重围。 致命错误是通过相关方法引发一个异常来向调用方发出信号的。 非致命错误也是由一个将在运行时引发原始错误的合成测试来提示的。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 [`TestLoader`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestLoader) 对象具有下列方法:
 
@@ -1333,7 +1375,8 @@ if __name__ == "__main__":
 
 *start_dir* 可以是一个带点号的名称或是一个目录。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.4 版本发生变更:* 在导入时引发 [`SkipTest`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.SkipTest) 的模块会被记录为跳过，而不是错误。
 
@@ -1373,7 +1416,8 @@ if __name__ == "__main__":
 
 ​	这会影响所有 `loadTestsFrom*` 方法。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## *class* unittest.**TestResult**
 
@@ -1397,7 +1441,8 @@ if __name__ == "__main__":
 
 ​	一个包含 2-tuples of [`TestCase`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestCase) 实例和保存了跳过测试原因的字符串 2 元组的列表。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **expectedFailures**
 
@@ -1411,7 +1456,8 @@ if __name__ == "__main__":
 
 ​	一个包含测试用例名称和代表所运行的每个测试所用时间的浮点数 2 元组的列表。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **shouldStop**
 
@@ -1425,19 +1471,22 @@ if __name__ == "__main__":
 
 ​	如果设为真值，`sys.stdout` 和 `sys.stderr` 将在 [`startTest()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestResult.startTest) 和 [`stopTest()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestResult.stopTest) 被调用之间被缓冲。 被收集的输出将仅在测试失败或发生错误时才会被回显到真正的 `sys.stdout` 和 `sys.stderr`。 任何输出还会被附加到失败/错误消息中。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **failfast**
 
 ​	如果设为真值则 [`stop()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestResult.stop) 将在首次失败或错误时被调用，停止测试运行。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **tb_locals**
 
 ​	如果设为真值则局部变量将被显示在回溯信息中。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **wasSuccessful**()
 
@@ -1465,13 +1514,15 @@ if __name__ == "__main__":
 
 ​	在任何测试被执行之前被调用一次。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **stopTestRun**()
 
 ​	在所有测试被执行之后被调用一次。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **addError**(*test*, *err*)
 
@@ -1517,19 +1568,22 @@ if __name__ == "__main__":
 
 ​	默认实现在测试结果为成功时将不做任何事，并会将子测试的失败记录为普通的失败。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **addDuration**(*test*, *elapsed*)
 
 ​	在测试用例结束时被调用。 *elapsed* 是以秒数表示的时间，并且它包括执行清理函数的时间。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## *class* unittest.**TextTestResult**(*stream*, *descriptions*, *verbosity*, ***, *durations=None*)
 
 ​	供 [`TextTestRunner`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TextTestRunner) 使用的 [`TestResult`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.TestResult) 的具体实现。 子类应当接受 `**kwargs` 以确保在接口改变时的兼容性。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.12 版本发生变更:* 增加了 *durations* 关键字形参。
 
@@ -1593,7 +1647,7 @@ if __name__ == '__main__':
 
 
 
-```
+``` python
 >>> from unittest import main
 >>> main(module='test_module', exit=False)
 ```
@@ -1614,7 +1668,8 @@ if __name__ == '__main__':
 
 #### load_tests 协议
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	模块或包可以通过实现一个名为 `load_tests` 的函数来定制在正常测试运行或测试发现期间要如何从中加载测试。
 
@@ -1723,13 +1778,15 @@ def tearDownModule():
 
 ​	如果 `setUpModule()` 失败，即意味着 `tearDownModule()` 未被调用，则已添加的任何清理函数仍将被调用。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## *classmethod* unittest.**enterModuleContext**(*cm*)
 
 ​	进入所提供的 [context manager](https://docs.python.org/zh-cn/3.13/glossary.html#term-context-manager)。 如果成功，还会将其 [`__exit__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__exit__) 方法作为使用 [`addModuleCleanup()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.addModuleCleanup) 的清理函数并返回 [`__enter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__enter__) 方法的结果。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## unittest.**doModuleCleanups**()
 
@@ -1739,11 +1796,13 @@ def tearDownModule():
 
 [`doModuleCleanups()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.doModuleCleanups) 每次会弹出清理函数栈中的一个方法，因此它可以在任何时候被调用。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## 信号处理
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	The [`-c/--catch`](https://docs.python.org/zh-cn/3.13/library/unittest.html#cmdoption-unittest-c) command-line option to unittest, along with the `catchbreak` parameter to [`unittest.main()`](https://docs.python.org/zh-cn/3.13/library/unittest.html#unittest.main), provide more friendly handling of control-C during a test run. With catch break behavior enabled control-C will allow the currently running test to complete, and the test run will then end and report all the results so far. A second control-c will raise a [`KeyboardInterrupt`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#KeyboardInterrupt) in the usual way.
 

@@ -31,7 +31,8 @@ draft = false
 
 ​	注意：与 [`iter()`](https://docs.python.org/zh-cn/3.13/library/functions.html#iter) 不同，[`aiter()`](https://docs.python.org/zh-cn/3.13/library/functions.html#aiter) 没有两个参数的版本。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## **all**(*iterable*)
 
@@ -55,7 +56,8 @@ def all(iterable):
 
 ​	调用 *async_iterator* 的 [`__anext__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__anext__) 方法，返回一个 [awaitable](https://docs.python.org/zh-cn/3.13/glossary.html#term-awaitable)。等待返回迭代器的下一个值。若有给出 *default*，则在迭代完毕后会返回给出的值，否则会触发 [`StopAsyncIteration`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#StopAsyncIteration)。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## **any**(*iterable*)
 
@@ -79,7 +81,7 @@ def any(iterable):
 
 
 
-```
+``` python
 >>> bin(3)
 '0b11'
 >>> bin(-10)
@@ -90,7 +92,7 @@ def any(iterable):
 
 
 
-```
+``` python
 >>> format(14, '#b'), format(14, 'b')
 ('0b1110', '1110')
 >>> f'{14:#b}', f'{14:b}'
@@ -115,7 +117,8 @@ def any(iterable):
 
 ​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `builtins.breakpoint` 并附带参数 `breakpointhook`。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## *class* **bytearray**(*source=b''*)
 
@@ -154,7 +157,8 @@ def any(iterable):
 
 ​	如果 *object* 参数是可调用的则返回 [`True`](https://docs.python.org/zh-cn/3.13/library/constants.html#True)，否则返回 [`False`](https://docs.python.org/zh-cn/3.13/library/constants.html#False)。 如果返回 `True`，调用仍可能失败，但如果返回 `False`，则调用 *object* 肯定不会成功。 请注意类是可调用的（调用类将返回一个新的实例）；如果实例所属的类有 [`__call__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__call__) 方法则它就是可调用的。
 
-*Added in version 3.2:* 这个函数一开始在 Python 3.0 被移除了，但在 Python 3.2 被重新加入。
+> Added in version 3.2:
+> 这个函数一开始在 Python 3.0 被移除了，但在 Python 3.2 被重新加入。
 
 ## **chr**(*i*)
 
@@ -222,7 +226,8 @@ class C:
 
 *在 3.5 版本发生变更:* 之前 *source* 中包含 null 字节的话会触发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError) 异常。
 
-*Added in version 3.8:* `ast.PyCF_ALLOW_TOP_LEVEL_AWAIT` 现在可在旗标中传入以启用对最高层级 `await`, `async for` 和 `async with` 的支持。
+> Added in version 3.8:
+> `ast.PyCF_ALLOW_TOP_LEVEL_AWAIT` 现在可在旗标中传入以启用对最高层级 `await`, `async for` 和 `async with` 的支持。
 
 ## *class* **complex**(*number=0*, */*)
 
@@ -236,7 +241,7 @@ class C:
 
 
 
-```
+``` python
 >>> complex('+1.23')
 (1.23+0j)
 >>> complex('-4.5j')
@@ -309,7 +314,7 @@ complexvalue ::=  floatvalue |
 
 
 
-```
+``` python
 >>> import struct
 >>> dir()   # show the names in the module namespace  
 ['__builtins__', '__name__', 'struct']
@@ -343,7 +348,7 @@ complexvalue ::=  floatvalue |
 
 
 
-```
+``` python
 >>> seasons = ['Spring', 'Summer', 'Fall', 'Winter']
 >>> list(enumerate(seasons))
 [(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]
@@ -389,7 +394,7 @@ def enumerate(iterable, start=0):
 
 
 
-```
+``` python
 >>> x = 1
 >>> eval('x+1')
 2
@@ -469,7 +474,7 @@ def enumerate(iterable, start=0):
 
 
 
-```
+``` python
 >>> float('+1.23')
 1.23
 >>> float('   -12345\n')
@@ -577,7 +582,7 @@ floatvalue    ::=  [sign] absfloatvalue
 
 
 
-```
+``` python
 >>> hex(255)
 '0xff'
 >>> hex(-42)
@@ -588,7 +593,7 @@ floatvalue    ::=  [sign] absfloatvalue
 
 
 
-```
+``` python
 >>> '%#x' % 255, '%x' % 255, '%X' % 255
 ('0xff', 'ff', 'FF')
 >>> format(255, '#x'), format(255, 'x'), format(255, 'X')
@@ -623,7 +628,7 @@ floatvalue    ::=  [sign] absfloatvalue
 
 
 
-```
+``` python
 >>> s = input('--> ')  
 --> Monty Python's Flying Circus
 >>> s  
@@ -646,7 +651,7 @@ floatvalue    ::=  [sign] absfloatvalue
 
 
 
-```
+``` python
 >>> int(123.45)
 123
 >>> int('123')
@@ -810,7 +815,7 @@ with open('mydata.db', 'rb') as f:
 
 
 
-```
+``` python
 >>> oct(8)
 '0o10'
 >>> oct(-56)
@@ -821,7 +826,7 @@ with open('mydata.db', 'rb') as f:
 
 
 
-```
+``` python
 >>> '%#o' % 10, '%o' % 10
 ('0o12', '12')
 >>> format(10, '#o'), format(10, 'o')
@@ -894,7 +899,7 @@ with open('mydata.db', 'rb') as f:
 
 
 
-```
+``` python
 >>> import os
 >>> dir_fd = os.open('somedir', os.O_RDONLY)
 >>> def opener(path, flags):
@@ -953,7 +958,7 @@ with open('mydata.db', 'rb') as f:
 
 
 
-```
+``` python
 >>> pow(38, -1, mod=97)
 23
 >>> 23 * 38 % 97 == 1
@@ -1059,7 +1064,8 @@ class C:
 
 ​	保存特征属性名称的属性。 特性属性名称可在运行时被修改。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## * class* **range**(*stop*)
 
@@ -1260,7 +1266,7 @@ class C(B):
 
 
 
-```
+``` python
 >>> class X:
 ...     a = 1
 ...
@@ -1300,7 +1306,7 @@ class C(B):
 
 
 
-```
+``` python
 >>> for item in zip([1, 2, 3], ['sugar', 'spice', 'everything nice']):
 ...     print(item)
 ...

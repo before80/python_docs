@@ -14,7 +14,8 @@ draft = false
 
 # `sys.monitoring` --- 执行事件监测
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ------
 

@@ -66,19 +66,22 @@ draft = false
 
 ​	返回 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None) 来显式地请求默认语义的 [`importlib.abc.Loader.create_module()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.Loader.create_module) 实现。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## **exec_module**(*module*)
 
 [`importlib.abc.Loader.exec_module()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.Loader.exec_module) 的实现。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## **find_spec**(*fullname*, *target=None*)
 
 [`importlib.abc.PathEntryFinder.find_spec()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.PathEntryFinder.find_spec) 的实现。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## **get_code**(*fullname*)
 
@@ -94,7 +97,8 @@ draft = false
 
 ​	返回如果指定模块被导入则应当要设置的 `__file__` 值。 如果模块无法被导入则引发 [`ZipImportError`](https://docs.python.org/zh-cn/3.13/library/zipimport.html#zipimport.ZipImportError)。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **get_source**(*fullname*)
 
@@ -114,7 +118,8 @@ draft = false
 
 ​	清除在 ZIP 归档文件中找到的相关文件信息的内部缓存。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## **archive**
 

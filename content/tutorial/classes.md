@@ -182,7 +182,7 @@ x = MyClass()
 
 
 
-```
+``` python
 >>> class Complex:
 ...     def __init__(self, realpart, imagpart):
 ...         self.r = realpart
@@ -316,7 +316,7 @@ class Dog:
 
 
 
-```
+``` python
 >>> class Warehouse:
 ...    purpose = 'storage'
 ...    region = 'west'
@@ -491,7 +491,7 @@ class Employee:
 
 
 
-```
+``` python
 >>> john = Employee('john', 'computer lab', 1000)
 >>> john.dept
 'computer lab'
@@ -526,7 +526,7 @@ for line in open("myfile.txt"):
 
 
 
-```
+``` python
 >>> s = 'abc'
 >>> it = iter(s)
 >>> it
@@ -565,7 +565,7 @@ class Reverse:
 
 
 
-```
+``` python
 >>> rev = Reverse('spam')
 >>> iter(rev)
 <__main__.Reverse object at 0x00A1DB50>
@@ -592,7 +592,7 @@ def reverse(data):
 
 
 
-```
+``` python
 >>> for char in reverse('golf'):
 ...     print(char)
 ...
@@ -618,7 +618,7 @@ g
 
 
 
-```
+``` python
 >>> sum(i*i for i in range(10))                 # 平方和
 285
 

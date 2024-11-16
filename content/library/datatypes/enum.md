@@ -14,7 +14,8 @@ draft = false
 
 # `enum` --- 对枚举的支持
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 **源代码：** [Lib/enum.py](https://github.com/python/cpython/tree/3.13/Lib/enum.py)
 
@@ -39,7 +40,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from enum import Enum
 
 >>> # class syntax
@@ -136,9 +137,11 @@ draft = false
 >
 > > ​	返回标志中包含的所有二次幂整数的列表。
 
-*Added in version 3.6:* `Flag`, `IntFlag`, `auto`
+> Added in version 3.6:
+> `Flag`, `IntFlag`, `auto`
 
-*Added in version 3.11:* `StrEnum`, `EnumCheck`, `ReprEnum`, `FlagBoundary`, `property`, `member`, `nonmember`, `global_enum`, `show_flag_values`
+> Added in version 3.11:
+> `StrEnum`, `EnumCheck`, `ReprEnum`, `FlagBoundary`, `property`, `member`, `nonmember`, `global_enum`, `show_flag_values`
 
 ------
 
@@ -204,7 +207,7 @@ draft = false
 
 
 
-```
+``` python
 >>> some_var = Color.RED
 >>> some_var in Color
 True
@@ -220,7 +223,7 @@ True
 
 
 
-```
+``` python
 >>> dir(Color)
 ['BLUE', 'GREEN', 'RED', '__class__', '__contains__', '__doc__', '__getitem__', '__init_subclass__', '__iter__', '__len__', '__members__', '__module__', '__name__', '__qualname__']
 ```
@@ -231,7 +234,7 @@ True
 
 
 
-```
+``` python
 >>> Color['BLUE']
 <Color.BLUE: 3>
 ```
@@ -242,7 +245,7 @@ True
 
 
 
-```
+``` python
 >>> list(Color)
 [<Color.RED: 1>, <Color.GREEN: 2>, <Color.BLUE: 3>]
 ```
@@ -253,7 +256,7 @@ True
 
 
 
-```
+``` python
 >>> len(Color)
 3
 ```
@@ -268,7 +271,7 @@ True
 
 
 
-```
+``` python
 >>> list(reversed(Color))
 [<Color.BLUE: 3>, <Color.GREEN: 2>, <Color.RED: 1>]
 ```
@@ -281,7 +284,8 @@ True
 
 ​	增加一个新值作为现有成员的别名。 如果该值已经链接到不同的成员则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-*Added in version 3.11:* 在 3.11 之前 `EnumType` 被称为 `EnumMeta`，该名称作为别名仍然可用。
+> Added in version 3.11:
+> 在 3.11 之前 `EnumType` 被称为 `EnumMeta`，该名称作为别名仍然可用。
 
 ## *class* enum.**Enum**
 
@@ -293,7 +297,7 @@ True
 
 
 
-```
+``` python
 >>> Color.BLUE.name
 'BLUE'
 ```
@@ -304,7 +308,7 @@ True
 
 
 
-```
+``` python
 >>> Color.RED.value
 1
 ```
@@ -345,7 +349,7 @@ True
 
 
 
-```
+``` python
 >>> from datetime import date
 >>> class Weekday(Enum):
 ...     MONDAY = 1
@@ -385,7 +389,7 @@ True
 
 
 
-```
+``` python
 >>> from enum import auto
 >>> class PowersOfThree(Enum):
 ...     @staticmethod
@@ -404,7 +408,7 @@ True
 
 
 
-```
+``` python
 >>> from enum import Enum
 >>> class Weekday(Enum):
 ...     MONDAY = 1, 'Mon'
@@ -422,7 +426,7 @@ True
 
 
 
-```
+``` python
 >>> from enum import StrEnum
 >>> class Build(StrEnum):
 ...     DEBUG = auto()
@@ -447,7 +451,7 @@ True
 
 
 
-```
+``` python
 >>> from enum import Enum
 >>> class MyIntEnum(int, Enum):
 ...     TWENTYSIX = '1a', 16
@@ -467,7 +471,7 @@ True
 
 
 
-```
+``` python
 >>> class OtherStyle(Enum):
 ...     ALTERNATE = auto()
 ...     OTHER = auto()
@@ -486,7 +490,7 @@ True
 
 
 
-```
+``` python
 >>> class OtherStyle(Enum):
 ...     ALTERNATE = auto()
 ...     OTHER = auto()
@@ -504,7 +508,7 @@ True
 
 
 
-```
+``` python
 >>> class OtherStyle(Enum):
 ...     ALTERNATE = auto()
 ...     OTHER = auto()
@@ -530,7 +534,7 @@ True
 
 
 
-```
+``` python
 >>> from enum import IntEnum
 >>> class Number(IntEnum):
 ...     ONE = 1
@@ -577,7 +581,8 @@ True
 
 [`__str__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__str__) 是 `str.__str__()` 以更好地支持 *现有常量的替换* 应用场景。 出于同样的原因 [`__format__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__format__) 也是 `str.__format__()`。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *class* enum.**Flag**
 
@@ -589,7 +594,7 @@ True
 
 
 
-```
+``` python
 >>> from enum import Flag, auto
 >>> class Color(Flag):
 ...     RED = auto()
@@ -614,14 +619,15 @@ False
 
 
 
-```
+``` python
 >>> list(Color.RED)
 [<Color.RED: 1>]
 >>> list(purple)
 [<Color.RED: 1>, <Color.BLUE: 4>]
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **__len__(self):**
 
@@ -629,14 +635,15 @@ False
 
 
 
-```
+``` python
 >>> len(Color.GREEN)
 1
 >>> len(white)
 3
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **__bool__(self):**
 
@@ -644,7 +651,7 @@ False
 
 
 
-```
+``` python
 >>> bool(Color.GREEN)
 True
 >>> bool(white)
@@ -660,7 +667,7 @@ False
 
 
 
-```
+``` python
 >>> Color.RED | Color.GREEN
 <Color.RED|GREEN: 3>
 ```
@@ -671,7 +678,7 @@ False
 
 
 
-```
+``` python
 >>> purple & white
 <Color.RED|BLUE: 5>
 >>> purple & Color.GREEN
@@ -684,7 +691,7 @@ False
 
 
 
-```
+``` python
 >>> purple ^ white
 <Color.GREEN: 2>
 >>> purple ^ Color.GREEN
@@ -697,7 +704,7 @@ False
 
 
 
-```
+``` python
 >>> ~white
 <Color: 0>
 >>> ~purple
@@ -720,7 +727,7 @@ False
 
 
 
-```
+``` python
 >>> Color(0) 
 <Color: 0>
 ```
@@ -731,7 +738,7 @@ False
 
 
 
-```
+``` python
 >>> from enum import IntFlag, auto
 >>> class Color(IntFlag):
 ...     RED = auto()
@@ -748,7 +755,7 @@ False
 
 
 
-```
+``` python
 >>> Color.RED + 2
 3
 ```
@@ -762,7 +769,7 @@ False
 
 
 
-```
+``` python
 >>> Color(0)
 <Color: 0>
 ```
@@ -786,7 +793,8 @@ False
 
 ​	从 `ReprEnum` 继承以存放混入数据类型的 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) / [`format()`](https://docs.python.org/zh-cn/3.13/library/functions.html#format) 而不是使用 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 默认的 [`str()`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum.__str__)。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *class* enum.**EnumCheck**
 
@@ -798,7 +806,7 @@ False
 
 
 
-```
+``` python
 >>> from enum import Enum, verify, UNIQUE
 >>> @verify(UNIQUE)
 ... class Color(Enum):
@@ -817,7 +825,7 @@ ValueError: aliases found in <enum 'Color'>: CRIMSON -> RED
 
 
 
-```
+``` python
 >>> from enum import Enum, verify, CONTINUOUS
 >>> @verify(CONTINUOUS)
 ... class Color(Enum):
@@ -835,7 +843,7 @@ ValueError: invalid enum 'Color': missing values 3, 4
 
 
 
-```
+``` python
 >>> from enum import Flag, verify, NAMED_FLAGS
 >>> @verify(NAMED_FLAGS)
 ... class Color(Flag):
@@ -855,7 +863,8 @@ ValueError: invalid Flag 'Color': aliases WHITE and NEON are missing combined va
 
 ​	CONTINUOUS 和 NAMED_FLAGS 被设计用于配合整数值成员。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *class* enum.**FlagBoundary**
 
@@ -867,7 +876,7 @@ ValueError: invalid Flag 'Color': aliases WHITE and NEON are missing combined va
 
 
 
-```
+``` python
 >>> from enum import Flag, STRICT, auto
 >>> class StrictFlag(Flag, boundary=STRICT):
 ...     RED = auto()
@@ -888,7 +897,7 @@ ValueError: <flag 'StrictFlag'> invalid value 20
 
 
 
-```
+``` python
 >>> from enum import Flag, CONFORM, auto
 >>> class ConformFlag(Flag, boundary=CONFORM):
 ...     RED = auto()
@@ -905,7 +914,7 @@ ValueError: <flag 'StrictFlag'> invalid value 20
 
 
 
-```
+``` python
 >>> from enum import Flag, EJECT, auto
 >>> class EjectFlag(Flag, boundary=EJECT):
 ...     RED = auto()
@@ -922,7 +931,7 @@ ValueError: <flag 'StrictFlag'> invalid value 20
 
 
 
-```
+``` python
 >>> from enum import Flag, KEEP, auto
 >>> class KeepFlag(Flag, boundary=KEEP):
 ...     RED = auto()
@@ -933,7 +942,8 @@ ValueError: <flag 'StrictFlag'> invalid value 20
 <KeepFlag.BLUE|16: 20>
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ------
 
@@ -973,11 +983,14 @@ ValueError: <flag 'StrictFlag'> invalid value 20
 
   - `_repr_*` (例如 `_repr_html_`)，用于 [IPython 的丰富显示](https://ipython.readthedocs.io/en/stable/config/integrating.html#rich-display)
 
-*Added in version 3.6:* `_missing_`, `_order_`, `_generate_next_value_`
+> Added in version 3.6:
+> `_missing_`, `_order_`, `_generate_next_value_`
 
-*Added in version 3.7:* `_ignore_`
+> Added in version 3.7:
+> `_ignore_`
 
-*Added in version 3.13:* `_add_alias_`, `_add_value_alias_`, `_repr_*`
+> Added in version 3.13:* `_add_alias_`, `_add_value_alias_`, `_repr_
+>`
 
 ------
 
@@ -1013,7 +1026,8 @@ ValueError: <flag 'StrictFlag'> invalid value 20
 
 *property* 和成员必须在单独的类中定义；例如 *value* 和 *name* 属性是在 *Enum* 类中定义，而 *Enum* 的子类可以定义名称为 `value` 和 `name` 的成员。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## @enum.**unique**
 
@@ -1021,7 +1035,7 @@ ValueError: <flag 'StrictFlag'> invalid value 20
 
 
 
-```
+``` python
 >>> from enum import Enum, unique
 >>> @unique
 ... class Mistake(Enum):
@@ -1039,31 +1053,36 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 
 ​	一个专用于枚举的 [`class`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#class) 装饰器。 将使用来自 [`EnumCheck`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.EnumCheck) 的成员指明应当在被装饰的枚举上检查哪些约束。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## @enum.**member**
 
 ​	一个在枚举中使用的装饰器：它的目标将成为一个成员。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## @enum.**nonmember**
 
 ​	一个在枚举中使用的装饰器：它的目标将不会成员一个成员。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## @enum.**global_enum**
 
 ​	一个修改枚举的 [`str()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 和 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr) 来将其成员显示为属于模块而不是类的装饰器。 应当仅在枚举成员被导出到模块全局命名空间时（请参看 [`re.RegexFlag`](https://docs.python.org/zh-cn/3.13/library/re.html#re.RegexFlag) 获取示例）使用。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## enum.**show_flag_values**(*value*)
 
 ​	返回旗标 *value* 中包含的所有二的整数次幂的列表。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ------
 

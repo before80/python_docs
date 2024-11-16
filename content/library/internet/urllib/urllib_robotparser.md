@@ -53,25 +53,28 @@ draft = false
 
 ​	为指定的 *useragent* 从 `robots.txt` 返回 `Crawl-delay` 形参。 如果此形参不存在或不适用于指定的 *useragent* 或者此形参的 `robots.txt` 条目存在语法错误，则返回 `None`。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **request_rate**(*useragent*)
 
 ​	以 [named tuple](https://docs.python.org/zh-cn/3.13/glossary.html#term-named-tuple) `RequestRate(requests, seconds)` 的形式从 `robots.txt` 返回 `Request-rate` 形参的内容。 如果此形参不存在或不适用于指定的 *useragent* 或者此形参的 `robots.txt` 条目存在语法错误，则返回 `None`。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **site_maps**()
 
 ​	以 [`list()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#list) 的形式从 `robots.txt` 返回 `Sitemap` 形参的内容。 如果此形参不存在或者此形参的 `robots.txt` 条目存在语法错误，则返回 `None`。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ​	下面的例子演示了 [`RobotFileParser`](https://docs.python.org/zh-cn/3.13/library/urllib.robotparser.html#urllib.robotparser.RobotFileParser) 类的基本用法:
 
 
 
-```
+``` python
 >>> import urllib.robotparser
 >>> rp = urllib.robotparser.RobotFileParser()
 >>> rp.set_url("http://www.musi-cal.com/robots.txt")

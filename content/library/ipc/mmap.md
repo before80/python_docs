@@ -99,7 +99,8 @@ with mmap.mmap(-1, 13) as mm:
     mm.write(b"Hello world!")
 ```
 
-*Added in version 3.2:* 上下文管理器支持。
+> Added in version 3.2:
+> 上下文管理器支持。
 
 ​	下面的例子演示了如何创建一个匿名映射并在父进程和子进程之间交换数据。:
 
@@ -131,7 +132,8 @@ if pid == 0:  # In a child process
 
 ​	如果文件已关闭则返回 `True`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **find**(*sub*[, *start*[, *end*]])
 
@@ -153,7 +155,8 @@ if pid == 0:  # In a child process
 
 ​	可用性: 具有 `madvise()` 系统调用的系统。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **move**(*dest*, *src*, *count*)
 
@@ -199,7 +202,8 @@ if pid == 0:  # In a child process
 
 ​	返回文件是否支持定位，返回值将始终为 `True`。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **size**()
 
@@ -277,7 +281,8 @@ if pid == 0:  # In a child process
 
 ​	可用性: 具有 madvise() 系统调用的系统。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 
 
@@ -329,8 +334,11 @@ if pid == 0:  # In a child process
 
 *在 3.10 版本发生变更:* 增加了 [`MAP_POPULATE`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_POPULATE) 常量。
 
-*Added in version 3.11:* 增加了 [`MAP_STACK`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_STACK) 常量。
+> Added in version 3.11:
+> 增加了 [`MAP_STACK`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_STACK) 常量。
 
-*Added in version 3.12:* 增加了 [`MAP_ALIGNED_SUPER`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_ALIGNED_SUPER) 和 [`MAP_CONCEAL`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_CONCEAL) 常量。
+> Added in version 3.12:
+> 增加了 [`MAP_ALIGNED_SUPER`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_ALIGNED_SUPER) 和 [`MAP_CONCEAL`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_CONCEAL) 常量。
 
-*Added in version 3.13:* 增加了 [`MAP_32BIT`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_32BIT), [`MAP_HASSEMAPHORE`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_HASSEMAPHORE), [`MAP_JIT`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_JIT), [`MAP_NOCACHE`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_NOCACHE), [`MAP_NOEXTEND`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_NOEXTEND), [`MAP_NORESERVE`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_NORESERVE), [`MAP_RESILIENT_CODESIGN`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_RESILIENT_CODESIGN), [`MAP_RESILIENT_MEDIA`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_RESILIENT_MEDIA), [`MAP_TPRO`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_TPRO), [`MAP_TRANSLATED_ALLOW_EXECUTE`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_TRANSLATED_ALLOW_EXECUTE) 和 [`MAP_UNIX03`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_UNIX03) 等常量。
+> Added in version 3.13:
+> 增加了 [`MAP_32BIT`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_32BIT), [`MAP_HASSEMAPHORE`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_HASSEMAPHORE), [`MAP_JIT`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_JIT), [`MAP_NOCACHE`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_NOCACHE), [`MAP_NOEXTEND`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_NOEXTEND), [`MAP_NORESERVE`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_NORESERVE), [`MAP_RESILIENT_CODESIGN`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_RESILIENT_CODESIGN), [`MAP_RESILIENT_MEDIA`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_RESILIENT_MEDIA), [`MAP_TPRO`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_TPRO), [`MAP_TRANSLATED_ALLOW_EXECUTE`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_TRANSLATED_ALLOW_EXECUTE) 和 [`MAP_UNIX03`](https://docs.python.org/zh-cn/3.13/library/mmap.html#mmap.MAP_UNIX03) 等常量。

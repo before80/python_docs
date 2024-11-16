@@ -46,7 +46,7 @@ draft = false
 
 
 
-```
+``` python
 >>> textwrap.shorten("Hello  world!", width=12)
 'Hello world!'
 >>> textwrap.shorten("Hello  world!", width=11)
@@ -57,7 +57,8 @@ draft = false
 
 ​	可选的关键字参数对应于 [`TextWrapper`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.TextWrapper) 的实际属性，具体见下文。 请注意文本在被传入 [`TextWrapper`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.TextWrapper) 的 [`fill()`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.fill) 函数之前会被折叠，因此改变 [`tabsize`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.TextWrapper.tabsize), [`expand_tabs`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.TextWrapper.expand_tabs), [`drop_whitespace`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.TextWrapper.drop_whitespace) 和 [`replace_whitespace`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.TextWrapper.replace_whitespace) 的值将没有任何效果。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## textwrap.**dedent**(*text*)
 
@@ -94,7 +95,7 @@ def test():
 
 
 
-```
+``` python
 >>> s = 'hello\n\n \nworld'
 >>> indent(s, '  ')
 '  hello\n\n \n  world'
@@ -104,7 +105,7 @@ def test():
 
 
 
-```
+``` python
 >>> print(indent(s, '+ ', lambda line: True))
 + hello
 +
@@ -112,7 +113,8 @@ def test():
 + world
 ```
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 [`wrap()`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.wrap), [`fill()`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.fill) 和 [`shorten()`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.shorten) 的作用方式为创建一个 [`TextWrapper`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.TextWrapper) 实例并在其上调用单个方法。 该实例不会被重用，因此对于要使用 [`wrap()`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.wrap) 和/或 [`fill()`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.fill) 来处理许多文本字符串的应用来说，创建你自己的 [`TextWrapper`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.TextWrapper) 对象可能会更有效率。
 
@@ -149,7 +151,8 @@ wrapper.initial_indent = "* "
 
 ​	(默认: `8`) 如果 [`expand_tabs`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.TextWrapper.expand_tabs) 为真值，则 *text* 中所有的制表符将扩展为零个或多个空格，具体取决于当前列位置和给定的制表宽度。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **replace_whitespace**
 
@@ -209,13 +212,15 @@ wrapper.initial_indent = "* "
 
 ​	(默认: `None`) 如果不为 `None`，则输出内容将最多包含 *max_lines* 行，并使 *placeholder* 出现在输出内容的末尾。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **placeholder**
 
 ​	(默认: `' [...]'`) 该文本将在输出文本被截短时出现在文本末尾。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 [`TextWrapper`](https://docs.python.org/zh-cn/3.13/library/textwrap.html#textwrap.TextWrapper) 还提供了一些公有方法，类似于模块层级的便捷函数：
 

@@ -22,7 +22,7 @@ draft = false
 
 ​	参见
 
-## [Coverage.py](https://coverage.readthedocs.io/)
+[Coverage.py](https://coverage.readthedocs.io/)
 
 ​	流行的第三方代码覆盖工具，可输出 HTML ，并提供分支覆盖等高级功能。
 
@@ -46,7 +46,8 @@ python -m trace --count -C . somefile.py ...
 
 ​	显示模块版本并退出。
 
-*Added in version 3.8:* 加入了 `--module` 选项，允许运行可执行模块。
+> Added in version 3.8:
+> 加入了 `--module` 选项，允许运行可执行模块。
 
 ### 主要的可选参数
 

@@ -52,7 +52,8 @@ draft = false
 
 ​	针对无效 gzip 文件引发的异常。 它继承自 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError)。 针对无效 gzip 文件也可能引发 [`EOFError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#EOFError) 和 [`zlib.error`](https://docs.python.org/zh-cn/3.13/library/zlib.html#zlib.error)。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## *class* gzip.**GzipFile**(*filename=None*, *mode=None*, *compresslevel=9*, *fileobj=None*, *mtime=None*)
 
@@ -88,7 +89,8 @@ draft = false
 
 ​	调用 [`peek()`](https://docs.python.org/zh-cn/3.13/library/gzip.html#gzip.GzipFile.peek) 并没有改变 [`GzipFile`](https://docs.python.org/zh-cn/3.13/library/gzip.html#gzip.GzipFile) 的文件指针，它可能改变潜在文件对象(例如： [`GzipFile`](https://docs.python.org/zh-cn/3.13/library/gzip.html#gzip.GzipFile) 使用 *fileobj* 参数进行初始化)。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **mode**
 
@@ -124,7 +126,8 @@ draft = false
 
 ​	压缩 *data*，返回一个包含压缩数据的 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 对象。 *compresslevel* 和 *mtime* 的含义与上文中 [`GzipFile`](https://docs.python.org/zh-cn/3.13/library/gzip.html#gzip.GzipFile) 构造器的相同。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.8 版本发生变更:* 添加了 *mtime* 形参用于可重复的输出。
 
@@ -136,7 +139,8 @@ draft = false
 
 ​	解压缩 *data*，返回一个包含已解压数据的 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 对象。 此函数可以解压缩多成员的 gzip 数据（即多个 gzip 块拼接在一起）。 当数据确定只包含一个成员时则 *wbits* 设为 31 的 [`zlib.decompress()`](https://docs.python.org/zh-cn/3.13/library/zlib.html#zlib.decompress) 函数更快一些。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.11 版本发生变更:* 通过一次性解压缩全部数据而不是通过流方式提高了速度。
 

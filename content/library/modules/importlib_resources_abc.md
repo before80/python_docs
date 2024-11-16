@@ -18,7 +18,8 @@ draft = false
 
 ------
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *class* importlib.resources.abc.**ResourceReader**
 

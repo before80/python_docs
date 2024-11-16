@@ -14,7 +14,8 @@ draft = false
 
 # `tomllib` --- 解析 TOML 文件
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 **源代码：** [Lib/tomllib](https://github.com/python/cpython/tree/3.13/Lib/tomllib)
 

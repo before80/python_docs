@@ -150,7 +150,8 @@ draft = false
 
 ### 5.5.1. 安装自由线程二进制文件
 
-*Added in version 3.13:* （试验性功能）
+> Added in version 3.13:
+> （试验性功能）
 
 ​	备注
 

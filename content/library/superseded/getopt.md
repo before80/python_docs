@@ -63,7 +63,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import getopt
 >>> args = '-a -b -cfoo -d bar a1 a2'.split()
 >>> args
@@ -79,7 +79,7 @@ draft = false
 
 
 
-```
+``` python
 >>> s = '--condition=foo --testing --output-file abc.def -x a1 a2'
 >>> args = s.split()
 >>> args

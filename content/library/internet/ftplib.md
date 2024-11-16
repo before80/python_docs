@@ -30,7 +30,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from ftplib import FTP
 >>> ftp = FTP('ftp.us.debian.org')  # 连接到主机，默认端口
 >>> ftp.login()                     # 用户 anonymous，密码 anonymous@
@@ -77,7 +77,7 @@ drwxr-xr-x    3 1176     1176         4096 Oct 10  2012 tools
 
 
 
-```
+``` python
 >>> from ftplib import FTP
 >>> with FTP("ftp1.at.proftpd.org") as ftp:
 ...     ftp.login()
@@ -205,7 +205,8 @@ dr-xr-xr-x   3 ftp      ftp            18 Jul 10  2008 Fedora
 
 ​	使用 `MLSD` 命令以标准格式列出目录内容 ([**RFC 3659**](https://datatracker.ietf.org/doc/html/rfc3659.html))。如果省略 *path* 则使用当前目录。*facts* 是字符串列表，表示所需的信息类型（如 `["type", "size", "perm"]`）。返回一个生成器对象，每个在 path 中找到的文件都将在该对象中生成两个元素的元组。第一个元素是文件名，第二个元素是该文件的 facts 的字典。该字典的内容受 *facts* 参数限制，但不能保证服务器会返回所有请求的 facts。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **nlst**(*argument*[, *...*])
 
@@ -286,7 +287,8 @@ dr-xr-xr-x   3 ftp      ftp            18 Jul 10  2008 Fedora
 - **source_address** ([*tuple*](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#tuple) *|* *None*) -- A 2-tuple `(host, port)` for the socket to bind to as its source address before connecting.
 - **encoding** ([*str*](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str)) -- The encoding for directories and filenames (default: `'utf-8'`).
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.3 版本发生变更:* 增加了 *source_address* 形参。
 
@@ -300,7 +302,7 @@ dr-xr-xr-x   3 ftp      ftp            18 Jul 10  2008 Fedora
 
 
 
-```
+``` python
 >>> ftps = FTP_TLS('ftp.pureftpd.org')
 >>> ftps.login()
 '230 Anonymous user logged in'
@@ -326,7 +328,8 @@ dr-xr-xr-x   3 ftp      ftp            18 Jul 10  2008 Fedora
 
 ​	将控制通道回复为纯文本。 这适用于发挥知道如何使用非安全 FTP 处理 NAT 而无需打开固定端口的防火墙的优势。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **prot_p**()
 

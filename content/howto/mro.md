@@ -59,7 +59,7 @@ draft = false
 
 
 
-```
+``` python
 >>> O = object
 >>> class X(O): pass
 >>> class Y(O): pass
@@ -154,7 +154,7 @@ L[C(B)] = C + merge(L[B],B) = C + L[B]
 
 
 
-```
+``` python
 >>> O = object
 >>> class F(O): pass
 >>> class E(O): pass
@@ -238,7 +238,7 @@ L[A] = A + merge(BDEO,CDFO,BC)
 
 
 
-```
+``` python
 >>> O = object
 >>> class F(O): pass
 >>> class E(O): pass
@@ -280,7 +280,7 @@ L[A] = A + merge(BDEO,CDFO,BC)
 
 
 
-```
+``` python
 >>> A.mro()  
 [<class 'A'>, <class 'B'>, <class 'E'>,
 <class 'C'>, <class 'D'>, <class 'F'>,
@@ -315,7 +315,7 @@ L[C] = C + merge(AXYO, BYXO, AB)
 
 
 
-```
+``` python
 >>> F=type('Food',(),{'remember2buy':'spam'})
 >>> E=type('Eggs',(F,),{'remember2buy':'eggs'})
 >>> G=type('GoodFood',(F,E),{}) # under Python 2.3 this is an error!  
@@ -339,7 +339,7 @@ L[C] = C + merge(AXYO, BYXO, AB)
 
 
 
-```
+``` python
 >>> G.remember2buy  
 'eggs'
 ```
@@ -354,7 +354,7 @@ L[G,P22]= G E F object   # F 在 E *之后*
 
 
 
-```
+``` python
 >>> class F: remember2buy='spam'
 >>> class E(F): remember2buy='eggs'
 >>> class G(F,E): pass  
@@ -391,7 +391,7 @@ merge(FO,EFO,FE)
 
 
 
-```
+``` python
 >>> class A(object): pass
 >>> class C(A,A): pass # error
 Traceback (most recent call last):
@@ -439,7 +439,7 @@ L[D] = D A B C
 
 
 
-```
+``` python
 >>> class A(object): pass
 >>> class B(object): pass
 >>> class C(object): pass

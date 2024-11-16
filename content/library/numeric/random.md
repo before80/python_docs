@@ -86,7 +86,8 @@ draft = false
 
 ​	此方法不可用于生成安全凭据。 那应当使用 [`secrets.token_bytes()`](https://docs.python.org/zh-cn/3.13/library/secrets.html#secrets.token_bytes)。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## 整数用函数
 
@@ -134,7 +135,8 @@ draft = false
 
 ​	对于给定的种子，具有相等加权的 [`choices()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.choices) 函数通常产生与重复调用 [`choice()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.choice) 不同的序列。 [`choices()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.choices) 使用的算法使用浮点运算来实现内部一致性和速度。 [`choice()`](https://docs.python.org/zh-cn/3.13/library/random.html#random.choice) 使用的算法默认为重复选择的整数运算，以避免因舍入误差引起的小偏差。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 *在 3.9 版本发生变更:* 如果所有权重均为负值则将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
@@ -182,7 +184,8 @@ sum(random() < p for i in range(n))
 
 ​	试验次数 *n* 应为一个非负整数。 成功几率 *p* 的取值范围应为 `0.0 <= p <= 1.0`。 结果是一个 `0 <= X <= n` 范围内的整数。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 
 
@@ -309,7 +312,7 @@ pdf(x) =  --------------------------------------
 
 
 
-```
+``` python
 >>> random()                          # 随机浮点数:  0.0 <= x < 1.0
 0.37444887175646646
 
@@ -341,7 +344,7 @@ pdf(x) =  --------------------------------------
 
 
 
-```
+``` python
 >>> # 六次轮盘旋转（可重复的带权重取样）
 >>> choices(['red', 'black', 'green'], [18, 18, 2], k=6)
 ['red', 'green', 'black', 'black', 'red', 'black']
@@ -499,7 +502,7 @@ class FullRandom(Random):
 
 
 
-```
+``` python
 >>> fr = FullRandom()
 >>> fr.random()
 0.05954861408025609
@@ -519,7 +522,8 @@ class FullRandom(Random):
 
 ## 命令行用法
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 `random` 模块可以在命令行中执行。
 

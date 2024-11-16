@@ -290,7 +290,8 @@ locale.setlocale(locale.LC_ALL, '')
 
 ​	此函数类似于 [`getpreferredencoding(False)`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.getpreferredencoding)，区别是此函数会忽略 [Python UTF-8 模式](https://docs.python.org/zh-cn/3.13/library/os.html#utf8-mode)。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## locale.**normalize**(*localename*)
 
@@ -336,13 +337,15 @@ locale.setlocale(locale.LC_ALL, '')
 
 ​	根据 [`LC_NUMERIC`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_NUMERIC) 的设置，将字符串转换为标准化的数字字符串。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## locale.**localize**(*string*, *grouping=False*, *monetary=False*)
 
 ​	根据 [`LC_NUMERIC`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.LC_NUMERIC) 的设置，将标准化的数字字符串转换为格式化的字符串。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## locale.**atof**(*string*, *func=float*)
 
@@ -392,7 +395,7 @@ locale.setlocale(locale.LC_ALL, '')
 
 
 
-```
+``` python
 >>> import locale
 >>> loc = locale.getlocale()  # 获取当前语言区域
 # 使用德语的语言区域；在具体平台上名称可能不同

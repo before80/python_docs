@@ -304,7 +304,7 @@ type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" |
 
 
 
-```
+``` python
 >>> '{0}, {1}, {2}'.format('a', 'b', 'c')
 'a, b, c'
 >>> '{}, {}, {}'.format('a', 'b', 'c')  # 3.1+ only
@@ -321,7 +321,7 @@ type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" |
 
 
 
-```
+``` python
 >>> 'Coordinates: {latitude}, {longitude}'.format(latitude='37.24N', longitude='-115.81W')
 'Coordinates: 37.24N, -115.81W'
 >>> coord = {'latitude': '37.24N', 'longitude': '-115.81W'}
@@ -333,7 +333,7 @@ type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" |
 
 
 
-```
+``` python
 >>> c = 3-5j
 >>> ('The complex number {0} is formed from the real part {0.real} '
 ...  'and the imaginary part {0.imag}.').format(c)
@@ -352,7 +352,7 @@ type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" |
 
 
 
-```
+``` python
 >>> coord = (3, 5)
 >>> 'X: {0[0]};  Y: {0[1]}'.format(coord)
 'X: 3;  Y: 5'
@@ -362,7 +362,7 @@ type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" |
 
 
 
-```
+``` python
 >>> "repr() shows quotes: {!r}; str() doesn't: {!s}".format('test1', 'test2')
 "repr() shows quotes: 'test1'; str() doesn't: test2"
 ```
@@ -371,7 +371,7 @@ type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" |
 
 
 
-```
+``` python
 >>> '{:<30}'.format('left aligned')
 'left aligned                  '
 >>> '{:>30}'.format('right aligned')
@@ -386,7 +386,7 @@ type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" |
 
 
 
-```
+``` python
 >>> '{:+f}; {:+f}'.format(3.14, -3.14)  # 总是显示
 '+3.140000; -3.140000'
 >>> '{: f}; {: f}'.format(3.14, -3.14)  # 对正数显示一个空格
@@ -399,7 +399,7 @@ type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" |
 
 
 
-```
+``` python
 >>> # 格式也支持二进制数
 >>> "int: {0:d};  hex: {0:x};  oct: {0:o};  bin: {0:b}".format(42)
 'int: 42;  hex: 2a;  oct: 52;  bin: 101010'
@@ -412,7 +412,7 @@ type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" |
 
 
 
-```
+``` python
 >>> '{:,}'.format(1234567890)
 '1,234,567,890'
 ```
@@ -421,7 +421,7 @@ type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" |
 
 
 
-```
+``` python
 >>> points = 19
 >>> total = 22
 >>> 'Correct answers: {:.2%}'.format(points/total)
@@ -432,7 +432,7 @@ type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" |
 
 
 
-```
+``` python
 >>> import datetime
 >>> d = datetime.datetime(2010, 7, 4, 12, 15, 58)
 >>> '{:%Y-%m-%d %H:%M:%S}'.format(d)
@@ -443,7 +443,7 @@ type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" |
 
 
 
-```
+``` python
 >>> for align, text in zip('<^>', ['left', 'center', 'right']):
 ...     '{0:{fill}{align}16}'.format(text, fill=align, align=align)
 ...
@@ -506,13 +506,15 @@ type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" |
 
 ​	如果模板有会导致 [`substitute()`](https://docs.python.org/zh-cn/3.13/library/string.html#string.Template.substitute) 引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 的无效占位符则返回假值。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **get_identifiers**()
 
 ​	返回模板中有效占位符的列表，按它们首次出现的顺序排列，忽略任何无效标识符。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 [`Template`](https://docs.python.org/zh-cn/3.13/library/string.html#string.Template) 的实例还提供一个公有数据属性：
 
@@ -524,7 +526,7 @@ type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" |
 
 
 
-```
+``` python
 >>> from string import Template
 >>> s = Template('$who likes $what')
 >>> s.substitute(who='tim', what='kung pao')

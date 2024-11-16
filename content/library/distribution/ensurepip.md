@@ -14,7 +14,8 @@ draft = false
 
 # `ensurepip` --- 初始设置 `pip` 安装器
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 **源代码:** [Lib/ensurepip](https://github.com/python/cpython/tree/3.13/Lib/ensurepip)
 

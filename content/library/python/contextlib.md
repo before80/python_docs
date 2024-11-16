@@ -28,13 +28,15 @@ draft = false
 
 ​	一个为实现了 [`object.__enter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__enter__) 与 [`object.__exit__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__exit__) 的类提供的 [abstract base class](https://docs.python.org/zh-cn/3.13/glossary.html#term-abstract-base-class)。为 [`object.__enter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__enter__) 提供的一个默认实现是返回 `self` 而 [`object.__exit__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__exit__) 是一个默认返回 `None` 的抽象方法。 参见 [上下文管理器类型](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#typecontextmanager) 的定义。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## *class* contextlib.**AbstractAsyncContextManager**
 
 ​	一个为实现了 [`object.__aenter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__aenter__) 与 [`object.__aexit__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__aexit__) 的类提供的 [abstract base class](https://docs.python.org/zh-cn/3.13/glossary.html#term-abstract-base-class)。 为 [`object.__aenter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__aenter__) 提供的一个默认实现是返回 `self` 而 [`object.__aexit__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__aexit__) 是一个默认返回 `None` 的抽象方法。 参见 [异步上下文管理器](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#async-context-managers) 的定义。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## @contextlib.**contextmanager**
 
@@ -62,7 +64,7 @@ def managed_resource(*args, **kwds):
 
 
 
-```
+``` python
 >>> with managed_resource(timeout=3600) as resource:
 ...     # Resource is released at the end of this block,
 ...     # even if code in the block raises an exception
@@ -187,7 +189,8 @@ async with aclosing(my_generator()) as values:
 
 ​	此模块将确保生成器的异步退出代码在与其迭代相同的上下文中执行（这样异常和上下文变量将能按预期工作，并且退出代码不会在其所依赖的某些任务的生命期结束后继续运行）。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## contextlib.**nullcontext**(*enter_result=None*)
 
@@ -235,7 +238,8 @@ async def send_http(session=None):
         # Send http requests with session
 ```
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 *在 3.10 版本发生变更:* 增加了对 [asynchronous context manager](https://docs.python.org/zh-cn/3.13/glossary.html#term-asynchronous-context-manager) 的支持。
 
@@ -275,7 +279,8 @@ except FileNotFoundError:
 
 ​	如果 `with` 语句块内的代码引发了 [`BaseExceptionGroup`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseExceptionGroup)，将从分组中移除被抑制的异常。 该分组中任何未被抑制的异常会在一个使用原分组的 [`derive()`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseExceptionGroup.derive) 方法创建的新分组中被重新引发。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.12 版本发生变更:* `suppress` 现在支持抑制作为 [`BaseExceptionGroup`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseExceptionGroup) 的组成部分被引发的异常。
 
@@ -312,7 +317,8 @@ with redirect_stdout(sys.stderr):
 
 ​	该上下文管理器是 [reentrant](https://docs.python.org/zh-cn/3.13/library/contextlib.html#reentrant-cms) 。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## contextlib.**redirect_stderr**(*new_target*)
 
@@ -320,7 +326,8 @@ with redirect_stdout(sys.stderr):
 
 ​	该上下文管理器是 [reentrant](https://docs.python.org/zh-cn/3.13/library/contextlib.html#reentrant-cms) 。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## contextlib.**chdir**(*path*)
 
@@ -330,7 +337,8 @@ with redirect_stdout(sys.stderr):
 
 ​	该上下文管理器是 [reentrant](https://docs.python.org/zh-cn/3.13/library/contextlib.html#reentrant-cms) 。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *class* contextlib.**ContextDecorator**
 
@@ -359,7 +367,7 @@ class mycontext(ContextDecorator):
 
 
 
-```
+``` python
 >>> @mycontext()
 ... def function():
 ...     print('The bit in the middle')
@@ -414,7 +422,8 @@ class mycontext(ContextBaseClass, ContextDecorator):
 
 ​	由于被装饰的函数必须能够被多次调用，因此对应的上下文管理器必须支持在多个 [`with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#with) 语句中使用。如果不是这样，则应当使用原来的具有显式 `with` 语句的形式使用该上下文管理器。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## *class* contextlib.**AsyncContextDecorator**
 
@@ -440,7 +449,7 @@ class mycontext(AsyncContextDecorator):
 
 
 
-```
+``` python
 >>> @mycontext()
 ... async def function():
 ...     print('The bit in the middle')
@@ -460,7 +469,8 @@ The bit in the middle
 Finishing
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* contextlib.**ExitStack**
 
@@ -486,7 +496,8 @@ with ExitStack() as stack:
 
 ​	这是一个相对底层的 API，它负责正确处理栈里回调退出时依次展开的细节。它为相对高层的上下文管理器提供了一个合适的基础，使得它能根据应用程序的需求使用特定方式操作栈。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **enter_context**(*cm*)
 
@@ -572,7 +583,8 @@ async with AsyncExitStack() as stack:
     # later in the list raise an exception.
 ```
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## 例子和配方
 
@@ -781,7 +793,7 @@ def activity():
 
 
 
-```
+``` python
 >>> from contextlib import contextmanager
 >>> @contextmanager
 ... def singleuse():
@@ -813,7 +825,7 @@ RuntimeError: generator didn't yield
 
 
 
-```
+``` python
 >>> from contextlib import redirect_stdout
 >>> from io import StringIO
 >>> stream = StringIO()
@@ -846,7 +858,7 @@ This is also written to the stream
 
 
 
-```
+``` python
 >>> from contextlib import ExitStack
 >>> stack = ExitStack()
 >>> with stack:
@@ -880,7 +892,7 @@ Leaving outer context
 
 
 
-```
+``` python
 >>> from contextlib import ExitStack
 >>> with ExitStack() as outer_stack:
 ...     outer_stack.callback(print, "Callback: from outer context")

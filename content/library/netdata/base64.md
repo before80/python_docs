@@ -88,7 +88,8 @@ draft = false
 
 ​	类似于 [`b32encode()`](https://docs.python.org/zh-cn/3.13/library/base64.html#base64.b32encode) 但是使用 Extended Hex Alphabet，如 [**RFC 4648**](https://datatracker.ietf.org/doc/html/rfc4648.html) 所定义。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## base64.**b32hexdecode**(*s*, *casefold=False*)
 
@@ -96,7 +97,8 @@ draft = false
 
 ​	这个版本不允许数字 0（零）与字母 O（oh）和数字 1（一）与字母 I（eye）或字母 L （el）的映射，所有这些字符都包含在扩展的十六进制字母表中，不能互换。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## base64.**b16encode**(*s*)
 
@@ -122,7 +124,8 @@ draft = false
 
 *adobe* 控制编码后的字节序列是否要加上 `<~` 和 `~>`，这是 Adobe 实现所使用的。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## base64.**a85decode**(*b*, ***, *foldspaces=False*, *adobe=False*, *ignorechars=b' \t\n\r\x0b'*)
 
@@ -134,7 +137,8 @@ draft = false
 
 *ignorechars* 应当是一个 [bytes-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object) 或 ASCII 字符串，其中包含要从输入中忽略的字符。 这应当只包含空白字符，并且默认包含 ASCII 中所有的空白字符。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## base64.**b85encode**(*b*, *pad=False*)
 
@@ -142,25 +146,29 @@ draft = false
 
 ​	如果 *pad* 为真值，输入将以 `b'\0'` 填充以使其编码前长度为 4 字节的倍数。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## base64.**b85decode**(*b*)
 
 ​	解码 base85 编码过的 [bytes-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object) 或 ASCII 字符串 *b* 并返回解码过的 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes)。 如有必要，填充会被隐式地移除。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## base64.**z85encode**(*s*)
 
 ​	使用 Z85 (如在 ZeroMQ 中所使用的) 来编码 [bytes-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object) *s* 并返回已编码的 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes)。 请参阅 [Z85 规范说明](https://rfc.zeromq.org/spec/32/) 了解详情。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## base64.**z85decode**(*s*)
 
 ​	解码 Z85 编码的 [bytes-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object) 或 ASCII 字符串 *s* 并返回已解码的 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes)。 请参阅 [Z85 规范说明](https://rfc.zeromq.org/spec/32/) 了解详情。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ​	旧式接口:
 
@@ -172,7 +180,8 @@ draft = false
 
 ​	解码 [bytes-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object) *s*，该对象必须包含一行或多行 base64 编码的数据，并返回已解码的 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes)。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## base64.**encode**(*input*, *output*)
 
@@ -182,13 +191,14 @@ draft = false
 
 ​	编码 [bytes-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object) *s*，其中可以包含任意二进制数据，并返回包含经 base64 编码数据的 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes)，每输出 76 个字节之后将带一个换行符 (`b'\n'`)，并会确保在末尾也有一个换行符，如 [**RFC 2045**](https://datatracker.ietf.org/doc/html/rfc2045.html) (MIME) 所规定的那样。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ​	此模块的一个使用示例:
 
 
 
-```
+``` python
 >>> import base64
 >>> encoded = base64.b64encode(b'data to be encoded')
 >>> encoded

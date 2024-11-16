@@ -18,7 +18,8 @@ draft = false
 
 ------
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ​	此模块调整了 Python 的导入系统以便提供对 *包* 内部的 *资源* 的访问。
 
@@ -48,7 +49,8 @@ draft = false
 
 *anchor* 是一个可选的 [`Anchor`](https://docs.python.org/zh-cn/3.13/library/importlib.resources.html#importlib.resources.Anchor)。 如果 anchor 是一个包，则会从这个包获取资源。 如果是一个模块，则会从这个模块的相邻位置获取资源（在同一个包或包的根目录中）。 如果省略了 anchor,则会使用调用方的模块。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 *在 3.12 版本发生变更:* *package* 形参被重命名为 *anchor*。 *anchor* 现在可以是一个不为包的模块，如果被省略则默认为调用方的模块。 为保持兼容性 *package* 仍然被接受但会引发 [`DeprecationWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#DeprecationWarning)。 请考虑以位置参数方式传入或使用 `importlib_resources >= 5.10` 作为针对旧版 Python 的兼容接口。
 
@@ -60,7 +62,8 @@ draft = false
 
 ​	当 Traversable 的方法（如 `read_text` 等）不足以满足需要而需要文件系统中的真实文件或目录时请使用 `as_file`。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 *在 3.12 版本发生变更:* 增加了对代表目录的 *traversable* 的支持。
 

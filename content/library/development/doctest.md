@@ -268,7 +268,7 @@ __test__ = {
 
 
 
-```
+``` python
 >>> # comments are ignored
 >>> x = 12
 >>> x
@@ -351,7 +351,7 @@ NO!!!
 
 
 
-```
+``` python
 >>> [1, 2, 3].remove(42)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -373,7 +373,7 @@ Traceback (innermost last):
 
 
 
-```
+``` python
 >>> raise ValueError('multi\n    line\ndetail')
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -388,7 +388,7 @@ detail
 
 
 
-```
+``` python
 >>> raise ValueError('multi\n    line\ndetail')
 Traceback (most recent call last):
     ...
@@ -436,7 +436,8 @@ detail
 
 ​	一系列选项旗标控制着 doctest 的各方面行为。 旗标的符号名称以模块常量的形式提供，可以一起 [bitwise ORed](https://docs.python.org/zh-cn/3.13/reference/expressions.html#bitwise) 并传递给各种函数。 这些名称也可以在 [doctest directives](https://docs.python.org/zh-cn/3.13/library/doctest.html#doctest-directives) 中使用，并且可以通过 `-o` 选项传递给 doctest 命令行接口。
 
-*Added in version 3.4:* 命令行选项 `-o` 。
+> Added in version 3.4:
+> 命令行选项 `-o` 。
 
 ​	第一组选项定义了测试语义，控制doctest如何决定实际输出是否与用例的预期输出相匹配方面的问题。
 
@@ -464,7 +465,7 @@ detail
 
 
 
-```
+``` python
 >>> raise Exception('message')
 Traceback (most recent call last):
 Exception: message
@@ -516,7 +517,8 @@ __main__.Exception: message
 
 ​	doctest 命令行接受选项 `-f` 作为 `-o FAIL_FAST` 的简洁形式。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## doctest.**REPORTING_FLAGS**
 
@@ -554,7 +556,7 @@ directive_option_name ::=  "DONT_ACCEPT_BLANKLINE" | "NORMALIZE_WHITESPACE" | ..
 
 
 
-```
+``` python
 >>> print(list(range(20)))  # doctest: +NORMALIZE_WHITESPACE
 [0,   1,  2,  3,  4,  5,  6,  7,  8,  9,
 10,  11, 12, 13, 14, 15, 16, 17, 18, 19]
@@ -564,7 +566,7 @@ directive_option_name ::=  "DONT_ACCEPT_BLANKLINE" | "NORMALIZE_WHITESPACE" | ..
 
 
 
-```
+``` python
 >>> print(list(range(20)))  # doctest: +ELLIPSIS
 [0, 1, ..., 18, 19]
 ```
@@ -573,7 +575,7 @@ directive_option_name ::=  "DONT_ACCEPT_BLANKLINE" | "NORMALIZE_WHITESPACE" | ..
 
 
 
-```
+``` python
 >>> print(list(range(20)))  # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
 [0,    1, ...,   18,    19]
 ```
@@ -582,7 +584,7 @@ directive_option_name ::=  "DONT_ACCEPT_BLANKLINE" | "NORMALIZE_WHITESPACE" | ..
 
 
 
-```
+``` python
 >>> print(list(range(20)))  # doctest: +ELLIPSIS
 ...                         # doctest: +NORMALIZE_WHITESPACE
 [0,    1, ...,   18,    19]
@@ -592,7 +594,7 @@ directive_option_name ::=  "DONT_ACCEPT_BLANKLINE" | "NORMALIZE_WHITESPACE" | ..
 
 
 
-```
+``` python
 >>> print(list(range(5)) + list(range(10, 20)) + list(range(30, 40)))
 ... # doctest: +ELLIPSIS
 [0, ..., 4, 10, ..., 19, 30, ..., 39]
@@ -608,7 +610,7 @@ directive_option_name ::=  "DONT_ACCEPT_BLANKLINE" | "NORMALIZE_WHITESPACE" | ..
 
 
 
-```
+``` python
 >>> foo()
 {"spam", "eggs"}
 ```
@@ -617,7 +619,7 @@ directive_option_name ::=  "DONT_ACCEPT_BLANKLINE" | "NORMALIZE_WHITESPACE" | ..
 
 
 
-```
+``` python
 >>> foo() == {"spam", "eggs"}
 True
 ```
@@ -626,7 +628,7 @@ True
 
 
 
-```
+``` python
 >>> d = sorted(foo())
 >>> d
 ['eggs', 'spam']
@@ -638,7 +640,7 @@ True
 
 
 
-```
+``` python
 >>> id(1.0)  # certain to fail some of the time  
 7948648
 >>> class C: pass
@@ -650,7 +652,7 @@ True
 
 
 
-```
+``` python
 >>> C()  # doctest: +ELLIPSIS
 <C object at 0x...>
 ```
@@ -659,7 +661,7 @@ True
 
 
 
-```
+``` python
 >>> 1./7  # risky
 0.14285714285714285
 >>> print(1./7) # safer
@@ -672,7 +674,7 @@ True
 
 
 
-```
+``` python
 >>> 3./4  # utterly safe
 0.75
 ```
@@ -1013,7 +1015,8 @@ def load_tests(loader, tests, ignore):
 
 ​	跳过的测试数量。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 
 
@@ -1091,7 +1094,8 @@ def load_tests(loader, tests, ignore):
 
 ​	跳过的示例数量。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 
 

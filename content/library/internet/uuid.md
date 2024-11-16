@@ -26,7 +26,8 @@ draft = false
 
 ## *class* uuid.**SafeUUID**
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **safe**
 
@@ -110,7 +111,8 @@ UUID(int=0x12345678123456781234567812345678)
 
 ​	一个 [`SafeUUID`](https://docs.python.org/zh-cn/3.13/library/uuid.html#uuid.SafeUUID) 的枚举，表示平台是否以多进程安全的方式生成 UUID。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 [`uuid`](https://docs.python.org/zh-cn/3.13/library/uuid.html#module-uuid) 模块定义了以下函数：
 
@@ -182,7 +184,8 @@ UUID(int=0x12345678123456781234567812345678)
 
 ## 命令行用法
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 [`uuid`](https://docs.python.org/zh-cn/3.13/library/uuid.html#module-uuid) 模块可以在命令行下作为脚本来执行。
 
@@ -222,7 +225,7 @@ python -m uuid [-h] [-u {uuid1,uuid3,uuid4,uuid5}] [-n NAMESPACE] [-N NAME]
 
 
 
-```
+``` python
 >>> import uuid
 
 >>> # 基于主机 ID 和当前时间生成一个 UUID

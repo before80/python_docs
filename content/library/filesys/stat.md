@@ -56,19 +56,22 @@ draft = false
 
 ​	如果 mode 来自一个门则返回非零值。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## stat.**S_ISPORT**(*mode*)
 
 ​	如果 mode 来自一个事件端口则返回非零值。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## stat.**S_ISWHT**(*mode*)
 
 ​	如果 mode 来自一个白输出则返回非零值。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ​	定义了两个附加函数用于对文件模式进行更一般化的操作：
 
@@ -118,7 +121,8 @@ if __name__ == '__main__':
 
 ​	将文件模式转换为 '-rwxrwxrwx' 形式的字符串。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.4 版本发生变更:* 此函数支持 [`S_IFDOOR`](https://docs.python.org/zh-cn/3.13/library/stat.html#stat.S_IFDOOR), [`S_IFPORT`](https://docs.python.org/zh-cn/3.13/library/stat.html#stat.S_IFPORT) and [`S_IFWHT`](https://docs.python.org/zh-cn/3.13/library/stat.html#stat.S_IFWHT)。
 
@@ -202,19 +206,22 @@ if __name__ == '__main__':
 
 ​	门。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## stat.**S_IFPORT**
 
 ​	事件端口。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## stat.**S_IFWHT**
 
 ​	白输出。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ​	备注
 
@@ -306,7 +313,8 @@ if __name__ == '__main__':
 
 ​	所有用户可设置的旗标。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## stat.**UF_NODUMP**
 
@@ -336,13 +344,15 @@ if __name__ == '__main__':
 
 ​	用于处理文档 ID (macOS)
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## stat.**UF_DATAVAULT**
 
 ​	文件需要赋予读取或写入权限 (macOS 10.13+)
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## stat.**UF_HIDDEN**
 
@@ -352,7 +362,8 @@ if __name__ == '__main__':
 
 ​	所有超级用户可修改的旗标
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## stat.**SF_SUPPORTED**
 
@@ -360,7 +371,8 @@ if __name__ == '__main__':
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): macOS
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## stat.**SF_SYNTHETIC**
 
@@ -368,7 +380,8 @@ if __name__ == '__main__':
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): macOS
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## stat.**SF_ARCHIVED**
 
@@ -386,7 +399,8 @@ if __name__ == '__main__':
 
 ​	文件需要赋予写入权限 (macOS 10.13+)
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## stat.**SF_NOUNLINK**
 
@@ -400,13 +414,15 @@ if __name__ == '__main__':
 
 ​	文件是一个固定链接 (macOS 10.15+)
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## stat.**SF_DATALESS**
 
 ​	文件是一个无数据对象 (macOS 10.15+)
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ​	请参阅 *BSD 或 macOS 系统的指南页 *[chflags(2)](https://manpages.debian.org/chflags(2))* 来了解详情。
 
@@ -446,7 +462,8 @@ if __name__ == '__main__':
 
 ## stat.**FILE_ATTRIBUTE_VIRTUAL**
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ​	在 Windows 上，以下常量可被用来与 [`os.lstat()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.lstat) 所返回的 `st_reparse_tag` 成员进行比较。 这些是最主要的常量，而不是详尽的清单。
 
@@ -456,4 +473,5 @@ if __name__ == '__main__':
 
 ## stat.**IO_REPARSE_TAG_APPEXECLINK**
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>

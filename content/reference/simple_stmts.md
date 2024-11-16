@@ -320,7 +320,7 @@ raise Exception("foo occurred").with_traceback(tracebackobj)
 
 
 
-```
+``` python
 >>> try:
 ...     print(1 / 0)
 ... except Exception as exc:
@@ -344,7 +344,7 @@ RuntimeError: Something bad happened
 
 
 
-```
+``` python
 >>> try:
 ...     print(1 / 0)
 ... except:
@@ -368,7 +368,7 @@ RuntimeError: Something bad happened
 
 
 
-```
+``` python
 >>> try:
 ...     print(1 / 0)
 ... except:
@@ -599,7 +599,8 @@ Point = typing.TypeAliasType("Point", VALUE_OF_Point())
 
 `type` 是一个 [软关键字](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#soft-keywords)。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 > 参见
 >

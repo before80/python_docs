@@ -47,7 +47,8 @@ def factorial(n):
 
 ​	如果另一个线程在初始调用完成并被缓存之前执行了额外的调用则被包装的函数可能会被多次调用。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## @functools.**cached_property**(*func*)
 
@@ -80,7 +81,8 @@ class DataSet:
 
 ​	如果可变的映射不可用或者如果想要节省空间的键共享，可以通过在 [`lru_cache()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.lru_cache) 上堆叠 [`property()`](https://docs.python.org/zh-cn/3.13/library/functions.html#property) 来实现类似 [`cached_property()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.cached_property) 的效果。 请参阅 [我该如何缓存方法调用？](https://docs.python.org/zh-cn/3.13/faq/programming.html#faq-cache-method-calls) 了解这与 [`cached_property()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.cached_property) 之间区别的详情。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.12 版本发生变更:* 在 Python 3.12 之前，`cached_property` 包括了一个未写入文档的锁用来确保在多线程使用中 getter 函数对于每个实例保证只运行一次。 但是，这个锁是针对特征属性的，不是针对实例的，这可能导致不可接受的高强度锁争用。 在 Python 3.12+ 中这个锁已被移除。
 
@@ -98,7 +100,8 @@ sorted(iterable, key=cmp_to_key(locale.strcoll))  # 感知语言区域的排序�
 
 ​	有关排序示例和简要排序教程，请参阅 [排序的技术](https://docs.python.org/zh-cn/3.13/howto/sorting.html#sortinghowto)。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## @functools.**lru_cache**(*user_function*)
 
@@ -181,7 +184,8 @@ def fib(n):
 CacheInfo(hits=28, misses=16, maxsize=None, currsize=16)
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.3 版本发生变更:* 添加 *typed* 选项。
 
@@ -227,7 +231,8 @@ class Student:
 
 ​	这个装饰器不会尝试重写类 *或其上级类* 中已经被声明的方法。 这意味着如果某个上级类定义了比较运算符，则 *total_ordering* 将不会再次实现它，即使原方法是抽象方法。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.4 版本发生变更:* 现在已支持从未识别的类型的下层比较函数返回 `NotImplemented` 异常。
 
@@ -250,7 +255,7 @@ def partial(func, /, *args, **keywords):
 
 
 
-```
+``` python
 >>> from functools import partial
 >>> basetwo = partial(int, base=2)
 >>> basetwo.__doc__ = 'Convert base 2 string to an int.'
@@ -272,7 +277,7 @@ def partial(func, /, *args, **keywords):
 
 
 
-```
+``` python
 >>> class Cell:
 ...     def __init__(self):
 ...         self._alive = False
@@ -292,7 +297,8 @@ False
 True
 ```
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## functools.**reduce**(*function*, *iterable*, [*initial*, ]*/*)
 
@@ -324,7 +330,7 @@ def reduce(function, iterable, initial=initial_missing, /):
 
 
 
-```
+``` python
 >>> from functools import singledispatch
 >>> @singledispatch
 ... def fun(arg, verbose=False):
@@ -337,7 +343,7 @@ def reduce(function, iterable, initial=initial_missing, /):
 
 
 
-```
+``` python
 >>> @fun.register
 ... def _(arg: int, verbose=False):
 ...     if verbose:
@@ -356,7 +362,7 @@ def reduce(function, iterable, initial=initial_missing, /):
 
 
 
-```
+``` python
 >>> @fun.register
 ... def _(arg: int | float, verbose=False):
 ...     if verbose:
@@ -377,7 +383,7 @@ def reduce(function, iterable, initial=initial_missing, /):
 
 
 
-```
+``` python
 >>> @fun.register(complex)
 ... def _(arg, verbose=False):
 ...     if verbose:
@@ -390,7 +396,7 @@ def reduce(function, iterable, initial=initial_missing, /):
 
 
 
-```
+``` python
 >>> @fun.register(list)
 ... def _(arg: list[int], verbose=False):
 ...     if verbose:
@@ -409,7 +415,7 @@ def reduce(function, iterable, initial=initial_missing, /):
 
 
 
-```
+``` python
 >>> def nothing(arg, verbose=False):
 ...     print("Nothing.")
 ...
@@ -420,7 +426,7 @@ def reduce(function, iterable, initial=initial_missing, /):
 
 
 
-```
+``` python
 >>> @fun.register(float)
 ... @fun.register(Decimal)
 ... def fun_num(arg, verbose=False):
@@ -436,7 +442,7 @@ False
 
 
 
-```
+``` python
 >>> fun("Hello, world.")
 Hello, world.
 >>> fun("test.", verbose=True)
@@ -461,7 +467,7 @@ Nothing.
 
 
 
-```
+``` python
 >>> from collections.abc import Mapping
 >>> @fun.register
 ... def _(arg: Mapping, verbose=False):
@@ -478,7 +484,7 @@ a => b
 
 
 
-```
+``` python
 >>> fun.dispatch(float)
 <function fun_num at 0x1035a2840>
 >>> fun.dispatch(dict)    # note: default implementation
@@ -489,7 +495,7 @@ a => b
 
 
 
-```
+``` python
 >>> fun.registry.keys()
 dict_keys([<class 'NoneType'>, <class 'int'>, <class 'object'>,
           <class 'decimal.Decimal'>, <class 'list'>,
@@ -500,7 +506,8 @@ dict_keys([<class 'NoneType'>, <class 'int'>, <class 'object'>,
 <function fun at 0x103fe0000>
 ```
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.7 版本发生变更:* `register()` 属性现在支持使用类型标注。
 
@@ -549,7 +556,8 @@ class Negator:
 
 ​	同样的模式也可被用于其他类似的装饰器: [`@staticmethod`](https://docs.python.org/zh-cn/3.13/library/functions.html#staticmethod), [`@abstractmethod`](https://docs.python.org/zh-cn/3.13/library/abc.html#abc.abstractmethod) 等等。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## functools.**update_wrapper**(*wrapper*, *wrapped*, *assigned=WRAPPER_ASSIGNMENTS*, *updated=WRAPPER_UPDATES*)
 
@@ -573,7 +581,7 @@ class Negator:
 
 
 
-```
+``` python
 >>> from functools import wraps
 >>> def my_decorator(f):
 ...     @wraps(f)

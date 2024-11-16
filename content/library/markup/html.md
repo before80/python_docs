@@ -24,13 +24,15 @@ draft = false
 
 ​	将字符串 *s* 中的字符 `&` 、 `<` 和 `>` 转换为安全的HTML序列。 如果需要在 HTML 中显示可能包含此类字符的文本，请使用此选项。 如果可选的标志 *quote* 为真值，则字符 (`"`) 和 (`'`) 也被转换；这有助于包含在由引号分隔的 HTML 属性中，如 `<a href="...">`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## html.**unescape**(*s*)
 
 ​	将字符串 *s* 中的所有命名和数字字符引用 (例如 `>`, `>`, `>`) 转换为相应的Unicode字符。 此函数使用HTML 5标准为有效和无效字符引用定义的规则，以及 [`HTML 5 命名字符引用列表`](https://docs.python.org/zh-cn/3.13/library/html.entities.html#html.entities.html5)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ------
 

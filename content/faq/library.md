@@ -56,7 +56,7 @@ draft = false
 
 ### [如何找到可以用来做 X 任务的模块或应用？](https://docs.python.org/zh-cn/3.13/faq/library.html#id4)
 
-​	在 [标准库参考](https://docs.python.org/zh-cn/3.13/library/index.html#library-index) 中查找是否有适合的标准库模块。（如果你已经了解标准库的内容，可以跳过这一步）
+​	在 [标准库参考]({{< ref "/library#library-index" >}}) 中查找是否有适合的标准库模块。（如果你已经了解标准库的内容，可以跳过这一步）
 
 ​	对于第三方软件包，请搜索 [Python Package Index](https://pypi.org/) 或者是尝试 [Google](https://www.google.com/) 或其他网络搜索引擎。 搜索 "Python" 加上一两个你感兴趣的关键词通常就会找到一些有用的信息。
 
@@ -85,7 +85,7 @@ draft = false
 
 ​	第二点有很多种做法，最直接的方式是：
 
-```
+``` sh
 #!/usr/local/bin/python
 ```
 
@@ -93,7 +93,7 @@ draft = false
 
 ​	如果你希望脚本不依赖 Python 解释器的具体路径，你也可以使用 **env** 程序。假设你的 Python 解释器所在目录已经添加到了 `PATH` 环境变量中，几乎所有的类 Unix 系统都支持下面的写法：
 
-```
+``` sh
 #!/usr/bin/env python
 ```
 
@@ -101,7 +101,7 @@ draft = false
 
 ​	有时候，用户的环境变量如果太长，可能会导致 **/usr/bin/env** 执行失败；又或者甚至根本就不存在 env 程序。在这种情况下，你可以尝试使用下面的 hack 方法（来自 Alex Rezinsky）：
 
-```
+``` sh
 #! /bin/sh
 """:"
 exec python $0 ${1+"$@"}

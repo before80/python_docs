@@ -14,7 +14,7 @@ draft = false
 
 # 正则表达式指南
 
-## 作者:
+作者:
 
 ​	A.M. Kuchling <[amk@amk.ca](mailto:amk@amk.ca)>
 
@@ -136,7 +136,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import re
 >>> p = re.compile('ab*')
 >>> p
@@ -147,7 +147,7 @@ re.compile('ab*')
 
 
 
-```
+``` python
 >>> p = re.compile('ab*', re.IGNORECASE)
 ```
 
@@ -200,7 +200,7 @@ re.compile('ab*')
 
 
 
-```
+``` python
 >>> import re
 >>> p = re.compile('[a-z]+')
 >>> p
@@ -211,7 +211,7 @@ re.compile('[a-z]+')
 
 
 
-```
+``` python
 >>> p.match("")
 >>> print(p.match(""))
 None
@@ -221,7 +221,7 @@ None
 
 
 
-```
+``` python
 >>> m = p.match('tempo')
 >>> m
 <re.Match object; span=(0, 5), match='tempo'>
@@ -240,7 +240,7 @@ None
 
 
 
-```
+``` python
 >>> m.group()
 'tempo'
 >>> m.start(), m.end()
@@ -253,7 +253,7 @@ None
 
 
 
-```
+``` python
 >>> print(p.match('::: message'))
 None
 >>> m = p.search('::: message'); print(m)
@@ -279,7 +279,7 @@ else:
 
 
 
-```
+``` python
 >>> p = re.compile(r'\d+')
 >>> p.findall('12 drummers drumming, 11 pipers piping, 10 lords a-leaping')
 ['12', '11', '10']
@@ -291,7 +291,7 @@ else:
 
 
 
-```
+``` python
 >>> iterator = p.finditer('12 drummers drumming, 11 ... 10 ...')
 >>> iterator  
 <callable_iterator object at 0x...>
@@ -309,7 +309,7 @@ else:
 
 
 
-```
+``` python
 >>> print(re.match(r'From\s+', 'Fromage amk'))
 None
 >>> re.match(r'From\s+', 'From amk Thu May 14 19:12:10 1998')  
@@ -425,7 +425,7 @@ charref = re.compile("&#(0[0-7]+"
 
 
 
-```
+``` python
 >>> print(re.search('^From', 'From Here to Eternity'))  
 <re.Match object; span=(0, 4), match='From'>
 >>> print(re.search('^From', 'Reciting From Memory'))
@@ -440,7 +440,7 @@ None
 
 
 
-```
+``` python
 >>> print(re.search('}$', '{block}'))  
 <re.Match object; span=(6, 7), match='}'>
 >>> print(re.search('}$', '{block} '))
@@ -467,7 +467,7 @@ None
 
 
 
-```
+``` python
 >>> p = re.compile(r'\bclass\b')
 >>> print(p.search('no class at all'))
 <re.Match object; span=(3, 8), match='class'>
@@ -481,7 +481,7 @@ None
 
 
 
-```
+``` python
 >>> p = re.compile('\bclass\b')
 >>> print(p.search('no class at all'))
 None
@@ -512,7 +512,7 @@ To: editor@example.com
 
 
 
-```
+``` python
 >>> p = re.compile('(ab)*')
 >>> print(p.match('ababababab').span())
 (0, 10)
@@ -522,7 +522,7 @@ To: editor@example.com
 
 
 
-```
+``` python
 >>> p = re.compile('(a)b')
 >>> m = p.match('ab')
 >>> m.group()
@@ -535,7 +535,7 @@ To: editor@example.com
 
 
 
-```
+``` python
 >>> p = re.compile('(a(b)c)d')
 >>> m = p.match('abcd')
 >>> m.group(0)
@@ -550,7 +550,7 @@ To: editor@example.com
 
 
 
-```
+``` python
 >>> m.group(2,1,2)
 ('b', 'abc', 'b')
 ```
@@ -559,7 +559,7 @@ To: editor@example.com
 
 
 
-```
+``` python
 >>> m.groups()
 ('abc', 'b')
 ```
@@ -570,7 +570,7 @@ To: editor@example.com
 
 
 
-```
+``` python
 >>> p = re.compile(r'\b(\w+)\s+\1\b')
 >>> p.search('Paris in the the spring').group()
 'the the'
@@ -594,7 +594,7 @@ To: editor@example.com
 
 
 
-```
+``` python
 >>> m = re.match("([abc])+", "abc")
 >>> m.groups()
 ('c',)
@@ -611,7 +611,7 @@ To: editor@example.com
 
 
 
-```
+``` python
 >>> p = re.compile(r'(?P<word>\b\w+\b)')
 >>> m = p.search( '(((( Lots of punctuation )))' )
 >>> m.group('word')
@@ -624,7 +624,7 @@ To: editor@example.com
 
 
 
-```
+``` python
 >>> m = re.match(r'(?P<first>\w+) (?P<last>\w+)', 'Jane Doe')
 >>> m.groupdict()
 {'first': 'Jane', 'last': 'Doe'}
@@ -647,7 +647,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 
 
-```
+``` python
 >>> p = re.compile(r'\b(?P<word>\w+)\s+(?P=word)\b')
 >>> p.search('Paris in the the spring').group()
 'the the'
@@ -725,7 +725,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 
 
-```
+``` python
 >>> p = re.compile(r'\W+')
 >>> p.split('This is a test, short and sweet, of split().')
 ['This', 'is', 'a', 'test', 'short', 'and', 'sweet', 'of', 'split', '']
@@ -737,7 +737,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 
 
-```
+``` python
 >>> p = re.compile(r'\W+')
 >>> p2 = re.compile(r'(\W+)')
 >>> p.split('This... is a test.')
@@ -750,7 +750,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 
 
-```
+``` python
 >>> re.split(r'[\W]+', 'Words, words, words.')
 ['Words', 'words', 'words', '']
 >>> re.split(r'([\W]+)', 'Words, words, words.')
@@ -773,7 +773,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 
 
-```
+``` python
 >>> p = re.compile('(blue|white|red)')
 >>> p.sub('colour', 'blue socks and red shoes')
 'colour socks and colour shoes'
@@ -785,7 +785,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 
 
-```
+``` python
 >>> p = re.compile('(blue|white|red)')
 >>> p.subn('colour', 'blue socks and red shoes')
 ('colour socks and colour shoes', 2)
@@ -797,7 +797,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 
 
-```
+``` python
 >>> p = re.compile('x*')
 >>> p.sub('-', 'abxd')
 '-a-b--d-'
@@ -809,7 +809,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 
 
-```
+``` python
 >>> p = re.compile('section{ ( [^}]* ) }', re.VERBOSE)
 >>> p.sub(r'subsection{\1}','section{First} section{second}')
 'subsection{First} subsection{second}'
@@ -819,7 +819,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 
 
-```
+``` python
 >>> p = re.compile('section{ (?P<name> [^}]* ) }', re.VERBOSE)
 >>> p.sub(r'subsection{\1}','section{First}')
 'subsection{First}'
@@ -835,7 +835,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 
 
-```
+``` python
 >>> def hexrepl(match):
 ...     "返回十进制数字的十六进制字符串"
 ...     value = int(match.group())
@@ -868,7 +868,7 @@ InternalDate = re.compile(r'INTERNALDATE "'
 
 
 
-```
+``` python
 >>> print(re.match('super', 'superstition').span())
 (0, 5)
 >>> print(re.match('super', 'insuperable'))
@@ -879,7 +879,7 @@ None
 
 
 
-```
+``` python
 >>> print(re.search('super', 'superstition').span())
 (0, 5)
 >>> print(re.search('super', 'insuperable').span())
@@ -896,7 +896,7 @@ None
 
 
 
-```
+``` python
 >>> s = '<html><head><title>Title</title>'
 >>> len(s)
 32
@@ -912,7 +912,7 @@ None
 
 
 
-```
+``` python
 >>> print(re.match('<.*?>', s).group())
 <html>
 ```

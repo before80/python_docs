@@ -31,7 +31,7 @@ draft = false
 
 ​	针对标准库的改变包括移除已弃用的 API 和模块，以及用户友好度和正确性方面的常规提升。 一些旧式标准库模块自 Python 3.11 起被弃用 ([**PEP 594**](https://peps.python.org/pep-0594/)) 之后现在 [已被移除](https://docs.python.org/zh-cn/3.13/whatsnew/3.13.html#whatsnew313-pep594)。
 
-​	本文并不试图提供所有新特性的完整规范说明，而是提供一个方便的概览。 要了解完整细节请参阅相应文档，如 [标准库参数](https://docs.python.org/zh-cn/3.13/library/index.html#library-index) 和 [语言参考](https://docs.python.org/zh-cn/3.13/reference/index.html#reference-index)。 要了解某项改变的完整实现和设计理念，请参阅相应新特性的 PEP；但请注意一旦某项特性已完全实现则相应 PEP 通常不会再继续更新。 请参阅 [迁移到 Python 3.13](https://docs.python.org/zh-cn/3.13/whatsnew/3.13.html#porting-to-python-3-13) 了解如何从较早 Python 进行升级的指导。
+​	本文并不试图提供所有新特性的完整规范说明，而是提供一个方便的概览。 要了解完整细节请参阅相应文档，如 [标准库参数]({{< ref "/library#library-index" >}}) 和 [语言参考]({{< ref "/reference#reference-index" >}})。 要了解某项改变的完整实现和设计理念，请参阅相应新特性的 PEP；但请注意一旦某项特性已完全实现则相应 PEP 通常不会再继续更新。 请参阅 [迁移到 Python 3.13](https://docs.python.org/zh-cn/3.13/whatsnew/3.13.html#porting-to-python-3-13) 了解如何从较早 Python 进行升级的指导。
 
 ------
 

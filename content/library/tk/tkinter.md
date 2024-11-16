@@ -415,7 +415,7 @@ fred.config(fg="red", bg="blue")
 
 
 
-```
+``` python
 >>> print(fred.config())
 {'relief': ('relief', 'relief', 'Relief', 'raised', 'groove')}
 ```

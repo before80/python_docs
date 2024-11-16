@@ -92,7 +92,8 @@ draft = false
 
 ​	所有 [`put()`](https://docs.python.org/zh-cn/3.13/library/asyncio-queue.html#asyncio.Queue.put) 和 [`get()`](https://docs.python.org/zh-cn/3.13/library/asyncio-queue.html#asyncio.Queue.get) 被阻塞的调用方将被撤销阻塞。 如果 *immediate* 为真值，一个任务将对队列中每个剩余的项标记为已完成，它可能撤销对 [`join()`](https://docs.python.org/zh-cn/3.13/library/asyncio-queue.html#asyncio.Queue.join) 的调用方的阻塞。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **task_done**()
 
@@ -134,7 +135,8 @@ draft = false
 
 ​	当在已被关闭的列队上调用 [`put()`](https://docs.python.org/zh-cn/3.13/library/asyncio-queue.html#asyncio.Queue.put) 或 [`get()`](https://docs.python.org/zh-cn/3.13/library/asyncio-queue.html#asyncio.Queue.get) 时引发的异常。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## 例子
 

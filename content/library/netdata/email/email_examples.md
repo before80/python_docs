@@ -107,7 +107,7 @@ with smtplib.SMTP('localhost') as s:
 
 ​	以下是如何将目录的全部内容作为电子邮件消息发送的示例： [[1\]](https://docs.python.org/zh-cn/3.13/library/email.examples.html#id3)
 
-```
+``` sh
 #!/usr/bin/env python3
 
 """将目录的内容作为 MIME 消息来发送。"""
@@ -189,7 +189,7 @@ if __name__ == '__main__':
 
 ​	以下是如何将上述MIME消息解压缩到文件目录中的示例：
 
-```
+``` sh
 #!/usr/bin/env python3
 
 """将 MIME 消息解包到一个文件目录中。"""
@@ -247,7 +247,7 @@ if __name__ == '__main__':
 
 ​	以下是如何使用备用纯文本版本创建 HTML 消息的示例。 为了让事情变得更有趣，我们在 html 部分中包含了一个相关的图像，我们保存了一份我们要发送的内容到硬盘中，然后发送它。
 
-```
+``` sh
 #!/usr/bin/env python3
 
 import smtplib

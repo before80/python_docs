@@ -14,7 +14,8 @@ draft = false
 
 # `selectors` --- 高层级 I/O 复用
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 **源码:** [Lib/selectors.py](https://github.com/python/cpython/tree/3.13/Lib/selectors.py)
 
@@ -36,7 +37,7 @@ draft = false
 
 ​	参见
 
-## [`select`](https://docs.python.org/zh-cn/3.13/library/select.html#module-select)
+[`select`](https://docs.python.org/zh-cn/3.13/library/select.html#module-select)
 
 ​	低层级的 I/O 多路复用模块。
 
@@ -176,7 +177,8 @@ BaseSelector
 
 ​	此方法将返回由下层 [`select.devpoll()`](https://docs.python.org/zh-cn/3.13/library/select.html#select.devpoll) 对象所使用的文件描述符。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## *class* selectors.**KqueueSelector**
 

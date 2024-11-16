@@ -19,7 +19,8 @@ draft = false
 
 ------
 
-*Added in version 3.6:* [[1\]](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#id2)
+> Added in version 3.6:
+> [[1\]](https://docs.python.org/zh-cn/3.13/library/email.headerregistry.html#id2)
 
 ​	标头是由 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 的自定义子类来表示的。 用于表示给定标头的特定类则由创建标头时生效的 [`policy`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#module-email.policy) 的 [`header_factory`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#email.policy.EmailPolicy.header_factory) 确定。 这一节记录了 email 包为处理兼容 [**RFC 5322**](https://datatracker.ietf.org/doc/html/rfc5322.html) 的电子邮件消息所实现的特定 `header_factory`，它不仅为各种标头类型提供了自定义的标头对象，还为应用程序提供了添加其自定义标头类型的扩展机制。
 

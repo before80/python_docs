@@ -30,7 +30,8 @@ draft = false
 - 一个 [`asyncio.Task`](https://docs.python.org/zh-cn/3.13/library/asyncio-task.html#asyncio.Task) 类的实例，
 - 带有 `_asyncio_future_blocking` 属性的类似 Future 的对象。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## asyncio.**ensure_future**(*obj*, ***, *loop=None*)
 
@@ -165,7 +166,8 @@ fut.add_done_callback(
 
 ​	返回 Future 对象已绑定的事件循环。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ​	这个例子创建一个 Future 对象，创建和调度一个异步任务去设置 Future 结果，然后等待其结果:
 

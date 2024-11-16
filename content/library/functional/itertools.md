@@ -108,7 +108,7 @@ def accumulate(iterable, function=operator.add, *, initial=None):
 
 
 
-```
+``` python
 >>> data = [3, 4, 6, 2, 1, 9, 0, 7, 5, 8]
 >>> list(accumulate(data, max))              # running maximum
 [3, 4, 6, 6, 6, 9, 9, 9, 9, 9]
@@ -123,7 +123,8 @@ def accumulate(iterable, function=operator.add, *, initial=None):
 
 ​	参考一个类似函数 [`functools.reduce()`](https://docs.python.org/zh-cn/3.13/library/functools.html#functools.reduce) ，它只返回一个最终累积值。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.3 版本发生变更:* 添加了可选的 *function* 形参。
 
@@ -139,7 +140,7 @@ def accumulate(iterable, function=operator.add, *, initial=None):
 
 
 
-```
+``` python
 >>> flattened_data = ['roses', 'red', 'violets', 'blue', 'sugar', 'sweet']
 >>> unflattened = list(batched(flattened_data, 2))
 >>> unflattened
@@ -160,7 +161,8 @@ def batched(iterable, n, *, strict=False):
         yield batch
 ```
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 *在 3.13 版本发生变更:* 增加了 *strict* 选项。
 
@@ -255,7 +257,8 @@ def combinations_with_replacement(iterable, r):
         yield tuple(pool[i] for i in indices)
 ```
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## itertools.**compress**(*data*, *selectors*)
 
@@ -267,7 +270,8 @@ def compress(data, selectors):
     return (datum for datum, selector in zip(data, selectors) if selector)
 ```
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## itertools.**count**(*start=0*, *step=1*)
 
@@ -454,7 +458,8 @@ def pairwise(iterable):
         a = b
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## itertools.**permutations**(*iterable*, *r=None*)
 
@@ -552,7 +557,7 @@ def repeat(object, times=None):
 
 
 
-```
+``` python
 >>> list(map(pow, range(10), repeat(2)))
 [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 ```
@@ -639,7 +644,7 @@ def lookahead(tee_iterator):
 
 
 
-```
+``` python
 >>> iterator = iter('abcdef')
 >>> [iterator] = tee(iterator, 1)   # Make the input peekable
 >>> next(iterator)                  # Move the iterator forward

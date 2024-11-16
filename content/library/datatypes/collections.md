@@ -33,7 +33,8 @@ draft = false
 
 ## [`ChainMap`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.ChainMap) 对象
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 [`ChainMap`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.ChainMap) 类将多个映射迅速地链到一起，这样它们就可以作为一个单元处理。这通常比创建一个新字典再重复地使用 [`update()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict.update) 要快得多。
 
@@ -71,7 +72,7 @@ draft = false
 
 
 
-```
+``` python
 >>> baseline = {'music': 'bach', 'art': 'rembrandt'}
 >>> adjustments = {'art': 'van gogh', 'opera': 'carmen'}
 >>> list(ChainMap(adjustments, baseline))
@@ -82,7 +83,7 @@ draft = false
 
 
 
-```
+``` python
 >>> combined = baseline.copy()
 >>> combined.update(adjustments)
 >>> list(combined)
@@ -181,7 +182,7 @@ DeepChainMap({'zebra': 'black', 'snake': 'red'}, {}, {'lion': 'orange'})
 
 
 
-```
+``` python
 >>> # Tally occurrences of words in a list
 >>> cnt = Counter()
 >>> for word in ['red', 'blue', 'red', 'green', 'blue', 'blue']:
@@ -206,7 +207,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 
 
 
-```
+``` python
 >>> c = Counter()                           # a new, empty counter
 >>> c = Counter('gallahad')                 # a new counter from an iterable
 >>> c = Counter({'red': 4, 'blue': 2})      # a new counter from a mapping
@@ -217,7 +218,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 
 
 
-```
+``` python
 >>> c = Counter(['eggs', 'ham'])
 >>> c['bacon']                              # count of a missing element is zero
 0
@@ -227,12 +228,13 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 
 
 
-```
+``` python
 >>> c['sausage'] = 0                        # counter entry with a zero count
 >>> del c['sausage']                        # del actually removes the entry
 ```
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 *在 3.7 版本发生变更:* 作为 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 的子类，[`Counter`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter) 继承了记住插入顺序的功能。*Counter* 对象间的数学运算也是保序的。结果首先把左操作数中存在的元素按照它们在左操作数中的顺序排序，后面跟着其它元素，按它们在右操作数中的顺序排序。
 
@@ -244,7 +246,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 
 
 
-```
+``` python
 >>> c = Counter(a=4, b=2, c=0, d=-2)
 >>> sorted(c.elements())
 ['a', 'a', 'a', 'a', 'b', 'b']
@@ -256,7 +258,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 
 
 
-```
+``` python
 >>> Counter('abracadabra').most_common(3)
 [('a', 5), ('b', 2), ('r', 2)]
 ```
@@ -267,7 +269,7 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 
 
 
-```
+``` python
 >>> c = Counter(a=4, b=2, c=0, d=-2)
 >>> d = Counter(a=1, b=2, c=3, d=4)
 >>> c.subtract(d)
@@ -275,7 +277,8 @@ Counter({'blue': 3, 'red': 2, 'green': 1})
 Counter({'a': 3, 'b': 0, 'c': -3, 'd': -6})
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **total**()
 
@@ -283,13 +286,14 @@ Counter({'a': 3, 'b': 0, 'c': -3, 'd': -6})
 
 
 
-```
+``` python
 >>> c = Counter(a=10, b=5, c=0)
 >>> c.total()
 15
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ​	通常字典方法都可用于 [`Counter`](https://docs.python.org/zh-cn/3.13/library/collections.html#collections.Counter) 对象，除了有两个方法工作方式与字典并不相同。
 
@@ -325,7 +329,7 @@ c.most_common()[:-n-1:-1]       # n least common elements
 
 
 
-```
+``` python
 >>> c = Counter(a=3, b=1)
 >>> d = Counter(a=1, b=2)
 >>> c + d                       # add two counters together:  c[x] + d[x]
@@ -346,7 +350,7 @@ False
 
 
 
-```
+``` python
 >>> c = Counter(a=2, b=-4)
 >>> +c
 Counter({'a': 2})
@@ -354,7 +358,8 @@ Counter({'a': 2})
 Counter({'b': 4})
 ```
 
-*Added in version 3.3:* 添加了对一元加，一元减和位置集合操作的支持。
+> Added in version 3.3:
+> 添加了对一元加，一元减和位置集合操作的支持。
 
 ​	备注
 
@@ -414,13 +419,15 @@ Counter({'b': 4})
 
 ​	创建一份浅拷贝。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **count**(*x*)
 
 ​	计算 deque 中元素等于 *x* 的个数。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **extend**(*iterable*)
 
@@ -434,7 +441,8 @@ Counter({'b': 4})
 
 ​	返回 *x* 在 deque 中的位置（在索引 *start* 之后，索引 *stop* 之前）。 返回第一个匹配项，如果未找到则引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **insert**(*i*, *x*)
 
@@ -442,7 +450,8 @@ Counter({'b': 4})
 
 ​	如果插入会导致一个限长 deque 超出长度 *maxlen* 的话，就引发一个 [`IndexError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#IndexError)。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **pop**()
 
@@ -460,7 +469,8 @@ Counter({'b': 4})
 
 ​	将deque逆序排列。返回 `None` 。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **rotate**(*n=1*)
 
@@ -474,7 +484,8 @@ Counter({'b': 4})
 
 ​	Deque的最大尺寸，如果没有限定的话就是 `None` 。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ​	在上述操作以外，deque 还支持迭代, 封存, `len(d)`, `reversed(d)`, `copy.copy(d)`, `copy.deepcopy(d)`, 使用 [`in`](https://docs.python.org/zh-cn/3.13/reference/expressions.html#in) 运算符的成员检测以及下标引用例如通过 `d[0]` 访问首个元素等。 索引访问在两端的时间复杂度均为 *O*(1) 但在中间则会低至 *O*(*n*)。 对于快速随机访问，请改用列表。
 
@@ -484,7 +495,7 @@ Counter({'b': 4})
 
 
 
-```
+``` python
 >>> from collections import deque
 >>> d = deque('ghi')                 # make a new deque with three items
 >>> for elem in d:                   # iterate over the deque's elements
@@ -629,7 +640,7 @@ def delete_nth(d, n):
 
 
 
-```
+``` python
 >>> s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]
 >>> d = defaultdict(list)
 >>> for k, v in s:
@@ -643,7 +654,7 @@ def delete_nth(d, n):
 
 
 
-```
+``` python
 >>> d = {}
 >>> for k, v in s:
 ...     d.setdefault(k, []).append(v)
@@ -656,7 +667,7 @@ def delete_nth(d, n):
 
 
 
-```
+``` python
 >>> s = 'mississippi'
 >>> d = defaultdict(int)
 >>> for k in s:
@@ -672,7 +683,7 @@ def delete_nth(d, n):
 
 
 
-```
+``` python
 >>> def constant_factory(value):
 ...     return lambda: value
 ...
@@ -686,7 +697,7 @@ def delete_nth(d, n):
 
 
 
-```
+``` python
 >>> s = [('red', 1), ('blue', 2), ('red', 3), ('blue', 4), ('red', 1), ('blue', 4)]
 >>> d = defaultdict(set)
 >>> for k, v in s:
@@ -730,7 +741,7 @@ def delete_nth(d, n):
 
 
 
-```
+``` python
 >>> # Basic example
 >>> Point = namedtuple('Point', ['x', 'y'])
 >>> p = Point(11, y=22)     # instantiate with positional or keyword arguments
@@ -770,7 +781,7 @@ for emp in map(EmployeeRecord._make, cursor.fetchall()):
 
 
 
-```
+``` python
 >>> t = [11, 22]
 >>> Point._make(t)
 Point(x=11, y=22)
@@ -782,7 +793,7 @@ Point(x=11, y=22)
 
 
 
-```
+``` python
 >>> p = Point(x=11, y=22)
 >>> p._asdict()
 {'x': 11, 'y': 22}
@@ -798,7 +809,7 @@ Point(x=11, y=22)
 
 
 
-```
+``` python
 >>> p = Point(x=11, y=22)
 >>> p._replace(x=33)
 Point(x=33, y=22)
@@ -817,7 +828,7 @@ Point(x=33, y=22)
 
 
 
-```
+``` python
 >>> p._fields            # view the field names
 ('x', 'y')
 
@@ -833,7 +844,7 @@ Pixel(x=11, y=22, red=128, green=255, blue=0)
 
 
 
-```
+``` python
 >>> Account = namedtuple('Account', ['type', 'balance'], defaults=[0])
 >>> Account._field_defaults
 {'balance': 0}
@@ -845,7 +856,7 @@ Account(type='premium', balance=0)
 
 
 
-```
+``` python
 >>> getattr(p, 'x')
 11
 ```
@@ -854,7 +865,7 @@ Account(type='premium', balance=0)
 
 
 
-```
+``` python
 >>> d = {'x': 11, 'y': 22}
 >>> Point(**d)
 Point(x=11, y=22)
@@ -864,7 +875,7 @@ Point(x=11, y=22)
 
 
 
-```
+``` python
 >>> class Point(namedtuple('Point', ['x', 'y'])):
 ...     __slots__ = ()
 ...     @property
@@ -885,7 +896,7 @@ Point: x=14.000  y= 0.714  hypot=14.018
 
 
 
-```
+``` python
 >>> Point3D = namedtuple('Point3D', Point._fields + ('z',))
 ```
 
@@ -893,7 +904,7 @@ Point: x=14.000  y= 0.714  hypot=14.018
 
 
 
-```
+``` python
 >>> Book = namedtuple('Book', ['id', 'title', 'authors'])
 >>> Book.__doc__ += ': Hardcover book in active collection'
 >>> Book.id.__doc__ = '13-digit ISBN'
@@ -952,7 +963,8 @@ Point: x=14.000  y= 0.714  hypot=14.018
 
 ​	返回一个 [`dict`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#dict) 子类的实例，它具有专门用于重新排列字典顺序的方法。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **popitem**(*last=True*)
 
@@ -964,7 +976,7 @@ Point: x=14.000  y= 0.714  hypot=14.018
 
 
 
-```
+``` python
 >>> d = OrderedDict.fromkeys('abcde')
 >>> d.move_to_end('b')
 >>> ''.join(d)
@@ -974,7 +986,8 @@ Point: x=14.000  y= 0.714  hypot=14.018
 'bacde'
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	相对于通常的映射方法，有序字典还另外提供了逆序迭代的支持，通过 [`reversed()`](https://docs.python.org/zh-cn/3.13/library/functions.html#reversed) 。
 

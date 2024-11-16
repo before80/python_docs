@@ -19,7 +19,8 @@ draft = false
 
 ------
 
-*Added in version 3.6:* [[1\]](https://docs.python.org/zh-cn/3.13/library/email.contentmanager.html#id2)
+> Added in version 3.6:
+> [[1\]](https://docs.python.org/zh-cn/3.13/library/email.contentmanager.html#id2)
 
 ## *class* email.contentmanager.**ContentManager**
 

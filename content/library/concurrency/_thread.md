@@ -80,7 +80,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows, FreeBSD, Linux, macOS, OpenBSD, NetBSD, AIX, DragonFlyBSD, GNU/kFreeBSD.
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.13 版本发生变更:* 增加了对 GNU/kFreeBSD 的支持。
 
@@ -96,7 +97,8 @@ draft = false
 
 [`Lock.acquire`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.Lock.acquire) 的 *timeout* 形参所允许的最大值。 指定大于该值的 timeout 将引发 [`OverflowError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OverflowError)。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	锁对象有以下方法：
 

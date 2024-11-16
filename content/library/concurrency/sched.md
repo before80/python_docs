@@ -32,7 +32,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import sched, time
 >>> s = sched.scheduler(time.time, time.sleep)
 >>> def print_time(a='default'):

@@ -34,7 +34,8 @@ draft = false
 
 ​	新建一个与 *obj* 类型相同的对象，使用来自 *changes* 的值替换字段。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## *exception* copy.**Error**
 

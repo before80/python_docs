@@ -291,7 +291,8 @@ with make_server('', 8000, validator_app) as httpd:
 
 ​	CGI 代码没有办法确定该选项是否已设置，因此提供了一个单独的处理器类。 它的用法与 [`CGIHandler`](https://docs.python.org/zh-cn/3.13/library/wsgiref.html#wsgiref.handlers.CGIHandler) 相同，即通过调用 `IISCGIHandler().run(app)`，其中 `app` 是你想要发起调用的 WSGI 应用程序。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## *class* wsgiref.handlers.**BaseCGIHandler**(*stdin*, *stdout*, *stderr*, *environ*, *multithread=True*, *multiprocess=False*)
 
@@ -435,7 +436,8 @@ with make_server('', 8000, validator_app) as httpd:
 
 ​	如果你要实现自己的基于 CGI 的处理器，你可能会想要使用此例程而不是简单地从 `os.environ` 直接拷贝值。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 
 
@@ -443,7 +445,8 @@ with make_server('', 8000, validator_app) as httpd:
 
 ​	本模块提供了多种类型用于在 [**PEP 3333**](https://peps.python.org/pep-3333/) 中所描述的静态类型检查。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *class* wsgiref.types.**StartResponse**
 

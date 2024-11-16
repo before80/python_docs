@@ -14,7 +14,8 @@ draft = false
 
 # `sysconfig` --- 提供对 Python 配置信息的访问
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 **源代码:** [Lib/sysconfig](https://github.com/python/cpython/tree/3.13/Lib/sysconfig)
 
@@ -48,7 +49,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import sysconfig
 >>> sysconfig.get_config_var('Py_ENABLE_SHARED')
 0
@@ -198,7 +199,8 @@ draft = false
 
 ​	返回针对当前平台的默认方案的名称。
 
-*Added in version 3.10:* 此函数之前被命名为 `_get_default_scheme()` 并被认为属性实现细节。
+> Added in version 3.10:
+> 此函数之前被命名为 `_get_default_scheme()` 并被认为属性实现细节。
 
 *在 3.11 版本发生变更:* 当 Python 运行于虚拟环境时，将返回 *venv* 方案。
 
@@ -210,7 +212,8 @@ draft = false
 
 ​	该返回值是 [`get_scheme_names()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_scheme_names) 中列出的一个方案名称。 它可以被传给接受 *scheme* 参数的 [`sysconfig`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#module-sysconfig) 函数，如 [`get_paths()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_paths)。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 *在 3.11 版本发生变更:* 当 Python 运行于虚拟环境且 `key="prefix"` 时，将返回 *venv* 方案。
 
@@ -220,7 +223,8 @@ draft = false
 
 ​	最终用户不应使用此函数，而应改用 [`get_default_scheme()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_default_scheme) 和 [`get_preferred_scheme()`](https://docs.python.org/zh-cn/3.13/library/sysconfig.html#sysconfig.get_preferred_scheme)。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## sysconfig.**get_path_names**()
 

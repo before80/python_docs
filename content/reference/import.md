@@ -188,7 +188,8 @@ return sys.modules[spec.name]
 
 ​	模块加载器可以选择通过实现 [`create_module()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.Loader.create_module) 方法在加载期间创建模块对象。 它接受一个参数，即模块规格说明，并返回新的模块对象供加载期间使用。 `create_module()` 不需要在模块对象上设置任何属性。 如果模块返回 `None`，导入机制将自行创建新模块。
 
-*Added in version 3.4:* 加载器的 [`create_module()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.Loader.create_module) 方法。
+> Added in version 3.4:
+> 加载器的 [`create_module()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.Loader.create_module) 方法。
 
 *在 3.4 版本发生变更:* [`load_module()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.Loader.load_module) 方法被 [`exec_module()`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.abc.Loader.exec_module) 所替代，导入机制会对加载的所有样板责任作出假定。
 
@@ -226,7 +227,7 @@ from .foo import Foo
 
 
 
-```
+``` python
 >>> import spam
 >>> spam.foo
 <module 'spam.foo' from '/tmp/imports/spam/foo.py'>
@@ -248,7 +249,8 @@ from .foo import Foo
 
 ​	请参阅 [`ModuleSpec`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.ModuleSpec) 了解有关模块规格的详细内容。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 
 

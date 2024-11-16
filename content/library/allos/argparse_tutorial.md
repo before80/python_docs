@@ -14,7 +14,7 @@ draft = false
 
 # argparse 教程
 
-## 作者:
+作者:
 
 ​	Tshepang Mbambo
 
@@ -602,7 +602,7 @@ Running 'prog.py'
 
 
 
-```
+``` python
 >>> parser = argparse.ArgumentParser(prog='PROG')
 >>> parser.add_argument('-n', nargs='+')
 >>> parser.add_argument('args', nargs='*')

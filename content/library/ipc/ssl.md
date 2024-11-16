@@ -145,7 +145,8 @@ ctx = ssl.create_default_context()
 ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 ```
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.4.4 版本发生变更:* RC4 被从默认密码字符串中丢弃。
 
@@ -171,49 +172,57 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	一个字符串形式的助记符，用来指明发生错误的 OpenSSL 子模块，例如 `SSL`, `PEM` 或 `X509`。 可能的取值范围依赖于 OpenSSL 的版本。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **reason**
 
 ​	一个字符串形式的助记符，用来指明发生错误的原因，例如 `CERTIFICATE_VERIFY_FAILED`。 可能的取值范围依赖于 OpenSSL 的版本。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## *exception* ssl.**SSLZeroReturnError**
 
 [`SSLError`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLError) 的子类，当尝试读取或写入且 SSL 连接已被完全关闭时会被引发。 请注意这并不意味着下层的传输（读取 TCP）已被关闭。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## *exception* ssl.**SSLWantReadError**
 
 [`SSLError`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLError) 的子类，当尝试读取或写入数据，但在请求被满足之前还需要在下层的 TCP 传输上接收更多数据时会被 [非阻塞型 SSL 套接字](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl-nonblocking) 引发。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## *exception* ssl.**SSLWantWriteError**
 
 [`SSLError`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLError) 的子类，当尝试读取或写入数据，但在请求被满足之前还需要在下层的 TCP 传输上发送更多数据时会被 [非阻塞型 SSL 套接字](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl-nonblocking) 引发。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## *exception* ssl.**SSLSyscallError**
 
 [`SSLError`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLError) 的子类，当尝试在 SSL 套接字上执行操作时遇到系统错误时会被引发。 不幸的是，没有简单的方式能检查原始 errno 编号。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## *exception* ssl.**SSLEOFError**
 
 [`SSLError`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLError) 的子类，当 SSL 连接被突然终止时会被引发。 通常，当遇到此错误时你不应再尝试重用下层的传输。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## *exception* ssl.**SSLCertVerificationError**
 
 [`SSLError`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLError) 的子类，当证书验证失败时会被引发。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **verify_code**
 
@@ -239,7 +248,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	请阅读维基百科文章 [Cryptographically secure pseudorandom number generator (CSPRNG)](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator) 以了解对于高加密强度生成器的具体要求。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## ssl.**RAND_status**()
 
@@ -261,7 +271,7 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 
 
-```
+``` python
 >>> import ssl
 >>> timestamp = ssl.cert_time_to_seconds("Jan  5 09:34:43 2018 GMT")
 >>> timestamp  
@@ -304,7 +314,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 - `openssl_capath_env` - 指向一个 capath 的 OpenSSL 环境键,
 - `openssl_capath` - 一个 capath 目录的硬编码路径
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## ssl.**enum_certificates**(*store_name*)
 
@@ -316,7 +327,7 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 
 
-```
+``` python
 >>> ssl.enum_certificates("CA")
 [(b'data...', 'x509_asn', {'1.3.6.1.5.5.7.3.1', '1.3.6.1.5.5.7.3.2'}),
  (b'data...', 'x509_asn', True)]
@@ -324,7 +335,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## ssl.**enum_crls**(*store_name*)
 
@@ -334,7 +346,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ### 常量
 
@@ -370,61 +383,71 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	CERT_* 常量的 [`enum.IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 多项集。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## ssl.**VERIFY_DEFAULT**
 
 [`SSLContext.verify_flags`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.verify_flags) 可能的取值。 在此模式下，证书吊销列表（CRL）并不会被检查。 OpenSSL 默认不要求也不验证 CRL。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## ssl.**VERIFY_CRL_CHECK_LEAF**
 
 [`SSLContext.verify_flags`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.verify_flags) 可能的取值。 在此模式下， 只会检查对等证书而不检查任何中间 CA 证书。 此模式要求提供由对等证书颁发者（其直接上级 CA）签名的有效 CRL。 如果未使用 [`SSLContext.load_verify_locations`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.load_verify_locations) 加载正确的 CRL，则验证将失败。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## ssl.**VERIFY_CRL_CHECK_CHAIN**
 
 [`SSLContext.verify_flags`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.verify_flags) 可能的取值。 在此模式下，会检查对等证书链中所有证书的 CRL。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## ssl.**VERIFY_X509_STRICT**
 
 [`SSLContext.verify_flags`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.verify_flags) 可能的取值，用于禁用已损坏 X.509 证书的绕过操作。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## ssl.**VERIFY_ALLOW_PROXY_CERTS**
 
 [`SSLContext.verify_flags`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.verify_flags) 的可能取值，启用代理证书验证。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## ssl.**VERIFY_X509_TRUSTED_FIRST**
 
 [`SSLContext.verify_flags`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.verify_flags) 可能的取值。 它指示 OpenSSL 在构建用于验证某个证书的信任链时首选受信任的证书。 此旗标将默认被启用。
 
-*Added in version 3.4.4.*
+> Added in version 3.4.4.
+>
 
 ## ssl.**VERIFY_X509_PARTIAL_CHAIN**
 
 [`SSLContext.verify_flags`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.verify_flags) 的可能取值。它指示 OpenSSL 接受信任存储中的中间 CA 作为信任锚，与自我签名的根 CA 证书的方式相同。这样就能信任中间 CA 颁发的证书，而不一定非要去信任其祖先的根 CA。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* ssl.**VerifyFlags**
 
 ​	VERIFY_* 常量的 [`enum.IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 多项集。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## ssl.**PROTOCOL_TLS**
 
 ​	选择客户端和服务器均支持的最高协议版本。 此选项名称并不准确，实际上 "SSL" 和 "TLS" 协议均可被选择。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 *自 3.10 版本弃用:* TLS 客户端和服务器需要不同的默认设置来实现安全通信。通用的 TLS 协议常量已废弃，而采用 [`PROTOCOL_TLS_CLIENT`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.PROTOCOL_TLS_CLIENT) 和 [`PROTOCOL_TLS_SERVER`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.PROTOCOL_TLS_SERVER)。
 
@@ -432,13 +455,15 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	自动协商为客户端和服务器都支持的最高版本协议，并配置当前上下文客户端的连接。该协议默认启用 [`CERT_REQUIRED`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.CERT_REQUIRED) 和 [`check_hostname`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.check_hostname)。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## ssl.**PROTOCOL_TLS_SERVER**
 
 ​	自动协商为客户端和服务器都支持的最高版本协议，并配置上下文服务器端的连接。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## ssl.**PROTOCOL_SSLv23**
 
@@ -470,7 +495,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	选择 TLS 版本 1.1 作为通道加密协议。 仅适用于 openssl 版本 1.0.1+。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *自 3.6 版本弃用:* OpenSSL 已经废弃了所有特定于版本的协议。
 
@@ -478,7 +504,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	选用 TLS 1.2 版本作为隧道加密协议。只适用于 openssl 1.0.1 以上版本。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *自 3.6 版本弃用:* OpenSSL 已经废弃了所有特定于版本的协议。
 
@@ -486,13 +513,15 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	对存在于其他 SSL 实现中的各种缺陷启用绕过操作。 默认会设置此选项。 没有必要设置与 OpenSSL 的 `SSL_OP_ALL` 常量同名的旗标。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## ssl.**OP_NO_SSLv2**
 
 ​	阻止 SSLv2 连接。 此选项仅可与 [`PROTOCOL_TLS`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.PROTOCOL_TLS) 结合使用。 它会阻止对等方选择 SSLv2 作为协议版本。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *自 3.6 版本弃用:* SSLv2 已被弃用
 
@@ -500,7 +529,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	阻止 SSLv3 连接。 此选项仅可与 [`PROTOCOL_TLS`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.PROTOCOL_TLS) 结合使用。 它会阻止对等方选择 SSLv3 作为协议版本。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *自 3.6 版本弃用:* SSLv3 已被弃用
 
@@ -508,7 +538,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	阻止 TLSv1 连接。 此选项仅可与 [`PROTOCOL_TLS`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.PROTOCOL_TLS) 结合使用。 它会阻止对等方选择 TLSv1 作为协议版本。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *自 3.7 版本弃用:* 此选项自 OpenSSL 1.1.0 起已被弃用，请改用新的 [`SSLContext.minimum_version`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.minimum_version) 和 [`SSLContext.maximum_version`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.maximum_version)。
 
@@ -516,7 +547,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	阻止 TLSv1.1 连接。 此选项仅可与 [`PROTOCOL_TLS`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.PROTOCOL_TLS) 结合使用。 它会阻止对等方选择 TLSv1.1 作为协议版本。 仅适用于 openssl 版本 1.0.1+。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *自 3.7 版本弃用:* 此选项自 OpenSSL 1.1.0 起已被弃用。
 
@@ -524,7 +556,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	阻止 TLSv1.2 连接。 此选项仅可与 [`PROTOCOL_TLS`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.PROTOCOL_TLS) 结合使用。 它会阻止对等方选择 TLSv1.2 作为协议版本。 仅适用于 openssl 版本 1.0.1+。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *自 3.7 版本弃用:* 此选项自 OpenSSL 1.1.0 起已被弃用。
 
@@ -532,7 +565,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	阻止 TLSv1.3 连接。 此选项仅可与 [`PROTOCOL_TLS`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.PROTOCOL_TLS) 结合使用。 它会阻止对等方选择 TLSv1.3 作为协议版本。 TLS 1.3 适用于 OpenSSL 1.1.1 或更新的版本。 当 Python 编译是基于较旧版本的 OpenSSL 时，该旗标默认为 *0*。
 
-*Added in version 3.6.3.*
+> Added in version 3.6.3.
+>
 
 *自 3.7 版本弃用:* 此选项自 OpenSSL 1.1.0 起已被弃用。 它被添加到 2.7.15 和 3.6.3 是为了向下兼容 OpenSSL 1.0.2。
 
@@ -542,25 +576,29 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	此选项仅适用于 OpenSSL 1.1.0h 及更新的版本。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## ssl.**OP_CIPHER_SERVER_PREFERENCE**
 
 ​	使用服务器的密码顺序首选项，而不是客户端的首选项。 此选项在客户端套接字和 SSLv2 服务器套接字上无效。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## ssl.**OP_SINGLE_DH_USE**
 
 ​	防止对于单独 SSL 会话重用相同的 DH 密钥。 这会提升前向保密性但需要更多的计算资源。 此选项仅适用于服务器套接字。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## ssl.**OP_SINGLE_ECDH_USE**
 
 ​	防止对于单独 SSL 会话重用相同的 ECDH 密钥。 这会提升前向保密性但需要更多的计算资源。 此选项仅适用于服务器套接字。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## ssl.**OP_ENABLE_MIDDLEBOX_COMPAT**
 
@@ -568,13 +606,15 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	此选项仅适用于 OpenSSL 1.1.1 及更新的版本。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## ssl.**OP_NO_COMPRESSION**
 
 ​	在 SSL 通道上禁用压缩。 这适用于应用协议支持自己的压缩方案的情况。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## *class* ssl.**Options**
 
@@ -584,7 +624,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	阻止客户端请求会话凭据。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## ssl.**OP_IGNORE_UNEXPECTED_EOF**
 
@@ -592,7 +633,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	此选项仅适用于 OpenSSL 3.0.0 及更新的版本。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## ssl.**OP_ENABLE_KTLS**
 
@@ -602,91 +644,106 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	此选项仅适用于 OpenSSL 3.0.0 及更新的版本。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## ssl.**OP_LEGACY_SERVER_CONNECT**
 
 ​	允许只在 OpenSSL 和未打补丁的服务器之间进行旧式的不安全协商。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## ssl.**HAS_ALPN**
 
 ​	OpenSSL 库是否具有对 [**RFC 7301**](https://datatracker.ietf.org/doc/html/rfc7301.html) 中描述的 *应用层协议协商* TLS 扩展的内置支持。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## ssl.**HAS_NEVER_CHECK_COMMON_NAME**
 
 ​	OpenSSL 库是否具有对不检测目标通用名称的内置支持且 [`SSLContext.hostname_checks_common_name`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.hostname_checks_common_name) 为可写状态。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## ssl.**HAS_ECDH**
 
 ​	OpenSSL 库是否具有对基于椭圆曲线的 Diffie-Hellman 密钥交换的内置支持。 此常量应当为真值，除非发布者明确地禁用了此功能。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## ssl.**HAS_SNI**
 
 ​	OpenSSL 库是否具有对 *服务器名称提示* 扩展（在 [**RFC 6066**](https://datatracker.ietf.org/doc/html/rfc6066.html) 中定义）的内置支持。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## ssl.**HAS_NPN**
 
 ​	OpenSSL 库是否具有对 [应用层协议协商](https://en.wikipedia.org/wiki/Application-Layer_Protocol_Negotiation) 中描述的 *下一协议协商* 的内置支持。 当此常量为真值时，你可以使用 [`SSLContext.set_npn_protocols()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.set_npn_protocols) 方法来公告你想要支持的协议。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## ssl.**HAS_SSLv2**
 
 ​	OpenSSL 库是否具有对 SSL 2.0 协议的内置支持。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## ssl.**HAS_SSLv3**
 
 ​	OpenSSL 库是否具有对 SSL 3.0 协议的内置支持。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## ssl.**HAS_TLSv1**
 
 ​	OpenSSL 库是否具有对 TLS 1.0 协议的内置支持。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## ssl.**HAS_TLSv1_1**
 
 ​	OpenSSL 库是否具有对 TLS 1.1 协议的内置支持。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## ssl.**HAS_TLSv1_2**
 
 ​	OpenSSL 库是否具有对 TLS 1.2 协议的内置支持。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## ssl.**HAS_TLSv1_3**
 
 ​	OpenSSL 库是否具有对 TLS 1.3 协议的内置支持。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## ssl.**HAS_PSK**
 
 ​	OpenSSL 库是否具有对 TLS-PSK 的内置支持。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## ssl.**CHANNEL_BINDING_TYPES**
 
 ​	受支持的 TLS 通道绑定类型组成的列表。 此列表中的字符串可被用作传给 [`SSLSocket.get_channel_binding()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLSocket.get_channel_binding) 的参数。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## ssl.**OPENSSL_VERSION**
 
@@ -694,12 +751,13 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 
 
-```
+``` python
 >>> ssl.OPENSSL_VERSION
 'OpenSSL 1.0.2k  26 Jan 2017'
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## ssl.**OPENSSL_VERSION_INFO**
 
@@ -707,12 +765,13 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 
 
-```
+``` python
 >>> ssl.OPENSSL_VERSION_INFO
 (1, 0, 2, 11, 15)
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## ssl.**OPENSSL_VERSION_NUMBER**
 
@@ -720,14 +779,15 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 
 
-```
+``` python
 >>> ssl.OPENSSL_VERSION_NUMBER
 268443839
 >>> hex(ssl.OPENSSL_VERSION_NUMBER)
 '0x100020bf'
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## ssl.**ALERT_DESCRIPTION_HANDSHAKE_FAILURE**
 
@@ -739,37 +799,43 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	被用作 [`SSLContext.set_servername_callback()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.set_servername_callback) 中的回调函数的返回值。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## *class* ssl.**AlertDescription**
 
 ​	ALERT_DESCRIPTION_* 常量的 [`enum.IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 多项集。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## Purpose.**SERVER_AUTH**
 
 ​	用于 [`create_default_context()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.create_default_context) 和 [`SSLContext.load_default_certs()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.load_default_certs) 的参数。表示上下文可用于验证网络服务器（因此，它将被用于创建客户端套接字）。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## Purpose.**CLIENT_AUTH**
 
 ​	用于 [`create_default_context()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.create_default_context) 和 [`SSLContext.load_default_certs()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.load_default_certs) 的参数。 表示上下文可用于验证网络客户（因此，它将被用于创建服务器端套接字）。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## *class* ssl.**SSLErrorNumber**
 
 ​	SSL_ERROR_* 常量的 [`enum.IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 多项集。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## *class* ssl.**TLSVersion**
 
 [`SSLContext.maximum_version`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.maximum_version) 和 [`SSLContext.minimum_version`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.minimum_version) 中的 SSL 和 TLS 版本的 [`enum.IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 多项集。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## TLSVersion.**MINIMUM_SUPPORTED**
 
@@ -917,13 +983,15 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	返回由 SSL 通道另一端以 DER 编码字节列表形式提供的经过验证的证书链。 如果证书验证被禁用则此方法的行为与 [`get_unverified_chain()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLSocket.get_unverified_chain) 相同。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## SSLSocket.**get_unverified_chain**()
 
 ​	返回由 SSL 通道另一端以 DER 编码字节列表形式提供的原始证书链。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## SSLSocket.**cipher**()
 
@@ -933,7 +1001,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	返回在客户端和服务器均可用的密码列表。 所返回列表的每个条目都是由三个值组成的元组其中包含密码名称、定义其使用方式的 SSL 协议版本，以及密码所使用的加密比特位数量。 如果连接尚未建立或套接字为客户端套接字则 [`shared_ciphers()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLSocket.shared_ciphers) 将返回 `None`。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## SSLSocket.**compression**()
 
@@ -941,7 +1010,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	如果高层级的协议支持自己的压缩机制，你可以使用 [`OP_NO_COMPRESSION`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.OP_NO_COMPRESSION) 来禁用 SSL 层级的压缩。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## SSLSocket.**get_channel_binding**(*cb_type='tls-unique'*)
 
@@ -949,19 +1019,22 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 *cb_type* 形参允许选择需要的通道绑定类型。 有效的通道绑定类型在 [`CHANNEL_BINDING_TYPES`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.CHANNEL_BINDING_TYPES) 列表中列出。 目前只支持由 [**RFC 5929**](https://datatracker.ietf.org/doc/html/rfc5929.html) 所定义的 'tls-unique' 通道绑定。 如果请求了一个不受支持的通道绑定类型则将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## SSLSocket.**selected_alpn_protocol**()
 
 ​	返回在 TLS 握手期间所选择的协议。 如果 [`SSLContext.set_alpn_protocols()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.set_alpn_protocols) 未被调用，如果另一方不支持 ALPN，如果此套接字不支持任何客户端所用的协议，或者如果握手尚未发生，则将返回 `None`。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## SSLSocket.**selected_npn_protocol**()
 
 ​	返回在Return the higher-level protocol that was selected during the TLS/SSL 握手期间所选择的高层级协议。 如果 [`SSLContext.set_npn_protocols()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.set_npn_protocols) 未被调用，或者如果另一方不支持 NPN，或者如果握手尚未发生，则将返回 `None`。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *自 3.10 版本弃用:* NPN 已被 ALPN 取代。
 
@@ -983,13 +1056,15 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	仅在 OpenSSL 1.1.1 且 TLS 1.3 被启用时可用。 没有 TLS 1.3 支持，此方法将引发 [`NotImplementedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#NotImplementedError)。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## SSLSocket.**version**()
 
 ​	以字符串形式返回由连接协商确定的实际 SSL 协议版本，或者如果未建立安全连接则返回 `None`。 在撰写本文档时，可能的返回值包括 `"SSLv2"`, `"SSLv3"`, `"TLSv1"`, `"TLSv1.1"` 和 `"TLSv1.2"`。 最新的 OpenSSL 版本可能会定义更多的返回值。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## SSLSocket.**pending**()
 
@@ -999,19 +1074,22 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	该 SSL 套接字所关联的 [`SSLContext`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext) 对象。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## SSLSocket.**server_side**
 
 ​	一个布尔值，对于服务器端套接字为 `True` 而对于客户端套接字则为 `False`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## SSLSocket.**server_hostname**
 
 ​	服务器的主机名: [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 类型，对于服务器端套接字或者如果构造器中未指定主机名则为 `None`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.7 版本发生变更:* 现在该属性将始终为 ASCII 文本。 当 `server_hostname` 为一个国际化域名（IDN）时，该属性现在会保存为 A 标签形式 (`"xn--pythn-mua.org"`) 而非 U 标签形式 (`"pythön.org"`)。
 
@@ -1019,15 +1097,18 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	用于 SSL 连接的 [`SSLSession`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLSession)。 该会话将在执行 TLS 握手后对客户端和服务器端套接字可用。 对于客户端套接字该会话可以在调用 [`do_handshake()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLSocket.do_handshake) 之前被设置以重用一个会话。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## SSLSocket.**session_reused**
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## SSL 上下文
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	SSL 上下文可保存各种比单独 SSL 连接寿命更长的数据，例如 SSL 配置选项，证书和私钥等。 它还可为服务器端套接字管理缓存，以加快来自相同客户端的重复连接。
 
@@ -1094,12 +1175,13 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 
 
-```
+``` python
 >>> context.cert_store_stats()
 {'crl': 0, 'x509_ca': 1, 'x509': 2}
 ```
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## SSLContext.**load_cert_chain**(*certfile*, *keyfile=None*, *password=None*)
 
@@ -1119,7 +1201,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 *purpose* 旗标指明要加载哪种 CA 证书。 默认设置 [`Purpose.SERVER_AUTH`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.Purpose.SERVER_AUTH) 将加载被标记且被信任用于 TLS Web 服务器验证（客户端套接字）的证书。 [`Purpose.CLIENT_AUTH`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.Purpose.CLIENT_AUTH) 则会加载用于在服务器端进行客户端证书验证的 CA 证书。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## SSLContext.**load_verify_locations**(*cafile=None*, *capath=None*, *cadata=None*)
 
@@ -1145,7 +1228,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	capath 目录中的证书不会被加载，除非它们已至少被使用过一次。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## SSLContext.**get_ciphers**()
 
@@ -1155,7 +1239,7 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 
 
-```
+``` python
 >>> ctx = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
 >>> ctx.set_ciphers('ECDHE+AESGCM:!ECDSA')
 >>> ctx.get_ciphers()
@@ -1185,7 +1269,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
   'symmetric': 'aes-128-gcm'}]
 ```
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## SSLContext.**set_default_verify_paths**()
 
@@ -1209,7 +1294,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	如果 [`HAS_ALPN`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.HAS_ALPN) 为 `False` 则此方法将引发 [`NotImplementedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#NotImplementedError)。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## SSLContext.**set_npn_protocols**(*protocols*)
 
@@ -1217,7 +1303,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	如果 [`HAS_NPN`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.HAS_NPN) 为 `False` 则此方法将引发 [`NotImplementedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#NotImplementedError)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *自 3.10 版本弃用:* NPN 已被 ALPN 取代。
 
@@ -1239,7 +1326,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	如果 OpenSSL library 库在构建时定义了 OPENSSL_NO_TLSEXT 则此方法将返回 [`NotImplementedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#NotImplementedError)。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## SSLContext.**set_servername_callback**(*server_name_callback*)
 
@@ -1247,7 +1335,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	如果发生了服务器名称解码错误。 TLS 连接将终止并向客户端发出 [`ALERT_DESCRIPTION_INTERNAL_ERROR`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.ALERT_DESCRIPTION_INTERNAL_ERROR) 最严重 TLS 警告消息。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## SSLContext.**load_dh_params**(*dhfile*)
 
@@ -1255,7 +1344,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	此设置不会应用于客户端套接字。 你还可以使用 [`OP_SINGLE_DH_USE`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.OP_SINGLE_DH_USE) 选项来进一步提升安全性。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## SSLContext.**set_ecdh_curve**(*curve_name*)
 
@@ -1265,11 +1355,12 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 ​	如果 [`HAS_ECDH`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.HAS_ECDH) 为 `False` 则此方法将不可用。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ​	参见
 
-## [SSL/TLS & Perfect Forward Secrecy](https://vincent.bernat.ch/en/blog/2011-ssl-perfect-forward-secrecy)
+[SSL/TLS & Perfect Forward Secrecy](https://vincent.bernat.ch/en/blog/2011-ssl-perfect-forward-secrecy)
 
 ​	Vincent Bernat。
 
@@ -1301,7 +1392,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 [`SSLContext.wrap_socket()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.wrap_socket) 的返回类型，默认为 [`SSLSocket`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLSocket)。 该属性可以在类实例上被重载以便返回自定义的 [`SSLSocket`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLSocket) 的子类。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## SSLContext.**wrap_bio**(*incoming*, *outgoing*, *server_side=False*, *server_hostname=None*, *session=None*)
 
@@ -1317,7 +1409,8 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 [`SSLContext.wrap_bio()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.wrap_bio) 的返回类型，默认为 [`SSLObject`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLObject)。 该属性可以在类实例上被重载以便返回自定义的 [`SSLObject`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLObject) 的子类。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## SSLContext.**session_stats**()
 
@@ -1325,7 +1418,7 @@ ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
 
 
 
-```
+``` python
 >>> stats = context.session_stats()
 >>> stats['hits'], stats['misses']
 (0, 0)
@@ -1350,7 +1443,8 @@ ssl_sock = context.wrap_socket(s, server_hostname='www.verisign.com')
 ssl_sock.connect(('www.verisign.com', 443))
 ```
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.7 版本发生变更:* 现在当主机名检查被启用且 [`verify_mode`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.verify_mode) 为 [`CERT_NONE`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.CERT_NONE) 时 [`verify_mode`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.verify_mode) 会自动更改为 [`CERT_REQUIRED`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.CERT_REQUIRED)。 在之前版本中同样的操作将失败并引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
@@ -1358,7 +1452,8 @@ ssl_sock.connect(('www.verisign.com', 443))
 
 ​	每当生成或接收到密钥时，将 TLS 密钥写入到一个密钥日志文件。 密钥日志文件的设计仅适用于调试目的。 文件的格式由 NSS 指明并为许多流量分析工具例如 Wireshark 所使用。 日志文件会以追加模式打开。 写入操作会在线程之间同步，但不会在进程之间同步。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## SSLContext.**maximum_version**
 
@@ -1366,19 +1461,22 @@ ssl_sock.connect(('www.verisign.com', 443))
 
 [`maximum_version`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.maximum_version), [`minimum_version`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.minimum_version) 和 [`SSLContext.options`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.options) 等属性都会影响上下文所支持的 SSL 和 TLS 版本。 这个实现不会阻止无效的组合。 例如一个 [`options`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.options) 为 [`OP_NO_TLSv1_2`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.OP_NO_TLSv1_2) 而 [`maximum_version`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.maximum_version) 设为 [`TLSVersion.TLSv1_2`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.TLSVersion.TLSv1_2) 的上下文将无法建立 TLS 1.2 连接。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## SSLContext.**minimum_version**
 
 ​	与 [`SSLContext.maximum_version`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.maximum_version) 类似，区别在于它是所支持的最低版本或为 [`TLSVersion.MINIMUM_SUPPORTED`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.TLSVersion.MINIMUM_SUPPORTED)。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## SSLContext.**num_tickets**
 
 ​	控制 `TLS_PROTOCOL_SERVER` 上下文的 TLS 1.3 会话凭据数量。这个设置不会影响 TLS 1.0 - 1.2 的连接。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## SSLContext.**options**
 
@@ -1388,7 +1486,7 @@ ssl_sock.connect(('www.verisign.com', 443))
 
 
 
-```
+``` python
 >>> ssl.create_default_context().options  
 <Options.OP_ALL|OP_NO_SSLv3|OP_NO_SSLv2|OP_NO_COMPRESSION: 2197947391>
 ```
@@ -1403,7 +1501,8 @@ ssl_sock.connect(('www.verisign.com', 443))
 
 ​	当在服务器端套接字上启用时，[`SSLContext.verify_mode`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.verify_mode) 也必须被设为 [`CERT_OPTIONAL`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.CERT_OPTIONAL) 或 [`CERT_REQUIRED`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.CERT_REQUIRED)。 实际的客户端证书交换会被延迟直至 [`SSLSocket.verify_client_post_handshake()`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLSocket.verify_client_post_handshake) 被调用并执行了一些 I/O 操作后再进行。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## SSLContext.**protocol**
 
@@ -1413,7 +1512,8 @@ ssl_sock.connect(('www.verisign.com', 443))
 
 ​	在没有目标替代名称扩展的情况下 [`check_hostname`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.check_hostname) 是否要回退为验证证书的通用名称（默认为真值）。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 *在 3.10 版本发生变更:* 此旗标在 OpenSSL 1.1.1l 之前的版本上不起作用。 Python 3.8.9, 3.9.3 和 3.10 包括了针对之前版本的变通处理。
 
@@ -1421,19 +1521,21 @@ ssl_sock.connect(('www.verisign.com', 443))
 
 ​	An integer representing the [security level](https://docs.openssl.org/master/man3/SSL_CTX_get_security_level/) for the context. This attribute is read-only.
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## SSLContext.**verify_flags**
 
 ​	证书验证操作的标志位。可以用“或”的方式组合在一起设置 [`VERIFY_CRL_CHECK_LEAF`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.VERIFY_CRL_CHECK_LEAF) 这类标志。默认情况下，OpenSSL 既不需要也不验证证书吊销列表（CRL）。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.6 版本发生变更:* [`SSLContext.verify_flags`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.verify_flags) 返回 [`VerifyFlags`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.VerifyFlags) 旗标:
 
 
 
-```
+``` python
 >>> ssl.create_default_context().verify_flags  
 <VerifyFlags.VERIFY_X509_TRUSTED_FIRST: 32768>
 ```
@@ -1446,7 +1548,7 @@ ssl_sock.connect(('www.verisign.com', 443))
 
 
 
-```
+``` python
 >>> ssl.create_default_context().verify_mode  
 <VerifyMode.CERT_REQUIRED: 2>
 ```
@@ -1494,7 +1596,8 @@ context.set_psk_client_callback(callback)
 
 ​	如果 [`HAS_PSK`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.HAS_PSK) 为 `False` 则此方法将引发 [`NotImplementedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#NotImplementedError)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## SSLContext.**set_psk_server_callback**(*callback*, *identity_hint=None*)
 
@@ -1536,7 +1639,8 @@ context.set_psk_server_callback(callback, 'ServerId_1')
 
 ​	如果 [`HAS_PSK`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.HAS_PSK) 为 `False` 则此方法将引发 [`NotImplementedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#NotImplementedError)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 
 
@@ -1640,7 +1744,7 @@ else:
 
 
 
-```
+``` python
 >>> context = ssl.create_default_context()
 ```
 
@@ -1648,7 +1752,7 @@ else:
 
 
 
-```
+``` python
 >>> context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
 >>> context.load_verify_locations("/etc/ssl/certs/ca-bundle.crt")
 ```
@@ -1661,7 +1765,7 @@ else:
 
 
 
-```
+``` python
 >>> conn = context.wrap_socket(socket.socket(socket.AF_INET),
 ...                            server_hostname="www.python.org")
 >>> conn.connect(("www.python.org", 443))
@@ -1671,7 +1775,7 @@ else:
 
 
 
-```
+``` python
 >>> cert = conn.getpeercert()
 ```
 
@@ -1679,7 +1783,7 @@ else:
 
 
 
-```
+``` python
 >>> pprint.pprint(cert)
 {'OCSP': ('http://ocsp.digicert.com',),
  'caIssuers': ('http://cacerts.digicert.com/DigiCertSHA2ExtendedValidationServerCA.crt',),
@@ -1725,7 +1829,7 @@ else:
 
 
 
-```
+``` python
 >>> conn.sendall(b"HEAD / HTTP/1.0\r\nHost: linuxfr.org\r\n\r\n")
 >>> pprint.pprint(conn.recv(1024).split(b"\r\n"))
 [b'HTTP/1.1 200 OK',
@@ -1831,7 +1935,8 @@ def deal_with_client(connstream):
 
 ## 内存 BIO 支持
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ​	自从 SSL 模块在 Python 2.6 起被引入之后，[`SSLSocket`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLSocket) 类提供了两个互相关联但彼此独立的功能分块:
 
@@ -1918,7 +2023,8 @@ def deal_with_client(connstream):
 
 ## SSL 会话
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## *class* ssl.**SSLSession**
 
@@ -1946,7 +2052,7 @@ def deal_with_client(connstream):
 
 
 
-```
+``` python
 >>> import ssl, smtplib
 >>> smtp = smtplib.SMTP("mail.python.org", port=587)
 >>> context = ssl.create_default_context()
@@ -1974,7 +2080,7 @@ def deal_with_client(connstream):
 
 
 
-```
+``` python
 >>> client_context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
 >>> client_context.minimum_version = ssl.TLSVersion.TLSv1_3
 >>> client_context.maximum_version = ssl.TLSVersion.TLSv1_3
@@ -1994,7 +2100,8 @@ def deal_with_client(connstream):
 
 ## TLS 1.3
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ​	TLS 1.3 协议的行为与低版本的 TLS/SSL 略有不同。某些 TLS 1.3 新特性还不可用。
 

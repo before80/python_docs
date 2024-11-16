@@ -14,11 +14,11 @@ draft = false
 
 # 用 Python 进行 Curses 编程
 
-## 作者:
+作者:
 
 ​	A.M. Kuchling, Eric S. Raymond
 
-## 发布版本:
+发布版本:
 
 ​	2.04
 

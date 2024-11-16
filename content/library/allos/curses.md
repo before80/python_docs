@@ -36,19 +36,19 @@ draft = false
 
 ​	参见
 
-## 模块 [`curses.ascii`](https://docs.python.org/zh-cn/3.13/library/curses.ascii.html#module-curses.ascii)
+模块 [`curses.ascii`](https://docs.python.org/zh-cn/3.13/library/curses.ascii.html#module-curses.ascii)
 
 ​	在 ASCII 字符上工作的工具，无论你的区域设置是什么。
 
-## 模块 [`curses.panel`](https://docs.python.org/zh-cn/3.13/library/curses.panel.html#module-curses.panel)
+模块 [`curses.panel`](https://docs.python.org/zh-cn/3.13/library/curses.panel.html#module-curses.panel)
 
 ​	为 curses 窗口添加深度的面板栈扩展。
 
-## 模块 [`curses.textpad`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses.textpad)
+模块 [`curses.textpad`](https://docs.python.org/zh-cn/3.13/library/curses.html#module-curses.textpad)
 
 ​	用于使 curses 支持 **Emacs** 式绑定的可编辑文本部件。
 
-## [用 Python 进行 Curses 编程](https://docs.python.org/zh-cn/3.13/howto/curses.html#curses-howto)
+[用 Python 进行 Curses 编程](https://docs.python.org/zh-cn/3.13/howto/curses.html#curses-howto)
 
 ​	关于配合 Python 使用 curses 的教学材料，由 Andrew Kuchling 和 Eric Raymond 撰写。
 
@@ -164,7 +164,8 @@ draft = false
 
 ​	扩展颜色支持要求 ncurses 版本为 6.1 或更新。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## curses.**has_ic**()
 
@@ -322,25 +323,29 @@ draft = false
 
 ​	提取通过 [`set_escdelay()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.set_escdelay) 设置的值。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## curses.**set_escdelay**(*ms*)
 
 ​	设置读取一个转义字符后要等待的毫秒数，以区分在键盘上输入的单个转义字符与通过光标和功能键发送的转义序列。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## curses.**get_tabsize**()
 
 ​	提取通过 [`set_tabsize()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.set_tabsize) 设置的值。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## curses.**set_tabsize**(*size*)
 
 ​	设置 curses 库在将制表符添加到窗口时将制表符转换为空格所使用的列数。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## curses.**setsyx**(*y*, *x*)
 
@@ -404,7 +409,8 @@ draft = false
 
 ​	更新 [`LINES`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.LINES) 和 [`COLS`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.COLS) 模块变量。 适用于检测手动调整屏幕大小。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## curses.**unget_wch**(*ch*)
 
@@ -416,7 +422,8 @@ draft = false
 
 ​	在 `get_wch()` 被调用之前只能推送一个 *ch*。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## curses.**ungetmouse**(*id*, *x*, *y*, *z*, *bstate*)
 
@@ -575,7 +582,8 @@ draft = false
 
 ​	用于编码方法参数（Unicode 字符串和字符）的编码格式。 encoding 属性是在创建子窗口时从父窗口继承的，例如通过 [`window.subwin()`](https://docs.python.org/zh-cn/3.13/library/curses.html#curses.window.subwin)。 在默认情况下，会使用当前语言区域的编码格式（参见 [`locale.getencoding()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.getencoding) 文档）。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## window.**erase**()
 
@@ -597,7 +605,8 @@ draft = false
 
 ​	获取一个宽字符。 对于大多数键都是返回一个字符，对于功能键、小键盘键和其他特殊键则是返回一个整数。 在无延迟模式下，如果没有输入则引发一个异常。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## window.**getkey**([*y*, *x*])
 
@@ -849,7 +858,8 @@ draft = false
 
 ​	可用性：如果使用了 ncurses 库。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## curses.**COLORS**
 
@@ -889,7 +899,8 @@ draft = false
 | curses.**A_TOP**        | 顶部高亮           |
 | curses.**A_VERTICAL**   | 垂直突出显示       |
 
-*Added in version 3.7:* `A_ITALIC` was added.
+> Added in version 3.7:
+> `A_ITALIC` was added.
 
 ​	有几个常量可用于提取某些方法返回的相应属性。
 

@@ -54,13 +54,15 @@ draft = false
 
 [`enum.IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 是 SIG* 常量和 CTRL_* 常量的多项集。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## *class* signal.**Handlers**
 
 [`enum.IntEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntEnum) 是常量 [`SIG_DFL`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.SIG_DFL) 和 [`SIG_IGN`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.SIG_IGN) 的多项集。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## *class* signal.**Sigmasks**
 
@@ -70,7 +72,8 @@ draft = false
 
 ​	请参阅手册页面 *[sigprocmask(2)](https://manpages.debian.org/sigprocmask(2))* 和 *[pthread_sigmask(3)](https://manpages.debian.org/pthread_sigmask(3))* 了解更多信息。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ​	在 [`signal`](https://docs.python.org/zh-cn/3.13/library/signal.html#module-signal) 模块中定义的变量是：
 
@@ -176,7 +179,8 @@ draft = false
 
 ​	在信号可用的架构上。 参见手册页面 *[signal(7)](https://manpages.debian.org/signal(7))* 了解更多信息。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## signal.**SIGTERM**
 
@@ -210,7 +214,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows.
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## signal.**CTRL_BREAK_EVENT**
 
@@ -218,7 +223,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows.
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## signal.**NSIG**
 
@@ -240,19 +246,22 @@ draft = false
 
 [`pthread_sigmask()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.pthread_sigmask) 的 *how* 形参的一个可能的值，表明信号将会被阻塞。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## signal.**SIG_UNBLOCK**
 
 [`pthread_sigmask()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.pthread_sigmask) 的 *how* 形参的是个可能的值，表明信号将被解除阻塞。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## signal.**SIG_SETMASK**
 
 [`pthread_sigmask()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.pthread_sigmask) 的 *how* 形参的一个可能的值，表明信号掩码将要被替换。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 [`signal`](https://docs.python.org/zh-cn/3.13/library/signal.html#module-signal) 模块定义了一个异常:
 
@@ -260,7 +269,8 @@ draft = false
 
 ​	作为来自下层 [`setitimer()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.setitimer) 或 [`getitimer()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.getitimer) 实现错误的信号被引发。 如果将无效的定时器或负的时间值传给 [`setitimer()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.setitimer) 就导致这个错误。 此错误是 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 的子类型。
 
-*Added in version 3.3:* 此错误是 [`IOError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#IOError) 的子类型，现在则是 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 的别名。
+> Added in version 3.3:
+> 此错误是 [`IOError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#IOError) 的子类型，现在则是 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 的别名。
 
 [`signal`](https://docs.python.org/zh-cn/3.13/library/signal.html#module-signal) 模块定义了以下函数:
 
@@ -280,13 +290,15 @@ draft = false
 
 ​	返回信号 *signalnum* 的描述信息，例如 "Interrupt" 对应 [`SIGINT`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.SIGINT)。 如果 *signalnum* 没有描述信息则返回 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None)。 如果 *signalnum* 无效则引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## signal.**valid_signals**()
 
 ​	返回本平台上的有效信号编号集。 这可能会少于 `range(1, NSIG)`，如果某些信号被系统保留作为内部使用的话。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## signal.**pause**()
 
@@ -302,7 +314,8 @@ draft = false
 
 ​	向调用方进程发送一个信号。 返回空值。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## signal.**pidfd_send_signal**(*pidfd*, *sig*, *siginfo=None*, *flags=0*)
 
@@ -312,7 +325,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 5.1, Android >= [`build-time`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.getandroidapilevel) API level 31
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## signal.**pthread_kill**(*thread_id*, *signalnum*)
 
@@ -330,7 +344,8 @@ draft = false
 
 ​	另请参阅 [`os.kill()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.kill)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## signal.**pthread_sigmask**(*how*, *mask*)
 
@@ -354,7 +369,8 @@ draft = false
 
 ​	另请参阅 [`pause()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.pause), [`sigpending()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.sigpending) 和 [`sigwait()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.sigwait)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## signal.**setitimer**(*which*, *seconds*, *interval=0.0*)
 
@@ -422,7 +438,8 @@ draft = false
 
 ​	另请参阅 [`pause()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.pause), [`pthread_sigmask()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.pthread_sigmask) 和 [`sigwait()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.sigwait)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## signal.**sigwait**(*sigset*)
 
@@ -434,7 +451,8 @@ draft = false
 
 ​	另请参阅 [`pause()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.pause), [`pthread_sigmask()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.pthread_sigmask), [`sigpending()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.sigpending), [`sigwaitinfo()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.sigwaitinfo) 和 [`sigtimedwait()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.sigtimedwait)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## signal.**sigwaitinfo**(*sigset*)
 
@@ -448,7 +466,8 @@ draft = false
 
 ​	另请参阅 [`pause()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.pause), [`sigwait()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.sigwait) 和 [`sigtimedwait()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.sigtimedwait)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.5 版本发生变更:* 当被某个 不在 *sigset* 中的信号中断时本函数将进行重试并且信号处理程序不会引发异常（请参阅 [**PEP 475**](https://peps.python.org/pep-0475/) 了解其理由）。
 
@@ -462,7 +481,8 @@ draft = false
 
 ​	另请参阅 [`pause()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.pause), [`sigwait()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.sigwait) 和 [`sigwaitinfo()`](https://docs.python.org/zh-cn/3.13/library/signal.html#signal.sigwaitinfo)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.5 版本发生变更:* 现在当此函数被某个不在 *sigset* 中的信号中断时将以计算出的 *timeout* 进行重试并且信号处理程序不会引发异常（请参阅 [**PEP 475**](https://peps.python.org/pep-0475/) 了解其理由）。
 

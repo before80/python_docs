@@ -24,19 +24,19 @@ draft = false
 
 ​	参见
 
-## https://www.debian.org/doc/manuals/maint-guide/first.en.html
+https://www.debian.org/doc/manuals/maint-guide/first.en.html
 
 ​	对于Debian用户
 
-## https://en.opensuse.org/Portal:Packaging
+https://en.opensuse.org/Portal:Packaging
 
 ​	对于OpenSuse用户
 
-## https://docs.fedoraproject.org/en-US/package-maintainers/Packaging_Tutorial_GNU_Hello/
+https://docs.fedoraproject.org/en-US/package-maintainers/Packaging_Tutorial_GNU_Hello/
 
 ​	对于Fedora用户
 
-## https://slackbook.org/html/package-management-making-packages.html
+https://slackbook.org/html/package-management-making-packages.html
 
 ​	对于Slackware用户
 
@@ -106,7 +106,7 @@ $ chmod +x script
 
 ​	并在脚本的顶部放置一个合适的Shebang线。一个很好的选择通常是:
 
-```
+``` sh
 #!/usr/bin/env python3
 ```
 

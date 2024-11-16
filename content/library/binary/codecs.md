@@ -118,7 +118,8 @@ draft = false
 
 ​	注销一个编解码器搜索函数并清空注册表缓存。 如果指定搜索函数未被注册，则不做任何操作。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ​	虽然内置的 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open) 和相关联的 [`io`](https://docs.python.org/zh-cn/3.13/library/io.html#module-io) 模块是操作已编码文本文件的推荐方式，但本模块也提供了额外的工具函数和类，允许在操作二进制文件时使用更多种类的编解码器：
 
@@ -202,7 +203,7 @@ draft = false
 
 
 
-```
+``` python
 >>> 'German ß, ♬'.encode(encoding='ascii', errors='backslashreplace')
 b'German \\xdf, \\u266c'
 >>> 'German ß, ♬'.encode(encoding='ascii', errors='xmlcharrefreplace')
@@ -232,11 +233,13 @@ b'German &#223;, &#9836;'
 | :---------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | `'surrogatepass'` | utf-8, utf-16, utf-32, utf-16-be, utf-16-le, utf-32-be, utf-32-le | 允许将代理码位 (`U+D800` - `U+DFFF`) 作为正常码位来编码和解码。 否则这些编解码器会将 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 中出现的代理码位视为错误。 |
 
-*Added in version 3.1:* `'surrogateescape'` 和 `'surrogatepass'` 错误处理方案。
+> Added in version 3.1:
+> `'surrogateescape'` 和 `'surrogatepass'` 错误处理方案。
 
 *在 3.4 版本发生变更:* `'surrogatepass'` 错误处理器现在可适用于 utf-16* 和 utf-32* 编解码器。
 
-*Added in version 3.5:* `'namereplace'` 错误处理方案。
+> Added in version 3.5:
+> `'namereplace'` 错误处理方案。
 
 *在 3.5 版本发生变更:* `'backslashreplace'` 错误处理器现在可适用于解码和转码。
 
@@ -298,7 +301,8 @@ b'German &#223;, &#9836;'
 
 ​	不可编码的字符会被替换为 `\N{...}` 转义序列。 出现在花括号内的字符集合是来自于 Unicode 字符数据库的 Name 属性。 例如，德语小写字母 `'ß'` 将被转换为字符序列 `\N{LATIN SMALL LETTER SHARP S}`。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 
 
@@ -726,7 +730,8 @@ b'German &#223;, &#9836;'
 
 ​	除了 [字节类对象](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytes-like-object)，`'base64_codec'` 也接受仅包含 ASCII 的 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 实例用于解码
 
-*Added in version 3.2:* 恢复二进制转换。
+> Added in version 3.2:
+> 恢复二进制转换。
 
 *在 3.4 版本发生变更:* 恢复二进制转换的别名。
 
@@ -740,7 +745,8 @@ b'German &#223;, &#9836;'
 | :----- | :---- | :--------------------------- |
 | rot_13 | rot13 | 返回操作数的凯撒密码加密结果 |
 
-*Added in version 3.2:* 恢复 `rot_13` 文本转换。
+> Added in version 3.2:
+> 恢复 `rot_13` 文本转换。
 
 *在 3.4 版本发生变更:* 恢复 `rot13` 别名。
 

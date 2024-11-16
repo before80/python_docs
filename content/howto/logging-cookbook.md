@@ -14,7 +14,7 @@ draft = false
 
 # 日志专题手册
 
-## 作者:
+作者:
 
 ​	Vinay Sajip <vinay_sajip at red-dove dot com>
 
@@ -489,7 +489,7 @@ except KeyboardInterrupt:
 
 ​	以下脚本将接受文件名作为参数，然后将此文件发送到服务器，前面加上文件的二进制编码长度，做为新的日志配置：
 
-```
+``` sh
 #!/usr/bin/env python
 import socket, sys, struct
 
@@ -838,7 +838,7 @@ if __name__ == '__main__':
 
 ​	让我们假定这个库可以通过以下代码来模拟:
 
-```
+``` python
 # webapplib.py
 import logging
 import time
@@ -1370,7 +1370,7 @@ logging_rotatingfile_example.out.5
 
 
 
-```
+``` python
 >>> import logging
 >>> root = logging.getLogger()
 >>> root.setLevel(logging.DEBUG)
@@ -1398,7 +1398,7 @@ logging_rotatingfile_example.out.5
 
 
 
-```
+``` python
 >>> logger.error('This is an%s %s %s', 'other,', 'ERROR,', 'message')
 2010-10-28 15:19:29,833 foo.bar ERROR This is another, ERROR, message
 >>>
@@ -1434,7 +1434,7 @@ class DollarMessage:
 
 
 
-```
+``` python
 >>> from wherever import BraceMessage as __
 >>> print(__('Message with {0} {name}', 2, name='placeholders'))
 Message with 2 placeholders
@@ -2351,7 +2351,7 @@ class DollarMessage:
 
 
 
-```
+``` python
 >>> __ = BraceMessage
 >>> print(__('Message with {0} {1}', 2, 'placeholders'))
 Message with 2 placeholders
@@ -2368,7 +2368,7 @@ Message with coordinates: (0.50, 0.50)
 
 
 
-```
+``` python
 >>> __ = DollarMessage
 >>> print(__('Message with $num $what', num=2, what='placeholders'))
 Message with 2 placeholders
@@ -3417,7 +3417,7 @@ sys.stderr = LoggerWriter(logger, logging.WARNING)
 
 
 
-```
+``` python
 >>> print('Foo')
 INFO:demo:Foo
 >>> print('Bar', file=sys.stderr)

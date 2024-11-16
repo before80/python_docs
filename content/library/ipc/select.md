@@ -44,7 +44,8 @@ draft = false
 
 ​	新的文件描述符是 [不可继承的](https://docs.python.org/zh-cn/3.13/library/os.html#fd-inheritance)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.4 版本发生变更:* 新的文件描述符现在是不可继承的。
 
@@ -114,7 +115,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 
 
@@ -128,19 +130,22 @@ draft = false
 
 ​	关闭轮询对象的文件描述符。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## devpoll.**closed**
 
 ​	如果轮询对象已关闭，则返回 `True`。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## devpoll.**fileno**()
 
 ​	返回轮询对象的文件描述符对应的数字。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## devpoll.**register**(*fd*[, *eventmask*])
 

@@ -64,7 +64,8 @@ draft = false
 - `collected` 是该代中被回收的对象总数；
 - `uncollectable` 是在这一代中被发现无法收集的对象总数 （因此被移动到 [`garbage`](https://docs.python.org/zh-cn/3.13/library/gc.html#gc.garbage) 列表中）。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## gc.**set_threshold**(*threshold0*[, *threshold1*[, *threshold2*]])
 
@@ -106,7 +107,7 @@ draft = false
 
 
 
-```
+``` python
 >>> gc.is_tracked(0)
 False
 >>> gc.is_tracked("a")
@@ -121,7 +122,8 @@ False
 True
 ```
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## gc.**is_finalized**(*obj*)
 
@@ -129,7 +131,7 @@ True
 
 
 
-```
+``` python
 >>> x = None
 >>> class Lazarus:
 ...     def __del__(self):
@@ -144,7 +146,8 @@ False
 True
 ```
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## gc.**freeze**()
 
@@ -152,19 +155,22 @@ True
 
 ​	如果一个进程将执行 `fork()` 而不执行 `exec()`，则在子进程中避免不必要的写入时拷贝将最大化内存共享并减少总体内存使用。 这需要同时在父进程的内存页中避免创建已释放的“空洞”并确保在子进程中的 GC 回收不会触及源自父进程的长寿对象的 `gc_refs` 计数器。 要同时达成这两个目标，请在父进程中尽早调用 `gc.disable()`，在 `fork()` 之前调用 `gc.freeze()`，并在子进程中尽早调用 `gc.enable()`。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## gc.**unfreeze**()
 
 ​	解冻永久代中的对象，并将它们放回到年老代中。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## gc.**get_freeze_count**()
 
 ​	返回永久代中的对象数量。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ​	提供以下变量仅供只读访问（你可以修改但不应该重绑定它们）：
 
@@ -202,7 +208,8 @@ True
 >
 > ​	使应用程序可以识别和清理他们自己的在 [`garbage`](https://docs.python.org/zh-cn/3.13/library/gc.html#gc.garbage) 中的不可回收类型的对象。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ​	以下常量被用于 [`set_debug()`](https://docs.python.org/zh-cn/3.13/library/gc.html#gc.set_debug) ：
 

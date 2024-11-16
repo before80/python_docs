@@ -44,7 +44,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import asyncio
 
 >>> async def main():
@@ -61,7 +61,7 @@ world
 
 
 
-```
+``` python
 >>> main()
 <coroutine object main at 0x1053bb7c8>
 ```
@@ -284,7 +284,8 @@ for i in range(10):
     task.add_done_callback(background_tasks.discard)
 ```
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 *在 3.8 版本发生变更:* 增加了 *name* 形参。
 
@@ -308,7 +309,8 @@ for i in range(10):
 
 ​	持有一个任务分组的 [异步上下文管理器](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#async-context-managers)。 可以使用 [`create_task()`](https://docs.python.org/zh-cn/3.13/library/asyncio-task.html#asyncio.create_task) 将任务添加到分组中。 当该上下文管理器退出时所有任务都将被等待。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **create_task**(*coro*, ***, *name=None*, *context=None*)
 
@@ -515,7 +517,8 @@ asyncio.run(main())
 
 ​	协程是立即执行是一项语言改变。 如果协程返回或引发异常，其任务将不会被加入事件循环上的计划任务。 如果协程执行发生阻塞，其任务将被加入事件循环上的计划任务。 这项改变可能会向现有应用程序引入行为变化。 例如，应用程序的任务执行顺序可能会发生改变。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## asyncio.**create_eager_task_factory**(*custom_task_constructor*)
 
@@ -525,7 +528,8 @@ asyncio.run(main())
 
 ​	此函数返回一个 *可调用对象*，将通过 [`loop.set_task_factory(factory)`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.loop.set_task_factory)) 被用作一个事件循环的任务工厂。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## [屏蔽取消操作](https://docs.python.org/zh-cn/3.13/library/asyncio-task.html#id11)
 
@@ -655,7 +659,8 @@ async def main():
 
 ​	超时上下文管理器可以被安全地嵌套。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## asyncio.**timeout_at**(*when*)
 
@@ -676,7 +681,8 @@ async def main():
     print("This statement will run regardless.")
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *coroutine* asyncio.**wait_for**(*aw*, *timeout*)
 
@@ -854,7 +860,8 @@ asyncio.run(main())
 
 ​	由于 [GIL](https://docs.python.org/zh-cn/3.13/glossary.html#term-GIL) 的存在，`asyncio.to_thread()` 通常只能被用来将 IO 密集型函数变为非阻塞的。 但是，对于会释放 GIL 的扩展模块或无此限制的替代性 Python 实现来说，`asyncio.to_thread()` 也可被用于 CPU 密集型函数。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## [跨线程调度](https://docs.python.org/zh-cn/3.13/library/asyncio-task.html#id15)
 
@@ -895,7 +902,8 @@ else:
 
 ​	不同于其他 asyncio 函数，此函数要求显式地传入 *loop* 参数。
 
-*Added in version 3.5.1.*
+> Added in version 3.5.1.
+>
 
 ## [内省](https://docs.python.org/zh-cn/3.13/library/asyncio-task.html#id16)
 
@@ -905,7 +913,8 @@ else:
 
 ​	如果 *loop* 为 `None` 则会使用 [`get_running_loop()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.get_running_loop) 获取当前事件循环。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## asyncio.**all_tasks**(*loop=None*)
 
@@ -913,13 +922,15 @@ else:
 
 ​	如果 *loop* 为 `None`，则会使用 [`get_running_loop()`](https://docs.python.org/zh-cn/3.13/library/asyncio-eventloop.html#asyncio.get_running_loop) 获取当前事件循环。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## asyncio.**iscoroutine**(*obj*)
 
 ​	如果 *obj* 是一个协程对象则返回 `True`。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## [Task 对象](https://docs.python.org/zh-cn/3.13/library/asyncio-task.html#id17)
 
@@ -1027,7 +1038,8 @@ else:
 
 ​	这对于已经主动完成的任务将返回 `None`。 参见 [主动任务工厂](https://docs.python.org/zh-cn/3.13/library/asyncio-task.html#eager-task-factory)。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.12 版本发生变更:* 新增加的主动任务执行意味着结果可能为 `None`。
 
@@ -1035,7 +1047,8 @@ else:
 
 ​	返回关联到该任务的 [`contextvars.Context`](https://docs.python.org/zh-cn/3.13/library/contextvars.html#contextvars.Context) 对象。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **get_name**()
 
@@ -1043,7 +1056,8 @@ else:
 
 ​	如果没有一个 Task 名称被显式地赋值，默认的 asyncio Task 实现会在实例化期间生成一个默认名称。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **set_name**(*value*)
 
@@ -1053,7 +1067,8 @@ else:
 
 ​	在默认的 Task 实现中，名称将在任务对象的 [`repr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#repr) 输出中可见。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **cancel**(*msg=None*)
 
@@ -1119,7 +1134,8 @@ asyncio.run(main())
 
 ​	请注意一理被取消的任务执行完成，继续调用 [`uncancel()`](https://docs.python.org/zh-cn/3.13/library/asyncio-task.html#asyncio.Task.uncancel) 将是低效的。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ​	此方法是供 asyncio 内部使用而不应被最终用户代码所使用。 特别地，在一个 Task 成功地保持未取消状态的时候使用，这可以允许结构化的并发元素如 [任务组](https://docs.python.org/zh-cn/3.13/library/asyncio-task.html#taskgroups) 和 [`asyncio.timeout()`](https://docs.python.org/zh-cn/3.13/library/asyncio-task.html#asyncio.timeout) 继续运行，将取消操作隔离在相应的结构化代码块中。 例如:
 
@@ -1152,4 +1168,5 @@ async def make_request_with_timeout():
 
 ​	此方法是供 asyncio 内部使用而不应被最终用户代码所使用。 请参阅 [`uncancel()`](https://docs.python.org/zh-cn/3.13/library/asyncio-task.html#asyncio.Task.uncancel) 了解详情。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>

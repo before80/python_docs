@@ -70,7 +70,7 @@ draft = false
 
 
 
-```
+``` python
 >>> fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
 >>> fruits.count('apple')
 2
@@ -105,7 +105,7 @@ draft = false
 
 
 
-```
+``` python
 >>> stack = [3, 4, 5]
 >>> stack.append(6)
 >>> stack.append(7)
@@ -133,7 +133,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from collections import deque
 >>> queue = deque(["Eric", "John", "Michael"])
 >>> queue.append("Terry")           # Terry 到了
@@ -156,7 +156,7 @@ deque(['Michael', 'Terry', 'Graham'])
 
 
 
-```
+``` python
 >>> squares = []
 >>> for x in range(10):
 ...     squares.append(x**2)
@@ -183,7 +183,7 @@ squares = [x**2 for x in range(10)]
 
 
 
-```
+``` python
 >>> [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
 [(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
 ```
@@ -192,7 +192,7 @@ squares = [x**2 for x in range(10)]
 
 
 
-```
+``` python
 >>> combs = []
 >>> for x in [1,2,3]:
 ...     for y in [3,1,4]:
@@ -209,7 +209,7 @@ squares = [x**2 for x in range(10)]
 
 
 
-```
+``` python
 >>> vec = [-4, -2, 0, 2, 4]
 >>> # 新建一个将值翻倍的列表
 >>> [x*2 for x in vec]
@@ -243,7 +243,7 @@ SyntaxError: did you forget parentheses around the comprehension target?
 
 
 
-```
+``` python
 >>> from math import pi
 >>> [str(round(pi, i)) for i in range(1, 6)]
 ['3.1', '3.14', '3.142', '3.1416', '3.14159']
@@ -257,7 +257,7 @@ SyntaxError: did you forget parentheses around the comprehension target?
 
 
 
-```
+``` python
 >>> matrix = [
 ...     [1, 2, 3, 4],
 ...     [5, 6, 7, 8],
@@ -269,7 +269,7 @@ SyntaxError: did you forget parentheses around the comprehension target?
 
 
 
-```
+``` python
 >>> [[row[i] for row in matrix] for i in range(4)]
 [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
 ```
@@ -278,7 +278,7 @@ SyntaxError: did you forget parentheses around the comprehension target?
 
 
 
-```
+``` python
 >>> transposed = []
 >>> for i in range(4):
 ...     transposed.append([row[i] for row in matrix])
@@ -291,7 +291,7 @@ SyntaxError: did you forget parentheses around the comprehension target?
 
 
 
-```
+``` python
 >>> transposed = []
 >>> for i in range(4):
 ...     # 以下 3 行实现了嵌套的列表组
@@ -308,7 +308,7 @@ SyntaxError: did you forget parentheses around the comprehension target?
 
 
 
-```
+``` python
 >>> list(zip(*matrix))
 [(1, 5, 9), (2, 6, 10), (3, 7, 11), (4, 8, 12)]
 ```
@@ -323,7 +323,7 @@ SyntaxError: did you forget parentheses around the comprehension target?
 
 
 
-```
+``` python
 >>> a = [-1, 1, 66.25, 333, 333, 1234.5]
 >>> del a[0]
 >>> a
@@ -340,7 +340,7 @@ SyntaxError: did you forget parentheses around the comprehension target?
 
 
 
-```
+``` python
 >>> del a
 ```
 
@@ -356,7 +356,7 @@ SyntaxError: did you forget parentheses around the comprehension target?
 
 
 
-```
+``` python
 >>> t = 12345, 54321, 'hello!'
 >>> t[0]
 12345
@@ -385,7 +385,7 @@ TypeError: 'tuple' object does not support item assignment
 
 
 
-```
+``` python
 >>> empty = ()
 >>> singleton = 'hello',    # <-- 注意末尾的逗号
 >>> len(empty)
@@ -400,7 +400,7 @@ TypeError: 'tuple' object does not support item assignment
 
 
 
-```
+``` python
 >>> x, y, z = t
 ```
 
@@ -418,7 +418,7 @@ TypeError: 'tuple' object does not support item assignment
 
 
 
-```
+``` python
 >>> basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
 >>> print(basket)                      # 显示重复项已被移除
 {'orange', 'banana', 'pear', 'apple'}
@@ -447,7 +447,7 @@ False
 
 
 
-```
+``` python
 >>> a = {x for x in 'abracadabra' if x not in 'abc'}
 >>> a
 {'r', 'd'}
@@ -469,7 +469,7 @@ False
 
 
 
-```
+``` python
 >>> tel = {'jack': 4098, 'sape': 4139}
 >>> tel['guido'] = 4127
 >>> tel
@@ -494,7 +494,7 @@ False
 
 
 
-```
+``` python
 >>> dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
 {'sape': 4139, 'guido': 4127, 'jack': 4098}
 ```
@@ -503,7 +503,7 @@ False
 
 
 
-```
+``` python
 >>> {x: x**2 for x in (2, 4, 6)}
 {2: 4, 4: 16, 6: 36}
 ```
@@ -512,7 +512,7 @@ False
 
 
 
-```
+``` python
 >>> dict(sape=4139, guido=4127, jack=4098)
 {'sape': 4139, 'guido': 4127, 'jack': 4098}
 ```
@@ -525,7 +525,7 @@ False
 
 
 
-```
+``` python
 >>> knights = {'gallahad': 'the pure', 'robin': 'the brave'}
 >>> for k, v in knights.items():
 ...     print(k, v)
@@ -538,7 +538,7 @@ robin the brave
 
 
 
-```
+``` python
 >>> for i, v in enumerate(['tic', 'tac', 'toe']):
 ...     print(i, v)
 ...
@@ -551,7 +551,7 @@ robin the brave
 
 
 
-```
+``` python
 >>> questions = ['name', 'quest', 'favorite color']
 >>> answers = ['lancelot', 'the holy grail', 'blue']
 >>> for q, a in zip(questions, answers):
@@ -566,7 +566,7 @@ What is your favorite color?  It is blue.
 
 
 
-```
+``` python
 >>> for i in reversed(range(1, 10, 2)):
 ...     print(i)
 ...
@@ -581,7 +581,7 @@ What is your favorite color?  It is blue.
 
 
 
-```
+``` python
 >>> basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
 >>> for i in sorted(basket):
 ...     print(i)
@@ -598,7 +598,7 @@ pear
 
 
 
-```
+``` python
 >>> basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
 >>> for f in sorted(set(basket)):
 ...     print(f)
@@ -613,7 +613,7 @@ pear
 
 
 
-```
+``` python
 >>> import math
 >>> raw_data = [56.2, float('NaN'), 51.7, 55.3, 52.5, float('NaN'), 47.8]
 >>> filtered_data = []
@@ -643,7 +643,7 @@ pear
 
 
 
-```
+``` python
 >>> string1, string2, string3 = '', 'Trondheim', 'Hammer Dance'
 >>> non_null = string1 or string2 or string3
 >>> non_null

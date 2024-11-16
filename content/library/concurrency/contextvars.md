@@ -22,7 +22,8 @@ draft = false
 
 ​	更多信息参见 [**PEP 567**](https://peps.python.org/pep-0567/) 。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## 上下文变量
 
@@ -44,7 +45,8 @@ var: ContextVar[int] = ContextVar('var', default=42)
 
 ​	上下文变量的名称，只读属性。
 
-*Added in version 3.7.1.*
+> Added in version 3.7.1.
+>
 
 ## **get**([*default*])
 

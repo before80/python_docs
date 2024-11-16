@@ -88,7 +88,7 @@ draft = false
 
 
 
-```
+``` python
 >>> def heapsort(iterable):
 ...     h = []
 ...     for value in iterable:
@@ -105,7 +105,7 @@ draft = false
 
 
 
-```
+``` python
 >>> h = []
 >>> heappush(h, (5, 'write code'))
 >>> heappush(h, (7, 'release product'))

@@ -97,7 +97,7 @@ print('crc32 = {:#010x}'.format(crc))
 
 
 
-```
+``` python
 >>> import binascii
 >>> binascii.b2a_hex(b'\xb9\x01\xef')
 b'b901ef'

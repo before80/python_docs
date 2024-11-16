@@ -84,7 +84,8 @@ draft = false
 
 ​	转义所有特殊字符 (`'?'`, `'*'` 和 `'['`)。 这适用于当你想要匹配可能带有特殊字符的任意字符串字面值的情况。 在 drive/UNC 共享点中的特殊字符不会被转义，例如在 Windows 上 `escape('//?/c:/Quo vadis?.txt')` 将返回 `'//?/c:/Quo vadis[?].txt'`。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## glob.**translate**(*pathname*, ***, *recursive=False*, *include_hidden=False*, *seps=None*)
 
@@ -94,7 +95,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import glob, re
 >>>
 >>> regex = glob.translate('**/*.txt', recursive=True, include_hidden=True)
@@ -119,7 +120,8 @@ draft = false
 
 [`pathlib.PurePath.full_match()`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PurePath.full_match) 和 [`pathlib.Path.glob()`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.Path.glob) 方法，它们将调用此函数来实现模式匹配和 glob 操作。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## 例子
 
@@ -127,7 +129,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import glob
 >>> glob.glob('./[0-9].*')
 ['./1.gif', './2.txt']
@@ -145,7 +147,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import glob
 >>> glob.glob('*.gif')
 ['card.gif']

@@ -207,7 +207,7 @@ parser = MyHTMLParser()
 
 
 
-```
+``` python
 >>> parser.feed('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" '
 ...             '"http://www.w3.org/TR/html4/strict.dtd">')
 Decl     : DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"
@@ -217,7 +217,7 @@ Decl     : DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR
 
 
 
-```
+``` python
 >>> parser.feed('<img src="python-logo.png" alt="The Python logo">')
 Start tag: img
      attr: ('src', 'python-logo.png')
@@ -233,7 +233,7 @@ End tag  : h1
 
 
 
-```
+``` python
 >>> parser.feed('<style type="text/css">#python { color: green }</style>')
 Start tag: style
      attr: ('type', 'text/css')
@@ -252,7 +252,7 @@ End tag  : script
 
 
 
-```
+``` python
 >>> parser.feed('<!-- a comment -->'
 ...             '<!--[if IE 9]>IE-specific content<![endif]-->')
 Comment  :  a comment
@@ -263,7 +263,7 @@ Comment  : [if IE 9]>IE-specific content<![endif]
 
 
 
-```
+``` python
 >>> parser.feed('&gt;&#62;&#x3E;')
 Named ent: >
 Num ent  : >
@@ -274,7 +274,7 @@ Num ent  : >
 
 
 
-```
+``` python
 >>> for chunk in ['<sp', 'an>buff', 'ered ', 'text</s', 'pan>']:
 ...     parser.feed(chunk)
 ...
@@ -289,7 +289,7 @@ End tag  : span
 
 
 
-```
+``` python
 >>> parser.feed('<p><a class=link href=#main>tag soup</p ></a>')
 Start tag: p
 Start tag: a

@@ -158,7 +158,8 @@ if sock is not None:
 
 ​	如果传输接收到新数据时返回 `True` 。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## ReadTransport.**pause_reading**()
 
@@ -192,7 +193,8 @@ if sock is not None:
 
 ​	使用 [`set_write_buffer_limits()`](https://docs.python.org/zh-cn/3.13/library/asyncio-protocol.html#asyncio.WriteTransport.set_write_buffer_limits) 设置限制。
 
-*Added in version 3.4.2.*
+> Added in version 3.4.2.
+>
 
 ## WriteTransport.**set_write_buffer_limits**(*high=None*, *low=None*)
 
@@ -388,7 +390,8 @@ start -> connection_made
 
 ### 缓冲流协议
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ​	带缓冲的协议可与任何支持 [流式协议](https://docs.python.org/zh-cn/3.13/library/asyncio-protocol.html#streaming-protocols) 的事件循环方法配合使用。
 

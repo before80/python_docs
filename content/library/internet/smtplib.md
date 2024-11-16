@@ -34,7 +34,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from smtplib import SMTP
 >>> with SMTP("domain.org") as smtp:
 ...     smtp.noop()
@@ -49,7 +49,8 @@ draft = false
 
 *在 3.3 版本发生变更:* 添加了 *source_address* 参数。
 
-*Added in version 3.5:* 现在已支持 SMTPUTF8 扩展 ([**RFC 6531**](https://datatracker.ietf.org/doc/html/rfc6531.html))。
+> Added in version 3.5:* 现在已支持 SMTPUTF8 扩展 ([**RFC 6531*
+>](https://datatracker.ietf.org/doc/html/rfc6531.html))。
 
 *在 3.9 版本发生变更:* 如果 *timeout* 参数设置为 0，创建非阻塞套接字时，它将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 来阻止该操作。
 
@@ -115,7 +116,8 @@ draft = false
 
 ​	尝试的命令或选项不被服务器所支持。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## *exception* smtplib.**SMTPAuthenticationError**
 
@@ -239,7 +241,8 @@ data = authobject(challenge=None)
 
 ​	用户代码通常不需要直接调用 `auth`，而是调用 [`login()`](https://docs.python.org/zh-cn/3.13/library/smtplib.html#smtplib.SMTP.login) 方法，它将按上述顺序依次尝试上述每一种机制。 `auth` 被公开以便辅助实现 [`smtplib`](https://docs.python.org/zh-cn/3.13/library/smtplib.html#module-smtplib) 没有（或尚未）直接支持的认证方法。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## SMTP.**starttls**(***, *context=None*)
 
@@ -325,9 +328,11 @@ data = authobject(challenge=None)
 
 `send_message` 使用 [`BytesGenerator`](https://docs.python.org/zh-cn/3.13/library/email.generator.html#email.generator.BytesGenerator) 来序列化 *msg*，且将 `\r\n` 作为 *linesep*，并调用 [`sendmail()`](https://docs.python.org/zh-cn/3.13/library/smtplib.html#smtplib.SMTP.sendmail) 来传输序列化后的结果。无论 *from_addr* 和 *to_addrs* 的值为何，`send_message` 都不会传输 *msg* 中可能出现的 *Bcc* 或 *Resent-Bcc* 头部。如果 *from_addr* 和 *to_addrs* 中的某个地址包含非 ASCII 字符，且服务器没有声明支持 `SMTPUTF8`，则引发 `SMTPNotSupported` 错误。如果服务器支持，则 `Message` 将按新克隆的 [`policy`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#module-email.policy) 进行序列化，其中的 [`utf8`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#email.policy.EmailPolicy.utf8) 属性被设置为 `True`，且 `SMTPUTF8` 和 `BODY=8BITMIME` 被添加到 *mail_options* 中。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
-*Added in version 3.5:* 支持国际化地址 (`SMTPUTF8`)。
+> Added in version 3.5:
+> 支持国际化地址 (`SMTPUTF8`)。
 
 ## SMTP.**quit**()
 

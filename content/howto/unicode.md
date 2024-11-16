@@ -133,7 +133,7 @@ with open(répertoire, "w") as f:
 
 
 
-```
+``` python
 >>> "\N{GREEK CAPITAL LETTER DELTA}"  # 使用字符名称
 '\u0394'
 >>> "\u0394"                          # 使用 16 比特位十六进制数值
@@ -148,7 +148,7 @@ with open(répertoire, "w") as f:
 
 
 
-```
+``` python
 >>> b'\x80abc'.decode("utf-8", "strict")  
 Traceback (most recent call last):
     ...
@@ -168,7 +168,7 @@ UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 0:
 
 
 
-```
+``` python
 >>> chr(57344)
 '\ue000'
 >>> ord('\ue000')
@@ -185,7 +185,7 @@ UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 0:
 
 
 
-```
+``` python
 >>> u = chr(40960) + 'abcd' + chr(1972)
 >>> u.encode('utf-8')
 b'\xea\x80\x80abcd\xde\xb4'
@@ -214,7 +214,7 @@ b'\\N{YI SYLLABLE IT}abcd\\u07b4'
 
 
 
-```
+``` python
 >>> s = "a\xac\u1234\u20ac\U00008000"
 ... #     ^^^^ 两位十六进制数转义
 ... #         ^^^^^^ 四位 Unicode 转义
@@ -229,7 +229,7 @@ b'\\N{YI SYLLABLE IT}abcd\\u07b4'
 
 ​	默认情况下，Python 支持以 UTF-8 格式编写源代码，但如果声明要用的编码，则几乎可以使用任何编码。只要在源文件的第一行或第二行包含一个特殊注释即可：
 
-```
+``` sh
 #!/usr/bin/env python
 # -*- coding: latin-1 -*-
 
@@ -281,7 +281,7 @@ print(unicodedata.numeric(u[1]))
 
 
 
-```
+``` python
 >>> street = 'Gürzenichstraße'
 >>> street.casefold()
 'gürzenichstrasse'

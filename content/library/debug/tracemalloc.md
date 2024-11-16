@@ -14,7 +14,8 @@ draft = false
 
 # `tracemalloc` --- 跟踪内存分配
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 **源代码：** [Lib/tracemalloc.py](https://github.com/python/cpython/tree/3.13/Lib/tracemalloc.py)
 
@@ -315,7 +316,8 @@ second_size=804, second_peak=29704
 
 ​	另请参阅 [`get_traced_memory()`](https://docs.python.org/zh-cn/3.13/library/tracemalloc.html#tracemalloc.get_traced_memory)。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## tracemalloc.**get_tracemalloc_memory**()
 
@@ -367,7 +369,8 @@ second_size=804, second_peak=29704
 
 ​	按地址空间（域）来过滤内存块的追踪。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **inclusive**
 

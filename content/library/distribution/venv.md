@@ -14,7 +14,8 @@ draft = false
 
 # `venv` --- 虚拟环境的创建
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 **源码：** [Lib/venv/](https://github.com/python/cpython/tree/3.13/Lib/venv/)
 
@@ -158,9 +159,11 @@ PS C:\> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 | Windows    | cmd.exe                                 | `C:\> *<venv>*\Scripts\activate.bat` |
 | PowerShell | `PS C:\> *<venv>*\Scripts\Activate.ps1` |                                      |
 
-*Added in version 3.4:* **fish** 和 **csh** 激活脚本。
+> Added in version 3.4:* **fish** 和 **csh*
+> 激活脚本。
 
-*Added in version 3.8:* 在 POSIX 上安装 PowerShell 激活脚本，以支持 PowerShell Core。
+> Added in version 3.8:
+> 在 POSIX 上安装 PowerShell 激活脚本，以支持 PowerShell Core。
 
 ​	激活一个虚拟环境的操作 *不是必需的*，因为你完全可以在发起调用 Python 时指明特定虚拟环境的 Python 解释器的完整路径。 更进一步地说，安装在虚拟环境中的所有脚本也都可以在不激活该虚拟环境的情况下运行。
 
@@ -264,7 +267,8 @@ def create(self, env_dir):
 
 ​	Upgrades the core venv dependency packages (currently [pip](https://pypi.org/project/pip/)) in the environment. This is done by shelling out to the `pip` executable in the environment.
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 *在 3.12 版本发生变更:* [setuptools](https://pypi.org/project/setuptools/) is no longer a core venv dependency.
 
@@ -290,7 +294,8 @@ def create(self, env_dir):
 
 ​	Creates a `.gitignore` file within the virtual environment that causes the entire directory to be ignored by the Git source control manager.
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 *在 3.7.2 版本发生变更:* Windows 现在为 `python[w].exe` 使用重定向脚本，而不是复制实际的二进制文件。仅在 3.7.2 中，除非运行的是源码树中的构建，否则 [`setup_python()`](https://docs.python.org/zh-cn/3.13/library/venv.html#venv.EnvBuilder.setup_python) 不会执行任何操作。
 
@@ -302,7 +307,8 @@ def create(self, env_dir):
 
 ​	通过关键词参数来创建一个 [`EnvBuilder`](https://docs.python.org/zh-cn/3.13/library/venv.html#venv.EnvBuilder)，并且使用 *env_dir* 参数来调用它的 [`create()`](https://docs.python.org/zh-cn/3.13/library/venv.html#venv.EnvBuilder.create) 方法。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.4 版本发生变更:* Added the *with_pip* parameter
 

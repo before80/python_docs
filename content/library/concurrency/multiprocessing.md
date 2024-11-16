@@ -384,7 +384,7 @@ if __name__ == '__main__':
 
 
 
-```
+``` python
 >>> from multiprocessing import Pool
 >>> p = Pool(5)
 >>> def f(x):
@@ -435,7 +435,7 @@ AttributeError: Can't get attribute 'f' on <module '__main__' (<class '_frozen_i
 
 
 
-```
+``` python
 >>> from multiprocessing import Process
 >>> p = Process(target=print, args=[1])
 >>> p.run()
@@ -513,7 +513,8 @@ AttributeError: Can't get attribute 'f' on <module '__main__' (<class '_frozen_i
 
 ​	在 Windows 上，这是一个可以与 `WaitForSingleObject` 和 `WaitForMultipleObjects` API 调用族一起使用的 OS 句柄。 在 POSIX 上，这是一个可以与来自 [`select`](https://docs.python.org/zh-cn/3.13/library/select.html#module-select) 模块的原语一起使用的文件描述符。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **terminate**()
 
@@ -531,13 +532,15 @@ AttributeError: Can't get attribute 'f' on <module '__main__' (<class '_frozen_i
 
 ​	Same as [`terminate()`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.Process.terminate) but using the `SIGKILL` signal on POSIX.
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **close**()
 
 ​	关闭 [`Process`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.Process) 对象，释放与之关联的所有资源。如果底层进程仍在运行，则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 。一旦 [`close()`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.Process.close) 成功返回， [`Process`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.Process) 对象的大多数其他方法和属性将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError) 。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ​	注意 [`start()`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.Process.start) 、 [`join()`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.Process.join) 、 [`is_alive()`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.Process.is_alive) 、 [`terminate()`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.Process.terminate) 和 [`exitcode`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.Process.exitcode) 方法只能由创建进程对象的进程调用。
 
@@ -545,7 +548,7 @@ AttributeError: Can't get attribute 'f' on <module '__main__' (<class '_frozen_i
 
 
 
-```
+``` python
 >>> import multiprocessing, time, signal
 >>> mp_context = multiprocessing.get_context('spawn')
 >>> p = mp_context.Process(target=time.sleep, args=(1000,))
@@ -713,7 +716,8 @@ True
 
 ​	队列在被关闭后就不可再被使用。 例如不可再调用 [`get()`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.SimpleQueue.get), [`put()`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.SimpleQueue.put) 和 [`empty()`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.SimpleQueue.empty) 等方法。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## **empty**()
 
@@ -781,7 +785,8 @@ True
 
 ​	返回父进程 [`Process`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.Process) 对象，和父进程调用 [`current_process()`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.current_process) 返回的对象一样。如果一个进程已经是主进程， `parent_process` 会返回 `None`.
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## multiprocessing.**freeze_support**()
 
@@ -808,7 +813,8 @@ if __name__ == '__main__':
 
 ​	返回由受支持的启动方法组成的列表，其中第一项将为默认值。 可用的启动方法有 `'fork'`, `'spawn'` 和 `'forkserver'`。 并非所有的平台都支持所有的方法。 参见 [上下文和启动方法](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing-start-methods)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## multiprocessing.**get_context**(*method=None*)
 
@@ -816,7 +822,8 @@ if __name__ == '__main__':
 
 ​	如果 *method* 为 `None` 则将返回默认的上下文。 否则 *method* 应为 `'fork'`, `'spawn'`, `'forkserver'`。 如果指定的启动方法不可用则将引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。 参见 [上下文和启动方法](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing-start-methods)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## multiprocessing.**get_start_method**(*allow_none=False*)
 
@@ -826,7 +833,8 @@ if __name__ == '__main__':
 
 ​	返回值可以为 `'fork'`, `'spawn'`, `'forkserver'` 或 `None`。 参见 [上下文和启动方法](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing-start-methods)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.8 版本发生变更:* 对于 macOS，*spawn* 启动方式是默认方式。 因为 *fork* 可能导致subprocess崩溃，被认为是不安全的，查看 [bpo-33725](https://bugs.python.org/issue?@action=redirect&bpo=33725) 。
 
@@ -852,7 +860,8 @@ set_executable(os.path.join(sys.exec_prefix, 'pythonw.exe'))
 
 ​	仅在使用 `'forkserver'` 启动方法时是有意义的。 参见 [上下文和启动方法](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing-start-methods)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## multiprocessing.**set_start_method**(*method*, *force=False*)
 
@@ -862,7 +871,8 @@ set_executable(os.path.join(sys.exec_prefix, 'pythonw.exe'))
 
 ​	参见 [上下文和启动方法](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing-start-methods)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ​	备注
 
@@ -936,7 +946,7 @@ set_executable(os.path.join(sys.exec_prefix, 'pythonw.exe'))
 
 
 
-```
+``` python
 >>> from multiprocessing import Pipe
 >>> a, b = Pipe()
 >>> a.send([1, 'hello', None])
@@ -979,7 +989,8 @@ array('i', [0, 1, 2, 3, 4, 0, 0, 0, 0, 0])
 
 ​	类似 [`threading.Barrier`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.Barrier) 的栅栏对象。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## *class* multiprocessing.**BoundedSemaphore**([*value*])
 
@@ -1264,7 +1275,7 @@ HELLO WORLD
 
 
 
-```
+``` python
 >>> from multiprocessing.managers import BaseManager
 >>> manager = BaseManager(address=('', 50000), authkey=b'abc')
 >>> server = manager.get_server()
@@ -1279,7 +1290,7 @@ HELLO WORLD
 
 
 
-```
+``` python
 >>> from multiprocessing.managers import BaseManager
 >>> m = BaseManager(address=('127.0.0.1', 50000), authkey=b'abc')
 >>> m.connect()
@@ -1327,7 +1338,8 @@ HELLO WORLD
 
 ​	创建一个共享的 [`threading.Barrier`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.Barrier) 对象并返回它的代理。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **BoundedSemaphore**([*value*])
 
@@ -1399,7 +1411,7 @@ HELLO WORLD
 
 
 
-```
+``` python
 >>> mp_context = multiprocessing.get_context('spawn')
 >>> manager = mp_context.Manager()
 >>> Global = manager.Namespace()
@@ -1443,7 +1455,7 @@ if __name__ == '__main__':
 
 
 
-```
+``` python
 >>> from multiprocessing.managers import BaseManager
 >>> from queue import Queue
 >>> queue = Queue()
@@ -1458,7 +1470,7 @@ if __name__ == '__main__':
 
 
 
-```
+``` python
 >>> from multiprocessing.managers import BaseManager
 >>> class QueueManager(BaseManager): pass
 >>> QueueManager.register('get_queue')
@@ -1472,7 +1484,7 @@ if __name__ == '__main__':
 
 
 
-```
+``` python
 >>> from multiprocessing.managers import BaseManager
 >>> class QueueManager(BaseManager): pass
 >>> QueueManager.register('get_queue')
@@ -1487,7 +1499,7 @@ if __name__ == '__main__':
 
 
 
-```
+``` python
 >>> from multiprocessing import Process, Queue
 >>> from multiprocessing.managers import BaseManager
 >>> class Worker(Process):
@@ -1518,7 +1530,7 @@ if __name__ == '__main__':
 
 
 
-```
+``` python
 >>> mp_context = multiprocessing.get_context('spawn')
 >>> manager = mp_context.Manager()
 >>> l = manager.list([i*i for i in range(10)])
@@ -1538,7 +1550,7 @@ if __name__ == '__main__':
 
 
 
-```
+``` python
 >>> a = manager.list()
 >>> b = manager.list()
 >>> a.append(b)         # referent of a now contains referent of b
@@ -1553,7 +1565,7 @@ if __name__ == '__main__':
 
 
 
-```
+``` python
 >>> l_outer = manager.list([ manager.dict() for i in range(2) ])
 >>> d_first_inner = l_outer[0]
 >>> d_first_inner['a'] = 1
@@ -1591,7 +1603,7 @@ lproxy[0] = d
 
 
 
-```
+``` python
 >>> manager.list([1,2,3]) == [1,2,3]
 False
 ```
@@ -1630,7 +1642,7 @@ getattr(obj, methodname)(*args, **kwds)
 
 
 
-```
+``` python
 >>> l = manager.list(range(10))
 >>> l._callmethod('__len__')
 10
@@ -1752,13 +1764,15 @@ IndexError: list index out of range
 
 ​	比如可迭代对象 `[(1,2), (3, 4)]` 会转化为等价于 `[func(1,2), func(3,4)]` 的调用。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **starmap_async**(*func*, *iterable*[, *chunksize*[, *callback*[, *error_callback*]]])
 
 ​	相当于 [`starmap()`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.pool.Pool.starmap) 与 [`map_async()`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#multiprocessing.pool.Pool.map_async) 的结合，迭代 *iterable* 的每一项，解包作为 *func* 的参数并执行，返回用于获取结果的对象。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **close**()
 
@@ -1903,7 +1917,8 @@ if __name__ == '__main__':
 
 **Windows**: *object_list* 中的条目必须是一个可等待的整数句柄 (根据 Win32 函数 `WaitForMultipleObjects()` 文档所使用的定义) 或者一个具有 [`fileno()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.IOBase.fileno) 方法的对象，该方法返回一个套接字句柄或管道句柄。 （注意管道句柄和套接字句柄 **不是** 可等待的句柄。）
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 **示例**
 
@@ -2021,7 +2036,7 @@ if __name__ == '__main__':
 
 
 
-```
+``` python
 >>> import multiprocessing, logging
 >>> logger = multiprocessing.log_to_stderr()
 >>> logger.setLevel(logging.INFO)

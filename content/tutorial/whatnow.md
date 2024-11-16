@@ -18,13 +18,13 @@ draft = false
 
 ​	本教程是Python文档集的一部分。其他文档：
 
-- [Python 标准库](https://docs.python.org/zh-cn/3.13/library/index.html#library-index):
+- [Python 标准库]({{< ref "/library#library-index" >}}):
 
   你应当浏览一下本手册，其中提供了有关标准库中的类型、函数和模块的完整（但简洁）的参考资料。 标准 Python 分发版包括 *许多* 附加代码。 这些模块可以完成读取 Unix 邮箱，通过 HTTP 获取文档，生成随机数，解析命令行选项，压缩数据以及许多其他任务。 浏览标准库参考将使你了解有哪些可用的功能。
 
 - [安装 Python 模块](https://docs.python.org/zh-cn/3.13/installing/index.html#installing-index) 解释了怎么安装由其他Python开发者编写的模块。
 
-- [Python 语言参考手册](https://docs.python.org/zh-cn/3.13/reference/index.html#reference-index): Python的语法和语义的详细解释。尽管阅读完非常繁重，但作为语言本身的完整指南是有用的。
+- [Python 语言参考手册]({{< ref "/reference#reference-index" >}}): Python的语法和语义的详细解释。尽管阅读完非常繁重，但作为语言本身的完整指南是有用的。
 
 ​	更多Python资源：
 
@@ -37,7 +37,7 @@ draft = false
 
 ​	对于与Python相关的问题和问题报告，您可以发布到新闻组 *comp.lang.python* ，或者将它们发送到邮件列表python-[list@python.org](mailto:list@python.org)。新闻组和邮件列表是互通的，因此发布到一个地方将自动转发给另一个。每天有数百个帖子，询问（和回答）问题，建议新功能，以及宣布新模块。邮件列表档案可在 https://mail.python.org/pipermail/ 上找到。
 
-​	在发问之前，请务必查看以下列表 [常见问题](https://docs.python.org/zh-cn/3.13/faq/index.html#faq-index) （或简写为 FAQ）。常见问题包含了很多一次又一次被提出的问题及其答案，所以可能已经包含了您的问题解决方案。
+​	在发问之前，请务必查看以下列表 [常见问题]({{< ref "/faq#faq-index" >}}) （或简写为 FAQ）。常见问题包含了很多一次又一次被提出的问题及其答案，所以可能已经包含了您的问题解决方案。
 
 ​	备注
 

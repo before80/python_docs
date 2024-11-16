@@ -49,7 +49,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import pprint
 >>> stuff = ['spam', 'eggs', 'lumberjack', 'knights', 'ni']
 >>> stuff.insert(0, stuff)
@@ -62,7 +62,8 @@ draft = false
  'ni']
 ```
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## pprint.**pprint**(*object*, *stream=None*, *indent=1*, *width=80*, *depth=None*, ***, *compact=False*, *sort_dicts=True*, *underscore_numbers=False*)
 
@@ -78,7 +79,7 @@ draft = false
 
 
 
-```
+``` python
 >>> pprint.isreadable(stuff)
 False
 ```
@@ -93,7 +94,7 @@ False
 
 
 
-```
+``` python
 >>> pprint.saferepr(stuff)
 "[<Recursion on list with id=...>, 'spam', 'eggs', 'lumberjack', 'knights', 'ni']"
 ```
@@ -110,7 +111,7 @@ False
 
 
 
-```
+``` python
 >>> import pprint
 >>> stuff = ['spam', 'eggs', 'lumberjack', 'knights', 'ni']
 >>> stuff.insert(0, stuff[:])
@@ -177,7 +178,7 @@ False
 
 
 
-```
+``` python
 >>> import json
 >>> import pprint
 >>> from urllib.request import urlopen
@@ -189,7 +190,7 @@ False
 
 
 
-```
+``` python
 >>> pprint.pp(project_info)
 {'author': 'The Python Packaging Authority',
  'author_email': 'pypa-dev@googlegroups.com',
@@ -249,7 +250,7 @@ False
 
 
 
-```
+``` python
 >>> pprint.pp(project_info, depth=1)
 {'author': 'The Python Packaging Authority',
  'author_email': 'pypa-dev@googlegroups.com',
@@ -298,7 +299,7 @@ False
 
 
 
-```
+``` python
 >>> pprint.pp(project_info, depth=1, width=60)
 {'author': 'The Python Packaging Authority',
  'author_email': 'pypa-dev@googlegroups.com',

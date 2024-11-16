@@ -15,7 +15,8 @@ draft = false
 
 # `email.policy`: 策略对象
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 **源代码:** [Lib/email/policy.py](https://github.com/python/cpython/tree/3.13/Lib/email/policy.py)
 
@@ -43,7 +44,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from email import message_from_binary_file
 >>> from email.generator import BytesGenerator
 >>> from email import policy
@@ -64,7 +65,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import os
 >>> with open('converted.txt', 'wb') as f:
 ...     f.write(msg.as_bytes(policy=msg.policy.clone(linesep=os.linesep)))
@@ -75,7 +76,7 @@ draft = false
 
 
 
-```
+``` python
 >>> compat_SMTP = policy.compat32.clone(linesep='\r\n')
 >>> compat_strict = policy.compat32.clone(raise_on_defect=True)
 >>> compat_strict_SMTP = compat_SMTP + compat_strict
@@ -85,7 +86,7 @@ draft = false
 
 
 
-```
+``` python
 >>> policy100 = policy.compat32.clone(max_line_length=100)
 >>> policy80 = policy.compat32.clone(max_line_length=80)
 >>> apolicy = policy100 + policy80
@@ -130,13 +131,15 @@ draft = false
 
 ​	如为 [`True`](https://docs.python.org/zh-cn/3.13/library/constants.html#True)，则消息体中以 *"From "* 开头的行会通过在其前面放一个 `>` 来进行转义。 当消息被生成器执行序列化时会使用此形参。 默认值t: [`False`](https://docs.python.org/zh-cn/3.13/library/constants.html#False)。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **message_factory**
 
 ​	用来构造新的空消息对象的工厂函数。 在构建消息时由解析器使用。 默认为 `None`，在此情况下会使用 [`Message`](https://docs.python.org/zh-cn/3.13/library/email.compat32-message.html#email.message.Message)。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **verify_generated_headers**
 
@@ -144,7 +147,8 @@ draft = false
 
 ​	由于它是一个安全特性，即使是在 [`Compat32`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#email.policy.Compat32) 策略中该值也默认为 `True`。 为了保持向下兼容但是不安全的行为，它必须显式地被设为 `False`。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ​	下列 [`Policy`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#email.policy.Policy) 方法是由使用 email 库的代码来调用以创建具有自室外设置的策略实例:
 
@@ -224,7 +228,8 @@ draft = false
 
 ​	除了上面列出的适用于所有策略的可设置属性，此策略还添加了下列额外属性:
 
-*Added in version 3.6:* [[1\]](https://docs.python.org/zh-cn/3.13/library/email.policy.html#id2)
+> Added in version 3.6:
+> [[1\]](https://docs.python.org/zh-cn/3.13/library/email.policy.html#id2)
 
 ## **utf8**
 
@@ -249,7 +254,8 @@ draft = false
 
 ​	此对象至少有两个方法: get_content 和 set_content。 当一个 [`EmailMessage`](https://docs.python.org/zh-cn/3.13/library/email.message.html#email.message.EmailMessage) 对象的 [`get_content()`](https://docs.python.org/zh-cn/3.13/library/email.message.html#email.message.EmailMessage.get_content) 或 [`set_content()`](https://docs.python.org/zh-cn/3.13/library/email.message.html#email.message.EmailMessage.set_content) 方法被调用时，它会调用此对象的相应方法，将消息对象作为其第一个参数，并将传给它的任何参数或关键字作为附加参数传入。 默认情况下 `content_manager` 会被设为 [`raw_data_manager`](https://docs.python.org/zh-cn/3.13/library/email.contentmanager.html#email.contentmanager.raw_data_manager)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ​	这个类提供了下列对 [`Policy`](https://docs.python.org/zh-cn/3.13/library/email.policy.html#email.policy.Policy) 的抽象方法的具体实现:
 

@@ -14,7 +14,8 @@ draft = false
 
 # `zipapp` --- 管理可执行的 Python zip 归档文件
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 **源代码：** [Lib/zipapp.py](https://github.com/python/cpython/tree/3.13/Lib/zipapp.py)
 
@@ -68,7 +69,8 @@ $ python -m zipapp source [options]
 
 ​	在复制打包文件时，[`--compress`](https://docs.python.org/zh-cn/3.13/library/zipapp.html#cmdoption-zipapp-c) 无效。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **--info**
 
@@ -132,7 +134,7 @@ $ python myapp.pyz
 
 
 
-```
+``` python
 >>> import zipapp
 >>> zipapp.create_archive('myapp', 'myapp.pyz')
 ```
@@ -149,7 +151,7 @@ $ ./myapp.pyz
 
 
 
-```
+``` python
 >>> import zipapp
 >>> zipapp.create_archive('old_archive.pyz', 'new_archive.pyz', '/usr/bin/python3')
 ```
@@ -158,7 +160,7 @@ $ ./myapp.pyz
 
 
 
-```
+``` python
 >>> import zipapp
 >>> import io
 >>> temp = io.BytesIO()

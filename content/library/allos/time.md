@@ -89,7 +89,8 @@ draft = false
 
 ​	请参阅 *[pthread_getcpuclockid(3)](https://manpages.debian.org/pthread_getcpuclockid(3))* 的手册页面了解更多信息。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## time.**clock_getres**(*clk_id*)
 
@@ -97,7 +98,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## time.**clock_gettime**(*clk_id*) → [float](https://docs.python.org/zh-cn/3.13/library/functions.html#float)
 
@@ -107,7 +109,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## time.**clock_gettime_ns**(*clk_id*) → [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)
 
@@ -115,7 +118,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## time.**clock_settime**(*clk_id*, *time: [float](https://docs.python.org/zh-cn/3.13/library/functions.html#float)*)
 
@@ -125,7 +129,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not Android, not iOS.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## time.**clock_settime_ns**(*clk_id*, *time: [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)*)
 
@@ -133,7 +138,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not Android, not iOS.
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## time.**ctime**([*secs*])
 
@@ -158,7 +164,8 @@ draft = false
 - *monotonic* ：如果时钟不能倒退，则为 `True` ，否则为 `False` 。
 - *resolution* ： 以秒为单位的时钟分辨率（ [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) ）
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## time.**gmtime**([*secs*])
 
@@ -188,7 +195,8 @@ draft = false
 
 ​	使用 [`monotonic_ns()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.monotonic_ns) 以避免 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) 类型导致的精度损失。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.5 版本发生变更:* 该功能现在始终可用且始终在系统范围内。
 
@@ -198,7 +206,8 @@ draft = false
 
 ​	与 [`monotonic()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.monotonic) 相似，但是返回时间为纳秒数。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## time.**perf_counter**() → [float](https://docs.python.org/zh-cn/3.13/library/functions.html#float)
 
@@ -208,7 +217,8 @@ draft = false
 
 ​	使用 [`perf_counter_ns()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.perf_counter_ns) 以避免 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) 类型导致的精度损失。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.10 版本发生变更:* 在 Windows 上，现在这个函数作用于全系统。
 
@@ -218,7 +228,8 @@ draft = false
 
 ​	与 [`perf_counter()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.perf_counter) 相似，但是返回时间为纳秒。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## time.**process_time**() → [float](https://docs.python.org/zh-cn/3.13/library/functions.html#float)
 
@@ -226,13 +237,15 @@ draft = false
 
 ​	使用 [`process_time_ns()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.process_time_ns) 以避免 [`float`](https://docs.python.org/zh-cn/3.13/library/functions.html#float) 类型导致的精度损失。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## time.**process_time_ns**() → [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)
 
 ​	与 [`process_time()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.process_time) 相似，但是返回时间为纳秒。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## time.**sleep**(*secs*)
 
@@ -308,7 +321,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from time import gmtime, strftime
 >>> strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
 'Thu, 28 Jun 2001 14:17:15 +0000'
@@ -328,7 +341,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import time
 >>> time.strptime("30 Nov 00", "%d %b %y")   
 time.struct_time(tm_year=2000, tm_mon=11, tm_mday=30, tm_hour=0, tm_min=0,
@@ -383,7 +396,8 @@ time.struct_time(tm_year=2000, tm_mon=11, tm_mday=30, tm_hour=0, tm_min=0,
 
 ​	与 [`time()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.time) 相似，但返回时间为用整数表示的自 [epoch](https://docs.python.org/zh-cn/3.13/library/time.html#epoch) 以来所经过的纳秒数。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## time.**thread_time**() → [float](https://docs.python.org/zh-cn/3.13/library/functions.html#float)
 
@@ -395,13 +409,15 @@ time.struct_time(tm_year=2000, tm_mon=11, tm_mday=30, tm_hour=0, tm_min=0,
 
 ​	支持 `CLOCK_THREAD_CPUTIME_ID` 的 Unix 系统。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## time.**thread_time_ns**() → [int](https://docs.python.org/zh-cn/3.13/library/functions.html#int)
 
 ​	与 [`thread_time()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.thread_time) 相似，但返回纳秒时间。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## time.**tzset**()
 
@@ -453,7 +469,7 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 
 
-```
+``` python
 >>> os.environ['TZ'] = 'EST+05EDT,M4.1.0,M10.5.0'
 >>> time.tzset()
 >>> time.strftime('%X %x %Z')
@@ -468,7 +484,7 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 
 
-```
+``` python
 >>> os.environ['TZ'] = 'US/Eastern'
 >>> time.tzset()
 >>> time.tzname
@@ -493,7 +509,8 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.39.
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## time.**CLOCK_HIGHRES**
 
@@ -501,7 +518,8 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Solaris.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## time.**CLOCK_MONOTONIC**
 
@@ -509,7 +527,8 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## time.**CLOCK_MONOTONIC_RAW**
 
@@ -517,7 +536,8 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.28, macOS >= 10.12.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## time.**CLOCK_MONOTONIC_RAW_APPROX**
 
@@ -525,7 +545,8 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): macOS >= 10.12.
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## time.**CLOCK_PROCESS_CPUTIME_ID**
 
@@ -533,7 +554,8 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## time.**CLOCK_PROF**
 
@@ -541,7 +563,8 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): FreeBSD, NetBSD >= 7, OpenBSD.
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## time.**CLOCK_TAI**
 
@@ -551,7 +574,8 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux.
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## time.**CLOCK_THREAD_CPUTIME_ID**
 
@@ -559,7 +583,8 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## time.**CLOCK_UPTIME**
 
@@ -567,7 +592,8 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): FreeBSD, OpenBSD >= 5.5.
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## time.**CLOCK_UPTIME_RAW**
 
@@ -575,7 +601,8 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): macOS >= 10.12.
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## time.**CLOCK_UPTIME_RAW_APPROX**
 
@@ -583,7 +610,8 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): macOS >= 10.12.
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ​	以下常量是唯一可以发送到 [`clock_settime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.clock_settime) 的参数。
 
@@ -593,7 +621,8 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 
 
@@ -623,15 +652,15 @@ std offset [dst [offset [,start[/time], end[/time]]]]
 
 ​	参见
 
-## 模块 [`datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#module-datetime)
+模块 [`datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#module-datetime)
 
 ​	更多面向对象的日期和时间接口。
 
-## 模块 [`locale`](https://docs.python.org/zh-cn/3.13/library/locale.html#module-locale)
+模块 [`locale`](https://docs.python.org/zh-cn/3.13/library/locale.html#module-locale)
 
 ​	国际化服务。 区域设置会影响 [`strftime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.strftime) 和 [`strptime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.strptime) 中许多格式说明符的解析。
 
-## 模块 [`calendar`](https://docs.python.org/zh-cn/3.13/library/calendar.html#module-calendar)
+模块 [`calendar`](https://docs.python.org/zh-cn/3.13/library/calendar.html#module-calendar)
 
 ​	一般日历相关功能。这个模块的 `timegm()` 是函数 [`gmtime()`](https://docs.python.org/zh-cn/3.13/library/time.html#time.gmtime) 的反函数。
 

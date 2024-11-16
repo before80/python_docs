@@ -84,13 +84,15 @@ except SomeException:
 
 ​	将字符串 `note` 添加到在异常字符串之后的标准回溯中显示的注释中。 如果 `note` 不是一个字符串则会引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **__notes__**
 
 ​	由此异常的注释组成的列表，它是通过 [`add_note()`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseException.add_note) 添加的。 该属性是在调用 [`add_note()`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseException.add_note) 时创建的。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## *exception* **Exception**
 
@@ -156,7 +158,8 @@ except SomeException:
 
 [`ImportError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ImportError) 的子类，当一个模块无法被定位时将由 [`import`](https://docs.python.org/zh-cn/3.13/reference/simple_stmts.html#import) 引发。 当在 [`sys.modules`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.modules) 中找到 `None` 时也会被引发。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## *exception* **IndexError**
 
@@ -253,13 +256,15 @@ except SomeException:
 
 ​	另请参阅 [`sys.is_finalizing()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.is_finalizing) 函数。
 
-*Added in version 3.13:* 在此之前将只引发 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError)。
+> Added in version 3.13:
+> 在此之前将只引发 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError)。
 
 ## *exception* **RecursionError**
 
 ​	此异常派生自 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError)。 它会在解释器检测发现超过最大递归深度 (参见 [`sys.getrecursionlimit()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.getrecursionlimit)) 时被引发。
 
-*Added in version 3.5:* 在此之前将只引发 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError)。
+> Added in version 3.5:
+> 在此之前将只引发 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError)。
 
 ## *exception* **ReferenceError**
 
@@ -291,7 +296,8 @@ except SomeException:
 
 ​	必须由一个 [asynchronous iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-asynchronous-iterator) 对象的 [`__anext__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__anext__) 方法来引发以停止迭代操作。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## *exception* **SyntaxError**(*message*, *details*)
 
@@ -495,7 +501,8 @@ except SomeException:
 
 ​	当一个系统函数在系统层级发生超时的情况下将被引发。 对应于 `errno` [`ETIMEDOUT`](https://docs.python.org/zh-cn/3.13/library/errno.html#errno.ETIMEDOUT)。
 
-*Added in version 3.3:* 添加了以上所有 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 的子类。
+> Added in version 3.3:
+> 添加了以上所有 [`OSError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OSError) 的子类。
 
 ​	参见
 
@@ -563,7 +570,8 @@ except SomeException:
 
 ​	请参阅 [选择性的 EncodingWarning](https://docs.python.org/zh-cn/3.13/library/io.html#io-encoding-warning) 来了解详情。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *exception* **BytesWarning**
 
@@ -575,7 +583,8 @@ except SomeException:
 
 ​	会被默认警告过滤器忽略。 启用 [Python 开发模式](https://docs.python.org/zh-cn/3.13/library/devmode.html#devmode) 时会显示此警告。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 
 
@@ -609,7 +618,8 @@ except SomeException:
 
 ​	条件检测会针对嵌套异常组中的所有异常执行，包括最高层级的和任何嵌套的异常组。 如果针对此类异常组的条件为真值，它将被完整包括在结果中。
 
-*Added in version 3.13:* `condition` 可以是任意不为类型对象的可调用对象。
+> Added in version 3.13:
+> `condition` 可以是任意不为类型对象的可调用对象。
 
 ## **split**(*condition*)
 
@@ -625,7 +635,7 @@ except SomeException:
 
 
 
-```
+``` python
 >>> class MyGroup(ExceptionGroup):
 ...     def derive(self, excs):
 ...         return MyGroup(self.message, excs)
@@ -665,7 +675,8 @@ class Errors(ExceptionGroup):
 
 ​	类似于 [`ExceptionGroup`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ExceptionGroup)，任何 [`BaseExceptionGroup`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BaseExceptionGroup) 的子类也是 [`Exception`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#Exception) 的子类，只能包装 [`Exception`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#Exception) 的实例。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## 异常层次结构
 

@@ -63,7 +63,7 @@ os.spawn*
 
 
 
-```
+``` python
 >>> subprocess.run(["ls", "-l"])  # 不捕获输出
 CompletedProcess(args=['ls', '-l'], returncode=0)
 
@@ -77,7 +77,8 @@ CompletedProcess(args=['ls', '-l', '/dev/null'], returncode=0,
 stdout=b'crw-rw-rw- 1 root root 1, 3 Jan 23 16:23 /dev/null\n', stderr=b'')
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.6 版本发生变更:* 添加了 *encoding* 和 *errors* 形参.
 
@@ -113,13 +114,15 @@ stdout=b'crw-rw-rw- 1 root root 1, 3 Jan 23 16:23 /dev/null\n', stderr=b'')
 
 ​	如果 [`returncode`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.CompletedProcess.returncode) 非零, 抛出 [`CalledProcessError`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.CalledProcessError).
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## subprocess.**DEVNULL**
 
 ​	可被 [`Popen`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) 的 *stdin*, *stdout* 或者 *stderr* 参数使用的特殊值, 表示使用特殊文件 [`os.devnull`](https://docs.python.org/zh-cn/3.13/library/os.html#os.devnull).
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## subprocess.**PIPE**
 
@@ -133,7 +136,8 @@ stdout=b'crw-rw-rw- 1 root root 1, 3 Jan 23 16:23 /dev/null\n', stderr=b'')
 
 ​	此模块的其他异常的基类。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## *exception* subprocess.**TimeoutExpired**
 
@@ -159,7 +163,8 @@ stdout=b'crw-rw-rw- 1 root root 1, 3 Jan 23 16:23 /dev/null\n', stderr=b'')
 
 ​	当被 [`run()`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.run) 捕获时的标准错误输出。 在其它情况下将为 `None`。 当有标准错误输出被捕获时这将始终为 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 而不考虑是否设置了 `text=True`。 当未检测到标准错误输出时它可能会保持为 `None` 而不是 `b''`。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.5 版本发生变更:* 添加了 *stdout* 和 *stderr* 属性。
 
@@ -261,7 +266,7 @@ Popen(["/usr/bin/git", "commit", "-m", "Fixes a bug."])
 
 
 
-```
+``` python
 >>> import shlex, subprocess
 >>> command_line = input()
 /bin/vikings -input eggs.txt -output "spam spam.txt" -cmd "echo '$MONEY'"
@@ -370,25 +375,29 @@ Popen(['/bin/sh', '-c', args[0], args[1], ...])
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): POSIX
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ​	If *extra_groups* is not `None`, the setgroups() system call will be made in the child process prior to the execution of the subprocess. Strings provided in *extra_groups* will be looked up via [`grp.getgrnam()`](https://docs.python.org/zh-cn/3.13/library/grp.html#grp.getgrnam) and the values in `gr_gid` will be used. Integer values will be passed verbatim. (POSIX only)
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): POSIX
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ​	If *user* is not `None`, the setreuid() system call will be made in the child process prior to the execution of the subprocess. If the provided value is a string, it will be looked up via [`pwd.getpwnam()`](https://docs.python.org/zh-cn/3.13/library/pwd.html#pwd.getpwnam) and the value in `pw_uid` will be used. If the value is an integer, it will be passed verbatim. (POSIX only)
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): POSIX
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ​	如果 *umask* 不为负值，则 umask() 系统调用将在子进程执行之前在下级进程中进行。
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): POSIX
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ​	如果 *env* 不为 `None`，则它必须是一个为新进程定义环境变量的映射；它们将顶替继承当前环境的默认行为被使用。 这个映射在任何平台上均可以是字符串到字符串的映射或者在 POSIX 平台上也可以是字节串到字节串的映射，就像是 [`os.environ`](https://docs.python.org/zh-cn/3.13/library/os.html#os.environ) 或者 [`os.environb`](https://docs.python.org/zh-cn/3.13/library/os.html#os.environb)。
 
@@ -400,9 +409,11 @@ Popen(['/bin/sh', '-c', args[0], args[1], ...])
 
 ​	如果指定了 *encoding* 或 *errors*，或者如果 *text* 为真值，则文件对象 *stdin*, *stdout* 和 *stderr* 将使用指定的 *encoding* 和 *errors* 以文本模式打开，就如上文 [常用参数](https://docs.python.org/zh-cn/3.13/library/subprocess.html#frequently-used-arguments) 中所描述的。 *universal_newlines* 参数等同于 *text* 且是出于下向兼容性考虑而提供的。 在默认情况下，文件对象将以二进制模式打开。
 
-*Added in version 3.6:* *encoding* 和 *errors* 被添加。
+> Added in version 3.6:* *encoding* 和 *errors
+> 被添加。
 
-*Added in version 3.7:* *text* 作为 *universal_newlines* 的一个更具可读性的别名被添加。
+> Added in version 3.7:* *text* 作为 *universal_newlines
+> 的一个更具可读性的别名被添加。
 
 ​	如果给出，*startupinfo* 将是一个 [`STARTUPINFO`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.STARTUPINFO) 对象，它会被传递给下层的 `CreateProcess` 函数。
 
@@ -454,7 +465,8 @@ with Popen(["ifconfig"], stdout=PIPE) as proc:
 
 ​	此模块中定义的异常都继承自 [`SubprocessError`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.SubprocessError)。
 
-*Added in version 3.3:* 基类 [`SubprocessError`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.SubprocessError) 被添加。
+> Added in version 3.3:
+> 基类 [`SubprocessError`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.SubprocessError) 被添加。
 
 
 
@@ -547,7 +559,8 @@ except TimeoutExpired:
 
 *args* 参数传递给 [`Popen`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) -- 一个程序参数的序列或者一个简单字符串。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## Popen.**stdin**
 
@@ -636,7 +649,8 @@ si.dwFlags = subprocess.STARTF_USESTDHANDLES | subprocess.STARTF_USESHOWWINDOW
 
 ​	在多线程进程中，请谨慎使用，以便在将此功能与对继承所有句柄的其他进程创建函数——例如 [`os.system()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.system) 的并发调用——相结合时，避免泄漏标记为可继承的句柄。这也应用于临时性创建可继承句柄的标准句柄重定向。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ### Windows 常数
 
@@ -670,13 +684,15 @@ si.dwFlags = subprocess.STARTF_USESTDHANDLES | subprocess.STARTF_USESHOWWINDOW
 
 [`STARTUPINFO.dwFlags`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.STARTUPINFO.dwFlags) 形参指明在进程启动时将显示一个 *正在后台操作* 鼠标提示。 这是 GUI 进程的默认行为。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## subprocess.**STARTF_FORCEOFFFEEDBACK**
 
 ​	A [`STARTUPINFO.dwFlags`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.STARTUPINFO.dwFlags) 形参指明在启动进程时鼠标提示将不会改变。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## subprocess.**CREATE_NEW_CONSOLE**
 
@@ -692,61 +708,71 @@ si.dwFlags = subprocess.STARTF_USESTDHANDLES | subprocess.STARTF_USESHOWWINDOW
 
 ​	用于指明一个新进程将具有高于平均的优先级的 [`Popen`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) `creationflags` 形参。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## subprocess.**BELOW_NORMAL_PRIORITY_CLASS**
 
 ​	用于指明一个新进程将具有低于平均的优先级的 [`Popen`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) `creationflags` 形参。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## subprocess.**HIGH_PRIORITY_CLASS**
 
 ​	用于指明一个新进程将具有高优先级的 [`Popen`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) `creationflags` 形参。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## subprocess.**IDLE_PRIORITY_CLASS**
 
 ​	用于指明一个新进程将具有空闲（最低）优先级的 [`Popen`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) `creationflags` 形参。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## subprocess.**NORMAL_PRIORITY_CLASS**
 
 ​	用于指明一个新进程将具有正常（默认）优先级的 [`Popen`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) `creationflags` 形参。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## subprocess.**REALTIME_PRIORITY_CLASS**
 
 ​	用于指明一个新进程将具有实时优先级的 [`Popen`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) `creationflags` 形参。 你应当几乎永远不使用 REALTIME_PRIORITY_CLASS，因为这会中断管理鼠标输入、键盘输入以及后台磁盘刷新的系统线程。 这个类只适用于直接与硬件“对话”，或者执行短暂任务具有受限中断的应用。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## subprocess.**CREATE_NO_WINDOW**
 
 ​	指明一个新进程将不会创建窗口的 [`Popen`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) `creationflags` 形参。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## subprocess.**DETACHED_PROCESS**
 
 ​	指明一个新进程将不会继承其父控制台的 [`Popen`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) `creationflags` 形参。 这个值不能与 CREATE_NEW_CONSOLE 一同使用。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## subprocess.**CREATE_DEFAULT_ERROR_MODE**
 
 ​	指明一个新进程不会继承调用方进程的错误模式的 [`Popen`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) `creationflags` 形参。 新进程会转为采用默认的错误模式。 这个特性特别适用于运行时禁用硬错误的多线程 shell 应用。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## subprocess.**CREATE_BREAKAWAY_FROM_JOB**
 
 ​	指明一个新进程不会关联到任务的 [`Popen`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.Popen) `creationflags` 形参。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 
 
@@ -824,7 +850,7 @@ run(..., check=True, stdout=PIPE).stdout
 
 
 
-```
+``` python
 >>> subprocess.check_output(
 ...     "ls non_existent_file; exit 0",
 ...     stderr=subprocess.STDOUT,
@@ -832,7 +858,8 @@ run(..., check=True, stdout=PIPE).stdout
 'ls: non_existent_file: No such file or directory\n'
 ```
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 *在 3.3 版本发生变更:* *timeout* 被添加
 
@@ -840,7 +867,8 @@ run(..., check=True, stdout=PIPE).stdout
 
 *在 3.6 版本发生变更:* 增加了 *encoding* 和 *errors*。 详情参见 [`run()`](https://docs.python.org/zh-cn/3.13/library/subprocess.html#subprocess.run)。
 
-*Added in version 3.7:* *text* 作为 *universal_newlines* 的一个更具可读性的别名被添加。
+> Added in version 3.7:* *text* 作为 *universal_newlines
+> 的一个更具可读性的别名被添加。
 
 *在 3.12 版本发生变更:* 针对 `shell=True` 改变的 Windows shell 搜索顺序。 当前目录和 `%PATH%` 会被替换为 `%COMSPEC%` 和 `%SystemRoot%\System32\cmd.exe`。 因此，在当前目录中投放一个命名为 `cmd.exe` 的恶意程序不会再起作用。
 
@@ -1044,7 +1072,7 @@ p = Popen(["mycmd", "myarg"], bufsize=bufsize,
 
 
 
-```
+``` python
 >>> subprocess.getstatusoutput('ls /bin/ls')
 (0, '/bin/ls')
 >>> subprocess.getstatusoutput('cat /bin/junk')
@@ -1071,7 +1099,7 @@ p = Popen(["mycmd", "myarg"], bufsize=bufsize,
 
 
 
-```
+``` python
 >>> subprocess.getoutput('ls /bin/ls')
 '/bin/ls'
 ```
@@ -1124,6 +1152,8 @@ subprocess._USE_POSIX_SPAWN = False  # See CPython issue gh-NNNNNN.
 
 ​	当你不得不使用这些私有属性并遇到问题时请随时提交问题并附带你所看到的问题的重现方式。 请从你代码中的某条注释链接到该问题。
 
-*Added in version 3.8:* `_USE_POSIX_SPAWN`
+> Added in version 3.8:
+> `_USE_POSIX_SPAWN`
 
-*Added in version 3.11:* `_USE_VFORK`
+> Added in version 3.11:
+> `_USE_VFORK`

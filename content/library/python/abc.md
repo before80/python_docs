@@ -44,7 +44,8 @@ class MyABC(metaclass=ABCMeta):
     pass
 ```
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## *class* abc.**ABCMeta**
 
@@ -186,7 +187,8 @@ class Descriptor:
 
 ## @abc.**abstractclassmethod**
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *自 3.3 版本弃用:* 现在可以让 [`classmethod`](https://docs.python.org/zh-cn/3.13/library/functions.html#classmethod) 配合 [`abstractmethod()`](https://docs.python.org/zh-cn/3.13/library/abc.html#abc.abstractmethod) 使用，使得此装饰器变得冗余。
 
@@ -204,7 +206,8 @@ class C(ABC):
 
 ## @abc.**abstractstaticmethod**
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *自 3.3 版本弃用:* 现在可以让 [`staticmethod`](https://docs.python.org/zh-cn/3.13/library/functions.html#staticmethod) 配合 [`abstractmethod()`](https://docs.python.org/zh-cn/3.13/library/abc.html#abc.abstractmethod) 使用，使得此装饰器变得冗余。
 
@@ -267,7 +270,8 @@ class D(C):
 
 ​	此令牌是一个不透明对象（支持相等性测试），用于为虚子类标识抽象基类缓存的当前版本。 此令牌会在任何 ABC 上每次调用 [`ABCMeta.register()`](https://docs.python.org/zh-cn/3.13/library/abc.html#abc.ABCMeta.register) 时发生更改。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## abc.**update_abstractmethods**(*cls*)
 
@@ -283,7 +287,8 @@ class D(C):
 
 ​	此函数会假定 *cls* 的上级类已经被更新。 它不会更新任何子类。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ​	备注
 

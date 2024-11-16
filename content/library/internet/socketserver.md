@@ -115,7 +115,8 @@ class ThreadingUDPServer(ThreadingMixIn, UDPServer):
 
 ​	这些类都是使用混合类来预定义的。
 
-*Added in version 3.12:* 增加了 `ForkingUnixStreamServer` 和 `ForkingUnixDatagramServer` 类。
+> Added in version 3.12:
+> 增加了 `ForkingUnixStreamServer` 和 `ForkingUnixDatagramServer` 类。
 
 ​	要实现一个服务，你必须从 [`BaseRequestHandler`](https://docs.python.org/zh-cn/3.13/library/socketserver.html#socketserver.BaseRequestHandler) 派生一个类并重定义其 [`handle()`](https://docs.python.org/zh-cn/3.13/library/socketserver.html#socketserver.BaseRequestHandler.handle) 方法。 然后你可以通过组合某种服务器类型与你的请求处理器类来运行各种版本的服务。 请求处理器类对于数据报和流服务必须是不相同的。 这可以通过使用处理器子类 [`StreamRequestHandler`](https://docs.python.org/zh-cn/3.13/library/socketserver.html#socketserver.StreamRequestHandler) 或 [`DatagramRequestHandler`](https://docs.python.org/zh-cn/3.13/library/socketserver.html#socketserver.DatagramRequestHandler) 来隐藏。
 
@@ -151,7 +152,8 @@ class ThreadingUDPServer(ThreadingMixIn, UDPServer):
 
 ​	此方法会在 the [`serve_forever()`](https://docs.python.org/zh-cn/3.13/library/socketserver.html#socketserver.BaseServer.serve_forever) 循环中被调用。 此方法可被子类或混合类所重载以执行某个给定服务的专属操作，例如清理操作。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **shutdown**()
 

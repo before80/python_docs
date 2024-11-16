@@ -58,7 +58,8 @@ def dictConfig(config):
 
 ​	例如，`DictConfigurator` 的子类可以在它自己的 `__init__()` 中调用 `DictConfigurator.__init__()`，然后设置可以在后续 `configure()` 调用中使用的自定义前缀。 `dictConfigClass` 将被绑定到这个新的子类，然后就能以与在默认的未定制状态下完全相同的方式调用 [`dictConfig()`](https://docs.python.org/zh-cn/3.13/library/logging.config.html#logging.config.dictConfig)。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## logging.config.**fileConfig**(*fname*, *defaults=None*, *disable_existing_loggers=True*, *encoding=None*)
 
@@ -443,7 +444,8 @@ handlers:
 
 ​	任何队列处理器和监听器类都需要定义为具有与 [`QueueHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueHandler) 和 [`QueueListener`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueListener) 相同的初始化签名。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 
 

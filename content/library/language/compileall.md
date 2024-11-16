@@ -172,7 +172,8 @@ draft = false
 
 ​	如果 *hardlink_dupes* 为真值且两个使用不同优化级别的 `.pyc` 文件具有相同的内容，则会使用硬链接来合并重复的文件。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.5 版本发生变更:* *quiet* 形参已改为多级别值。
 

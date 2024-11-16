@@ -14,7 +14,8 @@ draft = false
 
 # `concurrent.futures` --- 启动并行任务
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 **源码:** [Lib/concurrent/futures/thread.py](https://github.com/python/cpython/tree/3.13/Lib/concurrent/futures/thread.py) 和 [Lib/concurrent/futures/process.py](https://github.com/python/cpython/tree/3.13/Lib/concurrent/futures/process.py)
 
@@ -363,22 +364,26 @@ if __name__ == '__main__':
 
 ​	当执行器被某些原因中断而且不能用来提交或执行新任务时就会被引发派生于 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError) 的异常类。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## *exception* concurrent.futures.**InvalidStateError**
 
 ​	当某个操作在一个当前状态所不允许的 future 上执行时将被引发。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## *exception* concurrent.futures.thread.**BrokenThreadPool**
 
 ​	派生自 [`BrokenExecutor`](https://docs.python.org/zh-cn/3.13/library/concurrent.futures.html#concurrent.futures.BrokenExecutor)，这个异常类会在 [`ThreadPoolExecutor`](https://docs.python.org/zh-cn/3.13/library/concurrent.futures.html#concurrent.futures.ThreadPoolExecutor) 的某个工作线程初始化失败时被引发。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## *exception* concurrent.futures.process.**BrokenProcessPool**
 
 ​	派生自 [`BrokenExecutor`](https://docs.python.org/zh-cn/3.13/library/concurrent.futures.html#concurrent.futures.BrokenExecutor) (原为 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError))，这个异常类会在 [`ProcessPoolExecutor`](https://docs.python.org/zh-cn/3.13/library/concurrent.futures.html#concurrent.futures.ProcessPoolExecutor) 的某个工作进程以不完整的方式终结（例如，从外部杀掉）时被引发。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>

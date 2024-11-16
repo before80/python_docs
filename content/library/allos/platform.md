@@ -162,13 +162,15 @@ is_64bits = sys.maxsize > 2**32
 
 ​	返回一个代表当前 Windows 版本的字符串，或者在该值无法确定时返回 `None` 。 可能的值包括但不限于 `'Enterprise'`, `'IoTUAP'`, `'ServerStandard'` 和 `'nanoserver'`。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## platform.**win32_is_iot**()
 
 ​	如果 [`win32_edition()`](https://docs.python.org/zh-cn/3.13/library/platform.html#platform.win32_edition) 返回的 Windows 版本被识别为 IoT 版则返回 `True`。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## macOS 平台
 
@@ -225,7 +227,8 @@ def get_like_distro():
     return ids
 ```
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## Android 平台
 
@@ -242,4 +245,5 @@ def get_like_distro():
 
 ​	Google 维护了一个 [已知型号和设备名称列表](https://storage.googleapis.com/play_public/supported_devices.html)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>

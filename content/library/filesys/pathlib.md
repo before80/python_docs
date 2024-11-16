@@ -14,7 +14,8 @@ draft = false
 
 # `pathlib` --- 面向对象的文件系统路径
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 **源代码:** [Lib/pathlib/](https://github.com/python/cpython/tree/3.13/Lib/pathlib/)
 
@@ -49,7 +50,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from pathlib import Path
 ```
 
@@ -57,7 +58,7 @@ draft = false
 
 
 
-```
+``` python
 >>> p = Path('.')
 >>> [x for x in p.iterdir() if x.is_dir()]
 [PosixPath('.hg'), PosixPath('docs'), PosixPath('dist'),
@@ -68,7 +69,7 @@ draft = false
 
 
 
-```
+``` python
 >>> list(p.glob('**/*.py'))
 [PosixPath('test_pathlib.py'), PosixPath('setup.py'),
  PosixPath('pathlib.py'), PosixPath('docs/conf.py'),
@@ -79,7 +80,7 @@ draft = false
 
 
 
-```
+``` python
 >>> p = Path('/etc')
 >>> q = p / 'init.d' / 'reboot'
 >>> q
@@ -92,7 +93,7 @@ PosixPath('/etc/rc.d/init.d/halt')
 
 
 
-```
+``` python
 >>> q.exists()
 True
 >>> q.is_dir()
@@ -103,7 +104,7 @@ False
 
 
 
-```
+``` python
 >>> with q.open() as f: f.readline()
 ...
 '#!/bin/bash\n'
@@ -115,7 +116,8 @@ False
 
 ​	一个继承自 [`NotImplementedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#NotImplementedError) 的异常，当在路径对象上调用不受支持的操作时它将被引发。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 
 
@@ -129,7 +131,7 @@ False
 
 
 
-```
+``` python
 >>> PurePath('setup.py')      # 在 Unix 机器上运行
 PurePosixPath('setup.py')
 ```
@@ -138,7 +140,7 @@ PurePosixPath('setup.py')
 
 
 
-```
+``` python
 >>> PurePath('foo', 'some/path', 'bar')
 PurePosixPath('foo/some/path/bar')
 >>> PurePath(Path('foo'), Path('bar'))
@@ -149,7 +151,7 @@ PurePosixPath('foo/bar')
 
 
 
-```
+``` python
 >>> PurePath()
 PurePosixPath('.')
 ```
@@ -158,7 +160,7 @@ PurePosixPath('.')
 
 
 
-```
+``` python
 >>> PurePath('/etc', '/usr', 'lib64')
 PurePosixPath('/usr/lib64')
 >>> PureWindowsPath('c:/Windows', 'd:bar')
@@ -169,7 +171,7 @@ PureWindowsPath('d:bar')
 
 
 
-```
+``` python
 >>> PureWindowsPath('c:/Windows', '/Program Files')
 PureWindowsPath('c:/Program Files')
 ```
@@ -178,7 +180,7 @@ PureWindowsPath('c:/Program Files')
 
 
 
-```
+``` python
 >>> PurePath('foo//bar')
 PurePosixPath('foo/bar')
 >>> PurePath('//foo/bar')
@@ -201,7 +203,7 @@ PurePosixPath('foo/../bar')
 
 
 
-```
+``` python
 >>> PurePosixPath('/etc/hosts')
 PurePosixPath('/etc/hosts')
 ```
@@ -214,7 +216,7 @@ PurePosixPath('/etc/hosts')
 
 
 
-```
+``` python
 >>> PureWindowsPath('c:/', 'Users', 'Ximénez')
 PureWindowsPath('c:/Users/Ximénez')
 >>> PureWindowsPath('//server/share/file')
@@ -231,7 +233,7 @@ PureWindowsPath('//server/share/file')
 
 
 
-```
+``` python
 >>> PurePosixPath('foo') == PurePosixPath('FOO')
 False
 >>> PureWindowsPath('foo') == PureWindowsPath('FOO')
@@ -246,7 +248,7 @@ True
 
 
 
-```
+``` python
 >>> PureWindowsPath('foo') == PurePosixPath('foo')
 False
 >>> PureWindowsPath('foo') < PurePosixPath('foo')
@@ -261,7 +263,7 @@ TypeError: '<' not supported between instances of 'PureWindowsPath' and 'PurePos
 
 
 
-```
+``` python
 >>> p = PurePath('/etc')
 >>> p
 PurePosixPath('/etc')
@@ -280,7 +282,7 @@ PureWindowsPath('c:/Program Files')
 
 
 
-```
+``` python
 >>> import os
 >>> p = PurePath('/etc')
 >>> os.fspath(p)
@@ -291,7 +293,7 @@ PureWindowsPath('c:/Program Files')
 
 
 
-```
+``` python
 >>> p = PurePath('/etc')
 >>> str(p)
 '/etc'
@@ -304,7 +306,7 @@ PureWindowsPath('c:/Program Files')
 
 
 
-```
+``` python
 >>> bytes(p)
 b'/etc'
 ```
@@ -325,7 +327,7 @@ b'/etc'
 
 
 
-```
+``` python
 >>> p = PurePath('/usr/bin/python3')
 >>> p.parts
 ('/', 'usr', 'bin', 'python3')
@@ -345,7 +347,8 @@ b'/etc'
 
 ​	用于低层级路径解析与合并的 [`os.path`](https://docs.python.org/zh-cn/3.13/library/os.path.html#module-os.path) 模块的实现: `posixpath` 或 `ntpath`。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## PurePath.**drive**
 
@@ -353,7 +356,7 @@ b'/etc'
 
 
 
-```
+``` python
 >>> PureWindowsPath('c:/Program Files/').drive
 'c:'
 >>> PureWindowsPath('/Program Files/').drive
@@ -366,7 +369,7 @@ b'/etc'
 
 
 
-```
+``` python
 >>> PureWindowsPath('//host/share/foo.txt').drive
 '\\\\host\\share'
 ```
@@ -377,7 +380,7 @@ b'/etc'
 
 
 
-```
+``` python
 >>> PureWindowsPath('c:/Program Files/').root
 '\\'
 >>> PureWindowsPath('c:Program Files/').root
@@ -390,7 +393,7 @@ b'/etc'
 
 
 
-```
+``` python
 >>> PureWindowsPath('//host/share').root
 '\\'
 ```
@@ -399,7 +402,7 @@ b'/etc'
 
 
 
-```
+``` python
 >>> PurePosixPath('//etc').root
 '//'
 >>> PurePosixPath('///etc').root
@@ -422,7 +425,7 @@ b'/etc'
 
 
 
-```
+``` python
 >>> PureWindowsPath('c:/Program Files/').anchor
 'c:\\'
 >>> PureWindowsPath('c:Program Files/').anchor
@@ -439,7 +442,7 @@ b'/etc'
 
 
 
-```
+``` python
 >>> p = PureWindowsPath('c:/foo/bar/setup.py')
 >>> p.parents[0]
 PureWindowsPath('c:/foo/bar')
@@ -457,7 +460,7 @@ PureWindowsPath('c:/')
 
 
 
-```
+``` python
 >>> p = PurePosixPath('/a/b/c/d')
 >>> p.parent
 PurePosixPath('/a/b/c')
@@ -467,7 +470,7 @@ PurePosixPath('/a/b/c')
 
 
 
-```
+``` python
 >>> p = PurePosixPath('/')
 >>> p.parent
 PurePosixPath('/')
@@ -484,7 +487,7 @@ PurePosixPath('.')
 
 
 
-```
+``` python
 >>> p = PurePosixPath('foo/..')
 >>> p.parent
 PurePosixPath('foo')
@@ -498,7 +501,7 @@ PurePosixPath('foo')
 
 
 
-```
+``` python
 >>> PurePosixPath('my/library/setup.py').name
 'setup.py'
 ```
@@ -507,7 +510,7 @@ PurePosixPath('foo')
 
 
 
-```
+``` python
 >>> PureWindowsPath('//some/share/setup.py').name
 'setup.py'
 >>> PureWindowsPath('//some/share').name
@@ -520,7 +523,7 @@ PurePosixPath('foo')
 
 
 
-```
+``` python
 >>> PurePosixPath('my/library/setup.py').suffix
 '.py'
 >>> PurePosixPath('my/library.tar.gz').suffix
@@ -537,7 +540,7 @@ PurePosixPath('foo')
 
 
 
-```
+``` python
 >>> PurePosixPath('my/library.tar.gar').suffixes
 ['.tar', '.gar']
 >>> PurePosixPath('my/library.tar.gz').suffixes
@@ -552,7 +555,7 @@ PurePosixPath('foo')
 
 
 
-```
+``` python
 >>> PurePosixPath('my/library.tar.gz').stem
 'library.tar'
 >>> PurePosixPath('my/library.tar').stem
@@ -567,7 +570,7 @@ PurePosixPath('foo')
 
 
 
-```
+``` python
 >>> p = PureWindowsPath('c:\\windows')
 >>> str(p)
 'c:\\windows'
@@ -581,7 +584,7 @@ PurePosixPath('foo')
 
 
 
-```
+``` python
 >>> PurePosixPath('/a/b').is_absolute()
 True
 >>> PurePosixPath('a/b').is_absolute()
@@ -603,7 +606,7 @@ True
 
 
 
-```
+``` python
 >>> p = PurePath('/etc/passwd')
 >>> p.is_relative_to('/etc')
 True
@@ -615,13 +618,14 @@ False
 
 
 
-```
+``` python
 >>> u = PurePath('/usr')
 >>> u == p or u in p.parents
 False
 ```
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 *Deprecated since version 3.12, will be removed in version 3.14:* 传入附加参数的做法已被弃用；如果提供了附加参数，它们将与 *other* 合并。
 
@@ -639,7 +643,7 @@ False
 
 
 
-```
+``` python
 >>> PurePosixPath('/etc').joinpath('passwd')
 PurePosixPath('/etc/passwd')
 >>> PurePosixPath('/etc').joinpath(PurePosixPath('passwd'))
@@ -656,7 +660,7 @@ PureWindowsPath('c:/Program Files')
 
 
 
-```
+``` python
 >>> PurePath('a/b.py').full_match('a/*.py')
 True
 >>> PurePath('a/b.py').full_match('*.py')
@@ -677,7 +681,7 @@ True
 
 
 
-```
+``` python
 >>> PurePosixPath('b.py').full_match('*.PY')
 False
 >>> PureWindowsPath('b.py').full_match('*.PY')
@@ -686,7 +690,8 @@ True
 
 ​	将 *case_sensitive* 设为 `True` 或 `False` 来覆盖此行为。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## PurePath.**match**(*pattern*, ***, *case_sensitive=None*)
 
@@ -696,7 +701,7 @@ True
 
 
 
-```
+``` python
 >>> PurePath('a/b.py').match('*.py')
 True
 >>> PurePath('/a/b/c.py').match('b/*.py')
@@ -715,7 +720,7 @@ False
 
 
 
-```
+``` python
 >>> p = PurePosixPath('/etc/passwd')
 >>> p.relative_to('/')
 PurePosixPath('etc/passwd')
@@ -733,7 +738,7 @@ ValueError: '/etc/passwd' is not in the subpath of '/usr' OR one path is relativ
 
 
 
-```
+``` python
 >>> p.relative_to('/usr', walk_up=True)
 PurePosixPath('../etc/passwd')
 >>> p.relative_to('foo', walk_up=True)
@@ -760,7 +765,7 @@ ValueError: '/etc/passwd' is not on the same drive as 'foo' OR one path is relat
 
 
 
-```
+``` python
 >>> p = PureWindowsPath('c:/Downloads/pathlib.tar.gz')
 >>> p.with_name('setup.py')
 PureWindowsPath('c:/Downloads/setup.py')
@@ -779,7 +784,7 @@ ValueError: PureWindowsPath('c:/') has an empty name
 
 
 
-```
+``` python
 >>> p = PureWindowsPath('c:/Downloads/draft.txt')
 >>> p.with_stem('final')
 PureWindowsPath('c:/Downloads/final.txt')
@@ -797,7 +802,8 @@ Traceback (most recent call last):
 ValueError: PureWindowsPath('c:/') has an empty name
 ```
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## PurePath.**with_suffix**(*suffix*)
 
@@ -805,7 +811,7 @@ ValueError: PureWindowsPath('c:/') has an empty name
 
 
 
-```
+``` python
 >>> p = PureWindowsPath('c:/Downloads/pathlib.tar.gz')
 >>> p.with_suffix('.bz2')
 PureWindowsPath('c:/Downloads/pathlib.tar.bz2')
@@ -837,7 +843,8 @@ hosts = etc / 'hosts'
 print(hosts.session_id)  # 42
 ```
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 
 
@@ -851,7 +858,7 @@ print(hosts.session_id)  # 42
 
 
 
-```
+``` python
 >>> Path('setup.py')
 PosixPath('setup.py')
 ```
@@ -864,7 +871,7 @@ PosixPath('setup.py')
 
 
 
-```
+``` python
 >>> PosixPath('/etc/hosts')
 PosixPath('/etc/hosts')
 ```
@@ -879,7 +886,7 @@ PosixPath('/etc/hosts')
 
 
 
-```
+``` python
 >>> WindowsPath('c:/', 'Users', 'Ximénez')
 WindowsPath('c:/Users/Ximénez')
 ```
@@ -892,7 +899,7 @@ WindowsPath('c:/Users/Ximénez')
 
 
 
-```
+``` python
 >>> import os
 >>> os.name
 'posix'
@@ -926,7 +933,7 @@ UnsupportedOperation: cannot instantiate 'WindowsPath' on your system
 
 
 
-```
+``` python
 >>> p = Path.from_uri('file:///etc/hosts')
 PosixPath('/etc/hosts')
 ```
@@ -935,7 +942,7 @@ PosixPath('/etc/hosts')
 
 
 
-```
+``` python
 >>> p = Path.from_uri('file:///c:/windows')
 WindowsPath('c:/windows')
 >>> p = Path.from_uri('file://server/share')
@@ -946,7 +953,7 @@ WindowsPath('//server/share')
 
 
 
-```
+``` python
 >>> p = Path.from_uri('file:////server/share')
 WindowsPath('//server/share')
 >>> p = Path.from_uri('file://///server/share')
@@ -959,7 +966,8 @@ WindowsPath('c:/windows')
 
 ​	如果 URI 不是以 `file:` 开头，或者被解析的不是绝对路径则会引发 [`ValueError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ValueError)。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## Path.**as_uri**()
 
@@ -967,7 +975,7 @@ WindowsPath('c:/windows')
 
 
 
-```
+``` python
 >>> p = PosixPath('/etc/passwd')
 >>> p.as_uri()
 'file:///etc/passwd'
@@ -986,12 +994,13 @@ WindowsPath('c:/windows')
 
 
 
-```
+``` python
 >>> Path.home()
 PosixPath('/home/antoine')
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## Path.**expanduser**()
 
@@ -999,13 +1008,14 @@ PosixPath('/home/antoine')
 
 
 
-```
+``` python
 >>> p = PosixPath('~/films/Monty Python')
 >>> p.expanduser()
 PosixPath('/home/eric/films/Monty Python')
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## *classmethod* Path.**cwd**()
 
@@ -1013,7 +1023,7 @@ PosixPath('/home/eric/films/Monty Python')
 
 
 
-```
+``` python
 >>> Path.cwd()
 PosixPath('/home/antoine/pathlib')
 ```
@@ -1024,7 +1034,7 @@ PosixPath('/home/antoine/pathlib')
 
 
 
-```
+``` python
 >>> p = Path('tests')
 >>> p
 PosixPath('tests')
@@ -1038,7 +1048,7 @@ PosixPath('/home/antoine/pathlib/tests')
 
 
 
-```
+``` python
 >>> p = Path()
 >>> p
 PosixPath('.')
@@ -1050,7 +1060,7 @@ PosixPath('/home/antoine/pathlib')
 
 
 
-```
+``` python
 >>> p = Path('docs/../setup.py')
 >>> p.resolve()
 PosixPath('/home/antoine/pathlib/setup.py')
@@ -1068,14 +1078,15 @@ PosixPath('/home/antoine/pathlib/setup.py')
 
 
 
-```
+``` python
 >>> p = Path('mylink')
 >>> p.symlink_to('setup.py')
 >>> p.readlink()
 PosixPath('setup.py')
 ```
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 *在 3.13 版本发生变更:* 如果 [`os.readlink()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.readlink) 不可用则会引发 [`UnsupportedOperation`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.UnsupportedOperation)。 在之前版本中，则是引发 [`NotImplementedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#NotImplementedError)。
 
@@ -1091,7 +1102,7 @@ PosixPath('setup.py')
 
 
 
-```
+``` python
 >>> p = Path('setup.py')
 >>> p.stat().st_size
 956
@@ -1113,7 +1124,7 @@ PosixPath('setup.py')
 
 
 
-```
+``` python
 >>> Path('.').exists()
 True
 >>> Path('setup.py').exists()
@@ -1156,13 +1167,15 @@ False
 
 ​	如果路径是指向一个接合点则返回 `True`，如果是其他文件类型则返回 `False`。 目前只有 Windows 支持接合点。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## Path.**is_mount**()
 
 ​	如果路径是一个 *挂载点*: 在文件系统中被其他不同文件系统挂载的位置则返回 `True`。 在 POSIX 上，此函数将检查 *path* 的上一级 `path/..` 是否位于和 *path* 不同的设备中，或者 `path/..` 和 *path* 是否指向位于相同设置的相同 i-node --- 这应当能检测所有 Unix 和 POSIX 变种上的挂载点。 在 Windows 上，挂载点是被视为驱动器盘符的根目录 (例如 `c:\`)、UNC 共享目录 (例如 `\\server\share`) 或已挂载的文件系统目录。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 *在 3.12 版本发生变更:* 添加了 Windows 支持。
 
@@ -1198,7 +1211,7 @@ False
 
 
 
-```
+``` python
 >>> p = Path('spam')
 >>> q = Path('eggs')
 >>> p.samefile(q)
@@ -1207,7 +1220,8 @@ False
 True
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ### 读写文件
 
@@ -1217,7 +1231,7 @@ True
 
 
 
-```
+``` python
 >>> p = Path('setup.py')
 >>> with p.open() as f:
 ...     f.readline()
@@ -1231,7 +1245,7 @@ True
 
 
 
-```
+``` python
 >>> p = Path('my_text_file')
 >>> p.write_text('Text file contents')
 18
@@ -1241,7 +1255,8 @@ True
 
 ​	文件先被打开然后关闭。有和 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open) 一样的可选形参。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.13 版本发生变更:* 增加了 *newline* 形参。
 
@@ -1251,7 +1266,7 @@ True
 
 
 
-```
+``` python
 >>> p = Path('my_binary_file')
 >>> p.write_bytes(b'Binary file contents')
 20
@@ -1259,7 +1274,8 @@ True
 b'Binary file contents'
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## Path.**write_text**(*data*, *encoding=None*, *errors=None*, *newline=None*)
 
@@ -1267,7 +1283,7 @@ b'Binary file contents'
 
 
 
-```
+``` python
 >>> p = Path('my_text_file')
 >>> p.write_text('Text file contents')
 18
@@ -1277,7 +1293,8 @@ b'Binary file contents'
 
 ​	同名的现有文件会被覆盖。 可选形参的含义与 [`open()`](https://docs.python.org/zh-cn/3.13/library/functions.html#open) 的相同。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.10 版本发生变更:* 增加了 *newline* 形参。
 
@@ -1287,7 +1304,7 @@ b'Binary file contents'
 
 
 
-```
+``` python
 >>> p = Path('my_binary_file')
 >>> p.write_bytes(b'Binary file contents')
 20
@@ -1297,7 +1314,8 @@ b'Binary file contents'
 
 ​	一个同名的现存文件将被覆盖。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ### 读取目录
 
@@ -1307,7 +1325,7 @@ b'Binary file contents'
 
 
 
-```
+``` python
 >>> p = Path('docs')
 >>> for child in p.iterdir(): child
 ...
@@ -1330,7 +1348,7 @@ PosixPath('docs/Makefile')
 
 
 
-```
+``` python
 >>> sorted(Path('.').glob('*.py'))
 [PosixPath('pathlib.py'), PosixPath('setup.py'), PosixPath('test_pathlib.py')]
 >>> sorted(Path('.').glob('*/*.py'))
@@ -1445,7 +1463,8 @@ for root, dirs, files in top.walk(top_down=False):
         (root / name).rmdir()
 ```
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ### 创建文件和目录
 
@@ -1481,7 +1500,7 @@ for root, dirs, files in top.walk(top_down=False):
 
 
 
-```
+``` python
 >>> p = Path('mylink')
 >>> p.symlink_to('setup.py')
 >>> p.resolve()
@@ -1510,7 +1529,8 @@ PosixPath('/home/antoine/pathlib/setup.py')
 
 ​	参数顺序 (link, target) 和 [`os.link()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.link) 是相反的。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 *在 3.13 版本发生变更:* 如果 [`os.link()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.link) 不可用则会引发 [`UnsupportedOperation`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.UnsupportedOperation)。 在之前版本中，则是引发 [`NotImplementedError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#NotImplementedError)。
 
@@ -1522,7 +1542,7 @@ PosixPath('/home/antoine/pathlib/setup.py')
 
 
 
-```
+``` python
 >>> p = Path('foo')
 >>> p.open('w').write('some text')
 9
@@ -1591,7 +1611,7 @@ PosixPath('bar')
 
 
 
-```
+``` python
 >>> p = Path('setup.py')
 >>> p.stat().st_mode
 33277

@@ -179,7 +179,8 @@ python-3.9.0.exe /layout [可选的目标目录]
 
 ### 4.1.6. 安装自由线程二进制文件
 
-*Added in version 3.13:* （试验性功能）
+> Added in version 3.13:
+> （试验性功能）
 
 ​	备注
 
@@ -203,7 +204,8 @@ python-3.9.0.exe /layout [可选的目标目录]
 
 ## 4.2. Microsoft Store包
 
-*Added in version 3.7.2.*
+> Added in version 3.7.2.
+>
 
 ​	Microsoft Store 包是一个易于安装的 Python 解释器，主要针对在交互模式下使用，例如用于教学。
 
@@ -241,7 +243,7 @@ python-3.9.0.exe /layout [可选的目标目录]
 
 
 
-```
+``` python
 >>> import os
 >>> test_file = 'C:\\Users\\example\\AppData\\Local\\test.txt'
 >>> os.path.realpath(test_file)
@@ -260,7 +262,8 @@ python-3.9.0.exe /layout [可选的目标目录]
 
 ## 4.3. nuget.org 安装包
 
-*Added in version 3.5.2.*
+> Added in version 3.5.2.
+>
 
 ​	nuget.org 是一个精简的 Python 环境，用于在没有全局安装 Python 的系统的持续集成和构建。 虽然 nuget 是“.NET的包管理器”，但是对于包含构建时工具的包来说，它也可以很好地工作。
 
@@ -293,7 +296,8 @@ Python 3.5.2
 
 ### 4.3.1. 自由线程版软件包
 
-*Added in version 3.13:* （试验性功能）
+> Added in version 3.13:
+> （试验性功能）
 
 ​	备注
 
@@ -307,7 +311,8 @@ Python 3.5.2
 
 ## 4.4. 可嵌入的包
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ​	嵌入式发行版是一个包含最小 Python 环境的 ZIP 文件。 它旨在作为另一个应用程序的一部分，而不是由最终用户直接访问。
 
@@ -397,15 +402,15 @@ C:\>python
 
 ​	参见
 
-## https://learn.microsoft.com/windows/win32/procthread/environment-variables
+https://learn.microsoft.com/windows/win32/procthread/environment-variables
 
 ​	Windows 中的环境变量概述
 
-## https://learn.microsoft.com/windows-server/administration/windows-commands/set_1
+https://learn.microsoft.com/windows-server/administration/windows-commands/set_1
 
 ​	用于临时修改环境变量的 `set` 命令
 
-## https://learn.microsoft.com/windows-server/administration/windows-commands/setx
+https://learn.microsoft.com/windows-server/administration/windows-commands/setx
 
 ​	用于永久修改环境变量的 `setx` 命令
 
@@ -429,7 +434,8 @@ C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Python 3.9
 
 ## 4.7. UTF-8 模式
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ​	Windows 仍然使用传统编码格式作为系统的编码格式 (ANSI 代码页)。 Python 使用它作为文本文件默认的编码格式 (即 [`locale.getencoding()`](https://docs.python.org/zh-cn/3.13/library/locale.html#locale.getencoding))。
 
@@ -454,7 +460,8 @@ C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Python 3.9
 
 ## 4.8. 适用于Windows的Python启动器
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ​	用于Windows的Python启动器是一个实用程序，可帮助定位和执行不同的Python版本。它允许脚本（或命令行）指示特定Python版本的首选项，并将定位并执行该版本。
 
@@ -524,7 +531,8 @@ py -V:PythonCore/3
 
 #### 4.8.1.2. 从虚拟环境
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ​	如果启动程序运行时没有明确的Python版本，并且虚拟环境（使用标准库创建 [`venv`](https://docs.python.org/zh-cn/3.13/library/venv.html#module-venv) 模块或外部 `virtualenv` 工具）处于活动状态，则启动程序将运行虚拟环境的解释器而不是全局的。要运行全局解释器，请停用虚拟环境，或显式指定全局Python版本。
 
@@ -532,7 +540,7 @@ py -V:PythonCore/3
 
 ​	让我们创建一个测试Python脚本 - 创建一个名为 `hello.py` 的文件，其中包含以下内容
 
-```
+``` sh
 #! python
 import sys
 sys.stdout.write("hello from Python %s\n" % (sys.version,))
@@ -546,7 +554,7 @@ py hello.py
 
 ​	您应该注意到最新的Python 2.x安装的版本号已打印出来。现在尝试将第一行更改为：
 
-```
+``` sh
 #! python3
 ```
 
@@ -573,7 +581,7 @@ py hello.py
 
 ​	例如，如果脚本开始的第一行为
 
-```
+``` sh
 #! /usr/bin/python
 ```
 
@@ -581,7 +589,8 @@ py hello.py
 
 ​	任何上述虚拟命令都可以附带一个显式版本号的后缀（可以是只有主版本号，也可以是有主版本号和次版本号）。 此外还可以在次版本号之后添加 "-32" 来请求 32 位版本。 即 `/usr/bin/python3.7-32` 将请求使用 32 位的 Python 3.7。 如果激活了一个虚拟环境，则将忽略版本号并使用激活的环境。
 
-*Added in version 3.7:* 从 python 启动器 3.7 开始，可以通过 "-64" 后缀调用 64 位版本。 此外还可以指定一个主版本号加架构而不带次版本号 (即 `/usr/bin/python3-64`)。
+> Added in version 3.7:
+> 从 python 启动器 3.7 开始，可以通过 "-64" 后缀调用 64 位版本。 此外还可以指定一个主版本号加架构而不带次版本号 (即 `/usr/bin/python3-64`)。
 
 *在 3.11 版本发生变更:* “-64”后缀已被弃用，现在会被视为“任何不被确定为 i386/32 位的架构”。 要请求一个特定的环境，请使用新的 `-V:*TAG*` 参数并附带完整的标签。
 
@@ -602,7 +611,7 @@ py hello.py
 
 ​	shebang 行还可以指定要传递给Python解释器的其他选项。 举例来说，如果你有这样的 shebang 行：
 
-```
+``` sh
 #! /usr/bin/python -v
 ```
 
@@ -746,11 +755,11 @@ python3=3.7
 
 ​	参见
 
-## [Win32 How Do I...?](https://timgolden.me.uk/python/win32_how_do_i.html)
+[Win32 How Do I...?](https://timgolden.me.uk/python/win32_how_do_i.html)
 
 ​	Tim Golden 著
 
-## [Python and COM](https://www.boddie.org.uk/python/COM.html)
+[Python and COM](https://www.boddie.org.uk/python/COM.html)
 
 ​	David 和 Paul Boddie 著
 

@@ -30,7 +30,8 @@ draft = false
 
 ​	操作 tty 属性列表 *mode*，它是一个与 [`termios.tcgetattr()`](https://docs.python.org/zh-cn/3.13/library/termios.html#termios.tcgetattr) 的返回值类似的列表，将其转换为原始模式 tty 的属性列表。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## tty.**cfmakecbreak**(*mode*)
 
@@ -38,7 +39,8 @@ draft = false
 
 ​	这将清除 *mode* 中的 `ECHO` 和 `ICANON` 本地模式旗标并将最小输入设为 1 字节且无延迟。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 *在 3.12.2 版本发生变更:* `ICRNL` 旗标将不再被清除。 这与 Linux 和 macOS 的 `stty cbreak` 行为以及 [`setcbreak()`](https://docs.python.org/zh-cn/3.13/library/tty.html#tty.setcbreak) 在历史上所做的相匹配。
 

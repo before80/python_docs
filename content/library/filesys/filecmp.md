@@ -48,7 +48,8 @@ draft = false
 
 ​	清除 filecmp 缓存。如果一个文件过快地修改，以至于超过底层文件系统记录修改时间的精度，那么该函数可能有助于比较该类文件。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 
 
@@ -140,7 +141,8 @@ draft = false
 
 ## filecmp.**DEFAULT_IGNORES**
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ​	默认被 [`dircmp`](https://docs.python.org/zh-cn/3.13/library/filecmp.html#filecmp.dircmp) 忽略的目录列表。
 
@@ -148,7 +150,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from filecmp import dircmp
 >>> def print_diff_files(dcmp):
 ...     for name in dcmp.diff_files:

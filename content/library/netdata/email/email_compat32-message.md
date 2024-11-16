@@ -77,13 +77,15 @@ g.flatten(msg)
 text = fp.getvalue()
 ```
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **__bytes__**()
 
 ​	等价于 [`as_bytes()`](https://docs.python.org/zh-cn/3.13/library/email.compat32-message.html#email.message.Message.as_bytes)。 让 `bytes(msg)` 产生一个包含已格式化消息的字节串对象。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **is_multipart**()
 
@@ -339,7 +341,8 @@ param = email.utils.collapse_rfc2231_value(rawparam)
 
 ​	如果信息的 *Content-Disposition* 头字段存在，返回其字段值；否则返回 `None` 。返回的值均为小写，不包含参数。如果信息遵循 [**RFC 2183**](https://datatracker.ietf.org/doc/html/rfc2183.html) 标准，则此方法的返回值只可能在 *inline* 、 *attachment* 和 `None` 之间选择。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **walk**()
 
@@ -349,7 +352,7 @@ param = email.utils.collapse_rfc2231_value(rawparam)
 
 
 
-```
+``` python
 >>> for part in msg.walk():
 ...     print(part.get_content_type())
 multipart/report
@@ -365,7 +368,7 @@ text/plain
 
 
 
-```
+``` python
 >>> for part in msg.walk():
 ...     print(part.get_content_maintype() == 'multipart',
 ...           part.is_multipart())

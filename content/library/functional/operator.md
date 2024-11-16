@@ -138,7 +138,8 @@ draft = false
 
 ​	返回 `a @ b`。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## operator.**neg**(*obj*)
 
@@ -232,7 +233,8 @@ draft = false
 
 ​	返回对象 *obj* 的估计长度。 首先尝试返回其实际长度，再使用 [`object.__length_hint__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__length_hint__) 得出估计值，最后返回默认值。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ​	以下操作适用于可调用对象:
 
@@ -242,7 +244,8 @@ draft = false
 
 ​	返回 `obj(*args, **kwargs)`。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 [`operator`](https://docs.python.org/zh-cn/3.13/library/operator.html#module-operator) 模块还定义了一些用于常规属性和条目查找的工具。 这些工具适合用来编写快速字段提取器作为 [`map()`](https://docs.python.org/zh-cn/3.13/library/functions.html#map), [`sorted()`](https://docs.python.org/zh-cn/3.13/library/functions.html#sorted), [`itertools.groupby()`](https://docs.python.org/zh-cn/3.13/library/itertools.html#itertools.groupby) 或其他需要相应函数参数的函数的参数。
 
@@ -304,7 +307,7 @@ def itemgetter(*items):
 
 
 
-```
+``` python
 >>> itemgetter(1)('ABCDEFG')
 'B'
 >>> itemgetter(1, 3, 5)('ABCDEFG')
@@ -320,7 +323,7 @@ def itemgetter(*items):
 
 
 
-```
+``` python
 >>> inventory = [('apple', 3), ('banana', 2), ('pear', 5), ('orange', 1)]
 >>> getcount = itemgetter(1)
 >>> list(map(getcount, inventory))
@@ -399,7 +402,7 @@ def methodcaller(name, /, *args, **kwargs):
 
 
 
-```
+``` python
 >>> a = 'hello'
 >>> iadd(a, ' world')
 'hello world'
@@ -411,7 +414,7 @@ def methodcaller(name, /, *args, **kwargs):
 
 
 
-```
+``` python
 >>> s = ['h', 'e', 'l', 'l', 'o']
 >>> iadd(s, [' ', 'w', 'o', 'r', 'l', 'd'])
 ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
@@ -467,7 +470,8 @@ def methodcaller(name, /, *args, **kwargs):
 
 `a = imatmul(a, b)` 等价于 `a @= b`。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## operator.**ior**(*a*, *b*)
 

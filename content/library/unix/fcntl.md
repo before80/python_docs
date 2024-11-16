@@ -68,7 +68,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import array, fcntl, struct, termios, os
 >>> os.getpgrp()
 13341

@@ -96,11 +96,11 @@ with open("README.md") as f:
 
 ​	参见
 
-## [Python UTF-8 模式](https://docs.python.org/zh-cn/3.13/library/os.html#utf8-mode)
+[Python UTF-8 模式](https://docs.python.org/zh-cn/3.13/library/os.html#utf8-mode)
 
 ​	Python UTF-8 模式可以用来将默认编码格式由语言区域所确定的编码格式改为 UTF-8。
 
-## [**PEP 686**](https://peps.python.org/pep-0686/)
+[**PEP 686**](https://peps.python.org/pep-0686/)
 
 ​	Python 3.15 将把 [Python UTF-8 模式](https://docs.python.org/zh-cn/3.13/library/os.html#utf8-mode) 设为默认值。
 
@@ -108,7 +108,8 @@ with open("README.md") as f:
 
 ### 选择性的 EncodingWarning
 
-*Added in version 3.10:* 请参阅 [**PEP 597**](https://peps.python.org/pep-0597/) 了解详情。
+> Added in version 3.10:* 请参阅 [**PEP 597*
+>](https://peps.python.org/pep-0597/) 了解详情。
 
 ​	要找出哪里使用了默认语言区域的编码格式，你可以启用 [`-X warn_default_encoding`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) 命令行选项或设置 [`PYTHONWARNDEFAULTENCODING`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHONWARNDEFAULTENCODING) 环境变量，这将在使用默认编码格式时发出 [`EncodingWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#EncodingWarning)。
 
@@ -134,7 +135,8 @@ with open("README.md") as f:
 
 ​	该函数的行为可通过先期调用 [`PyFile_SetOpenCodeHook()`](https://docs.python.org/zh-cn/3.13/c-api/file.html#c.PyFile_SetOpenCodeHook) 来重写。 不过，假如 *path* 为 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 类型并且是一个绝对路径，`open_code(path)` 的行为应当总是与 `open(path, 'rb')` 一致。 重写行为的目的是为了给文件附加额外的验证或预处理。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## io.**text_encoding**(*encoding*, *stacklevel=2*, */*)
 
@@ -155,7 +157,8 @@ def read_text(path, encoding=None):
 
 ​	请参阅 [文本编码格式](https://docs.python.org/zh-cn/3.13/library/io.html#io-text-encoding) 了解更多信息。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 *在 3.11 版本发生变更:* 当启用 UTF-8 模式且 *encoding* 为 `None` 时 [`text_encoding()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.text_encoding) 将返回 "utf-8"。
 
@@ -169,7 +172,7 @@ def read_text(path, encoding=None):
 
 ​	参见
 
-## [`sys`](https://docs.python.org/zh-cn/3.13/library/sys.html#module-sys)
+[`sys`](https://docs.python.org/zh-cn/3.13/library/sys.html#module-sys)
 
 ​	包含标准IO流: [`sys.stdin`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.stdin), [`sys.stdout`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.stdout) 和 [`sys.stderr`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.stderr) 。
 
@@ -275,9 +278,11 @@ with open('spam.txt', 'w') as file:
 - [`os.SEEK_CUR`](https://docs.python.org/zh-cn/3.13/library/os.html#os.SEEK_CUR) 或 `1` -- 当前流位置；*offset* 可以为负值
 - [`os.SEEK_END`](https://docs.python.org/zh-cn/3.13/library/os.html#os.SEEK_END) 或 `2` -- 流的末尾；*offset* 通常为负值
 
-*Added in version 3.1:* `SEEK_*` 常量。
+> Added in version 3.1:* `SEEK_
+>` 常量。
 
-*Added in version 3.3:* 某些操作系统还可支持其他的值，如 [`os.SEEK_HOLE`](https://docs.python.org/zh-cn/3.13/library/os.html#os.SEEK_HOLE) 或 [`os.SEEK_DATA`](https://docs.python.org/zh-cn/3.13/library/os.html#os.SEEK_DATA)。 特定文件的可用值还会取决于它是以文本还是二进制模式打开。
+> Added in version 3.3:
+> 某些操作系统还可支持其他的值，如 [`os.SEEK_HOLE`](https://docs.python.org/zh-cn/3.13/library/os.html#os.SEEK_HOLE) 或 [`os.SEEK_DATA`](https://docs.python.org/zh-cn/3.13/library/os.html#os.SEEK_DATA)。 特定文件的可用值还会取决于它是以文本还是二进制模式打开。
 
 ## **seekable**()
 
@@ -359,7 +364,8 @@ with open('spam.txt', 'w') as file:
 
 ​	某些缓冲区例如 [`BytesIO`](https://docs.python.org/zh-cn/3.13/library/io.html#io.BytesIO) 并无可从此方法返回的单独原始流的概念。 它们将会引发 [`UnsupportedOperation`](https://docs.python.org/zh-cn/3.13/library/io.html#io.UnsupportedOperation)。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **read**(*size=-1*, */*)
 
@@ -389,7 +395,8 @@ with open('spam.txt', 'w') as file:
 
 [`BlockingIOError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BlockingIOError) 会在下层原始流不处于阻塞模式，并且当前没有可用数据时被引发。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **write**(*b*, */*)
 
@@ -452,7 +459,7 @@ with open('spam.txt', 'w') as file:
 
 
 
-```
+``` python
 >>> b = io.BytesIO(b"abcdef")
 >>> view = b.getbuffer()
 >>> view[2:4] = b"56"
@@ -466,7 +473,8 @@ b'ab56ef'
 
 ​	只要视图保持存在，[`BytesIO`](https://docs.python.org/zh-cn/3.13/library/io.html#io.BytesIO) 对象就无法被改变大小或关闭。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **getvalue**()
 
@@ -482,7 +490,8 @@ b'ab56ef'
 
 ​	在 [`BytesIO`](https://docs.python.org/zh-cn/3.13/library/io.html#io.BytesIO) 中，这与 [`readinto()`](https://docs.python.org/zh-cn/3.13/library/io.html#io.BufferedIOBase.readinto) 相同。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## *class* io.**BufferedReader**(*raw*, *buffer_size=DEFAULT_BUFFER_SIZE*)
 
@@ -585,7 +594,8 @@ b'ab56ef'
 
 ​	某些 [`TextIOBase`](https://docs.python.org/zh-cn/3.13/library/io.html#io.TextIOBase) 的实现，例如 [`StringIO`](https://docs.python.org/zh-cn/3.13/library/io.html#io.StringIO) 可能并无下层缓冲区的概念，因此调用此方法将引发 [`UnsupportedOperation`](https://docs.python.org/zh-cn/3.13/library/io.html#io.UnsupportedOperation)。
 
-*Added in version 3.1.*
+> Added in version 3.1.
+>
 
 ## **read**(*size=-1*, */*)
 
@@ -607,7 +617,8 @@ b'ab56ef'
 
 ​	以不透明数字形式返回新的绝对位置。
 
-*Added in version 3.1:* `SEEK_*` 常量。
+> Added in version 3.1:* `SEEK_
+>` 常量。
 
 ## **tell**()
 
@@ -650,7 +661,8 @@ b'ab56ef'
 
 ​	写入是否要立即传给下层的二进制缓冲。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **reconfigure**(***, *encoding=None*, *errors=None*, *newline=None*, *line_buffering=None*, *write_through=None*)
 
@@ -662,7 +674,8 @@ b'ab56ef'
 
 ​	此方法会在设置新的形参之前执行隐式的流刷新。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 *在 3.11 版本发生变更:* 此方法支持 `encoding="locale"` 选项。
 

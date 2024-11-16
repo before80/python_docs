@@ -37,7 +37,7 @@ draft = false
 
 
 
-```
+``` python
 >>> graph = {"D": {"B", "C"}, "C": {"A"}, "B": {"A"}}
 >>> ts = TopologicalSorter(graph)
 >>> tuple(ts.static_order())
@@ -132,7 +132,7 @@ def static_order(self):
 
 
 
-```
+``` python
 >>> ts = TopologicalSorter()
 >>> ts.add(3, 2, 1)
 >>> ts.add(1, 0)
@@ -150,7 +150,8 @@ def static_order(self):
 
 ​	如果检测到任何环，则将引发 [`CycleError`](https://docs.python.org/zh-cn/3.13/library/graphlib.html#graphlib.CycleError)。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## 异常
 

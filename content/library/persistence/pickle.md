@@ -207,7 +207,8 @@ draft = false
 
 ​	参阅 [Dispatch 表](https://docs.python.org/zh-cn/3.13/library/pickle.html#pickle-dispatch) 获取使用示例。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **reducer_override**(*obj*)
 
@@ -215,7 +216,8 @@ draft = false
 
 ​	参阅 [类型，函数和其他对象的自定义归约](https://docs.python.org/zh-cn/3.13/library/pickle.html#reducer-override) 获取详细的示例。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **fast**
 
@@ -269,7 +271,8 @@ draft = false
 
 [`PickleBuffer`](https://docs.python.org/zh-cn/3.13/library/pickle.html#pickle.PickleBuffer) 对象只能用 pickle 版本 5 及以上协议进行序列化。它们符合 [带外序列化](https://docs.python.org/zh-cn/3.13/library/pickle.html#pickle-oob) 的条件。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **raw**()
 
@@ -595,7 +598,7 @@ class TextReader:
 
 
 
-```
+``` python
 >>> reader = TextReader("hello.txt")
 >>> reader.readline()
 '1: Hello world!'
@@ -610,7 +613,8 @@ class TextReader:
 
 ## 类型，函数和其他对象的自定义归约
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ​	有时，[`dispatch_table`](https://docs.python.org/zh-cn/3.13/library/pickle.html#pickle.Pickler.dispatch_table) 可能不够灵活。 特别是当我们想要基于对象类型以外的其他规则来对封存进行定制，或是当我们想要对函数和类的封存进行定制的时候。
 
@@ -660,7 +664,8 @@ assert unpickled_class.my_attribute == 1
 
 ## 外部缓冲区
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ​	在某些场景中，[`pickle`](https://docs.python.org/zh-cn/3.13/library/pickle.html#module-pickle) 模块会被用来传输海量的数据。 因此，最小化内存复制次数以保证性能和节省资源是很重要的。 但是 [`pickle`](https://docs.python.org/zh-cn/3.13/library/pickle.html#module-pickle) 模块的正常运作会将图类对象结构转换为字节序列流，因此在本质上就要从封存流中来回复制数据。
 
@@ -748,7 +753,7 @@ print(b is new_b)  # True: no copy was made
 
 
 
-```
+``` python
 >>> import pickle
 >>> pickle.loads(b"cos\nsystem\n(S'echo hello world'\ntR.")
 hello world
@@ -793,7 +798,7 @@ def restricted_loads(s):
 
 
 
-```
+``` python
 >>> restricted_loads(pickle.dumps([1, 2, range(15)]))
 [1, 2, range(0, 15)]
 >>> restricted_loads(b"cos\nsystem\n(S'echo hello world'\ntR.")

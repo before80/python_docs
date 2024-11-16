@@ -14,7 +14,7 @@ draft = false
 
 # 套接字编程指南
 
-## 作者:
+作者:
 
 ​	Gordon McMillan
 

@@ -20,7 +20,7 @@ draft = false
 
 ​	CPython C API 提供了 `Py_GIL_DISABLED` 宏，它在自由线程构建中被定义为 `1`，而在常规构建中未被定义。你可以使用它让代码仅在自由线程构建中运行：
 
-```
+``` c
 #ifdef Py_GIL_DISABLED
 /* 仅在自由线程构建版中运行的代码 */
 #endif

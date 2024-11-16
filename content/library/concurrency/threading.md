@@ -85,19 +85,22 @@ draft = false
 
 [`sys.excepthook()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.excepthook) 处理未捕获的异常。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## threading.**__excepthook__**
 
 ​	保存 [`threading.excepthook()`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.excepthook) 的原始值。 它被保存以便在原始值碰巧被已损坏或替代对象所替换的情况下可被恢复。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## threading.**get_ident**()
 
 ​	返回当前线程的 “线程标识符”。它是一个非零的整数。它的值没有直接含义，主要是用作 magic cookie，比如作为含有线程相关数据的字典的索引。线程标识符可能会在线程退出，新线程创建时被复用。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## threading.**get_native_id**()
 
@@ -105,7 +108,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows, FreeBSD, Linux, macOS, OpenBSD, NetBSD, AIX, DragonFlyBSD, GNU/kFreeBSD.
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.13 版本发生变更:* 增加了对 GNU/kFreeBSD 的支持。
 
@@ -117,7 +121,8 @@ draft = false
 
 ​	返回主 [`Thread`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.Thread) 对象。一般情况下，主线程是Python解释器开始时创建的线程。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## threading.**settrace**(*func*)
 
@@ -129,13 +134,15 @@ draft = false
 
 *func* 将为每个线程传递给 [`sys.settrace()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.settrace)，在其 [`run()`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.Thread.run) 方法被调用之前。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## threading.**gettrace**()
 
 ​	返回由 [`settrace()`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.settrace) 设置的跟踪函数。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## threading.**setprofile**(*func*)
 
@@ -147,13 +154,15 @@ draft = false
 
 *func* 将为每个线程传递给 [`sys.setprofile()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.setprofile)，在其 [`run()`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.Thread.run) 方法被调用之前。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## threading.**getprofile**()
 
 ​	返回由 [`setprofile()`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.setprofile) 设置的性能分析函数。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## threading.**stack_size**([*size*])
 
@@ -169,7 +178,8 @@ draft = false
 
 ​	阻塞函数（ [`Lock.acquire()`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.Lock.acquire), [`RLock.acquire()`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.RLock.acquire), [`Condition.wait()`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.Condition.wait), ...）中形参 *timeout* 允许的最大值。传入超过这个值的 timeout 会抛出 [`OverflowError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OverflowError) 异常。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	这个模块定义了许多类，详见以下部分。
 
@@ -264,7 +274,7 @@ mydata.x = 1
 
 
 
-```
+``` python
 >>> from threading import Thread
 >>> t = Thread(target=print, args=[1])
 >>> t.run()
@@ -314,7 +324,8 @@ mydata.x = 1
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows, FreeBSD, Linux, macOS, OpenBSD, NetBSD, AIX, DragonFlyBSD.
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **is_alive**()
 
@@ -531,7 +542,8 @@ while not predicate():
 
 ​	因此，规则同样适用于 [`wait()`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.Condition.wait) ：锁必须在被调用时保持获取，并在返回时重新获取。 随着锁定执行判断式。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **notify**(*n=1*)
 
@@ -685,7 +697,8 @@ t.start()  # 30 秒之后，将打印 "hello, world"
 
 ## 栅栏对象
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ​	栅栏类提供一个简单的同步原语，用于应对固定数量的线程需要彼此相互等待的情况。线程调用 [`wait()`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.Barrier.wait) 方法后将阻塞，直到所有线程都调用了 [`wait()`](https://docs.python.org/zh-cn/3.13/library/threading.html#threading.Barrier.wait) 方法。此时所有线程将被同时释放。
 

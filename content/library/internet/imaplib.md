@@ -34,7 +34,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from imaplib import IMAP4
 >>> with IMAP4("domain.org") as M:
 ...     M.noop()
@@ -172,7 +172,8 @@ data = authobject(response)
 
 ​	启用 *capability* (参见 [**RFC 5161**](https://datatracker.ietf.org/doc/html/rfc5161.html))。 大多数功能都不需要被启用。 目前只有 `UTF8=ACCEPT` 功能受到支持 (参见 [**RFC 6855**](https://datatracker.ietf.org/doc/html/rfc6855.html))。
 
-*Added in version 3.5:* [`enable()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.enable) 方法本身，以及 [**RFC 6855**](https://datatracker.ietf.org/doc/html/rfc6855.html) 支持。
+> Added in version 3.5:* [`enable()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.enable) 方法本身，以及 [**RFC 6855*
+>](https://datatracker.ietf.org/doc/html/rfc6855.html) 支持。
 
 ## IMAP4.**expunge**()
 
@@ -324,7 +325,8 @@ typ, msgnums = M.search(None, '(FROM "LDJ")')
 
 ​	发送一个 `STARTTLS` 命令。 *ssl_context* 参数是可选的并且应为一个 [`ssl.SSLContext`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext) 对象。 这将在 IMAP 连接上启用加密。 请阅读 [安全考量](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl-security) 来了解最佳实践。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.4 版本发生变更:* 该方法现在支持使用 [`ssl.SSLContext.check_hostname`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.check_hostname) 和 *服务器名称提示* (参见 [`ssl.HAS_SNI`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.HAS_SNI)) 进行主机名称检测。
 
@@ -377,7 +379,8 @@ M.expunge()
 
 [`imaplib.IMAP4.unselect()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.unselect) 会释放关联到选定邮箱的服务器资源并将服务器返回到已认证状态。 此命令会执行与 [`imaplib.IMAP4.close()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.close) 相同的动作，区别在于它不会从当前选定邮箱中永久性地移除消息。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## IMAP4.**xatom**(*name*[, *...*])
 
@@ -397,7 +400,8 @@ M.expunge()
 
 ​	通常为 `False` 的布尔值，但也可以被设为 `True`，如果成功地为 `UTF8=ACCEPT` 功能发送了 [`enable()`](https://docs.python.org/zh-cn/3.13/library/imaplib.html#imaplib.IMAP4.enable) 命令的话。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 
 

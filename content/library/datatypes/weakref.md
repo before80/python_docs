@@ -97,7 +97,7 @@ obj = Dict(red=1, green=2, blue=3)   # 此对象是可弱引用的
 
 
 
-```
+``` python
 >>> class T(str): pass
 ...
 >>> k1, k2 = T(), T()
@@ -111,7 +111,7 @@ obj = Dict(red=1, green=2, blue=3)   # 此对象是可弱引用的
 
 
 
-```
+``` python
 >>> class T(str): pass
 ...
 >>> k1, k2 = T(), T()
@@ -152,7 +152,7 @@ obj = Dict(red=1, green=2, blue=3)   # 此对象是可弱引用的
 
 
 
-```
+``` python
 >>> class C:
 ...     def method(self):
 ...         print("method called!")
@@ -174,7 +174,8 @@ method called!
 
 *callback* 与 [`ref()`](https://docs.python.org/zh-cn/3.13/library/weakref.html#weakref.ref) 函数的同名形参含义相同。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## *class* weakref.**finalize**(*obj*, *func*, */*, **args*, ***kwargs*)
 
@@ -214,7 +215,8 @@ method called!
 
 ​	很重要的一点是确保 *func*, *args* 和 *kwargs* 不拥有任何对 *obj* 的引用，无论是直接的或是间接的，否则的话 *obj* 将永远不会被作为垃圾回收。 特别地，*func* 不应当是 *obj* 的一个绑定方法。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## weakref.**ReferenceType**
 
@@ -246,7 +248,7 @@ method called!
 
 
 
-```
+``` python
 >>> import weakref
 >>> class Object:
 ...     pass
@@ -262,7 +264,7 @@ True
 
 
 
-```
+``` python
 >>> del o, o2
 >>> print(r())
 None
@@ -336,7 +338,7 @@ def id2obj(oid):
 
 
 
-```
+``` python
 >>> import weakref
 >>> class Object:
 ...     pass
@@ -352,7 +354,7 @@ You killed Kenny!
 
 
 
-```
+``` python
 >>> def callback(x, y, z):
 ...     print("CALLBACK")
 ...     return x + y + z
@@ -371,7 +373,7 @@ CALLBACK
 
 
 
-```
+``` python
 >>> obj = Object()
 >>> f = weakref.finalize(obj, callback, 1, 2, z=3)
 >>> f.detach()                                           
@@ -387,7 +389,7 @@ CALLBACK
 
 
 
-```
+``` python
 >>> obj = Object()
 >>> weakref.finalize(obj, print, "obj dead or exiting")
 <finalize object at ...; for 'Object' at ...>

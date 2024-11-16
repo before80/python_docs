@@ -14,7 +14,7 @@ draft = false
 
 # 日志指南
 
-## 作者:
+作者:
 
 ​	Vinay Sajip <vinay_sajip at red-dove dot com>
 
@@ -678,9 +678,11 @@ logging.getLogger('foo').addHandler(logging.NullHandler())
 14. [`QueueHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueHandler) 实例将消息发送到队列，例如在 [`queue`](https://docs.python.org/zh-cn/3.13/library/queue.html#module-queue) 或 [`multiprocessing`](https://docs.python.org/zh-cn/3.13/library/multiprocessing.html#module-multiprocessing) 模块中实现的队列。
 15. [`NullHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.NullHandler) 实例不对错误消息执行任何操作。 如果库开发者希望使用日志记录，但又希望避免出现“找不到日志记录器 *XXX* 的处理器”消息则可以使用它们。 更多信息请参阅 [为库配置日志](https://docs.python.org/zh-cn/3.13/howto/logging.html#library-config)。
 
-*Added in version 3.1:* [`NullHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.NullHandler) 类。
+> Added in version 3.1:
+> [`NullHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.NullHandler) 类。
 
-*Added in version 3.2:* [`QueueHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueHandler) 类。
+> Added in version 3.2:
+> [`QueueHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.handlers.QueueHandler) 类。
 
 ​	The [`NullHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.NullHandler) 、 [`StreamHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.StreamHandler) 和 [`FileHandler`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#logging.FileHandler) 类在核心日志包中定义。其他处理器定义在 [`logging.handlers`](https://docs.python.org/zh-cn/3.13/library/logging.handlers.html#module-logging.handlers) 中。（还有另一个子模块 [`logging.config`](https://docs.python.org/zh-cn/3.13/library/logging.config.html#module-logging.config) ，用于配置功能）
 

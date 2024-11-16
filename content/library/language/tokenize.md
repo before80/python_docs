@@ -84,7 +84,8 @@ draft = false
 
 ​	使用由 [`detect_encoding()`](https://docs.python.org/zh-cn/3.13/library/tokenize.html#tokenize.detect_encoding) 检测到的编码，以只读模式打开一个文件。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## *exception* tokenize.**TokenError**
 
@@ -107,7 +108,8 @@ docstring
 
 ## 命令行用法
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 [`tokenize`](https://docs.python.org/zh-cn/3.13/library/tokenize.html#module-tokenize) 模块可以作为一个脚本从命令行执行。这很简单:
 

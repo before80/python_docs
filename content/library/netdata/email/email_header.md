@@ -31,7 +31,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from email.message import Message
 >>> from email.header import Header
 >>> msg = Message()
@@ -113,7 +113,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from email.header import decode_header
 >>> decode_header('=?iso-8859-1?q?p=F6stal?=')
 [(b'p\xf6stal', 'iso-8859-1')]

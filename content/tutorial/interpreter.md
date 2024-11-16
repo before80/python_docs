@@ -66,7 +66,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 
 
-```
+``` python
 >>> the_world_is_flat = True
 >>> if the_world_is_flat:
 ...     print("Be careful not to fall off!")
@@ -102,7 +102,7 @@ Be careful not to fall off!
 
 ​	*第一行* 的规则也有一种例外情况，源码以 [UNIX "shebang" 行](https://docs.python.org/zh-cn/3.13/tutorial/appendix.html#tut-scripts) 开头。此时，编码声明要写在文件的第二行。例如：
 
-```
+``` sh
 #!/usr/bin/env python3
 # -*- coding: cp1252 -*-
 ```

@@ -22,7 +22,7 @@ draft = false
 
 ## 谁应当阅读本文档
 
-​	本指南是针对想要让扩展更安全地在将 Python 本身用作库的应用程序中使用的 [C-API](https://docs.python.org/zh-cn/3.13/c-api/index.html#c-api-index) 扩展维护者撰写的。
+​	本指南是针对想要让扩展更安全地在将 Python 本身用作库的应用程序中使用的 [C-API]({{< ref "/capi#c-api-index" >}}) 扩展维护者撰写的。
 
 ## 背景
 
@@ -53,7 +53,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import sys
 >>> import binascii
 >>> old_binascii = binascii
@@ -73,7 +73,7 @@ False
 
 
 
-```
+``` python
 >>> old_binascii.Error == binascii.Error
 False
 >>> try:

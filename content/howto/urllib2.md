@@ -107,7 +107,7 @@ with urllib.request.urlopen(req) as response:
 
 
 
-```
+``` python
 >>> import urllib.request
 >>> import urllib.parse
 >>> data = {}
@@ -166,7 +166,7 @@ with urllib.request.urlopen(req) as response:
 
 
 
-```
+``` python
 >>> req = urllib.request.Request('http://www.pretend_server.org')
 >>> try: urllib.request.urlopen(req)
 ... except urllib.error.URLError as e:
@@ -263,7 +263,7 @@ responses = {
 
 
 
-```
+``` python
 >>> req = urllib.request.Request('http://www.python.org/fish.html')
 >>> try:
 ...     urllib.request.urlopen(req)
@@ -405,7 +405,7 @@ urllib.request.install_opener(opener)
 
 
 
-```
+``` python
 >>> proxy_support = urllib.request.ProxyHandler({})
 >>> opener = urllib.request.build_opener(proxy_support)
 >>> urllib.request.install_opener(opener)

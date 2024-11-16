@@ -14,11 +14,11 @@ draft = false
 
 # 函数式编程指引
 
-## 作者:
+作者:
 
 ​	A. M. Kuchling
 
-## 发布版本:
+发布版本:
 
 ​	0.32
 
@@ -96,7 +96,7 @@ draft = false
 
 
 
-```
+``` python
 >>> L = [1, 2, 3]
 >>> it = iter(L)
 >>> it  
@@ -128,7 +128,7 @@ for i in obj:
 
 
 
-```
+``` python
 >>> L = [1, 2, 3]
 >>> iterator = iter(L)
 >>> t = tuple(iterator)
@@ -140,7 +140,7 @@ for i in obj:
 
 
 
-```
+``` python
 >>> L = [1, 2, 3]
 >>> iterator = iter(L)
 >>> a, b, c = iterator
@@ -160,7 +160,7 @@ for i in obj:
 
 
 
-```
+``` python
 >>> m = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
 ...      'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}
 >>> for key in m:
@@ -187,7 +187,7 @@ Dec 12
 
 
 
-```
+``` python
 >>> L = [('Italy', 'Rome'), ('France', 'Paris'), ('US', 'Washington DC')]
 >>> dict(iter(L))
 {'Italy': 'Rome', 'France': 'Paris', 'US': 'Washington DC'}
@@ -205,7 +205,7 @@ for line in file:
 
 
 
-```
+``` python
 >>> S = {2, 3, 5, 7, 11, 13}
 >>> for i in S:
 ...     print(i)
@@ -225,7 +225,7 @@ for line in file:
 
 
 
-```
+``` python
 >>> line_list = ['  line 1\n', 'line 2  \n', ' \n', '']
 
 >>> # Generator expression -- returns iterator
@@ -239,7 +239,7 @@ for line in file:
 
 
 
-```
+``` python
 >>> stripped_list = [line.strip() for line in line_list
 ...                  if line != ""]
 ```
@@ -294,7 +294,7 @@ for expr1 in sequence1:
 
 
 
-```
+``` python
 >>> seq1 = 'abc'
 >>> seq2 = (1, 2, 3)
 >>> [(x, y) for x in seq1 for y in seq2]  
@@ -322,7 +322,7 @@ for expr1 in sequence1:
 
 
 
-```
+``` python
 >>> def generate_ints(N):
 ...    for i in range(N):
 ...        yield i
@@ -336,7 +336,7 @@ for expr1 in sequence1:
 
 
 
-```
+``` python
 >>> gen = generate_ints(3)
 >>> gen  
 <generator object generate_ints at ...>
@@ -410,7 +410,7 @@ def counter(maximum):
 
 
 
-```
+``` python
 >>> it = counter(10)  
 >>> next(it)  
 0
@@ -453,14 +453,14 @@ StopIteration
 
 
 
-```
+``` python
 >>> def upper(s):
 ...     return s.upper()
 ```
 
 
 
-```
+``` python
 >>> list(map(upper, ['sentence', 'fragment']))
 ['SENTENCE', 'FRAGMENT']
 >>> [upper(s) for s in ['sentence', 'fragment']]
@@ -473,14 +473,14 @@ StopIteration
 
 
 
-```
+``` python
 >>> def is_even(x):
 ...     return (x % 2) == 0
 ```
 
 
 
-```
+``` python
 >>> list(filter(is_even, range(10)))
 [0, 2, 4, 6, 8]
 ```
@@ -489,7 +489,7 @@ StopIteration
 
 
 
-```
+``` python
 >>> list(x for x in range(10) if is_even(x))
 [0, 2, 4, 6, 8]
 ```
@@ -498,7 +498,7 @@ StopIteration
 
 
 
-```
+``` python
 >>> for item in enumerate(['subject', 'verb', 'object']):
 ...     print(item)
 (0, 'subject')
@@ -519,7 +519,7 @@ for i, line in enumerate(f):
 
 
 
-```
+``` python
 >>> import random
 >>> # Generate 8 random numbers between [0, 10000)
 >>> rand_list = random.sample(range(10000), 8)
@@ -537,7 +537,7 @@ for i, line in enumerate(f):
 
 
 
-```
+``` python
 >>> any([0, 1, 0])
 True
 >>> any([0, 0, 0])
@@ -810,7 +810,7 @@ server_log('Unable to open socket')
 
 
 
-```
+``` python
 >>> import operator, functools
 >>> functools.reduce(operator.concat, ['A', 'BB', 'C'])
 'ABBC'
@@ -828,7 +828,7 @@ TypeError: reduce() of empty sequence with no initial value
 
 
 
-```
+``` python
 >>> import functools, operator
 >>> functools.reduce(operator.add, [1, 2, 3, 4], 0)
 10

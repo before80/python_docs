@@ -24,7 +24,7 @@ draft = false
 
 ​	参见
 
-## [Tk 控件风格](https://core.tcl.tk/tips/doc/trunk/tip/48.md)
+[Tk 控件风格](https://core.tcl.tk/tips/doc/trunk/tip/48.md)
 
 ​	介绍 Tk 风格的文档
 
@@ -49,7 +49,7 @@ from tkinter.ttk import *
 
 ​	参见
 
-## [将现有应用程序转换为使用 Tile 部件](https://tktable.sourceforge.net/tile/doc/converting.txt)
+[将现有应用程序转换为使用 Tile 部件](https://tktable.sourceforge.net/tile/doc/converting.txt)
 
 ​	此文介绍迁移为新控件时的常见差别（使用 Tcl ）。
 
@@ -731,7 +731,7 @@ l2 = ttk.Label(text="Test", style="BW.TLabel")
 
 ​	参见
 
-## [Tcl'2004 会议报告](https://tktable.sourceforge.net/tile/tile-tcl2004.pdf)
+[Tcl'2004 会议报告](https://tktable.sourceforge.net/tile/tile-tcl2004.pdf)
 
 ​	文章解释了主题引擎的工作原理。
 

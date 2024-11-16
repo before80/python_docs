@@ -14,7 +14,8 @@ draft = false
 
 # `unittest.mock` --- 新手入门
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 
 
@@ -31,7 +32,7 @@ draft = false
 
 
 
-```
+``` python
 >>> real = SomeClass()
 >>> real.method = MagicMock(name='method')
 >>> real.method(3, 4, 5, key='value')
@@ -52,7 +53,7 @@ draft = false
 
 
 
-```
+``` python
 >>> class ProductionClass:
 ...     def method(self):
 ...         self.something(1, 2, 3)
@@ -73,7 +74,7 @@ draft = false
 
 
 
-```
+``` python
 >>> class ProductionClass:
 ...     def closer(self, something):
 ...         something.close()
@@ -84,7 +85,7 @@ draft = false
 
 
 
-```
+``` python
 >>> real = ProductionClass()
 >>> mock = Mock()
 >>> real.closer(mock)
@@ -101,7 +102,7 @@ draft = false
 
 
 
-```
+``` python
 >>> def some_function():
 ...     instance = module.Foo()
 ...     return instance.method()
@@ -119,7 +120,7 @@ draft = false
 
 
 
-```
+``` python
 >>> mock = MagicMock(name='foo')
 >>> mock
 <MagicMock name='foo' id='...'>
@@ -133,7 +134,7 @@ draft = false
 
 
 
-```
+``` python
 >>> mock = MagicMock()
 >>> mock.method()
 <MagicMock name='mock.method()' id='...'>
@@ -149,7 +150,7 @@ draft = false
 
 
 
-```
+``` python
 >>> expected = [call.method(), call.attribute.method(10, x=53)]
 >>> mock.mock_calls == expected
 True
@@ -159,7 +160,7 @@ True
 
 
 
-```
+``` python
 >>> m = Mock()
 >>> m.factory(important=True).deliver()
 <Mock name='mock.factory().deliver()' id='...'>
@@ -173,7 +174,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.return_value = 3
 >>> mock()
@@ -184,7 +185,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.method.return_value = 3
 >>> mock.method()
@@ -195,7 +196,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock(return_value=3)
 >>> mock()
 3
@@ -205,7 +206,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.x = 3
 >>> mock.x
@@ -218,7 +219,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> cursor = mock.connection.cursor.return_value
 >>> cursor.execute.return_value = ['foo']
@@ -239,7 +240,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock(side_effect=Exception('Boom!'))
 >>> mock()
 Traceback (most recent call last):
@@ -253,7 +254,7 @@ Exception: Boom!
 
 
 
-```
+``` python
 >>> mock = MagicMock(side_effect=[4, 5, 6])
 >>> mock()
 4
@@ -267,7 +268,7 @@ Exception: Boom!
 
 
 
-```
+``` python
 >>> vals = {(1, 2): 1, (2, 3): 2}
 >>> def side_effect(*args):
 ...     return vals[args]
@@ -285,7 +286,7 @@ Exception: Boom!
 
 
 
-```
+``` python
 >>> mock = MagicMock()  # AsyncMock also works here
 >>> mock.__aiter__.return_value = [1, 2, 3]
 >>> async def main():
@@ -301,7 +302,7 @@ Exception: Boom!
 
 
 
-```
+``` python
 >>> class AsyncContextManager:
 ...     async def __aenter__(self):
 ...         return self
@@ -326,7 +327,7 @@ Exception: Boom!
 
 
 
-```
+``` python
 >>> mock = Mock(spec=SomeClass)
 >>> mock.old_method()
 Traceback (most recent call last):
@@ -338,7 +339,7 @@ AttributeError: Mock object has no attribute 'old_method'. Did you mean: 'class_
 
 
 
-```
+``` python
 >>> def f(a, b, c): pass
 ...
 >>> mock = Mock(spec=f)
@@ -390,7 +391,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 
 
-```
+``` python
 >>> original = SomeClass.attribute
 >>> @patch.object(SomeClass, 'attribute', sentinel.attribute)
 ... def test():
@@ -411,7 +412,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 
 
-```
+``` python
 >>> mock = MagicMock(return_value=sentinel.file_handle)
 >>> with patch('builtins.open', mock):
 ...     handle = open('filename', 'r')
@@ -424,7 +425,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 
 
-```
+``` python
 >>> @patch('package.module.ClassName.attribute', sentinel.attribute)
 ... def test():
 ...     from package.module import ClassName
@@ -437,7 +438,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 
 
-```
+``` python
 >>> class MyTest(unittest.TestCase):
 ...     @patch.object(SomeClass, 'attribute', sentinel.attribute)
 ...     def test_something(self):
@@ -452,7 +453,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 
 
-```
+``` python
 >>> class MyTest(unittest.TestCase):
 ...     @patch.object(SomeClass, 'static_method')
 ...     def test_something(self, mock_method):
@@ -466,7 +467,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 
 
-```
+``` python
 >>> class MyTest(unittest.TestCase):
 ...     @patch('package.module.ClassName1')
 ...     @patch('package.module.ClassName2')
@@ -483,7 +484,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 
 
-```
+``` python
 >>> foo = {'key': 'value'}
 >>> original = foo.copy()
 >>> with patch.dict(foo, {'newkey': 'newvalue'}, clear=True):
@@ -498,7 +499,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 
 
-```
+``` python
 >>> class ProductionClass:
 ...     def method(self):
 ...         pass
@@ -527,7 +528,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock().foo(a=2, b=3)
 <Mock name='mock().foo()' id='...'>
@@ -540,7 +541,7 @@ with patch("builtins.open", side_effect=open_side_effect):
 
 
 
-```
+``` python
 >>> class Something:
 ...     def __init__(self):
 ...         self.backend = BackendProvider()
@@ -563,7 +564,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 
 
-```
+``` python
 >>> something = Something()
 >>> mock_response = Mock(spec=open)
 >>> mock_backend = Mock()
@@ -575,7 +576,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 
 
-```
+``` python
 >>> something.backend = mock_backend
 >>> something.method()
 ```
@@ -584,7 +585,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 
 
-```
+``` python
 >>> chained = call.get_endpoint('foobar').create_call('spam', 'eggs').start_call()
 >>> call_list = chained.call_list()
 >>> assert mock_backend.mock_calls == call_list
@@ -600,7 +601,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 
 
-```
+``` python
 >>> from datetime import date
 >>> with patch('mymodule.date') as mock_date:
 ...     mock_date.today.return_value = date(2010, 10, 8)
@@ -628,7 +629,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 
 
-```
+``` python
 >>> class Foo:
 ...     def iter(self):
 ...         for i in [1, 2, 3]:
@@ -645,7 +646,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 
 
-```
+``` python
 >>> mock_foo = MagicMock()
 >>> mock_foo.iter.return_value = iter([1, 2, 3])
 >>> list(mock_foo.iter())
@@ -662,7 +663,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 
 
-```
+``` python
 >>> @patch('mymodule.SomeClass')
 ... class MyTest(unittest.TestCase):
 ...
@@ -685,7 +686,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 
 
-```
+``` python
 >>> class MyTest(unittest.TestCase):
 ...     def setUp(self):
 ...         self.patcher = patch('mymodule.foo')
@@ -704,7 +705,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 
 
-```
+``` python
 >>> class MyTest(unittest.TestCase):
 ...     def setUp(self):
 ...         patcher = patch('mymodule.foo')
@@ -725,7 +726,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 
 
-```
+``` python
 >>> class Foo:
 ...   def foo(self):
 ...     pass
@@ -747,7 +748,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.foo_bar.return_value = None
 >>> mock.foo_bar('baz', spam='eggs')
@@ -758,7 +759,7 @@ mock_backend.get_endpoint.return_value.create_call.return_value.start_call.retur
 
 
 
-```
+``` python
 >>> mock.foo_bar.assert_called_once_with('baz', spam='eggs')
 >>> mock.foo_bar()
 >>> mock.foo_bar.assert_called_once_with('baz', spam='eggs')
@@ -772,7 +773,7 @@ Calls: [call('baz', spam='eggs'), call()].
 
 
 
-```
+``` python
 >>> mock = Mock(return_value=None)
 >>> mock(1, 2, 3)
 >>> mock(4, 5, 6)
@@ -785,7 +786,7 @@ Calls: [call('baz', spam='eggs'), call()].
 
 
 
-```
+``` python
 >>> expected = [call(1, 2, 3), call(4, 5, 6), call()]
 >>> mock.call_args_list == expected
 True
@@ -811,7 +812,7 @@ def grob(val):
 
 
 
-```
+``` python
 >>> with patch('mymodule.frob') as mock_frob:
 ...     val = {6}
 ...     mymodule.grob(val)
@@ -831,7 +832,7 @@ Called with: ((set(),), {})
 
 
 
-```
+``` python
 >>> from copy import deepcopy
 >>> from unittest.mock import Mock, patch, DEFAULT
 >>> def copy_call_args(mock):
@@ -864,7 +865,7 @@ call({6})
 
 
 
-```
+``` python
 >>> def side_effect(arg):
 ...     assert arg == {6}
 ...
@@ -880,7 +881,7 @@ AssertionError
 
 
 
-```
+``` python
 >>> from copy import deepcopy
 >>> class CopyingMock(MagicMock):
 ...     def __call__(self, /, *args, **kwargs):
@@ -911,7 +912,7 @@ Actual: mock(set())
 
 
 
-```
+``` python
 >>> class MyTest(unittest.TestCase):
 ...
 ...     def test_foo(self):
@@ -931,7 +932,7 @@ Actual: mock(set())
 
 
 
-```
+``` python
 >>> class MyTest(unittest.TestCase):
 ...
 ...     def create_patch(self, name):
@@ -966,7 +967,7 @@ Actual: mock(set())
 
 
 
-```
+``` python
 >>> my_dict = {'a': 1, 'b': 2, 'c': 3}
 >>> def getitem(name):
 ...      return my_dict[name]
@@ -987,7 +988,7 @@ Actual: mock(set())
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> mock.__getitem__ = Mock(side_effect=getitem)
 >>> mock.__setitem__ = Mock(side_effect=setitem)
@@ -997,7 +998,7 @@ Actual: mock(set())
 
 
 
-```
+``` python
 >>> mock = MagicMock(spec_set=dict)
 >>> mock.__getitem__.side_effect = getitem
 >>> mock.__setitem__.side_effect = setitem
@@ -1007,7 +1008,7 @@ Actual: mock(set())
 
 
 
-```
+``` python
 >>> mock['a']
 1
 >>> mock['c']
@@ -1028,7 +1029,7 @@ KeyError: 'd'
 
 
 
-```
+``` python
 >>> mock.__getitem__.call_args_list
 [call('a'), call('c'), call('d'), call('b'), call('d')]
 >>> mock.__setitem__.call_args_list
@@ -1043,7 +1044,7 @@ KeyError: 'd'
 
 
 
-```
+``` python
 >>> class MyMock(MagicMock):
 ...     def has_been_called(self):
 ...         return self.called
@@ -1062,7 +1063,7 @@ True
 
 
 
-```
+``` python
 >>> mymock.foo
 <MyMock name='mock.foo' id='...'>
 >>> mymock.foo.has_been_called()
@@ -1079,7 +1080,7 @@ True
 
 
 
-```
+``` python
 >>> class Subclass(MagicMock):
 ...     def _get_child_mock(self, /, **kwargs):
 ...         return MagicMock(**kwargs)
@@ -1110,7 +1111,7 @@ True
 
 
 
-```
+``` python
 >>> import sys
 >>> mock = Mock()
 >>> with patch.dict('sys.modules', {'fooble': mock}):
@@ -1128,7 +1129,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> with patch.dict('sys.modules', {'fooble': mock}):
 ...    from fooble import blob
@@ -1142,7 +1143,7 @@ True
 
 
 
-```
+``` python
 >>> mock = Mock()
 >>> modules = {'package': mock, 'package.module': mock.module}
 >>> with patch.dict('sys.modules', modules):
@@ -1161,7 +1162,7 @@ True
 
 
 
-```
+``` python
 >>> manager = Mock()
 >>> mock_foo = manager.foo
 >>> mock_bar = manager.bar
@@ -1169,7 +1170,7 @@ True
 
 
 
-```
+``` python
 >>> mock_foo.something()
 <Mock name='mock.foo.something()' id='...'>
 >>> mock_bar.other.thing()
@@ -1178,7 +1179,7 @@ True
 
 
 
-```
+``` python
 >>> manager.mock_calls
 [call.foo.something(), call.bar.other.thing()]
 ```
@@ -1187,7 +1188,7 @@ True
 
 
 
-```
+``` python
 >>> expected_calls = [call.foo.something(), call.bar.other.thing()]
 >>> manager.mock_calls == expected_calls
 True
@@ -1197,7 +1198,7 @@ True
 
 
 
-```
+``` python
 >>> manager = MagicMock()
 >>> with patch('mymodule.Class1') as MockClass1:
 ...     with patch('mymodule.Class2') as MockClass2:
@@ -1218,7 +1219,7 @@ call.MockClass2().bar()]
 
 
 
-```
+``` python
 >>> m = MagicMock()
 >>> m().foo().bar().baz()
 <MagicMock name='mock().foo().bar().baz()' id='...'>
@@ -1234,7 +1235,7 @@ call.MockClass2().bar()]
 
 
 
-```
+``` python
 >>> m = MagicMock()
 >>> m(1), m.two(2, 3), m.seven(7), m.fifty('50')
 (...)
@@ -1252,7 +1253,7 @@ call.MockClass2().bar()]
 
 
 
-```
+``` python
 >>> class Foo:
 ...     def __init__(self, a, b):
 ...         self.a, self.b = a, b
@@ -1271,7 +1272,7 @@ Actual: mock(<__main__.Foo object at 0x...>)
 
 
 
-```
+``` python
 >>> def compare(self, other):
 ...     if not type(self) == type(other):
 ...         return False
@@ -1287,7 +1288,7 @@ Actual: mock(<__main__.Foo object at 0x...>)
 
 
 
-```
+``` python
 >>> class Matcher:
 ...     def __init__(self, compare, some_obj):
 ...         self.compare = compare
@@ -1301,7 +1302,7 @@ Actual: mock(<__main__.Foo object at 0x...>)
 
 
 
-```
+``` python
 >>> match_foo = Matcher(compare, Foo(1, 2))
 >>> mock.assert_called_with(match_foo)
 ```
@@ -1310,7 +1311,7 @@ Actual: mock(<__main__.Foo object at 0x...>)
 
 
 
-```
+``` python
 >>> match_wrong = Matcher(compare, Foo(3, 4))
 >>> mock.assert_called_with(match_wrong)
 Traceback (most recent call last):

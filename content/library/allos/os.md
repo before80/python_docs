@@ -68,7 +68,8 @@ draft = false
 
 ## Python UTF-8 模式
 
-*Added in version 3.7:* 有关更多详细信息，请参阅 [**PEP 540**](https://peps.python.org/pep-0540/) 。
+> Added in version 3.7:* 有关更多详细信息，请参阅 [**PEP 540*
+>](https://peps.python.org/pep-0540/) 。
 
 ​	Python UTF-8 模式会忽略 [locale encoding](https://docs.python.org/zh-cn/3.13/glossary.html#term-locale-encoding) 并强制使用 UTF-8 编码。
 
@@ -98,7 +99,7 @@ draft = false
 
 ​	参见
 
-## [**PEP 686**](https://peps.python.org/pep-0686/)
+[**PEP 686**](https://peps.python.org/pep-0686/)
 
 ​	Python 3.15 将把 [Python UTF-8 模式](https://docs.python.org/zh-cn/3.13/library/os.html#utf8-mode) 设为默认值。
 
@@ -148,7 +149,8 @@ draft = false
 
 [`environb`](https://docs.python.org/zh-cn/3.13/library/os.html#os.environb) 仅在 [`supports_bytes_environ`](https://docs.python.org/zh-cn/3.13/library/os.html#os.supports_bytes_environ) 为 `True` 时可用。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.9 版本发生变更:* 已更新并支持了 [**PEP 584**](https://peps.python.org/pep-0584/) 的合并 (`|`) 和更新 (`|=`) 运算符。
 
@@ -166,7 +168,8 @@ draft = false
 
 [`fsdecode()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.fsdecode) 是此函数的逆向函数。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.6 版本发生变更:* 增加对实现了 [`os.PathLike`](https://docs.python.org/zh-cn/3.13/library/os.html#os.PathLike) 接口的对象的支持。
 
@@ -176,7 +179,8 @@ draft = false
 
 [`fsencode()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.fsencode) 是此函数的逆向函数。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.6 版本发生变更:* 增加对实现了 [`os.PathLike`](https://docs.python.org/zh-cn/3.13/library/os.html#os.PathLike) 接口的对象的支持。
 
@@ -186,13 +190,15 @@ draft = false
 
 ​	如果传入的是 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 或 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 类型的字符串，将原样返回。否则 [`__fspath__()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.PathLike.__fspath__) 将被调用，如果得到的是一个 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 或 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 类型的对象，那就返回这个值。其他所有情况则会抛出 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError) 异常。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## *class* os.**PathLike**
 
 ​	某些对象用于表示文件系统中的路径（如 [`pathlib.PurePath`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.PurePath) 对象），本类是这些对象的 [抽象基类](https://docs.python.org/zh-cn/3.13/glossary.html#term-abstract-base-class)。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## *abstractmethod* **__fspath__**()
 
@@ -216,13 +222,15 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## os.**get_exec_path**(*env=None*)
 
 ​	返回将用于搜索可执行文件的目录列表，与在外壳程序中启动一个进程时相似。指定的 *env* 应为用于搜索 PATH 的环境变量字典。默认情况下，当 *env* 为 `None` 时，将会使用 [`environ`](https://docs.python.org/zh-cn/3.13/library/os.html#os.environ) 。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## os.**getegid**()
 
@@ -250,7 +258,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**getgroups**()
 
@@ -302,7 +311,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**PRIO_PROCESS**
 
@@ -314,7 +324,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**PRIO_DARWIN_THREAD**
 
@@ -328,7 +339,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): macOS
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## os.**getresuid**()
 
@@ -336,7 +348,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI.
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## os.**getresgid**()
 
@@ -344,7 +357,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI.
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## os.**getuid**()
 
@@ -360,7 +374,8 @@ draft = false
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI, not Android.
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## os.**putenv**(*key*, *value*, */*)
 
@@ -428,7 +443,8 @@ os.close(fd)
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 3.0 with glibc >= 2.14.
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ​	参见
 
@@ -454,7 +470,8 @@ os.close(fd)
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**setregid**(*rgid*, *egid*, */*)
 
@@ -468,7 +485,8 @@ os.close(fd)
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI, not Android.
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## os.**setresuid**(*ruid*, *euid*, *suid*, */*)
 
@@ -476,7 +494,8 @@ os.close(fd)
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI, not Android.
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## os.**setreuid**(*ruid*, *euid*, */*)
 
@@ -510,7 +529,8 @@ os.close(fd)
 
 ​	如果操作系统上原生环境类型是字节型则为 `True` (例如在 Windows 上为 `False`)。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## os.**umask**(*mask*, */*)
 
@@ -554,7 +574,8 @@ os.close(fd)
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.16.
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ​	参见
 
@@ -654,7 +675,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 4.5 with glibc >= 2.27.
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## os.**device_encoding**(*fd*)
 
@@ -776,7 +798,8 @@ for fd in range(fd_low, fd_high):
 
 ​	在 Windows 上，此函数仅限于管道。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.12 版本发生变更:* 增加了在Windows上对于管道的支持。
 
@@ -788,7 +811,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI.
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## os.**isatty**(*fd*, */*)
 
@@ -802,7 +826,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**F_LOCK**
 
@@ -816,7 +841,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**login_tty**(*fd*, */*)
 
@@ -824,7 +850,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI.
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## os.**lseek**(*fd*, *pos*, *whence*, */*)
 
@@ -882,7 +909,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 3.1, macOS, Unix
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**open**(*path*, *flags*, *mode=0o777*, ***, *dir_fd=None*)
 
@@ -1016,7 +1044,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**posix_fallocate**(*fd*, *offset*, *len*, */*)
 
@@ -1024,7 +1053,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**posix_fadvise**(*fd*, *offset*, *len*, *advice*, */*)
 
@@ -1032,7 +1062,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**POSIX_FADV_NORMAL**
 
@@ -1050,7 +1081,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**pread**(*fd*, *n*, *offset*, */*)
 
@@ -1060,7 +1092,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**posix_openpt**(*oflag*, */*)
 
@@ -1072,7 +1105,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI.
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## os.**preadv**(*fd*, *buffers*, *offset*, *flags=0*, */*)
 
@@ -1093,7 +1127,8 @@ for fd in range(fd_low, fd_high):
 
 ​	使用旗标需要 Linux >= 4.6。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## os.**RWF_NOWAIT**
 
@@ -1103,7 +1138,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 4.14.
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## os.**RWF_HIPRI**
 
@@ -1113,7 +1149,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 4.6.
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## os.**ptsname**(*fd*, */*)
 
@@ -1123,7 +1160,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI.
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## os.**pwrite**(*fd*, *str*, *offset*, */*)
 
@@ -1133,7 +1171,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**pwritev**(*fd*, *buffers*, *offset*, *flags=0*, */*)
 
@@ -1155,7 +1194,8 @@ for fd in range(fd_low, fd_high):
 
 ​	使用旗标需要 Linux >= 4.6。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## os.**RWF_DSYNC**
 
@@ -1163,7 +1203,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 4.7.
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## os.**RWF_SYNC**
 
@@ -1171,7 +1212,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 4.7.
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## os.**RWF_APPEND**
 
@@ -1179,7 +1221,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 4.16.
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## os.**read**(*fd*, *n*, */*)
 
@@ -1221,7 +1264,8 @@ for fd in range(fd_low, fd_high):
 
 ​	有关 [`sendfile()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.sendfile) 的高级封装，参见 [`socket.socket.sendfile()`](https://docs.python.org/zh-cn/3.13/library/socket.html#socket.socket.sendfile)。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.9 版本发生变更:* *out* 和 *in* 参数被重命名为 *out_fd* 和 *in_fd*。
 
@@ -1235,7 +1279,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**SF_NOCACHE**
 
@@ -1243,7 +1288,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI.
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## os.**set_blocking**(*fd*, *blocking*, */*)
 
@@ -1257,7 +1303,8 @@ for fd in range(fd_low, fd_high):
 
 ​	在 Windows 上，此函数仅限于管道。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.12 版本发生变更:* 增加了在Windows上对于管道的支持。
 
@@ -1271,7 +1318,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.17 with glibc >= 2.5
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## os.**SPLICE_F_MOVE**
 
@@ -1279,7 +1327,8 @@ for fd in range(fd_low, fd_high):
 
 ## os.**SPLICE_F_MORE**
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## os.**readv**(*fd*, *buffers*, */*)
 
@@ -1291,7 +1340,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**tcgetpgrp**(*fd*, */*)
 
@@ -1319,7 +1369,8 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI.
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## os.**write**(*fd*, *str*, */*)
 
@@ -1345,13 +1396,15 @@ for fd in range(fd_low, fd_high):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 
 
 ### 查询终端的尺寸
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**get_terminal_size**(*fd=STDOUT_FILENO*, */*)
 
@@ -1381,7 +1434,8 @@ for fd in range(fd_low, fd_high):
 
 ### 文件描述符的继承
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ​	每个文件描述符都有一个 "inheritable"（可继承）标志位，该标志位控制了文件描述符是否可以由子进程继承。从 Python 3.4 开始，由 Python 创建的文件描述符默认是不可继承的。
 
@@ -1701,7 +1755,8 @@ else:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## os.**listmounts**(*volume*)
 
@@ -1717,7 +1772,8 @@ else:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## os.**listvolumes**()
 
@@ -1731,7 +1787,8 @@ else:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## os.**lstat**(*path*, ***, *dir_fd=None*)
 
@@ -1947,7 +2004,8 @@ else:
 
 ​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `os.rename` 并附带参数 `src`, `dst`, `src_dir_fd`, `dst_dir_fd`。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.6 版本发生变更:* 接受一个 [类路径对象](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object) 作为 *src* 和 *dst*。
 
@@ -1983,7 +2041,8 @@ else:
 
 ​	当迭代器迭代完毕，或垃圾回收，或迭代过程出错时，将自动调用本方法。但仍建议显式调用它或使用 [`with`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#with) 语句。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ​	下面的例子演示了 [`scandir()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.scandir) 的简单用法，用来显示给定 *path* 中所有不以 `'.'` 开头的文件（不包括目录）。`entry.is_file()` 通常不会增加一次额外的系统调用:
 
@@ -2000,7 +2059,8 @@ with os.scandir(path) as it:
 
 ​	在基于 Unix 的系统上，[`scandir()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.scandir) 使用系统的 [opendir()](https://pubs.opengroup.org/onlinepubs/009695399/functions/opendir.html) 和 [readdir()](https://pubs.opengroup.org/onlinepubs/009695399/functions/readdir_r.html) 函数。 在 Windows 上，它使用 Win32 [FindFirstFileW](https://msdn.microsoft.com/en-us/library/windows/desktop/aa364418(v=vs.85).aspx) 和 [FindNextFileW](https://msdn.microsoft.com/en-us/library/windows/desktop/aa364428(v=vs.85).aspx) 函数。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.6 版本发生变更:* 增加了对 [context manager](https://docs.python.org/zh-cn/3.13/glossary.html#term-context-manager) 协议和 [`close()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.scandir.close) 方法的支持。 如果 [`scandir()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.scandir) 迭代器没有耗尽也没有被显式地关闭则将在其析构器中发出 [`ResourceWarning`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#ResourceWarning)。
 
@@ -2078,7 +2138,8 @@ with os.scandir(path) as it:
 
 ​	结果是缓存在 `os.DirEntry` 对象中的。 调用 [`os.path.isjunction()`](https://docs.python.org/zh-cn/3.13/library/os.path.html#os.path.isjunction) 来获取更新信息。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **stat**(***, *follow_symlinks=True*)
 
@@ -2092,7 +2153,8 @@ with os.scandir(path) as it:
 
 ​	请注意 `os.DirEntry` 和 [`pathlib.Path`](https://docs.python.org/zh-cn/3.13/library/pathlib.html#pathlib.Path) 的几个属性和方法之间存在很好的对应关系。 具体来说，`name` 属性具有相同的含义，`is_dir()`, `is_file()`, `is_symlink()`, `is_junction()` 和 `stat()` 方法也是如此。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.6 版本发生变更:* 添加了对 [`PathLike`](https://docs.python.org/zh-cn/3.13/library/os.html#os.PathLike) 接口的支持。在 Windows 上添加了对 [`bytes`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#bytes) 类型路径的支持。
 
@@ -2112,7 +2174,7 @@ with os.scandir(path) as it:
 
 
 
-```
+``` python
 >>> import os
 >>> statinfo = os.stat('somefile.txt')
 >>> statinfo
@@ -2192,19 +2254,22 @@ st_mtime=1297230027, st_ctime=1297230027)
 
 ​	最近的访问时间，以纳秒表示，为整数。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **st_mtime_ns**
 
 ​	最近的修改时间，以纳秒表示，为整数。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## **st_ctime_ns**
 
 ​	最近的元数据修改时间，表示为一个以纳秒为单位的整数。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.12 版本发生变更:* `st_ctime_ns` 在 Windows 上已被弃用。 请使用 `st_birthtime_ns` 获取文件创建时间。 在未来，`st_ctime` 将包含最近的元数据修改时间，与其他平台一样。
 
@@ -2218,7 +2283,8 @@ st_mtime=1297230027, st_ctime=1297230027)
 
 ​	表示为一个以纳秒为单位的整数的文件创建时间。 该属性并不总是可用，并可能引发 [`AttributeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#AttributeError)。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ​	备注
 
@@ -2278,7 +2344,8 @@ st_mtime=1297230027, st_ctime=1297230027)
 
 ​	Windows 文件属性：由 `GetFileInformationByHandle()` 返回的 `BY_HANDLE_FILE_INFORMATION` 结构体的 `dwFileAttributes` 成员。 参见 [`stat`](https://docs.python.org/zh-cn/3.13/library/stat.html#module-stat) 模块中的 `FILE_ATTRIBUTE_* <stat.FILE_ATTRIBUTE_ARCHIVE>` 常量。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **st_reparse_tag**
 
@@ -2338,7 +2405,8 @@ os.stat in os.supports_dir_fd
 
 ​	目前 *dir_fd* 参数仅在 Unix 平台上有效，在 Windows 上均无效。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**supports_effective_ids**
 
@@ -2352,7 +2420,8 @@ os.access in os.supports_effective_ids
 
 ​	目前仅 Unix 平台支持 *effective_ids*，Windows 不支持。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**supports_fd**
 
@@ -2364,7 +2433,8 @@ os.access in os.supports_effective_ids
 os.chdir in os.supports_fd
 ```
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**supports_follow_symlinks**
 
@@ -2376,7 +2446,8 @@ os.chdir in os.supports_fd
 os.stat in os.supports_follow_symlinks
 ```
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**symlink**(*src*, *dst*, *target_is_directory=False*, ***, *dir_fd=None*)
 
@@ -2414,7 +2485,8 @@ os.stat in os.supports_follow_symlinks
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**truncate**(*path*, *length*)
 
@@ -2426,7 +2498,8 @@ os.stat in os.supports_follow_symlinks
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, Windows.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.5 版本发生变更:* 添加了 Windows 支持
 
@@ -2571,7 +2644,8 @@ for root, dirs, files, rootfd in os.fwalk(top, topdown=False):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.6 版本发生变更:* 接受一个 [path-like object](https://docs.python.org/zh-cn/3.13/glossary.html#term-path-like-object)。
 
@@ -2585,7 +2659,8 @@ for root, dirs, files, rootfd in os.fwalk(top, topdown=False):
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 3.17 with glibc >= 2.27.
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## os.**MFD_CLOEXEC**
 
@@ -2627,7 +2702,8 @@ for root, dirs, files, rootfd in os.fwalk(top, topdown=False):
 
 `MFD_HUGE*` 旗标仅从 Linux 4.14 开始可用。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## os.**eventfd**(*initval*[, *flags=os.EFD_CLOEXEC*])
 
@@ -2666,7 +2742,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27 with glibc >= 2.8
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## os.**eventfd_read**(*fd*)
 
@@ -2674,7 +2751,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## os.**eventfd_write**(*fd*, *value*)
 
@@ -2682,7 +2760,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## os.**EFD_CLOEXEC**
 
@@ -2690,7 +2769,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## os.**EFD_NONBLOCK**
 
@@ -2698,7 +2778,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## os.**EFD_SEMAPHORE**
 
@@ -2706,13 +2787,15 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.30
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 
 
 ### 计时器文件描述符
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ​	这些函数提供了对 Linux 的 *计时器文件描述符* API 的支持。 当然，它们仅在 Linux 上可用。
 
@@ -2761,7 +2844,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27 with glibc >= 2.8
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## os.**timerfd_settime**(*fd*, */*, ***, *flags=flags*, *initial=0.0*, *interval=0.0*)
 
@@ -2802,7 +2886,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27 with glibc >= 2.8
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## os.**timerfd_settime_ns**(*fd*, */*, ***, *flags=0*, *initial=0*, *interval=0*)
 
@@ -2810,7 +2895,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27 with glibc >= 2.8
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## os.**timerfd_gettime**(*fd*, */*)
 
@@ -2828,7 +2914,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27 with glibc >= 2.8
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## os.**timerfd_gettime_ns**(*fd*, */*)
 
@@ -2836,7 +2923,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27 with glibc >= 2.8
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## os.**TFD_NONBLOCK**
 
@@ -2844,7 +2932,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27 with glibc >= 2.8
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## os.**TFD_CLOEXEC**
 
@@ -2852,7 +2941,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27 with glibc >= 2.8
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## os.**TFD_TIMER_ABSTIME**
 
@@ -2860,7 +2950,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27 with glibc >= 2.8
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## os.**TFD_TIMER_CANCEL_ON_SET**
 
@@ -2868,11 +2959,13 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 2.6.27 with glibc >= 2.8
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ### Linux 扩展属性
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ​	这些函数仅在 Linux 上可用。
 
@@ -2960,7 +3053,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Windows.
 
-*Added in version 3.8:* 早期版本的 CPython 解析 DLL 时用的是当前进程的默认行为。这会导致不一致，比如不是每次都会去搜索 `PATH` 和当前工作目录，且系统函数（如 `AddDllDirectory` ）失效。
+> Added in version 3.8:
+> 早期版本的 CPython 解析 DLL 时用的是当前进程的默认行为。这会导致不一致，比如不是每次都会去搜索 `PATH` 和当前工作目录，且系统函数（如 `AddDllDirectory` ）失效。
 
 ​	在 3.8 中，DLL 的两种主要加载方式现在可以显式覆盖进程的行为，以确保一致性。请参阅 [移植说明](https://docs.python.org/zh-cn/3.13/whatsnew/3.8.html#bpo-36085-whatsnew) 了解如何更新你的库。
 
@@ -3206,7 +3300,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 5.3, Android >= [`build-time`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.getandroidapilevel) API level 31
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## os.**PIDFD_NONBLOCK**
 
@@ -3214,7 +3309,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 5.10
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## os.**plock**(*op*, */*)
 
@@ -3294,7 +3390,8 @@ finally:
 
 ​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `os.posix_spawn` 并附带参数 `path`, `argv`, `env`。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.13 版本发生变更:* *env* 形参可接受 `None`。 `os.POSIX_SPAWN_CLOSEFROM` 在具有 `posix_spawn_file_actions_addclosefrom_np()` 的平台上可用。
 
@@ -3308,7 +3405,8 @@ finally:
 
 ​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `os.posix_spawn` 并附带参数 `path`, `argv`, `env`。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): POSIX, not WASI, not Android, not iOS.
 
@@ -3332,7 +3430,8 @@ finally:
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI, not Android, not iOS.
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## os.**spawnl**(*mode*, *path*, *...*)
 
@@ -3500,7 +3599,8 @@ os.spawnvpe(os.P_WAIT, 'cp', L, os.environ)
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI, not Android, not iOS.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.13 版本发生变更:* 现在该函数在 macOS 同样可用。
 
@@ -3561,9 +3661,11 @@ os.spawnvpe(os.P_WAIT, 'cp', L, os.environ)
 
 `P_PIDFD` 仅在 Linux >= 5.4 时可用。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
-*Added in version 3.9:* `P_PIDFD` 常量。
+> Added in version 3.9:
+> `P_PIDFD` 常量。
 
 ## os.**WCONTINUED**
 
@@ -3579,7 +3681,8 @@ os.spawnvpe(os.P_WAIT, 'cp', L, os.environ)
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI, not Android, not iOS.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**WSTOPPED**
 
@@ -3589,7 +3692,8 @@ os.spawnvpe(os.P_WAIT, 'cp', L, os.environ)
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI, not Android, not iOS.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## os.**WUNTRACED**
 
@@ -3629,7 +3733,8 @@ os.spawnvpe(os.P_WAIT, 'cp', L, os.environ)
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, not WASI, not Android, not iOS.
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.9 版本发生变更:* 添加了 [`CLD_KILLED`](https://docs.python.org/zh-cn/3.13/library/os.html#os.CLD_KILLED) 和 [`CLD_STOPPED`](https://docs.python.org/zh-cn/3.13/library/os.html#os.CLD_STOPPED) 值。
 
@@ -3655,7 +3760,8 @@ os.spawnvpe(os.P_WAIT, 'cp', L, os.environ)
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Unix, Windows, not WASI, not Android, not iOS.
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ​	下列函数采用进程状态码作为参数，状态码由 [`system()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.system)、[`wait()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.wait) 或 [`waitpid()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.waitpid) 返回。它们可用于确定进程上发生的操作。
 
@@ -3723,7 +3829,8 @@ os.spawnvpe(os.P_WAIT, 'cp', L, os.environ)
 
 ​	这些函数控制操作系统如何为进程分配 CPU 时间。 它们仅在某些 Unix 平台上可用。 更多细节信息请查阅你所用 Unix 的指南页面。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ​	以下调度策略如果被操作系统支持就会对外公开。
 
@@ -3835,7 +3942,8 @@ os.spawnvpe(os.P_WAIT, 'cp', L, os.environ)
 
 [`process_cpu_count()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.process_cpu_count) 函数可被用于获取 **当前进程** 的调用方线程可以使用的逻辑 CPU 数量。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.13 版本发生变更:* 如果给出了 [`-X cpu_count`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#cmdoption-X) 或设置了 [`PYTHON_CPU_COUNT`](https://docs.python.org/zh-cn/3.13/using/cmdline.html#envvar-PYTHON_CPU_COUNT)，则 [`cpu_count()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.cpu_count) 将返回被覆盖的值 *n*。
 
@@ -3855,7 +3963,8 @@ os.spawnvpe(os.P_WAIT, 'cp', L, os.environ)
 
 ​	See also the [`sched_getaffinity()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.sched_getaffinity) function.
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## os.**sysconf**(*name*, */*)
 
@@ -3929,7 +4038,8 @@ os.spawnvpe(os.P_WAIT, 'cp', L, os.environ)
 
 [`setdlopenflags()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.setdlopenflags) 和 [`getdlopenflags()`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.getdlopenflags) 函数所使用的标志。请参阅 Unix 手册页 *[dlopen(3)](https://manpages.debian.org/dlopen(3))* 获取不同标志的含义。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## 随机数
 
@@ -3947,7 +4057,8 @@ os.spawnvpe(os.P_WAIT, 'cp', L, os.environ)
 
 [Availability](https://docs.python.org/zh-cn/3.13/library/intro.html#availability): Linux >= 3.17.
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## os.**urandom**(*size*, */*)
 
@@ -3981,10 +4092,12 @@ os.spawnvpe(os.P_WAIT, 'cp', L, os.environ)
 
 ​	如果设置了 [`GRND_NONBLOCK`](https://docs.python.org/zh-cn/3.13/library/os.html#os.GRND_NONBLOCK) 标志，则这些情况下 [`getrandom()`](https://docs.python.org/zh-cn/3.13/library/os.html#os.getrandom) 不会阻塞，而是立即抛出 [`BlockingIOError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#BlockingIOError) 异常。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## os.**GRND_RANDOM**
 
 ​	如果设置了此标志位，那么将从 `/dev/random` 池而不是 `/dev/urandom` 池中提取随机字节。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>

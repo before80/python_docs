@@ -32,10 +32,12 @@ draft = false
 
 ​	如果 *s* 是一个 Python [软关键字](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#soft-keywords) 则返回 `True`。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## keyword.**softkwlist**
 
 ​	包含为解释器定义的所有 [软关键字](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#soft-keywords) 的序列。 如果有任何被定义的软关键字是仅在当特定 [`__future__`](https://docs.python.org/zh-cn/3.13/library/__future__.html#module-__future__) 语句生效时才会被激活的，它们同样会被包括在内。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>

@@ -34,7 +34,8 @@ draft = false
 
 *exec_body* 参数是一个回调函数，用于填充新创建类的命名空间。 它应当接受类命名空间作为其唯一的参数并使用类内容直接更新命名空间。 如果未提供回调函数，则它就等效于传入 `lambda ns: None`。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## types.**prepare_class**(*name*, *bases=()*, *kwds=None*)
 
@@ -46,7 +47,8 @@ draft = false
 
 *metaclass* 是适当的元类，*namespace* 是预备好的类命名空间而 *kwds* 是所传入 *kwds* 参数移除每个 `'metaclass'` 条目后的已更新副本。 如果未传入 *kwds* 参数，这将为一个空字典。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.6 版本发生变更:* 所返回元组中 `namespace` 元素的默认值已被改变。 现在当元类没有 `__prepare__` 方法时将会使用一个保留插入顺序的映射。
 
@@ -66,7 +68,8 @@ draft = false
 
 ​	此函数会在 *bases* 中查找不是 [`type`](https://docs.python.org/zh-cn/3.13/library/functions.html#type) 的实例的项，并返回一个元组，其中每个具有 [`__mro_entries__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__mro_entries__) 方法的此种对象将被替换为调用该方法解包后的结果。 如果一个 *bases* 项是 [`type`](https://docs.python.org/zh-cn/3.13/library/functions.html#type) 的实例，或它不具有 `__mro_entries__()` 方法 ，则它将不加改变地被包括在返回的元组中。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## types.**get_original_bases**(*cls*, */*)
 
@@ -102,7 +105,8 @@ assert int.__bases__ == (object,)
 assert get_original_bases(int) == (object,)
 ```
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ​	参见
 
@@ -124,7 +128,8 @@ assert get_original_bases(int) == (object,)
 
 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None) 的类型。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## types.**FunctionType**
 
@@ -144,13 +149,15 @@ assert get_original_bases(int) == (object,)
 
 [coroutine](https://docs.python.org/zh-cn/3.13/glossary.html#term-coroutine) 对象的类型，由 [`async def`](https://docs.python.org/zh-cn/3.13/reference/compound_stmts.html#async-def) 函数创建。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## types.**AsyncGeneratorType**
 
 [asynchronous generator](https://docs.python.org/zh-cn/3.13/glossary.html#term-asynchronous-generator) 迭代器对象的类型，由异步生成器函数创建。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## *class* types.**CodeType**(***kwargs*)
 
@@ -164,7 +171,8 @@ assert get_original_bases(int) == (object,)
 
 ​	单元对象的类型：这种对象被用作函数中 [闭包变量](https://docs.python.org/zh-cn/3.13/glossary.html#term-closure-variable) 的容器。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## types.**MethodType**
 
@@ -180,31 +188,36 @@ assert get_original_bases(int) == (object,)
 
 ​	某些内置数据类型和基类的方法的类型，例如 [`object.__init__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__init__) 或 [`object.__lt__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__lt__)。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## types.**MethodWrapperType**
 
 ​	某些内置数据类型和基类的 *绑定* 方法的类型。 例如 `object().__str__` 所属的类型。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## types.**NotImplementedType**
 
 [`NotImplemented`](https://docs.python.org/zh-cn/3.13/library/constants.html#NotImplemented) 的类型。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## types.**MethodDescriptorType**
 
 ​	某些内置数据类型方法例如 [`str.join()`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str.join) 的类型。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## types.**ClassMethodDescriptorType**
 
 ​	某些内置数据类型 *非绑定* 类方法例如 `dict.__dict__['fromkeys']` 的类型。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## *class* types.**ModuleType**(*name*, *doc=None*)
 
@@ -224,7 +237,8 @@ assert get_original_bases(int) == (object,)
 
 [`Ellipsis`](https://docs.python.org/zh-cn/3.13/library/constants.html#Ellipsis) 的类型。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* types.**GenericAlias**(*t_origin*, *t_args*)
 
@@ -234,7 +248,7 @@ assert get_original_bases(int) == (object,)
 
 
 
-```
+``` python
 >>> from types import GenericAlias
 
 >>> list[int] == GenericAlias(list, (int,))
@@ -243,7 +257,8 @@ True
 True
 ```
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 *在 3.9.2 版本发生变更:* 此类型现在可以被子类化。
 
@@ -261,7 +276,8 @@ True
 
 [合并类型表达式](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#types-union) 的类型。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## *class* types.**TracebackType**(*tb_next*, *tb_frame*, *tb_lasti*, *tb_lineno*)
 
@@ -289,7 +305,8 @@ True
 
 ​	一个映射的只读代理。 它提供了对映射条目的动态视图，这意味着当映射发生改变时，视图会反映这些改变。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.9 版本发生变更:* 更新为支持 [**PEP 584**](https://peps.python.org/pep-0584/) 所新增的合并 (`|`) 运算符，它会简单地委托给下层的映射。
 
@@ -333,19 +350,22 @@ True
 
 ​	返回一个包含下层映射的键的反向迭代器。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## **hash(proxy)**
 
 ​	返回下层映射的哈希值。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## *class* types.**CapsuleType**
 
 [capsule 对象](https://docs.python.org/zh-cn/3.13/c-api/capsule.html#capsules) 的类型。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## 附加工具类和函数
 
@@ -379,7 +399,8 @@ class SimpleNamespace:
 
 `SimpleNamespace` 对象受到 [`copy.replace()`](https://docs.python.org/zh-cn/3.13/library/copy.html#copy.replace) 的支持。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.9 版本发生变更:* repr 中的属性顺序由字母顺序改为插入顺序 (类似 `dict`)。
 
@@ -393,7 +414,8 @@ class SimpleNamespace:
 
 ​	这允许有在实例上激活的特性属性，同时又有在类上的同名虚拟属性 (一个例子请参见 [`enum.Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum))。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## 协程工具函数
 
@@ -405,4 +427,5 @@ class SimpleNamespace:
 
 ​	如果 *gen_func* 不是一个生成器函数，则它会被包装。 如果它返回一个 [`collections.abc.Generator`](https://docs.python.org/zh-cn/3.13/library/collections.abc.html#collections.abc.Generator) 的实例，该实例将被包装在一个 *awaitable* 代理对象中。 所有其他对象类型将被原样返回。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>

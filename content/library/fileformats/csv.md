@@ -46,7 +46,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import csv
 >>> with open('eggs.csv', newline='') as csvfile:
 ...     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
@@ -113,7 +113,7 @@ with open('eggs.csv', 'w', newline='') as csvfile:
 
 
 
-```
+``` python
 >>> import csv
 >>> with open('names.csv', newline='') as csvfile:
 ...     reader = csv.DictReader(csvfile)
@@ -175,7 +175,8 @@ with open('students.csv', 'w', newline='') as csvfile:
 
 [`unix_dialect`](https://docs.python.org/zh-cn/3.13/library/csv.html#csv.unix_dialect) 类定义了在 UNIX 系统上生成的 CSV 文件的常规属性，即使用 `'\n'` 作为换行符，且所有字段都有引号包围。它在变种注册表中的名称是 `'unix'`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## *class* csv.**Sniffer**
 
@@ -240,7 +241,8 @@ with open('example.csv', newline='') as csvfile:
 
 ​	指示 [`reader`](https://docs.python.org/zh-cn/3.13/library/csv.html#csv.reader) 对象将（不带引号的）空字段解读为 `None` 并在其他情况下采取与 [`QUOTE_ALL`](https://docs.python.org/zh-cn/3.13/library/csv.html#csv.QUOTE_ALL) 相同的行为。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## csv.**QUOTE_STRINGS**
 
@@ -248,7 +250,8 @@ with open('example.csv', newline='') as csvfile:
 
 ​	指示 [`reader`](https://docs.python.org/zh-cn/3.13/library/csv.html#csv.reader) 对象将（不带引号的）空字符串解读为 `None` 并在其他情况下采取与 [`QUOTE_NONNUMERIC`](https://docs.python.org/zh-cn/3.13/library/csv.html#csv.QUOTE_NONNUMERIC) 相同的行为。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 [`csv`](https://docs.python.org/zh-cn/3.13/library/csv.html#module-csv) 模块定义了以下异常：
 
@@ -360,7 +363,8 @@ with open('example.csv', newline='') as csvfile:
 
 ​	在 writer 的文件对象中，写入一行字段名称（字段名称在构造函数中指定），并根据当前设置的变种进行格式化。本方法的返回值就是内部使用的 [`csvwriter.writerow()`](https://docs.python.org/zh-cn/3.13/library/csv.html#csv.csvwriter.writerow) 方法的返回值。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.8 版本发生变更:* 现在 [`writeheader()`](https://docs.python.org/zh-cn/3.13/library/csv.html#csv.DictWriter.writeheader) 也返回其内部使用的 [`csvwriter.writerow()`](https://docs.python.org/zh-cn/3.13/library/csv.html#csv.csvwriter.writerow) 方法的返回值。
 

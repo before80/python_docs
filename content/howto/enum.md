@@ -20,7 +20,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from enum import Enum
 >>> class Weekday(Enum):
 ...     MONDAY = 1
@@ -36,7 +36,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from enum import Enum
 >>> class Color(Enum):
 ...     RED = 1
@@ -58,7 +58,7 @@ draft = false
 
 
 
-```
+``` python
 >>> Weekday(3)
 <Weekday.WEDNESDAY: 3>
 ```
@@ -67,7 +67,7 @@ draft = false
 
 
 
-```
+``` python
 >>> print(Weekday.THURSDAY)
 Weekday.THURSDAY
 ```
@@ -76,7 +76,7 @@ Weekday.THURSDAY
 
 
 
-```
+``` python
 >>> type(Weekday.MONDAY)
 <enum 'Weekday'>
 >>> isinstance(Weekday.FRIDAY, Weekday)
@@ -87,7 +87,7 @@ True
 
 
 
-```
+``` python
 >>> print(Weekday.TUESDAY.name)
 TUESDAY
 ```
@@ -96,7 +96,7 @@ TUESDAY
 
 
 
-```
+``` python
 >>> Weekday.WEDNESDAY.value
 3
 ```
@@ -113,7 +113,7 @@ def from_date(cls, date):
 
 
 
-```
+``` python
 >>> class Weekday(Enum):
 ...     MONDAY = 1
 ...     TUESDAY = 2
@@ -132,7 +132,7 @@ def from_date(cls, date):
 
 
 
-```
+``` python
 >>> from datetime import date
 >>> Weekday.from_date(date.today())     
 <Weekday.TUESDAY: 2>
@@ -144,7 +144,7 @@ def from_date(cls, date):
 
 
 
-```
+``` python
 >>> from enum import Flag
 >>> class Weekday(Flag):
 ...     MONDAY = 1
@@ -162,7 +162,7 @@ def from_date(cls, date):
 
 
 
-```
+``` python
 >>> first_week_day = Weekday.MONDAY
 >>> first_week_day
 <Weekday.MONDAY: 1>
@@ -172,7 +172,7 @@ def from_date(cls, date):
 
 
 
-```
+``` python
 >>> weekend = Weekday.SATURDAY | Weekday.SUNDAY
 >>> weekend
 <Weekday.SATURDAY|SUNDAY: 96>
@@ -182,7 +182,7 @@ def from_date(cls, date):
 
 
 
-```
+``` python
 >>> for day in weekend:
 ...     print(day)
 Weekday.SATURDAY
@@ -193,7 +193,7 @@ Weekday.SUNDAY
 
 
 
-```
+``` python
 >>> chores_for_ethan = {
 ...     'feed the cat': Weekday.MONDAY | Weekday.WEDNESDAY | Weekday.FRIDAY,
 ...     'do the dishes': Weekday.TUESDAY | Weekday.THURSDAY,
@@ -205,7 +205,7 @@ Weekday.SUNDAY
 
 
 
-```
+``` python
 >>> def show_chores(chores, day):
 ...     for chore, days in chores.items():
 ...         if day in days:
@@ -219,7 +219,7 @@ answer SO questions
 
 
 
-```
+``` python
 >>> from enum import auto
 >>> class Weekday(Flag):
 ...     MONDAY = auto()
@@ -240,7 +240,7 @@ answer SO questions
 
 
 
-```
+``` python
 >>> Color(1)
 <Color.RED: 1>
 >>> Color(3)
@@ -251,7 +251,7 @@ answer SO questions
 
 
 
-```
+``` python
 >>> Color['RED']
 <Color.RED: 1>
 >>> Color['GREEN']
@@ -262,7 +262,7 @@ answer SO questions
 
 
 
-```
+``` python
 >>> member = Color.RED
 >>> member.name
 'RED'
@@ -276,7 +276,7 @@ answer SO questions
 
 
 
-```
+``` python
 >>> class Shape(Enum):
 ...     SQUARE = 2
 ...     SQUARE = 3
@@ -290,7 +290,7 @@ TypeError: 'SQUARE' already defined as 2
 
 
 
-```
+``` python
 >>> class Shape(Enum):
 ...     SQUARE = 2
 ...     DIAMOND = 1
@@ -317,7 +317,7 @@ TypeError: 'SQUARE' already defined as 2
 
 
 
-```
+``` python
 >>> from enum import Enum, unique
 >>> @unique
 ... class Mistake(Enum):
@@ -337,7 +337,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 
 
 
-```
+``` python
 >>> from enum import Enum, auto
 >>> class Color(Enum):
 ...     RED = auto()
@@ -352,7 +352,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 
 
 
-```
+``` python
 >>> class AutoName(Enum):
 ...     @staticmethod
 ...     def _generate_next_value_(name, start, count, last_values):
@@ -380,7 +380,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 
 
 
-```
+``` python
 >>> list(Shape)
 [<Shape.SQUARE: 2>, <Shape.DIAMOND: 1>, <Shape.CIRCLE: 3>]
 >>> list(Weekday)
@@ -393,7 +393,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 
 
 
-```
+``` python
 >>> for name, member in Shape.__members__.items():
 ...     name, member
 ...
@@ -407,7 +407,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 
 
 
-```
+``` python
 >>> [name for name, member in Shape.__members__.items() if member.name != name]
 ['ALIAS_FOR_SQUARE']
 ```
@@ -424,7 +424,7 @@ ValueError: duplicate values found in <enum 'Mistake'>: FOUR -> THREE
 
 
 
-```
+``` python
 >>> Color.RED is Color.RED
 True
 >>> Color.RED is Color.BLUE
@@ -437,7 +437,7 @@ True
 
 
 
-```
+``` python
 >>> Color.RED < Color.BLUE
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -448,7 +448,7 @@ TypeError: '<' not supported between instances of 'Color' and 'Color'
 
 
 
-```
+``` python
 >>> Color.BLUE == Color.RED
 False
 >>> Color.BLUE != Color.RED
@@ -461,7 +461,7 @@ True
 
 
 
-```
+``` python
 >>> Color.BLUE == 2
 False
 ```
@@ -480,7 +480,7 @@ False
 
 
 
-```
+``` python
 >>> class Mood(Enum):
 ...     FUNKY = 1
 ...     HAPPY = 3
@@ -503,7 +503,7 @@ False
 
 
 
-```
+``` python
 >>> Mood.favorite_mood()
 <Mood.HAPPY: 3>
 >>> Mood.HAPPY.describe()
@@ -535,7 +535,7 @@ class EnumName([mix-in, ...,] [data-type,] base-enum):
 
 
 
-```
+``` python
 >>> class MoreColor(Color):
 ...     PINK = 17
 ...
@@ -548,7 +548,7 @@ TypeError: <enum 'MoreColor'> cannot extend <enum 'Color'>
 
 
 
-```
+``` python
 >>> class Foo(Enum):
 ...     def some_behavior(self):
 ...         pass
@@ -569,7 +569,7 @@ TypeError: <enum 'MoreColor'> cannot extend <enum 'Color'>
 
 
 
-```
+``` python
 >>> from dataclasses import dataclass, field
 >>> @dataclass
 ... class CreatureDataMixin:
@@ -597,7 +597,7 @@ TypeError: <enum 'MoreColor'> cannot extend <enum 'Color'>
 
 
 
-```
+``` python
 >>> @dataclass               # 不要这样做：没有任何意义
 ... class Color(Enum):
 ...    RED = 1
@@ -615,7 +615,7 @@ True
 
 
 
-```
+``` python
 >>> from test.test_enum import Fruit
 >>> from pickle import dumps, loads
 >>> Fruit.TOMATO is loads(dumps(Fruit.TOMATO))
@@ -634,7 +634,7 @@ True
 
 
 
-```
+``` python
 >>> import enum
 >>> class MyEnum(enum.Enum):
 ...     __reduce_ex__ = enum.pickle_by_enum_name
@@ -652,7 +652,7 @@ True
 
 
 
-```
+``` python
 >>> Animal = Enum('Animal', 'ANT BEE CAT DOG')
 >>> Animal
 <enum 'Animal'>
@@ -668,7 +668,7 @@ True
 
 
 
-```
+``` python
 >>> class Animal(Enum):
 ...     ANT = 1
 ...     BEE = 2
@@ -683,7 +683,7 @@ True
 
 
 
-```
+``` python
 >>> Animal = Enum('Animal', 'ANT BEE CAT DOG', module=__name__)
 ```
 
@@ -697,7 +697,7 @@ True
 
 
 
-```
+``` python
 >>> Animal = Enum('Animal', 'ANT BEE CAT DOG', qualname='SomeData.Animal')
 ```
 
@@ -759,7 +759,7 @@ Enum(
 
 
 
-```
+``` python
 >>> from enum import IntEnum
 >>> class Shape(IntEnum):
 ...     CIRCLE = 1
@@ -781,7 +781,7 @@ True
 
 
 
-```
+``` python
 >>> class Shape(IntEnum):
 ...     CIRCLE = 1
 ...     SQUARE = 2
@@ -798,7 +798,7 @@ False
 
 
 
-```
+``` python
 >>> int(Shape.CIRCLE)
 1
 >>> ['a', 'b', 'c'][Shape.CIRCLE]
@@ -811,7 +811,8 @@ False
 
 ​	所提供的第二种 [`Enum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Enum) 变体同时也是 [`str`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#str) 的一个子类。 [`StrEnum`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.StrEnum) 的成员可与字符串进行比较；通过扩展，不同类型的字符串枚举也可以相互进行比较。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ### IntFlag
 
@@ -825,7 +826,8 @@ False
 
 ​	导致 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 值无效的位操作将失去 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 成员资格。详见 [`FlagBoundary`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.FlagBoundary)。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 *在 3.11 版本发生变更.*
 
@@ -833,7 +835,7 @@ False
 
 
 
-```
+``` python
 >>> from enum import IntFlag
 >>> class Perm(IntFlag):
 ...     R = 4
@@ -853,7 +855,7 @@ True
 
 
 
-```
+``` python
 >>> class Perm(IntFlag):
 ...     R = 4
 ...     W = 2
@@ -880,7 +882,7 @@ True
 
 
 
-```
+``` python
 >>> Perm.R & Perm.X
 <Perm: 0>
 >>> bool(Perm.R & Perm.X)
@@ -891,7 +893,7 @@ False
 
 
 
-```
+``` python
 >>> Perm.X | 4
 <Perm.R|X: 5>
 
@@ -907,7 +909,7 @@ False
 
 
 
-```
+``` python
 >>> (~Perm.X).value == (Perm.R|Perm.W).value == 6
 True
 ```
@@ -916,24 +918,26 @@ True
 
 
 
-```
+``` python
 >>> list(RW)
 [<Perm.R: 4>, <Perm.W: 2>]
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ### 标志
 
 ​	最后一个变体是 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag)。与 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 类似，[`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 成员可用按位运算符 (&, |, ^, ~) 组合。与 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 不同的是，它们不可与其它 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 枚举或 [`int`](https://docs.python.org/zh-cn/3.13/library/functions.html#int) 进行组合或比较。 虽然可以直接指定值，但推荐使用 [`auto`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.auto) 作为值来让 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 选择适当的值。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ​	与 [`IntFlag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.IntFlag) 类似，如果 [`Flag`](https://docs.python.org/zh-cn/3.13/library/enum.html#enum.Flag) 成员的某种组合导致没有设置任何旗标，则其布尔值为 [`False`](https://docs.python.org/zh-cn/3.13/library/constants.html#False):
 
 
 
-```
+``` python
 >>> from enum import Flag, auto
 >>> class Color(Flag):
 ...     RED = auto()
@@ -950,7 +954,7 @@ False
 
 
 
-```
+``` python
 >>> class Color(Flag):
 ...     RED = auto()
 ...     BLUE = auto()
@@ -965,7 +969,7 @@ False
 
 
 
-```
+``` python
 >>> class Color(Flag):
 ...     BLACK = 0
 ...     RED = auto()
@@ -982,13 +986,14 @@ False
 
 
 
-```
+``` python
 >>> purple = Color.RED | Color.BLUE
 >>> list(purple)
 [<Color.RED: 1>, <Color.BLUE: 2>]
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ​	备注
 
@@ -1033,7 +1038,7 @@ class IntEnum(int, ReprEnum):   # or Enum instead of ReprEnum
 
 
 
-```
+``` python
 >>> class Coordinate(bytes, Enum):
 ...     """
 ...     Coordinate with binary codes that can be indexed by the int code.
@@ -1097,17 +1102,20 @@ Coordinate.VY
 
   *在 3.13 版本发生变更:* 在之前版本中将会使用最近的值而不是最高的值。
 
-*Added in version 3.6:* `_missing_`, `_order_`, `_generate_next_value_`
+> Added in version 3.6:
+> `_missing_`, `_order_`, `_generate_next_value_`
 
-*Added in version 3.7:* `_ignore_`
+> Added in version 3.7:
+> `_ignore_`
 
-*Added in version 3.13:* `_add_alias_`, `_add_value_alias_`
+> Added in version 3.13:
+> `_add_alias_`, `_add_value_alias_`
 
 ​	用来帮助 Python 2 / Python 3 代码保持同步提供 `_order_` 属性。 它将与枚举的实际顺序进行对照检查，如果两者不匹配则会引发错误:
 
 
 
-```
+``` python
 >>> class Color(Enum):
 ...     _order_ = 'RED GREEN BLUE'
 ...     RED = 1
@@ -1145,7 +1153,7 @@ TypeError: member order does not match _order_:
 
 
 
-```
+``` python
 >>> class MyEnum(IntEnum):      # help(int) -> int(x, base=10) -> integer
 ...     example = '11', 16      # so x='11' and base=16
 ...
@@ -1170,7 +1178,7 @@ def __bool__(self):
 
 
 
-```
+``` python
 >>> dir(Planet)                         
 ['EARTH', 'JUPITER', 'MARS', 'MERCURY', 'NEPTUNE', 'SATURN', 'URANUS', 'VENUS', '__class__', '__doc__', '__members__', '__module__']
 >>> dir(Planet.EARTH)                   
@@ -1183,7 +1191,7 @@ def __bool__(self):
 
 
 
-```
+``` python
 >>> class Color(Flag):
 ...     RED = auto()
 ...     GREEN = auto()
@@ -1204,7 +1212,7 @@ def __bool__(self):
 
 
 
-```
+``` python
 >>> class Color(IntFlag):
 ...     BLACK = 0
 ...     RED = 1
@@ -1331,7 +1339,7 @@ def __bool__(self):
 
 
 
-```
+``` python
 >>> list(Color)
 [<Color.RED: 1>, <Color.GREEN: 2>, <Color.BLUE: 4>]
 ```
@@ -1342,7 +1350,7 @@ def __bool__(self):
 
 
 
-```
+``` python
 >>> ~Color.RED
 <Color.GREEN|BLUE: 6>
 ```
@@ -1351,7 +1359,7 @@ def __bool__(self):
 
 
 
-```
+``` python
 >>> len(Color.PURPLE)
 2
 ```
@@ -1379,7 +1387,7 @@ def __bool__(self):
 
 
 
-```
+``` python
 >>> class Color(Enum):
 ...     RED = auto()
 ...     BLUE = auto()
@@ -1395,7 +1403,7 @@ def __bool__(self):
 
 
 
-```
+``` python
 >>> class Color(Enum):
 ...     RED = object()
 ...     GREEN = object()
@@ -1409,7 +1417,7 @@ def __bool__(self):
 
 
 
-```
+``` python
 >>> class Color(Enum):
 ...     RED = object()
 ...     GREEN = object()
@@ -1427,7 +1435,7 @@ def __bool__(self):
 
 
 
-```
+``` python
 >>> class Color(Enum):
 ...     RED = 'stop'
 ...     GREEN = 'go'
@@ -1443,7 +1451,7 @@ def __bool__(self):
 
 
 
-```
+``` python
 >>> class AutoNumber(Enum):
 ...     def __new__(cls):
 ...         value = len(cls.__members__) + 1
@@ -1464,7 +1472,7 @@ def __bool__(self):
 
 
 
-```
+``` python
 >>> class AutoNumber(Enum):
 ...     def __new__(cls, *args):      # this is the only change from above
 ...         value = len(cls.__members__) + 1
@@ -1478,7 +1486,7 @@ def __bool__(self):
 
 
 
-```
+``` python
 >>> class Swatch(AutoNumber):
 ...     def __init__(self, pantone='unknown'):
 ...         self.pantone = pantone
@@ -1516,7 +1524,7 @@ obj = int.__new__(cls, value)
 
 
 
-```
+``` python
 >>> class OrderedEnum(Enum):
 ...     def __ge__(self, other):
 ...         if self.__class__ is other.__class__:
@@ -1552,7 +1560,7 @@ True
 
 
 
-```
+``` python
 >>> class DuplicateFreeEnum(Enum):
 ...     def __init__(self, *args):
 ...         cls = self.__class__
@@ -1586,7 +1594,7 @@ ValueError: aliases not allowed in DuplicateFreeEnum:  'GRENE' --> 'GREEN'
 
 
 
-```
+``` python
 >>> class MultiValueEnum(Enum):
 ...     def __new__(cls, value, *values):
 ...         self = object.__new__(cls)
@@ -1611,7 +1619,7 @@ ValueError: aliases not allowed in DuplicateFreeEnum:  'GRENE' --> 'GREEN'
 
 
 
-```
+``` python
 >>> class Planet(Enum):
 ...     MERCURY = (3.303e+23, 2.4397e6)
 ...     VENUS   = (4.869e+24, 6.0518e6)
@@ -1644,7 +1652,7 @@ ValueError: aliases not allowed in DuplicateFreeEnum:  'GRENE' --> 'GREEN'
 
 
 
-```
+``` python
 >>> from datetime import timedelta
 >>> class Period(timedelta, Enum):
 ...     "different lengths of time"

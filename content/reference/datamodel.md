@@ -324,7 +324,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import typing
 >>> typing.__name__, typing.__spec__.name
 ('typing', 'typing')
@@ -348,7 +348,8 @@ draft = false
 
 ​	Set to the [`module spec`](https://docs.python.org/zh-cn/3.13/library/importlib.html#importlib.machinery.ModuleSpec) that was used when importing the module. See [模块规格说明](https://docs.python.org/zh-cn/3.13/reference/import.html#module-specs) for more details.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## module.**__package__**
 
@@ -470,7 +471,7 @@ draft = false
 
 
 
-```
+``` python
 >>> class A: pass
 >>> class B(A): pass
 >>> A.__subclasses__()
@@ -559,7 +560,8 @@ draft = false
 
 ​	当发生此情况时，元组的部分或全部元素可以为 [`None`](https://docs.python.org/zh-cn/3.13/library/constants.html#None)。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ​	备注
 
@@ -584,7 +586,8 @@ draft = false
 
 ​	零宽度范围，即 `start == end` 也是允许的。 零宽度范围的使用场景是源代码中存在，但被 [bytecode](https://docs.python.org/zh-cn/3.13/glossary.html#term-bytecode) 编译器所去除的那些行。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ​	参见
 
@@ -598,7 +601,8 @@ draft = false
 
 ​	代码对象也被泛型函数 [`copy.replace()`](https://docs.python.org/zh-cn/3.13/library/copy.html#copy.replace) 所支持。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 
 
@@ -638,7 +642,8 @@ draft = false
 
 ​	如果该帧当前正在执行或已挂起则会引发 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.13 版本发生变更:* 尝试清除已挂起的帧将引发 [`RuntimeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#RuntimeError) (执行帧的情况将总是如此)。
 
@@ -934,7 +939,8 @@ sys.modules[__name__].__class__ = VerboseModule
 
 *在 3.5 版本发生变更:* `__class__` 模块属性改为可写。
 
-*Added in version 3.7:* `__getattr__` 和 `__dir__` 模块属性。
+> Added in version 3.7:
+> `__getattr__` 和 `__dir__` 模块属性。
 
 ​	参见
 
@@ -1063,7 +1069,8 @@ class AustralianPhilosopher(Philosopher, default_name="Bruce"):
 
 ​	元类提示 `metaclass` 将被其它类型机制消耗掉，并不会被传给 `__init_subclass__` 的实现。实际的元类（而非显式的提示）可通过 `type(cls)` 访问。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ​	当一个类被创建时，`type.__new__()` 会扫描类变量并对其中带有 [`__set_name__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__set_name__) 钩子的对象执行回调。
 
@@ -1089,7 +1096,8 @@ c.__set_name__(A, 'x')   # 手动发起调用钩子
 
 ​	详情参见 [创建类对象](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#class-object-creation)。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 
 
@@ -1293,7 +1301,7 @@ def subscribe(obj, x):
 
 
 
-```
+``` python
 >>> # list 以 "type" 类作为其元类，与大多数类一样：
 >>> type(list)
 <class 'type'>
@@ -1311,7 +1319,7 @@ list[int]
 
 
 
-```
+``` python
 >>> from enum import Enum
 >>> class Menu(Enum):
 ...     """A breakfast menu"""
@@ -1360,7 +1368,8 @@ list[int]
 
 ​	调用此方法以实现 [`operator.length_hint()`](https://docs.python.org/zh-cn/3.13/library/operator.html#operator.length_hint)。 应该返回对象长度的估计值（可能大于或小于实际长度）。 此长度应为一个 `>=` 0 的整数。 返回值也可以为 [`NotImplemented`](https://docs.python.org/zh-cn/3.13/library/constants.html#NotImplemented) ，这会被视作与 `__length_hint__` 方法完全不存在时一样处理。 此方法纯粹是为了优化性能，并不要求正确无误。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ​	备注
 
@@ -1608,7 +1617,8 @@ a[slice(1, 2, None)] = b
 
 ​	举例来说，如果 `MyClass.__match_args__` 为 `("left", "center", "right")` 则意味着 `case MyClass(x, y)` 就等价于 `case MyClass(left=x, center=y)`。 请注意模式中参数的数量必须小于等于 *__match_args__* 中元素的数量；如果前者大于后者，则尝试模式匹配时将引发 [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError)。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ​	参见
 
@@ -1632,7 +1642,8 @@ a[slice(1, 2, None)] = b
 
 ​	当一个缓冲区不再需要时将被调用。 *buffer* 参数是在此之前由 [`__buffer__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__buffer__) 返回的 [`memoryview`](https://docs.python.org/zh-cn/3.13/library/stdtypes.html#memoryview) 对象。 此方法必须释放任何关联到该缓冲区的资源。 此方法应当返回 `None`。 不需要执行任何清理的缓冲区对象不要求实现此方法。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ​	参见
 
@@ -1652,7 +1663,7 @@ a[slice(1, 2, None)] = b
 
 
 
-```
+``` python
 >>> class C:
 ...     pass
 ...
@@ -1668,7 +1679,7 @@ TypeError: object of type 'C' has no len()
 
 
 
-```
+``` python
 >>> 1 .__hash__() == hash(1)
 True
 >>> int.__hash__() == hash(int)
@@ -1681,7 +1692,7 @@ TypeError: descriptor '__hash__' of 'int' object needs an argument
 
 
 
-```
+``` python
 >>> type(1).__hash__(1) == hash(1)
 True
 >>> type(int).__hash__(int) == hash(int)
@@ -1692,7 +1703,7 @@ True
 
 
 
-```
+``` python
 >>> class Meta(type):
 ...     def __getattribute__(*args):
 ...         print("Metaclass getattribute invoked")
@@ -1742,7 +1753,8 @@ Metaclass getattribute invoked
 
 ​	本语言不会对 `__await__` 所返回的迭代器产生的对象的类型或值施加任何限制，因为这是负责管理 [awaitable](https://docs.python.org/zh-cn/3.13/glossary.html#term-awaitable) 对象的异步执行框架的具体实现 (如 [`asyncio`](https://docs.python.org/zh-cn/3.13/library/asyncio.html#module-asyncio)) 专属特性。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ​	参见
 
@@ -1813,7 +1825,8 @@ class Reader:
         return val
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 *在 3.7 版本发生变更:* 在 Python 3.7 之前，[`__aiter__()`](https://docs.python.org/zh-cn/3.13/reference/datamodel.html#object.__aiter__) 可以返回一个 *可等待对象* 并将被解析为 [异步迭代器](https://docs.python.org/zh-cn/3.13/glossary.html#term-asynchronous-iterator)。
 
@@ -1848,7 +1861,8 @@ class AsyncContextManager:
         await log('exiting context')
 ```
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ​	备注
 

@@ -92,7 +92,8 @@ draft = false
 
 ​	查询服务器支持的功能，这些功能在 [**RFC 2449**](https://datatracker.ietf.org/doc/html/rfc2449.html) 中有说明。返回一个 `{'name': ['param'...]}` 形式的字典。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## POP3.**user**(*username*)
 
@@ -152,7 +153,8 @@ draft = false
 
 ​	尝试切换至 UTF-8 模式。成功则返回服务器的响应，失败则引发 [`error_proto`](https://docs.python.org/zh-cn/3.13/library/poplib.html#poplib.error_proto) 异常。在 [**RFC 6856**](https://datatracker.ietf.org/doc/html/rfc6856.html) 中有说明。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## POP3.**stls**(*context=None*)
 
@@ -162,7 +164,8 @@ draft = false
 
 ​	此方法支持通过 [`ssl.SSLContext.check_hostname`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.SSLContext.check_hostname) 和 *服务器名称指示* (参见 [`ssl.HAS_SNI`](https://docs.python.org/zh-cn/3.13/library/ssl.html#ssl.HAS_SNI)) 进行主机名检测。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 [`POP3_SSL`](https://docs.python.org/zh-cn/3.13/library/poplib.html#poplib.POP3_SSL) 实例没有额外方法。该子类的接口与其父类的相同。
 

@@ -90,7 +90,7 @@ root = ET.fromstring(country_data_as_string)
 
 
 
-```
+``` python
 >>> root.tag
 'data'
 >>> root.attrib
@@ -101,7 +101,7 @@ root = ET.fromstring(country_data_as_string)
 
 
 
-```
+``` python
 >>> for child in root:
 ...     print(child.tag, child.attrib)
 ...
@@ -114,7 +114,7 @@ country {'name': 'Panama'}
 
 
 
-```
+``` python
 >>> root[0][1].text
 '2008'
 ```
@@ -135,7 +135,7 @@ country {'name': 'Panama'}
 
 
 
-```
+``` python
 >>> parser = ET.XMLPullParser(['start', 'end'])
 >>> parser.feed('<mytag>sometext')
 >>> list(parser.read_events())
@@ -161,7 +161,7 @@ mytag text= sometext more text
 
 
 
-```
+``` python
 >>> for neighbor in root.iter('neighbor'):
 ...     print(neighbor.attrib)
 ...
@@ -176,7 +176,7 @@ mytag text= sometext more text
 
 
 
-```
+``` python
 >>> for country in root.findall('country'):
 ...     rank = country.find('rank').text
 ...     name = country.get('name')
@@ -199,7 +199,7 @@ Panama 68
 
 
 
-```
+``` python
 >>> for rank in root.iter('rank'):
 ...     new_rank = int(rank.text) + 1
 ...     rank.text = str(new_rank)
@@ -240,7 +240,7 @@ Panama 68
 
 
 
-```
+``` python
 >>> for country in root.findall('country'):
 ...     # using root.findall() to avoid removal during traversal
 ...     rank = int(country.find('rank').text)
@@ -279,7 +279,7 @@ Panama 68
 
 
 
-```
+``` python
 >>> a = ET.Element('a')
 >>> b = ET.SubElement(a, 'b')
 >>> c = ET.SubElement(a, 'c')
@@ -461,7 +461,8 @@ with open("c14n_output.xml", mode='w', encoding='utf-8') as out_file:
 
 ​	在上面的选项列表中，"一组" 是指任意多项集或包含字符串的可迭代对象，排序是不必要的。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## xml.etree.ElementTree.**Comment**(*text=None*)
 
@@ -487,13 +488,15 @@ with open("c14n_output.xml", mode='w', encoding='utf-8') as out_file:
 
 ​	根据一个字符串片段序列解析 XML 文档。 *sequence* 是包含 XML 数据片段的列表或其他序列对象。 *parser* 是可选的解析器实例。 如果未给出，则会使用标准的 [`XMLParser`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.XMLParser) 解析器。 返回一个 [`Element`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.Element) 实例。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## xml.etree.ElementTree.**indent**(*tree*, *space=' '*, *level=0*)
 
 ​	添加空格到子树来实现树的缩进效果。 这可以被用来生成美化打印的 XML 输出。 *tree* 可以为 Element 或 ElementTree。 *space* 是对应将被插入的每个缩进层级的空格字符串，默认为两个空格符。 要对已缩进的树的部分子树进行缩进，请传入初始缩进层级作为 *level*。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## xml.etree.ElementTree.**iselement**(*element*)
 
@@ -533,7 +536,8 @@ with open("c14n_output.xml", mode='w', encoding='utf-8') as out_file:
 
 ​	注册一个命名空间前缀。 这个注册表是全局的，并且任何对应给定前缀或命名空间 URI 的现有映射都会被移除。 *prefix* 是命名空间前缀。 *uri* 是命名空间 URI。 如果可能的话，这个命名空间中的标记和属性将附带给定的前缀来进行序列化。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## xml.etree.ElementTree.**SubElement**(*parent*, *tag*, *attrib={}*, ***extra*)
 
@@ -555,7 +559,8 @@ with open("c14n_output.xml", mode='w', encoding='utf-8') as out_file:
 
 ​	生成一个 XML 元素的字符串表示形式，包括所有子元素。 *element* 是一个 [`Element`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.Element) 实例。 *encoding* [[1\]](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#id9) 是输出编码格式（默认为 US-ASCII）。 请使用 `encoding="unicode"` 来生成 Unicode 字符串（否则生成字节串）。 *method* 是 `"xml"`, `"html"` 或 `"text"` (默认为 `"xml"`)。 *xml_declaration*, *default_namespace* 和 *short_empty_elements* 具有与 [`ElementTree.write()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.ElementTree.write) 中一致的含义。 返回一个包含 XML 数据（可选）已编码字符串的列表。 它并不保证任何特定的序列，除了 `b"".join(tostringlist(element)) == tostring(element)`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.4 版本发生变更:* 增加了 *short_empty_elements* 形参。
 
@@ -712,7 +717,8 @@ ElementInclude.include(root)
 
 ​	Appends *subelements* from an iterable of elements. Raises [`TypeError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#TypeError) if a subelement is not an [`Element`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.Element).
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **find**(*match*, *namespaces=None*)
 
@@ -734,19 +740,22 @@ ElementInclude.include(root)
 
 ​	创建一个以当前元素为根元素的树的 [iterator](https://docs.python.org/zh-cn/3.13/glossary.html#term-iterator)。 该迭代器将以文档（深度优先）顺序迭代此元素及其所有下级元素。 如果 *tag* 不为 `None` 或 `'*'`，则迭代器只返回标记为 *tag* 的元素。 如果树结构在迭代期间被修改，则结果是未定义的。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **iterfind**(*match*, *namespaces=None*)
 
 ​	根据标记名称或者 [路径](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#elementtree-xpath) 查找所有匹配的子元素。 返回一个按文档顺序产生所有匹配元素的可迭代对象。 *namespaces* 是可选的从命名空间前缀到完整名称的映射。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **itertext**()
 
 ​	创建一个文本迭代器。 该迭代器将按文档顺序遍历此元素及其所有子元素，并返回所有内部文本。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **makeelement**(*tag*, *attrib*)
 
@@ -827,7 +836,8 @@ def reorder_attributes(root):
 
 ​	与 [`Element.iterfind()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.Element.iterfind) 类似，从树的根节点开始。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **parse**(*source*, *parser=None*)
 
@@ -861,7 +871,7 @@ def reorder_attributes(root):
 
 
 
-```
+``` python
 >>> from xml.etree.ElementTree import ElementTree
 >>> tree = ElementTree()
 >>> tree.parse("index.xhtml")
@@ -918,13 +928,15 @@ def reorder_attributes(root):
 
 ​	使用给定的 *text* 创建一条注释。 如果 `insert_comments` 为真值，这还会将其添加到树结构中。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **pi**(*target*, *text*)
 
 ​	使用给定的 *target* 名称和 *text* 创建一条处理指令。 如果 `insert_pis` 为真值，这还会将其添加到树中。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ​	此外，自定义的 [`TreeBuilder`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.TreeBuilder) 对象还提供了以下方法:
 
@@ -932,25 +944,29 @@ def reorder_attributes(root):
 
 ​	处理一条 doctype 声明。 *name* 为 doctype 名称。 *pubid* 为公有标识。 *system* 为系统标识。 此方法不存在于默认的 [`TreeBuilder`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.TreeBuilder) 类中。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **start_ns**(*prefix*, *uri*)
 
 ​	在定义了 `start()` 回调的打开元素的该回调被调用之前，当解析器遇到新的命名空间声明时都会被调用。 *prefix* 对于默认命名空间为 `''` 或者在其他情况下为被声明的命名空间前缀名称。 *uri* 是命名空间 URI。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **end_ns**(*prefix*)
 
 ​	在声明了命名空间前缀映射的元素的 `end()` 回调之后被调用，附带超出作用域的 *prefix* 的名称。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## *class* xml.etree.ElementTree.**C14NWriterTarget**(*write*, ***, *with_comments=False*, *strip_text=False*, *rewrite_prefixes=False*, *qname_aware_tags=None*, *qname_aware_attrs=None*, *exclude_attrs=None*, *exclude_tags=None*)
 
 [C14N 2.0](https://www.w3.org/TR/xml-c14n2/) 写入器。 其参数与 [`canonicalize()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.canonicalize) 函数的相同。 这个类并不会构建树结构而是使用 *write* 函数将回调事件直接转换为序列化形式。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 
 
@@ -976,13 +992,14 @@ def reorder_attributes(root):
 
 ​	请注意 [`flush()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.XMLParser.flush) 已作为安全修正被向下移植到一些较早的 CPython 发布版。 如果在运行于多个 Python 版本的代码中要用到 [`flush()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.XMLParser.flush) 请使用 [`hasattr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#hasattr) 来检查其可用性。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 [`XMLParser.feed()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.XMLParser.feed) 会为每个打开的标记调用 *target* 的 `start(tag, attrs_dict)` 方法，为每个关闭的标记调用它的 `end(tag)` 方法，并通过 `data(data)` 方法来处理数据。 有关更多受支持的回调方法，请参阅 [`TreeBuilder`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.TreeBuilder) 类。 [`XMLParser.close()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.XMLParser.close) 会调用 *target* 的 `close()` 方法。 [`XMLParser`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.XMLParser) 不仅仅可被用来构建树结构。 下面是一个统计 XML 文件最大深度的示例:
 
 
 
-```
+``` python
 >>> from xml.etree.ElementTree import XMLParser
 >>> class MaxDepth:                     # The target object of the parser
 ...     maxDepth = 0
@@ -1034,7 +1051,8 @@ def reorder_attributes(root):
 
 ​	请注意 [`flush()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.XMLPullParser.flush) 已作为安全修正被向下移植到一些较早的 CPython 发布版。 如果在运行于多个 Python 版本的代码中要用到 [`flush()`](https://docs.python.org/zh-cn/3.13/library/xml.etree.elementtree.html#xml.etree.ElementTree.XMLPullParser.flush) 请使用 [`hasattr()`](https://docs.python.org/zh-cn/3.13/library/functions.html#hasattr) 来检查其可用性。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **close**()
 
@@ -1059,7 +1077,8 @@ def reorder_attributes(root):
 
 ​	如果你需要已完全填充的元素，请改为查找 "end" 事件。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.8 版本发生变更:* 增加了 `comment` 和 `pi` 事件。
 

@@ -37,7 +37,7 @@ draft = false
 
 ## [可以使用 C 语言创建自己的函数吗？](https://docs.python.org/zh-cn/3.13/faq/extending.html#id4)
 
-​	是的，您可以在C中创建包含函数、变量、异常甚至新类型的内置模块。在文档 [扩展和嵌入 Python 解释器](https://docs.python.org/zh-cn/3.13/extending/index.html#extending-index) 中有说明。
+​	是的，您可以在C中创建包含函数、变量、异常甚至新类型的内置模块。在文档 [扩展和嵌入 Python 解释器]({{< ref "/extending#extending-index" >}}) 中有说明。
 
 ​	大多数中级或高级的Python书籍也涵盖这个主题。
 
@@ -111,7 +111,7 @@ else {
 
 
 
-```
+``` python
 >>> import io, sys
 >>> sys.stdout = io.StringIO()
 >>> print('foo')
@@ -125,7 +125,7 @@ hello world!
 
 
 
-```
+``` python
 >>> import io, sys
 >>> class StdoutCatcher(io.TextIOBase):
 ...     def __init__(self):
@@ -162,7 +162,7 @@ attr = PyObject_GetAttrString(module, "<attrname>");
 
 ## [如何在 Python 中对接 C ++ 对象？](https://docs.python.org/zh-cn/3.13/faq/extending.html#id14)
 
-​	根据你的需求，可以选择许多方式。 手动的实现方式请查阅 ["扩展与嵌入" 文档](https://docs.python.org/zh-cn/3.13/extending/index.html#extending-index) 来入门。 需要知道的是对于 Python 运行时系统来说，C 和 C++ 并不没有太大的区别 —— 因此围绕一个 C 结构（指针）类型构建新 Python 对象的策略同样适用于 C++ 对象。
+​	根据你的需求，可以选择许多方式。 手动的实现方式请查阅 ["扩展与嵌入" 文档]({{< ref "/extending#extending-index" >}}) 来入门。 需要知道的是对于 Python 运行时系统来说，C 和 C++ 并不没有太大的区别 —— 因此围绕一个 C 结构（指针）类型构建新 Python 对象的策略同样适用于 C++ 对象。
 
 ​	有关C ++库，请参阅 [C很难写，有没有其他选择？](https://docs.python.org/zh-cn/3.13/faq/extending.html#c-wrapper-software)
 

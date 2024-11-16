@@ -92,7 +92,8 @@ draft = false
 
 ​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `winreg.OpenKey/result` 并附带参数 `key`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.3 版本发生变更:* 参考 [上文](https://docs.python.org/zh-cn/3.13/library/winreg.html#exception-changed)。
 
@@ -132,7 +133,8 @@ draft = false
 
 ​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `winreg.DeleteKey` 并附带参数 `key`, `sub_key`, `access`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.3 版本发生变更:* 参考 [上文](https://docs.python.org/zh-cn/3.13/library/winreg.html#exception-changed)。
 
@@ -188,7 +190,7 @@ draft = false
 
 
 
-```
+``` python
 >>> ExpandEnvironmentStrings('%windir%')
 'C:\\Windows'
 ```
@@ -528,13 +530,15 @@ draft = false
 
 ​	64 位数字。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## winreg.**REG_QWORD_LITTLE_ENDIAN**
 
 ​	64 位低字节序格式的数字。相当于 [`REG_QWORD`](https://docs.python.org/zh-cn/3.13/library/winreg.html#winreg.REG_QWORD)。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## winreg.**REG_RESOURCE_LIST**
 

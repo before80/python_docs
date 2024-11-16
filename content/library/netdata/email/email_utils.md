@@ -25,7 +25,8 @@ draft = false
 
 ​	将当地时间作为感知型datetime 对象返回。 如果不带参数地调用，则返回当前时间。 否则 *dt* 参数应为 [`datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime) 的实例，并将根据系统时区数据库将其转换为当地时区。 如果 *dt* 为简单型 (即 `dt.tzinfo` 为 `None`)，它将被假定为当地时间。 *isdst* 形参将被忽略。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *Deprecated since version 3.12, will be removed in version 3.14:* *isdst* 形参。
 
@@ -93,7 +94,8 @@ all_recipients = getaddresses(tos + ccs + resent_tos + resent_ccs)
 
 [`format_datetime()`](https://docs.python.org/zh-cn/3.13/library/email.utils.html#email.utils.format_datetime) 的逆操作。 执行与 [`parsedate()`](https://docs.python.org/zh-cn/3.13/library/email.utils.html#email.utils.parsedate) 相同的功能，但会在成功时返回一个 [`datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.datetime)；否则如果 *date* 包含无效的值例如小时值大于 23 或时区偏移量不在 -24 和 24 时范围之内则会引发 `ValueError`。 如果输入日期的时区值为 `-0000`，则 `datetime` 将为一个简单形 `datetime`，而如果日期符合 RFC 标准则它将代表一个 UTC 时间，但是并不指明日期所在消息的实际源时区。 如果输入日期具有任何其他有效的时区偏移量，则 `datetime` 将是一个感知型 `datetime` 并与 [`timezone`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.timezone) [`tzinfo`](https://docs.python.org/zh-cn/3.13/library/datetime.html#datetime.tzinfo) 相对应。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## email.utils.**mktime_tz**(*tuple*)
 
@@ -117,7 +119,8 @@ Fri, 09 Nov 2001 01:08:47 -0000
 
 ​	类似于 `formatdate`，但输入的是一个 [`datetime`](https://docs.python.org/zh-cn/3.13/library/datetime.html#module-datetime) 实例。 如果实例是一个简单型 datetime，它会被视为 "不带源时区信息的 UTC"，并且使用传统的 `-0000` 作为时区。 如果实例是一个感知型 `datetime`，则会使用数字形式的时区时差。 如果实例是感知型且时区时差为零，则 *usegmt* 可能会被设为 `True`，在这种情况下将使用字符串 `GMT` 而非数字形式的时区时差。 这提供了一种生成符合标准 HTTP 日期标头的方式。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 ## email.utils.**decode_rfc2231**(*s*)
 

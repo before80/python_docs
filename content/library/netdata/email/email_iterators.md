@@ -43,7 +43,7 @@ draft = false
 
 
 
-```
+``` python
 >>> msg = email.message_from_file(somefile)
 >>> _structure(msg)
 multipart/mixed

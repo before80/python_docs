@@ -32,7 +32,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import configparser
 >>> configparser.__name__
 'configparser'
@@ -42,7 +42,7 @@ draft = false
 
 
 
-```
+``` python
 >>> from concurrent.futures import process
 >>> process.__name__
 'concurrent.futures.process'
@@ -210,7 +210,7 @@ print(f'Found student: {search_students(student_name)}')
 
 
 
-```
+``` python
 >>> import asyncio.__main__
 >>> asyncio.__main__.__name__
 'asyncio.__main__'
@@ -295,7 +295,7 @@ Dinsdale found in file /path/to/start.py
 
 
 
-```
+``` python
 >>> import namely
 >>> namely.did_user_define_their_name()
 False

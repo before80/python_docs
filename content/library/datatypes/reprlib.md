@@ -59,7 +59,7 @@ aRepr.maxlevel = 3
 
 
 
-```
+``` python
 >>> from reprlib import recursive_repr
 >>> class MyList(list):
 ...     @recursive_repr()
@@ -73,7 +73,8 @@ aRepr.maxlevel = 3
 <'a'|'b'|'c'|...|'x'>
 ```
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 
 
@@ -85,7 +86,8 @@ aRepr.maxlevel = 3
 
 ​	该字符串将针对递归引用显示。 它默认为 `...`。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## Repr.**maxlevel**
 
@@ -125,7 +127,7 @@ aRepr.maxlevel = 3
 
 
 
-```
+``` python
 >>> example = [
 ...     1, 'spam', {'a': 2, 'b': 'spam eggs', 'c': {3: 4.5, 6: []}}, 'ham']
 >>> import reprlib
@@ -138,7 +140,7 @@ aRepr.maxlevel = 3
 
 
 
-```
+``` python
 >>> aRepr.indent = '-->'
 >>> print(aRepr.repr(example))
 [
@@ -160,7 +162,7 @@ aRepr.maxlevel = 3
 
 
 
-```
+``` python
 >>> aRepr.indent = 4
 >>> print(aRepr.repr(example))
 [
@@ -178,7 +180,8 @@ aRepr.maxlevel = 3
 ]
 ```
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## Repr.**repr**(*obj*)
 

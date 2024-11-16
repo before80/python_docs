@@ -60,7 +60,8 @@ draft = false
 
 ​	当文件无法被解析时二进制格式的解析器将引发 `InvalidFileException`。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.13 版本发生变更:* 增加了仅限关键字形参 *aware_datetime*。
 
@@ -68,7 +69,8 @@ draft = false
 
 ​	从一个字节串或字符串对象加载 plist。 请参阅 [`load()`](https://docs.python.org/zh-cn/3.13/library/plistlib.html#plistlib.load) 获取相应关键字参数的说明。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.13 版本发生变更:* 当 *fmt* 等于 [`FMT_XML`](https://docs.python.org/zh-cn/3.13/library/plistlib.html#plistlib.FMT_XML) 时 *data* 可以为字符串。
 
@@ -91,7 +93,8 @@ draft = false
 
 ​	对于无法在（二进制）plist 文件中表示的整数值，将会引发 [`OverflowError`](https://docs.python.org/zh-cn/3.13/library/exceptions.html#OverflowError)。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.13 版本发生变更:* 增加了仅限关键字形参 *aware_datetime*。
 
@@ -99,7 +102,8 @@ draft = false
 
 ​	将 *value* 以 plist 格式字节串对象的形式返回。 参阅 [`dump()`](https://docs.python.org/zh-cn/3.13/library/plistlib.html#plistlib.dump) 的文档获取此函数的关键字参数的说明。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ​	可以使用以下的类:
 
@@ -109,7 +113,8 @@ draft = false
 
 ​	它具有一个属性 `data`，可以被用来提取 UID 的 int 值。 `data` 的取值范围必须为 `0 <= data < 2**64`。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ​	可以使用以下的常量:
 
@@ -117,13 +122,15 @@ draft = false
 
 ​	用于 plist 文件的 XML 格式。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## plistlib.**FMT_BINARY**
 
 ​	用于 plist 文件的二进制格式。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## 例子
 

@@ -46,7 +46,8 @@ draft = false
 
 ​	一些算法具有已知的碰撞弱点（包括 MD5 和 SHA1）。 请参阅本文档末尾的 [Attacks on cryptographic hash algorithms](https://en.wikipedia.org/wiki/Cryptographic_hash_function#Attacks_on_cryptographic_hash_algorithms) 和 [hashlib-seealso](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib-seealso) 小节。
 
-*Added in version 3.6:* 增加了 SHA3 (Keccak) 和 SHAKE 构造器 [`sha3_224()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_224), [`sha3_256()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_256), [`sha3_384()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_384), [`sha3_512()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_512), [`shake_128()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.shake_128), [`shake_256()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.shake_256)。 并增加了 [`blake2b()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.blake2b) 和 [`blake2s()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.blake2s)。
+> Added in version 3.6:
+> 增加了 SHA3 (Keccak) 和 SHAKE 构造器 [`sha3_224()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_224), [`sha3_256()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_256), [`sha3_384()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_384), [`sha3_512()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.sha3_512), [`shake_128()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.shake_128), [`shake_256()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.shake_256)。 并增加了 [`blake2b()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.blake2b) 和 [`blake2s()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.blake2s)。
 
 *在 3.9 版本发生变更:* 所有 hashlib 的构造器都接受仅限关键字参数 *usedforsecurity* 且其默认值为 `True`。 设为假值即允许在受限的环境中使用不安全且阻塞的哈希算法。 `False` 表示此哈希算法不可用于安全场景，例如用作非加密的单向压缩函数。
 
@@ -60,7 +61,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import hashlib
 >>> m = hashlib.sha256()
 >>> m.update(b"Nobody inspects")
@@ -75,7 +76,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 
 
-```
+``` python
 >>> hashlib.sha256(b"Nobody inspects the spammish repetition").hexdigest()
 '031edd7d41651593c5fe5c006fa5752b37fddff7bc4e843aa6af0c950f4b9406'
 ```
@@ -90,7 +91,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 
 
-```
+``` python
 >>> h = hashlib.new('sha256')
 >>> h.update(b"Nobody inspects the spammish repetition")
 >>> h.hexdigest()
@@ -127,13 +128,15 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 ​	一个集合，其中包含此模块在所有平台上都保证支持的哈希算法的名称。 请注意 'md5' 也在此清单中，虽然某些上游厂商提供了一个怪异的排除了此算法的 "FIPS 兼容" Python 编译版本。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## hashlib.**algorithms_available**
 
 ​	一个集合，其中包含在所运行的 Python 解释器上可用的哈希算法的名称。 将这些名称传给 [`new()`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.new) 时将可被识别。 [`algorithms_guaranteed`](https://docs.python.org/zh-cn/3.13/library/hashlib.html#hashlib.algorithms_guaranteed) 将总是它的一个子集。 同样的算法在此集合中可能以不同的名称出现多次（这是 OpenSSL 的原因）。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## 哈希对象
 
@@ -193,7 +196,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 
 
-```
+``` python
 >>> h = hashlib.shake_256(b'Nobody inspects the spammish repetition')
 >>> h.hexdigest(20)
 '44709d6fcb83d92a76dcb0b668c98e1b1d3dafe7'
@@ -215,7 +218,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 
 
-```
+``` python
 >>> import io, hashlib, hmac
 >>> with open(hashlib.__file__, "rb") as f:
 ...     digest = hashlib.file_digest(f, "sha256")
@@ -226,7 +229,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 
 
-```
+``` python
 >>> buf = io.BytesIO(b"somedata")
 >>> mac1 = hmac.HMAC(b"key", digestmod=hashlib.sha512)
 >>> digest = hashlib.file_digest(buf, lambda: mac1)
@@ -234,7 +237,7 @@ b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0
 
 
 
-```
+``` python
 >>> digest is mac1
 True
 >>> mac2 = hmac.HMAC(b"key", b"somedata", digestmod=hashlib.sha512)
@@ -242,7 +245,8 @@ True
 True
 ```
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## 密钥派生
 
@@ -260,7 +264,7 @@ True
 
 
 
-```
+``` python
 >>> from hashlib import pbkdf2_hmac
 >>> our_app_iters = 500_000  # Application specific, read above.
 >>> dk = pbkdf2_hmac('sha256', b'password', b'bad salt' * 2, our_app_iters)
@@ -270,7 +274,8 @@ True
 
 ​	此函数只有在 Python 附带 OpenSSL 编译时才可用。
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 *在 3.12 版本发生变更:* 现在此函数只有在 Python 附带 OpenSSL 构建时才可用。 慢速的纯 Python 实现已被移除。
 
@@ -282,7 +287,8 @@ True
 
 *n* 是 CPU/内存开销因子，*r* 是块大小，*p* 是并行化因子而 *maxmem* 是内存上限（OpenSSL 1.1.0 默认为 32 MiB）。 *dklen* 是以字节数表示的派生密钥长度。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 
 
@@ -376,7 +382,7 @@ True
 
 
 
-```
+``` python
 >>> from hashlib import blake2b
 >>> h = blake2b()
 >>> h.update(b'Hello world')
@@ -388,7 +394,7 @@ True
 
 
 
-```
+``` python
 >>> from hashlib import blake2b
 >>> blake2b(b'Hello world').hexdigest()
 '6ff843ba685842aa82031d3f53c48b66326df7639a63d128974c5c14f31a0f33343a8c65551134ed1ae0f2b0dd2bb495dc81039e3eeb0aa1bb0388bbeac29183'
@@ -398,7 +404,7 @@ True
 
 
 
-```
+``` python
 >>> from hashlib import blake2b
 >>> items = [b'Hello', b' ', b'world']
 >>> h = blake2b()
@@ -415,7 +421,7 @@ True
 
 
 
-```
+``` python
 >>> from hashlib import blake2b
 >>> h = blake2b(digest_size=20)
 >>> h.update(b'Replacing SHA1 with the more secure function')
@@ -431,7 +437,7 @@ True
 
 
 
-```
+``` python
 >>> from hashlib import blake2b, blake2s
 >>> blake2b(digest_size=10).hexdigest()
 '6fa1d8fcfd719046d762'
@@ -451,7 +457,7 @@ True
 
 
 
-```
+``` python
 >>> from hashlib import blake2b
 >>> h = blake2b(key=b'pseudorandom key', digest_size=16)
 >>> h.update(b'message data')
@@ -463,7 +469,7 @@ True
 
 
 
-```
+``` python
 >>> from hashlib import blake2b
 >>> from hmac import compare_digest
 >>>
@@ -495,7 +501,7 @@ False
 
 
 
-```
+``` python
 >>> import hmac, hashlib
 >>> m = hmac.new(b'secret key', digestmod=hashlib.blake2s)
 >>> m.update(b'message')
@@ -521,7 +527,7 @@ False
 
 
 
-```
+``` python
 >>> import os
 >>> from hashlib import blake2b
 >>> msg = b'some message'
@@ -550,7 +556,7 @@ True
 
 
 
-```
+``` python
 >>> from hashlib import blake2b
 >>> FILES_HASH_PERSON = b'MyApp Files Hash'
 >>> BLOCK_HASH_PERSON = b'MyApp Block Hash'
@@ -568,7 +574,7 @@ True
 
 
 
-```
+``` python
 >>> from hashlib import blake2s
 >>> from base64 import b64decode, b64encode
 >>> orig_key = b64decode(b'Rm5EPJai72qcK3RGBpW3vPNfZy5OZothY+kHY6h21KM=')
@@ -594,7 +600,7 @@ G9GtHFE1YluXY1zWPlYk1e/nWfu0WSEb0KRcjhDeP/o=
 
 
 
-```
+``` python
 >>> from hashlib import blake2b
 >>>
 >>> FANOUT = 2

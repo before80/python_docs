@@ -32,7 +32,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import json
 >>> json.dumps(['foo', {'bar': ('baz', None, 1.0, 2)}])
 '["foo", {"bar": ["baz", null, 1.0, 2]}]'
@@ -55,7 +55,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import json
 >>> json.dumps([1, 2, 3, {'4': 5, '6': 7}], separators=(',', ':'))
 '[1,2,3,{"4":5,"6":7}]'
@@ -65,7 +65,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import json
 >>> print(json.dumps({'6': 7, '4': 5}, sort_keys=True, indent=4))
 {
@@ -78,7 +78,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import json
 >>> def custom_json(obj):
 ...     if isinstance(obj, complex):
@@ -93,7 +93,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import json
 >>> json.loads('["foo", {"bar":["baz", null, 1.0, 2]}]')
 ['foo', {'bar': ['baz', None, 1.0, 2]}]
@@ -109,7 +109,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import json
 >>> def as_complex(dct):
 ...     if '__complex__' in dct:
@@ -128,7 +128,7 @@ Decimal('1.1')
 
 
 
-```
+``` python
 >>> import json
 >>> class ComplexEncoder(json.JSONEncoder):
 ...     def default(self, obj):
@@ -375,7 +375,7 @@ def default(self, o):
 
 
 
-```
+``` python
 >>> json.JSONEncoder().encode({"foo": ["bar", "baz"]})
 '{"foo": ["bar", "baz"]}'
 ```
@@ -415,7 +415,8 @@ for chunk in json.JSONEncoder().iterencode(bigobject):
 
 ​	The column corresponding to *pos*.
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## 标准符合性和互操作性
 
@@ -446,7 +447,7 @@ for chunk in json.JSONEncoder().iterencode(bigobject):
 
 
 
-```
+``` python
 >>> # 这些调用均不会引发异常，但结果都不是合法的 JSON
 >>> json.dumps(float('-inf'))
 '-Infinity'
@@ -467,7 +468,7 @@ nan
 
 
 
-```
+``` python
 >>> weird_json = '{"x": 1, "x": 2, "x": 3}'
 >>> json.loads(weird_json)
 {'x': 3}
@@ -547,25 +548,29 @@ $ python -m json.tool mp_films.json
 
 ​	将字典输出按照键的字母顺序排序。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **--no-ensure-ascii**
 
 ​	禁用非 ASCII 字符的转义，详情参见 [`json.dumps()`](https://docs.python.org/zh-cn/3.13/library/json.html#json.dumps)。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## **--json-lines**
 
 ​	将每个输入行解析为单独的 JSON 对象。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **--indent**, **--tab**, **--no-indent**, **--compact**
 
 ​	用于空白符控制的互斥选项。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## **-h**, **--help**
 

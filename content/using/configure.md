@@ -88,7 +88,8 @@ autoreconf -ivf -Werror
 
 ​	参见 [`sqlite3.Connection.enable_load_extension()`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#sqlite3.Connection.enable_load_extension) 方法的 [`sqlite3`](https://docs.python.org/zh-cn/3.13/library/sqlite3.html#module-sqlite3) 模块。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **--disable-ipv6**
 
@@ -120,7 +121,8 @@ autoreconf -ivf -Werror
 
 ​	参阅 [`os.pathsep`](https://docs.python.org/zh-cn/3.13/library/os.html#os.pathsep) 路径分隔符。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## **--without-decimal-contextvar**
 
@@ -128,7 +130,8 @@ autoreconf -ivf -Werror
 
 ​	参见 [`decimal.HAVE_CONTEXTVAR`](https://docs.python.org/zh-cn/3.13/library/decimal.html#decimal.HAVE_CONTEXTVAR) 和 [`contextvars`](https://docs.python.org/zh-cn/3.13/library/contextvars.html#module-contextvars) 模块。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## **--with-dbmliborder**=<list of backend names>
 
@@ -152,7 +155,8 @@ autoreconf -ivf -Werror
 
 ​	禁用除空元组单例以外的所有自由列表。Disable all freelists except the empty tuple singleton.
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **--with-platlibdir**=DIRNAME
 
@@ -162,7 +166,8 @@ autoreconf -ivf -Werror
 
 ​	参阅 [`sys.platlibdir`](https://docs.python.org/zh-cn/3.13/library/sys.html#sys.platlibdir) 。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## **--with-wheel-pkg-dir**=PATH
 
@@ -170,7 +175,8 @@ autoreconf -ivf -Werror
 
 ​	某些 Linux 发行版的打包策略建议不要捆绑依赖关系。如 Fedora 在 `/usr/share/python-wheels/` 目录下安装 wheel 包，而不安装 `ensurepip._bundled` 包。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## **--with-pkg-config**=[check|yes|no]
 
@@ -180,7 +186,8 @@ autoreconf -ivf -Werror
 - `yes`: **pkg-config** 为必选项。
 - `no`: 配置不使用 **pkg-config** 即使其存在
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **--enable-pystats**
 
@@ -233,7 +240,8 @@ autoreconf -ivf -Werror
   - 已访问的对象；
   - 已收集的对象。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **--disable-gil**
 
@@ -243,7 +251,8 @@ autoreconf -ivf -Werror
 
 ​	请参阅 [自由线程的 CPython](https://docs.python.org/zh-cn/3.13/whatsnew/3.13.html#whatsnew313-free-threaded-cpython) 了解详情。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **--enable-experimental-jit**=[no|yes|yes-off|interpreter]
 
@@ -256,7 +265,8 @@ autoreconf -ivf -Werror
 
 ​	By convention, `--enable-experimental-jit` is a shorthand for `--enable-experimental-jit=yes`.
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ## **PKG_CONFIG**
 
@@ -302,7 +312,8 @@ autoreconf -ivf -Werror
 
 ### 3.3.4. 用于第三方依赖的选项
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **BZIP2_CFLAGS**
 
@@ -405,7 +416,8 @@ autoreconf -ivf -Werror
 - `browser` (默认值): 预加载最小 stdlib，默认 MEMFS。
 - `node`: NODERAWFS 和 pthread 支持。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **--enable-wasm-dynamic-linking**
 
@@ -413,13 +425,15 @@ autoreconf -ivf -Werror
 
 ​	动态链接启用 `dlopen`。 可执行文件的大小将由于限制死代码清理和附加特性而增加。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **--enable-wasm-pthreads**
 
 ​	为 WASM 启用 pthreads 支持。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ### 3.3.6. 安装时的选项
 
@@ -441,7 +455,8 @@ autoreconf -ivf -Werror
 
 ​	不编译和安装 test 模块，如 [`test`](https://docs.python.org/zh-cn/3.13/library/test.html#module-test) 包或 `_testcapi` 扩展模块（默认会编译并安装）。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## **--with-ensurepip**=[upgrade|install|no]
 
@@ -451,7 +466,8 @@ autoreconf -ivf -Werror
 - `install` ：运行 `python -m ensurepip --altinstall` 命令。
 - `no` ：不运行 ensurepip。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ### 3.3.7. 性能选项
 
@@ -471,7 +487,8 @@ autoreconf -ivf -Werror
 
 ​	在构建期间，你可能会遇到编译器警告提示某些源文件的配置数据不可用。 这些警告是无害的，因为在获取配置数据时只有一部分代码会被使用。 要在 Clang 上禁用这些警告，可通过在 [`CFLAGS`](https://docs.python.org/zh-cn/3.13/using/configure.html#envvar-CFLAGS) 中添加 `-Wno-profile-instr-unprofiled` 来手动抑制它们。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 *在 3.10 版本发生变更:* 在 GCC 上使用 `-fno-semantic-interposition` 。
 
@@ -481,7 +498,8 @@ autoreconf -ivf -Werror
 
 ​	默认为：`-m test --pgo --timeout=$(TESTTIMEOUT)` 。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.13 版本发生变更:* 任务失败将不会再被静默地忽略。
 
@@ -491,9 +509,11 @@ autoreconf -ivf -Werror
 
 ​	LTO 时 C 编译器 Clang 需要用到 `llvm-ar` 参数（在 macOS 则为 `ar`），以及支持 LTO 的链接器（`ld.gold` 或 `lld`）。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
-*Added in version 3.11:* 要使用 ThinLTO 特性，请在 Clang 上使用 `--with-lto=thin`。
+> Added in version 3.11:
+> 要使用 ThinLTO 特性，请在 Clang 上使用 `--with-lto=thin`。
 
 *在 3.12 版本发生变更:* 如果编译器支持将使用 ThinLTO 旗标作为 Clang 上的默认优化策略。
 
@@ -507,19 +527,22 @@ autoreconf -ivf -Werror
 
 `BOLT_INSTRUMENT_FLAGS` 和 `BOLT_APPLY_FLAGS` **configure** 变量可被定义为覆盖 **llvm-bolt** 的默认参数集合来分别指示和将 BOLT 数据应用于二进制代码中。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **BOLT_APPLY_FLAGS**
 
 ​	当创建 [BOLT 优化的二进制文件](https://github.com/facebookarchive/BOLT) 时传给 `llvm-bolt` 的参数。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **BOLT_INSTRUMENT_FLAGS**
 
 ​	当构建二进制文件时传给 `llvm-bolt` 的参数。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **--with-computed-gotos**
 
@@ -601,7 +624,8 @@ autoreconf -ivf -Werror
 
 [静态分配的对象](https://docs.python.org/zh-cn/3.13/c-api/typeobj.html#static-types) 将不会被追踪。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 *在 3.13 版本发生变更:* 此构建版现在与发布构建版和 [调试构建版](https://docs.python.org/zh-cn/3.13/using/configure.html#debug-build) 是 ABI 兼容的。
 
@@ -613,7 +637,8 @@ autoreconf -ivf -Werror
 
 ​	参阅 [`--with-pydebug`](https://docs.python.org/zh-cn/3.13/using/configure.html#cmdoption-with-pydebug) 选项（[调试编译模式](https://docs.python.org/zh-cn/3.13/using/configure.html#debug-build)），它也可以启用断言。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **--with-valgrind**
 
@@ -625,31 +650,36 @@ autoreconf -ivf -Werror
 
 ​	参阅 [用 DTrace 和 SystemTap 测试 CPython](https://docs.python.org/zh-cn/3.13/howto/instrumentation.html#instrumentation)。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **--with-address-sanitizer**
 
 ​	启用 AddressSanitizer 内存错误检测 `asan`，（默认为禁用）。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **--with-memory-sanitizer**
 
 ​	启用 MemorySanitizer 内存错误检测 `msan`，（默认为禁用）。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **--with-undefined-behavior-sanitizer**
 
 ​	启用 undefinedBehaviorSanitizer 未定义行为检测 `ubsan`，（默认为禁用）。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **--with-thread-sanitizer**
 
 ​	启用 ThreadSanitizer 数据竞争检测器，`tsan` (默认为否）。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ### 3.3.10. 链接器选项
 
@@ -661,7 +691,8 @@ autoreconf -ivf -Werror
 
 ​	不编译 `libpythonMAJOR.MINOR.a`，也不安装 `python.o` (默认会编译并安装)。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ### 3.3.11. 库选项
 
@@ -677,7 +708,8 @@ autoreconf -ivf -Werror
 
 ​	使用已安装的 `mpdecimal` 库来构建 `_decimal` 扩展模块，参见 [`decimal`](https://docs.python.org/zh-cn/3.13/library/decimal.html#module-decimal) 模块（默认为是）。
 
-*Added in version 3.3.*
+> Added in version 3.3.
+>
 
 *在 3.13 版本发生变更:* 默认为使用已安装的 `mpdecimal` 库。
 
@@ -696,7 +728,8 @@ autoreconf -ivf -Werror
 - readline: 使用 readline 作为后端。
 - editline: 使用 editline 作为后端。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## **--without-readline**
 
@@ -704,7 +737,8 @@ autoreconf -ivf -Werror
 
 ​	不定义 `HAVE_LIBREADLINE` 宏。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ## **--with-libm**=STRING
 
@@ -718,7 +752,8 @@ autoreconf -ivf -Werror
 
 ​	OpenSSL 的根目录。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **--with-openssl-rpath**=[no|auto|DIR]
 
@@ -728,7 +763,8 @@ autoreconf -ivf -Werror
 - `auto`：根据 [`--with-openssl`](https://docs.python.org/zh-cn/3.13/using/configure.html#cmdoption-with-openssl) 和 `pkg-config` 自动检测 rpath。
 - *DIR* ：直接设置 rpath。
 
-*Added in version 3.10.*
+> Added in version 3.10.
+>
 
 ### 3.3.12. 安全性选项
 
@@ -740,9 +776,11 @@ autoreconf -ivf -Werror
 - `siphash24`;
 - `fnv`.
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
-*Added in version 3.11:* 增加了 `siphash13` 并且是新的默认值。
+> Added in version 3.11:
+> 增加了 `siphash13` 并且是新的默认值。
 
 ## **--with-builtin-hashlib-hashes**=md5,sha1,sha256,sha512,sha3,blake2
 
@@ -755,7 +793,8 @@ autoreconf -ivf -Werror
 - `sha3` (带 shake)。
 - `blake2`。
 
-*Added in version 3.9.*
+> Added in version 3.9.
+>
 
 ## **--with-ssl-default-suites**=[python|openssl|STRING]
 
@@ -767,7 +806,8 @@ autoreconf -ivf -Werror
 
 ​	参见 [`ssl`](https://docs.python.org/zh-cn/3.13/library/ssl.html#module-ssl) 模块。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 *在 3.10 版本发生变更:* 设置 `python` 和 *STRING* 也会把 TLS 1.2 设为最低版本的协议。
 
@@ -812,7 +852,8 @@ autoreconf -ivf -Werror
 
 ​	Python 标准库包含已知的当提交给 macOS 和 iOS 应用商店进行发布时会触发自动检查工具错误的字符串。 如果启用，该选项将应用已知可纠正应用商店合规性的补丁列表。 也可以指定自定义补丁文件。 在默认情况下将禁用此选项。
 
-*Added in version 3.13.*
+> Added in version 3.13.
+>
 
 ### 3.3.14. iOS 选项
 
@@ -842,7 +883,8 @@ autoreconf -ivf -Werror
 
 ​	针对交叉编译构建 `python` 二进制文件的路径
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## **CONFIG_SITE**=file
 
@@ -861,7 +903,8 @@ ac_cv_file__dev_ptc=no
 
 ​	用于针对交叉编译主机平台的运行 CPython 的程序。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ​	交叉编译示例:
 
@@ -942,7 +985,7 @@ CONFIG_SITE=config.site-aarch64 ../configure \
 
 
 
-```
+``` python
 >>> import sys
 >>> sys
 <module 'sys' (built-in)>
@@ -956,7 +999,7 @@ AttributeError: module 'sys' has no attribute '__file__'
 
 
 
-```
+``` python
 >>> import _asyncio
 >>> _asyncio
 <module '_asyncio' from '/usr/lib64/python3.9/lib-dynload/_asyncio.cpython-39-x86_64-linux-gnu.so'>
@@ -983,7 +1026,8 @@ AttributeError: module 'sys' has no attribute '__file__'
 
 ​	变量 [`CPPFLAGS`](https://docs.python.org/zh-cn/3.13/using/configure.html#envvar-CPPFLAGS) 的值被传递给 `./configure` 脚本。
 
-*Added in version 3.6.*
+> Added in version 3.6.
+>
 
 ## **CPPFLAGS**
 
@@ -993,7 +1037,8 @@ AttributeError: module 'sys' has no attribute '__file__'
 
 ## **BASECPPFLAGS**
 
-*Added in version 3.4.*
+> Added in version 3.4.
+>
 
 ## **PY_CPPFLAGS**
 
@@ -1001,7 +1046,8 @@ AttributeError: module 'sys' has no attribute '__file__'
 
 ​	默认为： `$(BASECPPFLAGS) -I. -I$(srcdir)/Include $(CONFIGURE_CPPFLAGS) $(CPPFLAGS)` 。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ### 3.5.2. 编译器标志
 
@@ -1030,13 +1076,15 @@ AttributeError: module 'sys' has no attribute '__file__'
 - 编译器旗标 `-I` (用于为包括文件设置搜索路径)。 `-I` 旗标将按从左到右的顺序处理，并且 [`CFLAGS`](https://docs.python.org/zh-cn/3.13/using/configure.html#envvar-CFLAGS) 中的任何旗标都将优先于 user- 和 package- 层级所提供的 `-I` 旗标。
 - 加固旗标如 `-Werror` 因为分发版无法控制由用户安装的包是否符合这样的高标准。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **COMPILEALL_OPTS**
 
 ​	当在 `make install` 中构建 PYC 文件时传给 [`compileall`](https://docs.python.org/zh-cn/3.13/library/compileall.html#module-compileall) 命令行的选项。 默认值: `-j0`。
 
-*Added in version 3.12.*
+> Added in version 3.12.
+>
 
 ## **EXTRA_CFLAGS**
 
@@ -1046,13 +1094,15 @@ AttributeError: module 'sys' has no attribute '__file__'
 
 ​	变量 [`CFLAGS`](https://docs.python.org/zh-cn/3.13/using/configure.html#envvar-CFLAGS) 的值传递给 `./configure` 脚本。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **CONFIGURE_CFLAGS_NODIST**
 
 ​	变量 [`CFLAGS_NODIST`](https://docs.python.org/zh-cn/3.13/using/configure.html#envvar-CFLAGS_NODIST) 的值传递给 `./configure` 脚本。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **BASECFLAGS**
 
@@ -1066,7 +1116,8 @@ AttributeError: module 'sys' has no attribute '__file__'
 
 ​	严格或不严格的别名标志，用于编译 `Python/dtoa.c` 、
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **CCSHARED**
 
@@ -1088,7 +1139,8 @@ AttributeError: module 'sys' has no attribute '__file__'
 
 ​	默认为： `$(CONFIGURE_CFLAGS_NODIST) $(CFLAGS_NODIST) -I$(srcdir)/Include/internal` 。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## **PY_STDMODULE_CFLAGS**
 
@@ -1096,13 +1148,15 @@ AttributeError: module 'sys' has no attribute '__file__'
 
 ​	默认为： `$(PY_CFLAGS) $(PY_CFLAGS_NODIST) $(PY_CPPFLAGS) $(CFLAGSFORSHARED)`。
 
-*Added in version 3.7.*
+> Added in version 3.7.
+>
 
 ## **PY_CORE_CFLAGS**
 
 ​	默认为 `$(PY_STDMODULE_CFLAGS) -DPy_BUILD_CORE` 。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **PY_BUILTIN_MODULE_CFLAGS**
 
@@ -1110,7 +1164,8 @@ AttributeError: module 'sys' has no attribute '__file__'
 
 ​	默认为： `$(PY_STDMODULE_CFLAGS) -DPy_BUILD_CORE_BUILTIN` 。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **PURIFY**
 
@@ -1132,7 +1187,8 @@ AttributeError: module 'sys' has no attribute '__file__'
 
 ​	避免指定 [`CFLAGS`](https://docs.python.org/zh-cn/3.13/using/configure.html#envvar-CFLAGS) ， [`LDFLAGS`](https://docs.python.org/zh-cn/3.13/using/configure.html#envvar-LDFLAGS) 等，这样用户就可以在命令行上使用它们来追加这些值，而不用触碰到预设的值。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 ## **LDFLAGS_NODIST**
 
@@ -1146,7 +1202,8 @@ AttributeError: module 'sys' has no attribute '__file__'
 
 ​	变量 [`LDFLAGS_NODIST`](https://docs.python.org/zh-cn/3.13/using/configure.html#envvar-LDFLAGS_NODIST) 的值传递给 `./configure` 脚本。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **LDFLAGS**
 
@@ -1180,13 +1237,15 @@ AttributeError: module 'sys' has no attribute '__file__'
 
 ​	默认为： `$(CONFIGURE_LDFLAGS_NODIST) $(LDFLAGS_NODIST)` 。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ## **PY_CORE_LDFLAGS**
 
 ​	用于构建解释器对象文件的链接器标志。
 
-*Added in version 3.8.*
+> Added in version 3.8.
+>
 
 ​	备注
 

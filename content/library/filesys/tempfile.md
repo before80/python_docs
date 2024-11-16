@@ -109,7 +109,8 @@ draft = false
 
 ​	引发一个 [审计事件](https://docs.python.org/zh-cn/3.13/library/sys.html#auditing) `tempfile.mkdtemp` 并附带参数 `fullpath`。
 
-*Added in version 3.2.*
+> Added in version 3.2.
+>
 
 *在 3.10 版本发生变更:* 添加了 *ignore_cleanup_errors* 形参。
 
@@ -179,7 +180,8 @@ draft = false
 
 ​	与 [`gettempdir()`](https://docs.python.org/zh-cn/3.13/library/tempfile.html#tempfile.gettempdir) 相同，但返回值为字节类型。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ## tempfile.**gettempprefix**()
 
@@ -189,7 +191,8 @@ draft = false
 
 ​	与 [`gettempprefix()`](https://docs.python.org/zh-cn/3.13/library/tempfile.html#tempfile.gettempprefix) 相同，但返回值为字节类型。
 
-*Added in version 3.5.*
+> Added in version 3.5.
+>
 
 ​	本模块使用一个全局变量来存储由 [`gettempdir()`](https://docs.python.org/zh-cn/3.13/library/tempfile.html#tempfile.gettempdir) 返回的临时文件使用的目录路径。 它可被直接设置以覆盖选择过程，但不建议这样做。 本模块中的所有函数都接受一个 *dir* 参数，它可被用于指定目录。 这是不会通过改变全局 API 行为对其他无准备代码造成影响的推荐做法。
 
@@ -213,7 +216,7 @@ draft = false
 
 
 
-```
+``` python
 >>> import tempfile
 
 # 创建一个临时文件并向其写入一些数据
@@ -275,7 +278,7 @@ b'Hello world!'
 
 
 
-```
+``` python
 >>> f = NamedTemporaryFile(delete=False)
 >>> f.name
 '/tmp/tmptjujjt'

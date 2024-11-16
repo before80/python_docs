@@ -17,4 +17,4 @@ draft = false
 
 # Python 语言参考手册
 
-​	本参考手册介绍了 Python 句法与“核心语义”。在力求简明扼要的同时，我们也尽量做到准确、完整。有关内置对象类型、内置函数、模块的语义在 [Python 标准库](https://docs.python.org/zh-cn/3.13/library/index.html#library-index) 中介绍。有关本语言的非正式介绍，请参阅 [Python 教程](https://docs.python.org/zh-cn/3.13/tutorial/index.html#tutorial-index) 。对于 C 或 C++ 程序员，我们还提供了两个手册：[扩展和嵌入 Python 解释器](https://docs.python.org/zh-cn/3.13/extending/index.html#extending-index) 介绍了如何编写 Python 扩展模块，[Python/C API 参考手册](https://docs.python.org/zh-cn/3.13/c-api/index.html#c-api-index) 则详细介绍了 C/C++ 的可用接口。
+​	本参考手册介绍了 Python 句法与“核心语义”。在力求简明扼要的同时，我们也尽量做到准确、完整。有关内置对象类型、内置函数、模块的语义在 [Python 标准库]({{< ref "/library#library-index" >}}) 中介绍。有关本语言的非正式介绍，请参阅 [Python 教程]({{< ref "/tutorial#tutorial-index" >}}) 。对于 C 或 C++ 程序员，我们还提供了两个手册：[扩展和嵌入 Python 解释器]({{< ref "/extending#extending-index" >}}) 介绍了如何编写 Python 扩展模块，[Python/C API 参考手册]({{< ref "/capi#c-api-index" >}}) 则详细介绍了 C/C++ 的可用接口。

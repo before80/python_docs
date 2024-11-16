@@ -66,17 +66,19 @@ draft = false
 
 ​	返回一个包含文件描述符 *fd* 的 tty 窗口大小的元组 `(ws_row, ws_col)`。 需要 `termios.TIOCGWINSZ` 或 `termios.TIOCGSIZE`。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ## termios.**tcsetwinsize**(*fd*, *winsize*)
 
 ​	将文件描述符 *fd* 的 tty 窗口大小设置为 *winsize*，这是一个包含两项的元组 `(ws_row, ws_col)`，如 [`tcgetwinsize()`](https://docs.python.org/zh-cn/3.13/library/termios.html#termios.tcgetwinsize) 所返回的一样。 要求至少定义了 (`termios.TIOCGWINSZ`, `termios.TIOCSWINSZ`); (`termios.TIOCGSIZE`, `termios.TIOCSSIZE`) 对之一。
 
-*Added in version 3.11.*
+> Added in version 3.11.
+>
 
 ​	参见
 
-## 模块 [`tty`](https://docs.python.org/zh-cn/3.13/library/tty.html#module-tty)
+模块 [`tty`](https://docs.python.org/zh-cn/3.13/library/tty.html#module-tty)
 
 ​	针对常用终端控制操作的便捷函数。
 
