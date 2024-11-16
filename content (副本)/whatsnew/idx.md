@@ -181,7 +181,8 @@ draft = false
 
 ​	这项工作成为可能要感谢许多个人和组织，包括针对 Python 和第三方项目测试并启用自由线程支持的庞大的贡献者社区。 重要的贡献者包括：Sam Gross, Ken Jin, Donghee Na, Itamar Oren, Matt Page, Brett Simmers, Dino Viehland, Carl Meyer, Nathan Goldbaum, Ralf Gommers, Lysandros Nikolaou 及其他许多人。 有许多贡献者受雇于 Meta，该公司提供了大量的工程资源来支持此项目。
 
-​参见
+​	参见
+
  
 
 [**PEP 703**](https://peps.python.org/pep-0703/) "Making the Global Interpreter Lock Optional in CPython" 中包含了有关此项工作的理念和信息。
@@ -211,7 +212,8 @@ draft = false
 - 启用 JIT 时，经优化的第 2 层级 IR 将被翻译为机器码后再执行。
 - 这个机器码翻译过程使用了名为 *拷贝并打补丁* 的技巧。 它没有运行时依赖，但增加了构建时对 LLVM 的依赖。
 
-​参见
+​	参见
+
  
 
 [**PEP 744**](https://peps.python.org/pep-0744/)
@@ -240,7 +242,8 @@ draft = false
 
 [**PEP 738**](https://peps.python.org/pep-0738/): Android 现在是 [**PEP 11**](https://peps.python.org/pep-0011/) 所支持的平台，包括位于第 3 层级的 `aarch64-linux-android` 和 `x86_64-linux-android` 等目标。 32 位的目标 `arm-linux-androideabi` 和 `i686-linux-android` 不是第 3 层级的受支持平台，但也将尽可能地支持。 （PEP 撰写及实现由 Malcolm Smith 在 [gh-116622](https://github.com/python/cpython/issues/116622) 中贡献。）
 
-​参见
+​	参见
+
  
 
 [**PEP 730**](https://peps.python.org/pep-0730/), [**PEP 738**](https://peps.python.org/pep-0738/)
@@ -345,7 +348,7 @@ draft = false
 
 - 现在当服务器被关闭时 [`asyncio.loop.create_unix_server()`]({{< ref "/library/ipc/asyncio/asyncio-eventloop#asyncio.loop.create_unix_server" >}}) 会自动移除 Unix 套接字。 （由 Pierre Ossman 在 [gh-111246](https://github.com/python/cpython/issues/111246) 中贡献。）
 
-- 现在当附带一个空字节串对象调用时 [`DatagramTransport.sendto()`]({{< ref "/library/ipc/asyncio/asyncio-protocol#asyncio.DatagramTransport.sendto" >}}) 将发送零长度的数据报。 现在当计算缓冲区大小时传输控制流还会将数据报标头纳入考量。 （由 Jamie Phan 在 [gh-115199](https://github.com/python/cpython/issues/115199) 中贡献。）
+- 现在当附带一个空字节串对象调用时 [`DatagramTransport.sendto()`]({{< ref "/library/ipc/asyncio/asyncio-protocol.#asyncio.DatagramTransport.sendto" >}}) 将发送零长度的数据报。 现在当计算缓冲区大小时传输控制流还会将数据报标头纳入考量。 （由 Jamie Phan 在 [gh-115199](https://github.com/python/cpython/issues/115199) 中贡献。）
 
 - 增加了 [`Queue.shutdown`]({{< ref "/library/ipc/asyncio/asyncio-queue#asyncio.Queue.shutdown" >}}) 和 [`QueueShutDown`]({{< ref "/library/ipc/asyncio/asyncio-queue#asyncio.QueueShutDown" >}}) 用于管理队列终结。 （由 Laurie Opperman 和 Yves Duprat 在 [gh-104228](https://github.com/python/cpython/issues/104228) 中贡献。）
 
@@ -355,7 +358,7 @@ draft = false
 
 - 改进了 [`TaskGroup`]({{< ref "/library/ipc/asyncio/asyncio-task#asyncio.TaskGroup" >}}) 在外部的取消操作与内部的取消操作发生冲突时的行为。 例如，当嵌套两个任务分组并且两者同时在某个子任务中遇到异常时，外层的任务分组有可能被挂起，因为其内部的取消操作已由内层的任务分组进行处理。
 
-  对于任务分组在外部被取消时同时必须引发 [`ExceptionGroup`]({{< ref "/library/exceptions#ExceptionGroup" >}}) 的情况，现在它将调用父任务的 [`cancel()`]({{< ref "/library/ipc/asyncio/asyncio-task#asyncio.Task.cancel" >}}) 方法。 这样可以确保 [`CancelledError`]({{< ref "/library/ipc/asyncio/asyncio-exceptions#asyncio.CancelledError" >}}) 会在下一次 [`await`]({{< ref "/reference/expressions#await" >}}) 时被引发，因此取消操作不会丢失。, so the cancellation is not lost.
+  对于任务分组在外部被取消时同时必须引发 [`ExceptionGroup`]({{< ref "/library/exceptions#ExceptionGroup" >}}) 的情况，现在它将调用父任务的 [`cancel()`]({{< ref "/library/ipc/asyncio/asyncio-task#asyncio.Task.cancel" >}}) 方法。 这样可以确保 [`CancelledError`]({{< ref "/library/ipc/asyncio/asyncio-exceptions.#asyncio.CancelledError" >}}) 会在下一次 [`await`]({{< ref "/reference/expressions#await" >}}) 时被引发，因此取消操作不会丢失。, so the cancellation is not lost.
 
   这些更改的一个附加好处是现在任务组会保留取消操作计数 ([`cancelling()`]({{< ref "/library/ipc/asyncio/asyncio-task#asyncio.Task.cancelling" >}}))。
 
@@ -549,7 +552,8 @@ draft = false
 
 - 现在 [`create_default_context()`]({{< ref "/library/ipc/ssl#ssl.create_default_context" >}}) API 将在其默认旗标中包括 [`VERIFY_X509_PARTIAL_CHAIN`]({{< ref "/library/ipc/ssl#ssl.VERIFY_X509_PARTIAL_CHAIN" >}}) 和 [`VERIFY_X509_STRICT`]({{< ref "/library/ipc/ssl#ssl.VERIFY_X509_STRICT" >}})。
 
-  ​备注
+  ​	备注
+
    
 
   [`VERIFY_X509_STRICT`]({{< ref "/library/ipc/ssl#ssl.VERIFY_X509_STRICT" >}}) 可能会拒绝下层 OpenSSL 实现本来会接受的 [**RFC 5280**](https://datatracker.ietf.org/doc/html/rfc5280.html) 以前的证书或格式错误的证书。 虽然不建议禁用此功能，但你可以使用以下方式禁用它：
