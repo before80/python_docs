@@ -1,5 +1,5 @@
 +++
-title = "installing"
+title = "安装 Python 模块"
 date = 2024-11-15T22:13:59+08:00
 weight = 1
 type = "docs"
@@ -25,8 +25,8 @@ draft = false
 
 ​	本指南涵盖了安装部分的流程。 有关创建和共享自己的 Python 项目的指导，请参阅 [Python packaging user guide](https://packaging.python.org/en/latest/tutorials/packaging-projects/)。
 
-​备注
- 
+备注
+
 
 ​	对于企业和其他机构用户，请注意许多组织都有自己的政策来使用和贡献开源软件。在使用Python提供的分发和安装工具时，请考虑这些政策。
 
@@ -42,8 +42,8 @@ draft = false
 
 > 在 3.5 版本发生变更: 现在推荐使用 `venv` 来创建虚拟环境。
 
-​参见
- 
+参见
+
 
 [Python 软件包用户指南：创建和使用虚拟环境](https://packaging.python.org/installing/#creating-virtual-environments)
 
@@ -57,8 +57,8 @@ draft = false
 python -m pip install SomePackage
 ```
 
-​备注
- 
+备注
+
 
 ​	对于 POSIX 用户（包括 macOS 和 Linux 用户）本指南中的示例假定使用了 [virtual environment]({{< ref "/glossary/idx#term-virtual-environment" >}})。
 
@@ -81,8 +81,8 @@ python -m pip install --upgrade SomePackage
 
 ​	虚拟环境的创建可使用 [`venv`]({{< ref "/library/distribution/venv#module-venv" >}}) 模块来完成。 向已激活虚拟环境安装软件包可使用上文所介绍的命令。
 
-​参见
- 
+参见
+
 
 [Python 软件包用户指南：安装 Python 分发包](https://packaging.python.org/installing/)
 
@@ -94,8 +94,8 @@ python -m pip install --upgrade SomePackage
 
 ​	Python 捆绑 `pip` 是从 Python 3.4 才开始的。 对于更早的版本，`pip` 需要“引导安装”，具体说明参见 Python 软件包用户指南。
 
-​参见
- 
+参见
+
 
 [Python 软件包用户指南：安装软件包的前提要求](https://packaging.python.org/installing/#requirements-for-installing-packages)
 
@@ -107,8 +107,8 @@ python -m pip install --upgrade SomePackage
 
 ​	许多科学计算类 Python 软件包都有复杂的二进制编译文件依赖，直接使用 `pip` 安装目前并不太容易。 在当前情况下，通过 [其他方式](https://packaging.python.org/science/) 而非尝试用 `pip` 安装这些软件包对用户来说通常会更容易。
 
-​参见
- 
+参见
+
 
 [Python 软件包用户指南：安装科学计算类软件包](https://packaging.python.org/science/)
 
@@ -160,7 +160,7 @@ python -m ensurepip --default-pip
 
 ​	某些用来安装 [科学计算类软件包](https://packaging.python.org/science/) 的解决方案对于尚未提供预编译 `wheel` 文件的那些扩展模块来说，也有助于用户在无需进行本机编译的情况下获取二进制码扩展模块。
 
-​参见
- 
+参见
+
 
 [Python 软件包用户指南：二进制码扩展](https://packaging.python.org/extensions/)

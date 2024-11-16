@@ -1,7 +1,7 @@
 +++
 title = "弃用"
 date = 2024-11-14T22:43:43+08:00
-weight = 1
+weight = 3
 type = "docs"
 description = ""
 isCJKLanguage = true
